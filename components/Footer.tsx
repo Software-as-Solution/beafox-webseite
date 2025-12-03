@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-white text-darkerGray border-t border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
@@ -167,6 +167,45 @@ export default function Footer() {
                 <span className="text-lightGray text-sm">
                   93073 Neutraubling
                 </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Blog */}
+          <div>
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">Blog</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  href="/blog"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm block"
+                >
+                  Alle Artikel
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog/updates"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm block"
+                >
+                  Updates
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog/finanzbildung"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm block"
+                >
+                  Finanzbildung
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog/news"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm block"
+                >
+                  News
+                </Link>
               </li>
             </ul>
           </div>

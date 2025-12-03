@@ -38,43 +38,59 @@ export default function HomePage() {
 
   const appFeatures = [
     {
+      id: "stufen",
+      title: "Stufen",
+      description:
+        "Wähle frei aus, was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden. Egal ob Anfänger oder Fortgeschrittener, bei BeAFox findest du die passende Stufe für dich und kannst in deinem eigenen Tempo lernen.",
+      mockup: "/assets/Mockups/Mockup-Stufen.png",
+      color: "primaryOrange",
+    },
+    {
       id: "lernpfad",
       title: "Lernpfad",
       description:
-        "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Keine Verwirrung mehr – du weißt immer, wo du stehst und was als Nächstes kommt.",
+        "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer, wo du stehst und was als Nächstes kommt. Der Lernpfad zeigt dir deinen Fortschritt visuell an und hilft dir, den Überblick zu behalten.",
       mockup: "/assets/Mockups/Mockup-Lernpfad.png",
       color: "primaryOrange",
     },
     {
-      id: "training",
-      title: "Training",
+      id: "lektion",
+      title: "Lektionen",
       description:
-        "Vertiefe dein Wissen mit interaktiven Übungen und Quizzen. Das spielerische Training macht Lernen zum Vergnügen und hilft dir, das Gelernte nachhaltig zu verankern.",
-      mockup: "/assets/Mockups/Mockup-Training.png",
+        "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich. Von Budgetplanung über Sparen bis hin zu Investitionen, wir decken alle wichtigen Bereiche ab und kombinieren Videos, Texte und interaktive Elemente.",
+      mockup: "/assets/Mockups/Mockup-Lektion.png",
+      color: "primaryOrange",
+    },
+    {
+      id: "quiz",
+      title: "Quiz",
+      description:
+        "Nach der Theorie kommt die Praxis. Teste dein Wissen mit interaktiven Quizzen und vertiefe das Gelernte. Durch sofortiges Feedback lernst du aus deinen Fehlern und kannst gezielt nacharbeiten. Mit jedem erfolgreich abgeschlossenen Quiz sammelst du Punkte und steigst in der Rangliste auf.",
+      mockup: "/assets/Mockups/Mockup-Quiz.png",
       color: "primaryOrange",
     },
     {
       id: "rangliste",
       title: "Rangliste",
       description:
-        "Vergleiche dich mit anderen Lernenden und motiviere dich durch freundschaftlichen Wettbewerb. Sammle Punkte, erreiche neue Level und werde zum Finanz-Experten.",
+        "Vergleiche dich mit anderen Lernenden und motiviere dich durch freundschaftlichen Wettbewerb. Sammle Punkte, erreiche neue Level und werde zum Finanz-Experten. Verschiedene Kategorien und Zeiträume sorgen dafür, dass jeder eine faire Chance hat, ganz oben zu stehen.",
       mockup: "/assets/Mockups/Mockup-Rangliste.png",
       color: "primaryOrange",
     },
     {
-      id: "dashboard",
-      title: "Dashboard",
+      id: "missionen",
+      title: "Missionen & Ziele",
       description:
-        "Behalte deinen Lernfortschritt immer im Blick. Das Dashboard zeigt dir auf einen Blick, was du bereits gelernt hast und welche Themen noch auf dich warten.",
-      mockup: "/assets/Mockups/Mockup-Lernpfad.png",
+        "Erfülle spannende Missionen und erreiche deine persönlichen Ziele. Die Missionen reichen von täglichen Herausforderungen bis hin zu langfristigen Zielen. Jede erfolgreich abgeschlossene Mission wird belohnt und bringt dich deinem großen Ziel näher. Setze dir eigene Ziele oder nimm an vordefinierten Missionen teil.",
+      mockup: "/assets/Mockups/Mockup-Missionen.png",
       color: "primaryOrange",
     },
     {
-      id: "zertifikate",
-      title: "Zertifikate",
+      id: "profil",
+      title: "Profil",
       description:
-        "Erhalte offizielle Zertifikate für deine Fortschritte. Diese kannst du für deine Bewerbungen oder deinen Lebenslauf nutzen und zeigen, dass du Finanzkompetenz besitzt.",
-      mockup: "/assets/Mockups/Mockup-Training.png",
+        "Sammle Statistiken über deinen Lernfortschritt und erhalte deinen persönlichen Fox Score. Dein Profil zeigt dir alle deine Leistungen: abgeschlossene Lektionen, erreichte Punkte und bestandene Quizze. Der Fox Score ist dein persönlicher Indikator für dein Finanzwissen und steigt mit jedem Fortschritt.",
+      mockup: "/assets/Mockups/Mockup-Profil.png",
       color: "primaryOrange",
     },
   ];
@@ -169,46 +185,39 @@ export default function HomePage() {
     },
   ];
 
-  const trustStats = [
-    { icon: Building2, value: "3+", label: "Städte" },
-    { icon: School, value: "100+", label: "Schulen" },
-    { icon: UsersIcon, value: "5k+", label: "Downloads" },
-    { icon: StarIcon, value: "4.9/5", label: "Bewertung" },
-  ];
-
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-primaryWhite">
+      <section className="pt-24 pb-16 md:pt-40 md:pb-24 bg-primaryWhite">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-2 md:gap-12 items-center">
             {/* Left Side - Content */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="space-y-6 md:space-y-8"
             >
               {/* Small Text with Icons */}
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-[50%]">
-                <PawPrint className="w-4 h-4 text-primaryOrange" />
-                <span className="font-bold">
+              <div className="flex items-center gap-2 text-lightGray text-xs md:text-sm border text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 py-1.5 md:py-2 w-full sm:w-auto sm:max-w-fit">
+                <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryOrange flex-shrink-0" />
+                <span className="font-bold text-center md:w-full">
                   Das erste Finanzbildungs-Ökosystem
                 </span>
-                <PawPrint className="w-4 h-4 text-primaryOrange" />
+                <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryOrange flex-shrink-0" />
               </div>
 
               {/* Main Headline */}
               <div>
-                <h1 className="text-5xl md:text-7xl font-bold text-darkerGray mb-4 leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-darkerGray mb-3 md:mb-4 leading-tight">
                   WISSEN. <span className="text-primaryOrange">GELD.</span>{" "}
-                  <span className="inline-block min-w-[200px] md:min-w-[350px] text-left">
+                  <span className="inline-block min-w-[180px] sm:min-w-[200px] md:min-w-[350px] text-left">
                     {typedText}
                     <span className="inline-block w-0.5 h-[1em] bg-primaryOrange ml-1 animate-pulse"></span>
                   </span>
                   .
                 </h1>
-                <p className="text-xl text-lightGray leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-lightGray leading-relaxed">
                   BeAFox ist die erste unabhängige, spielerische Lern-App für
                   Finanzbildung junger Menschen, die sich auf neutrale
                   Wissensvermittlung konzentriert und speziell für Schulen und
@@ -217,41 +226,41 @@ export default function HomePage() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-2 md:gap-3 lg:gap-4">
                 <Button
                   onClick={() => setIsDownloadModalOpen(true)}
                   variant="primary"
-                  className="flex items-center gap-2"
+                  className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5" />
                   App herunterladen
                 </Button>
                 <Button
                   href="/kontakt"
                   variant="outline"
-                  className="flex items-center gap-2"
+                  className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
-                  <Award className="w-5 h-5" />
+                  <Award className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5" />
                   Pilotprojekt starten
                 </Button>
               </div>
 
               {/* Stats - Small under buttons */}
-              <div className="flex flex-wrap gap-3 md:gap-4 mt-6">
+              <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4 mt-4 md:mt-6">
                 {stats.map((stat, index) => {
                   const IconComponent = stat.icon;
                   return (
                     <div
                       key={index}
-                      className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2 shadow-sm"
+                      className="flex items-center gap-1.5 md:gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 md:px-4 py-1.5 md:py-2 shadow-sm"
                     >
-                      <div className="w-2 h-2 rounded-full bg-primaryOrange flex-shrink-0"></div>
-                      <IconComponent className="w-4 h-4 text-darkerGray flex-shrink-0" />
-                      <div className="flex items-center gap-1">
-                        <span className="text-base md:text-lg font-bold text-primaryOrange">
+                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primaryOrange flex-shrink-0"></div>
+                      <IconComponent className="w-3.5 h-3.5 md:w-4 md:h-4 text-darkerGray flex-shrink-0" />
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-1">
+                        <span className="text-sm md:text-base lg:text-lg font-bold text-primaryOrange">
                           {stat.value}
                         </span>
-                        <span className="text-xs md:text-sm text-darkerGray font-medium">
+                        <span className="text-[10px] sm:text-xs md:text-sm text-darkerGray font-medium leading-tight">
                           {stat.label}
                           {stat.label2 && <> {stat.label2}</>}
                         </span>
@@ -267,7 +276,7 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              className="relative mt-8 lg:mt-0"
             >
               <div className="flex items-center justify-center relative">
                 {/* Mockup 1 - Training (Left, slightly behind) */}
@@ -275,14 +284,14 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="relative z-10 transform rotate-[-8deg] hover:rotate-[-5deg] transition-transform -mr-8 md:-mr-12"
+                  className="relative z-10 transform rotate-[-8deg] hover:rotate-[-5deg] transition-transform -mr-6 sm:-mr-8 md:-mr-10 lg:-mr-12 xl:-mr-16"
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Training.png"
                     alt="BeAFox Training Mockup"
-                    width={320}
-                    height={680}
-                    className="object-contain drop-shadow-2xl"
+                    width={200}
+                    height={425}
+                    className="object-contain drop-shadow-2xl w-[120px] h-auto sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[300px] 2xl:w-[320px]"
                   />
                 </motion.div>
 
@@ -296,9 +305,9 @@ export default function HomePage() {
                   <Image
                     src="/assets/Mockups/Mockup-Lernpfad.png"
                     alt="BeAFox Lernpfad Mockup"
-                    width={380}
-                    height={750}
-                    className="object-contain drop-shadow-2xl"
+                    width={240}
+                    height={473}
+                    className="object-contain drop-shadow-2xl w-[140px] h-auto sm:w-[220px] md:w-[260px] lg:w-[300px] xl:w-[340px] 2xl:w-[380px]"
                   />
                 </motion.div>
 
@@ -307,14 +316,14 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="relative z-10 transform rotate-[8deg] hover:rotate-[5deg] transition-transform -ml-8 md:-ml-12"
+                  className="relative z-10 transform rotate-[8deg] hover:rotate-[5deg] transition-transform -ml-6 sm:-ml-8 md:-ml-10 lg:-ml-12 xl:-ml-16"
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Rangliste.png"
                     alt="BeAFox Rangliste Mockup"
-                    width={320}
-                    height={680}
-                    className="object-contain drop-shadow-2xl"
+                    width={200}
+                    height={425}
+                    className="object-contain drop-shadow-2xl w-[120px] h-auto sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[300px] 2xl:w-[320px]"
                   />
                 </motion.div>
               </div>
@@ -324,20 +333,20 @@ export default function HomePage() {
       </section>
 
       {/* Partner Logos Carousel */}
-      <Section className="bg-primaryWhiteLight overflow-hidden relative bottom-10">
-        <div className="text-center mb-12">
-          <div className="flex items-center gap-3 text-lightGray text-lg md:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-6 py-3 w-fit mx-auto mb-8">
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-3xl md:text-4xl">
+      <Section className="bg-primaryWhiteLight overflow-hidden py-4 md:py-16">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
               Offizielle Partner
             </h2>
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
         </div>
         <div className="relative">
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-primaryWhiteLight to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-primaryWhiteLight to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-primaryWhiteLight to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-primaryWhiteLight to-transparent z-10 pointer-events-none"></div>
 
           {/* Carousel Container */}
           <div className="overflow-hidden">
@@ -346,7 +355,7 @@ export default function HomePage() {
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                 <div
                   key={`first-${i}`}
-                  className="flex-shrink-0 mx-8 w-64 h-32 md:w-80 md:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+                  className="flex-shrink-0 mx-4 md:mx-8 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
                 >
                   <Image
                     src={`/Partners/${i}.png`}
@@ -361,7 +370,7 @@ export default function HomePage() {
               {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                 <div
                   key={`second-${i}`}
-                  className="flex-shrink-0 mx-8 w-64 h-32 md:w-80 md:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+                  className="flex-shrink-0 mx-4 md:mx-8 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
                 >
                   <Image
                     src={`/Partners/${i}.png`}
@@ -378,33 +387,48 @@ export default function HomePage() {
       </Section>
 
       {/* App Features Section */}
-      <Section className="bg-primaryWhite relative bottom-10">
-        <div className="text-center mb-12">
-          <div className="text-center mb-12">
-            <div className="flex items-center gap-3 text-lightGray text-lg md:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-6 py-3 w-fit mx-auto mb-8">
-              <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-              <h2 className="font-bold text-3xl md:text-4xl">
-                So funktioniert BeAFox
-              </h2>
-              <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-            </div>
+      <Section className="bg-primaryWhite py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+              So funktioniert BeAFox
+            </h2>
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
 
           {/* Feature Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {appFeatures.map((feature, index) => (
-              <button
-                key={feature.id}
-                onClick={() => setSelectedFeature(index)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                  selectedFeature === index
-                    ? "bg-primaryOrange text-primaryWhite shadow-lg"
-                    : "bg-gray-100 text-darkerGray hover:bg-gray-200"
-                }`}
-              >
-                {feature.title}
-              </button>
-            ))}
+          <div className="relative mb-8 md:mb-12">
+            {/* Gradient Overlay - Right */}
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-primaryWhite to-transparent z-10 pointer-events-none"></div>
+
+            {/* Scrollable Tabs Container */}
+            <div className="flex overflow-x-auto gap-2 md:gap-3 px-4 md:px-0 scrollbar-hide pb-2 md:pb-0 scroll-smooth">
+              {appFeatures.map((feature, index) => (
+                <button
+                  key={feature.id}
+                  onClick={() => setSelectedFeature(index)}
+                  className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                    selectedFeature === index
+                      ? "bg-primaryOrange text-primaryWhite shadow-lg"
+                      : "bg-gray-100 text-darkerGray hover:bg-gray-200"
+                  }`}
+                >
+                  {feature.title}
+                </button>
+              ))}
+              {/* Extra padding on the right to show scrollability */}
+              <div className="flex-shrink-0 w-4 md:w-8"></div>
+            </div>
+
+            {/* Scroll Indicator - Only visible on mobile */}
+            <div className="flex justify-center mt-2 md:hidden">
+              <div className="flex items-center gap-2 text-primaryOrange">
+                <ArrowRight className="w-3 h-3 rotate-180 animate-pulse" />
+                <span className="text-xs font-medium">Scrollen für mehr</span>
+                <ArrowRight className="w-3 h-3 animate-pulse" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -416,22 +440,22 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="bg-gray-50 rounded-2xl p-8 md:p-12 w-[90%] mx-auto"
+            className="bg-gray-50 rounded-2xl p-6 md:p-8 lg:p-12 w-full max-w-6xl mx-auto"
           >
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Left: Mockup */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex justify-center"
+                className="flex justify-center order-2 md:order-1"
               >
                 <Image
                   src={appFeatures[selectedFeature].mockup}
                   alt={`BeAFox ${appFeatures[selectedFeature].title} Mockup`}
-                  width={300}
-                  height={650}
-                  className="object-contain drop-shadow-2xl"
+                  width={240}
+                  height={520}
+                  className="object-contain drop-shadow-2xl w-[240px] h-auto md:w-[280px] lg:w-[300px]"
                 />
               </motion.div>
 
@@ -440,14 +464,19 @@ export default function HomePage() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
+                className="order-1 md:order-2"
               >
-                <h3 className="text-3xl md:text-4xl font-bold text-darkerGray mb-6">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4 md:mb-6">
                   {appFeatures[selectedFeature].title}
                 </h3>
-                <p className="text-lg text-lightGray leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-lightGray leading-relaxed mb-6">
                   {appFeatures[selectedFeature].description}
                 </p>
-                <Button href="/kontakt" variant="primary">
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+                >
                   Mehr erfahren →
                 </Button>
               </motion.div>
@@ -457,18 +486,18 @@ export default function HomePage() {
       </Section>
 
       {/* Finanzbildungs-Ökosystem Section */}
-      <Section className="bg-white">
-        <div className="text-center mb-16">
-          <div className="flex items-center gap-3 text-lightGray text-lg md:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-6 py-3 w-fit mx-auto mb-8">
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-3xl md:text-4xl">
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
               Finanzbildungs-Ökosystem
             </h2>
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-7 gap-10 items-center">
+        <div className="grid lg:grid-cols-7 gap-8 md:gap-10 items-center">
           {/* Left Features */}
           <div className="lg:col-span-2 space-y-12">
             <motion.div
@@ -481,7 +510,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
                 <Smartphone className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 ml-auto lg:ml-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:ml-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">Finanzbildung jederzeit</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
@@ -505,7 +534,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
                 <School className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 ml-auto lg:ml-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:ml-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">Finanzbildung in der Schule</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
@@ -522,7 +551,7 @@ export default function HomePage() {
 
           {/* Center Mockups - Ecosystem */}
           <div
-            className="lg:col-span-3 flex items-center justify-center relative"
+            className="lg:col-span-3 flex flex-row items-center justify-center relative gap-0 my-8 lg:my-0 overflow-x-auto md:overflow-visible"
             style={{ perspective: "1000px" }}
           >
             {/* Smartphone - Left */}
@@ -531,25 +560,17 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative z-10 transition-transform"
-              style={{
-                transform: "scale(0.8)",
-                marginRight: "-40px",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(0.85)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(0.8)";
-              }}
+              className="relative z-10 transition-transform -mr-12 sm:-mr-16 md:-mr-20 lg:-mr-24 xl:-mr-28"
             >
-              <Image
-                src="/assets/Mockups/Mockup-Start.png"
-                alt="BeAFox Smartphone Mockup"
-                width={200}
-                height={430}
-                className="object-contain drop-shadow-2xl"
-              />
+              <div className="[transform:scale(0.75)] sm:[transform:scale(0.8)] md:[transform:scale(0.85)] lg:[transform:scale(0.95)] xl:[transform:scale(1.05)]">
+                <Image
+                  src="/assets/Mockups/Mockup-Start.png"
+                  alt="BeAFox Smartphone Mockup"
+                  width={200}
+                  height={430}
+                  className="object-contain drop-shadow-2xl w-[200px] h-auto"
+                />
+              </div>
             </motion.div>
 
             {/* Macbook - Center */}
@@ -559,23 +580,16 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative z-20 transition-transform"
-              style={{
-                transform: "scale(0.7)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(0.75)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(0.7)";
-              }}
             >
-              <Image
-                src="/assets/Mockups/Mockup-Macbook.png"
-                alt="BeAFox Macbook Mockup"
-                width={600}
-                height={400}
-                className="object-contain drop-shadow-2xl"
-              />
+              <div className="[transform:scale(0.65)] sm:[transform:scale(0.7)] md:[transform:scale(0.8)] lg:[transform:scale(0.9)] xl:[transform:scale(0.95)]">
+                <Image
+                  src="/assets/Mockups/Mockup-Macbook.png"
+                  alt="BeAFox Macbook Mockup"
+                  width={600}
+                  height={400}
+                  className="object-contain drop-shadow-2xl w-[600px] h-auto"
+                />
+              </div>
             </motion.div>
 
             {/* iPad - Right */}
@@ -584,25 +598,17 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative z-10 transition-transform"
-              style={{
-                transform: "scale(0.75)",
-                marginLeft: "-50px",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(0.8)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(0.75)";
-              }}
+              className="relative z-10 transition-transform -ml-12 sm:-ml-16 md:-ml-20 lg:-ml-24 xl:-ml-28"
             >
-              <Image
-                src="/assets/Mockups/Mockup-Ipad.png"
-                alt="BeAFox iPad Mockup"
-                width={300}
-                height={400}
-                className="object-contain drop-shadow-2xl"
-              />
+              <div className="[transform:scale(0.75)] sm:[transform:scale(0.8)] md:[transform:scale(0.85)] lg:[transform:scale(0.9)] xl:[transform:scale(0.95)]">
+                <Image
+                  src="/assets/Mockups/Mockup-Ipad.png"
+                  alt="BeAFox iPad Mockup"
+                  width={300}
+                  height={400}
+                  className="object-contain drop-shadow-2xl w-[300px] h-auto"
+                />
+              </div>
             </motion.div>
           </div>
 
@@ -618,7 +624,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
                 <Briefcase className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mr-auto lg:mr-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mr-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">
                   Finanzbildung in Ausbildungsbetriebe
@@ -644,7 +650,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
                 <Users className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mr-auto lg:mr-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mr-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">Finanzbildung für Vereine</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
@@ -662,17 +668,17 @@ export default function HomePage() {
       </Section>
 
       {/* BeAFox For Business Section */}
-      <Section className="bg-white">
-        <div className="text-center mb-16">
-          <div className="flex items-center gap-3 text-lightGray text-lg md:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-6 py-3 w-fit mx-auto mb-8">
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-3xl md:text-4xl text-darkerGray">
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
               BeAFox for Business
             </h2>
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -682,31 +688,31 @@ export default function HomePage() {
           >
             {/* Badge */}
             <div className="flex items-center gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
-              <PawPrint className="w-4 h-4 text-primaryOrange" />
-              <span className="font-bold">
+              <PawPrint className="w-4 h-4 text-primaryOrange " />
+              <span className="font-bold text-center">
                 Bildungspakete gegen Fachkräftemangel
               </span>
               <PawPrint className="w-4 h-4 text-primaryOrange" />
             </div>
 
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
               <span className="text-darkerGray">
                 Wir lösen das Problem von{" "}
               </span>
               <span className="text-primaryOrange">Workshops</span>
             </h3>
 
-            <p className="text-darkerGray mb-8 text-lg leading-relaxed">
+            <p className="text-darkerGray mb-6 md:mb-8 text-base md:text-lg leading-relaxed">
               Mit unserer Lern-App in Kombination mit regelmäßigen Workshops
               lösen wir das klassische Problem: Nach 2-3 Tagen ist der Großteil
               des Gelernten wieder vergessen.
             </p>
 
-            <div className="mb-8">
-              <h4 className="text-xl font-bold text-darkerGray mb-4">
+            <div className="mb-6 md:mb-8">
+              <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-3 md:mb-4">
                 So funktioniert's:
               </h4>
-              <p className="text-darkerGray text-lg leading-relaxed">
+              <p className="text-darkerGray text-base md:text-lg leading-relaxed">
                 Wir veranstalten alle 6 Monate Workshops zu wechselnden Themen.
                 Dazwischen vertiefen die Azubis die Inhalte mit Beafox,
                 wiederholen Gelerntes und bereiten sich gezielt auf das nächste
@@ -717,10 +723,10 @@ export default function HomePage() {
             <Button
               href="/kontakt"
               variant="primary"
-              className="px-8 py-2 text-lg flex justify-center items-center w-[40%]"
+              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
-              Pilotprojekt anfragen
-              <ArrowRight className="w-5 h-5 ml-2" />
+              Pilotprojekt starten
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
             </Button>
           </motion.div>
 
@@ -743,41 +749,41 @@ export default function HomePage() {
               />
 
               {/* Features List Overlay */}
-              <div className="absolute bottom-0 right-0 bg-primaryOrange rounded-2xl p-6 m-4 max-w-sm">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-base font-medium">
+              <div className="absolute bottom-0 right-0 bg-primaryOrange rounded-2xl p-4 md:p-6 m-2 md:m-4 max-w-[90%] sm:max-w-sm hidden md:block">
+                <div className="space-y-2 md:space-y-3">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-sm md:text-base font-medium">
                       Gezielte Workshops
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-base font-medium">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-sm md:text-base font-medium">
                       Monitoring Dashboards
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-base font-medium">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-sm md:text-base font-medium">
                       Offizielle Zertifikate
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-base font-medium">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-sm md:text-base font-medium">
                       Spielerische Lern-App
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-base font-medium">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-sm md:text-base font-medium">
                       Große PR-Aktion
                     </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-base font-medium">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-sm md:text-base font-medium">
                       Motiviertere Azubis
                     </span>
                   </div>
@@ -789,24 +795,24 @@ export default function HomePage() {
       </Section>
 
       {/* BeAFox For Schools Section */}
-      <Section className="bg-white">
-        <div className="text-center mb-16">
-          <div className="flex items-center gap-3 text-lightGray text-lg md:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-6 py-3 w-fit mx-auto mb-8">
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-3xl md:text-4xl text-darkerGray">
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
               BeAFox for Schools
             </h2>
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left: Image with Features Overlay */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative"
+            className="relative order-2 md:order-1"
           >
             {/* School Image */}
             <div className="rounded-2xl overflow-hidden shadow-2xl relative mb-8">
@@ -820,7 +826,7 @@ export default function HomePage() {
             </div>
 
             {/* Features List Overlay - Orange Box (overlapping image) */}
-            <div className="relative -mt-24 mx-4 bg-primaryOrange rounded-2xl p-6">
+            <div className="relative -mt-24 mx-4 bg-primaryOrange rounded-2xl p-6 hidden md:block">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
@@ -872,33 +878,35 @@ export default function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-6 order-1 md:order-2"
           >
             {/* Badge */}
-            <div className="flex items-center gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit">
-              <PawPrint className="w-4 h-4 text-primaryOrange" />
-              <span className="font-bold">Finanzbildung als Ergänzung</span>
+            <div className="flex items-center justify-center mx-auto gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
+              <PawPrint className="w-4 h-4 text-primaryOrange " />
+              <span className="font-bold text-center">
+                Finanzbildung als Ergänzung
+              </span>
               <PawPrint className="w-4 h-4 text-primaryOrange" />
             </div>
 
-            <h3 className="text-3xl md:text-4xl font-bold">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
               <span className="text-darkerGray">
                 Wir lösen das Problem von{" "}
               </span>
               <span className="text-primaryOrange">Unterrichtsausfall</span>
             </h3>
 
-            <p className="text-darkerGray text-lg leading-relaxed">
+            <p className="text-darkerGray text-base md:text-lg leading-relaxed mb-4 md:mb-6">
               Ein Lehrer betreut gleichzeitig mehrere Klassen oder Räume. Die
               Schüler arbeiten selbstständig und interaktiv mit BeAFox - ganz
               ohne direkte Anwesenheit des Lehrers vor Ort.
             </p>
 
-            <div>
-              <h4 className="text-xl font-bold text-darkerGray mb-4">
+            <div className="mb-6 md:mb-8">
+              <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-3 md:mb-4">
                 Für Lehrer & Schulleitung:
               </h4>
-              <p className="text-darkerGray text-lg leading-relaxed">
+              <p className="text-darkerGray text-base md:text-lg leading-relaxed">
                 Das integrierte Monitoring-Dashboard zeigt in Echtzeit, was
                 jeder Schüler gerade lernt, wo er steht und wie er vorankommt.
                 Schwächen werden sofort sichtbar und Fortschritte werden
@@ -906,14 +914,14 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="flex justify-start">
+            <div className="flex justify-start md:justify-start w-full">
               <Button
                 href="/kontakt"
                 variant="primary"
-                className="px-10 py-4 text-lg flex justify-center items-center"
+                className="flex items-center justify-center gap-1.5 md:gap-2 w-full md:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
               >
                 Pilotprojekt starten
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
             </div>
           </motion.div>
@@ -921,17 +929,17 @@ export default function HomePage() {
       </Section>
 
       {/* BeAFox For Clubs Section */}
-      <Section className="bg-white">
-        <div className="text-center mb-16">
-          <div className="flex items-center gap-3 text-lightGray text-lg md:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-6 py-3 w-fit mx-auto mb-8">
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-3xl md:text-4xl text-darkerGray">
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
               BeAFox for Clubs
             </h2>
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -941,31 +949,33 @@ export default function HomePage() {
             className="space-y-6"
           >
             {/* Badge */}
-            <div className="flex items-center gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit">
-              <PawPrint className="w-4 h-4 text-primaryOrange" />
-              <span className="font-bold">Finanzbildung für Vereine</span>
+            <div className="flex items-center justify-center mx-auto gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
+              <PawPrint className="w-4 h-4 text-primaryOrange " />
+              <span className="font-bold text-center">
+                Finanzbildung für Vereine
+              </span>
               <PawPrint className="w-4 h-4 text-primaryOrange" />
             </div>
 
-            <h3 className="text-3xl md:text-4xl font-bold">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
               <span className="text-darkerGray">
                 Wir lösen das Problem von{" "}
               </span>
               <span className="text-primaryOrange">finanzieller Bildung</span>
             </h3>
 
-            <p className="text-darkerGray text-lg leading-relaxed">
+            <p className="text-darkerGray text-base md:text-lg leading-relaxed mb-4 md:mb-6">
               Vereine und Organisationen können ihren Mitgliedern wertvolle
               Finanzbildung anbieten. Ob Sportverein, Jugendzentrum oder
               gemeinnützige Organisation – BeAFox hilft dabei, junge Menschen
               finanziell zu stärken.
             </p>
 
-            <div>
-              <h4 className="text-xl font-bold text-darkerGray mb-4">
+            <div className="mb-6 md:mb-8">
+              <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-3 md:mb-4">
                 Für Vereine & Organisationen:
               </h4>
-              <p className="text-darkerGray text-lg leading-relaxed">
+              <p className="text-darkerGray text-base md:text-lg leading-relaxed">
                 Das integrierte Monitoring-Dashboard zeigt in Echtzeit, was
                 jeder Teilnehmer gerade lernt, wo er steht und wie er
                 vorankommt. So können Sie gezielt unterstützen und Fortschritte
@@ -977,10 +987,10 @@ export default function HomePage() {
               <Button
                 href="/kontakt"
                 variant="primary"
-                className="px-10 py-4 text-lg flex justify-center items-center"
+                className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
               >
                 Pilotprojekt starten
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
             </div>
           </motion.div>
@@ -1005,44 +1015,44 @@ export default function HomePage() {
             </div>
 
             {/* Features List Overlay - Orange Box (overlapping image) */}
-            <div className="relative -mt-24 mx-4 bg-primaryOrange rounded-2xl p-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-sm font-medium">
+            <div className="relative -mt-16 md:-mt-24 mx-2 md:mx-4 bg-primaryOrange rounded-2xl p-4 md:p-6 hidden md:block">
+              <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className="space-y-2 md:space-y-3">
+                  <div className="flex items-center gap-1.5 md:gap-2">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-xs md:text-sm font-medium">
                       Spielerisches System
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-sm font-medium">
+                  <div className="flex items-center gap-1.5 md:gap-2">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-xs md:text-sm font-medium">
                       Schritt für Schritt Lernpfad
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-sm font-medium">
+                  <div className="flex items-center gap-1.5 md:gap-2">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-xs md:text-sm font-medium">
                       Unabhängige Finanzbildung
                     </span>
                   </div>
                 </div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-sm font-medium">
+                <div className="space-y-2 md:space-y-3">
+                  <div className="flex items-center gap-1.5 md:gap-2">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-xs md:text-sm font-medium">
                       Zeitersparnis
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-sm font-medium">
+                  <div className="flex items-center gap-1.5 md:gap-2">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-xs md:text-sm font-medium">
                       Fortschrittstracking
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-primaryWhite flex-shrink-0" />
-                    <span className="text-primaryWhite text-sm font-medium">
+                  <div className="flex items-center gap-1.5 md:gap-2">
+                    <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite flex-shrink-0" />
+                    <span className="text-primaryWhite text-xs md:text-sm font-medium">
                       Didaktisch aufbereitet
                     </span>
                   </div>
@@ -1054,18 +1064,18 @@ export default function HomePage() {
       </Section>
 
       {/* Warum Finanzbildung Section */}
-      <Section className="bg-primaryWhiteLight">
-        <div className="text-center mb-16">
-          <div className="flex items-center gap-3 text-lightGray text-lg md:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-6 py-3 w-fit mx-auto mb-8">
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-3xl md:text-4xl text-darkerGray">
+      <Section className="bg-primaryWhiteLight py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
               Warum Finanzbildung?
             </h2>
-            <PawPrint className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
           {/* Left: Three Points */}
           <div className="space-y-4">
             {/* Point 1 */}
@@ -1080,13 +1090,13 @@ export default function HomePage() {
                 1
               </div>
               <h3 className="text-xl font-bold text-primaryOrange mb-3">
-                Finanzbildung ist Allgemeinbildung
+                Finanzbildung als Future Skill
               </h3>
               <p className="text-sm md:text-base text-darkerGray leading-relaxed">
-                Das Deutsche Institut für Erwachsenenbildung (DIE) stuft
-                finanzielle Bildung als Teil der Allgemeinbildung ein - deshalb
-                muss jeder junge Mensch die Möglichkeit haben, finanzielle
-                Bildung zu genießen.
+                Finanzbildung wird immer komplizierter, gleichzeitig aber auch
+                wichtiger. In einer sich schnell verändernden Welt ist
+                finanzielle Kompetenz ein entscheidender Future Skill, der junge
+                Menschen auf die Herausforderungen von morgen vorbereitet.
               </p>
             </motion.div>
 
@@ -1102,12 +1112,13 @@ export default function HomePage() {
                 2
               </div>
               <h3 className="text-xl font-bold text-primaryOrange mb-3">
-                Schulden-Prävention
+                Finanzbildung als Erfolgsfaktor
               </h3>
               <p className="text-sm md:text-base text-darkerGray leading-relaxed">
-                Statistisch gesehen wird sich mindestens ein:e Schüler:in pro
-                Klasse im Laufe des Lebens überschulden. Hochwertige finanzielle
-                Bildung beugt Überschuldung effektiv vor.
+                Studien zeigen: Finanziell gebildete Menschen sind erfolgreicher
+                im Leben, in der Arbeit und überall. Finanzwissen ist nicht nur
+                ein Vorteil, sondern ein entscheidender Erfolgsfaktor für die
+                persönliche und berufliche Entwicklung.
               </p>
             </motion.div>
 
@@ -1126,9 +1137,11 @@ export default function HomePage() {
                 Chancengerechtigkeit
               </h3>
               <p className="text-sm md:text-base text-darkerGray leading-relaxed">
-                Jede:r sollte über Finanzen Bescheid wissen, um sich eine eigene
-                Meinung bilden zu können; unabhängig davon, welche eigenen
-                finanziellen und familiären Ressourcen man mitbringt.
+                Jede:r sollte die gleichen Chancen haben, finanzielle Bildung zu
+                erhalten - unabhängig vom sozialen Hintergrund oder den
+                finanziellen Ressourcen der Familie. BeAFox schafft
+                Chancengerechtigkeit durch zugängliche, neutrale Finanzbildung
+                für alle.
               </p>
             </motion.div>
           </div>
@@ -1139,37 +1152,38 @@ export default function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center items-center"
+            className="flex justify-center items-center mt-8 md:mt-0"
           >
             <Image
               src="/assets/Maskottchen.jpeg"
               alt="BeAFox Maskottchen"
               width={400}
               height={400}
-              className="object-contain rounded-2xl"
+              className="object-contain rounded-2xl w-full max-w-[300px] md:max-w-[350px] lg:max-w-[400px] h-auto"
             />
           </motion.div>
         </div>
       </Section>
 
       {/* Download Banner Section */}
-      <Section className="bg-gray-50">
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+      <Section className="bg-primaryOrange/10 py-8 md:py-16 lg:py-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto px-4">
           {/* Left: Text */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="order-2 md:order-1 text-center md:text-left"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-darkerGray mb-6 leading-tight">
-              Lade noch die{" "}
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4 md:mb-6 leading-tight">
+              Lade jetzt die{" "}
               <span className="text-primaryOrange">BeAFox-App</span> herunter
               und werde Experte deiner eigenen Finanzen!
             </h2>
 
             {/* Download Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <div className="flex flex-col sm:flex-row gap-0 md:gap-4 mt-6 md:mt-8 items-center justify-center md:justify-start">
               <a
                 href="https://apps.apple.com/de/app/beafox/id6746110612"
                 target="_blank"
@@ -1181,7 +1195,7 @@ export default function HomePage() {
                   alt="Download on the App Store"
                   width={180}
                   height={60}
-                  className="object-contain hover:opacity-80 transition-opacity relative bottom-[16%]"
+                  className="object-contain hover:opacity-80 transition-opacity w-[195px] sm:w-[150px] md:w-[160px] h-auto"
                 />
               </a>
               <a
@@ -1195,7 +1209,7 @@ export default function HomePage() {
                   alt="GET IT ON Google Play"
                   width={180}
                   height={60}
-                  className="object-contain hover:opacity-80 transition-opacity"
+                  className="object-contain hover:opacity-80 transition-opacity w-[200px] sm:w-[170px] md:w-[180px] h-auto"
                 />
               </a>
             </div>
@@ -1207,7 +1221,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative flex items-center justify-center"
+            className="relative flex items-center justify-center order-1 md:order-2 mb-6 md:mb-0"
           >
             {/* Mockup 1 - Left */}
             <motion.div
@@ -1216,14 +1230,14 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative z-10 transform rotate-[-8deg]"
-              style={{ marginRight: "-40px" }}
+              style={{ marginRight: "-20px" }}
             >
               <Image
                 src="/assets/Mockups/Mockup-Training.png"
                 alt="BeAFox Training Mockup"
-                width={280}
-                height={600}
-                className="object-contain drop-shadow-2xl"
+                width={200}
+                height={428}
+                className="object-contain drop-shadow-2xl w-[160px] sm:w-[160px] md:w-[180px] lg:w-[220px] xl:w-[280px] h-auto"
               />
             </motion.div>
 
@@ -1238,9 +1252,9 @@ export default function HomePage() {
               <Image
                 src="/assets/Mockups/Mockup-Lernpfad.png"
                 alt="BeAFox Lernpfad Mockup"
-                width={280}
-                height={600}
-                className="object-contain drop-shadow-2xl"
+                width={240}
+                height={514}
+                className="object-contain drop-shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] lg:w-[240px] xl:w-[280px] h-auto"
               />
             </motion.div>
           </motion.div>
@@ -1248,27 +1262,27 @@ export default function HomePage() {
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 relative overflow-hidden">
-        <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto relative z-10">
+      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 relative overflow-hidden py-8 md:py-16 lg:py-20">
+        <div className="grid md:grid-cols-2 gap-2 md:gap-12 items-center max-w-6xl mx-auto relative z-10">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center md:text-left"
+            className="text-center md:text-left order-2 md:order-1"
           >
-            <div className="flex items-center gap-2 text-primaryWhite text-sm border-2 border-primaryWhite/30 rounded-full px-4 py-2 w-fit mx-auto md:mx-0 mb-6">
-              <PawPrint className="w-4 h-4 text-primaryWhite" />
-              <span className="font-bold text-1xl">Bereit für BeAFox?</span>
-              <PawPrint className="w-4 h-4 text-primaryWhite" />
+            <div className="flex items-center gap-2 text-primaryWhite text-xs md:text-sm border-2 border-primaryWhite/30 rounded-full px-3 md:px-4 py-1.5 md:py-2 w-fit mx-auto md:mx-0 mb-4 md:mb-6">
+              <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryWhite" />
+              <span className="font-bold">Bereit für BeAFox?</span>
+              <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryWhite" />
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-primaryWhite mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primaryWhite mb-3 md:mb-4">
               Jetzt Pilotprojekt starten!
             </h2>
 
-            <p className="text-lg md:text-xl text-primaryWhite/90 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-primaryWhite/90 mb-6 md:mb-8 leading-relaxed">
               Mit unserer Lern-App haben wir endlich eine Möglichkeit
               geschaffen, das oft als langweilig empfundene Thema Finanzen
               nachhaltig und verständlich zu vermitteln. Wir möchten, dass die
@@ -1279,10 +1293,10 @@ export default function HomePage() {
               <Button
                 href="/kontakt"
                 variant="secondary"
-                className="!bg-primaryWhite !text-primaryOrange hover:!bg-primaryWhite/90 px-8 py-4 text-lg flex justify-center items-center"
+                className="!bg-primaryWhite !text-primaryOrange hover:!bg-primaryWhite/90 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg flex justify-center items-center w-full sm:w-auto"
               >
                 Pilotprojekt starten
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
             </div>
           </motion.div>
@@ -1293,14 +1307,128 @@ export default function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center order-1 md:order-2 mb-0"
           >
-            <div className="w-full max-w-md">
+            <div className="w-full max-w-[280px] md:max-w-md">
               <Lottie
                 animationData={kontaktAnimation}
                 loop={true}
                 className="w-full h-auto"
               />
+            </div>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* Blog Section */}
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-12 md:mb-16">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-4 md:mb-6">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl text-darkerGray">
+              Unser Blog
+            </h2>
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+          </div>
+          <p className="text-base md:text-lg text-lightGray max-w-2xl mx-auto px-4">
+            Entdecke, wie BeAFox im Hintergrund zum Leben erweckt wird.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto px-4">
+          {/* Blog Post 1 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
+          >
+            <div className="relative h-72 md:h-80 overflow-hidden">
+              <Image
+                src="/assets/Blogs/Blog1.jpeg"
+                alt="Wir haben gewonnen - Deggendorfer Gründerpreis"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
+                Wir haben gewonnen!
+              </h4>
+              <p className="text-lightGray text-sm leading-relaxed">
+                Wir sind stolz darauf, den Deggendorfer Gründerpreis gewonnen zu
+                haben! Trotz Nervosität und einem in letzter Minute
+                überarbeiteten Pitch hat sich unsere Arbeit ausgezahlt - etwa
+                60% des Publikums haben für uns gestimmt. Vielen Dank an das
+                gesamte Team für die tolle Organisation und die 2.500€
+                Preisgeld. Wir freuen uns auf weitere Schritte mit BeAFox!
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Blog Post 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
+          >
+            <div className="relative h-72 md:h-80 overflow-hidden">
+              <Image
+                src="/assets/Blogs/Blog2.jpeg"
+                alt="BeAFox bei Ed.One in München"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
+                BeAFox bei Ed.One in München!
+              </h4>
+              <p className="text-lightGray text-sm leading-relaxed">
+                So erlebt man Finanzbildung im Klassenzimmer. Beim Ed.One Summit
+                in München haben Schüler, Lehrer und Ausbilder BeAFox live
+                getestet - vom Dashboard über die Lern-App bis hin zu den
+                Arbeitsblättern. Wir haben wertvolles Feedback erhalten,
+                spannende Kontakte geknüpft und unseren Pitch präsentiert.
+                BeAFox zeigt, wie einfach Finanzbildung sein kann. Wir suchen
+                dich!
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Blog Post 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
+          >
+            <div className="relative h-72 md:h-80 overflow-hidden">
+              <Image
+                src="/assets/Blogs/Blog3.jpg"
+                alt="BeAFox gewinnt Startup Summit"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
+                BeAFox gewinnt Startup Summit!
+              </h4>
+              <p className="text-lightGray text-sm leading-relaxed">
+                BeAFox hat den 2. Platz beim Startup Summit Germany erreicht -
+                unser erster offizieller Preis! Zum ersten Mal haben wir als Duo
+                gepitcht, mit einem neuen Pitch, Pitch Deck und einer
+                Präsentation, die unsere Vision noch stärker vermittelt hat.
+                Nach zwei Jahren harter Arbeit zeigt es, dass
+                Durchhaltevermögen, Mut und Teamarbeit sich auszahlen. Vielen
+                Dank an die Volksbank am Württemberg eG für diese großartige
+                Veranstaltung!
+              </p>
             </div>
           </motion.div>
         </div>
