@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/Button";
 import Section from "@/components/Section";
 import Image from "next/image";
@@ -14,17 +14,10 @@ import {
   Award,
   PawPrint,
   Building2,
-  Users as UsersIcon,
-  Star as StarIcon,
-  X,
-  TrendingUp,
-  Gamepad2,
-  FlaskConical,
-  Scale,
   Smartphone,
-  Clock,
 } from "lucide-react";
 import Lottie from "lottie-react";
+import DownloadModal from "@/components/DownloadModal";
 import kontaktAnimation from "@/public/assets/Lottie/Kontakt.json";
 
 export default function HomePage() {
@@ -398,27 +391,27 @@ export default function HomePage() {
           </div>
 
           {/* Feature Tabs */}
-          <div className="relative mb-8 md:mb-12">
+          <div className="relative mb-8 md:mb-12 w-full mx-auto">
             {/* Gradient Overlay - Right */}
             <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-primaryWhite to-transparent z-10 pointer-events-none"></div>
 
             {/* Scrollable Tabs Container */}
-            <div className="flex overflow-x-auto gap-2 md:gap-3 px-4 md:px-0 scrollbar-hide pb-2 md:pb-0 scroll-smooth">
-              {appFeatures.map((feature, index) => (
-                <button
-                  key={feature.id}
-                  onClick={() => setSelectedFeature(index)}
-                  className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
-                    selectedFeature === index
-                      ? "bg-primaryOrange text-primaryWhite shadow-lg"
-                      : "bg-gray-100 text-darkerGray hover:bg-gray-200"
-                  }`}
-                >
-                  {feature.title}
-                </button>
-              ))}
-              {/* Extra padding on the right to show scrollability */}
-              <div className="flex-shrink-0 w-4 md:w-8"></div>
+            <div className="overflow-x-auto scrollbar-hide pb-2 md:pb-0 scroll-smooth px-4 md:px-0">
+              <div className="flex gap-2 md:gap-3 justify-center md:justify-center min-w-max md:min-w-0">
+                {appFeatures.map((feature, index) => (
+                  <button
+                    key={feature.id}
+                    onClick={() => setSelectedFeature(index)}
+                    className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                      selectedFeature === index
+                        ? "bg-primaryOrange text-primaryWhite shadow-lg"
+                        : "bg-gray-100 text-darkerGray hover:bg-gray-200"
+                    }`}
+                  >
+                    {feature.title}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Scroll Indicator - Only visible on mobile */}
@@ -1435,76 +1428,11 @@ export default function HomePage() {
       </Section>
 
       {/* Download Modal */}
-      <AnimatePresence>
-        {isDownloadModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-            onClick={() => setIsDownloadModalOpen(false)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-primaryWhite rounded-2xl shadow-2xl max-w-md w-full p-6 md:p-8 relative"
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsDownloadModalOpen(false)}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
-                aria-label="Schließen"
-              >
-                <X className="w-5 h-5 text-darkerGray" />
-              </button>
-
-              {/* Title */}
-              <h2 className="text-2xl md:text-3xl font-bold text-primaryOrange mb-4 pr-8 text-center">
-                BeAFox App herunterladen
-              </h2>
-
-              {/* Info Text */}
-              <p className="text-lightGray mb-6">
-                Die BeAFox App ist nur für mobile Geräte verfügbar. Öffne diesen
-                Link auf deinem Smartphone oder Tablet, um die App
-                herunterzuladen.
-              </p>
-
-              {/* App Store Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="https://apps.apple.com/de/app/beafox/id6746110612"
-                  className="inline-block hover:opacity-80 transition-opacity"
-                  onClick={handleAppStoreClick}
-                >
-                  <Image
-                    src="/assets/Apple.png"
-                    alt="Download on App Store"
-                    width={175}
-                    height={50}
-                    className="object-contain relative bottom-[15%]"
-                  />
-                </a>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.tapelea.beafox&pcampaignid=web_share"
-                  className="inline-block hover:opacity-80 transition-opacity"
-                  onClick={handleAppStoreClick}
-                >
-                  <Image
-                    src="/assets/Android.png"
-                    alt="Get it on Google Play"
-                    width={180}
-                    height={50}
-                    className="object-contain"
-                  />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <DownloadModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        onAppStoreClick={handleAppStoreClick}
+      />
     </>
   );
 }
