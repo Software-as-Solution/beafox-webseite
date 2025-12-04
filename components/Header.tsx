@@ -11,6 +11,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -20,6 +21,16 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Update hash when it changes
+    const updateHash = () => {
+      setCurrentHash(window.location.hash);
+    };
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -50,10 +61,10 @@ export default function Header() {
   ];
 
   const ecosystemItems = [
-    { href: "/", label: "BeAFox Unlimited" },
+    { href: "/beafox-unlimited", label: "BeAFox Unlimited" },
     { href: "/fuer-schulen", label: "BeAFox for Schools" },
     { href: "/fuer-unternehmen", label: "BeAFox for Business" },
-    { href: "/#beafox-for-clubs", label: "BeAFox for Clubs" },
+    { href: "/fuer-clubs", label: "BeAFox for Clubs" },
   ];
 
   return (
@@ -101,11 +112,16 @@ export default function Header() {
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className={`flex items-center gap-1 transition-colors font-medium ${
-                  ecosystemItems.some(
-                    (item) =>
-                      pathname === item.href ||
-                      (item.href.startsWith("/#") && pathname === "/")
-                  )
+                  ecosystemItems.some((item) => {
+                    if (item.href.startsWith("/#")) {
+                      return (
+                        pathname === "/" &&
+                        currentHash === item.href.substring(1)
+                      );
+                    } else {
+                      return pathname === item.href && pathname !== "/";
+                    }
+                  })
                     ? "text-primaryOrange"
                     : "text-darkerGray hover:text-primaryOrange"
                 }`}
@@ -129,9 +145,18 @@ export default function Header() {
                     data-dropdown
                   >
                     {ecosystemItems.map((item) => {
-                      const isActive =
-                        pathname === item.href ||
-                        (item.href.startsWith("/#") && pathname === "/");
+                      // Check if item is active
+                      let isActive = false;
+                      if (item.href.startsWith("/#")) {
+                        // For hash links, only mark as active if we're on the homepage and hash matches
+                        isActive =
+                          pathname === "/" &&
+                          currentHash === item.href.substring(1);
+                      } else {
+                        // For regular links, check if pathname matches exactly
+                        // But don't mark "/" as active if we're on a different page
+                        isActive = pathname === item.href && pathname !== "/";
+                      }
                       return (
                         <Link
                           key={item.href}
@@ -210,11 +235,16 @@ export default function Header() {
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className={`flex items-center justify-between w-full transition-colors font-medium py-2 ${
-                    ecosystemItems.some(
-                      (item) =>
-                        pathname === item.href ||
-                        (item.href.startsWith("/#") && pathname === "/")
-                    )
+                    ecosystemItems.some((item) => {
+                      if (item.href.startsWith("/#")) {
+                        return (
+                          pathname === "/" &&
+                          currentHash === item.href.substring(1)
+                        );
+                      } else {
+                        return pathname === item.href && pathname !== "/";
+                      }
+                    })
                       ? "text-primaryOrange"
                       : "text-darkerGray hover:text-primaryOrange"
                   }`}
@@ -236,9 +266,18 @@ export default function Header() {
                       className="pl-4 mt-2 space-y-2"
                     >
                       {ecosystemItems.map((item) => {
-                        const isActive =
-                          pathname === item.href ||
-                          (item.href.startsWith("/#") && pathname === "/");
+                        // Check if item is active
+                        let isActive = false;
+                        if (item.href.startsWith("/#")) {
+                          // For hash links, only mark as active if we're on the homepage and hash matches
+                          isActive =
+                            pathname === "/" &&
+                            currentHash === item.href.substring(1);
+                        } else {
+                          // For regular links, check if pathname matches exactly
+                          // But don't mark "/" as active if we're on a different page
+                          isActive = pathname === item.href && pathname !== "/";
+                        }
                         return (
                           <Link
                             key={item.href}
