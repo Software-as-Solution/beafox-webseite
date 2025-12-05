@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import Image from "next/image";
@@ -19,29 +19,27 @@ import {
   Target,
   Zap,
   TrendingUp,
-  CheckCircle,
   GraduationCap,
-  FileText,
-  Eye,
-  Laptop,
+  ChevronDown,
 } from "lucide-react";
 
 export default function ForSchoolsPage() {
   const [selectedDashboard, setSelectedDashboard] = useState(0);
+  const [openFAQId, setOpenFAQId] = useState<number | null>(null);
 
   const dashboardFeatures = [
     {
       id: "schueler",
       title: "Schüler verwalten",
       description:
-        "Erstellen Sie einfach Schüler-Accounts, verwalten Sie Klassen und behalten Sie den Überblick über alle Teilnehmer. Einfache Verwaltung für Lehrer und Schulleitung.",
+        "Erstellen Sie einfach Schüler-Accounts, verwalten Sie Klassen und behalten Sie den Überblick über alle Teilnehmer.",
       mockup: "/Mockup-Macbook/Schueler.png",
     },
     {
       id: "fortschritt",
       title: "Live-Fortschritt",
       description:
-        "Sehen Sie in Echtzeit, was jeder Schüler gerade lernt und wie er vorankommt. Identifizieren Sie Schwächen sofort und unterstützen Sie gezielt.",
+        "Sehen Sie in Echtzeit, was jeder Schüler gerade lernt und wie er vorankommt.",
       mockup: "/Mockup-Macbook/Live-Fortschritt.png",
     },
     {
@@ -55,7 +53,7 @@ export default function ForSchoolsPage() {
       id: "verwalten",
       title: "Klasse verwalten",
       description:
-        "Organisieren Sie Ihre Klassen, weisen Sie Lektionen zu und verwalten Sie den Zugriff. Alles zentral und übersichtlich in einem Dashboard.",
+        "Organisieren Sie Ihre Klassen, weisen Sie Lektionen zu und verwalten Sie den Zugriff.",
       mockup: "/Mockup-Macbook/Verwalten.png",
     },
     {
@@ -79,13 +77,13 @@ export default function ForSchoolsPage() {
       icon: Clock,
       title: "Zeitersparnis",
       description:
-        "Schüler lernen selbstständig – Sie sparen wertvolle Unterrichtszeit und können sich auf andere wichtige Aufgaben konzentrieren.",
+        "Schüler lernen selbstständig. Sie sparen wertvolle Unterrichtszeit und können sich auf andere wichtige Aufgaben konzentrieren.",
     },
     {
       icon: BarChart,
       title: "Echtzeit-Überblick",
       description:
-        "Das Dashboard zeigt Ihnen jederzeit, was Ihre Schüler lernen, wo sie stehen und wie sie vorankommen – ohne ständige Kontrolle.",
+        "Das Dashboard zeigt Ihnen jederzeit, was Ihre Schüler lernen, wo sie stehen und wie sie vorankommen.",
     },
     {
       icon: Target,
@@ -97,7 +95,7 @@ export default function ForSchoolsPage() {
       icon: Shield,
       title: "DSGVO-konform",
       description:
-        "Alle Daten werden sicher und DSGVO-konform gespeichert. Ihre Schülerdaten sind bei uns in besten Händen.",
+        "Wir sammeln 0,0% Daten. Ihre Schülerdaten sind bei uns in besten Händen.",
     },
     {
       icon: Award,
@@ -198,9 +196,9 @@ export default function ForSchoolsPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-lg md:text-xl text-lightGray mb-8 md:mb-12"
               >
-                Praxisnahe Finanzbildung, die Ihre Schüler selbstständig lernen
-                – mit vollständiger Kontrolle für Lehrer und Schulleitung über
-                das Monitoring-Dashboard.
+                Praxisnahe Finanzbildung, die Ihre Schüler selbstständig lernen.
+                Mit vollständiger Kontrolle für Lehrer und Schulleitung über das
+                Monitoring-Dashboard.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -215,7 +213,7 @@ export default function ForSchoolsPage() {
                   variant="primary"
                   className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
                 >
-                  Pilotprojekt starten
+                  Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
                 <Button
@@ -350,9 +348,9 @@ export default function ForSchoolsPage() {
                 Die Herausforderung
               </h3>
               <p className="text-lightGray mb-4 text-base md:text-lg">
-                Ein Lehrer betreut gleichzeitig mehrere Klassen oder Räume. Die
-                Schüler benötigen eine Möglichkeit, selbstständig zu lernen,
-                auch wenn der Lehrer nicht direkt vor Ort ist.
+                Ein Lehrer betreut gleichzeitig mehrere Klassen. Die Schüler
+                benötigen eine Möglichkeit, selbstständig zu lernen, auch wenn
+                der Lehrer nicht direkt vor Ort ist.
               </p>
               <ul className="space-y-2">
                 {[
@@ -385,11 +383,11 @@ export default function ForSchoolsPage() {
               </h3>
               <p className="text-lightGray mb-4 text-base md:text-lg">
                 Die Schüler arbeiten selbstständig und interaktiv mit{" "}
-                <strong>BeAFox</strong> – ganz ohne direkte Anwesenheit des
+                <strong>BeAFox</strong>. Ganz ohne direkte Anwesenheit des
                 Lehrers vor Ort.
               </p>
               <p className="text-lightGray text-base md:text-lg mb-4">
-                <strong>Für Lehrer & Schulleitung:</strong> Das integrierte{" "}
+                <strong>Für Lehrer:</strong> Das integrierte{" "}
                 <strong>Monitoring-Dashboard</strong> zeigt in Echtzeit, was
                 jeder Schüler gerade lernt, wo er steht und wie er vorankommt.
               </p>
@@ -463,7 +461,7 @@ export default function ForSchoolsPage() {
             </div>
 
             {/* Right: Mockup Display */}
-            <div className="flex items-center justify-center lg:sticky lg:top-20">
+            <div className="flex items-center justify-center lg:sticky lg:top-20 flex-col gap-4">
               <motion.div
                 key={selectedDashboard}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -478,6 +476,22 @@ export default function ForSchoolsPage() {
                   height={800}
                   className="object-contain drop-shadow-2xl w-full h-auto rounded-lg border-2 border-primaryOrange/20"
                 />
+              </motion.div>
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 justify-center lg:justify-start items-center lg:items-start"
+              >
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+                >
+                  Jetzt Partner werden
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
               </motion.div>
             </div>
           </div>
@@ -527,8 +541,8 @@ export default function ForSchoolsPage() {
       </Section>
 
       {/* Use Cases Section */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
-        <div className="max-w-6xl mx-auto">
+      <Section className="bg-white py-8 md:py-12 lg:py-16 pt-0 md:pt-0 lg:pt-0">
+        <div className="max-w-6xl mx-auto flex flex-col justify-center items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -554,7 +568,7 @@ export default function ForSchoolsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20"
+                className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 mx-auto rounded-xl p-6 border-2 border-primaryOrange/20"
               >
                 <div className="flex items-start gap-4">
                   <div className="bg-primaryOrange rounded-lg p-3 flex-shrink-0">
@@ -570,6 +584,22 @@ export default function ForSchoolsPage() {
               </motion.div>
             ))}
           </div>
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 justify-center lg:justify-start items-center lg:items-start"
+          >
+            <Button
+              href="/kontakt"
+              variant="primary"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+            >
+              Jetzt Partner werden
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+            </Button>
+          </motion.div>
         </div>
       </Section>
 
@@ -675,7 +705,7 @@ export default function ForSchoolsPage() {
               <span className="text-primaryOrange">Lehrkräften</span>
             </h2>
             <p className="text-lg md:text-xl text-lightGray">
-              Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox
+              Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.
             </p>
           </motion.div>
 
@@ -693,23 +723,8 @@ export default function ForSchoolsPage() {
               },
               {
                 quote:
-                  "Ich habe noch nie eine Unterrichtseinheit erlebt, die ich so 1 zu 1 übernehmen konnte, Hut ab! Wir sind alle begeistert!",
-                author: "Lehrkraft, Gesamtschule",
-              },
-              {
-                quote:
                   "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln.",
                 author: "Lehrkraft, Berufsschule",
-              },
-              {
-                quote:
-                  "Das Monitoring-Dashboard ist ein absoluter Game-Changer. Ich sehe sofort, welche Schüler Hilfe brauchen und kann gezielt unterstützen.",
-                author: "Lehrkraft, Mittelschule",
-              },
-              {
-                quote:
-                  "Die Schüler sind begeistert von dem spielerischen System. Sie lernen motiviert und selbstständig – genau das, was wir brauchen.",
-                author: "Lehrkraft, Grundschule",
               },
             ].map((testimonial, index) => (
               <motion.div
@@ -744,41 +759,78 @@ export default function ForSchoolsPage() {
 
       {/* Pricing Info Section */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-primaryOrange shadow-xl"
+            className="text-center mb-12"
           >
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
-                Faire Preise für Schulen
-              </h2>
-              <div className="flex items-baseline justify-center gap-2 mb-2">
-                <span className="text-5xl md:text-6xl font-bold text-primaryOrange">
-                  €1
-                </span>
-              </div>
-              <div className="text-lg md:text-xl text-lightGray mb-1">
-                pro Schüler
-              </div>
-              <div className="text-lg md:text-xl text-lightGray mb-6">
-                pro Jahr
-              </div>
-              <p className="text-base md:text-lg text-lightGray">
-                Flexible Staffelpreise: passgenau für Ihre Schule oder
-                Institution
-              </p>
-            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+              Faire Preise für{" "}
+              <span className="text-primaryOrange">Schulen</span>
+            </h2>
+            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+              Flexible Staffelpreise: passgenau für Ihre Schule oder
+              Institution.
+            </p>
+          </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div>
-                <h3 className="text-xl font-bold text-darkerGray mb-4">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            {/* Left: Price Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 md:p-10 lg:p-12 border-2 border-primaryOrange shadow-xl"
+            >
+              <div className="text-center mb-8">
+                <div className="flex items-baseline justify-center gap-2 mb-2">
+                  <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-primaryOrange">
+                    €1
+                  </span>
+                </div>
+                <div className="text-xl md:text-2xl text-lightGray mb-1">
+                  pro Schüler
+                </div>
+                <div className="text-xl md:text-2xl text-lightGray">
+                  pro Jahr
+                </div>
+              </div>
+
+              <div className="bg-primaryOrange/5 rounded-xl p-6 mb-8">
+                <p className="text-base md:text-lg text-darkerGray font-medium text-center">
+                  Transparent, fair und ohne versteckte Kosten.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="flex items-center justify-center gap-2 mx-auto w-full !px-6 !py-3 md:!px-8 md:!py-4"
+                >
+                  Jetzt Partner werden
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Right: Features */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <div className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20">
+                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
                   Im Preis enthalten:
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {[
                     "Vollständiger Zugang für alle Schüler",
                     "Monitoring-Dashboard für Lehrer",
@@ -791,16 +843,17 @@ export default function ForSchoolsPage() {
                       className="flex items-start gap-3 text-darkerGray"
                     >
                       <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-base">{item}</span>
+                      <span className="text-base md:text-lg">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-darkerGray mb-4">
+
+              <div className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20">
+                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
                   Zusätzliche Vorteile:
                 </h3>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {[
                     "Keine versteckten Kosten",
                     "Monatlich kündbar",
@@ -813,24 +866,13 @@ export default function ForSchoolsPage() {
                       className="flex items-start gap-3 text-darkerGray"
                     >
                       <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-base">{item}</span>
+                      <span className="text-base md:text-lg">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
-
-            <div className="text-center">
-              <Button
-                href="/kontakt"
-                variant="primary"
-                className="flex items-center justify-center gap-2 mx-auto w-full md:w-auto !px-6 !py-3 md:!px-8 md:!py-4"
-              >
-                Pilotprojekt starten
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-              </Button>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </Section>
 
@@ -848,7 +890,7 @@ export default function ForSchoolsPage() {
               So funktioniert's
             </h2>
             <p className="text-lg md:text-xl text-lightGray">
-              In vier einfachen Schritten zu BeAFox in Ihrer Schule
+              In vier einfachen Schritten zu BeAFox in Ihrer Schule.
             </p>
           </motion.div>
 
@@ -916,59 +958,99 @@ export default function ForSchoolsPage() {
               Häufige Fragen
             </h2>
             <p className="text-lg md:text-xl text-lightGray">
-              Alles, was Sie über BeAFox for Schools wissen müssen
+              Alles, was Sie über BeAFox for Schools wissen müssen.
             </p>
           </motion.div>
 
           <div className="space-y-4">
             {[
               {
+                id: 1,
                 question: "Wie lange dauert die Einrichtung?",
                 answer:
                   "Die Einrichtung geht schnell und unkompliziert. Nach der Beratung richten wir die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Der gesamte Prozess dauert in der Regel nur wenige Tage.",
               },
               {
+                id: 2,
                 question: "Benötigen die Schüler eigene Geräte?",
                 answer:
                   "Nein, BeAFox funktioniert auf allen gängigen Geräten – Smartphones, Tablets und Computern. Die Schüler können die App auf ihren eigenen Geräten nutzen oder auf schuleigenen Geräten.",
               },
               {
+                id: 3,
                 question: "Wie werden die Daten geschützt?",
                 answer:
                   "Alle Daten werden sicher und DSGVO-konform gespeichert. Wir legen großen Wert auf Datenschutz und Sicherheit. Ihre Schülerdaten sind bei uns in besten Händen.",
               },
               {
+                id: 4,
                 question:
                   "Können wir BeAFox testen, bevor wir uns entscheiden?",
                 answer:
                   "Ja, gerne! Wir bieten eine kostenlose Beratung und können Ihnen auch eine Testphase ermöglichen. Kontaktieren Sie uns einfach für weitere Informationen.",
               },
               {
+                id: 5,
                 question:
                   "Was passiert, wenn wir BeAFox nicht mehr nutzen möchten?",
                 answer:
                   "Kein Problem! Sie können BeAFox jederzeit monatlich kündigen. Es gibt keine langfristigen Verträge oder versteckten Kosten.",
               },
               {
+                id: 6,
                 question: "Gibt es Schulungen für Lehrkräfte?",
                 answer:
                   "Ja, wir bieten Fortbildungen für Lehrkräfte an, in denen wir das System, das Dashboard und die besten Praktiken für den Einsatz im Unterricht erklären.",
               },
-            ].map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-primaryWhite rounded-xl p-6 border-2 border-primaryOrange/20"
-              >
-                <h3 className="text-xl font-bold text-darkerGray mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-lightGray">{faq.answer}</p>
-              </motion.div>
-            ))}
+            ].map((faq, index) => {
+              const isOpen = openFAQId === faq.id;
+              const handleToggle = () => {
+                setOpenFAQId(isOpen ? null : faq.id);
+              };
+
+              return (
+                <motion.div
+                  key={faq.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-primaryWhite rounded-xl border-2 border-primaryOrange/20 overflow-hidden"
+                >
+                  <button
+                    type="button"
+                    onClick={handleToggle}
+                    className="w-full text-left cursor-pointer focus:outline-none p-6"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-xl font-bold text-darkerGray flex-1">
+                        {faq.question}
+                      </h3>
+                      <ChevronDown
+                        className={`w-5 h-5 md:w-6 md:h-6 text-primaryOrange flex-shrink-0 transition-transform duration-200 mt-1 ${
+                          isOpen ? "transform rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                  </button>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="text-lightGray px-6 pb-6 pt-0">
+                          {faq.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
 
           <motion.div
@@ -1032,16 +1114,10 @@ export default function ForSchoolsPage() {
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-darkerGray hover:bg-darkerGray/90 text-primaryWhite border-darkerGray"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
-              Pilotprojekt starten
-            </Button>
-            <Button
-              href="/preise"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-white/20 hover:bg-white/30 text-primaryWhite border-white"
-            >
-              Preise ansehen
+              Jetzt Partner werden{" "}
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
         </div>

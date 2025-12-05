@@ -92,29 +92,25 @@ export default function AboutPage() {
       name: "Alexandru Tapelea",
       role: "Gründer – AI Software Entwickler",
       image: "/Team/Alex.png",
-      linkedin: "#",
-      instagram: "#",
+      linkedin: "https://www.linkedin.com/in/alexandru-tapelea-43a400245/",
     },
     {
       name: "Selina Fuchs",
       role: "Mitgründerin – Marketing",
       image: "/Team/Selina.png",
-      linkedin: "#",
-      instagram: "#",
+      linkedin: "https://www.linkedin.com/in/selina-fuchs-7b0873371/",
     },
     {
       name: "Prof. Dr. Marcel Dulgeridis",
       role: "Mentor – Finanzprofessor",
       image: "/Team/Marcel.png",
-      linkedin: "#",
-      instagram: null,
+      linkedin: "https://www.linkedin.com/in/marceldulgeridis/",
     },
     {
       name: "Nico Moos",
       role: "Sales Officer",
       image: "/Team/Nico.png",
-      linkedin: "#",
-      instagram: "#",
+      linkedin: "https://www.linkedin.com/in/nico-moos-355b881a8/",
     },
   ];
 
@@ -170,7 +166,7 @@ export default function AboutPage() {
             className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
           >
             Mit Know-how, Kreativität und Leidenschaft arbeiten wir täglich
-            daran, finanzielle Bildung für alle zugänglich zu machen.
+            daran finanzielle Bildung für alle zugänglich zu machen.
           </motion.p>
 
           {/* Stats Grid */}
@@ -235,7 +231,7 @@ export default function AboutPage() {
                     Das Problem, das uns antreibt
                   </h3>
                   <p className="text-lightGray text-sm md:text-base leading-relaxed">
-                    Unsere Gründer sind selbst erst 20 Jahre alt und wissen aus
+                    Unsere Gründer sind selbst erst 21 Jahre alt und wissen aus
                     eigener Erfahrung genau, wie es sich anfühlt, bei Finanzen
                     komplett planlos zu sein. Während ihrer Ausbildung gerieten
                     sie selbst in Schulden, kämpften sich jedoch eigenständig
@@ -260,7 +256,7 @@ export default function AboutPage() {
                   <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-3">
                     Unsere Lösung
                   </h3>
-                  <p className="text-lightGray text-sm md:text-lg leading-relaxed">
+                  <p className="text-lightGray text-sm md:text-base leading-relaxed">
                     Mit BeAFox haben wir endlich eine Möglichkeit geschaffen,
                     das oft als langweilig empfundene Thema Finanzen nachhaltig
                     und verständlich zu vermitteln. Wir möchten, dass die junge
@@ -487,17 +483,6 @@ export default function AboutPage() {
                     <Linkedin className="w-5 h-5 text-primaryWhite" />
                   </a>
                 )}
-                {member.instagram && (
-                  <a
-                    href={member.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-primaryOrange rounded-full flex items-center justify-center hover:bg-primaryOrange/80 hover:scale-110 transition-all"
-                    aria-label={`${member.name} Instagram`}
-                  >
-                    <Instagram className="w-5 h-5 text-primaryWhite" />
-                  </a>
-                )}
               </div>
             </motion.div>
           ))}
@@ -629,6 +614,24 @@ export default function AboutPage() {
               </div>
             </motion.div>
           </div>
+
+          {/* Blog Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mt-12"
+          >
+            <Button
+              href="/#blog"
+              variant="secondary"
+              className="flex items-center justify-center gap-2 !border-primaryOrange !text-primaryWhite hover:!bg-primaryOrange hover:!text-primaryWhite !px-4 !py-2 md:!px-6 md:!py-3"
+            >
+              Zu unserem Blog
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+            </Button>
+          </motion.div>
         </div>
       </Section>
 
@@ -710,14 +713,14 @@ export default function AboutPage() {
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-1.5 bg-darkerGray hover:bg-darkerGray/90 border-darkerGray  md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+              className="flex items-center justify-center gap-1.5 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               Pilotprojekt starten
             </Button>
             <Button
               onClick={() => setIsDownloadModalOpen(true)}
               variant="secondary"
-              className="flex items-center justify-center gap-1.5 bg-darkerGray hover:bg-darkerGray/90 border-darkerGray  md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+              className="flex items-center justify-center gap-1.5 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               App herunterladen

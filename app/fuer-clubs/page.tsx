@@ -4,36 +4,36 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
+import DownloadModal from "@/components/DownloadModal";
 import Image from "next/image";
 import {
   Check,
   Sparkles,
   ArrowRight,
-  Users,
   Trophy,
-  Target,
   Brain,
   Shield,
-  TrendingUp,
-  Award,
   Heart,
-  Zap,
-  BarChart,
-  Clock,
-  BookOpen,
   Star,
-  MessageSquare,
-  PlayCircle,
   ArrowDown,
   CheckCircle2,
 } from "lucide-react";
 
 export default function ForClubsPage() {
-  const [selectedFeature, setSelectedFeature] = useState(0);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+  const handleAppStoreClick = (
+    e?: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+  ) => {
+    if (e) {
+      e.preventDefault();
+    }
+    setIsDownloadModalOpen(true);
+  };
 
   const coreMessage = {
-    headline: "Junge Spieler brauchen mehr als Training",
-    subheadline: "Sie brauchen Stabilität",
+    headline: "Junge Sportler brauchen mehr als Training.",
+    subheadline: "Sie brauchen Stabilität!",
     description:
       "Finanzielle Sicherheit schafft mentale Stärke und lässt Talente mit klarem Kopf auf dem Platz stehen.",
     impact:
@@ -104,32 +104,32 @@ export default function ForClubsPage() {
 
   const features = [
     {
-      id: "app",
-      title: "Spielerische Lern-App",
+      id: "stufen",
+      title: "Frei wählbare Lerninhalte",
       description:
-        "Ihre Spieler lernen mit einer modernen, spielerischen App, die Spaß macht und motiviert. Perfekt für die Zeit zwischen Trainingseinheiten.",
-      mockup: "/assets/Mockups/Mockup-Lernpfad.png",
-    },
-    {
-      id: "fortschritt",
-      title: "Fortschritt verfolgen",
-      description:
-        "Behalten Sie den Überblick über den Lernfortschritt Ihrer Spieler. Sehen Sie, wer aktiv ist und wo Unterstützung benötigt wird.",
+        "Sportler können sich frei aussuchen was sie lernen möchten. Ob Budgetplanung, Sparen, Investieren oder Versicherungen – jeder Spieler wählt die Themen, die für ihn persönlich am relevantesten sind. So wird Finanzbildung individuell und zielgerichtet.",
       mockup: "/assets/Mockups/Mockup-Stufen.png",
     },
     {
-      id: "zertifikate",
-      title: "Offizielle Zertifikate",
+      id: "lernpfad",
+      title: "Strukturierter Lernpfad",
       description:
-        "Ihre Spieler erhalten nach erfolgreichem Abschluss offizielle Zertifikate, die sie auch außerhalb des Sports nutzen können.",
-      mockup: "/assets/Mockups/Mockup-Profil.png",
+        "Alle Sportler lernen einfach den Lernpfad schritt für schritt, so dass sie sich um nichts gedanken machen müssen. Von den Grundlagen bis zu fortgeschrittenen Themen führt der strukturierte Weg jeden Spieler sicher durch die Finanzbildung – perfekt für die Zeit zwischen Trainingseinheiten.",
+      mockup: "/assets/Mockups/Mockup-Lernpfad.png",
     },
     {
       id: "rangliste",
-      title: "Motivation durch Ranglisten",
+      title: "Spielerisches System",
       description:
-        "Spielerische Elemente wie Ranglisten und Missionen motivieren Ihre Spieler, auch außerhalb des Trainings aktiv zu bleiben.",
+        "Spieler können untereinander antreten und wir schaffen Konkurrenz nicht nur auf dem Platz sondern auch in der App. Ranglisten, Missionen und Challenges motivieren Ihre Spieler, auch außerhalb des Trainings aktiv zu bleiben. So wird Finanzbildung zum Team-Erlebnis.",
       mockup: "/assets/Mockups/Mockup-Rangliste.png",
+    },
+    {
+      id: "profil",
+      title: "Statistiken & Fortschritte",
+      description:
+        "Spielern & Vereine können eigene Statistiken sammeln und sehen alle Fortschritte. Behalten Sie den Überblick über den Lernfortschritt Ihrer Spieler, sehen Sie wer aktiv ist und wo Unterstützung benötigt wird. So fördern Sie gezielt die Entwicklung jedes einzelnen Talents.",
+      mockup: "/assets/Mockups/Mockup-Profil.png",
     },
   ];
 
@@ -163,29 +163,30 @@ export default function ForClubsPage() {
   return (
     <>
       {/* Hero Section - Full Width Impact */}
-      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange/90 to-primaryOrange/80 py-16 md:py-24 lg:py-32 mt-10 relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange/90 to-primaryOrange/80 py-16 md:py-20 lg:py-28 mt-10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
-        <div className="max-w-5xl mx-auto text-center relative z-10">
+        <div className="max-w-5xl mx-auto text-center relative z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-8"
+            className="mb-6 md:mb-8"
           >
-            <div className="flex items-center gap-2 text-primaryWhite/90 text-sm md:text-base border-2 border-primaryWhite/30 rounded-full px-4 py-2 w-fit mx-auto">
-              <Sparkles className="w-4 h-4 text-primaryWhite" />
+            <div className="inline-flex items-center gap-2 text-primaryWhite text-sm md:text-base border-2 border-primaryWhite/40 rounded-full px-4 md:px-6 py-2 md:py-2.5 bg-primaryWhite/10 backdrop-blur-sm">
+              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite" />
               <span className="font-semibold">BeAFox for Clubs</span>
+              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite" />
             </div>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primaryWhite mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primaryWhite mb-6 md:mb-8 leading-tight"
           >
             {coreMessage.headline}
             <br />
-            <span className="text-primaryWhite/90">
+            <span className="text-primaryWhite/95">
               {coreMessage.subheadline}
             </span>
           </motion.h1>
@@ -193,38 +194,23 @@ export default function ForClubsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl md:text-2xl text-primaryWhite/90 mb-8 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl lg:text-3xl text-primaryWhite/95 mb-6 md:mb-8 max-w-3xl mx-auto font-medium leading-relaxed"
           >
             {coreMessage.description}
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-primaryWhite/80 mb-12 max-w-4xl mx-auto font-medium"
-          >
-            {coreMessage.impact}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
           >
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-8 !py-4 bg-primaryWhite hover:bg-primaryWhite/90 text-primaryOrange border-primaryWhite font-semibold"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite font-semibold shadow-lg"
             >
-              Pilotprojekt starten
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button
-              href="/preise"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-8 !py-4 bg-primaryWhite/20 hover:bg-primaryWhite/30 text-primaryWhite border-primaryWhite"
-            >
-              Preise ansehen
+              Jetzt Partner werden
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
         </div>
@@ -252,7 +238,7 @@ export default function ForClubsPage() {
               Die <span className="text-primaryOrange">Transformation</span>
             </h2>
             <p className="text-lg md:text-xl text-lightGray">
-              Von finanziellen Sorgen zu mentaler Stärke
+              Von finanziellen Sorgen zu mentaler Stärke.
             </p>
           </motion.div>
 
@@ -327,7 +313,7 @@ export default function ForClubsPage() {
               bewirkt
             </h2>
             <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
-              Messbare Ergebnisse für Ihren Verein und Ihre Spieler
+              Messbare Ergebnisse für Ihren Verein und Ihre Spieler.
             </p>
           </motion.div>
 
@@ -426,7 +412,7 @@ export default function ForClubsPage() {
       </Section>
 
       {/* Testimonials Section - Full Width Cards */}
-      <Section className="bg-gradient-to-br from-primaryOrange/5 via-primaryOrange/10 to-primaryWhite py-12 md:py-16 lg:py-20">
+      {/* <Section className="bg-gradient-to-br from-primaryOrange/5 via-primaryOrange/10 to-primaryWhite py-12 md:py-16 lg:py-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -487,8 +473,6 @@ export default function ForClubsPage() {
               </motion.div>
             ))}
           </div>
-
-          {/* Subtle CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -504,12 +488,12 @@ export default function ForClubsPage() {
               variant="outline"
               className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
             >
-              Pilotprojekt starten
+              Jetzt Partner werden
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
         </div>
-      </Section>
+      </Section> */}
 
       {/* Features List - Compact Grid */}
       <Section className="bg-white py-12 md:py-16 lg:py-20">
@@ -597,20 +581,27 @@ export default function ForClubsPage() {
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-darkerGray hover:bg-darkerGray/90 text-primaryWhite border-darkerGray"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
-              Pilotprojekt starten
+              Jetzt Partner werden
             </Button>
             <Button
-              href="/preise"
+              onClick={() => handleAppStoreClick()}
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-white/20 hover:bg-white/30 text-primaryWhite border-white"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
-              Preise ansehen
+              App herunterladen
             </Button>
           </motion.div>
         </div>
       </Section>
+
+      {/* Download Modal */}
+      <DownloadModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        onAppStoreClick={handleAppStoreClick}
+      />
     </>
   );
 }

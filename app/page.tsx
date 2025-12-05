@@ -14,7 +14,8 @@ import {
   Award,
   PawPrint,
   Building2,
-  Smartphone,
+  Clock,
+  Activity,
 } from "lucide-react";
 import Lottie from "lottie-react";
 import DownloadModal from "@/components/DownloadModal";
@@ -34,7 +35,7 @@ export default function HomePage() {
       id: "stufen",
       title: "Stufen",
       description:
-        "Wähle frei aus, was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden. Egal ob Anfänger oder Fortgeschrittener, bei BeAFox findest du die passende Stufe für dich und kannst in deinem eigenen Tempo lernen.",
+        "Wähle frei aus was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden. Egal ob Anfänger oder Fortgeschrittener, bei BeAFox findest du die passende Stufe für dich und kannst in deinem eigenen Tempo lernen.",
       mockup: "/assets/Mockups/Mockup-Stufen.png",
       color: "primaryOrange",
     },
@@ -42,7 +43,7 @@ export default function HomePage() {
       id: "lernpfad",
       title: "Lernpfad",
       description:
-        "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer, wo du stehst und was als Nächstes kommt. Der Lernpfad zeigt dir deinen Fortschritt visuell an und hilft dir, den Überblick zu behalten.",
+        "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer wo du stehst und was als Nächstes kommt. Der Lernpfad zeigt dir deinen Fortschritt visuell an und hilft dir, den Überblick zu behalten.",
       mockup: "/assets/Mockups/Mockup-Lernpfad.png",
       color: "primaryOrange",
     },
@@ -50,7 +51,7 @@ export default function HomePage() {
       id: "lektion",
       title: "Lektionen",
       description:
-        "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich. Von Budgetplanung über Sparen bis hin zu Investitionen, wir decken alle wichtigen Bereiche ab und kombinieren Videos, Texte und interaktive Elemente.",
+        "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich. Von Budgetplanung über Sparen bis hin zu Investitionen. Wir decken alle wichtigen Bereiche ab und kombinieren Videos, Texte und interaktive Elemente.",
       mockup: "/assets/Mockups/Mockup-Lektion.png",
       color: "primaryOrange",
     },
@@ -135,32 +136,6 @@ export default function HomePage() {
 
     return () => clearTimeout(timeout);
   }, [typedText, currentWordIndex, isDeleting, words]);
-  const features = [
-    {
-      icon: CheckCircle,
-      title: "Schritt-Für-Schritt",
-      description:
-        "Nutzer müssen nicht mehr selbst herausfinden, wo sie anfangen sollen oder weitermachen.",
-    },
-    {
-      icon: Award,
-      title: "Spielerisches System",
-      description:
-        "Durch ein spielerisches System fühlt sich lernen nicht mehr wie eine lästige Pflicht an.",
-    },
-    {
-      icon: School,
-      title: "Wissenschaftlich fundiert",
-      description:
-        "Durch Lehrmethoden erstellen wir Lektionen, die erfolgreich dein Finanzwissen verbessern.",
-    },
-    {
-      icon: CheckCircle,
-      title: "Neutral & Unabhängig",
-      description:
-        "Wir fokussieren uns auf die reine Wissensvermittlung. Ohne versteckte Verkaufsinteresse.",
-    },
-  ];
 
   const stats = [
     { value: "3,000+", label: "Aktive Privatnutzer", icon: Users },
@@ -211,7 +186,7 @@ export default function HomePage() {
                   .
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-lightGray leading-relaxed">
-                  BeAFox ist die erste unabhängige, spielerische Lern-App für
+                  BeAFox ist die erste unabhängige und spielerische Lern-App für
                   Finanzbildung junger Menschen, die sich auf neutrale
                   Wissensvermittlung konzentriert und speziell für Schulen und
                   Ausbildungsbetriebe entwickelt wurde.
@@ -234,7 +209,7 @@ export default function HomePage() {
                   className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
                   <Award className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5" />
-                  Pilotprojekt starten
+                  Jetzt Partner werden
                 </Button>
               </div>
 
@@ -501,16 +476,16 @@ export default function HomePage() {
               className="text-center lg:text-right"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
-                <Smartphone className="w-8 h-8 text-primaryWhite" />
+                <Clock className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:ml-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:ml-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">Finanzbildung jederzeit</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
               </div>
               <p className="text-darkerGray text-sm">
                 Lerne wann und wo du willst. Ob auf dem Smartphone in der Bahn,
-                am Laptop zu Hause oder auf dem Tablet in der Pause – BeAFox
+                am Laptop zu Hause oder auf dem Tablet in der Pause. BeAFox
                 passt sich deinem Alltag an. Dein Fortschritt wird automatisch
                 synchronisiert, sodass du nahtlos zwischen Geräten wechseln
                 kannst.
@@ -527,17 +502,16 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
                 <School className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:ml-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:ml-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">Finanzbildung in der Schule</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
               </div>
               <p className="text-darkerGray text-sm">
                 BeAFox ist speziell für den Einsatz im Unterricht entwickelt.
-                Lehrkräfte können den Lernfortschritt ihrer Klasse verfolgen,
-                individuelle Aufgaben zuweisen und spielerische Wettbewerbe
-                starten. So wird Finanzbildung zum spannenden Fach, das
-                Schülerinnen und Schüler wirklich begeistert.
+                Lehrkräfte können den Lernfortschritt ihrer Klasse verfolgen und
+                spielerische Wettbewerbe starten. So kann Finannzbildung auch
+                außerhalb des Lehrplans unterrichtet werden.
               </p>
             </motion.div>
           </div>
@@ -617,7 +591,7 @@ export default function HomePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
                 <Briefcase className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mr-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:mr-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">
                   Finanzbildung in Ausbildungsbetriebe
@@ -628,8 +602,7 @@ export default function HomePage() {
                 Auszubildende erhalten mit BeAFox praxisnahe Finanzbildung, die
                 direkt im Berufsalltag anwendbar ist. Betriebe können ihren
                 Nachwuchs gezielt fördern und zeigen, dass ihnen die finanzielle
-                Zukunft ihrer Auszubildenden wichtig ist. Ein modernes Benefit,
-                das wirklich ankommt.
+                Zukunft ihrer Auszubildenden wichtig ist.
               </p>
             </motion.div>
 
@@ -641,9 +614,9 @@ export default function HomePage() {
               className="text-center lg:text-left"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primaryOrange rounded-full mb-4">
-                <Users className="w-8 h-8 text-primaryWhite" />
+                <Activity className="w-8 h-8 text-primaryWhite" />
               </div>
-              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mr-auto">
+              <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:mr-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">Finanzbildung für Vereine</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
@@ -651,7 +624,7 @@ export default function HomePage() {
               <p className="text-darkerGray text-sm">
                 Vereine und Organisationen können ihren Mitgliedern wertvolle
                 Finanzbildung anbieten. Ob Sportverein, Jugendzentrum oder
-                gemeinnützige Organisation – BeAFox hilft dabei, junge Menschen
+                gemeinnützige Organisation. BeAFox hilft dabei, junge Menschen
                 finanziell zu stärken und ihnen wichtige Lebenskompetenzen zu
                 vermitteln.
               </p>
@@ -713,14 +686,16 @@ export default function HomePage() {
               </p>
             </div>
 
-            <Button
-              href="/kontakt"
-              variant="primary"
-              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
-            >
-              Pilotprojekt starten
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
-            </Button>
+            <div className="flex justify-start md:justify-start w-full">
+              <Button
+                href="/kontakt"
+                variant="primary"
+                className="flex items-center justify-center gap-1.5 md:gap-2 w-full md:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+              >
+                Jetzt Partner werden
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
+              </Button>
+            </div>
           </motion.div>
 
           {/* Right: Image with Features Overlay */}
@@ -874,7 +849,7 @@ export default function HomePage() {
             className="space-y-6 order-1 md:order-2"
           >
             {/* Badge */}
-            <div className="flex items-center justify-center mx-auto gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
+            <div className="flex items-center justify-center mx-auto lg:mx-0 gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
               <PawPrint className="w-4 h-4 text-primaryOrange " />
               <span className="font-bold text-center">
                 Finanzbildung als Ergänzung
@@ -913,7 +888,7 @@ export default function HomePage() {
                 variant="primary"
                 className="flex items-center justify-center gap-1.5 md:gap-2 w-full md:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
               >
-                Pilotprojekt starten
+                Jetzt Partner werden
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
             </div>
@@ -952,28 +927,38 @@ export default function HomePage() {
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
               <span className="text-darkerGray">
-                Wir lösen das Problem von{" "}
+                Junge Sportler brauchen mehr als nur Training
               </span>
-              <span className="text-primaryOrange">finanzieller Bildung</span>
             </h3>
 
             <p className="text-darkerGray text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-              Vereine und Organisationen können ihren Mitgliedern wertvolle
-              Finanzbildung anbieten. Ob Sportverein, Jugendzentrum oder
-              gemeinnützige Organisation – BeAFox hilft dabei, junge Menschen
-              finanziell zu stärken.
+              Finanzielle Sicherheit schafft mentale Stärke und lässt Talente
+              mit klarem Kopf auf dem Platz stehen. Mit BeAFox geben Vereine
+              ihren Spielern das Wissen, das sie im Alltag stärkt und im Sport
+              fokussiert hält. Das führt zu echter Entwicklung auf und neben dem
+              Feld.
             </p>
 
             <div className="mb-6 md:mb-8">
               <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-3 md:mb-4">
-                Für Vereine & Organisationen:
+                Die Transformation:
               </h4>
-              <p className="text-darkerGray text-base md:text-lg leading-relaxed">
-                Das integrierte Monitoring-Dashboard zeigt in Echtzeit, was
-                jeder Teilnehmer gerade lernt, wo er steht und wie er
-                vorankommt. So können Sie gezielt unterstützen und Fortschritte
-                belohnen.
-              </p>
+              <div className="space-y-3">
+                <p className="text-darkerGray text-base md:text-lg leading-relaxed">
+                  <span className="font-semibold">
+                    Ohne finanzielle Bildung:
+                  </span>{" "}
+                  Finanzielle Sorgen lenken ab, mentale Belastung, unfokussiert
+                  auf dem Platz, keine Vorbereitung auf die Zukunft.
+                </p>
+                <p className="text-darkerGray text-base md:text-lg leading-relaxed">
+                  <span className="font-semibold text-primaryOrange">
+                    Mit BeAFox:
+                  </span>{" "}
+                  Finanzielle Sicherheit, mentale Stärke, Fokus auf dem Platz,
+                  vorbereitet für die Zukunft.
+                </p>
+              </div>
             </div>
 
             <div className="flex justify-start">
@@ -982,7 +967,7 @@ export default function HomePage() {
                 variant="primary"
                 className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
               >
-                Pilotprojekt starten
+                Jetzt Partner werden
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
             </div>
@@ -1186,9 +1171,9 @@ export default function HomePage() {
                 <Image
                   src="/assets/Apple.png"
                   alt="Download on the App Store"
-                  width={180}
+                  width={190}
                   height={60}
-                  className="object-contain hover:opacity-80 transition-opacity w-[195px] sm:w-[150px] md:w-[160px] h-auto"
+                  className="object-contain hover:opacity-80 transition-opacity w-[200px] sm:w-[150px] md:w-[175px] h-auto relative bottom-1"
                 />
               </a>
               <a
@@ -1202,7 +1187,7 @@ export default function HomePage() {
                   alt="GET IT ON Google Play"
                   width={180}
                   height={60}
-                  className="object-contain hover:opacity-80 transition-opacity w-[200px] sm:w-[170px] md:w-[180px] h-auto"
+                  className="object-contain hover:opacity-80 transition-opacity w-[200px] sm:w-[170px] md:w-[180px] h-auto relative bottom-[2px]"
                 />
               </a>
             </div>
@@ -1272,7 +1257,7 @@ export default function HomePage() {
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primaryWhite mb-3 md:mb-4">
-              Jetzt Pilotprojekt starten!
+              Jetzt Jetzt Partner werden!
             </h2>
 
             <p className="text-base md:text-lg lg:text-xl text-primaryWhite/90 mb-6 md:mb-8 leading-relaxed">
@@ -1288,7 +1273,7 @@ export default function HomePage() {
                 variant="secondary"
                 className="!bg-primaryWhite !text-primaryOrange hover:!bg-primaryWhite/90 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg flex justify-center items-center w-full sm:w-auto"
               >
-                Pilotprojekt starten
+                Jetzt Partner werden
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
             </div>

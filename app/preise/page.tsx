@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import DownloadModal from "@/components/DownloadModal";
@@ -16,14 +16,29 @@ import {
   ArrowRight,
   Sparkles,
   Award,
+  ChevronDown,
   Presentation,
   BookOpen,
   Target,
   Lightbulb,
+  Infinity,
+  Globe,
+  Layers,
+  FileText,
+  BarChart,
+  Book,
+  CreditCard,
+  Megaphone,
+  Calendar,
+  MessageSquare,
+  Palette,
+  Package,
+  Headphones,
 } from "lucide-react";
 
 export default function PricingPage() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [openFAQId, setOpenFAQId] = useState<number | null>(null);
 
   const targetGroups = [
     {
@@ -32,14 +47,14 @@ export default function PricingPage() {
       description: "Spielerische und simple Finanzbildung in der Schule.",
     },
     {
-      icon: GraduationCap,
-      title: "Für Studenten",
-      description: "Praxis- und Alltagstaugliche Tipps für das Studentenleben.",
-    },
-    {
       icon: Briefcase,
       title: "Für Azubis",
       description: "Finde heraus, was mit deinem Gehalt heute möglich ist.",
+    },
+    {
+      icon: GraduationCap,
+      title: "Für Studenten",
+      description: "Praxis- und Alltagstaugliche Tipps für das Studentenleben.",
     },
     {
       icon: User,
@@ -55,47 +70,47 @@ export default function PricingPage() {
     subtitle:
       "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution",
     features: [
-      "Lernen ohne Grenzen",
-      "Vollständige Lernmodule",
-      "Lehrer-Dashboards",
-      "Karteikartensysteme",
-      "Analoge Unterlagen",
+      { text: "Lernen ohne Grenzen", icon: Infinity },
+      { text: "Vollständige Lernmodule", icon: BookOpen },
+      { text: "Lehrer-Dashboards", icon: BarChart },
+      { text: "Karteikartensysteme", icon: CreditCard },
+      { text: "Analoge Unterlagen", icon: FileText },
     ],
   };
 
   const businessPlans = [
     {
       title: "Ab 10 Lizenzen",
-      price: "€3.99",
+      price: "€6.99",
       period: "/ monat",
       setupFee: 99,
       features: [
-        "Lernen ohne Grenzen",
-        "Vollständige Lernmodule",
-        "Integriertes Karteikartensystem",
+        { text: "Lernen ohne Grenzen", icon: Infinity },
+        { text: "Vollständige Lernmodule", icon: BookOpen },
+        { text: "Integriertes Karteikartensystem", icon: Layers },
       ],
     },
     {
       title: "Ab 50 Lizenzen",
-      price: "€3.49",
+      price: "€5.99",
       period: "/ monat",
       setupFee: 149,
       features: [
-        "Lernen ohne Grenzen",
-        "Vollständige Lernmodule",
-        "Integriertes Karteikartensystem",
+        { text: "Lernen ohne Grenzen", icon: Infinity },
+        { text: "Vollständige Lernmodule", icon: BookOpen },
+        { text: "Integriertes Karteikartensystem", icon: Layers },
       ],
       popular: true,
     },
     {
       title: "Ab 100 Lizenzen",
-      price: "€2.99",
+      price: "€4.99",
       period: "/ monat",
       setupFee: 199,
       features: [
-        "Lernen ohne Grenzen",
-        "Vollständige Lernmodule",
-        "Integriertes Karteikartensystem",
+        { text: "Lernen ohne Grenzen", icon: Infinity },
+        { text: "Vollständige Lernmodule", icon: BookOpen },
+        { text: "Integriertes Karteikartensystem", icon: Layers },
       ],
     },
   ];
@@ -107,9 +122,9 @@ export default function PricingPage() {
       price: "€4.99",
       period: "/ monat",
       features: [
-        "Lernen ohne Grenzen",
-        "Vollständige Lernmodule",
-        "Integriertes Karteikartensystem",
+        { text: "Lernen ohne Grenzen", icon: Infinity },
+        { text: "Vollständige Lernmodule", icon: BookOpen },
+        { text: "Integriertes Karteikartensystem", icon: Layers },
       ],
     },
     {
@@ -117,12 +132,11 @@ export default function PricingPage() {
       subtitle: "Am Beliebtesten",
       price: "€3.99",
       period: "/ monat",
-      yearlyPrice: "€47.88",
       yearlyNote: "pro Jahr",
       features: [
-        "Lernen ohne Grenzen",
-        "Vollständige Lernmodule",
-        "Integriertes Karteikartensystem",
+        { text: "Lernen ohne Grenzen", icon: Infinity },
+        { text: "Vollständige Lernmodule", icon: BookOpen },
+        { text: "Integriertes Karteikartensystem", icon: Layers },
       ],
       popular: true,
     },
@@ -132,9 +146,9 @@ export default function PricingPage() {
       price: "€49.99",
       period: "/ Jahr",
       features: [
-        "Lernen ohne Grenzen",
-        "Vollständige Lernmodule",
-        "Integriertes Karteikartensystem",
+        { text: "Lernen ohne Grenzen", icon: Infinity },
+        { text: "Vollständige Lernmodule", icon: BookOpen },
+        { text: "Integriertes Karteikartensystem", icon: Layers },
       ],
       cheapest: true,
     },
@@ -153,7 +167,7 @@ export default function PricingPage() {
           >
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              Unsere Ziele
+              Unser Ziel
             </h2>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
@@ -165,14 +179,6 @@ export default function PricingPage() {
           >
             Finanzbildung für <span className="text-primaryOrange">alle</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
-          >
-            Wir möchten das jeder seine Finanzen selbst in die Pfote nimmt!
-          </motion.p>
 
           {/* Target Groups Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
@@ -200,7 +206,7 @@ export default function PricingPage() {
 
       {/* Preise Section Header */}
       <Section className="bg-white py-8 md:py-12 lg:py-16">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -213,78 +219,6 @@ export default function PricingPage() {
               Preise
             </h2>
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-          </motion.div>
-        </div>
-
-        {/* Für Schulen */}
-        <div className="max-w-5xl mx-auto mb-16 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
-              Für Schulen
-            </h3>
-            <p className="text-lg md:text-xl text-lightGray">
-              {schoolPlan.subtitle}
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-primaryOrange shadow-xl"
-          >
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Left: Price */}
-              <div className="text-center md:text-left">
-                <div className="mb-6">
-                  <div className="flex items-baseline justify-center md:justify-start gap-2 mb-2">
-                    <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-primaryOrange">
-                      {schoolPlan.price}
-                    </span>
-                  </div>
-                  <div className="text-lg md:text-xl text-lightGray mb-1">
-                    {schoolPlan.period}
-                  </div>
-                  <div className="text-lg md:text-xl text-lightGray">
-                    {schoolPlan.period2}
-                  </div>
-                </div>
-                <div className="mb-6">
-                  <Button
-                    href="/kontakt"
-                    variant="primary"
-                    className="flex items-center justify-center md:justify-start gap-2 w-full md:w-auto !px-6 !py-3 md:!px-8 md:!py-4"
-                  >
-                    <span className="text-sm md:text-base text-center">
-                      Pilotprojekt starten
-                    </span>
-                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* Right: Features */}
-              <div>
-                <ul className="space-y-4">
-                  {schoolPlan.features.map((feature, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-darkerGray"
-                    >
-                      <Check className="w-6 h-6 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-base md:text-lg">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
           </motion.div>
         </div>
 
@@ -321,11 +255,6 @@ export default function PricingPage() {
                     : "border-primaryOrange/20 hover:border-primaryOrange/40"
                 }`}
               >
-                {plan.popular && (
-                  <div className="bg-primaryOrange text-primaryWhite text-xs md:text-sm font-semibold px-3 md:px-4 py-1 rounded-full inline-block mb-4">
-                    Beliebteste Option
-                  </div>
-                )}
                 <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-4">
                   {plan.title}
                 </h4>
@@ -343,22 +272,32 @@ export default function PricingPage() {
                   </p>
                 </div>
                 <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-start gap-3 text-darkerGray"
-                    >
-                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-sm md:text-base">{feature}</span>
-                    </li>
-                  ))}
+                  {plan.features.map((feature, featureIndex) => {
+                    const featureText =
+                      typeof feature === "string" ? feature : feature.text;
+                    const FeatureIcon =
+                      typeof feature === "string"
+                        ? Check
+                        : feature.icon || Check;
+                    return (
+                      <li
+                        key={featureIndex}
+                        className="flex items-start gap-3 text-darkerGray"
+                      >
+                        <FeatureIcon className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
+                        <span className="text-sm md:text-base">
+                          {featureText}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <Button
                   href="/kontakt"
                   variant={plan.popular ? "primary" : "outline"}
                   className="w-full flex items-center justify-center gap-2"
                 >
-                  Pilotprojekt starten
+                  Jetzt Partner werden
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </motion.div>
@@ -367,7 +306,7 @@ export default function PricingPage() {
         </div>
 
         {/* Für Endkunden */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -426,22 +365,27 @@ export default function PricingPage() {
                       {plan.period}
                     </span>
                   </div>
-                  {plan.yearlyPrice && (
-                    <p className="text-sm md:text-base text-lightGray mt-2">
-                      ({plan.yearlyPrice} {plan.yearlyNote})
-                    </p>
-                  )}
                 </div>
                 <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-start gap-3 text-darkerGray"
-                    >
-                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-sm md:text-base">{feature}</span>
-                    </li>
-                  ))}
+                  {plan.features.map((feature, featureIndex) => {
+                    const featureText =
+                      typeof feature === "string" ? feature : feature.text;
+                    const FeatureIcon =
+                      typeof feature === "string"
+                        ? Check
+                        : feature.icon || Check;
+                    return (
+                      <li
+                        key={featureIndex}
+                        className="flex items-start gap-3 text-darkerGray"
+                      >
+                        <FeatureIcon className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
+                        <span className="text-sm md:text-base">
+                          {featureText}
+                        </span>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <Button
                   onClick={() => setIsDownloadModalOpen(true)}
@@ -454,6 +398,268 @@ export default function PricingPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+
+        {/* Für Schulen */}
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
+              Für Schulen
+            </h3>
+            <p className="text-lg md:text-xl text-lightGray">
+              {schoolPlan.subtitle}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-primaryOrange shadow-xl"
+          >
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Left: Price */}
+              <div className="text-center md:text-left">
+                <div className="mb-6">
+                  <div className="flex items-baseline justify-center md:justify-start gap-2 mb-2">
+                    <span className="text-5xl md:text-6xl lg:text-7xl font-bold text-primaryOrange">
+                      {schoolPlan.price}
+                    </span>
+                  </div>
+                  <div className="text-lg md:text-xl text-lightGray mb-1">
+                    {schoolPlan.period}
+                  </div>
+                  <div className="text-lg md:text-xl text-lightGray">
+                    {schoolPlan.period2}
+                  </div>
+                </div>
+                <div className="mb-6 flex justify-center md:justify-start">
+                  <Button
+                    href="/kontakt"
+                    variant="primary"
+                    className="flex items-center justify-center gap-2 w-auto !px-6 !py-3 md:!px-8 md:!py-4"
+                  >
+                    <span className="text-sm md:text-base">
+                      Jetzt Partner werden
+                    </span>
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right: Features */}
+              <div>
+                <ul className="space-y-4">
+                  {schoolPlan.features.map((feature, index) => {
+                    const featureText =
+                      typeof feature === "string" ? feature : feature.text;
+                    const FeatureIcon =
+                      typeof feature === "string"
+                        ? Check
+                        : feature.icon || Check;
+                    return (
+                      <li
+                        key={index}
+                        className="flex items-start gap-3 text-darkerGray"
+                      >
+                        <FeatureIcon className="w-6 h-6 text-primaryOrange flex-shrink-0 mt-0.5" />
+                        <span className="text-base md:text-lg">
+                          {featureText}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* Weitere Dienstleistungen Section */}
+      <Section className="bg-white py-8 md:py-12 lg:py-16">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6"
+            >
+              <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+              <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
+                Weitere Dienstleistungen
+              </h2>
+              <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            </motion.div>
+            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+              Über die App hinaus bieten wir zusätzliche Services für eine
+              ganzheitliche Finanzbildung – maßgeschneidert für Ihre
+              Bedürfnisse.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {[
+              {
+                icon: Presentation,
+                title: "Finanzbildungs-Workshops",
+                description:
+                  "Interaktive Workshops vor Ort oder online. Theorie und Praxis verbinden für nachhaltiges Lernen.",
+                features: [
+                  "Erfahrene Referenten",
+                  "Kleine Gruppen",
+                  "Materialien zum Mitnehmen",
+                  "Follow-up Support",
+                ],
+                cta: "Workshop anfragen",
+              },
+              {
+                icon: Megaphone,
+                title: "PR Events & Veranstaltungen",
+                description:
+                  "Professionelle Events zur Finanzbildung für Ihre Zielgruppe. Von Messen bis zu internen Veranstaltungen.",
+                features: [
+                  "Maßgeschneiderte Konzepte",
+                  "Professionelle Durchführung",
+                  "Branding möglich",
+                  "Nachhaltige Wirkung",
+                ],
+                cta: "Event planen",
+              },
+              {
+                icon: FileText,
+                title: "Individuelle analoge Unterlagen",
+                description:
+                  "Maßgeschneiderte Lernmaterialien, Arbeitsblätter und Handouts für Ihre spezifischen Anforderungen.",
+                features: [
+                  "Individuelles Design",
+                  "Branding Integration",
+                  "Verschiedene Formate",
+                  "Professionelle Qualität",
+                ],
+                cta: "Unterlagen anfragen",
+              },
+              {
+                icon: MessageSquare,
+                title: "Beratung & Consulting",
+                description:
+                  "Strategische Beratung zur Implementierung von Finanzbildung in Ihrer Organisation oder Institution.",
+                features: [
+                  "Strategieentwicklung",
+                  "Best Practices",
+                  "Implementierungsplan",
+                  "Langfristige Begleitung",
+                ],
+                cta: "Beratung buchen",
+              },
+              {
+                icon: BarChart,
+                title: "Analytics & Reporting",
+                description:
+                  "Detaillierte Einblicke in den Lernfortschritt Ihrer Teilnehmer. Umfassende Reports und Analysen für datengetriebene Entscheidungen.",
+                features: [
+                  "Fortschritts-Tracking",
+                  "Detaillierte Reports",
+                  "Export-Funktionen",
+                  "Individuelle Dashboards",
+                ],
+                cta: "Analytics anfragen",
+              },
+              {
+                icon: GraduationCap,
+                title: "Schulungen & Trainings",
+                description:
+                  "Schulungen für Lehrkräfte, Trainer oder Multiplikatoren zur effektiven Nutzung von BeAFox.",
+                features: [
+                  "Train-the-Trainer",
+                  "Didaktische Schulungen",
+                  "Technische Einweisung",
+                  "Zertifikate",
+                ],
+                cta: "Schulung buchen",
+              },
+            ].map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all h-full flex flex-col group"
+              >
+                <div className="bg-primaryOrange/10 rounded-lg p-3 w-fit mb-4 group-hover:scale-110 transition-transform">
+                  <service.icon className="w-8 h-8 text-primaryOrange" />
+                </div>
+                <h3 className="text-xl font-bold text-darkerGray mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-lightGray text-sm md:text-base mb-4 flex-1">
+                  {service.description}
+                </p>
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-start gap-2 text-darkerGray"
+                    >
+                      <Check className="w-4 h-4 text-primaryOrange flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  href="/kontakt"
+                  variant="outline"
+                  className="w-full flex items-center justify-center gap-2 mt-auto"
+                >
+                  {service.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-primaryOrange text-center"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
+              Individuelle Lösungen für jeden Bedarf
+            </h3>
+            <p className="text-lg text-lightGray mb-6 max-w-2xl mx-auto">
+              Alle unsere Dienstleistungen können individuell kombiniert und
+              angepasst werden. Sprechen Sie uns an, wir finden die perfekte
+              Lösung für Ihre Anforderungen.
+            </p>
+            <div className="flex justify-center">
+              <Button
+                href="/kontakt"
+                variant="primary"
+                className="flex items-center justify-center gap-2 w-auto"
+              >
+                Kostenlose Beratung anfragen
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </Section>
 
@@ -479,22 +685,22 @@ export default function PricingPage() {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
+                icon: Globe,
+                title: "Das erste Finanzbildungsökosystem",
+                description:
+                  "BeAFox ist mehr als eine App – es ist ein ganzheitliches Ökosystem aus digitalen Lerninhalten, Workshops, analogen Materialien und Support. Alles perfekt aufeinander abgestimmt für maximalen Lernerfolg.",
+              },
+              {
                 icon: Award,
-                title: "Wissenschaftlich fundiert",
+                title: "Wissenschaftlich fundiert durch Forschung",
                 description:
-                  "Unsere Inhalte basieren auf bewährten Lehrmethoden und werden kontinuierlich aktualisiert.",
+                  "Basierend auf einem umfangreichen Forschungsprojekt mit über 500 Teilnehmern. Unsere Methoden sind evidenzbasiert und erprobt – keine Experimente, sondern bewährte Didaktik.",
               },
               {
-                icon: Users,
-                title: "Unbegrenzte Nutzer",
+                icon: Target,
+                title: "100% zielgruppenorientiert",
                 description:
-                  "Bei Schulen und Unternehmen: Keine zusätzlichen Kosten bei mehr Teilnehmern.",
-              },
-              {
-                icon: Sparkles,
-                title: "Regelmäßige Updates",
-                description:
-                  "Neue Inhalte, Features und Verbesserungen – ohne zusätzliche Kosten.",
+                  "Wir wissen genau, wie man Finanzbildung lehren muss. Jede Zielgruppe – Schüler, Azubis, Studenten, Mitarbeiter – erhält maßgeschneiderte Inhalte, die wirklich ankommen und nachhaltig wirken.",
               },
             ].map((item, index) => (
               <motion.div
@@ -513,154 +719,6 @@ export default function PricingPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </Section>
-
-      {/* Warum BeAFox für Workshops Section */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6"
-            >
-              <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-                Warum BeAFox für Workshops?
-              </h2>
-              <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            </motion.div>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
-              Interaktive Finanzbildungs-Workshops, die Theorie und Praxis
-              verbinden – für nachhaltiges Lernen und echte
-              Kompetenzentwicklung.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
-            {[
-              {
-                icon: Presentation,
-                title: "Interaktive Formate",
-                description:
-                  "Praktische Übungen, Gruppenarbeiten und reale Fallbeispiele statt trockener Theorie.",
-              },
-              {
-                icon: BookOpen,
-                title: "Praxisnahe Inhalte",
-                description:
-                  "Inhalte, die direkt im Alltag anwendbar sind – von Budgetplanung bis Investitionen.",
-              },
-              {
-                icon: Target,
-                title: "Zielgruppenorientiert",
-                description:
-                  "Maßgeschneiderte Workshops für Schüler, Azubis, Studenten oder Mitarbeiter.",
-              },
-              {
-                icon: Lightbulb,
-                title: "Nachhaltiges Lernen",
-                description:
-                  "Kombination aus Workshop und App-Nutzung für langfristigen Lernerfolg.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all h-full"
-              >
-                <div className="bg-primaryOrange/10 rounded-lg p-3 w-fit mb-4">
-                  <item.icon className="w-8 h-8 text-primaryOrange" />
-                </div>
-                <h3 className="text-xl font-bold text-darkerGray mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-lightGray text-sm md:text-base">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-primaryOrange"
-          >
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
-                  Was macht unsere Workshops besonders?
-                </h3>
-                <ul className="space-y-3 mb-6">
-                  {[
-                    "Erfahrene Referenten mit Finanzexpertise",
-                    "Kleine Gruppen für maximale Interaktion",
-                    "Materialien zum Mitnehmen",
-                    "Follow-up Support über die App",
-                    "Flexible Durchführung vor Ort oder online",
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-darkerGray"
-                    >
-                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-base md:text-lg">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20">
-                <h4 className="text-xl font-bold text-darkerGray mb-4">
-                  Workshop-Themen
-                </h4>
-                <div className="space-y-2">
-                  {[
-                    "Grundlagen der Finanzplanung",
-                    "Budgeting & Sparen",
-                    "Investieren für Anfänger",
-                    "Schulden vermeiden & abbauen",
-                    "Altersvorsorge verstehen",
-                  ].map((topic, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2 text-lightGray"
-                    >
-                      <div className="w-2 h-2 rounded-full bg-primaryOrange"></div>
-                      <span className="text-sm md:text-base">{topic}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 pt-6 border-t border-primaryOrange/20">
-                  <p className="text-sm text-lightGray mb-4">
-                    Individuelle Themen nach Bedarf möglich
-                  </p>
-                  <Button
-                    href="/kontakt"
-                    variant="primary"
-                    className="w-full flex items-center justify-center gap-2"
-                  >
-                    Workshop anfragen
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </Section>
 
@@ -683,40 +741,79 @@ export default function PricingPage() {
           <div className="space-y-4 md:space-y-6">
             {[
               {
+                id: 1,
                 q: "Gibt es Rabatte für mehrere Klassen oder Standorte?",
                 a: "Ja, wir bieten gestaffelte Preise für größere Institutionen. Kontaktieren Sie uns für ein individuelles Angebot, das perfekt auf Ihre Bedürfnisse zugeschnitten ist.",
               },
               {
+                id: 2,
                 q: "Kann ich die App vor dem Kauf testen?",
                 a: "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und starten Sie Ihr Pilotprojekt.",
               },
               {
+                id: 3,
                 q: "Was ist im Preis enthalten?",
                 a: "Der Preis beinhaltet den vollständigen Zugang zur App, alle Lernmodule, Monitoring-Dashboards (für Schulen/Unternehmen), Support und regelmäßige Updates.",
               },
               {
+                id: 4,
                 q: "Kann ich jederzeit kündigen?",
                 a: "Bei Privatpersonen: Das monatliche Abo kann jederzeit gekündigt werden. Jahresabos laufen über die vereinbarte Laufzeit. Für Schulen und Unternehmen gelten individuelle Vereinbarungen.",
               },
               {
+                id: 5,
                 q: "Gibt es versteckte Kosten?",
                 a: "Nein, alle Preise sind transparent. Bei Unternehmen fällt einmalig eine Einrichtungsgebühr an, die im Preis klar ausgewiesen ist.",
               },
-            ].map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-primaryOrange/5 rounded-xl p-5 md:p-6 border border-primaryOrange/20"
-              >
-                <h3 className="text-lg md:text-xl font-bold text-darkerGray mb-2">
-                  {faq.q}
-                </h3>
-                <p className="text-lightGray text-base md:text-lg">{faq.a}</p>
-              </motion.div>
-            ))}
+            ].map((faq, index) => {
+              const isOpen = openFAQId === faq.id;
+              const handleToggle = () => {
+                setOpenFAQId(isOpen ? null : faq.id);
+              };
+
+              return (
+                <motion.div
+                  key={faq.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="bg-primaryOrange/5 rounded-xl border border-primaryOrange/20 overflow-hidden"
+                >
+                  <button
+                    type="button"
+                    onClick={handleToggle}
+                    className="w-full text-left cursor-pointer focus:outline-none p-5 md:p-6"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-lg md:text-xl font-bold text-darkerGray flex-1">
+                        {faq.q}
+                      </h3>
+                      <ChevronDown
+                        className={`w-5 h-5 md:w-6 md:h-6 text-primaryOrange flex-shrink-0 transition-transform duration-200 mt-1 ${
+                          isOpen ? "transform rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                  </button>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="text-lightGray text-base md:text-lg px-5 md:px-6 pb-5 md:pb-6 pt-0">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
 
           <div className="text-center mt-10">
@@ -769,14 +866,14 @@ export default function PricingPage() {
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-darkerGray hover:bg-darkerGray/90 text-primaryWhite border-darkerGray"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
               Kostenlose Beratung
             </Button>
             <Button
               href="/faq"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-white/20 hover:bg-white/30 text-primaryWhite border-white"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
               FAQ's durchsuchen
             </Button>

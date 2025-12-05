@@ -231,8 +231,8 @@ export default function FAQPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto"
           >
-            Du hast Fragen? Unser Support ist rund um die Uhr für dich da und
-            beantwortet deine Anliegen so schnell und hilfreich wie möglich.
+            Unser Support ist rund um die Uhr für dich da und beantwortet deine
+            Anliegen so schnell und hilfreich wie möglich.
           </motion.p>
         </div>
 
@@ -282,7 +282,7 @@ export default function FAQPage() {
 
       {/* Popular FAQs */}
       {selectedCategory === "Alle" && searchQuery === "" && (
-        <Section className="bg-white py-2 md:py-4 lg:py-8">
+        <Section className="bg-white py-2 md:py-2 lg:py-2">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -439,7 +439,7 @@ export default function FAQPage() {
       </Section>
 
       {/* Quick Links */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
+      <Section className="bg-white py-8 md:py-12 lg:py-16 pt-0 md:pt-0 lg:pt-0">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -494,7 +494,7 @@ export default function FAQPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={{ y: -4 }}
-                className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-sm group"
+                className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-sm group h-full flex flex-col"
               >
                 <div
                   className={`${link.color} rounded-lg p-3 w-fit mb-4 group-hover:scale-110 transition-transform`}
@@ -504,77 +504,14 @@ export default function FAQPage() {
                 <h4 className="text-lg font-bold text-darkerGray mb-2">
                   {link.title}
                 </h4>
-                <p className="text-sm text-lightGray mb-3">
+                <p className="text-sm text-lightGray mb-3 flex-1">
                   {link.description}
                 </p>
-                <div className="flex items-center gap-2 text-primaryOrange text-sm font-semibold">
+                <div className="flex items-center gap-2 text-primaryOrange text-sm font-semibold mt-auto">
                   Mehr erfahren
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.a>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Stats Section */}
-      <Section className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 py-8 md:py-12 lg:py-16">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
-              BeAFox in Zahlen
-            </h3>
-            <p className="text-lightGray">Warum uns so viele vertrauen</p>
-          </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {[
-              {
-                icon: Users,
-                value: "3,000+",
-                label: "Aktive Nutzer",
-                color: "text-primaryOrange",
-              },
-              {
-                icon: School,
-                value: "5+",
-                label: "Schulen",
-                color: "text-primaryOrange",
-              },
-              {
-                icon: CheckCircle2,
-                value: "98%",
-                label: "Zufriedenheit",
-                color: "text-primaryOrange",
-              },
-              {
-                icon: Clock,
-                value: "24/7",
-                label: "Support",
-                color: "text-primaryOrange",
-              },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="text-center bg-white rounded-xl p-6 border-2 border-primaryOrange/20"
-              >
-                <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
-                <div className="text-3xl md:text-4xl font-bold text-darkerGray mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm md:text-base text-lightGray">
-                  {stat.label}
-                </div>
-              </motion.div>
             ))}
           </div>
         </div>
@@ -622,16 +559,9 @@ export default function FAQPage() {
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-darkerGray hover:bg-darkerGray/90 text-primaryWhite border-darkerGray"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
               Kontakt aufnehmen
-            </Button>
-            <Button
-              href="/preise"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-white/20 hover:bg-white/30 text-primaryWhite border-white"
-            >
-              Preise ansehen
             </Button>
           </motion.div>
         </div>

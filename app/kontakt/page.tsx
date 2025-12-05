@@ -99,32 +99,32 @@ export default function ContactPage() {
       title: "Für Schulen",
       description: "Pilotprojekt für Ihre Schule starten",
       href: "/fuer-schulen",
-      color: "bg-blue-50 border-blue-200",
-      iconColor: "text-blue-600",
+      color: "bg-white border-primaryOrange/20",
+      iconColor: "text-primaryOrange",
     },
     {
       icon: Building2,
       title: "Für Unternehmen",
       description: "Finanzbildung für Ihre Mitarbeiter",
       href: "/fuer-unternehmen",
-      color: "bg-purple-50 border-purple-200",
-      iconColor: "text-purple-600",
+      color: "bg-white border-primaryOrange/20",
+      iconColor: "text-primaryOrange",
     },
     {
       icon: Trophy,
       title: "Für Clubs",
       description: "Ganzheitliche Förderung Ihrer Spieler",
       href: "/fuer-clubs",
-      color: "bg-green-50 border-green-200",
-      iconColor: "text-green-600",
+      color: "bg-white border-primaryOrange/20",
+      iconColor: "text-primaryOrange",
     },
     {
       icon: Users,
       title: "Privatpersonen",
       description: "BeAFox Unlimited für dich",
       href: "/beafox-unlimited",
-      color: "bg-orange-50 border-orange-200",
-      iconColor: "text-orange-600",
+      color: "bg-white border-primaryOrange/20",
+      iconColor: "text-primaryOrange",
     },
   ];
 
@@ -167,7 +167,7 @@ export default function ContactPage() {
       </Section>
 
       {/* Quick Links Section */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
+      <Section className="bg-white py-4 md:py-8 lg:py-12">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -193,7 +193,7 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`${link.color} rounded-xl p-6 border-2 hover:shadow-lg transition-all cursor-pointer group`}
+                className={`${link.color} rounded-xl p-6 border-2 hover:border-primaryOrange/40 hover:shadow-lg transition-all cursor-pointer group`}
               >
                 <link.icon
                   className={`w-8 h-8 ${link.iconColor} mb-3 group-hover:scale-110 transition-transform`}
@@ -514,7 +514,7 @@ export default function ContactPage() {
       </Section>
 
       {/* FAQ Preview Section */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
+      <Section className="bg-white py-8 md:py-12 lg:py-16 pt-0 md:pt-0 lg:pt-0">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -532,7 +532,7 @@ export default function ContactPage() {
             <Button
               href="/faq"
               variant="outline"
-              className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
+              className="flex items-center justify-center gap-2 mx-auto md:w-[50%] !px-6 !py-3 md:!px-8 md:!py-4"
             >
               <FileText className="w-4 h-4 md:w-5 md:h-5" />
               Alle FAQs ansehen
@@ -562,7 +562,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
           >
-            Noch Fragen?
+            Weitere Hilfe nötig?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -571,8 +571,8 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl mb-8 text-primaryWhite/90"
           >
-            Wir helfen dir gerne weiter. Kontaktiere uns einfach per Formular,
-            Email oder Telefon.
+            Wir helfen dir gerne weiter. <br /> Kontaktiere uns einfach per
+            Formular, Email oder Telefon.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -584,7 +584,7 @@ export default function ContactPage() {
             <Button
               href="mailto:info@beafox.app"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-darkerGray hover:bg-darkerGray/90 text-primaryWhite border-darkerGray"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
               <Mail className="w-4 h-4 md:w-5 md:h-5" />
               Email schreiben
@@ -592,7 +592,7 @@ export default function ContactPage() {
             <Button
               href="tel:+491782723673"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-white/20 hover:bg-white/30 text-primaryWhite border-white"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
               <Phone className="w-4 h-4 md:w-5 md:h-5" />
               Anrufen

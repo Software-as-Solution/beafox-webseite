@@ -104,7 +104,6 @@ export default function BeAFoxUnlimitedPage() {
   const plans = [
     {
       title: "Standard-Abo",
-      subtitle: "Monatlich kündbar",
       price: "€4.99",
       period: "/ monat",
       features: [
@@ -114,13 +113,12 @@ export default function BeAFoxUnlimitedPage() {
         "Fortschritts-Tracking",
         "Monatlich kündbar",
       ],
+      monthly: true,
     },
     {
       title: "Jahresabo",
-      subtitle: "Am Beliebtesten",
       price: "€3.99",
       period: "/ monat",
-      yearlyPrice: "€47.88",
       yearlyNote: "pro Jahr",
       features: [
         "Vollständiger Zugang zu allen Lektionen",
@@ -134,7 +132,6 @@ export default function BeAFoxUnlimitedPage() {
     },
     {
       title: "Lifetime",
-      subtitle: "Am Billigsten",
       price: "€49.99",
       period: "einmalig",
       features: [
@@ -285,6 +282,65 @@ export default function BeAFoxUnlimitedPage() {
         </div>
       </Section>
 
+      {/* How it Works Section */}
+      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+              In drei einfachen Schritten zu deiner Finanzkompetenz
+            </h2>
+          </motion.div>
+
+          <div className="space-y-8">
+            {[
+              {
+                step: "1",
+                title: "App herunterladen",
+                description:
+                  "Lade BeAFox kostenlos im App Store oder Google Play Store herunter.",
+              },
+              {
+                step: "2",
+                title: "Abo wählen",
+                description:
+                  "Wähle das Abo, das zu dir passt – monatlich, jährlich oder Lifetime.",
+              },
+              {
+                step: "3",
+                title: "Loslegen",
+                description:
+                  "Starte deine Finanzbildungs-Reise und lerne in deinem eigenen Tempo.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex items-start gap-6 bg-white rounded-xl p-6 border-2 border-primaryOrange/20"
+              >
+                <div className="bg-primaryOrange text-primaryWhite w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-darkerGray mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-lightGray">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
       {/* App Features with Mockups Section */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <div className="max-w-7xl mx-auto">
@@ -304,7 +360,7 @@ export default function BeAFoxUnlimitedPage() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid lg:grid-cols-2 items-center">
             {/* Left: Feature Tabs */}
             <div className="space-y-4">
               {[
@@ -437,7 +493,7 @@ export default function BeAFoxUnlimitedPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-primaryWhite rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-sm"
+                className="bg-primaryWhite rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-sm h-full flex flex-col"
               >
                 <div className="bg-primaryOrange/10 rounded-lg p-3 w-fit mb-4">
                   <feature.icon className="w-8 h-8 text-primaryOrange" />
@@ -445,7 +501,7 @@ export default function BeAFoxUnlimitedPage() {
                 <h3 className="text-xl font-bold text-darkerGray mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-lightGray">{feature.description}</p>
+                <p className="text-lightGray flex-1">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -470,7 +526,7 @@ export default function BeAFoxUnlimitedPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6">
             {plans.map((plan, index) => (
               <motion.div
                 key={index}
@@ -478,12 +534,12 @@ export default function BeAFoxUnlimitedPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`bg-white rounded-2xl p-6 md:p-8 border-2 shadow-xl ${
+                className={`bg-white rounded-2xl border-2 shadow-xl flex flex-col h-full ${
                   plan.popular
-                    ? "border-primaryOrange bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5"
+                    ? "border-primaryOrange bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 p-7 md:p-9 lg:p-10"
                     : plan.cheapest
-                    ? "border-primaryOrange/40"
-                    : "border-primaryOrange/20"
+                    ? "border-primaryOrange/40 p-6 md:p-8"
+                    : "border-primaryOrange/20 p-6 md:p-8"
                 }`}
               >
                 {plan.popular && (
@@ -496,12 +552,14 @@ export default function BeAFoxUnlimitedPage() {
                     Am Billigsten
                   </div>
                 )}
+                {plan.monthly && (
+                  <div className="bg-primaryOrange/20 text-primaryOrange text-sm font-semibold px-3 py-1 rounded-full w-fit mb-4">
+                    Monatlich kündbar
+                  </div>
+                )}
                 <h3 className="text-2xl font-bold text-darkerGray mb-2">
                   {plan.title}
                 </h3>
-                {plan.subtitle && (
-                  <p className="text-lightGray mb-4">{plan.subtitle}</p>
-                )}
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
                     <span className="text-4xl md:text-5xl font-bold text-primaryOrange">
@@ -509,15 +567,8 @@ export default function BeAFoxUnlimitedPage() {
                     </span>
                     <span className="text-lightGray">{plan.period}</span>
                   </div>
-                  {plan.yearlyPrice && (
-                    <div className="mt-2">
-                      <span className="text-lg text-lightGray">
-                        {plan.yearlyPrice} {plan.yearlyNote}
-                      </span>
-                    </div>
-                  )}
                 </div>
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <li
                       key={featureIndex}
@@ -531,73 +582,13 @@ export default function BeAFoxUnlimitedPage() {
                 <Button
                   onClick={() => handleAppStoreClick()}
                   variant={plan.popular ? "primary" : "outline"}
-                  className="w-full flex items-center justify-center gap-2"
+                  className={`w-full flex items-center justify-center gap-2 mt-auto ${
+                    plan.popular && "relative sm:top-1"
+                  }`}
                 >
                   Jetzt starten
                   <ArrowRight className="w-4 h-4" />
                 </Button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* How it Works Section */}
-      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              So funktioniert's
-            </h2>
-            <p className="text-lg md:text-xl text-lightGray">
-              In drei einfachen Schritten zu deiner Finanzkompetenz
-            </p>
-          </motion.div>
-
-          <div className="space-y-8">
-            {[
-              {
-                step: "1",
-                title: "App herunterladen",
-                description:
-                  "Lade BeAFox kostenlos im App Store oder Google Play Store herunter.",
-              },
-              {
-                step: "2",
-                title: "Abo wählen",
-                description:
-                  "Wähle das Abo, das zu dir passt – monatlich, jährlich oder Lifetime.",
-              },
-              {
-                step: "3",
-                title: "Loslegen",
-                description:
-                  "Starte deine Finanzbildungs-Reise und lerne in deinem eigenen Tempo.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex items-start gap-6 bg-white rounded-xl p-6 border-2 border-primaryOrange/20"
-              >
-                <div className="bg-primaryOrange text-primaryWhite w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                  {item.step}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-darkerGray mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-lightGray">{item.description}</p>
-                </div>
               </motion.div>
             ))}
           </div>
@@ -645,16 +636,9 @@ export default function BeAFoxUnlimitedPage() {
               <Button
                 onClick={() => handleAppStoreClick()}
                 variant="secondary"
-                className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-darkerGray hover:bg-darkerGray/90 text-primaryWhite border-darkerGray"
+                className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
               >
                 App herunterladen
-              </Button>
-              <Button
-                href="/preise"
-                variant="secondary"
-                className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-white/20 hover:bg-white/30 text-primaryWhite border-white"
-              >
-                Preise ansehen
               </Button>
             </motion.div>
           </motion.div>
@@ -677,7 +661,7 @@ export default function BeAFoxUnlimitedPage() {
               style={{ marginRight: "-20px" }}
             >
               <Image
-                src="/assets/Mockups/Mockup-Profil.png"
+                src="/assets/Mockups/Mockup-Start.png"
                 alt="BeAFox Profil Mockup"
                 width={200}
                 height={428}
@@ -694,7 +678,7 @@ export default function BeAFoxUnlimitedPage() {
               className="relative z-20 transform rotate-[8deg]"
             >
               <Image
-                src="/assets/Mockups/Mockup-Rangliste.png"
+                src="/assets/Mockups/Mockup-Lernpfad.png"
                 alt="BeAFox Rangliste Mockup"
                 width={240}
                 height={514}

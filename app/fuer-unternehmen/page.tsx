@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
+import DownloadModal from "@/components/DownloadModal";
 import Image from "next/image";
 import {
   Check,
@@ -20,31 +21,40 @@ import {
   Zap,
   TrendingUp,
   CheckCircle,
-  GraduationCap,
-  FileText,
   Building2,
   Calendar,
   Trophy,
   Star,
   MessageSquare,
   PlayCircle,
-  Download,
+  PawPrint,
 } from "lucide-react";
 
 // Price Calculator Component
 function PriceCalculator() {
   const [learners, setLearners] = useState(50);
 
-  // Calculate price per learner based on volume discounts
-  const getPricePerLearner = (count: number): number => {
-    if (count >= 100) return 35.88; // €2.99/month * 12
-    if (count >= 50) return 41.88; // €3.49/month * 12
-    if (count >= 10) return 47.88; // €3.99/month * 12
-    return 59.88; // €4.99/month * 12 (default)
+  // Calculate price per learner per month based on volume discounts
+  const getPricePerLearnerPerMonth = (count: number): number => {
+    if (count >= 100) return 4.99;
+    if (count >= 50) return 5.99;
+    if (count >= 10) return 6.99;
+    return 6.99; // default
   };
 
-  const pricePerLearner = getPricePerLearner(learners);
-  const totalPrice = learners * pricePerLearner;
+  // Calculate setup fee based on volume
+  const getSetupFee = (count: number): number => {
+    if (count >= 100) return 199;
+    if (count >= 50) return 149;
+    if (count >= 10) return 99;
+    return 99; // default
+  };
+
+  const pricePerLearnerPerMonth = getPricePerLearnerPerMonth(learners);
+  const pricePerLearnerPerYear = pricePerLearnerPerMonth * 12;
+  const setupFee = getSetupFee(learners);
+  const totalYearlyPrice = learners * pricePerLearnerPerYear;
+  const totalWithSetupFee = totalYearlyPrice + setupFee;
 
   // Format number with German locale
   const formatPrice = (price: number): string => {
@@ -92,20 +102,20 @@ function PriceCalculator() {
         {/* Price per Account */}
         <div className="flex items-center justify-between">
           <span className="text-base md:text-lg text-darkerGray">
-            Preis pro Mitarbeiter
+            Preis pro Konto
           </span>
           <span className="text-xl md:text-2xl font-bold text-primaryOrange">
-            {formatPrice(pricePerLearner)} €/Jahr
+            {formatPrice(pricePerLearnerPerMonth)} €/Monat
           </span>
         </div>
 
-        {/* Total */}
+        {/* Total Yearly */}
         <div className="flex items-center justify-between pt-4 border-t border-primaryOrange/20">
           <span className="text-lg md:text-xl font-semibold text-darkerGray">
-            Gesamt
+            Gesamt (Jahr)
           </span>
-          <span className="text-2xl md:text-3xl font-bold text-primaryOrange">
-            {formatPrice(totalPrice)} €/Jahr
+          <span className="text-xl md:text-2xl font-bold text-primaryOrange">
+            {formatPrice(totalYearlyPrice)} €
           </span>
         </div>
       </div>
@@ -127,6 +137,16 @@ function PriceCalculator() {
 
 export default function ForBusinessPage() {
   const [selectedFeature, setSelectedFeature] = useState(0);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+  const handleAppStoreClick = (
+    e?: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+  ) => {
+    if (e) {
+      e.preventDefault();
+    }
+    setIsDownloadModalOpen(true);
+  };
 
   const stats = [
     {
@@ -136,7 +156,7 @@ export default function ForBusinessPage() {
     },
     {
       icon: Building2,
-      value: "20+",
+      value: "3+",
       label: "Unternehmen vertrauen uns",
     },
     {
@@ -146,7 +166,7 @@ export default function ForBusinessPage() {
     },
     {
       icon: Award,
-      value: "4.8/5",
+      value: "4.9/5",
       label: "Bewertung",
     },
   ];
@@ -154,37 +174,37 @@ export default function ForBusinessPage() {
   const benefits = [
     {
       icon: Target,
-      title: "Gezielte Workshops",
+      title: "Future Skill entwickeln",
       description:
-        "Alle 6 Monate veranstalten wir Workshops zu wechselnden Themen, die perfekt auf Ihre Mitarbeiter zugeschnitten sind.",
+        "Finanzbildung ist einer der wichtigsten Future Skills. Stärken Sie Ihre Mitarbeiter für die Zukunft und machen Sie Ihr Unternehmen zukunftsfähig.",
     },
     {
       icon: BarChart,
       title: "Monitoring Dashboards",
       description:
-        "Behalten Sie den Überblick über den Lernfortschritt Ihrer Mitarbeiter in Echtzeit.",
+        "Behalten Sie den Überblick über den Lernfortschritt Ihrer Mitarbeiter in Echtzeit. Sehen Sie, wer aktiv ist und wo Unterstützung benötigt wird.",
     },
     {
       icon: Award,
       title: "Offizielle Zertifikate",
       description:
-        "Ihre Mitarbeiter erhalten offizielle Zertifikate für ihre Fortschritte in der Finanzbildung.",
+        "Ihre Mitarbeiter erhalten offizielle Zertifikate für ihre Fortschritte in der Finanzbildung – wertvoll für die persönliche Entwicklung.",
     },
     {
       icon: Zap,
       title: "Motiviertere Mitarbeiter",
       description:
-        "Durch das spielerische System sind Ihre Mitarbeiter motivierter und engagierter beim Lernen.",
+        "Durch das spielerische System sind Ihre Mitarbeiter motivierter und engagierter beim Lernen. Finanzbildung wird zum Erlebnis.",
     },
     {
       icon: Clock,
       title: "Nachhaltiges Lernen",
       description:
-        "Kombination aus Workshops und App sorgt für langfristige Wissensverankerung – kein Vergessen nach 2-3 Tagen.",
+        "Kontinuierliches Lernen in der App sorgt für langfristige Wissensverankerung. Optional ergänzt durch Workshops für maximale Wirkung.",
     },
     {
       icon: Shield,
-      title: "DSGVO-konform",
+      title: "DSGVO-konform & sicher",
       description:
         "Alle Daten werden sicher und DSGVO-konform gespeichert. Ihre Unternehmensdaten sind bei uns in besten Händen.",
     },
@@ -200,9 +220,9 @@ export default function ForBusinessPage() {
     },
     {
       id: "workshops",
-      title: "Regelmäßige Workshops",
+      title: "Optional: Regelmäßige Workshops",
       description:
-        "Alle 6 Monate veranstalten wir interaktive Workshops zu wechselnden Finanzthemen. Praxisnah, zielgruppenorientiert und sofort umsetzbar.",
+        "Ergänzen Sie die App-Nutzung optional mit regelmäßigen Workshops. Alle 6 Monate veranstalten wir interaktive Workshops zu wechselnden Finanzthemen für maximale Wirkung.",
       mockup: "/assets/Mockups/Mockup-Quiz.png",
     },
     {
@@ -265,23 +285,23 @@ export default function ForBusinessPage() {
     },
     {
       step: "3",
-      title: "Erster Workshop",
+      title: "Start der Finanzbildung",
       description:
-        "Wir starten mit einem interaktiven Workshop zu einem relevanten Finanzthema, das perfekt auf Ihre Mitarbeiter zugeschnitten ist.",
+        "Ihre Mitarbeiter starten mit der App und entwickeln kontinuierlich ihre Finanzkompetenz. Optional können wir mit einem Workshop beginnen.",
       icon: Calendar,
     },
     {
       step: "4",
       title: "Kontinuierliches Lernen",
       description:
-        "Ihre Mitarbeiter vertiefen das Gelernte in der App, wiederholen Inhalte und bereiten sich auf den nächsten Workshop vor.",
+        "Ihre Mitarbeiter lernen in der App, wiederholen Inhalte und entwickeln nachhaltig ihre Finanzkompetenz – eines der wichtigsten Future Skills.",
       icon: BookOpen,
     },
     {
       step: "5",
-      title: "Regelmäßige Workshops",
+      title: "Optional: Regelmäßige Workshops",
       description:
-        "Alle 6 Monate veranstalten wir einen neuen Workshop zu wechselnden Themen. So bleibt das Lernen abwechslungsreich und spannend.",
+        "Optional ergänzen wir die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate zu wechselnden Themen für maximale Wirkung.",
       icon: Trophy,
     },
   ];
@@ -348,9 +368,8 @@ export default function ForBusinessPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-lg md:text-xl text-lightGray mb-8 md:mb-12"
               >
-                Mit unserer Lern-App in Kombination mit regelmäßigen Workshops
-                lösen wir das klassische Problem: Nach 2–3 Tagen ist der
-                Großteil des Gelernten wieder vergessen.
+                Praxisnahe Finanzbildung für Ihre Mitarbeitenden. Investieren
+                Sie in einen der wichtigsten Future Skills.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -365,7 +384,7 @@ export default function ForBusinessPage() {
                   variant="primary"
                   className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
                 >
-                  Pilotprojekt starten
+                  Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
                 <Button
@@ -478,12 +497,12 @@ export default function ForBusinessPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              Wir lösen das Problem von{" "}
-              <span className="text-primaryOrange">Workshops</span>
+              Investieren Sie in das wichtigste{" "}
+              <span className="text-primaryOrange">Future Skill</span>
             </h2>
             <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
-              Traditionelle Workshops haben ein bekanntes Problem – wir haben
-              die Lösung.
+              Finanzbildung ist einer der wichtigsten Future Skills. Wir machen
+              es einfach, Ihre Mitarbeiter zu stärken.
             </p>
           </motion.div>
 
@@ -497,20 +516,20 @@ export default function ForBusinessPage() {
               className="bg-white rounded-xl p-6 md:p-8 border-2 border-primaryOrange/20"
             >
               <h3 className="text-2xl font-bold text-darkerGray mb-4">
-                Das Problem
+                Warum Finanzbildung?
               </h3>
               <p className="text-lightGray mb-4 text-base md:text-lg">
-                Traditionelle Workshops haben ein bekanntes Problem: Nach 2–3
-                Tagen ist der Großteil des Gelernten wieder vergessen. Die
-                Investition in die Weiterbildung Ihrer Mitarbeiter verpufft
-                schnell.
+                Finanzielle Kompetenz ist einer der wichtigsten Future Skills
+                für Ihre Mitarbeiter. Sie stärkt nicht nur die persönliche
+                Entwicklung, sondern auch die berufliche Leistungsfähigkeit und
+                Zufriedenheit.
               </p>
               <ul className="space-y-2">
                 {[
-                  "Wissen wird schnell vergessen",
-                  "Keine Nachhaltigkeit",
-                  "Hohe Investition, geringer ROI",
-                  "Mitarbeiter verlieren Motivation",
+                  "Wichtigster Future Skill für die Zukunft",
+                  "Stärkt persönliche & berufliche Entwicklung",
+                  "Erhöht Mitarbeiterzufriedenheit",
+                  "Macht Ihr Unternehmen attraktiver",
                 ].map((item, index) => (
                   <li
                     key={index}
@@ -532,25 +551,25 @@ export default function ForBusinessPage() {
               className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 md:p-8 border-2 border-primaryOrange"
             >
               <h3 className="text-2xl font-bold text-primaryOrange mb-4">
-                Unsere Lösung
+                Mit BeAFox for Business
               </h3>
               <p className="text-lightGray mb-4 text-base md:text-lg">
-                <strong>So funktioniert's:</strong> Wir veranstalten alle 6
-                Monate Workshops zu wechselnden Themen. Dazwischen vertiefen die
-                Mitarbeiter die Inhalte mit <strong>BeAFox</strong>, wiederholen
-                Gelerntes und bereiten sich gezielt auf das nächste Workshop
-                vor.
+                <strong>Ganzheitliche Finanzbildung:</strong> Mit unserer
+                spielerischen App lernen Ihre Mitarbeiter kontinuierlich und
+                nachhaltig. Optional ergänzen wir das Angebot mit regelmäßigen
+                Workshops für maximale Wirkung.
               </p>
               <p className="text-lightGray text-base md:text-lg mb-4">
-                So wird das Wissen nachhaltig verankert und Ihre Investition
-                zahlt sich langfristig aus.
+                So investieren Sie in einen der wichtigsten Future Skills und
+                stärken gleichzeitig Ihre Mitarbeiterbindung und Ihr Employer
+                Branding.
               </p>
               <ul className="space-y-2">
                 {[
-                  "Nachhaltige Wissensverankerung",
-                  "Kombination aus Workshops & App",
-                  "Langfristiger ROI",
-                  "Motivierte, engagierte Mitarbeiter",
+                  "Nachhaltige Finanzbildung als Future Skill",
+                  "Spielerisches Lernen mit der App",
+                  "Optional: Regelmäßige Workshops",
+                  "Stärkt Mitarbeiterbindung & Employer Branding",
                 ].map((item, index) => (
                   <li
                     key={index}
@@ -572,13 +591,15 @@ export default function ForBusinessPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-center mt-12"
           >
-            <p className="text-lightGray mb-4">Bereit, das Problem zu lösen?</p>
+            <p className="text-lightGray mb-4">
+              Bereit, in Finanzbildung zu investieren?
+            </p>
             <Button
               href="/kontakt"
               variant="outline"
               className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
             >
-              Pilotprojekt starten
+              Jetzt Partner werden
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
@@ -599,7 +620,7 @@ export default function ForBusinessPage() {
               Was Sie erhalten
             </h2>
             <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
-              Ein umfassendes Paket aus App, Workshops und Support
+              Ein umfassendes Paket für nachhaltige Finanzbildung.
             </p>
           </motion.div>
 
@@ -723,7 +744,7 @@ export default function ForBusinessPage() {
               <span className="text-primaryOrange">Unternehmen</span> von BeAFox
             </h2>
             <p className="text-lg md:text-xl text-lightGray">
-              Viele gute Gründe, warum Unternehmen BeAFox nutzen
+              Viele gute Gründe, warum Unternehmen BeAFox nutzen.
             </p>
           </motion.div>
 
@@ -765,7 +786,7 @@ export default function ForBusinessPage() {
               variant="primary"
               className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
             >
-              Pilotprojekt starten
+              Jetzt Partner werden
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
@@ -786,7 +807,8 @@ export default function ForBusinessPage() {
               So funktioniert's
             </h2>
             <p className="text-lg md:text-xl text-lightGray">
-              In fünf einfachen Schritten zu BeAFox in Ihrem Unternehmen
+              In fünf einfachen Schritten zu nachhaltiger Finanzbildung in Ihrem
+              Unternehmen.
             </p>
           </motion.div>
 
@@ -819,7 +841,7 @@ export default function ForBusinessPage() {
       </Section>
 
       {/* Testimonials Section */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
+      {/* <Section className="bg-white py-8 md:py-12 lg:py-16">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -871,10 +893,10 @@ export default function ForBusinessPage() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </div> */}
 
-          {/* Subtle CTA after Social Proof */}
-          <motion.div
+      {/* Subtle CTA after Social Proof */}
+      {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -889,16 +911,16 @@ export default function ForBusinessPage() {
               variant="outline"
               className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
             >
-              Pilotprojekt starten
+              Jetzt Partner werden
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
         </div>
-      </Section>
+      </Section> */}
 
-      {/* Features List Section */}
-      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
-        <div className="max-w-4xl mx-auto">
+      {/* IHK Partnership Section */}
+      <Section className="bg-primaryWhite py-12 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -907,38 +929,66 @@ export default function ForBusinessPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              Alle Features im Überblick
+              BeAFox als{" "}
+              <span className="text-primaryOrange">offizieller Partner</span>{" "}
+              von IHK
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
-              Alles, was im Paket enthalten ist
+            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+              Als offizieller Partner der IHK-Akademie setzen wir auf bewährte
+              Standards und praxisnahe Expertise.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            {[
-              "Spielerische Lern-App",
-              "Regelmäßige Workshops (alle 6 Monate)",
-              "Monitoring-Dashboard für Ausbilder",
-              "Offizielle Zertifikate",
-              "Große PR-Aktion für Ihr Unternehmen",
-              "Unbegrenzte Mitarbeiter",
-              "Persönlicher Ansprechpartner",
-              "Individuelle Anpassungen möglich",
-              "DSGVO-konform & sicher",
-              "Support & Updates",
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="flex items-center space-x-3 bg-white p-4 rounded-lg border-2 border-primaryOrange/20"
-              >
-                <CheckCircle className="w-6 h-6 text-primaryOrange flex-shrink-0" />
-                <span className="text-darkerGray font-medium">{feature}</span>
-              </motion.div>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6 bg-white rounded-xl p-6 md:p-8 border-2 border-primaryOrange/20"
+            >
+              <p className="text-base md:text-lg text-lightGray leading-relaxed">
+                In enger Zusammenarbeit mit der IHK haben wir einen innovativen
+                Workshop speziell für die Mitarbeiter eines Unternehmens
+                entwickelt. Dieser Workshop kombiniert IHK-geprüfte Inhalte mit
+                unserer spielerischen Lern-App BeAFox, um junge Talente fit für
+                den Alltag und das Berufsleben zu machen.
+              </p>
+
+              {/* CTA Button */}
+              <div className="pt-4">
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 w-fit"
+                >
+                  Jetzt Partner werden
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Right: IHK Logo */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center justify-center"
+            >
+              <div className="bg-white rounded-xl p-8 md:p-12 shadow-lg border-2 border-primaryOrange/20 w-full max-w-md">
+                <div className="flex flex-col items-center justify-center">
+                  <Image
+                    src="/Partners/3.png"
+                    alt="IHK Akademie Logo"
+                    width={400}
+                    height={200}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </Section>
@@ -946,6 +996,18 @@ export default function ForBusinessPage() {
       {/* Price Calculator Section */}
       <Section className="bg-white py-8 md:py-12 lg:py-16">
         <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+              Wie viele <span className="text-primaryOrange">Mitarbeiter</span>{" "}
+              seid ihr?
+            </h2>
+          </motion.div>
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Calculator */}
             <motion.div
@@ -966,21 +1028,30 @@ export default function ForBusinessPage() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray">
-                Wie viele Mitarbeiter seid ihr?
-              </h2>
-              <p className="text-lg md:text-xl text-lightGray">
-                Ihre Mitarbeiter freuen sich über effektives Lernen mit Spaß –
-                und Ihr Unternehmen freut sich über den Sonder-Jahrespreis.
-              </p>
               <p className="text-base md:text-lg text-lightGray">
-                Nutzen Sie den Rechner, um sofort zu sehen, was BeAFox for
-                Business für Ihr Unternehmen kostet. Alle Preise verstehen sich
-                pro Mitarbeiter pro Jahr inklusive Workshops, App-Zugang und
-                Support.
+                Investieren Sie in den wichtigsten Future Skill für Ihre
+                Mitarbeitenden und das bei Kosten, die nicht einmal 1 % eines
+                Mitarbeitenden ausmachen.
               </p>
+
+              {/* Individual Offer Info */}
+              <div className="bg-primaryOrange/10 rounded-lg p-4 border-2 border-primaryOrange/20">
+                <div className="flex items-start gap-3">
+                  <Sparkles className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm md:text-base font-medium text-darkerGray mb-1">
+                      Individuelle Angebote möglich
+                    </p>
+                    <p className="text-sm text-lightGray">
+                      Jederzeit können wir ein maßgeschneidertes Angebot für Ihr
+                      Unternehmen erstellen. Kontaktieren Sie uns einfach!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="pt-6">
-                <p className="text-sm text-lightGray mb-3">
+                <p className="text-sm text-lightGray mb-3 text-center">
                   Bereit für den nächsten Schritt?
                 </p>
                 <Button
@@ -988,7 +1059,7 @@ export default function ForBusinessPage() {
                   variant="outline"
                   className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
                 >
-                  Pilotprojekt starten
+                  Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
               </div>
@@ -998,61 +1069,127 @@ export default function ForBusinessPage() {
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-8 md:py-12 lg:py-16 relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-12 md:py-16 lg:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-5"></div>
-        <div className="text-center max-w-3xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-6"
-          >
-            <Briefcase className="w-16 h-16 text-primaryWhite mx-auto mb-4" />
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
-          >
-            Bereit, Ihre Mitarbeiter zu unterstützen?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl mb-8 text-primaryWhite/90"
-          >
-            Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und
-            erhalten Sie ein individuelles Angebot für Ihr Unternehmen.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
-          >
-            <Button
-              href="/kontakt"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-darkerGray hover:bg-darkerGray/90 text-primaryWhite border-darkerGray"
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center lg:text-left"
             >
-              Pilotprojekt starten
-            </Button>
-            <Button
-              href="/preise"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 bg-white/20 hover:bg-white/30 text-primaryWhite border-white"
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-6"
+              >
+                <Briefcase className="w-16 h-16 text-primaryWhite mx-auto lg:mx-0 mb-4" />
+              </motion.div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
+              >
+                Bereit, Ihre Mitarbeiter zu unterstützen?
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-lg md:text-xl mb-8 text-primaryWhite/90"
+              >
+                Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch
+                und erhalten Sie ein individuelles Angebot für Ihr Unternehmen.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start"
+              >
+                <Button
+                  href="/kontakt"
+                  variant="secondary"
+                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+                >
+                  Jetzt Partner werden
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+                <Button
+                  onClick={() => handleAppStoreClick()}
+                  variant="secondary"
+                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+                >
+                  App herunterladen
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right: Mockups */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center justify-center relative"
             >
-              Preise ansehen
-            </Button>
-          </motion.div>
+              <div className="relative flex items-center justify-center">
+                {/* Mockup 1 - Left */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="relative z-10 transform rotate-[-8deg]"
+                  style={{ marginRight: "-20px" }}
+                >
+                  <Image
+                    src="/assets/Mockups/Mockup-Training.png"
+                    alt="BeAFox Training Mockup"
+                    width={200}
+                    height={428}
+                    className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
+                  />
+                </motion.div>
+
+                {/* Mockup 2 - Right */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="relative z-20 transform rotate-[8deg]"
+                >
+                  <Image
+                    src="/assets/Mockups/Mockup-Lernpfad.png"
+                    alt="BeAFox Lernpfad Mockup"
+                    width={240}
+                    height={514}
+                    className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </Section>
+
+      {/* Download Modal */}
+      <DownloadModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        onAppStoreClick={handleAppStoreClick}
+      />
     </>
   );
 }
