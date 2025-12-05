@@ -156,7 +156,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-24 pb-16 md:pt-40 md:pb-24 bg-primaryWhite">
+      <section className="pt-24 pb-8 md:pb-4 md:pt-40 bg-primaryWhite">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-2 md:gap-12 items-center">
             {/* Left Side - Content */}
@@ -301,14 +301,14 @@ export default function HomePage() {
       </section>
 
       {/* Partner Logos Carousel */}
-      <Section className="bg-primaryWhiteLight overflow-hidden py-4 md:py-16">
-        <div className="text-center mb-8 md:mb-12">
-          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
-            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+      <Section className="bg-primaryWhiteLight overflow-hidden py-4 md:py-14">
+        <div className="text-center mb-4">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-base border-2 text-center justify-center border-primaryOrange rounded-full px-1 md:px-2 lg:px-4 py-1 md:py-1.5 lg:py-2 w-fit mx-auto">
+            <PawPrint className="w-2 h-2 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-primaryOrange" />
+            <h2 className="font-bold text-sm md:text-base">
               Offizielle Partner
             </h2>
-            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <PawPrint className="w-2 h-2 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-primaryOrange" />
           </div>
         </div>
         <div className="relative">
@@ -320,31 +320,31 @@ export default function HomePage() {
           <div className="overflow-hidden">
             <div className="flex animate-scroll">
               {/* First set of logos */}
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
                 <div
                   key={`first-${i}`}
-                  className="flex-shrink-0 mx-4 md:mx-8 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+                  className="flex-shrink-0 mx-2 md:mx-4 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
                 >
                   <Image
                     src={`/Partners/${i}.png`}
                     alt={`Partner ${i}`}
-                    width={320}
-                    height={160}
+                    width={100}
+                    height={120}
                     className="object-contain max-w-full max-h-full"
                   />
                 </div>
               ))}
               {/* Duplicate set for seamless loop */}
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
                 <div
                   key={`second-${i}`}
-                  className="flex-shrink-0 mx-4 md:mx-8 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+                  className="flex-shrink-0 mx-2 md:mx-4 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
                 >
                   <Image
                     src={`/Partners/${i}.png`}
                     alt={`Partner ${i}`}
-                    width={320}
-                    height={160}
+                    width={100}
+                    height={120}
                     className="object-contain max-w-full max-h-full"
                   />
                 </div>
