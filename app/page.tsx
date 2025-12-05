@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/Button";
 import Section from "@/components/Section";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   CheckCircle,
@@ -187,7 +188,7 @@ export default function HomePage() {
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-lightGray leading-relaxed">
                   BeAFox ist die erste unabhängige und spielerische Lern-App für
-                  Finanzbildung junger Menschen, die sich auf neutrale
+                  Finanzbildung junger Menschen, die sich auf unabhängige
                   Wissensvermittlung konzentriert und speziell für Schulen und
                   Ausbildungsbetriebe entwickelt wurde.
                 </p>
@@ -1320,7 +1321,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
+            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
           >
             <div className="relative h-72 md:h-80 overflow-hidden">
               <Image
@@ -1330,11 +1331,11 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
-            <div className="p-6">
+            <div className="p-6 flex flex-col flex-1">
               <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
                 Wir haben gewonnen!
               </h4>
-              <p className="text-lightGray text-sm leading-relaxed">
+              <p className="text-lightGray text-sm leading-relaxed flex-1 mb-4">
                 Wir sind stolz darauf, den Deggendorfer Gründerpreis gewonnen zu
                 haben! Trotz Nervosität und einem in letzter Minute
                 überarbeiteten Pitch hat sich unsere Arbeit ausgezahlt - etwa
@@ -1342,6 +1343,13 @@ export default function HomePage() {
                 gesamte Team für die tolle Organisation und die 2.500€
                 Preisgeld. Wir freuen uns auf weitere Schritte mit BeAFox!
               </p>
+              <Link
+                href="/blog"
+                className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-lg hover:bg-primaryOrange/90 transition-colors text-sm font-semibold mt-auto"
+              >
+                Mehr erfahren
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </motion.div>
 
@@ -1351,7 +1359,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
+            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
           >
             <div className="relative h-72 md:h-80 overflow-hidden">
               <Image
@@ -1361,11 +1369,11 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
-            <div className="p-6">
+            <div className="p-6 flex flex-col flex-1">
               <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
                 BeAFox bei Ed.One in München!
               </h4>
-              <p className="text-lightGray text-sm leading-relaxed">
+              <p className="text-lightGray text-sm leading-relaxed flex-1 mb-4">
                 So erlebt man Finanzbildung im Klassenzimmer. Beim Ed.One Summit
                 in München haben Schüler, Lehrer und Ausbilder BeAFox live
                 getestet - vom Dashboard über die Lern-App bis hin zu den
@@ -1374,6 +1382,13 @@ export default function HomePage() {
                 BeAFox zeigt, wie einfach Finanzbildung sein kann. Wir suchen
                 dich!
               </p>
+              <Link
+                href="/blog"
+                className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-lg hover:bg-primaryOrange/90 transition-colors text-sm font-semibold mt-auto"
+              >
+                Mehr erfahren
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </motion.div>
 
@@ -1383,7 +1398,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
+            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
           >
             <div className="relative h-72 md:h-80 overflow-hidden">
               <Image
@@ -1393,11 +1408,11 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
-            <div className="p-6">
+            <div className="p-6 flex flex-col flex-1">
               <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
                 BeAFox gewinnt Startup Summit!
               </h4>
-              <p className="text-lightGray text-sm leading-relaxed">
+              <p className="text-lightGray text-sm leading-relaxed flex-1 mb-4">
                 BeAFox hat den 2. Platz beim Startup Summit Germany erreicht -
                 unser erster offizieller Preis! Zum ersten Mal haben wir als Duo
                 gepitcht, mit einem neuen Pitch, Pitch Deck und einer
@@ -1407,6 +1422,13 @@ export default function HomePage() {
                 Dank an die Volksbank am Württemberg eG für diese großartige
                 Veranstaltung!
               </p>
+              <Link
+                href="/blog"
+                className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-lg hover:bg-primaryOrange/90 transition-colors text-sm font-semibold mt-auto"
+              >
+                Mehr erfahren
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </motion.div>
         </div>
