@@ -86,11 +86,33 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/assets/Logo-EST.jpg", sizes: "any" },
-      { url: "/assets/Logo.jpg", sizes: "any" },
+      // Hauptfavicon - Logo.png als Browser-Tab Icon
+      { url: "/Logo.png", sizes: "any", type: "image/png" },
+      // Fallback auf Standard-Favicons, falls vorhanden
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
-    apple: [{ url: "/assets/Logo-EST.jpg", sizes: "180x180" }],
-    shortcut: "/assets/Logo-EST.jpg",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+      // Fallback auf Logo.png
+      { url: "/Logo.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      {
+        rel: "icon",
+        url: "/web-app-manifest-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/web-app-manifest-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/Logo.png",
   },
 };
 
