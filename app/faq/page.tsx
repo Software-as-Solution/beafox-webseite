@@ -203,8 +203,8 @@ export default function FAQPage() {
   return (
     <>
       {/* Hero */}
-      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-10">
-        <div className="text-center mb-8 md:mb-12">
+      <Section className="bg-primaryWhite pt-14 md:pt-16 lg:pt-20 mt-12">
+        <div className="text-center mb-6 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -229,7 +229,7 @@ export default function FAQPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto"
+            className="text-base md:text-xl text-lightGray max-w-3xl mx-auto"
           >
             Unser Support ist rund um die Uhr für dich da und beantwortet deine
             Anliegen so schnell und hilfreich wie möglich.
@@ -282,7 +282,7 @@ export default function FAQPage() {
 
       {/* Popular FAQs */}
       {selectedCategory === "Alle" && searchQuery === "" && (
-        <Section className="bg-white py-2 md:py-2 lg:py-2">
+        <Section className="bg-white py-0 md:py-2 lg:py-2 relative bottom-2">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -439,16 +439,16 @@ export default function FAQPage() {
       </Section>
 
       {/* Quick Links */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16 pt-0 md:pt-0 lg:pt-0">
+      <Section className="bg-white py-8 md:py-12 lg:py-16 pt-6 md:pt-0 lg:pt-0">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 lg:mb-12"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-0 lg:mb-4">
               Weitere hilfreiche Links
             </h3>
             <p className="text-lightGray">
@@ -544,7 +544,7 @@ export default function FAQPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl mb-8 text-primaryWhite/90"
+            className="text-base md:text-xl mb-8 text-primaryWhite/90"
           >
             Wenn du weitere Fragen hast, die hier nicht beantwortet wurden,
             kontaktiere uns gerne. Wir helfen dir gerne weiter!

@@ -324,7 +324,7 @@ export default function HomePage() {
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
                 <div
                   key={`first-${i}`}
-                  className="flex-shrink-0 mx-2 md:mx-4 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+                  className="flex-shrink-0 mx-2 md:mx-4 w-24 h-14 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
                 >
                   <Image
                     src={`/Partners/${i}.png`}
@@ -339,7 +339,7 @@ export default function HomePage() {
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
                 <div
                   key={`second-${i}`}
-                  className="flex-shrink-0 mx-2 md:mx-4 w-48 h-24 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
+                  className="flex-shrink-0 mx-2 md:mx-4 w-24 h-14 md:w-64 md:h-32 lg:w-80 lg:h-40 flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity"
                 >
                   <Image
                     src={`/Partners/${i}.png`}
@@ -456,7 +456,7 @@ export default function HomePage() {
 
       {/* Finanzbildungs-Ökosystem Section */}
       <Section className="bg-white py-8 md:py-16 lg:py-20">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
@@ -635,8 +635,8 @@ export default function HomePage() {
       </Section>
 
       {/* BeAFox For Business Section */}
-      <Section className="bg-white py-8 md:py-16 lg:py-20">
-        <div className="text-center mb-12 md:mb-16">
+      <Section className="bg-white py-8 md:py-16 lg:py-20 mt-4 md:mt-0">
+        <div className="text-center mb-8 md:mb-16">
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
@@ -664,15 +664,19 @@ export default function HomePage() {
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
               <span className="text-darkerGray">
-                Wir lösen das Problem von{" "}
+                Mitarbeitende, die Geld verstehen{" "}
               </span>
-              <span className="text-primaryOrange">Workshops</span>
+              <span className="text-primaryOrange">
+                arbeiten fokussierter, bleiben gesünder und länger im
+                Unternehmen.
+              </span>
             </h3>
 
             <p className="text-darkerGray mb-6 md:mb-8 text-base md:text-lg leading-relaxed">
-              Mit unserer Lern-App in Kombination mit regelmäßigen Workshops
-              lösen wir das klassische Problem: Nach 2-3 Tagen ist der Großteil
-              des Gelernten wieder vergessen.
+              BeAFox verbindet digitales Lernen mit regelmäßigen Workshops. Für
+              nachhaltige Verhaltensänderung statt kurzlebigem Wissen. Weniger
+              finanzieller Stress, mehr Motivation und messbar bessere
+              Performance.
             </p>
 
             <div className="mb-6 md:mb-8">
@@ -680,14 +684,14 @@ export default function HomePage() {
                 So funktioniert's:
               </h4>
               <p className="text-darkerGray text-base md:text-lg leading-relaxed">
-                Wir veranstalten alle 6 Monate Workshops zu wechselnden Themen.
-                Dazwischen vertiefen die Azubis die Inhalte mit Beafox,
-                wiederholen Gelerntes und bereiten sich gezielt auf das nächste
-                Workshop vor.
+                Alle 6 Monate vermitteln wir praxisrelevante Finanzthemen im
+                Workshop. Dazwischen festigen Azubis und Mitarbeitende ihr
+                Wissen spielerisch in der App. Flexibel im Alltag, mit klaren
+                Fortschrittszielen und echter Lernmotivation.
               </p>
             </div>
 
-            <div className="flex justify-start md:justify-start w-full">
+            <div className="flex justify-center md:justify-start w-full">
               <Button
                 href="/kontakt"
                 variant="primary"
@@ -765,7 +769,7 @@ export default function HomePage() {
 
       {/* BeAFox For Schools Section */}
       <Section className="bg-white py-8 md:py-16 lg:py-20">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
@@ -859,16 +863,14 @@ export default function HomePage() {
             </div>
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
-              <span className="text-darkerGray">
-                Wir lösen das Problem von{" "}
-              </span>
-              <span className="text-primaryOrange">Unterrichtsausfall</span>
+              <span className="text-darkerGray">Wir schließen die Lücke </span>
+              <span className="text-primaryOrange">in der Finanzbildung </span>
             </h3>
 
             <p className="text-darkerGray text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-              Ein Lehrer betreut gleichzeitig mehrere Klassen oder Räume. Die
-              Schüler arbeiten selbstständig und interaktiv mit BeAFox - ganz
-              ohne direkte Anwesenheit des Lehrers vor Ort.
+              Ein Lehrer muss gleichzeitig mehrere Klassen betreuen? Kein
+              Problem. Die Schüler arbeiten selbstständig und interaktiv mit
+              BeAFox. Ganz ohne direkte Anwesenheit des Lehrers vor Ort.
             </p>
 
             <div className="mb-6 md:mb-8">
@@ -883,7 +885,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="flex justify-start md:justify-start w-full">
+            <div className="flex justify-center md:justify-start w-full">
               <Button
                 href="/kontakt"
                 variant="primary"
@@ -899,7 +901,7 @@ export default function HomePage() {
 
       {/* BeAFox For Clubs Section */}
       <Section className="bg-white py-8 md:py-16 lg:py-20">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
@@ -928,7 +930,10 @@ export default function HomePage() {
 
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
               <span className="text-darkerGray">
-                Junge Sportler brauchen mehr als nur Training
+                Junge Sportler brauchen{" "}
+                <span className="text-primaryOrange">
+                  mehr als nur Training
+                </span>
               </span>
             </h3>
 
@@ -937,7 +942,7 @@ export default function HomePage() {
               mit klarem Kopf auf dem Platz stehen. Mit BeAFox geben Vereine
               ihren Spielern das Wissen, das sie im Alltag stärkt und im Sport
               fokussiert hält. Das führt zu echter Entwicklung auf und neben dem
-              Feld.
+              Platz.
             </p>
 
             <div className="mb-6 md:mb-8">
@@ -962,7 +967,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="flex justify-start">
+            <div className="flex justify-center md:justify-start w-full">
               <Button
                 href="/kontakt"
                 variant="primary"

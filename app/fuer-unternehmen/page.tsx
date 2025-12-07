@@ -20,14 +20,11 @@ import {
   Target,
   Zap,
   TrendingUp,
-  CheckCircle,
   Building2,
   Calendar,
   Trophy,
-  Star,
   MessageSquare,
   PlayCircle,
-  PawPrint,
 } from "lucide-react";
 
 // Price Calculator Component
@@ -42,19 +39,9 @@ function PriceCalculator() {
     return 6.99; // default
   };
 
-  // Calculate setup fee based on volume
-  const getSetupFee = (count: number): number => {
-    if (count >= 100) return 199;
-    if (count >= 50) return 149;
-    if (count >= 10) return 99;
-    return 99; // default
-  };
-
   const pricePerLearnerPerMonth = getPricePerLearnerPerMonth(learners);
   const pricePerLearnerPerYear = pricePerLearnerPerMonth * 12;
-  const setupFee = getSetupFee(learners);
   const totalYearlyPrice = learners * pricePerLearnerPerYear;
-  const totalWithSetupFee = totalYearlyPrice + setupFee;
 
   // Format number with German locale
   const formatPrice = (price: number): string => {
@@ -200,7 +187,7 @@ export default function ForBusinessPage() {
       icon: Clock,
       title: "Nachhaltiges Lernen",
       description:
-        "Kontinuierliches Lernen in der App sorgt für langfristige Wissensverankerung. Optional ergänzt durch Workshops für maximale Wirkung.",
+        "Kontinuierliches Lernen in der App sorgt für langfristige Wissensverankerung. Ergänzt durch Workshops für maximale Wirkung.",
     },
     {
       icon: Shield,
@@ -220,9 +207,9 @@ export default function ForBusinessPage() {
     },
     {
       id: "workshops",
-      title: "Optional: Regelmäßige Workshops",
+      title: "Regelmäßige Workshops",
       description:
-        "Ergänzen Sie die App-Nutzung optional mit regelmäßigen Workshops. Alle 6 Monate veranstalten wir interaktive Workshops zu wechselnden Finanzthemen für maximale Wirkung.",
+        "Ergänzen Sie die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate veranstalten wir interaktive Workshops zu wechselnden Finanzthemen für maximale Wirkung.",
       mockup: "/assets/Mockups/Mockup-Quiz.png",
     },
     {
@@ -287,7 +274,7 @@ export default function ForBusinessPage() {
       step: "3",
       title: "Start der Finanzbildung",
       description:
-        "Ihre Mitarbeiter starten mit der App und entwickeln kontinuierlich ihre Finanzkompetenz. Optional können wir mit einem Workshop beginnen.",
+        "Ihre Mitarbeiter starten mit der App und entwickeln kontinuierlich ihre Finanzkompetenz. Zusätzlich kombinieren wir die App-Nutzung mit regelmäßigen Workshops.",
       icon: Calendar,
     },
     {
@@ -299,9 +286,9 @@ export default function ForBusinessPage() {
     },
     {
       step: "5",
-      title: "Optional: Regelmäßige Workshops",
+      title: "Regelmäßige Workshops",
       description:
-        "Optional ergänzen wir die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate zu wechselnden Themen für maximale Wirkung.",
+        "Wir ergänzen die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate zu wechselnden Themen für maximale Wirkung.",
       icon: Trophy,
     },
   ];
@@ -336,7 +323,7 @@ export default function ForBusinessPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-10">
+      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-14">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Text Content */}
@@ -366,10 +353,10 @@ export default function ForBusinessPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-lg md:text-xl text-lightGray mb-8 md:mb-12"
+                className="text-base md:text-xl text-lightGray mb-8 md:mb-12"
               >
-                Praxisnahe Finanzbildung für Ihre Mitarbeitenden. Investieren
-                Sie in einen der wichtigsten Future Skills.
+                Mitarbeitende, die Geld verstehen fokussierter, bleiben gesünder
+                und länger im Unternehmen.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -382,7 +369,7 @@ export default function ForBusinessPage() {
                 <Button
                   href="/kontakt"
                   variant="primary"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
                 >
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -390,7 +377,7 @@ export default function ForBusinessPage() {
                 <Button
                   href="/preise"
                   variant="outline"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
                 >
                   Preise ansehen
                 </Button>
@@ -471,13 +458,13 @@ export default function ForBusinessPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="text-center bg-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20"
+                className="text-center bg-primaryOrange/5 rounded-xl p-4 md:p-6 border-2 border-primaryOrange/20"
               >
-                <stat.icon className="w-8 h-8 text-primaryOrange mx-auto mb-3" />
-                <div className="text-3xl md:text-4xl font-bold text-darkerGray mb-2">
+                <stat.icon className="w-6 h-6 md:w-8 md:h-8 text-primaryOrange mx-auto mb-2 md:mb-3" />
+                <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-1 md:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm md:text-base text-lightGray">
+                <div className="text-xs md:text-sm lg:text-base text-lightGray">
                   {stat.label}
                 </div>
               </motion.div>
@@ -494,13 +481,13 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Investieren Sie in das wichtigste{" "}
               <span className="text-primaryOrange">Future Skill</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Finanzbildung ist einer der wichtigsten Future Skills. Wir machen
               es einfach, Ihre Mitarbeiter zu stärken.
             </p>
@@ -589,7 +576,7 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
+            className="text-center mt-6 sm:mt-12"
           >
             <p className="text-lightGray mb-4">
               Bereit, in Finanzbildung zu investieren?
@@ -597,7 +584,7 @@ export default function ForBusinessPage() {
             <Button
               href="/kontakt"
               variant="outline"
-              className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
+              className="flex items-center justify-center gap-2 mx-auto !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
             >
               Jetzt Partner werden
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -614,12 +601,12 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Was Sie erhalten
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Ein umfassendes Paket für nachhaltige Finanzbildung.
             </p>
           </motion.div>
@@ -661,8 +648,8 @@ export default function ForBusinessPage() {
                 transition={{ duration: 0.3 }}
                 className={`relative w-full mx-auto ${
                   features[selectedFeature].mockup.includes("Macbook")
-                    ? "max-w-[500px] md:max-w-[600px] lg:max-w-[700px]"
-                    : "max-w-[250px] md:max-w-[280px] lg:max-w-[320px]"
+                    ? "max-w-[300px] md:max-w-[600px] lg:max-w-[700px]"
+                    : "max-w-[180px] md:max-w-[280px] lg:max-w-[320px]"
                 }`}
               >
                 <Image
@@ -694,13 +681,13 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Warum{" "}
               <span className="text-primaryOrange">BeAFox for Business</span>?
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Alle Vorteile für Ihr Unternehmen und Ihre Mitarbeiter auf einen
               Blick.
             </p>
@@ -737,13 +724,13 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               So profitieren{" "}
               <span className="text-primaryOrange">Unternehmen</span> von BeAFox
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               Viele gute Gründe, warum Unternehmen BeAFox nutzen.
             </p>
           </motion.div>
@@ -784,7 +771,7 @@ export default function ForBusinessPage() {
             <Button
               href="/kontakt"
               variant="primary"
-              className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
+              className="flex items-center justify-center gap-2 mx-auto !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
             >
               Jetzt Partner werden
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -801,12 +788,12 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               So funktioniert's
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               In fünf einfachen Schritten zu nachhaltiger Finanzbildung in Ihrem
               Unternehmen.
             </p>
@@ -820,7 +807,7 @@ export default function ForBusinessPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex items-start gap-6 bg-white rounded-xl p-6 border-2 border-primaryOrange/20"
+                className="flex items-start gap-4 sm:gap-6 bg-white rounded-xl p-4 sm:p-6 border-2 border-primaryOrange/20"
               >
                 <div className="bg-primaryOrange text-primaryWhite w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
                   {item.step}
@@ -926,14 +913,14 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               BeAFox als{" "}
               <span className="text-primaryOrange">offizieller Partner</span>{" "}
               von IHK
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Als offizieller Partner der IHK-Akademie setzen wir auf bewährte
               Standards und praxisnahe Expertise.
             </p>
@@ -957,11 +944,11 @@ export default function ForBusinessPage() {
               </p>
 
               {/* CTA Button */}
-              <div className="pt-4">
+              <div className="pt-2 sm:pt-4 flex justify-center md:justify-start w-full">
                 <Button
                   href="/kontakt"
                   variant="primary"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 w-fit"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
                 >
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -1001,9 +988,9 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-6 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Wie viele <span className="text-primaryOrange">Mitarbeiter</span>{" "}
               seid ihr?
             </h2>
@@ -1050,18 +1037,20 @@ export default function ForBusinessPage() {
                 </div>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-2 sm:pt-6">
                 <p className="text-sm text-lightGray mb-3 text-center">
                   Bereit für den nächsten Schritt?
                 </p>
-                <Button
-                  href="/kontakt"
-                  variant="outline"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
-                >
-                  Jetzt Partner werden
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                </Button>
+                <div className="flex justify-center md:justify-start">
+                  <Button
+                    href="/kontakt"
+                    variant="outline"
+                    className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
+                  >
+                    Jetzt Partner werden
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                  </Button>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -1104,7 +1093,7 @@ export default function ForBusinessPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-lg md:text-xl mb-8 text-primaryWhite/90"
+                className="text-base md:text-xl mb-8 text-primaryWhite/90"
               >
                 Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch
                 und erhalten Sie ein individuelles Angebot für Ihr Unternehmen.

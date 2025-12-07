@@ -21,7 +21,6 @@ import {
   TrendingUp,
   Shield,
   Clock,
-  Smartphone,
   Users,
 } from "lucide-react";
 
@@ -172,7 +171,7 @@ export default function BeAFoxUnlimitedPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-10">
+      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-14">
         <div className="text-center mb-8 md:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -199,7 +198,7 @@ export default function BeAFoxUnlimitedPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
+            className="text-base md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
           >
             Lerne Finanzen auf deine Art – spielerisch, flexibel und in deinem
             eigenen Tempo. BeAFox Unlimited gibt dir Zugang zu allen Lernmodulen
@@ -233,12 +232,12 @@ export default function BeAFoxUnlimitedPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full"
           >
             <Button
               onClick={() => handleAppStoreClick()}
               variant="primary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+              className="flex items-center justify-center gap-2 !w-full sm:!w-auto !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
             >
               App herunterladen
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -246,7 +245,7 @@ export default function BeAFoxUnlimitedPage() {
             <Button
               href="/preise"
               variant="outline"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+              className="flex items-center justify-center gap-2 !w-full sm:!w-auto !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
             >
               Preise ansehen
             </Button>
@@ -255,7 +254,7 @@ export default function BeAFoxUnlimitedPage() {
       </Section>
 
       {/* Stats Section */}
-      <Section className="bg-white pb-8 md:pb-12 lg:pb-16">
+      <Section className="bg-white py-0 md:py-12 lg:py-16">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {benefits.map((benefit, index) => (
@@ -283,17 +282,20 @@ export default function BeAFoxUnlimitedPage() {
       </Section>
 
       {/* How it Works Section */}
-      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
+      <Section className="bg-primaryWhite mt-4 sm:mt-0 py-8 md:py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              In drei einfachen Schritten zu deiner Finanzkompetenz
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
+              In drei einfachen Schritten{" "}
+              <span className="text-primaryOrange">
+                zu deiner Finanzkompetenz
+              </span>
             </h2>
           </motion.div>
 
@@ -349,12 +351,12 @@ export default function BeAFoxUnlimitedPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
               So funktioniert <span className="text-primaryOrange">BeAFox</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Entdecke alle Features, die deine Finanzbildung zu einem Erlebnis
               machen.
             </p>
@@ -434,7 +436,7 @@ export default function BeAFoxUnlimitedPage() {
             </div>
 
             {/* Right: Mockup Display */}
-            <div className="flex items-center justify-center lg:sticky lg:top-20">
+            <div className="flex items-center justify-center lg:sticky lg:top-20 mt-8 md:mt-12 lg:mt-0">
               <motion.div
                 key={selectedFeature}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -457,7 +459,7 @@ export default function BeAFoxUnlimitedPage() {
                   alt="BeAFox App Feature"
                   width={300}
                   height={600}
-                  className="object-contain drop-shadow-2xl w-full max-w-[300px] md:max-w-[350px] lg:max-w-[400px] h-auto"
+                  className="object-contain drop-shadow-2xl w-full max-w-[200px] md:max-w-[350px] lg:max-w-[400px] h-auto"
                 />
               </motion.div>
             </div>
@@ -473,13 +475,13 @@ export default function BeAFoxUnlimitedPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
               Warum <span className="text-primaryOrange">BeAFox Unlimited</span>
               ?
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Alles, was du brauchst, um deine Finanzkompetenz zu steigern – in
               einer App.
             </p>
@@ -516,12 +518,12 @@ export default function BeAFoxUnlimitedPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
               Wähle dein <span className="text-primaryOrange">Abo</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Flexible Preise für jeden Bedarf – von monatlich bis lebenslang.
             </p>
           </motion.div>
@@ -582,7 +584,7 @@ export default function BeAFoxUnlimitedPage() {
                 <Button
                   onClick={() => handleAppStoreClick()}
                   variant={plan.popular ? "primary" : "outline"}
-                  className={`w-full flex items-center justify-center gap-2 mt-auto ${
+                  className={`w-full flex items-center justify-center gap-2 mt-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base ${
                     plan.popular && "relative sm:top-1"
                   }`}
                 >
@@ -598,7 +600,7 @@ export default function BeAFoxUnlimitedPage() {
       {/* CTA Section */}
       <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-8 md:py-12 lg:py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-5"></div>
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto relative z-10">
+        <div className="grid md:grid-cols-2 gap-0 sm:gap-8 md:gap-12 items-center max-w-6xl mx-auto relative z-10">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}

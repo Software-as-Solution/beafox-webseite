@@ -83,7 +83,7 @@ export default function PricingPage() {
       title: "Ab 10 Lizenzen",
       price: "€6.99",
       period: "/ monat",
-      setupFee: 99,
+      setupFee: 199,
       features: [
         { text: "Lernen ohne Grenzen", icon: Infinity },
         { text: "Vollständige Lernmodule", icon: BookOpen },
@@ -94,7 +94,7 @@ export default function PricingPage() {
       title: "Ab 50 Lizenzen",
       price: "€5.99",
       period: "/ monat",
-      setupFee: 149,
+      setupFee: 299,
       features: [
         { text: "Lernen ohne Grenzen", icon: Infinity },
         { text: "Vollständige Lernmodule", icon: BookOpen },
@@ -106,7 +106,7 @@ export default function PricingPage() {
       title: "Ab 100 Lizenzen",
       price: "€4.99",
       period: "/ monat",
-      setupFee: 199,
+      setupFee: 499,
       features: [
         { text: "Lernen ohne Grenzen", icon: Infinity },
         { text: "Vollständige Lernmodule", icon: BookOpen },
@@ -157,7 +157,7 @@ export default function PricingPage() {
   return (
     <>
       {/* Hero - Unsere Ziele */}
-      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-10">
+      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-12">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -234,7 +234,7 @@ export default function PricingPage() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
               Für Unternehmen
             </h3>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               Optimierte Staffelpreise, die perfekt zu den Bedürfnissen Ihres
               Unternehmens passen.
             </p>
@@ -295,7 +295,7 @@ export default function PricingPage() {
                 <Button
                   href="/kontakt"
                   variant={plan.popular ? "primary" : "outline"}
-                  className="w-full flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4" />
@@ -317,9 +317,8 @@ export default function PricingPage() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
               Für Endkunden
             </h3>
-            <p className="text-lg md:text-xl text-lightGray">
-              Wähle das Modell, das zu deinem Alltag passt – fair, flexibel und
-              voller Wissen.
+            <p className="text-base md:text-xl text-lightGray">
+              Wähle das Modell, das zu deinem Alltag passt.
             </p>
           </motion.div>
 
@@ -387,14 +386,16 @@ export default function PricingPage() {
                     );
                   })}
                 </ul>
-                <Button
-                  onClick={() => setIsDownloadModalOpen(true)}
-                  variant={plan.popular ? "primary" : "outline"}
-                  className="w-full flex items-center justify-center gap-2"
-                >
-                  Jetzt downloaden
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
+                <div className="flex justify-center md:justify-start">
+                  <Button
+                    onClick={() => setIsDownloadModalOpen(true)}
+                    variant={plan.popular ? "primary" : "outline"}
+                    className="w-full md:w-auto flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+                  >
+                    Jetzt downloaden
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -412,7 +413,7 @@ export default function PricingPage() {
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
               Für Schulen
             </h3>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               {schoolPlan.subtitle}
             </p>
           </motion.div>
@@ -491,7 +492,7 @@ export default function PricingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 lg:mb-12"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -506,7 +507,7 @@ export default function PricingPage() {
               </h2>
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </motion.div>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Über die App hinaus bieten wir zusätzliche Services für eine
               ganzheitliche Finanzbildung – maßgeschneidert für Ihre
               Bedürfnisse.
@@ -625,7 +626,7 @@ export default function PricingPage() {
                 <Button
                   href="/kontakt"
                   variant="outline"
-                  className="w-full flex items-center justify-center gap-2 mt-auto"
+                  className="w-full flex items-center justify-center gap-2 mt-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
                   {service.cta}
                   <ArrowRight className="w-4 h-4" />
@@ -644,7 +645,7 @@ export default function PricingPage() {
             <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
               Individuelle Lösungen für jeden Bedarf
             </h3>
-            <p className="text-lg text-lightGray mb-6 max-w-2xl mx-auto">
+            <p className="text-base text-lightGray mb-6 max-w-2xl mx-auto">
               Alle unsere Dienstleistungen können individuell kombiniert und
               angepasst werden. Sprechen Sie uns an, wir finden die perfekte
               Lösung für Ihre Anforderungen.
@@ -653,10 +654,10 @@ export default function PricingPage() {
               <Button
                 href="/kontakt"
                 variant="primary"
-                className="flex items-center justify-center gap-2 w-auto"
+                className="flex items-center justify-center gap-2 w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
               >
                 Kostenlose Beratung anfragen
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
             </div>
           </motion.div>
@@ -671,12 +672,12 @@ export default function PricingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 lg:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 lg:mb-4">
               Warum <span className="text-primaryOrange">BeAFox</span>?
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Investiere in die Zukunft deiner Schüler, Azubis oder Mitarbeiter
               – mit einem fairen Preis-Leistungs-Verhältnis.
             </p>
@@ -730,9 +731,9 @@ export default function PricingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 lg:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 lg:mb-4">
               Häufige Fragen zu den{" "}
               <span className="text-primaryOrange">Preisen</span>
             </h2>
@@ -786,7 +787,7 @@ export default function PricingPage() {
                     className="w-full text-left cursor-pointer focus:outline-none p-5 md:p-6"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-lg md:text-xl font-bold text-darkerGray flex-1">
+                      <h3 className="text-base md:text-xl font-bold text-darkerGray flex-1">
                         {faq.q}
                       </h3>
                       <ChevronDown
@@ -866,14 +867,14 @@ export default function PricingPage() {
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+              className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite text-sm md:text-base"
             >
               Kostenlose Beratung
             </Button>
             <Button
               href="/faq"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+              className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite text-sm md:text-base"
             >
               FAQ's durchsuchen
             </Button>

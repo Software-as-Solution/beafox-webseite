@@ -90,25 +90,25 @@ export default function AboutPage() {
   const teamMembers = [
     {
       name: "Alexandru Tapelea",
-      role: "Gründer – AI Software Entwickler",
+      role: "Gründer – CEO & CTO",
       image: "/Team/Alex.png",
       linkedin: "https://www.linkedin.com/in/alexandru-tapelea-43a400245/",
     },
     {
       name: "Selina Fuchs",
-      role: "Mitgründerin – Marketing",
+      role: "Mitgründerin – CMO",
       image: "/Team/Selina.png",
       linkedin: "https://www.linkedin.com/in/selina-fuchs-7b0873371/",
     },
     {
       name: "Prof. Dr. Marcel Dulgeridis",
-      role: "Mentor – Finanzprofessor",
+      role: "Mitgründer – CFO",
       image: "/Team/Marcel.png",
       linkedin: "https://www.linkedin.com/in/marceldulgeridis/",
     },
     {
       name: "Nico Moos",
-      role: "Sales Officer",
+      role: "CSO",
       image: "/Team/Nico.png",
       linkedin: "https://www.linkedin.com/in/nico-moos-355b881a8/",
     },
@@ -163,7 +163,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
+            className="text-base md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
           >
             Mit Know-how, Kreativität und Leidenschaft arbeiten wir täglich
             daran finanzielle Bildung für alle zugänglich zu machen.
@@ -203,14 +203,14 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 lg:mb-12"
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Heart className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
               <span className="font-bold">Unsere Geschichte</span>
               <Heart className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 lg:mb-6">
               Von der Idee zur{" "}
               <span className="text-primaryOrange">Realität</span>
             </h2>
@@ -222,7 +222,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-primaryOrange/5 rounded-xl p-6 md:p-8 border-l-4 border-primaryOrange"
+              className="bg-primaryOrange/5 rounded-xl p-4 md:p-8 border-l-4 border-primaryOrange"
             >
               <div className="flex items-start gap-4">
                 <Sparkles className="w-8 h-8 text-primaryOrange flex-shrink-0 mt-1" />
@@ -248,7 +248,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-primaryOrange/5 rounded-xl p-6 md:p-8 border-l-4 border-primaryOrange"
+              className="bg-primaryOrange/5 rounded-xl p-4 md:p-8 border-l-4 border-primaryOrange"
             >
               <div className="flex items-start gap-4">
                 <Target className="w-8 h-8 text-primaryOrange flex-shrink-0 mt-1" />
@@ -284,15 +284,15 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="md:col-span-1"
           >
-            <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mb-6 md:mb-8">
+            <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto md:mx-0 mb-6 md:mb-8">
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
               <span className="font-bold">Unser Antrieb</span>
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-2">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 text-center md:text-left">
               Wir wollen:
             </h2>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primaryOrange mb-6">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primaryOrange mb-6 text-center md:text-left">
               Bildung, die Verändert.
             </h3>
             <p className="text-lightGray text-base md:text-lg mb-6 md:mb-8">
@@ -304,7 +304,7 @@ export default function AboutPage() {
               variant="primary"
               className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
-              Pilotprojekt starten →
+              Jetzt Partner werden →
             </Button>
           </motion.div>
 
@@ -390,9 +390,19 @@ export default function AboutPage() {
                 className="bg-primaryOrange/10 rounded-xl p-4 md:p-6 border border-primaryOrange/30"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primaryOrange rounded-full flex items-center justify-center">
+                  <motion.div
+                    className="flex-shrink-0 w-12 h-12 bg-primaryOrange rounded-full flex items-center justify-center"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
                     <value.icon className="w-6 h-6 text-primaryWhite" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="text-lg md:text-xl font-bold text-darkerGray mb-2">
                       {value.title}
@@ -410,7 +420,7 @@ export default function AboutPage() {
 
       {/* Team Section */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -419,9 +429,7 @@ export default function AboutPage() {
             className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8"
           >
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              Unser Team
-            </h2>
+            <span className="font-bold">Unser Team</span>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
           <motion.h2
@@ -497,7 +505,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-8 md:mb-16"
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Calendar className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
@@ -525,10 +533,10 @@ export default function AboutPage() {
                   className="relative flex items-start gap-4 md:gap-8 flex-row md:flex-row md:even:flex-row-reverse"
                 >
                   {/* Timeline Dot - zentriert auf der Linie */}
-                  <div className="absolute left-[24px] md:left-1/2 top-6 w-4 h-4 md:w-5 md:h-5 bg-primaryOrange rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 z-10 flex-shrink-0"></div>
+                  <div className="absolute left-[8px] md:left-1/2 top-6 w-4 h-4 md:w-5 md:h-5 bg-primaryOrange rounded-full border-4 border-white shadow-lg transform -translate-x-1/2 md:-translate-x-1/2 z-10 flex-shrink-0"></div>
 
                   {/* Content */}
-                  <div className="w-full md:w-5/12 ml-12 md:ml-0 md:even:pr-8 md:even:text-right md:odd:pl-8 md:odd:text-left">
+                  <div className="w-full md:w-5/12 ml-8 md:ml-0 md:even:pr-8 md:even:text-right md:odd:pl-8 md:odd:text-left">
                     <div className="bg-white rounded-xl p-4 md:p-6 lg:p-8 shadow-lg border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all">
                       <div className="text-primaryOrange font-bold text-base md:text-lg lg:text-xl mb-2">
                         {item.year}
@@ -556,7 +564,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 md:mb-12"
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Award className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
@@ -715,7 +723,7 @@ export default function AboutPage() {
               variant="secondary"
               className="flex items-center justify-center gap-1.5 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
-              Pilotprojekt starten
+              Jetzt Partner werden
             </Button>
             <Button
               onClick={() => setIsDownloadModalOpen(true)}

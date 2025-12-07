@@ -206,20 +206,22 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
           {/* Brand */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-block mb-6">
-              <Image
-                src="/assets/Logo-EST.jpg"
-                alt="BeAFox Logo"
-                width={150}
-                height={50}
-                className="object-contain h-12"
-              />
-            </Link>
-            <p className="text-lightGray mb-6 text-sm leading-relaxed max-w-xs">
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 text-center md:text-left">
+            <div className="flex justify-center md:justify-start mb-6">
+              <Link href="/" className="inline-block">
+                <Image
+                  src="/assets/Logo-EST.jpg"
+                  alt="BeAFox Logo"
+                  width={150}
+                  height={50}
+                  className="object-contain h-12"
+                />
+              </Link>
+            </div>
+            <p className="text-lightGray mb-6 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 md:max-w-xs">
               Die erste unabhängige und spielerische Lern-App für Finanzbildung.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               <a
                 href="https://instagram.com/beafox_app"
                 target="_blank"

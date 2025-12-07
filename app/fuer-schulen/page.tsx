@@ -164,7 +164,7 @@ export default function ForSchoolsPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-10">
+      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-14">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Text Content */}
@@ -194,7 +194,7 @@ export default function ForSchoolsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-lg md:text-xl text-lightGray mb-8 md:mb-12"
+                className="text-base md:text-xl text-lightGray mb-8 md:mb-12"
               >
                 Praxisnahe Finanzbildung, die Ihre Schüler selbstständig lernen.
                 Mit vollständiger Kontrolle für Lehrer und Schulleitung über das
@@ -211,7 +211,7 @@ export default function ForSchoolsPage() {
                 <Button
                   href="/kontakt"
                   variant="primary"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
                 >
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -219,7 +219,7 @@ export default function ForSchoolsPage() {
                 <Button
                   href="/preise"
                   variant="outline"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
                 >
                   Preise ansehen
                 </Button>
@@ -300,13 +300,13 @@ export default function ForSchoolsPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="text-center bg-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20"
+                className="text-center bg-primaryOrange/5 rounded-xl p-4 md:p-6 border-2 border-primaryOrange/20"
               >
-                <stat.icon className="w-8 h-8 text-primaryOrange mx-auto mb-3" />
-                <div className="text-3xl md:text-4xl font-bold text-darkerGray mb-2">
+                <stat.icon className="w-6 h-6 md:w-8 md:h-8 text-primaryOrange mx-auto mb-2 md:mb-3" />
+                <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-1 md:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm md:text-base text-lightGray">
+                <div className="text-xs md:text-sm lg:text-base text-lightGray">
                   {stat.label}
                 </div>
               </motion.div>
@@ -323,16 +323,12 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              Wir lösen das Problem von{" "}
-              <span className="text-primaryOrange">Unterrichtsausfall</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
+              Wir schließen die Lücke{" "}
+              <span className="text-primaryOrange">in der Finanzbildung</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
-              Ein Lehrer betreut mehrere Klassen? Kein Problem. Schüler lernen
-              selbstständig mit BeAFox.
-            </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -420,13 +416,13 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
               Das{" "}
               <span className="text-primaryOrange">Monitoring-Dashboard</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Vollständige Kontrolle über den Lernfortschritt Ihrer Schüler –
               alles auf einen Blick.
             </p>
@@ -506,13 +502,13 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Warum{" "}
               <span className="text-primaryOrange">BeAFox for Schools</span>?
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Alle Vorteile für Ihre Schule, Lehrer und Schüler auf einen Blick.
             </p>
           </motion.div>
@@ -548,9 +544,9 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               So setzen Schulen{" "}
               <span className="text-primaryOrange">BeAFox</span> ein
             </h2>
@@ -611,7 +607,7 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
@@ -698,13 +694,13 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Feedback von{" "}
               <span className="text-primaryOrange">Lehrkräften</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.
             </p>
           </motion.div>
@@ -765,13 +761,13 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Faire Preise für{" "}
               <span className="text-primaryOrange">Schulen</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
               Flexible Staffelpreise: passgenau für Ihre Schule oder
               Institution.
             </p>
@@ -884,12 +880,12 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               So funktioniert's
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               In vier einfachen Schritten zu BeAFox in Ihrer Schule.
             </p>
           </motion.div>
@@ -952,12 +948,12 @@ export default function ForSchoolsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
               Häufige Fragen
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               Alles, was Sie über BeAFox for Schools wissen müssen.
             </p>
           </motion.div>
@@ -1023,7 +1019,7 @@ export default function ForSchoolsPage() {
                     className="w-full text-left cursor-pointer focus:outline-none p-6"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-xl font-bold text-darkerGray flex-1">
+                      <h3 className="text-base md:text-xl font-bold text-darkerGray flex-1">
                         {faq.question}
                       </h3>
                       <ChevronDown
