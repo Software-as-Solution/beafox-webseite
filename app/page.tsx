@@ -22,6 +22,7 @@ import {
 import Lottie from "lottie-react";
 import DownloadModal from "@/components/DownloadModal";
 import kontaktAnimation from "@/public/assets/Lottie/Kontakt.json";
+import StructuredData from "@/components/StructuredData";
 
 export default function HomePage() {
   const [typedText, setTypedText] = useState("");
@@ -1454,6 +1455,82 @@ export default function HomePage() {
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}
         onAppStoreClick={handleAppStoreClick}
+      />
+
+      {/* Structured Data for SEO */}
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "BeAFox UG (haftungsbeschränkt)",
+          url: "https://beafox.app",
+          logo: "https://beafox.app/assets/logo.png",
+          description:
+            "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen. Speziell für Schulen und Ausbildungsbetriebe entwickelt.",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Siemensweg 2",
+            addressLocality: "Neutraubling",
+            postalCode: "93073",
+            addressCountry: "DE",
+          },
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+49-178-2723-673",
+            contactType: "customer service",
+            email: "info@beafox.app",
+            availableLanguage: ["German"],
+          },
+          sameAs: [
+            "https://www.instagram.com/beafox_app",
+            "https://www.linkedin.com/company/beafox",
+            "https://twitter.com/beafox_app",
+            "https://www.youtube.com/@beafox",
+          ],
+        }}
+      />
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "BeAFox",
+          url: "https://beafox.app",
+          description:
+            "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen.",
+          publisher: {
+            "@type": "Organization",
+            name: "BeAFox UG (haftungsbeschränkt)",
+          },
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: "https://beafox.app/search?q={search_term_string}",
+            },
+            "query-input": "required name=search_term_string",
+          },
+        }}
+      />
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: "BeAFox",
+          applicationCategory: "EducationalApplication",
+          operatingSystem: "iOS, Android",
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "EUR",
+          },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.8",
+            ratingCount: "150",
+          },
+          description:
+            "Spielerische Lern-App für Finanzbildung junger Menschen. Lerne Finanzwissen mit Gamification, Missionen und Challenges.",
+        }}
       />
     </>
   );
