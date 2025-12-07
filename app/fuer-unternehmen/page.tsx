@@ -355,8 +355,8 @@ export default function ForBusinessPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-base md:text-xl text-lightGray mb-8 md:mb-12"
               >
-                Mitarbeitende, die Geld verstehen fokussierter, bleiben gesünder
-                und länger im Unternehmen.
+                Mitarbeitende, die Geld verstehen arbeiten fokussierter, bleiben
+                gesünder und länger im Unternehmen.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -364,12 +364,12 @@ export default function ForBusinessPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start items-center lg:items-start"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start items-center lg:items-start w-full sm:w-auto"
               >
                 <Button
                   href="/kontakt"
                   variant="primary"
-                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full sm:w-auto"
                 >
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -377,7 +377,7 @@ export default function ForBusinessPage() {
                 <Button
                   href="/preise"
                   variant="outline"
-                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full sm:w-auto"
                 >
                   Preise ansehen
                 </Button>
@@ -484,7 +484,7 @@ export default function ForBusinessPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Investieren Sie in das wichtigste{" "}
+              Investieren Sie in den wichtigsten{" "}
               <span className="text-primaryOrange">Future Skill</span>
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
@@ -505,7 +505,7 @@ export default function ForBusinessPage() {
               <h3 className="text-2xl font-bold text-darkerGray mb-4">
                 Warum Finanzbildung?
               </h3>
-              <p className="text-lightGray mb-4 text-base md:text-lg">
+              <p className="hidden md:block text-lightGray mb-4 text-base md:text-lg">
                 Finanzielle Kompetenz ist einer der wichtigsten Future Skills
                 für Ihre Mitarbeiter. Sie stärkt nicht nur die persönliche
                 Entwicklung, sondern auch die berufliche Leistungsfähigkeit und
@@ -543,8 +543,7 @@ export default function ForBusinessPage() {
               <p className="text-lightGray mb-4 text-base md:text-lg">
                 <strong>Ganzheitliche Finanzbildung:</strong> Mit unserer
                 spielerischen App lernen Ihre Mitarbeiter kontinuierlich und
-                nachhaltig. Optional ergänzen wir das Angebot mit regelmäßigen
-                Workshops für maximale Wirkung.
+                nachhaltig.
               </p>
               <p className="text-lightGray text-base md:text-lg mb-4">
                 So investieren Sie in einen der wichtigsten Future Skills und
@@ -766,7 +765,7 @@ export default function ForBusinessPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
+            className="text-center mt-8 sm:mt-12"
           >
             <Button
               href="/kontakt"
@@ -991,13 +990,13 @@ export default function ForBusinessPage() {
             className="text-center mb-6 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Wie viele <span className="text-primaryOrange">Mitarbeiter</span>{" "}
-              seid ihr?
+              Jetzt Ihre <span className="text-primaryOrange">Mitarbeiter</span>{" "}
+              fit machen
             </h2>
           </motion.div>
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Calculator */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -1005,6 +1004,42 @@ export default function ForBusinessPage() {
               className="bg-primaryWhite rounded-2xl p-6 md:p-8 border-2 border-primaryOrange/20 shadow-lg"
             >
               <PriceCalculator />
+            </motion.div> */}
+
+            {/* Left: Price Box */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-primaryWhite rounded-2xl p-6 md:p-8 border-2 border-primaryOrange/20 shadow-lg"
+            >
+              <div className="text-center">
+                <div className="mb-6">
+                  <p className="text-sm md:text-base text-lightGray mb-2">Ab</p>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primaryOrange">
+                      3,99€
+                    </span>
+                    <span className="text-lg md:text-xl text-lightGray">
+                      / Monat
+                    </span>
+                  </div>
+                  <p className="text-base md:text-lg text-lightGray mt-2">
+                    pro Mitarbeiter
+                  </p>
+                </div>
+                <a
+                  href="https://app.cal.eu/beafox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-primaryOrange/90 text-primaryWhite px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl w-full"
+                >
+                  <Calendar className="w-5 h-5" />
+                  Termin vereinbaren
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
             </motion.div>
 
             {/* Right: Text Content */}
@@ -1022,7 +1057,7 @@ export default function ForBusinessPage() {
               </p>
 
               {/* Individual Offer Info */}
-              <div className="bg-primaryOrange/10 rounded-lg p-4 border-2 border-primaryOrange/20">
+              <div className="bg-primaryOrange/10 rounded-lg p-4 md:p-6 border-2 border-primaryOrange/20">
                 <div className="flex items-start gap-3">
                   <Sparkles className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
                   <div>
@@ -1037,20 +1072,15 @@ export default function ForBusinessPage() {
                 </div>
               </div>
 
-              <div className="pt-2 sm:pt-6">
-                <p className="text-sm text-lightGray mb-3 text-center">
-                  Bereit für den nächsten Schritt?
-                </p>
-                <div className="flex justify-center md:justify-start">
-                  <Button
-                    href="/kontakt"
-                    variant="outline"
-                    className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
-                  >
-                    Jetzt Partner werden
-                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                  </Button>
-                </div>
+              <div className="pt-2">
+                <Button
+                  href="/kontakt"
+                  variant="outline"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full md:w-auto"
+                >
+                  Mehr Informationen
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -1103,12 +1133,12 @@ export default function ForBusinessPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start w-full sm:w-auto"
               >
                 <Button
                   href="/kontakt"
                   variant="secondary"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+                  className="flex items-center justify-center gap-2 !px-6 !py-3.5 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/95 !text-primaryOrange !border-primaryWhite font-semibold text-sm md:text-base shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto"
                 >
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -1116,7 +1146,7 @@ export default function ForBusinessPage() {
                 <Button
                   onClick={() => handleAppStoreClick()}
                   variant="secondary"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+                  className="flex items-center justify-center gap-2 !px-6 !py-3.5 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/95 !text-primaryOrange !border-primaryWhite font-semibold text-sm md:text-base shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto"
                 >
                   App herunterladen
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />

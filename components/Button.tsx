@@ -29,16 +29,18 @@ export default function Button({
   };
 
   // Check if className contains w-full to determine if button should be full width
-  const isFullWidth =
+  // But respect responsive classes like sm:!w-auto
+  const hasFullWidth =
     className.includes("w-full") || className.includes("!w-full");
+  const hasResponsiveWidth =
+    className.includes("sm:!w-auto") || className.includes("sm:w-auto");
+  const isFullWidth = hasFullWidth && !hasResponsiveWidth;
 
   const buttonContent = (
     <motion.div
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`${baseStyles} ${variants[variant]} ${className} ${
-        isFullWidth ? "w-full" : ""
-      }`}
+      className={`${baseStyles} ${variants[variant]} ${className}`}
     >
       {children}
     </motion.div>
@@ -48,7 +50,13 @@ export default function Button({
     return (
       <Link
         href={href}
-        className={isFullWidth ? "block w-full" : "inline-block"}
+        className={
+          isFullWidth
+            ? "block w-full"
+            : hasResponsiveWidth
+            ? "block"
+            : "inline-block"
+        }
       >
         {buttonContent}
       </Link>
@@ -56,7 +64,12 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} className="border-none bg-transparent p-0 w-full">
+    <button
+      onClick={onClick}
+      className={`border-none bg-transparent p-0 ${
+        isFullWidth ? "w-full" : hasResponsiveWidth ? "w-full sm:w-auto" : ""
+      }`}
+    >
       {buttonContent}
     </button>
   );

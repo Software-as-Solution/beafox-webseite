@@ -200,7 +200,7 @@ export default function BeAFoxUnlimitedPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
           >
-            Lerne Finanzen auf deine Art – spielerisch, flexibel und in deinem
+            Lerne Finanzen auf deine Art. Spielerisch, flexibel und in deinem
             eigenen Tempo. BeAFox Unlimited gibt dir Zugang zu allen Lernmodulen
             und Features.
           </motion.p>
@@ -232,7 +232,7 @@ export default function BeAFoxUnlimitedPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full sm:w-auto"
           >
             <Button
               onClick={() => handleAppStoreClick()}
@@ -254,7 +254,7 @@ export default function BeAFoxUnlimitedPage() {
       </Section>
 
       {/* Stats Section */}
-      <Section className="bg-white py-0 md:py-12 lg:py-16">
+      <Section className="bg-white py-0 md:py-6 lg:py-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {benefits.map((benefit, index) => (
@@ -264,15 +264,15 @@ export default function BeAFoxUnlimitedPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="text-center bg-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20"
+                className="text-center bg-primaryOrange/5 rounded-xl p-3 md:p-6 border-2 border-primaryOrange/20"
               >
                 <benefit.icon
-                  className={`w-8 h-8 text-primaryOrange mx-auto mb-3`}
+                  className={`w-6 h-6 md:w-8 md:h-8 text-primaryOrange mx-auto mb-2 md:mb-3`}
                 />
-                <div className="text-3xl md:text-4xl font-bold text-darkerGray mb-2">
+                <div className="text-xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-1 md:mb-2">
                   {benefit.value}
                 </div>
-                <div className="text-sm md:text-base text-lightGray">
+                <div className="text-xs md:text-sm lg:text-base text-lightGray">
                   {benefit.label}
                 </div>
               </motion.div>

@@ -17,6 +17,7 @@ import {
   Building2,
   Clock,
   Activity,
+  Calendar,
 } from "lucide-react";
 import Lottie from "lottie-react";
 import DownloadModal from "@/components/DownloadModal";
@@ -1263,7 +1264,7 @@ export default function HomePage() {
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primaryWhite mb-3 md:mb-4">
-              Jetzt Jetzt Partner werden!
+              Jetzt Partner werden!
             </h2>
 
             <p className="text-base md:text-lg lg:text-xl text-primaryWhite/90 mb-6 md:mb-8 leading-relaxed">
@@ -1273,7 +1274,7 @@ export default function HomePage() {
               junge Generation selbstständig und motiviert Finanzwissen erwirbt.
             </p>
 
-            <div className="flex justify-center md:justify-start">
+            <div className="flex flex-col gap-3 md:gap-4 justify-center md:justify-start">
               <Button
                 href="/kontakt"
                 variant="secondary"
@@ -1282,6 +1283,15 @@ export default function HomePage() {
                 Jetzt Partner werden
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
+              <a
+                href="https://app.cal.eu/beafox"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-primaryWhite text-primaryWhite hover:bg-primaryWhite/10 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 text-base md:text-lg w-full sm:w-auto text-center"
+              >
+                <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                Termin vereinbaren
+              </a>
             </div>
           </motion.div>
 

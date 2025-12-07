@@ -10,7 +10,7 @@ import {
   Search,
   Sparkles,
   HelpCircle,
-  DollarSign,
+  Tag,
   School,
   Briefcase,
   Smartphone,
@@ -21,6 +21,8 @@ import {
   Clock,
   Shield,
   Zap,
+  Infinity,
+  Mail,
 } from "lucide-react";
 
 interface FAQItem {
@@ -282,7 +284,7 @@ export default function FAQPage() {
 
       {/* Popular FAQs */}
       {selectedCategory === "Alle" && searchQuery === "" && (
-        <Section className="bg-white py-0 md:py-2 lg:py-2 relative bottom-2">
+        <Section className="bg-white py-0 md:py-2 lg:py-2 relative bottom-2 pt-0 md:pt-6 lg:pt-10">
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -458,31 +460,31 @@ export default function FAQPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: DollarSign,
-                title: "Preise",
-                description: "Erfahre mehr über unsere Preismodelle",
-                href: "/preise",
+                icon: Briefcase,
+                title: "BeAFox for Business",
+                description: "BeAFox for Business im Detail",
+                href: "/fuer-unternehmen",
+                color: "bg-primaryOrange/10 text-primaryOrange",
+              },
+              {
+                icon: Infinity,
+                title: "BeAFox Unlimited",
+                description: "Unbegrenztes Lernen für Privatpersonen",
+                href: "/beafox-unlimited",
                 color: "bg-primaryOrange/10 text-primaryOrange",
               },
               {
                 icon: School,
                 title: "Für Schulen",
                 description: "Alles über BeAFox for Schools",
-                href: "/",
+                href: "/fuer-schulen",
                 color: "bg-primaryOrange/10 text-primaryOrange",
               },
               {
-                icon: Briefcase,
-                title: "Für Unternehmen",
-                description: "BeAFox for Business im Detail",
-                href: "/",
-                color: "bg-primaryOrange/10 text-primaryOrange",
-              },
-              {
-                icon: BookOpen,
-                title: "Über BeAFox",
-                description: "Lerne mehr über unsere Mission",
-                href: "/ueber-beafox",
+                icon: Mail,
+                title: "Kontakt",
+                description: "Kontaktiere uns für Fragen",
+                href: "/kontakt",
                 color: "bg-primaryOrange/10 text-primaryOrange",
               },
             ].map((link, index) => (

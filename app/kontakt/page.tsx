@@ -20,6 +20,7 @@ import {
   Building2,
   GraduationCap,
   Trophy,
+  Calendar,
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -131,7 +132,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-10">
+      <Section className="bg-primaryWhite pb-0 sm::pb-12 lg:pb-16 pt-12 md:pt-16 lg:pt-20 mt-14">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -158,51 +159,11 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-lightGray max-w-2xl mx-auto"
+            className="text-base md:text-xl text-lightGray max-w-2xl mx-auto"
           >
-            Unser Support ist rund um die Uhr für dich da und beantwortet deine
+            Unser Support steht dir zuverlässig zur Seite und beantwortet deine
             Anliegen so schnell und hilfreich wie möglich.
           </motion.p>
-        </div>
-      </Section>
-
-      {/* Quick Links Section */}
-      <Section className="bg-white py-4 md:py-8 lg:py-12">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
-              Schnell zu deinem Anliegen
-            </h2>
-            <p className="text-lightGray">
-              Wähle direkt, wofür du dich interessierst
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {quickLinks.map((link, index) => (
-              <motion.a
-                key={index}
-                href={link.href}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className={`${link.color} rounded-xl p-6 border-2 hover:border-primaryOrange/40 hover:shadow-lg transition-all cursor-pointer group`}
-              >
-                <link.icon
-                  className={`w-8 h-8 ${link.iconColor} mb-3 group-hover:scale-110 transition-transform`}
-                />
-                <h3 className="font-bold text-darkerGray mb-2">{link.title}</h3>
-                <p className="text-sm text-lightGray">{link.description}</p>
-              </motion.a>
-            ))}
-          </div>
         </div>
       </Section>
 
@@ -217,15 +178,50 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-darkerGray mb-8">
+              <h2 className="text-3xl md:text-4xl text-center sm:text-left font-bold text-darkerGray mb-4 sm:mb-8">
                 Kontaktdaten
               </h2>
+
+              {/* Cal.com Booking */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20 mb-6"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="bg-primaryOrange/20 rounded-lg p-3 flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-primaryOrange" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-darkerGray mb-2 text-lg">
+                      Termin vereinbaren
+                    </h3>
+                    <p className="text-lightGray text-sm mb-4">
+                      Buche direkt einen Termin für ein persönliches Gespräch
+                      oder eine Beratung.
+                    </p>
+                    <a
+                      href="https://app.cal.eu/beafox"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-primaryOrange hover:bg-primaryOrange/90 text-primaryWhite px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
+                    >
+                      <Calendar className="w-5 h-5" />
+                      Termin buchen
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+
               <div className="space-y-6 mb-12">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
                   className="flex items-start gap-4 bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
                 >
                   <div className="bg-primaryOrange/10 rounded-lg p-3 flex-shrink-0">
@@ -248,7 +244,7 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
                   className="flex items-start gap-4 bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
                 >
                   <div className="bg-primaryOrange/10 rounded-lg p-3 flex-shrink-0">
@@ -271,7 +267,7 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
                   className="flex items-start gap-4 bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
                 >
                   <div className="bg-primaryOrange/10 rounded-lg p-3 flex-shrink-0">
@@ -292,38 +288,13 @@ export default function ContactPage() {
                 </motion.div>
               </div>
 
-              {/* Support Info Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.4 }}
-                className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-primaryOrange rounded-lg p-3 flex-shrink-0">
-                    <MessageCircle className="w-6 h-6 text-primaryWhite" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-darkerGray mb-2 text-lg">
-                      24/7 Support
-                    </h3>
-                    <p className="text-lightGray">
-                      Unser Support ist rund um die Uhr für dich da und
-                      beantwortet deine Anliegen so schnell und hilfreich wie
-                      möglich.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
               {/* Response Time Info */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.5 }}
-                className="mt-6 flex items-center gap-3 text-lightGray"
+                className=" mt-4sm:mt-6 flex items-center gap-3 text-lightGray mb-6"
               >
                 <Clock className="w-5 h-5 text-primaryOrange" />
                 <span className="text-sm">
@@ -340,7 +311,7 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-darkerGray mb-8">
+              <h2 className="text-3xl md:text-4xl text-center sm:text-left font-bold text-darkerGray mb-4 sm:mb-8">
                 Nachricht senden
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -510,35 +481,6 @@ export default function ContactPage() {
               </form>
             </motion.div>
           </div>
-        </div>
-      </Section>
-
-      {/* FAQ Preview Section */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16 pt-0 md:pt-0 lg:pt-0">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <HelpCircle className="w-12 h-12 text-primaryOrange mx-auto mb-4" />
-            <h2 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
-              Häufig gestellte Fragen
-            </h2>
-            <p className="text-lightGray mb-8">
-              Vielleicht findest du hier schon die Antwort auf deine Frage
-            </p>
-            <Button
-              href="/faq"
-              variant="outline"
-              className="flex items-center justify-center gap-2 mx-auto md:w-[50%] !px-6 !py-3 md:!px-8 md:!py-4"
-            >
-              <FileText className="w-4 h-4 md:w-5 md:h-5" />
-              Alle FAQs ansehen
-              <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-            </Button>
-          </motion.div>
         </div>
       </Section>
 

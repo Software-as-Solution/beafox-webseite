@@ -206,12 +206,12 @@ export default function ForSchoolsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start items-center lg:items-start"
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start items-center lg:items-start w-full sm:w-auto"
               >
                 <Button
                   href="/kontakt"
                   variant="primary"
-                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full sm:w-auto"
                 >
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -219,7 +219,7 @@ export default function ForSchoolsPage() {
                 <Button
                   href="/preise"
                   variant="outline"
-                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full sm:w-auto"
                 >
                   Preise ansehen
                 </Button>
@@ -341,9 +341,9 @@ export default function ForSchoolsPage() {
               className="bg-white rounded-xl p-6 md:p-8 border-2 border-primaryOrange/20"
             >
               <h3 className="text-2xl font-bold text-darkerGray mb-4">
-                Die Herausforderung
+                Die Herausforderungen
               </h3>
-              <p className="text-lightGray mb-4 text-base md:text-lg">
+              <p className="hidden md:block text-lightGray mb-4 text-base md:text-lg">
                 Ein Lehrer betreut gleichzeitig mehrere Klassen. Die Schüler
                 benötigen eine Möglichkeit, selbstständig zu lernen, auch wenn
                 der Lehrer nicht direkt vor Ort ist.

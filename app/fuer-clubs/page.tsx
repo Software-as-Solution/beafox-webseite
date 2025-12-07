@@ -17,6 +17,14 @@ import {
   Star,
   ArrowDown,
   CheckCircle2,
+  Smartphone,
+  Infinity,
+  BarChart,
+  Award,
+  Users,
+  UserCheck,
+  Lock,
+  Headphones,
 } from "lucide-react";
 
 export default function ForClubsPage() {
@@ -37,7 +45,7 @@ export default function ForClubsPage() {
     description:
       "Finanzielle Sicherheit schafft mentale Stärke und lässt Talente mit klarem Kopf auf dem Platz stehen.",
     impact:
-      "Mit BeAFox geben Vereine ihren Spielern das Wissen, das sie im Alltag stärkt und im Sport fokussiert hält – das führt zu echter Entwicklung auf und neben dem Feld.",
+      "Mit BeAFox geben Vereine ihren Sportlern das Wissen, das sie im Alltag stärkt und im Sport fokussiert hält – das führt zu echter Entwicklung auf und neben dem Feld.",
   };
 
   const journey = [
@@ -72,7 +80,7 @@ export default function ForClubsPage() {
       icon: Brain,
       title: "Mentale Stärke",
       description:
-        "Finanzielle Sicherheit gibt Spielern die mentale Ruhe, die sie brauchen, um sich voll auf den Sport zu konzentrieren.",
+        "Finanzielle Sicherheit gibt Sportlern die mentale Ruhe, die sie brauchen, um sich voll auf den Sport zu konzentrieren.",
       stat: "85%",
       statLabel: "Bessere Fokussierung",
     },
@@ -80,7 +88,7 @@ export default function ForClubsPage() {
       icon: Trophy,
       title: "Bessere Leistung",
       description:
-        "Ausgeglichene Spieler ohne finanzielle Sorgen zeigen bessere Leistungen auf dem Platz.",
+        "Ausgeglichene Sportler ohne finanzielle Sorgen zeigen bessere Leistungen auf dem Platz.",
       stat: "92%",
       statLabel: "Zufriedenheit",
     },
@@ -90,13 +98,13 @@ export default function ForClubsPage() {
       description:
         "BeAFox fördert nicht nur sportliche, sondern auch persönliche Entwicklung – für echte Talente.",
       stat: "200+",
-      statLabel: "Spieler",
+      statLabel: "Sportler",
     },
     {
       icon: Shield,
       title: "Zukunftssicherheit",
       description:
-        "Spieler lernen früh, verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere.",
+        "Sportler lernen früh, verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere.",
       stat: "15+",
       statLabel: "Vereine",
     },
@@ -107,28 +115,28 @@ export default function ForClubsPage() {
       id: "stufen",
       title: "Frei wählbare Lerninhalte",
       description:
-        "Sportler können sich frei aussuchen was sie lernen möchten. Ob Budgetplanung, Sparen, Investieren oder Versicherungen – jeder Spieler wählt die Themen, die für ihn persönlich am relevantesten sind. So wird Finanzbildung individuell und zielgerichtet.",
+        "Sportler können sich frei aussuchen was sie lernen möchten. Ob Budgetplanung, Sparen, Investieren oder Versicherungen – jeder Sportler wählt die Themen, die für ihn persönlich am relevantesten sind. So wird Finanzbildung individuell und zielgerichtet.",
       mockup: "/assets/Mockups/Mockup-Stufen.png",
     },
     {
       id: "lernpfad",
       title: "Strukturierter Lernpfad",
       description:
-        "Alle Sportler lernen einfach den Lernpfad schritt für schritt, so dass sie sich um nichts gedanken machen müssen. Von den Grundlagen bis zu fortgeschrittenen Themen führt der strukturierte Weg jeden Spieler sicher durch die Finanzbildung – perfekt für die Zeit zwischen Trainingseinheiten.",
+        "Alle Sportler lernen einfach den Lernpfad schritt für schritt, so dass sie sich um nichts gedanken machen müssen. Von den Grundlagen bis zu fortgeschrittenen Themen führt der strukturierte Weg jeden Sportler sicher durch die Finanzbildung – perfekt für die Zeit zwischen Trainingseinheiten.",
       mockup: "/assets/Mockups/Mockup-Lernpfad.png",
     },
     {
       id: "rangliste",
-      title: "Spielerisches System",
+      title: "Sportlerisches System",
       description:
-        "Spieler können untereinander antreten und wir schaffen Konkurrenz nicht nur auf dem Platz sondern auch in der App. Ranglisten, Missionen und Challenges motivieren Ihre Spieler, auch außerhalb des Trainings aktiv zu bleiben. So wird Finanzbildung zum Team-Erlebnis.",
+        "Sportler können untereinander antreten und wir schaffen Konkurrenz nicht nur auf dem Platz sondern auch in der App. Ranglisten, Missionen und Challenges motivieren Ihre Sportler, auch außerhalb des Trainings aktiv zu bleiben. So wird Finanzbildung zum Team-Erlebnis.",
       mockup: "/assets/Mockups/Mockup-Rangliste.png",
     },
     {
       id: "profil",
       title: "Statistiken & Fortschritte",
       description:
-        "Spielern & Vereine können eigene Statistiken sammeln und sehen alle Fortschritte. Behalten Sie den Überblick über den Lernfortschritt Ihrer Spieler, sehen Sie wer aktiv ist und wo Unterstützung benötigt wird. So fördern Sie gezielt die Entwicklung jedes einzelnen Talents.",
+        "Sportlern & Vereine können eigene Statistiken sammeln und sehen alle Fortschritte. Behalten Sie den Überblick über den Lernfortschritt Ihrer Sportler, sehen Sie wer aktiv ist und wo Unterstützung benötigt wird. So fördern Sie gezielt die Entwicklung jedes einzelnen Talents.",
       mockup: "/assets/Mockups/Mockup-Profil.png",
     },
   ];
@@ -136,7 +144,7 @@ export default function ForClubsPage() {
   const testimonials = [
     {
       quote:
-        "BeAFox hat unsere Nachwuchsarbeit revolutioniert. Unsere Spieler sind ausgeglichener und fokussierter – das merkt man auf dem Platz sofort.",
+        "BeAFox hat unsere Nachwuchsarbeit revolutioniert. Unsere Sportler sind ausgeglichener und fokussierter – das merkt man auf dem Platz sofort.",
       author: "Michael Schmidt",
       role: "Nachwuchstrainer",
       club: "FC Musterstadt",
@@ -152,7 +160,7 @@ export default function ForClubsPage() {
     },
     {
       quote:
-        "Die Spieler lernen verantwortungsvoll mit Geld umzugehen – das hilft ihnen nicht nur jetzt, sondern auch für die Zeit nach der Karriere.",
+        "Die Sportler lernen verantwortungsvoll mit Geld umzugehen – das hilft ihnen nicht nur jetzt, sondern auch für die Zeit nach der Karriere.",
       author: "Thomas Müller",
       role: "Jugendleiter",
       club: "TSV Vorzeige",
@@ -163,26 +171,28 @@ export default function ForClubsPage() {
   return (
     <>
       {/* Hero Section - Full Width Impact */}
-      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange/90 to-primaryOrange/80 py-16 md:py-20 lg:py-28 mt-10 relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange/90 to-primaryOrange/80 py-12 md:py-20 lg:py-28 mt-10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
         <div className="max-w-5xl mx-auto text-center relative z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 md:mb-8"
+            className="mb-4 md:mb-8"
           >
-            <div className="inline-flex items-center gap-2 text-primaryWhite text-sm md:text-base border-2 border-primaryWhite/40 rounded-full px-4 md:px-6 py-2 md:py-2.5 bg-primaryWhite/10 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite" />
-              <span className="font-semibold">BeAFox for Clubs</span>
-              <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primaryWhite" />
+            <div className="inline-flex items-center gap-1.5 md:gap-2 text-primaryWhite text-xs md:text-base border-2 border-primaryWhite/40 rounded-full px-3 md:px-6 py-1.5 md:py-2.5 bg-primaryWhite/10 backdrop-blur-sm">
+              <Sparkles className="w-3 h-3 md:w-5 md:h-5 text-primaryWhite" />
+              <span className="font-semibold text-xs md:text-base">
+                BeAFox for Clubs
+              </span>
+              <Sparkles className="w-3 h-3 md:w-5 md:h-5 text-primaryWhite" />
             </div>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primaryWhite mb-6 md:mb-8 leading-tight"
+            className="text-2xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primaryWhite mb-4 md:mb-8 leading-tight"
           >
             {coreMessage.headline}
             <br />
@@ -194,7 +204,7 @@ export default function ForClubsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-xl md:text-2xl lg:text-3xl text-primaryWhite/95 mb-6 md:mb-8 max-w-3xl mx-auto font-medium leading-relaxed"
+            className="text-base md:text-2xl lg:text-3xl text-primaryWhite/95 mb-6 md:mb-8 max-w-3xl mx-auto font-medium leading-relaxed"
           >
             {coreMessage.description}
           </motion.p>
@@ -202,12 +212,12 @@ export default function ForClubsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center w-full sm:w-auto"
           >
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite font-semibold shadow-lg"
+              className="flex items-center justify-center gap-2 !px-4 !py-2.5 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite font-semibold shadow-lg text-sm md:text-base w-full sm:w-auto"
             >
               Jetzt Partner werden
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
@@ -218,31 +228,31 @@ export default function ForClubsPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <ArrowDown className="w-6 h-6 text-primaryWhite/60 animate-bounce" />
+          <ArrowDown className="w-5 h-5 md:w-6 md:h-6 text-primaryWhite/60 animate-bounce" />
         </motion.div>
       </Section>
 
       {/* Journey Section - Before/After */}
-      <Section className="bg-white py-12 md:py-16 lg:py-20">
-        <div className="max-w-6xl mx-auto">
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 md:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-3 md:mb-4">
               Die <span className="text-primaryOrange">Transformation</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               Von finanziellen Sorgen zu mentaler Stärke.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-12">
             {journey.map((item, index) => (
               <motion.div
                 key={index}
@@ -250,28 +260,30 @@ export default function ForClubsPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className={`${item.color} rounded-2xl p-8 border-2 ${
+                className={`${
+                  item.color
+                } rounded-xl md:rounded-2xl p-4 md:p-8 border-2 ${
                   item.color.includes("red")
                     ? "border-red-300"
                     : "border-green-300"
                 }`}
               >
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
                   <div
-                    className={`${item.iconColor} text-primaryWhite w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl`}
+                    className={`${item.iconColor} text-primaryWhite w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-lg md:text-xl`}
                   >
                     {item.step}
                   </div>
-                  <h3 className="text-2xl font-bold text-darkerGray">
+                  <h3 className="text-xl md:text-2xl font-bold text-darkerGray">
                     {item.title}
                   </h3>
                 </div>
                 {item.problems && (
-                  <ul className="space-y-3">
+                  <ul className="space-y-2 md:space-y-3">
                     {item.problems.map((problem, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-3 text-darkerGray"
+                        className="flex items-start gap-2 md:gap-3 text-sm md:text-base text-darkerGray"
                       >
                         <div className="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0"></div>
                         <span>{problem}</span>
@@ -280,13 +292,13 @@ export default function ForClubsPage() {
                   </ul>
                 )}
                 {item.benefits && (
-                  <ul className="space-y-3">
+                  <ul className="space-y-2 md:space-y-3">
                     {item.benefits.map((benefit, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-3 text-darkerGray"
+                        className="flex items-start gap-2 md:gap-3 text-sm md:text-base text-darkerGray"
                       >
-                        <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-green-600 flex-shrink-0 mt-0.5" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -299,25 +311,25 @@ export default function ForClubsPage() {
       </Section>
 
       {/* Benefits Section - Large Cards with Stats */}
-      <Section className="bg-primaryWhite py-12 md:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto">
+      <Section className="bg-primaryWhite py-8 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-3 md:mb-4">
               Was <span className="text-primaryOrange">BeAFox for Clubs</span>{" "}
               bewirkt
             </h2>
-            <p className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto">
-              Messbare Ergebnisse für Ihren Verein und Ihre Spieler.
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
+              Messbare Ergebnisse für Ihren Verein und Ihre Sportler.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-8">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
@@ -325,25 +337,27 @@ export default function ForClubsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-lg"
+                className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-lg"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="bg-primaryOrange/10 rounded-xl p-4">
-                    <benefit.icon className="w-10 h-10 text-primaryOrange" />
+                <div className="flex items-start justify-between mb-4 md:mb-6">
+                  <div className="bg-primaryOrange/10 rounded-lg md:rounded-xl p-2 md:p-4">
+                    <benefit.icon className="w-6 h-6 md:w-10 md:h-10 text-primaryOrange" />
                   </div>
                   <div className="text-right">
-                    <div className="text-4xl md:text-5xl font-bold text-primaryOrange mb-1">
+                    <div className="text-2xl md:text-4xl lg:text-5xl font-bold text-primaryOrange mb-1">
                       {benefit.stat}
                     </div>
-                    <div className="text-sm text-lightGray">
+                    <div className="text-xs md:text-sm text-lightGray">
                       {benefit.statLabel}
                     </div>
                   </div>
                 </div>
-                <h3 className="text-2xl font-bold text-darkerGray mb-3">
+                <h3 className="text-lg md:text-2xl font-bold text-darkerGray mb-2 md:mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-lightGray text-lg">{benefit.description}</p>
+                <p className="text-sm md:text-lg text-lightGray">
+                  {benefit.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -351,25 +365,25 @@ export default function ForClubsPage() {
       </Section>
 
       {/* Features Section - Vertical Layout */}
-      <Section className="bg-white py-12 md:py-16 lg:py-20">
-        <div className="max-w-6xl mx-auto">
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-3 md:mb-4">
               So funktioniert{" "}
               <span className="text-primaryOrange">BeAFox for Clubs</span>
             </h2>
-            <p className="text-lg md:text-xl text-lightGray">
+            <p className="text-base md:text-xl text-lightGray">
               Einfach, effektiv, nachhaltig
             </p>
           </motion.div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.id}
@@ -379,23 +393,23 @@ export default function ForClubsPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`flex flex-col ${
                   index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                } gap-8 md:gap-12 items-center`}
+                } gap-6 md:gap-12 items-center`}
               >
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-primaryOrange text-primaryWhite w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-1 w-full">
+                  <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                    <div className="bg-primaryOrange text-primaryWhite w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-base md:text-lg">
                       {index + 1}
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-darkerGray">
+                    <h3 className="text-xl md:text-3xl font-bold text-darkerGray">
                       {feature.title}
                     </h3>
                   </div>
-                  <p className="text-lg text-lightGray">
+                  <p className="text-sm md:text-lg text-lightGray">
                     {feature.description}
                   </p>
                 </div>
-                <div className="flex-1 flex justify-center">
-                  <div className="relative w-full max-w-[280px]">
+                <div className="flex-1 flex justify-center w-full">
+                  <div className="relative w-full max-w-[200px] md:max-w-[280px]">
                     <Image
                       src={feature.mockup}
                       alt={feature.title}
@@ -496,77 +510,153 @@ export default function ForClubsPage() {
       </Section> */}
 
       {/* Features List - Compact Grid */}
-      <Section className="bg-white py-12 md:py-16 lg:py-20">
-        <div className="max-w-5xl mx-auto">
+      <Section className="bg-white py-8 md:py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 md:mb-12"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              Im Paket enthalten
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-3 md:mb-4">
+              Alles im <span className="text-primaryOrange">Paket</span>{" "}
+              enthalten
             </h2>
+            <p className="text-sm md:text-lg text-lightGray max-w-2xl mx-auto">
+              Ein umfassendes Finanzbildungs-Paket, das alle Bedürfnisse Ihres
+              Clubs abdeckt
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {[
-              "Spielerische Lern-App",
-              "Vollständiger Zugang",
-              "Fortschritts-Tracking",
-              "Offizielle Zertifikate",
-              "Unbegrenzte Spieler",
-              "Persönlicher Ansprechpartner",
-              "DSGVO-konform",
-              "Support & Updates",
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="bg-primaryWhite rounded-lg p-4 border-2 border-primaryOrange/20 text-center"
-              >
-                <Check className="w-5 h-5 text-primaryOrange mx-auto mb-2" />
-                <span className="text-sm font-medium text-darkerGray">
-                  {feature}
-                </span>
-              </motion.div>
-            ))}
+              {
+                icon: Smartphone,
+                title: "Sportlerische Lern-App",
+                description:
+                  "Gamifizierte Finanzbildung, die Ihre Sportler motiviert und nachhaltig lernt",
+                color: "bg-blue-50 border-blue-200",
+                iconColor: "text-blue-600",
+              },
+              {
+                icon: Infinity,
+                title: "Vollständiger Zugang",
+                description:
+                  "Alle Lernmodule, Missionen und Features ohne Einschränkungen",
+                color: "bg-purple-50 border-purple-200",
+                iconColor: "text-purple-600",
+              },
+              {
+                icon: BarChart,
+                title: "Fortschritts-Tracking",
+                description:
+                  "Detaillierte Einblicke in den Lernfortschritt jedes einzelnen Sportlers",
+                color: "bg-green-50 border-green-200",
+                iconColor: "text-green-600",
+              },
+              {
+                icon: Award,
+                title: "Offizielle Zertifikate",
+                description:
+                  "Anerkannte Zertifikate für erfolgreich abgeschlossene Module",
+                color: "bg-yellow-50 border-yellow-200",
+                iconColor: "text-yellow-600",
+              },
+              {
+                icon: Users,
+                title: "Unbegrenzte Sportler",
+                description:
+                  "Keine Obergrenze – alle Ihre Sportler können teilnehmen",
+                color: "bg-orange-50 border-orange-200",
+                iconColor: "text-orange-600",
+              },
+              {
+                icon: UserCheck,
+                title: "Persönlicher Ansprechpartner",
+                description:
+                  "Dedizierter Account Manager für individuelle Betreuung",
+                color: "bg-pink-50 border-pink-200",
+                iconColor: "text-pink-600",
+              },
+              {
+                icon: Shield,
+                title: "DSGVO-konform",
+                description:
+                  "Vollständiger Datenschutz nach höchsten europäischen Standards",
+                color: "bg-indigo-50 border-indigo-200",
+                iconColor: "text-indigo-600",
+              },
+              {
+                icon: Headphones,
+                title: "Support & Updates",
+                description:
+                  "Kontinuierliche Updates und persönlicher Support bei Fragen",
+                color: "bg-teal-50 border-teal-200",
+                iconColor: "text-teal-600",
+              },
+            ].map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  className={`${feature.color} rounded-lg md:rounded-xl p-4 md:p-6 border-2 hover:shadow-lg transition-all cursor-default`}
+                >
+                  <div className="flex items-start gap-2 md:gap-3 mb-2 md:mb-3">
+                    <div
+                      className={`${feature.iconColor} bg-white rounded-lg p-1.5 md:p-2 flex-shrink-0`}
+                    >
+                      <IconComponent className="w-4 h-4 md:w-6 md:h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-sm md:text-lg font-bold text-darkerGray mb-1">
+                        {feature.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="text-xs md:text-sm text-lightGray leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-12 md:py-16 lg:py-20 relative overflow-hidden">
+      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-8 md:py-16 lg:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-5"></div>
-        <div className="text-center max-w-3xl mx-auto relative z-10">
+        <div className="text-center max-w-3xl mx-auto relative z-10 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-6"
+            className="mb-4 md:mb-6"
           >
-            <Trophy className="w-16 h-16 text-primaryWhite mx-auto mb-4" />
+            <Trophy className="w-12 h-12 md:w-16 md:h-16 text-primaryWhite mx-auto mb-3 md:mb-4" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
+            className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primaryWhite"
           >
-            Bereit, Ihre Spieler ganzheitlich zu fördern?
+            Bereit, Ihre Sportler ganzheitlich zu fördern?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl mb-8 text-primaryWhite/90"
+            className="text-base md:text-xl mb-6 md:mb-8 text-primaryWhite/90"
           >
             Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und
             erhalten Sie ein individuelles Angebot für Ihren Verein.
@@ -576,19 +666,19 @@ export default function ForClubsPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center w-full sm:w-auto"
           >
             <Button
               href="/kontakt"
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+              className="flex items-center justify-center gap-2 !px-4 !py-2.5 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite text-sm md:text-base w-full sm:w-auto"
             >
               Jetzt Partner werden
             </Button>
             <Button
               onClick={() => handleAppStoreClick()}
               variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
+              className="flex items-center justify-center gap-2 !px-4 !py-2.5 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite text-sm md:text-base w-full sm:w-auto"
             >
               App herunterladen
             </Button>
