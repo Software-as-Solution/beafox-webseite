@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import CookieBanner from "@/components/CookieBanner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -124,24 +125,60 @@ export default function RootLayout({
   return (
     <html lang="de" className={inter.variable}>
       <body className="antialiased bg-primaryWhite">
-        {/* Google Analytics */}
+        {/* Google Analytics - wird nur geladen wenn Cookie-Consent gegeben wurde */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-J0GWX92CNH"
+          id="google-analytics-init"
           strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              // Prüfe Cookie-Consent
+              const cookieConsent = localStorage.getItem('cookieConsent');
+              if (cookieConsent) {
+                try {
+                  const preferences = JSON.parse(cookieConsent);
+                  if (preferences.analytics) {
+                    // Lade Google Analytics Script
+                    const script = document.createElement('script');
+                    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-J0GWX92CNH';
+                    script.async = true;
+                    document.head.appendChild(script);
+                    
+                    // Konfiguriere Google Analytics
+                    gtag('consent', 'default', {
+                      'analytics_storage': 'granted'
+                    });
+                    gtag('config', 'G-J0GWX92CNH');
+                  } else {
+                    // Analytics abgelehnt
+                    gtag('consent', 'default', {
+                      'analytics_storage': 'denied'
+                    });
+                  }
+                } catch (e) {
+                  // Fallback: Analytics standardmäßig deaktiviert
+                  gtag('consent', 'default', {
+                    'analytics_storage': 'denied'
+                  });
+                }
+              } else {
+                // Noch keine Entscheidung: Analytics deaktiviert bis Consent
+                gtag('consent', 'default', {
+                  'analytics_storage': 'denied'
+                });
+              }
+            `,
+          }}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-J0GWX92CNH');
-          `}
-        </Script>
 
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
         <ScrollToTop />
+        <CookieBanner />
       </body>
     </html>
   );
