@@ -229,79 +229,91 @@ export default function PricingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8"
+            className="text-center mb-6 sm:mb-12"
           >
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
-              Für Unternehmen
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
+              Jetzt Ihre <span className="text-primaryOrange">Mitarbeiter</span>{" "}
+              fit machen
             </h3>
-            <p className="text-base md:text-xl text-lightGray">
-              Optimierte Staffelpreise, die perfekt zu den Bedürfnissen Ihres
-              Unternehmens passen.
-            </p>
           </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            {businessPlans.map((plan, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className={`bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 transition-all ${
-                  plan.popular
-                    ? "border-primaryOrange scale-105 md:scale-105"
-                    : "border-primaryOrange/20 hover:border-primaryOrange/40"
-                }`}
-              >
-                <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-4">
-                  {plan.title}
-                </h4>
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left: Price Box */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-primaryWhite rounded-2xl p-6 md:p-8 border-2 border-primaryOrange/20 shadow-lg"
+            >
+              <div className="text-center">
                 <div className="mb-6">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-primaryOrange">
-                      {plan.price}
+                  <p className="text-sm md:text-base text-lightGray mb-2">Ab</p>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primaryOrange">
+                      3,99€
                     </span>
                     <span className="text-lg md:text-xl text-lightGray">
-                      {plan.period}
+                      / Monat
                     </span>
                   </div>
-                  <p className="text-sm md:text-base text-lightGray mt-2">
-                    zzgl. einmaliger Einrichtungsgebühr von {plan.setupFee} €
+                  <p className="text-base md:text-lg text-lightGray mt-2">
+                    pro Mitarbeiter
                   </p>
                 </div>
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, featureIndex) => {
-                    const featureText =
-                      typeof feature === "string" ? feature : feature.text;
-                    const FeatureIcon =
-                      typeof feature === "string"
-                        ? Check
-                        : feature.icon || Check;
-                    return (
-                      <li
-                        key={featureIndex}
-                        className="flex items-start gap-3 text-darkerGray"
-                      >
-                        <FeatureIcon className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                        <span className="text-sm md:text-base">
-                          {featureText}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
+                <a
+                  href="https://app.cal.eu/beafox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-primaryOrange/90 text-primaryWhite px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl w-full"
+                >
+                  <Calendar className="w-5 h-5" />
+                  Termin vereinbaren
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Right: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <p className="text-base md:text-lg text-lightGray">
+                Investieren Sie in den wichtigsten Future Skill für Ihre
+                Mitarbeitenden und das bei Kosten, die nicht einmal 1 % eines
+                Mitarbeitenden ausmachen.
+              </p>
+
+              {/* Individual Offer Info */}
+              <div className="bg-primaryOrange/10 rounded-lg p-4 md:p-6 border-2 border-primaryOrange/20">
+                <div className="flex items-start gap-3">
+                  <Sparkles className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm md:text-base font-medium text-darkerGray mb-1">
+                      Individuelle Pakete immer möglich
+                    </p>
+                    <p className="text-sm text-lightGray">
+                      Jederzeit können wir ein maßgeschneidertes Angebot für Ihr
+                      Unternehmen erstellen. Kontaktieren Sie uns einfach!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2">
                 <Button
                   href="/kontakt"
-                  variant={plan.popular ? "primary" : "outline"}
-                  className="w-full flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+                  variant="outline"
+                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full md:w-auto"
                 >
-                  Jetzt Partner werden
-                  <ArrowRight className="w-4 h-4" />
+                  Mehr Informationen
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
           </div>
         </div>
 
