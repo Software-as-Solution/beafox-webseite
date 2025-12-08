@@ -393,7 +393,7 @@ export default function BlogPage() {
               All unsere <span className="text-primaryOrange">Artikel</span>
             </h2>
             <p className="text-lg md:text-xl text-lightGray max-w-2xl mx-auto">
-              Entdecke alle unsere Blog-Posts und Updates.
+              Entdecke all unsere Blog-Posts und Updates.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

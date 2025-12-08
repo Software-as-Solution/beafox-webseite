@@ -68,7 +68,7 @@ export default function PricingPage() {
     period: "pro Schüler",
     period2: "pro Jahr",
     subtitle:
-      "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution",
+      "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution,",
     features: [
       { text: "Lernen ohne Grenzen", icon: Infinity },
       { text: "Vollständige Lernmodule", icon: BookOpen },
@@ -119,36 +119,45 @@ export default function PricingPage() {
     {
       title: "Standard-Abo",
       subtitle: "Monatlich kündbar.",
-      price: "€4.99",
+      price: "4,99 €",
       period: "/ monat",
       features: [
-        { text: "Lernen ohne Grenzen", icon: Infinity },
-        { text: "Vollständige Lernmodule", icon: BookOpen },
-        { text: "Integriertes Karteikartensystem", icon: Layers },
+        "Vollständiger Zugang zu allen Lektionen",
+        "Spielerisches Lernsystem",
+        "Karteikartensystem",
+        "Fortschritts-Tracking",
+        "Monatlich kündbar",
       ],
+      monthly: true,
     },
     {
       title: "Jahresabo",
       subtitle: "Am Beliebtesten",
-      price: "€3.99",
+      price: "3,99 €",
       period: "/ monat",
       yearlyNote: "pro Jahr",
       features: [
-        { text: "Lernen ohne Grenzen", icon: Infinity },
-        { text: "Vollständige Lernmodule", icon: BookOpen },
-        { text: "Integriertes Karteikartensystem", icon: Layers },
+        "Vollständiger Zugang zu allen Lektionen",
+        "Spielerisches Lernsystem",
+        "Karteikartensystem",
+        "Fortschritts-Tracking",
+        "2 Monate gespart",
+        "Jährlich kündbar",
       ],
       popular: true,
     },
     {
       title: "Lifetime",
       subtitle: "Am Billigsten",
-      price: "€49.99",
-      period: "/ Jahr",
+      price: "49,99 €",
+      period: "einmalig",
       features: [
-        { text: "Lernen ohne Grenzen", icon: Infinity },
-        { text: "Vollständige Lernmodule", icon: BookOpen },
-        { text: "Integriertes Karteikartensystem", icon: Layers },
+        "Vollständiger Zugang zu allen Lektionen",
+        "Spielerisches Lernsystem",
+        "Karteikartensystem",
+        "Fortschritts-Tracking",
+        "Lebenslanger Zugang",
+        "Alle zukünftigen Updates",
       ],
       cheapest: true,
     },
@@ -250,7 +259,7 @@ export default function PricingPage() {
                   <p className="text-sm md:text-base text-lightGray mb-2">Ab</p>
                   <div className="flex items-baseline justify-center gap-2">
                     <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primaryOrange">
-                      3,99€
+                      3,99 €
                     </span>
                     <span className="text-lg md:text-xl text-lightGray">
                       / Monat
@@ -343,7 +352,7 @@ export default function PricingPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -4 }}
-                className={`bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 transition-all relative ${
+                className={`bg-white rounded-2xl p-6 md:p-8 shadow-lg border-2 transition-all relative flex flex-col h-full ${
                   plan.popular
                     ? "border-primaryOrange scale-105 md:scale-105"
                     : plan.cheapest
@@ -351,23 +360,30 @@ export default function PricingPage() {
                     : "border-primaryOrange/20 hover:border-primaryOrange/40"
                 }`}
               >
-                {plan.popular && (
-                  <div className="bg-primaryOrange text-primaryWhite text-xs md:text-sm font-semibold px-3 md:px-4 py-1 rounded-full inline-block mb-4">
-                    {plan.subtitle}
-                  </div>
-                )}
-                {plan.cheapest && (
-                  <div className="bg-green-500 text-primaryWhite text-xs md:text-sm font-semibold px-3 md:px-4 py-1 rounded-full inline-block mb-4">
-                    {plan.subtitle}
-                  </div>
-                )}
-                {!plan.popular && !plan.cheapest && (
-                  <p className="text-sm text-lightGray mb-4">{plan.subtitle}</p>
-                )}
-                <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-4">
+                {/* Badge/Subtitle */}
+                <div className="flex-shrink-0 mb-4">
+                  {plan.popular && (
+                    <div className="bg-primaryOrange text-primaryWhite text-xs md:text-sm font-semibold px-3 md:px-4 py-1 rounded-full inline-block">
+                      {plan.subtitle}
+                    </div>
+                  )}
+                  {plan.cheapest && (
+                    <div className="bg-green-500 text-primaryWhite text-xs md:text-sm font-semibold px-3 md:px-4 py-1 rounded-full inline-block">
+                      {plan.subtitle}
+                    </div>
+                  )}
+                  {!plan.popular && !plan.cheapest && (
+                    <p className="text-sm text-lightGray">{plan.subtitle}</p>
+                  )}
+                </div>
+
+                {/* Title */}
+                <h4 className="text-lg md:text-xl font-bold text-darkerGray mb-4 flex-shrink-0">
                   {plan.title}
                 </h4>
-                <div className="mb-6">
+
+                {/* Price */}
+                <div className="mb-6 flex-shrink-0">
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-primaryOrange">
                       {plan.price}
@@ -376,29 +392,28 @@ export default function PricingPage() {
                       {plan.period}
                     </span>
                   </div>
+                  {plan.yearlyNote && (
+                    <p className="text-sm text-lightGray mt-1">
+                      {plan.yearlyNote}
+                    </p>
+                  )}
                 </div>
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, featureIndex) => {
-                    const featureText =
-                      typeof feature === "string" ? feature : feature.text;
-                    const FeatureIcon =
-                      typeof feature === "string"
-                        ? Check
-                        : feature.icon || Check;
-                    return (
-                      <li
-                        key={featureIndex}
-                        className="flex items-start gap-3 text-darkerGray"
-                      >
-                        <FeatureIcon className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                        <span className="text-sm md:text-base">
-                          {featureText}
-                        </span>
-                      </li>
-                    );
-                  })}
+
+                {/* Features List - takes available space */}
+                <ul className="space-y-3 mb-6 flex-grow">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li
+                      key={featureIndex}
+                      className="flex items-start gap-3 text-darkerGray"
+                    >
+                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
+                      <span className="text-sm md:text-base">{feature}</span>
+                    </li>
+                  ))}
                 </ul>
-                <div className="flex justify-center md:justify-start">
+
+                {/* Button - pushed to bottom */}
+                <div className="flex justify-center md:justify-start mt-auto flex-shrink-0">
                   <Button
                     onClick={() => setIsDownloadModalOpen(true)}
                     variant={plan.popular ? "primary" : "outline"}
@@ -453,17 +468,25 @@ export default function PricingPage() {
                     {schoolPlan.period2}
                   </div>
                 </div>
-                <div className="mb-6 flex justify-center md:justify-start">
+                <div className="mb-6 flex flex-col gap-3 md:gap-4 items-center md:items-start">
                   <Button
                     href="/kontakt"
                     variant="primary"
-                    className="flex items-center justify-center gap-2 w-auto !px-6 !py-3 md:!px-8 md:!py-4"
+                    className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 text-sm md:text-base !w-[240px] md:!w-[280px]"
                   >
-                    <span className="text-sm md:text-base">
-                      Jetzt Partner werden
-                    </span>
+                    Jetzt Partner werden
                     <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                   </Button>
+                  <a
+                    href="https://app.cal.eu/beafox"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 border-2 border-primaryOrange text-primaryOrange hover:bg-primaryOrange hover:text-primaryWhite px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold transition-all duration-300 text-sm md:text-base shadow-lg hover:shadow-xl w-[240px] md:w-[280px]"
+                  >
+                    <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                    Termin buchen
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                  </a>
                 </div>
               </div>
 

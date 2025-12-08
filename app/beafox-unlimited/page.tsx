@@ -103,7 +103,7 @@ export default function BeAFoxUnlimitedPage() {
   const plans = [
     {
       title: "Standard-Abo",
-      price: "€4.99",
+      price: "4,99 €",
       period: "/ monat",
       features: [
         "Vollständiger Zugang zu allen Lektionen",
@@ -116,7 +116,7 @@ export default function BeAFoxUnlimitedPage() {
     },
     {
       title: "Jahresabo",
-      price: "€3.99",
+      price: "3,99 €",
       period: "/ monat",
       yearlyNote: "pro Jahr",
       features: [
@@ -131,7 +131,7 @@ export default function BeAFoxUnlimitedPage() {
     },
     {
       title: "Lifetime",
-      price: "€49.99",
+      price: "49,99 €",
       period: "einmalig",
       features: [
         "Vollständiger Zugang zu allen Lektionen",

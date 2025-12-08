@@ -1022,7 +1022,7 @@ export default function ForBusinessPage() {
                   <p className="text-sm md:text-base text-lightGray mb-2">Ab</p>
                   <div className="flex items-baseline justify-center gap-2">
                     <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primaryOrange">
-                      3,99€
+                      3,99 €
                     </span>
                     <span className="text-lg md:text-xl text-lightGray">
                       / Monat
