@@ -242,13 +242,6 @@ export default function BeAFoxUnlimitedPage() {
               App herunterladen
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
-            <Button
-              href="/preise"
-              variant="outline"
-              className="flex items-center justify-center gap-2 !w-full sm:!w-auto !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
-            >
-              Preise ansehen
-            </Button>
           </motion.div>
         </div>
       </Section>

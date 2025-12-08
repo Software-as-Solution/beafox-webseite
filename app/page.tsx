@@ -18,6 +18,12 @@ import {
   Clock,
   Activity,
   Calendar,
+  Infinity,
+  Smartphone,
+  DollarSign,
+  Lightbulb,
+  Target,
+  Handshake,
 } from "lucide-react";
 import Lottie from "lottie-react";
 import DownloadModal from "@/components/DownloadModal";
@@ -32,6 +38,70 @@ export default function HomePage() {
   const [selectedFeature, setSelectedFeature] = useState(0);
 
   const words = ["FREIHEIT", "SICHERHEIT"];
+
+  const useCases = [
+    {
+      id: "unlimited",
+      title: "BeAFox Unlimited",
+      description:
+        "Die Premium-Version für alle, die ihre Finanzbildung auf das nächste Level bringen wollen.",
+      href: "/beafox-unlimited",
+      features: [
+        "Exklusive Premium-Inhalte",
+        "Aktive Community",
+        "Individuelle Lernpfade",
+        "Unbegrenzter Zugang",
+      ],
+      icon: Smartphone,
+      secondaryIcon: DollarSign,
+      delay: 0.1,
+    },
+    {
+      id: "business",
+      title: "BeAFox for Business",
+      description:
+        "Stärke deine Mitarbeiter mit professioneller Finanzbildung und positioniere dich als verantwortungsvoller Arbeitgeber.",
+      href: "/fuer-unternehmen",
+      features: [
+        "Employer Branding",
+        "Individuelle Workshops",
+        "Mitarbeiter-Zertifikate",
+        "Unternehmens-Dashboards",
+      ],
+      icon: Building2,
+      delay: 0.2,
+    },
+    {
+      id: "schools",
+      title: "BeAFox for Schools",
+      description:
+        "Ergänze deinen Unterricht mit spielerischer Finanzbildung, die Schüler begeistert und nachhaltig wirkt.",
+      href: "/fuer-schulen",
+      features: [
+        "DSGVO-konform",
+        "Präventive Maßnahmen",
+        "Unterrichtsmaterialien",
+        "Motivierende Lernmethoden",
+      ],
+      icon: School,
+      delay: 0.3,
+    },
+    {
+      id: "partners",
+      title: "BeAFox for Clubs",
+      description:
+        "Werde Teil unseres Netzwerks und stärke deine Gemeinschaft mit wertvoller Finanzbildung.",
+      href: "/fuer-clubs",
+      features: [
+        "Co-Branding",
+        "Spendenprogramme",
+        "Soziale Verantwortung",
+        "Exklusive Mitglieder-Vorteile",
+      ],
+      icon: Handshake,
+      delay: 0.4,
+    },
+  ];
 
   const appFeatures = [
     {
@@ -304,16 +374,7 @@ export default function HomePage() {
       </section>
 
       {/* Partner Logos Carousel */}
-      <Section className="bg-primaryWhiteLight overflow-hidden py-4 md:py-14">
-        <div className="text-center mb-4">
-          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-base border-2 text-center justify-center border-primaryOrange rounded-full px-1 md:px-2 lg:px-4 py-1 md:py-1.5 lg:py-2 w-fit mx-auto">
-            <PawPrint className="w-2 h-2 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-primaryOrange" />
-            <h2 className="font-bold text-sm md:text-base">
-              Offizielle Partner
-            </h2>
-            <PawPrint className="w-2 h-2 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-primaryOrange" />
-          </div>
-        </div>
+      <Section className="bg-primaryWhiteLight overflow-hidden py-4 md:py-0">
         <div className="relative">
           {/* Gradient Overlays */}
           <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-primaryWhiteLight to-transparent z-10 pointer-events-none"></div>
@@ -357,103 +418,119 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* App Features Section */}
-      <Section className="bg-primaryWhite py-8 md:py-16 lg:py-20">
-        <div className="text-center mb-8 md:mb-12">
-          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8">
-            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-              So funktioniert BeAFox
-            </h2>
-            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-          </div>
-
-          {/* Feature Tabs */}
-          <div className="relative mb-8 md:mb-12 w-full mx-auto">
-            {/* Gradient Overlay - Right */}
-            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-primaryWhite to-transparent z-10 pointer-events-none"></div>
-
-            {/* Scrollable Tabs Container */}
-            <div className="overflow-x-auto scrollbar-hide pb-2 md:pb-0 scroll-smooth px-4 md:px-0">
-              <div className="flex gap-2 md:gap-3 justify-center md:justify-center min-w-max md:min-w-0">
-                {appFeatures.map((feature, index) => (
-                  <button
-                    key={feature.id}
-                    onClick={() => setSelectedFeature(index)}
-                    className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
-                      selectedFeature === index
-                        ? "bg-primaryOrange text-primaryWhite shadow-lg"
-                        : "bg-gray-100 text-darkerGray hover:bg-gray-200"
-                    }`}
-                  >
-                    {feature.title}
-                  </button>
-                ))}
-              </div>
+      {/* Eine App für jeden Einsatz Section */}
+      <Section className="bg-gray-50 py-12 md:py-16 lg:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-6 md:mb-10 lg:mb-14"
+          >
+            <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8">
+              <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+              <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
+                Eine App für jeden{" "}
+                <span className="text-primaryOrange">Einsatz</span>
+              </h2>
+              <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
+            <p className="text-lightGray text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
+              Entdecke unsere maßgeschneiderten Lösungen für Privatpersonen,
+              Unternehmen, Schulen und Vereine – entwickelt für jeden Bedarf
+            </p>
+          </motion.div>
 
-            {/* Scroll Indicator - Only visible on mobile */}
-            <div className="flex justify-center mt-2 md:hidden">
-              <div className="flex items-center gap-2 text-primaryOrange">
-                <ArrowRight className="w-3 h-3 rotate-180 animate-pulse" />
-                <span className="text-xs font-medium">Scrollen für mehr</span>
-                <ArrowRight className="w-3 h-3 animate-pulse" />
-              </div>
-            </div>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+            {useCases.map((useCase) => {
+              const IconComponent = useCase.icon;
+              const SecondaryIconComponent = useCase.secondaryIcon;
+
+              // Mobile order: Business (1), Schools (2), Partners (3), Unlimited (4)
+              // Desktop order: Unlimited (1), Business (2), Schools (3), Partners (4)
+              const getOrderClass = () => {
+                switch (useCase.id) {
+                  case "business":
+                    return "order-1 md:order-2";
+                  case "schools":
+                    return "order-2 md:order-3";
+                  case "partners":
+                    return "order-3 md:order-4";
+                  case "unlimited":
+                    return "order-4 md:order-1";
+                  default:
+                    return "";
+                }
+              };
+
+              return (
+                <motion.div
+                  key={useCase.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: useCase.delay }}
+                  className={`bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primaryOrange/20 group flex flex-col h-full ${getOrderClass()}`}
+                >
+                  {/* Icon */}
+                  <div className="mb-6 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-2xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0 animate-pulse">
+                    {SecondaryIconComponent ? (
+                      <div className="relative">
+                        <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-primaryOrange animate-pulse" />
+                        <SecondaryIconComponent
+                          className={`w-4 h-4 md:w-5 md:h-5 text-primaryOrange absolute -top-1 -right-1 animate-pulse ${
+                            useCase.id === "unlimited"
+                              ? "bg-white rounded-full p-0.5"
+                              : ""
+                          }`}
+                        />
+                      </div>
+                    ) : (
+                      <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-primaryOrange animate-pulse" />
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-3 md:mb-4 flex-shrink-0">
+                    {useCase.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm md:text-base text-lightGray mb-4 md:mb-6 flex-shrink-0">
+                    {useCase.description}
+                  </p>
+
+                  {/* Features List */}
+                  <ul className="space-y-3 md:space-y-4 flex-grow mb-6 md:mb-8">
+                    {useCase.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange flex-shrink-0 mt-0.5" />
+                        <span className="text-sm md:text-base text-darkerGray">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Button - pushed to bottom */}
+                  <div className="mt-auto flex-shrink-0">
+                    <Button
+                      href={useCase.href}
+                      variant="primary"
+                      className="w-full !px-4 !py-2 md:!px-6 md:!py-3 text-sm md:text-base flex items-center justify-center gap-2"
+                    >
+                      Mehr erfahren
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
-
-        {/* Feature Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selectedFeature}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="bg-gray-50 rounded-2xl p-6 md:p-8 lg:p-12 w-full max-w-6xl mx-auto"
-          >
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Left: Mockup */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex justify-center order-2 md:order-1"
-              >
-                <Image
-                  src={appFeatures[selectedFeature].mockup}
-                  alt={`BeAFox ${appFeatures[selectedFeature].title} Mockup`}
-                  width={240}
-                  height={520}
-                  className="object-contain drop-shadow-2xl w-[240px] h-auto md:w-[280px] lg:w-[300px]"
-                />
-              </motion.div>
-
-              {/* Right: Description */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="order-1 md:order-2"
-              >
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4 md:mb-6">
-                  {appFeatures[selectedFeature].title}
-                </h3>
-                <p className="text-base md:text-lg text-lightGray leading-relaxed mb-6">
-                  {appFeatures[selectedFeature].description}
-                </p>
-                <Button
-                  href="/kontakt"
-                  variant="primary"
-                  className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
-                >
-                  Mehr erfahren →
-                </Button>
-              </motion.div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
       </Section>
 
       {/* Finanzbildungs-Ökosystem Section */}
@@ -636,8 +713,107 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* App Features Section */}
+      <Section className="bg-primaryWhite py-8 md:py-16 lg:py-20">
+        <div className="text-center mb-8 md:mb-12">
+          <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8">
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+            <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+              So funktioniert BeAFox
+            </h2>
+            <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
+          </div>
+
+          {/* Feature Tabs */}
+          <div className="relative mb-8 md:mb-12 w-full mx-auto">
+            {/* Gradient Overlay - Right */}
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-primaryWhite to-transparent z-10 pointer-events-none"></div>
+
+            {/* Scrollable Tabs Container */}
+            <div className="overflow-x-auto scrollbar-hide pb-2 md:pb-0 scroll-smooth px-4 md:px-0">
+              <div className="flex gap-2 md:gap-3 justify-center md:justify-center min-w-max md:min-w-0">
+                {appFeatures.map((feature, index) => (
+                  <button
+                    key={feature.id}
+                    onClick={() => setSelectedFeature(index)}
+                    className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                      selectedFeature === index
+                        ? "bg-primaryOrange text-primaryWhite shadow-lg"
+                        : "bg-gray-100 text-darkerGray hover:bg-gray-200"
+                    }`}
+                  >
+                    {feature.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Scroll Indicator - Only visible on mobile */}
+            <div className="flex justify-center mt-2 md:hidden">
+              <div className="flex items-center gap-2 text-primaryOrange">
+                <ArrowRight className="w-3 h-3 rotate-180 animate-pulse" />
+                <span className="text-xs font-medium">Scrollen für mehr</span>
+                <ArrowRight className="w-3 h-3 animate-pulse" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedFeature}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="bg-gray-50 rounded-2xl p-6 md:p-8 lg:p-12 w-full max-w-6xl mx-auto"
+          >
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              {/* Left: Mockup */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex justify-center order-2 md:order-1"
+              >
+                <Image
+                  src={appFeatures[selectedFeature].mockup}
+                  alt={`BeAFox ${appFeatures[selectedFeature].title} Mockup`}
+                  width={240}
+                  height={520}
+                  className="object-contain drop-shadow-2xl w-[240px] h-auto md:w-[280px] lg:w-[300px]"
+                />
+              </motion.div>
+
+              {/* Right: Description */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="order-1 md:order-2"
+              >
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4 md:mb-6">
+                  {appFeatures[selectedFeature].title}
+                </h3>
+                <p className="text-base md:text-lg text-lightGray leading-relaxed mb-6">
+                  {appFeatures[selectedFeature].description}
+                </p>
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+                >
+                  Jetzt Partner werden →
+                </Button>
+              </motion.div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </Section>
+
       {/* BeAFox For Business Section */}
-      <Section className="bg-white py-8 md:py-16 lg:py-20 mt-4 md:mt-0">
+      {/* <Section className="bg-white py-8 md:py-16 lg:py-20 mt-4 md:mt-0">
         <div className="text-center mb-8 md:mb-16">
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
@@ -648,14 +824,12 @@ export default function HomePage() {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Badge */}
             <div className="flex items-center gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
               <PawPrint className="w-4 h-4 text-primaryOrange " />
               <span className="font-bold text-center">
@@ -705,7 +879,6 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Right: Image with Features Overlay */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -713,7 +886,6 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            {/* Workshop Image */}
             <div className="rounded-2xl overflow-hidden shadow-2xl relative">
               <Image
                 width={400}
@@ -723,7 +895,6 @@ export default function HomePage() {
                 className="object-cover w-full h-auto"
               />
 
-              {/* Features List Overlay */}
               <div className="absolute bottom-0 right-0 bg-primaryOrange rounded-2xl p-4 md:p-6 m-2 md:m-4 max-w-[90%] sm:max-w-sm hidden md:block">
                 <div className="space-y-2 md:space-y-3">
                   <div className="flex items-center gap-2 md:gap-3">
@@ -767,10 +938,10 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
-      </Section>
+      </Section> */}
 
       {/* BeAFox For Schools Section */}
-      <Section className="bg-white py-8 md:py-16 lg:py-20">
+      {/* <Section className="bg-white py-8 md:py-16 lg:py-20">
         <div className="text-center mb-8 md:mb-16">
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
@@ -781,7 +952,6 @@ export default function HomePage() {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Left: Image with Features Overlay */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -789,7 +959,7 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="relative order-2 md:order-1"
           >
-            {/* School Image */}
+   
             <div className="rounded-2xl overflow-hidden shadow-2xl relative mb-8">
               <Image
                 src="/assets/School.png"
@@ -800,7 +970,6 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Features List Overlay - Orange Box (overlapping image) */}
             <div className="relative -mt-24 mx-4 bg-primaryOrange rounded-2xl p-6 hidden md:block">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-3">
@@ -847,7 +1016,6 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Right: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -855,7 +1023,6 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="space-y-6 order-1 md:order-2"
           >
-            {/* Badge */}
             <div className="flex items-center justify-center mx-auto lg:mx-0 gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
               <PawPrint className="w-4 h-4 text-primaryOrange " />
               <span className="font-bold text-center">
@@ -899,10 +1066,10 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
-      </Section>
+      </Section> */}
 
       {/* BeAFox For Clubs Section */}
-      <Section className="bg-white py-8 md:py-16 lg:py-20">
+      {/* <Section className="bg-white py-8 md:py-16 lg:py-20">
         <div className="text-center mb-8 md:mb-16">
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
@@ -913,7 +1080,6 @@ export default function HomePage() {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -921,7 +1087,6 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            {/* Badge */}
             <div className="flex items-center justify-center mx-auto gap-2 text-darkerGray text-sm border-2 border-primaryOrange rounded-full px-4 py-2 w-fit mb-8">
               <PawPrint className="w-4 h-4 text-primaryOrange " />
               <span className="font-bold text-center">
@@ -981,7 +1146,6 @@ export default function HomePage() {
             </div>
           </motion.div>
 
-          {/* Right: Image with Features Overlay */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -989,7 +1153,6 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            {/* Vereine Image */}
             <div className="rounded-2xl overflow-hidden shadow-2xl relative mb-8">
               <Image
                 src="/assets/Vereine.png"
@@ -1000,7 +1163,6 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Features List Overlay - Orange Box (overlapping image) */}
             <div className="relative -mt-16 md:-mt-24 mx-2 md:mx-4 bg-primaryOrange rounded-2xl p-4 md:p-6 hidden md:block">
               <div className="grid grid-cols-2 gap-3 md:gap-4">
                 <div className="space-y-2 md:space-y-3">
@@ -1047,7 +1209,7 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
-      </Section>
+      </Section> */}
 
       {/* Warum Finanzbildung Section */}
       <Section className="bg-primaryWhiteLight py-8 md:py-16 lg:py-20">

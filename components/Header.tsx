@@ -62,8 +62,8 @@ export default function Header() {
 
   const ecosystemItems = [
     { href: "/beafox-unlimited", label: "BeAFox Unlimited" },
-    { href: "/fuer-schulen", label: "BeAFox for Schools" },
     { href: "/fuer-unternehmen", label: "BeAFox for Business" },
+    { href: "/fuer-schulen", label: "BeAFox for Schools" },
     { href: "/fuer-clubs", label: "BeAFox for Clubs" },
   ];
 

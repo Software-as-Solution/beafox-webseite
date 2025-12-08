@@ -25,6 +25,8 @@ import {
   UserCheck,
   Lock,
   Headphones,
+  Gift,
+  RefreshCw,
 } from "lucide-react";
 
 export default function ForClubsPage() {
@@ -40,23 +42,23 @@ export default function ForClubsPage() {
   };
 
   const coreMessage = {
-    headline: "Junge Sportler brauchen mehr als Training.",
-    subheadline: "Sie brauchen Stabilität!",
+    headline: "Geben Sie Ihren Sportlern BeAFox.",
+    subheadline: "Sie konzentrieren sich auf den Sport – nicht auf Finanzen.",
     description:
-      "Finanzielle Sicherheit schafft mentale Stärke und lässt Talente mit klarem Kopf auf dem Platz stehen.",
+      "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler. Mit BeAFox geben Sie ihnen die Sicherheit, die sie brauchen, um sich voll auf ihre Sportart zu konzentrieren.",
     impact:
-      "Mit BeAFox geben Vereine ihren Sportlern das Wissen, das sie im Alltag stärkt und im Sport fokussiert hält – das führt zu echter Entwicklung auf und neben dem Feld.",
+      "Ihre Sportler lernen verantwortungsvoll mit Geld umzugehen, während Sie den Überblick behalten. Finanzielle Sorgen gehören der Vergangenheit an – Ihre Talente können sich auf das Wesentliche fokussieren.",
   };
 
   const journey = [
     {
       step: "1",
-      title: "Ohne finanzielle Bildung",
+      title: "Ohne BeAFox",
       problems: [
-        "Finanzielle Sorgen lenken ab",
-        "Mentale Belastung",
-        "Unfokussiert auf dem Platz",
-        "Keine Vorbereitung auf die Zukunft",
+        "Sportler denken an Finanzen statt an Training",
+        "Finanzielle Sorgen lenken vom Sport ab",
+        "Mentale Belastung beeinträchtigt die Leistung",
+        "Keine Unterstützung durch den Verein",
       ],
       color: "bg-red-50 border-red-200",
       iconColor: "bg-red-500",
@@ -65,10 +67,10 @@ export default function ForClubsPage() {
       step: "2",
       title: "Mit BeAFox",
       benefits: [
-        "Finanzielle Sicherheit",
-        "Mentale Stärke",
-        "Fokus auf dem Platz",
-        "Vorbereitet für die Zukunft",
+        "Verein stellt BeAFox für alle Sportler bereit",
+        "Sportler konzentrieren sich auf den Sport",
+        "Finanzielle Bildung läuft automatisch",
+        "Verein behält Überblick über Fortschritte",
       ],
       color: "bg-green-50 border-green-200",
       iconColor: "bg-green-500",
@@ -78,25 +80,25 @@ export default function ForClubsPage() {
   const benefits = [
     {
       icon: Brain,
-      title: "Mentale Stärke",
+      title: "Fokus auf den Sport",
       description:
-        "Finanzielle Sicherheit gibt Sportlern die mentale Ruhe, die sie brauchen, um sich voll auf den Sport zu konzentrieren.",
+        "Ihre Sportler müssen sich keine Sorgen um Finanzen machen. Sie konzentrieren sich voll auf Training und Wettkämpfe – dank BeAFox, das Sie als Verein bereitstellen.",
       stat: "85%",
       statLabel: "Bessere Fokussierung",
     },
     {
       icon: Trophy,
-      title: "Bessere Leistung",
+      title: "Bessere Leistungen",
       description:
-        "Ausgeglichene Sportler ohne finanzielle Sorgen zeigen bessere Leistungen auf dem Platz.",
+        "Ausgeglichene Sportler ohne finanzielle Belastung zeigen messbar bessere Leistungen. Ihre Investition in die finanzielle Bildung zahlt sich auf dem Platz aus.",
       stat: "92%",
       statLabel: "Zufriedenheit",
     },
     {
-      icon: Heart,
-      title: "Ganzheitliche Entwicklung",
+      icon: Users,
+      title: "Einfache Verwaltung",
       description:
-        "BeAFox fördert nicht nur sportliche, sondern auch persönliche Entwicklung – für echte Talente.",
+        "Als Verein stellen Sie BeAFox für alle Ihre Sportler bereit. Einfache Verwaltung, klare Kosten, vollständige Übersicht über alle Aktivitäten.",
       stat: "200+",
       statLabel: "Sportler",
     },
@@ -104,7 +106,7 @@ export default function ForClubsPage() {
       icon: Shield,
       title: "Zukunftssicherheit",
       description:
-        "Sportler lernen früh, verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere.",
+        "Ihre Sportler lernen früh verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere. Eine Investition, die sich langfristig auszahlt.",
       stat: "15+",
       statLabel: "Vereine",
     },
@@ -113,30 +115,30 @@ export default function ForClubsPage() {
   const features = [
     {
       id: "stufen",
-      title: "Frei wählbare Lerninhalte",
+      title: "Automatische Finanzbildung",
       description:
-        "Sportler können sich frei aussuchen was sie lernen möchten. Ob Budgetplanung, Sparen, Investieren oder Versicherungen – jeder Sportler wählt die Themen, die für ihn persönlich am relevantesten sind. So wird Finanzbildung individuell und zielgerichtet.",
+        "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese automatisch Zugang zu allen Lerninhalten. Sie müssen sich keine Gedanken über Finanzen machen – die App übernimmt die Bildung im Hintergrund, während sie sich auf den Sport konzentrieren.",
       mockup: "/assets/Mockups/Mockup-Stufen.png",
     },
     {
       id: "lernpfad",
-      title: "Strukturierter Lernpfad",
+      title: "Strukturiertes Lernen",
       description:
-        "Alle Sportler lernen einfach den Lernpfad schritt für schritt, so dass sie sich um nichts gedanken machen müssen. Von den Grundlagen bis zu fortgeschrittenen Themen führt der strukturierte Weg jeden Sportler sicher durch die Finanzbildung – perfekt für die Zeit zwischen Trainingseinheiten.",
+        "Ihre Sportler lernen Schritt für Schritt alles, was sie über Finanzen wissen müssen – ohne dass Sie als Verein eingreifen müssen. Die App führt jeden Sportler automatisch durch die wichtigsten Themen, perfekt für die Zeit zwischen Trainingseinheiten.",
       mockup: "/assets/Mockups/Mockup-Lernpfad.png",
     },
     {
       id: "rangliste",
-      title: "Sportlerisches System",
+      title: "Motivation durch Wettbewerb",
       description:
-        "Sportler können untereinander antreten und wir schaffen Konkurrenz nicht nur auf dem Platz sondern auch in der App. Ranglisten, Missionen und Challenges motivieren Ihre Sportler, auch außerhalb des Trainings aktiv zu bleiben. So wird Finanzbildung zum Team-Erlebnis.",
+        "Ihre Sportler können untereinander antreten und sich gegenseitig motivieren. Ranglisten, Missionen und Challenges sorgen dafür, dass die Finanzbildung spielerisch bleibt – genau wie im Sport. So lernen sie, ohne es als Belastung zu empfinden.",
       mockup: "/assets/Mockups/Mockup-Rangliste.png",
     },
     {
       id: "profil",
-      title: "Statistiken & Fortschritte",
+      title: "Vollständige Übersicht für Vereine",
       description:
-        "Sportlern & Vereine können eigene Statistiken sammeln und sehen alle Fortschritte. Behalten Sie den Überblick über den Lernfortschritt Ihrer Sportler, sehen Sie wer aktiv ist und wo Unterstützung benötigt wird. So fördern Sie gezielt die Entwicklung jedes einzelnen Talents.",
+        "Als Verein behalten Sie den Überblick: Sie sehen, welche Sportler aktiv lernen, wie der Fortschritt aussieht und wo Unterstützung benötigt wird. Dank BeAFox haben Sie alle Informationen zentral verfügbar.",
       mockup: "/assets/Mockups/Mockup-Profil.png",
     },
   ];
@@ -321,11 +323,12 @@ export default function ForClubsPage() {
             className="text-center mb-8 md:mb-16"
           >
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-3 md:mb-4">
-              Was <span className="text-primaryOrange">BeAFox for Clubs</span>{" "}
-              bewirkt
+              Warum Vereine <span className="text-primaryOrange">BeAFox</span>{" "}
+              nutzen
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Messbare Ergebnisse für Ihren Verein und Ihre Sportler.
+              Als Verein investieren Sie in die finanzielle Bildung Ihrer
+              Sportler – mit messbaren Ergebnissen auf und neben dem Platz.
             </p>
           </motion.div>
 
@@ -379,7 +382,8 @@ export default function ForClubsPage() {
               <span className="text-primaryOrange">BeAFox for Clubs</span>
             </h2>
             <p className="text-base md:text-xl text-lightGray">
-              Einfach, effektiv, nachhaltig
+              Als Verein stellen Sie BeAFox bereit – Ihre Sportler lernen
+              automatisch
             </p>
           </motion.div>
 
@@ -520,12 +524,12 @@ export default function ForClubsPage() {
             className="text-center mb-8 md:mb-12"
           >
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-3 md:mb-4">
-              Alles im <span className="text-primaryOrange">Paket</span>{" "}
-              enthalten
+              Was im <span className="text-primaryOrange">Paket</span> enthalten
+              ist
             </h2>
             <p className="text-sm md:text-lg text-lightGray max-w-2xl mx-auto">
-              Ein umfassendes Finanzbildungs-Paket, das alle Bedürfnisse Ihres
-              Clubs abdeckt
+              Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen,
+              erhalten diese vollständigen Zugang zu allen BeAFox-Features
             </p>
           </motion.div>
 
@@ -565,9 +569,9 @@ export default function ForClubsPage() {
               },
               {
                 icon: Users,
-                title: "Unbegrenzte Sportler",
+                title: "Flexible Paketgröße",
                 description:
-                  "Keine Obergrenze – alle Ihre Sportler können teilnehmen",
+                  "Stellen Sie BeAFox für einzelne Sportler oder das gesamte Team bereit – ganz nach Ihrem Bedarf",
                 color: "bg-orange-50 border-orange-200",
                 iconColor: "text-orange-600",
               },
@@ -629,6 +633,145 @@ export default function ForClubsPage() {
         </div>
       </Section>
 
+      {/* Rückführungsprogramm Section für kleinere Vereine */}
+      <Section className="bg-gradient-to-br from-primaryOrange/5 via-primaryOrange/10 to-primaryWhite py-8 md:py-16 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 md:mb-12"
+          >
+            <div className="inline-flex items-center gap-2 mb-4 md:mb-6">
+              <Gift className="w-8 h-8 md:w-10 md:h-10 text-primaryOrange" />
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkerGray">
+                <span className="text-primaryOrange">Rückführungsprogramm</span>{" "}
+                für kleinere Vereine
+              </h2>
+            </div>
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto mb-6 md:mb-8">
+              Als kleiner Verein können Sie auch ohne große Pakete von BeAFox
+              profitieren – mit unserem Rückführungsprogramm.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 border-2 border-primaryOrange/20 shadow-lg"
+            >
+              <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                <div className="bg-primaryOrange/10 rounded-lg md:rounded-xl p-3 md:p-4">
+                  <RefreshCw className="w-6 h-6 md:w-8 md:h-8 text-primaryOrange" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-darkerGray">
+                  So funktioniert's
+                </h3>
+              </div>
+              <ol className="space-y-4 md:space-y-6">
+                <li className="flex items-start gap-3 md:gap-4">
+                  <div className="bg-primaryOrange text-primaryWhite w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm md:text-base flex-shrink-0 mt-0.5">
+                    1
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-darkerGray mb-1 md:mb-2 text-base md:text-lg">
+                      Partnercode erhalten
+                    </h4>
+                    <p className="text-sm md:text-base text-lightGray">
+                      Als Partner-Verein erhalten Sie einen individuellen
+                      Partnercode, den Sie an Ihre Mitglieder weitergeben
+                      können.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3 md:gap-4">
+                  <div className="bg-primaryOrange text-primaryWhite w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm md:text-base flex-shrink-0 mt-0.5">
+                    2
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-darkerGray mb-1 md:mb-2 text-base md:text-lg">
+                      Mitglieder nutzen den Code
+                    </h4>
+                    <p className="text-sm md:text-base text-lightGray">
+                      Wenn ein Vereinsmitglied BeAFox Unlimited mit Ihrem
+                      Partnercode kauft, wird automatisch ein Teil des Betrags
+                      an Ihren Verein gespendet.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3 md:gap-4">
+                  <div className="bg-primaryOrange text-primaryWhite w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm md:text-base flex-shrink-0 mt-0.5">
+                    3
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-darkerGray mb-1 md:mb-2 text-base md:text-lg">
+                      Verein profitiert
+                    </h4>
+                    <p className="text-sm md:text-base text-lightGray">
+                      Die Spenden fließen direkt an Ihren Verein – ohne
+                      zusätzlichen Aufwand für Sie. Ihre Mitglieder unterstützen
+                      den Verein automatisch.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 border-2 border-primaryOrange/20 shadow-lg"
+            >
+              <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+                <div className="bg-primaryOrange/10 rounded-lg md:rounded-xl p-3 md:p-4">
+                  <Trophy className="w-6 h-6 md:w-8 md:h-8 text-primaryOrange" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-darkerGray">
+                  Ihre Vorteile
+                </h3>
+              </div>
+              <ul className="space-y-3 md:space-y-4">
+                {[
+                  "Keine Mindestanzahl erforderlich",
+                  "Automatische Spenden ohne Verwaltungsaufwand",
+                  "Ihre Mitglieder unterstützen den Verein",
+                  "Finanzielle Bildung für alle Vereinsmitglieder",
+                  "Flexibel und unkompliziert",
+                ].map((benefit, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange flex-shrink-0 mt-0.5" />
+                    <span className="text-sm md:text-base text-darkerGray">
+                      {benefit}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 md:mt-8 pt-6 md:pt-8 border-t border-primaryOrange/20">
+                <p className="text-sm md:text-base text-lightGray mb-4">
+                  <strong className="text-darkerGray">Ideal für:</strong>{" "}
+                  Kleinere Vereine, die ihre Mitglieder unterstützen möchten,
+                  ohne große Pakete zu kaufen.
+                </p>
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="w-full flex items-center justify-center gap-2 !px-4 !py-2.5 md:!px-6 md:!py-3 text-sm md:text-base"
+                >
+                  Partnercode anfragen
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
       {/* CTA Section */}
       <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-8 md:py-16 lg:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-5"></div>
@@ -649,7 +792,7 @@ export default function ForClubsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primaryWhite"
           >
-            Bereit, Ihre Sportler ganzheitlich zu fördern?
+            Bereit, BeAFox für Ihre Sportler bereitzustellen?
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -658,8 +801,10 @@ export default function ForClubsPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base md:text-xl mb-6 md:mb-8 text-primaryWhite/90"
           >
-            Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und
-            erhalten Sie ein individuelles Angebot für Ihren Verein.
+            Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch. Wir
+            erstellen Ihnen ein individuelles Angebot für Ihren Verein – oder
+            informieren Sie über unser Rückführungsprogramm für kleinere
+            Vereine.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -374,13 +374,16 @@ export default function ForBusinessPage() {
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
-                <Button
-                  href="/preise"
-                  variant="outline"
-                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full sm:w-auto"
+                <a
+                  href="https://app.cal.eu/beafox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-primaryOrange text-primaryOrange hover:bg-primaryOrange hover:text-primaryWhite px-4 py-2 md:px-8 md:py-4 rounded-full font-semibold transition-all duration-300 text-sm md:text-base w-full sm:w-auto shadow-lg hover:shadow-xl"
                 >
-                  Preise ansehen
-                </Button>
+                  <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                  Termin buchen
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </a>
               </motion.div>
             </div>
 
@@ -592,86 +595,6 @@ export default function ForBusinessPage() {
         </div>
       </Section>
 
-      {/* Features Section with Interactive Mockups */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Was Sie erhalten
-            </h2>
-            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Ein umfassendes Paket für nachhaltige Finanzbildung.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
-            {/* Left: Feature Tabs */}
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  onMouseEnter={() => setSelectedFeature(index)}
-                  onClick={() => setSelectedFeature(index)}
-                  className={`bg-white rounded-xl p-4 md:p-6 border-2 transition-all cursor-pointer ${
-                    selectedFeature === index
-                      ? "border-primaryOrange shadow-lg"
-                      : "border-primaryOrange/20 hover:border-primaryOrange/40"
-                  }`}
-                >
-                  <h3 className="text-lg md:text-xl font-bold text-darkerGray mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-lightGray">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Right: Mockup Display */}
-            <div className="flex items-center justify-center lg:sticky lg:top-20">
-              <motion.div
-                key={selectedFeature}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-                className={`relative w-full mx-auto ${
-                  features[selectedFeature].mockup.includes("Macbook")
-                    ? "max-w-[300px] md:max-w-[600px] lg:max-w-[700px]"
-                    : "max-w-[180px] md:max-w-[280px] lg:max-w-[320px]"
-                }`}
-              >
-                <Image
-                  src={features[selectedFeature].mockup}
-                  alt={features[selectedFeature].title}
-                  width={
-                    features[selectedFeature].mockup.includes("Macbook")
-                      ? 1200
-                      : 400
-                  }
-                  height={
-                    features[selectedFeature].mockup.includes("Macbook")
-                      ? 800
-                      : 800
-                  }
-                  className="object-contain drop-shadow-2xl w-full h-auto rounded-lg border-2 border-primaryOrange/20"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
       {/* Benefits Section */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <div className="max-w-6xl mx-auto">
@@ -776,6 +699,86 @@ export default function ForBusinessPage() {
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
+        </div>
+      </Section>
+
+      {/* Features Section with Interactive Mockups */}
+      <Section className="bg-white py-8 md:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
+              Was Sie erhalten
+            </h2>
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
+              Ein umfassendes Paket für nachhaltige Finanzbildung.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            {/* Left: Feature Tabs */}
+            <div className="space-y-4">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={feature.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  onMouseEnter={() => setSelectedFeature(index)}
+                  onClick={() => setSelectedFeature(index)}
+                  className={`bg-white rounded-xl p-4 md:p-6 border-2 transition-all cursor-pointer ${
+                    selectedFeature === index
+                      ? "border-primaryOrange shadow-lg"
+                      : "border-primaryOrange/20 hover:border-primaryOrange/40"
+                  }`}
+                >
+                  <h3 className="text-lg md:text-xl font-bold text-darkerGray mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-lightGray">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right: Mockup Display */}
+            <div className="flex items-center justify-center lg:sticky lg:top-20">
+              <motion.div
+                key={selectedFeature}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                className={`relative w-full mx-auto ${
+                  features[selectedFeature].mockup.includes("Macbook")
+                    ? "max-w-[300px] md:max-w-[600px] lg:max-w-[700px]"
+                    : "max-w-[180px] md:max-w-[280px] lg:max-w-[320px]"
+                }`}
+              >
+                <Image
+                  src={features[selectedFeature].mockup}
+                  alt={features[selectedFeature].title}
+                  width={
+                    features[selectedFeature].mockup.includes("Macbook")
+                      ? 1200
+                      : 400
+                  }
+                  height={
+                    features[selectedFeature].mockup.includes("Macbook")
+                      ? 800
+                      : 800
+                  }
+                  className="object-contain drop-shadow-2xl w-full h-auto rounded-lg border-2 border-primaryOrange/20"
+                />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </Section>
 

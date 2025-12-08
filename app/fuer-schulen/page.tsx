@@ -21,6 +21,7 @@ import {
   TrendingUp,
   GraduationCap,
   ChevronDown,
+  Calendar,
 } from "lucide-react";
 
 export default function ForSchoolsPage() {
@@ -187,8 +188,8 @@ export default function ForSchoolsPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
               >
-                Finanzbildung für{" "}
-                <span className="text-primaryOrange">Ihre Schule</span>
+                <span className="text-primaryOrange">1€ pro Schüler</span> pro
+                Jahr
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -196,9 +197,9 @@ export default function ForSchoolsPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-base md:text-xl text-lightGray mb-8 md:mb-12"
               >
-                Praxisnahe Finanzbildung, die Ihre Schüler selbstständig lernen.
-                Mit vollständiger Kontrolle für Lehrer und Schulleitung über das
-                Monitoring-Dashboard.
+                Wir schaffen echten gesellschaftlichen Mehrwert, indem wir
+                Finanzbildung für alle Schüler:innen unabhängig von Hintergrund
+                oder Voraussetzungen zugänglich machen.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -216,13 +217,16 @@ export default function ForSchoolsPage() {
                   Jetzt Partner werden
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
-                <Button
-                  href="/preise"
-                  variant="outline"
-                  className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full sm:w-auto"
+                <a
+                  href="https://app.cal.eu/beafox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-primaryOrange text-primaryOrange hover:bg-primaryOrange hover:text-primaryWhite px-4 py-2 md:px-8 md:py-4 rounded-full font-semibold transition-all duration-300 text-sm md:text-base w-full sm:w-auto shadow-lg hover:shadow-xl"
                 >
-                  Preise ansehen
-                </Button>
+                  <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                  Termin buchen
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </a>
               </motion.div>
             </div>
 
@@ -408,92 +412,6 @@ export default function ForSchoolsPage() {
         </div>
       </Section>
 
-      {/* Dashboard Features Section */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
-              Das{" "}
-              <span className="text-primaryOrange">Monitoring-Dashboard</span>
-            </h2>
-            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Vollständige Kontrolle über den Lernfortschritt Ihrer Schüler –
-              alles auf einen Blick.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
-            {/* Left: Feature Tabs */}
-            <div className="space-y-4">
-              {dashboardFeatures.map((feature, index) => (
-                <motion.div
-                  key={feature.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  onMouseEnter={() => setSelectedDashboard(index)}
-                  onClick={() => setSelectedDashboard(index)}
-                  className={`bg-white rounded-xl p-4 md:p-6 border-2 transition-all cursor-pointer ${
-                    selectedDashboard === index
-                      ? "border-primaryOrange shadow-lg"
-                      : "border-primaryOrange/20 hover:border-primaryOrange/40"
-                  }`}
-                >
-                  <h3 className="text-lg md:text-xl font-bold text-darkerGray mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-lightGray">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Right: Mockup Display */}
-            <div className="flex items-center justify-center lg:sticky lg:top-20 flex-col gap-4">
-              <motion.div
-                key={selectedDashboard}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-full"
-              >
-                <Image
-                  src={dashboardFeatures[selectedDashboard].mockup}
-                  alt={dashboardFeatures[selectedDashboard].title}
-                  width={1200}
-                  height={800}
-                  className="object-contain drop-shadow-2xl w-full h-auto rounded-lg border-2 border-primaryOrange/20"
-                />
-              </motion.div>
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 justify-center lg:justify-start items-center lg:items-start"
-              >
-                <Button
-                  href="/kontakt"
-                  variant="primary"
-                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
-                >
-                  Jetzt Partner werden
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                </Button>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
       {/* Benefits Section */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <div className="max-w-6xl mx-auto">
@@ -596,6 +514,279 @@ export default function ForSchoolsPage() {
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
+        </div>
+      </Section>
+
+      {/* How It Works Section */}
+      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
+              So funktioniert's
+            </h2>
+            <p className="text-base md:text-xl text-lightGray">
+              In vier einfachen Schritten zu BeAFox in Ihrer Schule.
+            </p>
+          </motion.div>
+
+          <div className="space-y-8">
+            {[
+              {
+                step: "1",
+                title: "Kostenlose Beratung",
+                description:
+                  "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule.",
+              },
+              {
+                step: "2",
+                title: "Einfache Einrichtung",
+                description:
+                  "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert.",
+              },
+              {
+                step: "3",
+                title: "Schüler starten",
+                description:
+                  "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit.",
+              },
+              {
+                step: "4",
+                title: "Sie behalten Überblick",
+                description:
+                  "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="flex items-start gap-6 bg-white rounded-xl p-6 border-2 border-primaryOrange/20"
+              >
+                <div className="bg-primaryOrange text-primaryWhite w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-darkerGray mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-lightGray">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Pricing Info Section */}
+      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
+              Faire Preise für{" "}
+              <span className="text-primaryOrange">Schulen</span>
+            </h2>
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
+              Flexible Staffelpreise: passgenau für Ihre Schule oder
+              Institution.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            {/* Left: Price Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 md:p-10 lg:p-12 border-2 border-primaryOrange shadow-xl"
+            >
+              <div className="text-center mb-8">
+                <div className="flex items-baseline justify-center gap-2 mb-2">
+                  <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-primaryOrange">
+                    €1
+                  </span>
+                </div>
+                <div className="text-xl md:text-2xl text-lightGray mb-1">
+                  pro Schüler
+                </div>
+                <div className="text-xl md:text-2xl text-lightGray">
+                  pro Jahr
+                </div>
+              </div>
+
+              <div className="bg-primaryOrange/5 rounded-xl p-6 mb-8">
+                <p className="text-base md:text-lg text-darkerGray font-medium text-center">
+                  Transparent, fair und ohne versteckte Kosten.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="flex items-center justify-center gap-2 mx-auto w-full !px-6 !py-3 md:!px-8 md:!py-4"
+                >
+                  Jetzt Partner werden
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Right: Features */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <div className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20">
+                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
+                  Im Preis enthalten:
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "Vollständiger Zugang für alle Schüler",
+                    "Monitoring-Dashboard für Lehrer",
+                    "Unbegrenzte Lektionen & Features",
+                    "PDF-Export für Reports",
+                    "Support & Updates",
+                  ].map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 text-darkerGray"
+                    >
+                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
+                      <span className="text-base md:text-lg">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20">
+                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
+                  Zusätzliche Vorteile:
+                </h3>
+                <ul className="space-y-4">
+                  {[
+                    "Keine versteckten Kosten",
+                    "Monatlich kündbar",
+                    "DSGVO-konform",
+                    "Einfache Einrichtung",
+                    "Persönlicher Ansprechpartner",
+                  ].map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 text-darkerGray"
+                    >
+                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
+                      <span className="text-base md:text-lg">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Dashboard Features Section */}
+      <Section className="bg-white py-8 md:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
+              Das{" "}
+              <span className="text-primaryOrange">Monitoring-Dashboard</span>
+            </h2>
+            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
+              Vollständige Kontrolle über den Lernfortschritt Ihrer Schüler –
+              alles auf einen Blick.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            {/* Left: Feature Tabs */}
+            <div className="space-y-4">
+              {dashboardFeatures.map((feature, index) => (
+                <motion.div
+                  key={feature.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  onMouseEnter={() => setSelectedDashboard(index)}
+                  onClick={() => setSelectedDashboard(index)}
+                  className={`bg-white rounded-xl p-4 md:p-6 border-2 transition-all cursor-pointer ${
+                    selectedDashboard === index
+                      ? "border-primaryOrange shadow-lg"
+                      : "border-primaryOrange/20 hover:border-primaryOrange/40"
+                  }`}
+                >
+                  <h3 className="text-lg md:text-xl font-bold text-darkerGray mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-lightGray">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right: Mockup Display */}
+            <div className="flex items-center justify-center lg:sticky lg:top-20 flex-col gap-4">
+              <motion.div
+                key={selectedDashboard}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-full"
+              >
+                <Image
+                  src={dashboardFeatures[selectedDashboard].mockup}
+                  alt={dashboardFeatures[selectedDashboard].title}
+                  width={1200}
+                  height={800}
+                  className="object-contain drop-shadow-2xl w-full h-auto rounded-lg border-2 border-primaryOrange/20"
+                />
+              </motion.div>
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 justify-center lg:justify-start items-center lg:items-start"
+              >
+                <Button
+                  href="/kontakt"
+                  variant="primary"
+                  className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
+                >
+                  Jetzt Partner werden
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                </Button>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -747,193 +938,6 @@ export default function ForSchoolsPage() {
                 <p className="text-sm font-semibold text-darkerGray">
                   — {testimonial.author}
                 </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Pricing Info Section */}
-      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Faire Preise für{" "}
-              <span className="text-primaryOrange">Schulen</span>
-            </h2>
-            <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Flexible Staffelpreise: passgenau für Ihre Schule oder
-              Institution.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
-            {/* Left: Price Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl p-8 md:p-10 lg:p-12 border-2 border-primaryOrange shadow-xl"
-            >
-              <div className="text-center mb-8">
-                <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-primaryOrange">
-                    €1
-                  </span>
-                </div>
-                <div className="text-xl md:text-2xl text-lightGray mb-1">
-                  pro Schüler
-                </div>
-                <div className="text-xl md:text-2xl text-lightGray">
-                  pro Jahr
-                </div>
-              </div>
-
-              <div className="bg-primaryOrange/5 rounded-xl p-6 mb-8">
-                <p className="text-base md:text-lg text-darkerGray font-medium text-center">
-                  Transparent, fair und ohne versteckte Kosten.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <Button
-                  href="/kontakt"
-                  variant="primary"
-                  className="flex items-center justify-center gap-2 mx-auto w-full !px-6 !py-3 md:!px-8 md:!py-4"
-                >
-                  Jetzt Partner werden
-                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                </Button>
-              </div>
-            </motion.div>
-
-            {/* Right: Features */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <div className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20">
-                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
-                  Im Preis enthalten:
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Vollständiger Zugang für alle Schüler",
-                    "Monitoring-Dashboard für Lehrer",
-                    "Unbegrenzte Lektionen & Features",
-                    "PDF-Export für Reports",
-                    "Support & Updates",
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-darkerGray"
-                    >
-                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-base md:text-lg">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20">
-                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
-                  Zusätzliche Vorteile:
-                </h3>
-                <ul className="space-y-4">
-                  {[
-                    "Keine versteckten Kosten",
-                    "Monatlich kündbar",
-                    "DSGVO-konform",
-                    "Einfache Einrichtung",
-                    "Persönlicher Ansprechpartner",
-                  ].map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-3 text-darkerGray"
-                    >
-                      <Check className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                      <span className="text-base md:text-lg">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </Section>
-
-      {/* How It Works Section */}
-      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              So funktioniert's
-            </h2>
-            <p className="text-base md:text-xl text-lightGray">
-              In vier einfachen Schritten zu BeAFox in Ihrer Schule.
-            </p>
-          </motion.div>
-
-          <div className="space-y-8">
-            {[
-              {
-                step: "1",
-                title: "Kostenlose Beratung",
-                description:
-                  "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule.",
-              },
-              {
-                step: "2",
-                title: "Einfache Einrichtung",
-                description:
-                  "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert.",
-              },
-              {
-                step: "3",
-                title: "Schüler starten",
-                description:
-                  "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit.",
-              },
-              {
-                step: "4",
-                title: "Sie behalten Überblick",
-                description:
-                  "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen.",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="flex items-start gap-6 bg-white rounded-xl p-6 border-2 border-primaryOrange/20"
-              >
-                <div className="bg-primaryOrange text-primaryWhite w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                  {item.step}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-darkerGray mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-lightGray">{item.description}</p>
-                </div>
               </motion.div>
             ))}
           </div>
