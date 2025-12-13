@@ -57,6 +57,7 @@ export default function Header() {
     { href: "/", label: "Startseite" },
     { href: "/ueber-beafox", label: "Über BeAFox" },
     { href: "/preise", label: "Preise" },
+    { href: "/shop", label: "Shop" },
     { href: "/faq", label: "FAQ's" },
   ];
 
@@ -183,9 +184,12 @@ export default function Header() {
             >
               Kontakt
             </Link>
-            <button className="relative p-2 text-darkerGray hover:text-primaryOrange transition-colors">
+            <button
+              className="snipcart-checkout relative p-2 text-darkerGray hover:text-primaryOrange transition-colors"
+              aria-label="Warenkorb öffnen"
+            >
               <ShoppingCart size={20} />
-              <span className="absolute top-0 right-0 bg-primaryRed text-primaryWhite text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="snipcart-items-count absolute top-0 right-0 bg-primaryRed text-primaryWhite text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 0
               </span>
             </button>
@@ -308,6 +312,18 @@ export default function Header() {
               >
                 Kontakt
               </Link>
+
+              <button
+                className="snipcart-checkout flex items-center justify-center gap-2 w-full mt-4 p-2 text-darkerGray hover:text-primaryOrange transition-colors border border-gray-200 rounded-lg"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Warenkorb öffnen"
+              >
+                <ShoppingCart size={20} />
+                <span>Warenkorb</span>
+                <span className="snipcart-items-count bg-primaryRed text-primaryWhite text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  0
+                </span>
+              </button>
             </div>
           </motion.div>
         )}

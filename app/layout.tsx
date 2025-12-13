@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
+import SnipcartProvider from "@/components/SnipcartProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -179,6 +180,7 @@ export default function RootLayout({
         <Footer />
         <ScrollToTop />
         <CookieBanner />
+        <SnipcartProvider />
       </body>
     </html>
   );
