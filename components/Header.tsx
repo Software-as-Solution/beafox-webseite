@@ -57,7 +57,6 @@ export default function Header() {
     { href: "/", label: "Startseite" },
     { href: "/ueber-beafox", label: "Über BeAFox" },
     { href: "/preise", label: "Preise" },
-    { href: "/shop", label: "Shop" },
     { href: "/faq", label: "FAQ's" },
   ];
 

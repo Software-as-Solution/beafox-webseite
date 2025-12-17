@@ -292,6 +292,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/shop"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
+                >
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/kontakt"
                   className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
                 >
