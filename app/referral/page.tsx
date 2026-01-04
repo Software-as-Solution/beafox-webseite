@@ -1,9 +1,39 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export default function ReferralPage() {
+  return (
+    <Suspense
+      fallback={
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '100vh',
+          padding: '20px',
+          textAlign: 'center',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+        }}>
+          <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>
+            BeAFox wird geöffnet...
+          </h1>
+          <p style={{ fontSize: '14px', color: '#999', marginTop: '10px' }}>
+            Bitte einen Moment gedulden.
+          </p>
+        </div>
+      }
+    >
+      <ReferralPageInner />
+    </Suspense>
+  );
+}
+
+function ReferralPageInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const ref = searchParams.get('ref');
