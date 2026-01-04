@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { Check, Copy, Loader2 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,22 +10,14 @@ export default function ReferralPage() {
   return (
     <Suspense
       fallback={
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '100vh',
-          padding: '20px',
-          textAlign: 'center',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-        }}>
-          <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>
-            BeAFox wird geöffnet...
-          </h1>
-          <p style={{ fontSize: '14px', color: '#999', marginTop: '10px' }}>
-            Bitte einen Moment gedulden.
-          </p>
+        <div className="min-h-[70vh] flex items-center justify-center px-6">
+          <div className="text-center">
+            <div className="mx-auto mb-6 w-12 h-12 rounded-full border-4 border-primaryOrange/20 border-t-primaryOrange animate-spin" />
+            <h1 className="text-2xl md:text-3xl font-bold text-darkerGray">
+              BeAFox wird geöffnet...
+            </h1>
+            <p className="text-lightGray mt-2">Bitte einen Moment gedulden.</p>
+          </div>
         </div>
       }
     >
@@ -102,74 +95,66 @@ function ReferralPageInner() {
   if (!ref) return null;
 
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      padding: '20px',
-      textAlign: 'center',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    }}>
-      <h1 style={{ fontSize: '24px', marginBottom: '20px' }}>
-        BeAFox wird geöffnet...
-      </h1>
+    <div className="bg-gradient-to-br from-primaryOrange/10 via-primaryWhite to-primaryOrange/5 py-12 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 bg-primaryOrange/10 px-4 py-2 rounded-full mb-6 border border-primaryOrange/20">
+            <Loader2 className="w-4 h-4 text-primaryOrange animate-spin" />
+            <span className="text-primaryOrange font-semibold text-sm">
+              BeAFox wird geöffnet...
+            </span>
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold text-darkerGray mb-3">
+            Einladung erkannt
+          </h1>
+          <p className="text-darkerGray/80 max-w-xl mx-auto">
+            Falls die App sich nicht automatisch öffnet, nutze deinen Code
+            unten. Du wirst in Kürze weitergeleitet.
+          </p>
+        </div>
 
-      <p style={{ fontSize: '16px', color: '#666', marginBottom: '30px' }}>
-        Falls die App nicht automatisch öffnet:
-      </p>
+        <div className="max-w-xl mx-auto mt-10">
+          <div className="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
+            <p className="text-sm text-lightGray">Dein Referral-Code</p>
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <div className="flex-1">
+                <div className="w-full text-center font-mono text-3xl md:text-4xl font-bold tracking-widest text-primaryOrange select-all break-all">
+                  {ref}
+                </div>
+              </div>
+              <button
+                onClick={copyCode}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border transition-colors ${
+                  copied
+                    ? 'bg-green-50 text-green-700 border-green-200'
+                    : 'bg-primaryOrange text-primaryWhite border-primaryOrange hover:bg-primaryOrange/90'
+                }`}
+                aria-live="polite"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    Kopiert
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" />
+                    Code kopieren
+                  </>
+                )}
+              </button>
+            </div>
+            <p className="mt-4 text-sm text-lightGray">
+              Kopiere diesen Code. Er wird beim ersten Start automatisch erkannt
+              (Android via Install Referrer, iOS via Zwischenablage).
+            </p>
+          </div>
 
-      <div style={{
-        margin: '20px 0',
-        padding: '30px',
-        border: '2px solid #007AFF',
-        borderRadius: '12px',
-        backgroundColor: '#f8f9fa',
-        maxWidth: '400px',
-        width: '100%'
-      }}>
-        <p style={{ fontSize: '16px', marginBottom: '10px', fontWeight: 600 }}>
-          Dein Referral-Code:
-        </p>
-        <p style={{
-          fontSize: '32px',
-          fontWeight: 'bold',
-          margin: '20px 0',
-          letterSpacing: '2px',
-          color: '#007AFF'
-        }}>
-          {ref}
-        </p>
-        <button
-          onClick={copyCode}
-          style={{
-            padding: '12px 24px',
-            fontSize: '16px',
-            fontWeight: 600,
-            color: 'white',
-            backgroundColor: copied ? '#34C759' : '#007AFF',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            transition: 'background-color 0.2s'
-          }}
-        >
-          {copied ? '✓ Kopiert!' : 'Code kopieren'}
-        </button>
-        <p style={{
-          fontSize: '14px',
-          color: '#666',
-          marginTop: '20px',
-          lineHeight: 1.5
-        }}>
-          Kopiere diesen Code und gib ihn beim ersten Start der App ein, um 250 Beeren zu erhalten!
-        </p>
+          <div className="text-center text-sm text-lightGray mt-6">
+            Du wirst automatisch zum passenden App Store weitergeleitet.
+          </div>
+        </div>
       </div>
-
-      <p style={{ fontSize: '14px', color: '#999', marginTop: '30px' }}>
-        Du wirst automatisch zum App Store weitergeleitet...
-      </p>
     </div>
   );
 }
