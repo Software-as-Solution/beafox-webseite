@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "BeAFox Unlimited – Vollzugang zur Finanzbildung-App",
   description:
-    "Alle Lernmodule, Missionen und Features ohne Einschränkungen - BeAFox Unlimited bietet den vollen Zugang zu allen Premium-Inhalten der App.",
+    "Lern-App für Finanzen: BeAFox Unlimited ist die Finanz-App für Finanzbildung. Finanzbildung App für alle, die Finanzwissen lernen wollen. Alle Lernmodule, Missionen und Features ohne Einschränkungen.",
   openGraph: {
     title: "BeAFox Unlimited – Vollzugang zur Finanzbildung-App",
     description:

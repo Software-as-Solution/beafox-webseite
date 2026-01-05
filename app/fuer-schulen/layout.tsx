@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "BeAFox for Schools – Finanzbildung für Schulen",
   description:
-    "Finanzbildung für Schulen - BeAFox for Schools bietet spielerische Lernmodule für den Unterricht. Ideal für Lehrer und Schüler ab der 7. Klasse.",
+    "Finanzbildung für Schulen: Digitale Lernplattform für Finanzbildung im Schulunterricht. Finanzbildung Schüler, Finanzbildung im Lehrplan und Finanzbildung Schulunterricht – ideal für Lehrer und Schüler ab der 7. Klasse.",
   openGraph: {
     title: "BeAFox for Schools – Finanzbildung für Schulen",
     description:

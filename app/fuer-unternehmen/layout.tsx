@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "BeAFox for Business – Finanzbildung für Unternehmen & Azubis",
   description:
-    "Finanzbildung für Ihre Mitarbeiter - BeAFox for Business bietet maßgeschneiderte Lösungen für Unternehmen. Steigern Sie die Finanzkompetenz Ihrer Belegschaft.",
+    "Finanzbildung für Unternehmen: BeAFox bietet Finanzbildung für Azubis, Finanzbildung in der Ausbildung und Finanztraining für Mitarbeiter. Digitale Finanzbildungsplattform für nachhaltige Mitarbeiterentwicklung.",
   openGraph: {
     title: "BeAFox for Business – Finanzbildung für Unternehmen & Azubis",
     description:
