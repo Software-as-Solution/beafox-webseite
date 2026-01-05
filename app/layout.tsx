@@ -182,6 +182,13 @@ export default function RootLayout({
           }}
         />
 
+        {/* Ahrefs Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="6IuvzSgHsLDI1sabZKDkjA"
+          strategy="afterInteractive"
+        />
+
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
