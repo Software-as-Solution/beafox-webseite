@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import Image from "next/image";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import {
   Check,
   Sparkles,
@@ -164,6 +165,14 @@ export default function ForSchoolsPage() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: "Angebote", href: "/preise" },
+          { label: "BeAFox for Schools", href: "/fuer-schulen" },
+        ]}
+      />
+
       {/* Hero Section */}
       <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-14">
         <div className="max-w-7xl mx-auto">

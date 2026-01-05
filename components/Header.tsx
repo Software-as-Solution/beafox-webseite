@@ -60,7 +60,7 @@ export default function Header() {
     { href: "/faq", label: "FAQ's" },
   ];
 
-  const ecosystemItems = [
+  const productItems = [
     { href: "/beafox-unlimited", label: "BeAFox Unlimited" },
     { href: "/fuer-unternehmen", label: "BeAFox for Business" },
     { href: "/fuer-schulen", label: "BeAFox for Schools" },
@@ -107,26 +107,17 @@ export default function Header() {
               );
             })}
 
-            {/* Unser-Ökosystem Dropdown */}
+            {/* Produkte Dropdown */}
             <div className="relative" data-dropdown>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className={`flex items-center gap-1 transition-colors font-medium ${
-                  ecosystemItems.some((item) => {
-                    if (item.href.startsWith("/#")) {
-                      return (
-                        pathname === "/" &&
-                        currentHash === item.href.substring(1)
-                      );
-                    } else {
-                      return pathname === item.href && pathname !== "/";
-                    }
-                  })
+                  productItems.some((item) => pathname === item.href)
                     ? "text-primaryOrange"
                     : "text-darkerGray hover:text-primaryOrange"
                 }`}
               >
-                Unser-Ökosystem
+                Produkte
                 <ChevronDown
                   size={16}
                   className={`transition-transform ${
@@ -144,19 +135,8 @@ export default function Header() {
                     className="absolute top-full left-0 mt-2 w-56 bg-primaryWhite rounded-lg shadow-lg border border-gray-200 py-2 z-50"
                     data-dropdown
                   >
-                    {ecosystemItems.map((item) => {
-                      // Check if item is active
-                      let isActive = false;
-                      if (item.href.startsWith("/#")) {
-                        // For hash links, only mark as active if we're on the homepage and hash matches
-                        isActive =
-                          pathname === "/" &&
-                          currentHash === item.href.substring(1);
-                      } else {
-                        // For regular links, check if pathname matches exactly
-                        // But don't mark "/" as active if we're on a different page
-                        isActive = pathname === item.href && pathname !== "/";
-                      }
+                    {productItems.map((item) => {
+                      const isActive = pathname === item.href;
                       return (
                         <Link
                           key={item.href}
@@ -233,26 +213,17 @@ export default function Header() {
                 );
               })}
 
-              {/* Mobile Unser-Ökosystem Dropdown */}
+              {/* Mobile Produkte Dropdown */}
               <div>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className={`flex items-center justify-between w-full transition-colors font-medium py-2 ${
-                    ecosystemItems.some((item) => {
-                      if (item.href.startsWith("/#")) {
-                        return (
-                          pathname === "/" &&
-                          currentHash === item.href.substring(1)
-                        );
-                      } else {
-                        return pathname === item.href && pathname !== "/";
-                      }
-                    })
+                    productItems.some((item) => pathname === item.href)
                       ? "text-primaryOrange"
                       : "text-darkerGray hover:text-primaryOrange"
                   }`}
                 >
-                  Unser-Ökosystem
+                  Produkte
                   <ChevronDown
                     size={16}
                     className={`transition-transform ${
@@ -268,19 +239,8 @@ export default function Header() {
                       exit={{ opacity: 0, height: 0 }}
                       className="pl-4 mt-2 space-y-2"
                     >
-                      {ecosystemItems.map((item) => {
-                        // Check if item is active
-                        let isActive = false;
-                        if (item.href.startsWith("/#")) {
-                          // For hash links, only mark as active if we're on the homepage and hash matches
-                          isActive =
-                            pathname === "/" &&
-                            currentHash === item.href.substring(1);
-                        } else {
-                          // For regular links, check if pathname matches exactly
-                          // But don't mark "/" as active if we're on a different page
-                          isActive = pathname === item.href && pathname !== "/";
-                        }
+                      {productItems.map((item) => {
+                        const isActive = pathname === item.href;
                         return (
                           <Link
                             key={item.href}

@@ -6,6 +6,7 @@ import Section from "@/components/Section";
 import Button from "@/components/Button";
 import DownloadModal from "@/components/DownloadModal";
 import Image from "next/image";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import {
   Check,
   Sparkles,
@@ -172,6 +173,14 @@ export default function ForClubsPage() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: "Angebote", href: "/preise" },
+          { label: "BeAFox for Clubs", href: "/fuer-clubs" },
+        ]}
+      />
+
       {/* Hero Section - Full Width Impact */}
       <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange/90 to-primaryOrange/80 py-12 md:py-20 lg:py-28 mt-10 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BeAFox for Clubs",
+  title: "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
   description:
     "Finanzbildung für Sportvereine - BeAFox for Clubs unterstützt Vereine dabei, ihre Sportler ganzheitlich zu fördern. Finanzwissen für mentale Stärke.",
   openGraph: {
-    title: "BeAFox for Clubs - Finanzbildung für Sportvereine",
+    title: "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
     description:
       "Ganzheitliche Förderung für Sportvereine. Finanzwissen für mentale Stärke und bessere Leistung auf dem Platz.",
     url: "https://beafox.app/fuer-clubs",

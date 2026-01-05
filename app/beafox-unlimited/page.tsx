@@ -6,6 +6,7 @@ import Section from "@/components/Section";
 import Button from "@/components/Button";
 import DownloadModal from "@/components/DownloadModal";
 import Image from "next/image";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import {
   Check,
   Sparkles,
@@ -170,6 +171,11 @@ export default function BeAFoxUnlimitedPage() {
 
   return (
     <>
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[{ label: "BeAFox Unlimited", href: "/beafox-unlimited" }]}
+      />
+
       {/* Hero Section */}
       <Section className="bg-primaryWhite pt-12 md:pt-16 lg:pt-20 mt-14">
         <div className="text-center mb-8 md:mb-12">

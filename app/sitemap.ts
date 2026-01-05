@@ -1,5 +1,8 @@
 import { MetadataRoute } from "next";
 
+// Build-Zeit für lastModified (statisch pro Build)
+const buildTime = new Date();
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://beafox.app";
 
@@ -39,12 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   > = {
     "": { priority: 1.0, changefreq: "weekly" },
+    "/beafox-unlimited": { priority: 0.95, changefreq: "monthly" },
+    "/fuer-unternehmen": { priority: 0.95, changefreq: "monthly" },
+    "/fuer-schulen": { priority: 0.95, changefreq: "monthly" },
+    "/fuer-clubs": { priority: 0.95, changefreq: "monthly" },
     "/ueber-beafox": { priority: 0.9, changefreq: "monthly" },
     "/preise": { priority: 0.9, changefreq: "monthly" },
-    "/fuer-unternehmen": { priority: 0.9, changefreq: "monthly" },
-    "/fuer-schulen": { priority: 0.9, changefreq: "monthly" },
-    "/fuer-clubs": { priority: 0.9, changefreq: "monthly" },
-    "/beafox-unlimited": { priority: 0.9, changefreq: "monthly" },
     "/shop": { priority: 0.8, changefreq: "weekly" },
     "/faq": { priority: 0.8, changefreq: "monthly" },
     "/kontakt": { priority: 0.8, changefreq: "monthly" },
@@ -64,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return {
       url: `${baseUrl}${route}`,
-      lastModified: new Date(),
+      lastModified: buildTime,
       changeFrequency: config.changefreq,
       priority: config.priority,
     };

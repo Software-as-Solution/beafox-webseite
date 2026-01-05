@@ -211,7 +211,7 @@ export default function HomePage() {
   }, [typedText, currentWordIndex, isDeleting, words]);
 
   const stats = [
-    { value: "3,000+", label: "Aktive Privatnutzer", icon: Users },
+    { value: "5,000+", label: "Aktive Privatnutzer", icon: Users },
     {
       value: "5+",
       label: "Schulen & Ausbildungsbetriebe die",
@@ -219,7 +219,7 @@ export default function HomePage() {
       icon: Building2,
     },
     {
-      value: "1,000+",
+      value: "3,000+",
       label: "Schüler, Studenten und Azubis die",
       label2: "BeAFox nutzen",
       icon: School,
@@ -467,66 +467,65 @@ export default function HomePage() {
               };
 
               return (
-                <motion.div
+                <Link
                   key={useCase.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: useCase.delay }}
+                  href={useCase.href}
                   className={`bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primaryOrange/20 group flex flex-col h-full ${getOrderClass()}`}
                 >
-                  {/* Icon */}
-                  <div className="mb-6 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-2xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0 animate-pulse">
-                    {SecondaryIconComponent ? (
-                      <div className="relative">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: useCase.delay }}
+                    className="flex flex-col h-full"
+                  >
+                    {/* Icon */}
+                    <div className="mb-6 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-2xl group-hover:scale-110 transition-transform duration-300 flex-shrink-0 animate-pulse">
+                      {SecondaryIconComponent ? (
+                        <div className="relative">
+                          <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-primaryOrange animate-pulse" />
+                          <SecondaryIconComponent
+                            className={`w-4 h-4 md:w-5 md:h-5 text-primaryOrange absolute -top-1 -right-1 animate-pulse ${
+                              useCase.id === "unlimited"
+                                ? "bg-white rounded-full p-0.5"
+                                : ""
+                            }`}
+                          />
+                        </div>
+                      ) : (
                         <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-primaryOrange animate-pulse" />
-                        <SecondaryIconComponent
-                          className={`w-4 h-4 md:w-5 md:h-5 text-primaryOrange absolute -top-1 -right-1 animate-pulse ${
-                            useCase.id === "unlimited"
-                              ? "bg-white rounded-full p-0.5"
-                              : ""
-                          }`}
-                        />
-                      </div>
-                    ) : (
-                      <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-primaryOrange animate-pulse" />
-                    )}
-                  </div>
+                      )}
+                    </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-3 md:mb-4 flex-shrink-0">
-                    {useCase.title}
-                  </h3>
+                    {/* Title - Exakter Anchor-Text für SEO */}
+                    <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-3 md:mb-4 flex-shrink-0 group-hover:underline">
+                      {useCase.title}
+                    </h3>
 
-                  {/* Description */}
-                  <p className="text-sm md:text-base text-lightGray mb-4 md:mb-6 flex-shrink-0">
-                    {useCase.description}
-                  </p>
+                    {/* Description */}
+                    <p className="text-sm md:text-base text-lightGray mb-4 md:mb-6 flex-shrink-0">
+                      {useCase.description}
+                    </p>
 
-                  {/* Features List */}
-                  <ul className="space-y-3 md:space-y-4 flex-grow mb-6 md:mb-8">
-                    {useCase.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange flex-shrink-0 mt-0.5" />
-                        <span className="text-sm md:text-base text-darkerGray">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                    {/* Features List */}
+                    <ul className="space-y-3 md:space-y-4 flex-grow mb-6 md:mb-8">
+                      {useCase.features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange flex-shrink-0 mt-0.5" />
+                          <span className="text-sm md:text-base text-darkerGray">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
-                  {/* Button - pushed to bottom */}
-                  <div className="mt-auto flex-shrink-0">
-                    <Button
-                      href={useCase.href}
-                      variant="primary"
-                      className="w-full !px-4 !py-2 md:!px-6 md:!py-3 text-sm md:text-base flex items-center justify-center gap-2"
-                    >
+                    {/* CTA - pushed to bottom */}
+                    <div className="mt-auto flex-shrink-0 flex items-center justify-center gap-2 text-primaryOrange font-semibold text-sm md:text-base group-hover:gap-3 transition-all">
                       Mehr erfahren
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </motion.div>
+                      <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </motion.div>
+                </Link>
               );
             })}
           </div>
