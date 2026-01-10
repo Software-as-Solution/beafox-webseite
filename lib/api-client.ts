@@ -1,15 +1,15 @@
 // API Client for BeAFox Website
 import axios from "axios";
 
-const LOCAL_BASE_URL = "http://localhost:8989";
 const PROD_BASE_URL = "https://api.software-as-solution.de";
 
 const getBaseURL = () => {
-  // Use localhost in development (both client and server-side)
-  if (process.env.NODE_ENV === "development") {
-    return LOCAL_BASE_URL;
+  // Check for explicit environment variable first (allows override)
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
   }
-  // In production, use production URL
+  
+  // Always use production API
   return PROD_BASE_URL;
 };
 
