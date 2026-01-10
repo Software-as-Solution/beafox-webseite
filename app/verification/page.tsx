@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Button from "@/components/Button";
 import client from "@/lib/api-client";
 import { CheckCircle, Loader2 } from "lucide-react";
 
-export default function VerificationPage() {
+function VerificationContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [otp, setOtp] = useState("");
@@ -251,5 +251,19 @@ export default function VerificationPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function VerificationPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-primaryWhite flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-primaryOrange" />
+        </div>
+      }
+    >
+      <VerificationContent />
+    </Suspense>
   );
 }

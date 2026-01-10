@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import getStripe from "@/lib/stripe";
@@ -177,7 +177,7 @@ const CheckoutForm = ({ plan, amount, clientSecret }: { plan: PlanType; amount: 
   );
 };
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [step, setStep] = useState<"plan-selection" | "checkout">("plan-selection");
@@ -664,5 +664,19 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primaryWhite flex items-center justify-center pt-24">
+          <Loader2 className="w-8 h-8 animate-spin text-primaryOrange" />
+        </div>
+      }
+    >
+      <CheckoutContent />
+    </Suspense>
   );
 }
