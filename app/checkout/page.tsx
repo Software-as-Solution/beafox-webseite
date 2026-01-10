@@ -248,8 +248,11 @@ function CheckoutContent() {
               }
             }
           }
-        } catch (err) {
+        } catch (err: any) {
           console.error("Error getting Stripe key from backend:", err);
+          if (err.response?.status === 503) {
+            console.error("❌ Backend Stripe is not configured. Please set STRIPE_SECRET_KEY_LIVE on the backend server.");
+          }
         }
         
         // Final fallback
@@ -319,10 +322,17 @@ function CheckoutContent() {
         }
       } catch (err: any) {
         console.error("Error creating payment intent:", err);
-        setPaymentError(
-          err.response?.data?.error ||
-            "Fehler beim Erstellen der Zahlung. Bitte versuche es erneut."
-        );
+        
+        if (err.response?.status === 503) {
+          setPaymentError(
+            "Stripe ist auf dem Server nicht konfiguriert. Bitte kontaktiere den Support."
+          );
+        } else {
+          setPaymentError(
+            err.response?.data?.error ||
+              "Fehler beim Erstellen der Zahlung. Bitte versuche es erneut."
+          );
+        }
       } finally {
         setIsCreatingPayment(false);
       }

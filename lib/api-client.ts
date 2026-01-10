@@ -40,6 +40,23 @@ client.interceptors.request.use(
 client.interceptors.response.use(
   (response) => response,
   (error) => {
+    // Log error details for debugging
+    if (error.response) {
+      console.error("API Error:", {
+        status: error.response.status,
+        statusText: error.response.statusText,
+        url: error.config?.url,
+        data: error.response.data,
+      });
+    } else if (error.request) {
+      console.error("Network Error:", {
+        message: "No response received from server",
+        url: error.config?.url,
+      });
+    } else {
+      console.error("Request Error:", error.message);
+    }
+
     if (error.response?.status === 401) {
       // Unauthorized - clear token and redirect to login
       if (typeof window !== "undefined") {
@@ -47,6 +64,11 @@ client.interceptors.response.use(
         window.location.href = "/registrierung";
       }
     }
+    
+    if (error.response?.status === 503) {
+      console.error("Backend service unavailable. Check if Stripe is configured on the server.");
+    }
+    
     return Promise.reject(error);
   }
 );
