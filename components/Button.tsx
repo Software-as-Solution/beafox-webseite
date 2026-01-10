@@ -7,6 +7,8 @@ interface ButtonProps {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "outline";
   className?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -15,6 +17,8 @@ export default function Button({
   children,
   variant = "primary",
   className = "",
+  type = "button",
+  disabled = false,
 }: ButtonProps) {
   const baseStyles =
     "px-8 py-3 rounded-full font-semibold transition-all duration-300 text-center";
@@ -65,10 +69,12 @@ export default function Button({
 
   return (
     <button
+      type={type}
       onClick={onClick}
+      disabled={disabled}
       className={`border-none bg-transparent p-0 ${
         isFullWidth ? "w-full" : hasResponsiveWidth ? "w-full sm:w-auto" : ""
-      }`}
+      } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
     >
       {buttonContent}
     </button>

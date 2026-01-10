@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ShoppingCart, ChevronDown } from "lucide-react";
+import { Menu, X, LogIn, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
@@ -163,15 +163,13 @@ export default function Header() {
             >
               Kontakt
             </Link>
-            <button
-              className="snipcart-checkout relative p-2 text-darkerGray hover:text-primaryOrange transition-colors"
-              aria-label="Warenkorb öffnen"
+            <Link
+              href="/registrierung"
+              className="flex items-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium"
             >
-              <ShoppingCart size={20} />
-              <span className="snipcart-items-count absolute top-0 right-0 bg-primaryRed text-primaryWhite text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                0
-              </span>
-            </button>
+              <LogIn size={18} />
+              <span>Login</span>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -272,17 +270,14 @@ export default function Header() {
                 Kontakt
               </Link>
 
-              <button
-                className="snipcart-checkout flex items-center justify-center gap-2 w-full mt-4 p-2 text-darkerGray hover:text-primaryOrange transition-colors border border-gray-200 rounded-lg"
+              <Link
+                href="/registrierung"
+                className="flex items-center justify-center gap-2 w-full mt-4 p-3 bg-primaryOrange text-primaryWhite rounded-lg hover:bg-primaryOrange/80 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
-                aria-label="Warenkorb öffnen"
               >
-                <ShoppingCart size={20} />
-                <span>Warenkorb</span>
-                <span className="snipcart-items-count bg-primaryRed text-primaryWhite text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  0
-                </span>
-              </button>
+                <LogIn size={20} />
+                <span>Login / Registrieren</span>
+              </Link>
             </div>
           </motion.div>
         )}
