@@ -164,7 +164,7 @@ export default function Header() {
               Kontakt
             </Link>
             <Link
-              href="/registrierung"
+              href="/onboarding"
               className="flex items-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium"
             >
               <LogIn size={18} />
@@ -271,7 +271,7 @@ export default function Header() {
               </Link>
 
               <Link
-                href="/registrierung"
+                href="/onboarding"
                 className="flex items-center justify-center gap-2 w-full mt-4 p-3 bg-primaryOrange text-primaryWhite rounded-lg hover:bg-primaryOrange/80 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >

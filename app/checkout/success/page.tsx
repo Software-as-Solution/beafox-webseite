@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle, Download, ArrowRight, Loader2 } from "lucide-react";
+import { CheckCircle, Download, ArrowRight, Loader2, Smartphone, LogIn, Sparkles, CheckCircle2 } from "lucide-react";
 import Button from "@/components/Button";
 import client from "@/lib/api-client";
 
@@ -78,122 +78,163 @@ function CheckoutSuccessContent() {
 
   if (isVerifying) {
     return (
-      <div className="min-h-screen bg-primaryWhite flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 flex items-center justify-center pt-24">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-primaryOrange border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-lightGray">Zahlung wird überprüft...</p>
+          <div className="w-20 h-20 border-4 border-primaryOrange border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+          <h2 className="text-2xl font-bold text-darkerGray mb-2">Zahlung wird überprüft...</h2>
+          <p className="text-lightGray">Bitte warte einen Moment</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-primaryWhite py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 text-center">
-          {isVerified ? (
-            <>
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-12 h-12 text-green-600" />
+    <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 py-12 px-4 sm:px-6 lg:px-8 pt-24">
+      <div className="max-w-4xl mx-auto">
+        {isVerified ? (
+          <>
+            {/* Success Header */}
+            <div className="text-center mb-8 mt-6">
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg mb-6 animate-bounce">
+                <CheckCircle className="w-14 h-14 text-white" strokeWidth={2.5} />
               </div>
-
-              <h1 className="text-3xl md:text-4xl font-bold text-darkerGray mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-darkerGray mb-4">
                 Zahlung erfolgreich! 🎉
               </h1>
-
-              <p className="text-lg text-lightGray mb-8">
-                Herzlichen Glückwunsch! Du hast jetzt Zugang zu BeAFox Unlimited.
-                Du kannst dich jetzt in der App anmelden und alle Premium-Funktionen
-                nutzen.
+              <p className="text-xl text-lightGray max-w-2xl mx-auto">
+                Herzlichen Glückwunsch! <br /> Du hast jetzt Zugang zu <span className="font-semibold text-primaryOrange">BeAFox Unlimited</span>.
               </p>
+            </div>
 
-              <div className="bg-primaryOrange/10 rounded-lg p-6 mb-8">
-                <h2 className="font-semibold text-darkerGray mb-4">
-                  Nächste Schritte:
+            {/* Steps Section - Highlighted */}
+            <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 mb-8 border-2 border-primaryOrange/20">
+              <div className="flex items-center gap-3 mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-darkerGray">
+                  So geht's weiter:
                 </h2>
-                <ol className="text-left space-y-3 text-lightGray">
-                  <li className="flex items-start gap-3">
-                    <span className="font-bold text-primaryOrange">1.</span>
-                    <span>
-                      Lade die BeAFox App auf dein Smartphone herunter
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="font-bold text-primaryOrange">2.</span>
-                    <span>
-                      Melde dich mit deinen Login-Daten an (die du gerade erstellt hast)
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="font-bold text-primaryOrange">3.</span>
-                    <span>
+              </div>
+              
+              <div className="space-y-6">
+                {/* Step 1 */}
+                <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
+                  <div className="flex-shrink-0 w-16 h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-2xl font-bold text-white">1</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Smartphone className="w-6 h-6 text-primaryOrange" />
+                      <h3 className="text-xl font-bold text-darkerGray">
+                        App herunterladen
+                      </h3>
+                    </div>
+                    <p className="text-lightGray text-lg">
+                      Lade die BeAFox App auf dein Smartphone herunter.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                      <a
+                        href="https://apps.apple.com/de/app/beafox/id6746110612"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block transform hover:scale-105 transition-transform"
+                      >
+                        <img
+                          src="/assets/Apple.png"
+                          alt="Download on the App Store"
+                          className="h-14 w-auto hover:opacity-90 transition-opacity scale-150 relative bottom-[1px]"
+                        />
+                      </a>
+                      <a
+                        href="https://play.google.com/store/apps/details?id=com.tapelea.beafox&pcampaignid=web_share"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block transform hover:scale-105 transition-transform"
+                      >
+                        <img
+                          src="/assets/Android.png"
+                          alt="GET IT ON Google Play"
+                          className="h-14 w-auto hover:opacity-90 transition-opacity scale-105"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
+                  <div className="flex-shrink-0 w-16 h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-2xl font-bold text-white">2</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <LogIn className="w-6 h-6 text-primaryOrange" />
+                      <h3 className="text-xl font-bold text-darkerGray">
+                        Anmelden
+                      </h3>
+                    </div>
+                    <p className="text-lightGray text-lg">
+                      Melde dich mit deinen Login-Daten an, die du gerade erstellt hast.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
+                  <div className="flex-shrink-0 w-16 h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-2xl font-bold text-white">3</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Sparkles className="w-6 h-6 text-primaryOrange" />
+                      <h3 className="text-xl font-bold text-darkerGray">
+                        Premium genießen
+                      </h3>
+                    </div>
+                    <p className="text-lightGray text-lg">
                       Genieße alle Premium-Funktionen von BeAFox Unlimited!
-                    </span>
-                  </li>
-                </ol>
+                    </p>
+                  </div>
+                </div>
               </div>
+            </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://apps.apple.com/de/app/beafox/id6746110612"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <img
-                    src="/assets/Apple.png"
-                    alt="Download on the App Store"
-                    className="h-12 w-auto mx-auto hover:opacity-80 transition-opacity"
-                  />
-                </a>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.tapelea.beafox&pcampaignid=web_share"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <img
-                    src="/assets/Android.png"
-                    alt="GET IT ON Google Play"
-                    className="h-12 w-auto mx-auto hover:opacity-80 transition-opacity"
-                  />
-                </a>
+            {/* Info Box */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200">
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
+                <div>
+                  <p className="text-lightGray mb-4">
+                    <span className="font-semibold text-darkerGray">Dein Account ist aktiviert!</span> Du kannst diese Seite jetzt schließen und dich jederzeit in der App anmelden.
+                  </p>
+                  <Link href="/">
+                    <Button variant="outline" className="!px-6 !py-3">
+                      Zur Startseite
+                    </Button>
+                  </Link>
+                </div>
               </div>
-
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <p className="text-sm text-lightGray mb-4">
-                  Du kannst diese Seite jetzt schließen. Dein Account ist aktiviert
-                  und du kannst dich jederzeit in der App anmelden.
-                </p>
-                <Link href="/">
-                  <Button variant="outline" className="!px-6 !py-3">
-                    Zur Startseite
-                  </Button>
-                </Link>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-12 h-12 text-yellow-600" />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center border-2 border-yellow-200">
+              <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <CheckCircle className="w-14 h-14 text-white" strokeWidth={2.5} />
               </div>
 
               <h1 className="text-3xl md:text-4xl font-bold text-darkerGray mb-4">
                 Zahlung wird verarbeitet
               </h1>
 
-              <p className="text-lg text-lightGray mb-8">
-                Deine Zahlung wurde erfolgreich übermittelt, aber die Aktivierung
-                kann einige Minuten dauern. Du erhältst eine E-Mail, sobald dein
-                Account aktiviert ist.
+              <p className="text-lg text-lightGray mb-8 max-w-2xl mx-auto">
+                Deine Zahlung wurde erfolgreich übermittelt. Die Aktivierung kann einige Minuten dauern. Du erhältst eine E-Mail, sobald dein Account aktiviert ist.
               </p>
 
-              <div className="bg-primaryOrange/10 rounded-lg p-6 mb-8">
-                <p className="text-sm text-lightGray">
-                  Falls du Fragen hast oder Hilfe benötigst, kontaktiere uns unter{" "}
+              <div className="bg-yellow-50 rounded-xl p-6 mb-8 border border-yellow-200">
+                <p className="text-lightGray">
+                  <span className="font-semibold text-darkerGray">Fragen?</span> Kontaktiere uns unter{" "}
                   <a
                     href="mailto:info@beafox.app"
-                    className="text-primaryOrange hover:underline"
+                    className="text-primaryOrange hover:underline font-medium"
                   >
                     info@beafox.app
                   </a>
@@ -205,9 +246,9 @@ function CheckoutSuccessContent() {
                   Zur Startseite
                 </Button>
               </Link>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
