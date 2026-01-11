@@ -278,16 +278,22 @@ function CheckoutContent() {
     initStripe();
   }, [step, plan]);
 
+  // Reset client secret when discount amount changes (promo code applied/removed)
+  useEffect(() => {
+    if (step === "checkout" && clientSecret) {
+      setClientSecret(null);
+    }
+  }, [discountAmount, step]);
+
   // Create payment intent once Stripe is loaded and we're in checkout step
   // Recreate when discountAmount changes (promo code applied)
   useEffect(() => {
-    if (step !== "checkout" || !stripePromise || !plan || !amount || isCreatingPayment) return;
+    // Don't create if already creating or if we already have a client secret
+    if (step !== "checkout" || !stripePromise || !plan || !amount || isCreatingPayment || clientSecret) return;
 
     const createPaymentIntent = async () => {
       setIsCreatingPayment(true);
       setPaymentError(null);
-      // Reset client secret to force recreation
-      setClientSecret(null);
 
       try {
         const userId = localStorage.getItem("user_id");
@@ -296,6 +302,7 @@ function CheckoutContent() {
 
         if (!userId) {
           router.push("/registrierung");
+          setIsCreatingPayment(false);
           return;
         }
 
@@ -343,6 +350,9 @@ function CheckoutContent() {
           setPaymentError(
             "Stripe ist auf dem Server nicht konfiguriert. Bitte kontaktiere den Support."
           );
+        } else if (err.response?.status === 401) {
+          // Unauthorized - redirect to registration
+          router.push("/registrierung");
         } else {
           setPaymentError(
             err.response?.data?.error ||
@@ -355,7 +365,7 @@ function CheckoutContent() {
     };
 
     createPaymentIntent();
-  }, [step, stripePromise, plan, amount, discountAmount, promoCode, router, isCreatingPayment]);
+  }, [step, stripePromise, plan, amount, discountAmount, promoCode, router, clientSecret]);
 
   // Step 1: Plan Selection
   if (step === "plan-selection") {
@@ -478,7 +488,7 @@ function CheckoutContent() {
                 onClick={() => {
                   setStep("checkout");
                   setClientSecret(null);
-                  setIsCreatingPayment(false);
+                  setPaymentError(null);
                 }}
               >
                 Weiter zum Checkout
@@ -547,6 +557,7 @@ function CheckoutContent() {
             onClick={() => {
               setStep("plan-selection");
               setClientSecret(null);
+              setPaymentError(null);
             }}
             className="!px-3 sm:!px-4 !py-2 text-sm sm:text-base"
           >
