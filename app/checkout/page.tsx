@@ -78,7 +78,7 @@ const PLAN_DEFINITIONS: PlanDefinition[] = [
   },
 ];
 
-const CheckoutForm = ({ plan, amount, clientSecret }: { plan: PlanType; amount: number; clientSecret: string }) => {
+const CheckoutForm = ({ plan, amount, clientSecret, promoCode, discountAmount = 0 }: { plan: PlanType; amount: number; clientSecret: string; promoCode?: string; discountAmount?: number }) => {
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
@@ -162,7 +162,7 @@ const CheckoutForm = ({ plan, amount, clientSecret }: { plan: PlanType; amount: 
             Wird verarbeitet...
           </>
         ) : (
-          `Jetzt für ${(amount / 100).toLocaleString("de-DE", {
+          `Jetzt für ${((amount - (discountAmount || 0)) / 100).toLocaleString("de-DE", {
             style: "currency",
             currency: "EUR",
           })} bezahlen`
@@ -187,6 +187,11 @@ function CheckoutContent() {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [isCreatingPayment, setIsCreatingPayment] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [promoCode, setPromoCode] = useState<string>("");
+  const [discountAmount, setDiscountAmount] = useState<number>(0);
+  const [discountPercent, setDiscountPercent] = useState<number>(0);
+  const [isValidatingPromo, setIsValidatingPromo] = useState(false);
+  const [promoError, setPromoError] = useState<string | null>(null);
 
   useEffect(() => {
     // Check if user is logged in
@@ -306,8 +311,9 @@ function CheckoutContent() {
             name: userName || localStorage.getItem("user_name") || "",
             email: userEmail || localStorage.getItem("user_email") || "",
             id: userId,
-            amount: amount,
+            amount: amount - discountAmount,
             planType: plan,
+            promoCode: promoCode || undefined,
           }
         );
 
@@ -569,17 +575,114 @@ function CheckoutContent() {
               <p className="text-sm text-lightGray mb-4">
                 {selectedPlanDef?.descriptor}
               </p>
-              <div className="flex items-baseline gap-2 pt-4 border-t border-primaryOrange/20">
-                <span className="text-4xl font-extrabold text-primaryOrange">
-                  {(amount / 100).toLocaleString("de-DE", {
-                    style: "currency",
-                    currency: "EUR",
-                  })}
-                </span>
-                {(plan === "subscription_monthly_3_99" || plan === "subscription_monthly_4_99") && (
-                  <span className="text-sm text-lightGray">/ Monat</span>
+              <div className="pt-4 border-t border-primaryOrange/20">
+                {discountAmount > 0 && (
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-lightGray">Ursprünglicher Preis:</span>
+                    <span className="text-sm text-lightGray line-through">
+                      {(amount / 100).toLocaleString("de-DE", {
+                        style: "currency",
+                        currency: "EUR",
+                      })}
+                    </span>
+                  </div>
                 )}
+                {discountAmount > 0 && (
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-green-600">Rabatt:</span>
+                    <span className="text-sm font-medium text-green-600">
+                      -{(discountAmount / 100).toLocaleString("de-DE", {
+                        style: "currency",
+                        currency: "EUR",
+                      })}
+                    </span>
+                  </div>
+                )}
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-extrabold text-primaryOrange">
+                    {((amount - discountAmount) / 100).toLocaleString("de-DE", {
+                      style: "currency",
+                      currency: "EUR",
+                    })}
+                  </span>
+                  {(plan === "subscription_monthly_3_99" || plan === "subscription_monthly_4_99") && (
+                    <span className="text-sm text-lightGray">/ Monat</span>
+                  )}
+                </div>
               </div>
+            </div>
+
+            {/* Promo Code Section */}
+            <div className="mb-6">
+              <label htmlFor="promoCode" className="block text-sm font-semibold text-darkerGray mb-2">
+                Rabattcode
+              </label>
+              <div className="flex gap-2">
+                <input
+                  id="promoCode"
+                  type="text"
+                  value={promoCode}
+                  onChange={(e) => {
+                    setPromoCode(e.target.value.toUpperCase());
+                    setPromoError(null);
+                    setDiscountAmount(0);
+                    setDiscountPercent(0);
+                  }}
+                  placeholder="z.B. FRIENDS10"
+                  className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 focus:border-primaryOrange transition-all text-sm"
+                />
+                <button
+                  type="button"
+                  onClick={async () => {
+                    if (!promoCode.trim()) {
+                      setPromoError("Bitte gib einen Rabattcode ein");
+                      return;
+                    }
+                    setIsValidatingPromo(true);
+                    setPromoError(null);
+                    try {
+                      const response = await client.post("/stripe/validate-promo", {
+                        promoCode: promoCode.trim(),
+                        planType: plan,
+                        amount: amount,
+                      });
+                      if (response.data.valid) {
+                        setDiscountAmount(response.data.discountAmount || 0);
+                        setDiscountPercent(response.data.discountPercent || 0);
+                        setPromoError(null);
+                      } else {
+                        setPromoError(response.data.error || "Ungültiger Rabattcode");
+                        setDiscountAmount(0);
+                        setDiscountPercent(0);
+                      }
+                    } catch (err: any) {
+                      setPromoError(err.response?.data?.error || "Fehler beim Validieren des Codes");
+                      setDiscountAmount(0);
+                      setDiscountPercent(0);
+                    } finally {
+                      setIsValidatingPromo(false);
+                    }
+                  }}
+                  disabled={isValidatingPromo || !promoCode.trim()}
+                  className="px-6 py-2.5 bg-primaryOrange text-white rounded-lg hover:bg-primaryOrange/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm whitespace-nowrap"
+                >
+                  {isValidatingPromo ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    "Anwenden"
+                  )}
+                </button>
+              </div>
+              {promoError && (
+                <p className="mt-2 text-sm text-red-600">{promoError}</p>
+              )}
+              {discountAmount > 0 && (
+                <div className="mt-2 p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="text-sm text-green-800 font-medium">
+                    ✓ Rabattcode angewendet: {discountPercent > 0 ? `${discountPercent}%` : `${(discountAmount / 100).toFixed(2)} €`} Rabatt
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Subscription Details */}
@@ -668,7 +771,7 @@ function CheckoutContent() {
                 },
               }}
             >
-              <CheckoutForm plan={plan} amount={amount} clientSecret={clientSecret} />
+              <CheckoutForm plan={plan} amount={amount} clientSecret={clientSecret} promoCode={promoCode} discountAmount={discountAmount} />
             </Elements>
           </div>
         </div>
