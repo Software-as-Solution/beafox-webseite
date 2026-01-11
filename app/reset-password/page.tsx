@@ -34,6 +34,7 @@ function ResetPasswordContent() {
   const [success, setSuccess] = useState(false);
   const [token, setToken] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
+  const [tokenValidationError, setTokenValidationError] = useState<string | null>(null);
   // FUNCTIONS
   useEffect(() => {
     const tokenParam = searchParams.get("token");
@@ -43,7 +44,7 @@ function ResetPasswordContent() {
 
     if (!tokenParam || !userIdParam) {
       console.error("Missing token or userId in URL");
-      setError("Ungültiger oder fehlender Reset-Link");
+      setTokenValidationError("Ungültiger oder fehlender Reset-Link");
       setIsValidating(false);
       return;
     }
@@ -65,13 +66,18 @@ function ResetPasswordContent() {
         if (response.data.valid) {
           setIsValid(true);
         } else {
-          setError("Der Reset-Link ist ungültig oder abgelaufen");
+          setTokenValidationError("Der Reset-Link ist ungültig oder abgelaufen");
         }
       } catch (err: any) {
         console.error("Token validation error:", err);
         console.error("Error response:", err.response?.data);
-        const errorMessage = err.response?.data?.error || err.message || "Der Reset-Link ist ungültig oder abgelaufen";
-        setError(errorMessage);
+        let errorMessage = "Der Reset-Link ist ungültig oder abgelaufen";
+        if (err.response?.data?.error) {
+          errorMessage = err.response.data.error;
+        } else if (err.message && !err.message.includes("Network Error") && !err.message.includes("timeout")) {
+          errorMessage = err.message;
+        }
+        setTokenValidationError(errorMessage);
       } finally {
         setIsValidating(false);
       }
@@ -148,7 +154,9 @@ function ResetPasswordContent() {
     );
   }
 
-  if (!isValid || error) {
+  // Only show "Link ungültig" screen if token validation failed
+  // If token is valid but password reset failed, show the form with error message
+  if (!isValidating && !isValid && tokenValidationError) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md mx-auto">
@@ -164,7 +172,7 @@ function ResetPasswordContent() {
               Link ungültig
             </h2>
             <p className="text-sm sm:text-base text-lightGray mb-6">
-              {error ||
+              {tokenValidationError ||
                 "Der Reset-Link ist ungültig oder abgelaufen. Bitte fordere einen neuen Link an."}
             </p>
             <Link href="/forgot-password">
@@ -176,6 +184,11 @@ function ResetPasswordContent() {
         </div>
       </div>
     );
+  }
+
+  // Don't show form if token is not validated yet or token is invalid
+  if (!isValid) {
+    return null;
   }
 
   if (success) {
@@ -249,7 +262,10 @@ function ResetPasswordContent() {
                   placeholder="Mindestens 8 Zeichen"
                   onChange={(e) => {
                     setPassword(e.target.value);
-                    setError(null);
+                    // Clear error when user starts typing, but keep it if it's about same password
+                    if (error && !error.includes("unterscheiden")) {
+                      setError(null);
+                    }
                   }}
                   type={showPassword ? "text" : "password"}
                   className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 pr-10 sm:pr-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
@@ -294,7 +310,10 @@ function ResetPasswordContent() {
                   placeholder="Passwort wiederholen"
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
-                    setError(null);
+                    // Clear error when user starts typing, but keep it if it's about same password
+                    if (error && !error.includes("unterscheiden")) {
+                      setError(null);
+                    }
                   }}
                   type={showConfirmPassword ? "text" : "password"}
                   className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 pr-10 sm:pr-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
@@ -340,9 +359,16 @@ function ResetPasswordContent() {
                 className="bg-red-50 border-2 border-red-200 rounded-lg sm:rounded-xl p-3 sm:p-4 flex items-start gap-2 sm:gap-3"
               >
                 <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-xs sm:text-sm text-red-600 font-medium">
-                  {error}
-                </p>
+                <div className="flex-1">
+                  <p className="text-xs sm:text-sm text-red-600 font-medium mb-1">
+                    {error}
+                  </p>
+                  {error.includes("unterscheiden") && (
+                    <p className="text-xs text-red-500">
+                      Bitte gib ein anderes Passwort ein. Der Reset-Link bleibt gültig.
+                    </p>
+                  )}
+                </div>
               </motion.div>
             )}
 
