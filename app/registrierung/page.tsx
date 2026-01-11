@@ -133,19 +133,19 @@ export default function RegistrierungPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 pt-28 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         {/* Header Section */}
         <motion.div
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           initial={{ opacity: 0, y: -20 }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-darkerGray mb-3">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-2 sm:mb-3 px-2">
             BeAFox Account erstellen
           </h1>
-          <p className="text-lg text-lightGray">
+          <p className="text-base sm:text-lg text-lightGray px-2">
             Erstelle dein Konto und erhalte sofort Zugang zu{" "}
             <span className="font-semibold text-primaryOrange">
               BeAFox Unlimited
@@ -157,14 +157,14 @@ export default function RegistrierungPage() {
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-10"
+          className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 md:p-10"
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
             {/* Username */}
             <div>
               <label
                 htmlFor="username"
-                className="flex items-center gap-2 text-sm font-semibold text-darkerGray mb-3"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
                 Benutzername
               </label>
@@ -178,15 +178,15 @@ export default function RegistrierungPage() {
                   placeholder="Dein Benutzername"
                   onChange={handleChange("username")}
                   onBlur={() => handleBlur("username")}
-                  className={`w-full px-4 py-3.5 pl-12 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
+                  className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
                     hasSubmitted && errors.username && touched.username
                       ? "border-red-500 bg-red-50"
                       : "border-gray-200 hover:border-primaryOrange/50"
                   }`}
                 />
                 <User
-                  size={20}
-                  className={`absolute left-4 top-1/2 -translate-y-1/2 ${
+                  size={18}
+                  className={`absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 ${
                     hasSubmitted && errors.username && touched.username
                       ? "text-red-500"
                       : "text-lightGray"
@@ -197,9 +197,9 @@ export default function RegistrierungPage() {
                 <motion.p
                   animate={{ opacity: 1, y: 0 }}
                   initial={{ opacity: 0, y: -5 }}
-                  className="mt-2 flex items-center gap-2 text-sm text-red-500"
+                  className="mt-2 flex items-center gap-2 text-xs sm:text-sm text-red-500"
                 >
-                  <AlertCircle size={16} />
+                  <AlertCircle size={14} className="sm:w-4 sm:h-4" />
                   {errors.username}
                 </motion.p>
               )}
@@ -209,7 +209,7 @@ export default function RegistrierungPage() {
             <div>
               <label
                 htmlFor="email"
-                className="flex items-center gap-2 text-sm font-semibold text-darkerGray mb-3"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
                 E-Mail-Adresse
               </label>
@@ -222,15 +222,15 @@ export default function RegistrierungPage() {
                   onChange={handleChange("email")}
                   placeholder="Deine E-Mail-Adresse"
                   onBlur={() => handleBlur("email")}
-                  className={`w-full px-4 py-3.5 pl-12 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
+                  className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
                     hasSubmitted && errors.email && touched.email
                       ? "border-red-500 bg-red-50"
                       : "border-gray-200 hover:border-primaryOrange/50"
                   }`}
                 />
                 <Mail
-                  size={20}
-                  className={`absolute left-4 top-1/2 -translate-y-1/2 ${
+                  size={18}
+                  className={`absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 ${
                     hasSubmitted && errors.email && touched.email
                       ? "text-red-500"
                       : "text-lightGray"
@@ -241,9 +241,9 @@ export default function RegistrierungPage() {
                 <motion.p
                   animate={{ opacity: 1, y: 0 }}
                   initial={{ opacity: 0, y: -5 }}
-                  className="mt-2 flex items-center gap-2 text-sm text-red-500"
+                  className="mt-2 flex items-center gap-2 text-xs sm:text-sm text-red-500"
                 >
-                  <AlertCircle size={16} />
+                  <AlertCircle size={14} className="sm:w-4 sm:h-4" />
                   {errors.email}
                 </motion.p>
               )}
@@ -253,7 +253,7 @@ export default function RegistrierungPage() {
             <div>
               <label
                 htmlFor="password"
-                className="flex items-center gap-2 text-sm font-semibold text-darkerGray mb-3"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
                 Passwort
               </label>
@@ -265,15 +265,15 @@ export default function RegistrierungPage() {
                   onChange={handleChange("password")}
                   onBlur={() => handleBlur("password")}
                   type={showPassword ? "text" : "password"}
-                  className={`w-full px-4 py-3.5 pl-12 pr-12 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
+                  className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 pr-10 sm:pr-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
                     hasSubmitted && errors.password && touched.password
                       ? "border-red-500 bg-red-50"
                       : "border-gray-200 hover:border-primaryOrange/50"
                   }`}
                 />
                 <Lock
-                  size={20}
-                  className={`absolute left-4 top-1/2 -translate-y-1/2 ${
+                  size={18}
+                  className={`absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 ${
                     hasSubmitted && errors.password && touched.password
                       ? "text-red-500"
                       : "text-lightGray"
@@ -282,21 +282,21 @@ export default function RegistrierungPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors"
+                  className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors p-1"
                   aria-label={
                     showPassword ? "Passwort verbergen" : "Passwort anzeigen"
                   }
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
               </div>
               {hasSubmitted && errors.password && touched.password && (
                 <motion.p
                   animate={{ opacity: 1, y: 0 }}
                   initial={{ opacity: 0, y: -5 }}
-                  className="mt-2 flex items-center gap-2 text-sm text-red-500"
+                  className="mt-2 flex items-center gap-2 text-xs sm:text-sm text-red-500"
                 >
-                  <AlertCircle size={16} />
+                  <AlertCircle size={14} className="sm:w-4 sm:h-4" />
                   {errors.password}
                 </motion.p>
               )}
@@ -306,7 +306,7 @@ export default function RegistrierungPage() {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="flex items-center gap-2 text-sm font-semibold text-darkerGray mb-3"
+                className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
                 Passwort bestätigen
               </label>
@@ -318,7 +318,7 @@ export default function RegistrierungPage() {
                   onChange={handleChange("confirmPassword")}
                   onBlur={() => handleBlur("confirmPassword")}
                   type={showConfirmPassword ? "text" : "password"}
-                  className={`w-full px-4 py-3.5 pl-12 pr-12 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
+                  className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 pr-10 sm:pr-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
                     hasSubmitted &&
                     errors.confirmPassword &&
                     touched.confirmPassword
@@ -327,8 +327,8 @@ export default function RegistrierungPage() {
                   }`}
                 />
                 <Lock
-                  size={20}
-                  className={`absolute left-4 top-1/2 -translate-y-1/2 ${
+                  size={18}
+                  className={`absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 ${
                     hasSubmitted &&
                     errors.confirmPassword &&
                     touched.confirmPassword
@@ -339,7 +339,7 @@ export default function RegistrierungPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors"
+                  className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors p-1"
                   aria-label={
                     showConfirmPassword
                       ? "Passwort verbergen"
@@ -347,9 +347,9 @@ export default function RegistrierungPage() {
                   }
                 >
                   {showConfirmPassword ? (
-                    <EyeOff size={20} />
+                    <EyeOff size={18} />
                   ) : (
-                    <Eye size={20} />
+                    <Eye size={18} />
                   )}
                 </button>
               </div>
@@ -359,9 +359,9 @@ export default function RegistrierungPage() {
                   <motion.p
                     animate={{ opacity: 1, y: 0 }}
                     initial={{ opacity: 0, y: -5 }}
-                    className="mt-2 flex items-center gap-2 text-sm text-red-500"
+                    className="mt-2 flex items-center gap-2 text-xs sm:text-sm text-red-500"
                   >
-                    <AlertCircle size={16} />
+                    <AlertCircle size={14} className="sm:w-4 sm:h-4" />
                     {errors.confirmPassword}
                   </motion.p>
                 )}
@@ -372,40 +372,40 @@ export default function RegistrierungPage() {
               <motion.div
                 animate={{ opacity: 1, y: 0 }}
                 initial={{ opacity: 0, y: -10 }}
-                className="bg-red-50 border-2 border-red-200 rounded-xl p-4 flex items-start gap-3"
+                className="bg-red-50 border-2 border-red-200 rounded-lg sm:rounded-xl p-3 sm:p-4 flex items-start gap-2 sm:gap-3"
               >
-                <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm text-red-600 font-medium">
+                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                <p className="text-xs sm:text-sm text-red-600 font-medium">
                   {errors.submit}
                 </p>
               </motion.div>
             )}
 
             {/* Submit Button */}
-            <div className="pt-4">
+            <div className="pt-3 sm:pt-4">
               <Button
                 type="submit"
                 variant="primary"
-                className="w-full !px-8 !py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+                className="w-full !px-6 sm:!px-8 !py-3 sm:!py-4 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all"
                 disabled={isLoading}
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Wird erstellt...
+                    <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
+                    <span className="text-sm sm:text-base">Wird erstellt...</span>
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
-                    <CheckCircle className="w-5 h-5" />
-                    Jetzt registrieren
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="text-sm sm:text-base">Jetzt registrieren</span>
                   </span>
                 )}
               </Button>
             </div>
 
             {/* Login Link */}
-            <div className="text-center pt-4 border-t border-gray-200">
-              <p className="text-sm text-lightGray">
+            <div className="text-center pt-3 sm:pt-4 border-t border-gray-200">
+              <p className="text-xs sm:text-sm text-lightGray">
                 Du hast bereits einen Account?{" "}
                 <Link
                   href="/login"
@@ -423,17 +423,17 @@ export default function RegistrierungPage() {
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-2xl p-6 border-2 border-primaryOrange/20"
+          className="mt-4 sm:mt-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-primaryOrange/20"
         >
-          <div className="flex items-start gap-3">
-            <div className="w-10 h-10 bg-primaryOrange/20 rounded-full flex items-center justify-center flex-shrink-0">
-              <Mail className="w-5 h-5 text-primaryOrange" />
+          <div className="flex items-start gap-2 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primaryOrange/20 rounded-full flex items-center justify-center flex-shrink-0">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primaryOrange" />
             </div>
             <div>
-              <h3 className="font-semibold text-darkerGray mb-1">
+              <h3 className="text-sm sm:text-base font-semibold text-darkerGray mb-1">
                 Nächste Schritte
               </h3>
-              <p className="text-sm text-darkerGray leading-relaxed">
+              <p className="text-xs sm:text-sm text-darkerGray leading-relaxed">
                 Nach der Registrierung erhältst du eine E-Mail mit einem
                 Verifizierungscode. Nach der Verifizierung kannst du{" "}
                 <span className="font-semibold text-primaryOrange">

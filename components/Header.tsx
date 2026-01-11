@@ -4,14 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, LogIn, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [currentHash, setCurrentHash] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -21,16 +20,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    // Update hash when it changes
-    const updateHash = () => {
-      setCurrentHash(window.location.hash);
-    };
-    updateHash();
-    window.addEventListener("hashchange", updateHash);
-    return () => window.removeEventListener("hashchange", updateHash);
-  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -165,10 +154,9 @@ export default function Header() {
             </Link>
             <Link
               href="/onboarding"
-              className="flex items-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium"
+              className="bg-primaryOrange text-primaryWhite px-6 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium"
             >
-              <LogIn size={18} />
-              <span>Login</span>
+              Login
             </Link>
           </div>
 
@@ -272,11 +260,10 @@ export default function Header() {
 
               <Link
                 href="/onboarding"
-                className="flex items-center justify-center gap-2 w-full mt-4 p-3 bg-primaryOrange text-primaryWhite rounded-lg hover:bg-primaryOrange/80 transition-colors font-medium"
+                className="block bg-primaryOrange text-primaryWhite px-6 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium text-center mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <LogIn size={20} />
-                <span>Login / Registrieren</span>
+                Login / Registrieren
               </Link>
             </div>
           </motion.div>
