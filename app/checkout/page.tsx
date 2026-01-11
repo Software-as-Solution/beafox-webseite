@@ -279,12 +279,15 @@ function CheckoutContent() {
   }, [step, plan]);
 
   // Create payment intent once Stripe is loaded and we're in checkout step
+  // Recreate when discountAmount changes (promo code applied)
   useEffect(() => {
-    if (step !== "checkout" || !stripePromise || !plan || !amount || clientSecret || isCreatingPayment) return;
+    if (step !== "checkout" || !stripePromise || !plan || !amount || isCreatingPayment) return;
 
     const createPaymentIntent = async () => {
       setIsCreatingPayment(true);
       setPaymentError(null);
+      // Reset client secret to force recreation
+      setClientSecret(null);
 
       try {
         const userId = localStorage.getItem("user_id");
@@ -309,15 +312,18 @@ function CheckoutContent() {
           }
         }
 
+        // Calculate final amount (original amount minus discount)
+        const finalAmount = amount - discountAmount;
+
         const response = await client.post(
           "/stripe/create",
           {
             name: userName || localStorage.getItem("user_name") || "",
             email: userEmail || localStorage.getItem("user_email") || "",
             id: userId,
-            amount: amount - discountAmount,
+            amount: finalAmount,
             planType: plan,
-            promoCode: promoCode || undefined,
+            promoCode: promoCode && discountAmount > 0 ? promoCode : undefined,
           }
         );
 
@@ -349,7 +355,7 @@ function CheckoutContent() {
     };
 
     createPaymentIntent();
-  }, [step, stripePromise, plan, amount, router, clientSecret, isCreatingPayment]);
+  }, [step, stripePromise, plan, amount, discountAmount, promoCode, router, isCreatingPayment]);
 
   // Step 1: Plan Selection
   if (step === "plan-selection") {
