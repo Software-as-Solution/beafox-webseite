@@ -39,7 +39,10 @@ function ResetPasswordContent() {
     const tokenParam = searchParams.get("token");
     const userIdParam = searchParams.get("userId");
 
+    console.log("Reset password params:", { tokenParam, userIdParam });
+
     if (!tokenParam || !userIdParam) {
+      console.error("Missing token or userId in URL");
       setError("Ungültiger oder fehlender Reset-Link");
       setIsValidating(false);
       return;
@@ -51,10 +54,13 @@ function ResetPasswordContent() {
     // Validate token
     const validateToken = async () => {
       try {
+        console.log("Validating token...", { token: tokenParam.substring(0, 10) + "...", userId: userIdParam });
         const response = await client.post("/auth/verify-pass-reset-token", {
           token: tokenParam,
           userId: userIdParam,
         });
+
+        console.log("Token validation response:", response.data);
 
         if (response.data.valid) {
           setIsValid(true);
@@ -62,10 +68,10 @@ function ResetPasswordContent() {
           setError("Der Reset-Link ist ungültig oder abgelaufen");
         }
       } catch (err: any) {
-        setError(
-          err.response?.data?.error ||
-            "Der Reset-Link ist ungültig oder abgelaufen"
-        );
+        console.error("Token validation error:", err);
+        console.error("Error response:", err.response?.data);
+        const errorMessage = err.response?.data?.error || err.message || "Der Reset-Link ist ungültig oder abgelaufen";
+        setError(errorMessage);
       } finally {
         setIsValidating(false);
       }
