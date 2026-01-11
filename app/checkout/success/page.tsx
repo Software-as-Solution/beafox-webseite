@@ -78,59 +78,59 @@ function CheckoutSuccessContent() {
 
   if (isVerifying) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 flex items-center justify-center pt-24">
+      <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 flex items-center justify-center pt-20 sm:pt-24 px-4">
         <div className="text-center">
-          <div className="w-20 h-20 border-4 border-primaryOrange border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
-          <h2 className="text-2xl font-bold text-darkerGray mb-2">Zahlung wird überprüft...</h2>
-          <p className="text-lightGray">Bitte warte einen Moment</p>
+          <div className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-primaryOrange border-t-transparent rounded-full animate-spin mx-auto mb-4 sm:mb-6"></div>
+          <h2 className="text-xl sm:text-2xl font-bold text-darkerGray mb-2">Zahlung wird überprüft...</h2>
+          <p className="text-sm sm:text-base text-lightGray">Bitte warte einen Moment</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 py-12 px-4 sm:px-6 lg:px-8 pt-24">
+    <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 px-4 sm:px-6 lg:px-8 pt-28 pb-10">
       <div className="max-w-4xl mx-auto">
         {isVerified ? (
           <>
             {/* Success Header */}
-            <div className="text-center mb-8 mt-6">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg mb-6 animate-bounce">
-                <CheckCircle className="w-14 h-14 text-white" strokeWidth={2.5} />
+            <div className="text-center mb-6 sm:mb-8 mt-2 sm:mt-6 px-2">
+              <div className="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg mb-4 sm:mb-6 animate-bounce">
+                <CheckCircle className="w-12 h-12 sm:w-14 sm:h-14 text-white" strokeWidth={2.5} />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-darkerGray mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-3 sm:mb-4 leading-tight">
                 Zahlung erfolgreich! 🎉
               </h1>
-              <p className="text-xl text-lightGray max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-lightGray max-w-2xl mx-auto leading-relaxed">
                 Herzlichen Glückwunsch! <br /> Du hast jetzt Zugang zu <span className="font-semibold text-primaryOrange">BeAFox Unlimited</span>.
               </p>
             </div>
 
             {/* Steps Section - Highlighted */}
-            <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 mb-8 border-2 border-primaryOrange/20">
-              <div className="flex items-center gap-3 mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-darkerGray">
+            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 mb-6 sm:mb-8 border-2 border-primaryOrange/20">
+              <div className="flex items-center gap-3 mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-darkerGray">
                   So geht's weiter:
                 </h2>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* Step 1 */}
-                <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
-                  <div className="flex-shrink-0 w-16 h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-2xl font-bold text-white">1</span>
+                <div className="flex items-start gap-3 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-xl sm:rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
+                  <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-xl sm:text-2xl font-bold text-white">1</span>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Smartphone className="w-6 h-6 text-primaryOrange" />
-                      <h3 className="text-xl font-bold text-darkerGray">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                      <Smartphone className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange flex-shrink-0" />
+                      <h3 className="text-lg sm:text-xl font-bold text-darkerGray">
                         App herunterladen
                       </h3>
                     </div>
-                    <p className="text-lightGray text-lg">
+                    <p className="text-sm sm:text-base md:text-lg text-lightGray leading-relaxed">
                       Lade die BeAFox App auf dein Smartphone herunter.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-3 sm:mt-4">
                       <a
                         href="https://apps.apple.com/de/app/beafox/id6746110612"
                         target="_blank"
@@ -140,7 +140,7 @@ function CheckoutSuccessContent() {
                         <img
                           src="/assets/Apple.png"
                           alt="Download on the App Store"
-                          className="h-14 w-auto hover:opacity-90 transition-opacity scale-150 relative bottom-[1px]"
+                          className="h-12 sm:h-14 w-auto hover:opacity-90 transition-opacity scale-150 relative bottom-[1px] left-[9.5%] sm:left-0"
                         />
                       </a>
                       <a
@@ -152,7 +152,7 @@ function CheckoutSuccessContent() {
                         <img
                           src="/assets/Android.png"
                           alt="GET IT ON Google Play"
-                          className="h-14 w-auto hover:opacity-90 transition-opacity scale-105"
+                          className="h-12 sm:h-14 w-auto hover:opacity-90 transition-opacity scale-105"
                         />
                       </a>
                     </div>
@@ -160,36 +160,36 @@ function CheckoutSuccessContent() {
                 </div>
 
                 {/* Step 2 */}
-                <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
-                  <div className="flex-shrink-0 w-16 h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-2xl font-bold text-white">2</span>
+                <div className="flex items-start gap-3 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-xl sm:rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
+                  <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-xl sm:text-2xl font-bold text-white">2</span>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <LogIn className="w-6 h-6 text-primaryOrange" />
-                      <h3 className="text-xl font-bold text-darkerGray">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                      <LogIn className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange flex-shrink-0" />
+                      <h3 className="text-lg sm:text-xl font-bold text-darkerGray">
                         Anmelden
                       </h3>
                     </div>
-                    <p className="text-lightGray text-lg">
+                    <p className="text-sm sm:text-base md:text-lg text-lightGray leading-relaxed">
                       Melde dich mit deinen Login-Daten an, die du gerade erstellt hast.
                     </p>
                   </div>
                 </div>
 
                 {/* Step 3 */}
-                <div className="flex items-start gap-6 p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
-                  <div className="flex-shrink-0 w-16 h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-2xl font-bold text-white">3</span>
+                <div className="flex items-start gap-3 sm:gap-6 p-4 sm:p-6 bg-gradient-to-r from-primaryOrange/10 to-primaryOrange/5 rounded-xl sm:rounded-2xl border-2 border-primaryOrange/30 hover:shadow-lg transition-all">
+                  <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-primaryOrange rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-xl sm:text-2xl font-bold text-white">3</span>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Sparkles className="w-6 h-6 text-primaryOrange" />
-                      <h3 className="text-xl font-bold text-darkerGray">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange flex-shrink-0" />
+                      <h3 className="text-lg sm:text-xl font-bold text-darkerGray">
                         Premium genießen
                       </h3>
                     </div>
-                    <p className="text-lightGray text-lg">
+                    <p className="text-sm sm:text-base md:text-lg text-lightGray leading-relaxed">
                       Genieße alle Premium-Funktionen von BeAFox Unlimited!
                     </p>
                   </div>
@@ -198,16 +198,16 @@ function CheckoutSuccessContent() {
             </div>
 
             {/* Info Box */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border border-gray-200">
-              <div className="flex items-start gap-4">
-                <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="text-lightGray mb-4">
-                    <span className="font-semibold text-darkerGray">Dein Account ist aktiviert!</span> Du kannst diese Seite jetzt schließen und dich jederzeit in der App anmelden.
+            <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-5 sm:p-6 md:p-8 border border-gray-200">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0 mt-0.5 sm:mt-1" />
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm sm:text-base text-lightGray mb-4 leading-relaxed">
+                    <span className="font-semibold text-darkerGray">Dein Account ist aktiviert!</span> Du kannst dein Abo jetzt verwalten oder dich jederzeit in der App anmelden.
                   </p>
-                  <Link href="/">
-                    <Button variant="outline" className="!px-6 !py-3">
-                      Zur Startseite
+                  <Link href="/account" className="block">
+                    <Button variant="outline" className="!px-5 sm:!px-6 !py-2.5 sm:!py-3 text-sm sm:text-base w-full sm:w-auto">
+                      Zum Account
                     </Button>
                   </Link>
                 </div>
@@ -216,34 +216,34 @@ function CheckoutSuccessContent() {
           </>
         ) : (
           <>
-            <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center border-2 border-yellow-200">
-              <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <CheckCircle className="w-14 h-14 text-white" strokeWidth={2.5} />
+            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 md:p-12 text-center border-2 border-yellow-200">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg">
+                <CheckCircle className="w-12 h-12 sm:w-14 sm:h-14 text-white" strokeWidth={2.5} />
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-bold text-darkerGray mb-4">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-darkerGray mb-3 sm:mb-4 leading-tight px-2">
                 Zahlung wird verarbeitet
               </h1>
 
-              <p className="text-lg text-lightGray mb-8 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg text-lightGray mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
                 Deine Zahlung wurde erfolgreich übermittelt. Die Aktivierung kann einige Minuten dauern. Du erhältst eine E-Mail, sobald dein Account aktiviert ist.
               </p>
 
-              <div className="bg-yellow-50 rounded-xl p-6 mb-8 border border-yellow-200">
-                <p className="text-lightGray">
+              <div className="bg-yellow-50 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 border border-yellow-200">
+                <p className="text-sm sm:text-base text-lightGray leading-relaxed">
                   <span className="font-semibold text-darkerGray">Fragen?</span> Kontaktiere uns unter{" "}
                   <a
                     href="mailto:info@beafox.app"
-                    className="text-primaryOrange hover:underline font-medium"
+                    className="text-primaryOrange hover:underline font-medium break-all"
                   >
                     info@beafox.app
                   </a>
                 </p>
               </div>
 
-              <Link href="/">
-                <Button variant="outline" className="!px-6 !py-3">
-                  Zur Startseite
+              <Link href="/account" className="block">
+                <Button variant="outline" className="!px-5 sm:!px-6 !py-2.5 sm:!py-3 text-sm sm:text-base w-full sm:w-auto">
+                  Zum Account
                 </Button>
               </Link>
             </div>
@@ -258,8 +258,8 @@ export default function CheckoutSuccessPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primaryWhite flex items-center justify-center pt-24">
-          <Loader2 className="w-8 h-8 animate-spin text-primaryOrange" />
+        <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primaryWhite flex items-center justify-center pt-20 sm:pt-24 px-4">
+          <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primaryOrange" />
         </div>
       }
     >
