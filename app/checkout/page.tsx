@@ -128,48 +128,52 @@ const CheckoutForm = ({ plan, amount, clientSecret, promoCode, discountAmount = 
 
   if (!stripe || !elements) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <Loader2 className="w-8 h-8 animate-spin text-primaryOrange" />
-        <span className="ml-3 text-lightGray">Stripe wird geladen...</span>
+      <div className="flex items-center justify-center py-8 sm:py-12">
+        <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primaryOrange" />
+        <span className="ml-2 sm:ml-3 text-xs sm:text-sm text-lightGray">Stripe wird geladen...</span>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <PaymentElement
-        options={{
-          layout: "tabs",
-        }}
-      />
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+      <div className="[&_.Input]:text-sm sm:[&_.Input]:text-base">
+        <PaymentElement
+          options={{
+            layout: "tabs",
+          }}
+        />
+      </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-          <XCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-red-600">{error}</p>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4 flex items-start gap-2 sm:gap-3">
+          <XCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 flex-shrink-0 mt-0.5" />
+          <p className="text-xs sm:text-sm text-red-600">{error}</p>
         </div>
       )}
 
       <Button
         type="submit"
         variant="primary"
-        className="w-full !px-6 !py-3"
+        className="w-full !px-4 sm:!px-6 !py-3 sm:!py-3.5 text-sm sm:text-base"
         disabled={isLoading || !stripe}
       >
         {isLoading ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin mr-2" />
-            Wird verarbeitet...
+            <span className="text-xs sm:text-sm">Wird verarbeitet...</span>
           </>
         ) : (
-          `Jetzt für ${((amount - (discountAmount || 0)) / 100).toLocaleString("de-DE", {
-            style: "currency",
-            currency: "EUR",
-          })} bezahlen`
+          <span className="text-xs sm:text-sm">
+            Jetzt für {((amount - (discountAmount || 0)) / 100).toLocaleString("de-DE", {
+              style: "currency",
+              currency: "EUR",
+            })} bezahlen
+          </span>
         )}
       </Button>
 
-      <p className="text-xs text-lightGray text-center">
+      <p className="text-xs text-lightGray text-center leading-relaxed">
         Deine Zahlung wird sicher über Stripe verarbeitet. Wir speichern keine
         Kreditkartendaten.
       </p>
@@ -352,20 +356,20 @@ function CheckoutContent() {
     const selectedPlanDef = plan ? PLAN_DEFINITIONS.find((p) => p.id === plan) : null;
 
     return (
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primaryWhite pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primaryWhite pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-14 mt-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-darkerGray mb-4">
+          <div className="text-center mb-8 sm:mb-14 mt-4 sm:mt-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-3 sm:mb-4 px-2">
               Wähle deinen Plan
             </h1>
-            <p className="text-lg text-lightGray max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-lightGray max-w-2xl mx-auto px-2">
               Alle Pläne enthalten unbegrenzten Zugang zu allen Lektionen und Premium-Funktionen
             </p>
           </div>
           
           {/* Plan Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-5xl mx-auto">
             {PLAN_DEFINITIONS.map((planDef) => {
               const planAmount = PLAN_PRICING[planDef.id];
               const isSelected = plan === planDef.id;
@@ -380,9 +384,9 @@ function CheckoutContent() {
                     setPlan(planDef.id);
                     setAmount(planAmount);
                   }}
-                  className={`relative group bg-white rounded-3xl shadow-lg p-8 border-2 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col h-full justify-center items-center ${
+                  className={`relative group bg-white rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8 border-2 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 flex flex-col h-full justify-center items-center ${
                     isLifetime
-                      ? "border-primaryOrange shadow-2xl scale-105 ring-4 ring-primaryOrange/30 bg-gradient-to-br from-primaryOrange/10 via-white to-white"
+                      ? "border-primaryOrange shadow-2xl sm:scale-105 ring-2 sm:ring-4 ring-primaryOrange/30 bg-gradient-to-br from-primaryOrange/10 via-white to-white"
                       : isSelected
                       ? "border-primaryOrange shadow-xl ring-2 ring-primaryOrange/20"
                       : "border-gray-200 hover:border-primaryOrange/50"
@@ -390,53 +394,53 @@ function CheckoutContent() {
                 >
                   {/* Badge */}
                   {planDef.badge && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primaryOrange to-orange-500 text-white text-xs font-bold px-5 py-2 rounded-full shadow-xl z-10 transform scale-110">
+                    <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primaryOrange to-orange-500 text-white text-xs font-bold px-4 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-xl z-10 transform scale-105 sm:scale-110">
                       {planDef.badge}
                     </div>
                   )}
 
                   {/* Icon */}
-                  <div className={`flex items-center justify-center w-16 h-16 mx-auto mb-6 mt-4 rounded-2xl transition-all duration-300 ${
+                  <div className={`flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 mt-2 sm:mt-4 rounded-xl sm:rounded-2xl transition-all duration-300 ${
                     isLifetime || isSelected
                       ? "bg-gradient-to-br from-primaryOrange to-orange-500 text-white scale-110" 
                       : "bg-primaryOrange/10 text-primaryOrange group-hover:bg-primaryOrange/20"
                   }`}>
-                    <IconComponent className="w-8 h-8" />
+                    <IconComponent className="w-6 h-6 sm:w-8 sm:h-8" />
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-2xl font-bold mb-3 text-center ${
+                  <h3 className={`text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-center ${
                     isLifetime ? "text-primaryOrange" : "text-darkerGray"
                   }`}>
                     {planDef.title}
                   </h3>
 
                   {/* Descriptor */}
-                  <p className="text-sm text-lightGray text-center min-h-[40px]">
+                  <p className="text-xs sm:text-sm text-lightGray text-center min-h-[36px] sm:min-h-[40px] px-2">
                     {planDef.descriptor}
                   </p>
 
                   {/* Price - Unified Structure */}
-                  <div className="mb-6 flex-grow flex flex-col justify-center">
-                    <div className={`text-5xl font-extrabold text-center mb-2 transition-colors ${
+                  <div className="mb-4 sm:mb-6 flex-grow flex flex-col justify-center">
+                    <div className={`text-4xl sm:text-5xl font-extrabold text-center mb-1 sm:mb-2 transition-colors ${
                       isLifetime ? "text-primaryOrange" : isSelected ? "text-primaryOrange" : "text-darkerGray"
                     }`}>
                       {planDef.rightLabel}
                     </div>
-                    <p className="text-sm text-lightGray text-center">
+                    <p className="text-xs sm:text-sm text-lightGray text-center">
                       {isMonthly ? "pro Monat" : "Einmalzahlung"}
                     </p>
                   </div>
 
                   {/* Features List */}
-                  <div className="mb-6 flex-grow flex flex-col justify-center">
-                    <div className="space-y-3 mx-auto">
+                  <div className="mb-4 sm:mb-6 flex-grow flex flex-col justify-center">
+                    <div className="space-y-2 sm:space-y-3 mx-auto">
                       {planDef.features.map((feature, index) => (
                         <div key={index} className="flex items-center gap-2">
-                          <CheckCircle className={`w-5 h-5 flex-shrink-0 ${
+                          <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${
                             isLifetime ? "text-primaryOrange" : isSelected ? "text-primaryOrange" : "text-gray-400"
                           }`} />
-                          <span className="text-sm text-lightGray">{feature}</span>
+                          <span className="text-xs sm:text-sm text-lightGray">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -444,9 +448,9 @@ function CheckoutContent() {
 
                   {/* Selection Indicator */}
                   {isSelected && (
-                    <div className="mt-auto pt-6 border-t border-gray-200 flex items-center justify-center gap-2">
-                      <CheckCircle className="w-6 h-6 text-primaryOrange" />
-                      <span className="text-sm font-semibold text-primaryOrange">Ausgewählt</span>
+                    <div className="mt-auto pt-4 sm:pt-6 border-t border-gray-200 flex items-center justify-center gap-2">
+                      <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange" />
+                      <span className="text-xs sm:text-sm font-semibold text-primaryOrange">Ausgewählt</span>
                     </div>
                   )}
 
@@ -461,10 +465,10 @@ function CheckoutContent() {
 
           {/* CTA Button */}
           {selectedPlanDef && (
-            <div className="max-w-md mx-auto mt-6">
+            <div className="max-w-md mx-auto mt-4 sm:mt-6 px-2">
               <Button
                 variant="primary"
-                className="w-full !px-8 !py-4 text-lg font-semibold flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="w-full !px-6 sm:!px-8 !py-3 sm:!py-4 text-base sm:text-lg font-semibold flex items-center justify-center gap-2 sm:gap-3 shadow-xl hover:shadow-2xl transition-all duration-300"
                 onClick={() => {
                   setStep("checkout");
                   setClientSecret(null);
@@ -472,9 +476,9 @@ function CheckoutContent() {
                 }}
               >
                 Weiter zum Checkout
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
-              <p className="text-center text-sm text-lightGray mt-4">
+              <p className="text-center text-xs sm:text-sm text-lightGray mt-3 sm:mt-4">
                 Sichere Zahlung über Stripe • Keine versteckten Kosten
               </p>
             </div>
@@ -487,10 +491,10 @@ function CheckoutContent() {
   // Step 2: Checkout
   if (!plan || !amount) {
     return (
-      <div className="min-h-screen bg-primaryWhite pt-24 flex items-center justify-center">
+      <div className="min-h-screen bg-primaryWhite pt-20 sm:pt-24 flex items-center justify-center px-4">
         <div className="text-center">
-          <p className="text-lightGray mb-4">Kein Plan ausgewählt</p>
-          <Button variant="primary" onClick={() => setStep("plan-selection")}>
+          <p className="text-sm sm:text-base text-lightGray mb-4">Kein Plan ausgewählt</p>
+          <Button variant="primary" onClick={() => setStep("plan-selection")} className="!px-4 !py-2.5 text-sm sm:text-base">
             Zurück zur Plan-Auswahl
           </Button>
         </div>
@@ -500,23 +504,23 @@ function CheckoutContent() {
 
   if (!stripePromise) {
     return (
-      <div className="min-h-screen bg-primaryWhite pt-24 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primaryOrange" />
+      <div className="min-h-screen bg-primaryWhite pt-20 sm:pt-24 flex items-center justify-center">
+        <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primaryOrange" />
       </div>
     );
   }
 
   if (isCreatingPayment || !clientSecret) {
     return (
-      <div className="min-h-screen bg-primaryWhite pt-24 flex items-center justify-center">
+      <div className="min-h-screen bg-primaryWhite pt-20 sm:pt-24 flex items-center justify-center px-4">
         <div className="text-center">
-          <Loader2 className="w-8 h-8 animate-spin text-primaryOrange mx-auto mb-4" />
-          <p className="text-lightGray">
+          <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primaryOrange mx-auto mb-3 sm:mb-4" />
+          <p className="text-sm sm:text-base text-lightGray">
             {isCreatingPayment ? "Zahlung wird vorbereitet..." : "Warte auf Zahlungsdaten..."}
           </p>
           {paymentError && (
-            <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-4">
-              <p className="text-sm text-red-600">{paymentError}</p>
+            <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-3 sm:p-4">
+              <p className="text-xs sm:text-sm text-red-600">{paymentError}</p>
             </div>
           )}
         </div>
@@ -528,58 +532,58 @@ function CheckoutContent() {
   const IconComponent = selectedPlanDef?.icon;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primaryWhite pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-primaryWhite pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <Button
             variant="secondary"
             onClick={() => {
               setStep("plan-selection");
               setClientSecret(null);
             }}
-            className="!px-4 !py-2"
+            className="!px-3 sm:!px-4 !py-2 text-sm sm:text-base"
           >
             ← Zurück zur Plan-Auswahl
           </Button>
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {/* Left: Order Summary */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 lg:p-10 border border-gray-100">
-            <div className="flex items-center gap-3 mb-8">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 lg:p-10 border border-gray-100">
+            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               {IconComponent && (
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primaryOrange to-orange-500 text-white">
-                  <IconComponent className="w-6 h-6" />
+                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-primaryOrange to-orange-500 text-white">
+                  <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
               )}
-              <h2 className="text-3xl font-bold text-darkerGray">
+              <h2 className="text-2xl sm:text-3xl font-bold text-darkerGray">
                 Bestellübersicht
               </h2>
             </div>
 
             {/* Plan Info Card */}
-            <div className="bg-gradient-to-br from-primaryOrange/5 to-orange-50 rounded-2xl p-6 mb-6 border border-primaryOrange/10">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-medium text-lightGray uppercase tracking-wide">Gewählter Plan</span>
+            <div className="bg-gradient-to-br from-primaryOrange/5 to-orange-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 border border-primaryOrange/10">
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <span className="text-xs sm:text-sm font-medium text-lightGray uppercase tracking-wide">Gewählter Plan</span>
                 {selectedPlanDef?.badge && (
-                  <span className="bg-primaryOrange text-white text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="bg-primaryOrange text-white text-xs font-bold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
                     {selectedPlanDef.badge}
                   </span>
                 )}
               </div>
-              <h3 className="text-2xl font-bold text-darkerGray mb-2">
+              <h3 className="text-xl sm:text-2xl font-bold text-darkerGray mb-2">
                 {selectedPlanDef?.title}
               </h3>
-              <p className="text-sm text-lightGray mb-4">
+              <p className="text-xs sm:text-sm text-lightGray mb-3 sm:mb-4">
                 {selectedPlanDef?.descriptor}
               </p>
-              <div className="pt-4 border-t border-primaryOrange/20">
+              <div className="pt-3 sm:pt-4 border-t border-primaryOrange/20">
                 {discountAmount > 0 && (
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-lightGray">Ursprünglicher Preis:</span>
-                    <span className="text-sm text-lightGray line-through">
+                  <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                    <span className="text-xs sm:text-sm text-lightGray">Ursprünglicher Preis:</span>
+                    <span className="text-xs sm:text-sm text-lightGray line-through">
                       {(amount / 100).toLocaleString("de-DE", {
                         style: "currency",
                         currency: "EUR",
@@ -588,9 +592,9 @@ function CheckoutContent() {
                   </div>
                 )}
                 {discountAmount > 0 && (
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-green-600">Rabatt:</span>
-                    <span className="text-sm font-medium text-green-600">
+                  <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                    <span className="text-xs sm:text-sm font-medium text-green-600">Rabatt:</span>
+                    <span className="text-xs sm:text-sm font-medium text-green-600">
                       -{(discountAmount / 100).toLocaleString("de-DE", {
                         style: "currency",
                         currency: "EUR",
@@ -599,25 +603,25 @@ function CheckoutContent() {
                   </div>
                 )}
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold text-primaryOrange">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-primaryOrange">
                     {((amount - discountAmount) / 100).toLocaleString("de-DE", {
                       style: "currency",
                       currency: "EUR",
                     })}
                   </span>
                   {(plan === "subscription_monthly_3_99" || plan === "subscription_monthly_4_99") && (
-                    <span className="text-sm text-lightGray">/ Monat</span>
+                    <span className="text-xs sm:text-sm text-lightGray">/ Monat</span>
                   )}
                 </div>
               </div>
             </div>
 
             {/* Promo Code Section */}
-            <div className="mb-6">
-              <label htmlFor="promoCode" className="block text-sm font-semibold text-darkerGray mb-2">
+            <div className="mb-4 sm:mb-6">
+              <label htmlFor="promoCode" className="block text-xs sm:text-sm font-semibold text-darkerGray mb-2">
                 Rabattcode
               </label>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   id="promoCode"
                   type="text"
@@ -629,7 +633,7 @@ function CheckoutContent() {
                     setDiscountPercent(0);
                   }}
                   placeholder="z.B. FRIENDS10"
-                  className="flex-1 px-4 py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 focus:border-primaryOrange transition-all text-sm"
+                  className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 focus:border-primaryOrange transition-all text-sm"
                 />
                 <button
                   type="button"
@@ -664,21 +668,21 @@ function CheckoutContent() {
                     }
                   }}
                   disabled={isValidatingPromo || !promoCode.trim()}
-                  className="px-6 py-2.5 bg-primaryOrange text-white rounded-lg hover:bg-primaryOrange/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm whitespace-nowrap"
+                  className="px-4 sm:px-6 py-2 sm:py-2.5 bg-primaryOrange text-white rounded-lg hover:bg-primaryOrange/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium text-sm whitespace-nowrap"
                 >
                   {isValidatingPromo ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <Loader2 className="w-4 h-4 animate-spin mx-auto" />
                   ) : (
                     "Anwenden"
                   )}
                 </button>
               </div>
               {promoError && (
-                <p className="mt-2 text-sm text-red-600">{promoError}</p>
+                <p className="mt-2 text-xs sm:text-sm text-red-600">{promoError}</p>
               )}
               {discountAmount > 0 && (
-                <div className="mt-2 p-3 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-sm text-green-800 font-medium">
+                <div className="mt-2 p-2.5 sm:p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="text-xs sm:text-sm text-green-800 font-medium">
                     ✓ Rabattcode angewendet: {discountPercent > 0 ? `${discountPercent}%` : `${(discountAmount / 100).toFixed(2)} €`} Rabatt
                   </p>
                 </div>
@@ -687,12 +691,12 @@ function CheckoutContent() {
 
             {/* Subscription Details */}
             {(plan === "subscription_monthly_3_99" || plan === "subscription_monthly_4_99" || plan === "lifetime") && (
-              <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <div className="bg-blue-50 border border-blue-100 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-4 sm:mb-6">
+                <div className="flex items-start gap-2 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-xs font-bold">i</span>
                   </div>
-                  <p className="text-sm text-blue-800">
+                  <p className="text-xs sm:text-sm text-blue-800 leading-relaxed">
                     {plan === "subscription_monthly_3_99" 
                       ? "Dieses Jahresabo verlängert sich automatisch monatlich. 12 Monate Bindung."
                       : plan === "subscription_monthly_4_99"
@@ -704,39 +708,39 @@ function CheckoutContent() {
             )}
 
             {/* Benefits */}
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-              <h3 className="font-bold text-darkerGray mb-4 text-lg flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-primaryOrange" />
+            <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-100">
+              <h3 className="font-bold text-darkerGray mb-3 sm:mb-4 text-base sm:text-lg flex items-center gap-2">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primaryOrange" />
                 Was du erhältst:
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2 sm:space-y-3">
                 {selectedPlanDef?.features.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primaryOrange/10 flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-primaryOrange" />
+                  <li key={index} className="flex items-center gap-2 sm:gap-3">
+                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primaryOrange/10 flex items-center justify-center">
+                      <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-primaryOrange" />
                     </div>
-                    <span className="text-sm text-lightGray">{feature}</span>
+                    <span className="text-xs sm:text-sm text-lightGray">{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Security Badge */}
-            <div className="mt-6 pt-6 border-t border-gray-200 flex items-center justify-center gap-2">
-              <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
-                <CheckCircle className="w-4 h-4 text-white" />
+            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200 flex items-center justify-center gap-2">
+              <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-green-500 flex items-center justify-center">
+                <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
               </div>
               <span className="text-xs text-lightGray">Sichere Zahlung über Stripe</span>
             </div>
           </div>
 
           {/* Right: Payment Form */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 lg:p-10 border border-gray-100">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold text-darkerGray mb-2">
+          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 lg:p-10 border border-gray-100">
+            <div className="mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-darkerGray mb-2">
                 Zahlungsinformationen
               </h2>
-              <p className="text-sm text-lightGray">
+              <p className="text-xs sm:text-sm text-lightGray">
                 Deine Zahlungsdaten werden sicher verarbeitet
               </p>
             </div>
@@ -755,13 +759,13 @@ function CheckoutContent() {
                     fontFamily: "system-ui, sans-serif",
                     spacingUnit: "4px",
                     borderRadius: "12px",
-                    fontSizeBase: "16px",
+                    fontSizeBase: "15px",
                   },
                   rules: {
                     ".Input": {
                       borderColor: "#E5E7EB",
                       borderRadius: "12px",
-                      padding: "12px",
+                      padding: "11px",
                     },
                     ".Input:focus": {
                       borderColor: "#FF6B35",
