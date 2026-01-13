@@ -9,11 +9,11 @@ import Button from "@/components/Button";
 import { CheckCircle, XCircle, Loader2, ArrowRight, Infinity, Sparkles, Zap } from "lucide-react";
 
 // Plan pricing in cents (matching app pricing)
-// Only 3 plans: Jahresabo, Lifetime, Monatliches Abo
+// Only 3 plans: Monatsabo, Jahresabo, Lifetime
 const PLAN_PRICING = {
-  subscription_monthly_3_99: 399, // €3.99
-  lifetime: 4999, // €49.99
   subscription_monthly_4_99: 499, // €4.99
+  subscription_yearly_44_99: 4499, // €44.99
+  lifetime: 4999, // €49.99
 } as const;
 
 type PlanType = keyof typeof PLAN_PRICING;
@@ -32,17 +32,32 @@ interface PlanDefinition {
 
 const PLAN_DEFINITIONS: PlanDefinition[] = [
   {
-    id: "subscription_monthly_3_99",
+    id: "subscription_monthly_4_99",
+    title: "Monatsabo",
+    descriptor: "Monatlich kündbar",
+    rightLabel: "4,99 €",
+    badge: undefined,
+    icon: Zap,
+    features: [
+      "Monatliche Zahlung",
+      "Jederzeit kündbar",
+      "Alle Premium-Funktionen",
+      "Maximale Flexibilität",
+    ],
+    popular: false,
+  },
+  {
+    id: "subscription_yearly_44_99",
     title: "Jahresabo",
-    descriptor: "12 Monate – 47,99 €",
-    rightLabel: "3,99 €",
+    descriptor: "Jährliche Zahlung",
+    rightLabel: "44,99 €",
     badge: undefined,
     icon: Sparkles,
     features: [
-      "Monatliche Zahlung",
-      "12 Monate Bindung",
+      "Jährliche Zahlung",
+      "Jederzeit kündbar",
       "Alle Premium-Funktionen",
-      "Flexibel und günstig",
+      "Beste Preis-Leistung",
     ],
     popular: false,
   },
@@ -60,21 +75,6 @@ const PLAN_DEFINITIONS: PlanDefinition[] = [
       "Zukünftige Updates inklusive",
     ],
     popular: true,
-  },
-  {
-    id: "subscription_monthly_4_99",
-    title: "Monatliches Abo",
-    descriptor: "Monatlich kündbar",
-    rightLabel: "4,99 €",
-    badge: undefined,
-    icon: Zap,
-    features: [
-      "Monatliche Zahlung",
-      "Jederzeit kündbar",
-      "Alle Premium-Funktionen",
-      "Maximale Flexibilität",
-    ],
-    popular: false,
   },
 ];
 
@@ -391,7 +391,8 @@ function CheckoutContent() {
               const isSelected = plan === planDef.id;
               const IconComponent = planDef.icon;
               const isLifetime = planDef.id === "lifetime";
-              const isMonthly = planDef.id === "subscription_monthly_3_99" || planDef.id === "subscription_monthly_4_99";
+              const isMonthly = planDef.id === "subscription_monthly_4_99";
+              const isYearly = planDef.id === "subscription_yearly_44_99";
               
               return (
                 <button
@@ -444,7 +445,7 @@ function CheckoutContent() {
                       {planDef.rightLabel}
                     </div>
                     <p className="text-[10px] sm:text-xs md:text-sm text-lightGray text-center">
-                      {isMonthly ? "pro Monat" : "Einmalzahlung"}
+                      {isMonthly ? "pro Monat" : isYearly ? "pro Jahr" : "Einmalzahlung"}
                     </p>
                   </div>
 
@@ -629,8 +630,11 @@ function CheckoutContent() {
                       currency: "EUR",
                     })}
                   </span>
-                  {(plan === "subscription_monthly_3_99" || plan === "subscription_monthly_4_99") && (
+                  {plan === "subscription_monthly_4_99" && (
                     <span className="text-[10px] sm:text-xs md:text-sm text-lightGray">/ Monat</span>
+                  )}
+                  {plan === "subscription_yearly_44_99" && (
+                    <span className="text-[10px] sm:text-xs md:text-sm text-lightGray">/ Jahr</span>
                   )}
                 </div>
               </div>
@@ -710,17 +714,17 @@ function CheckoutContent() {
             </div>
 
             {/* Subscription Details */}
-            {(plan === "subscription_monthly_3_99" || plan === "subscription_monthly_4_99" || plan === "lifetime") && (
+            {(plan === "subscription_monthly_4_99" || plan === "subscription_yearly_44_99" || plan === "lifetime") && (
               <div className="bg-blue-50 border border-blue-100 rounded-lg sm:rounded-xl p-2.5 sm:p-3 md:p-4 mb-3 sm:mb-4 md:mb-6">
                 <div className="flex items-start gap-2 sm:gap-3">
                   <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-[10px] sm:text-xs font-bold">i</span>
                   </div>
                   <p className="text-[11px] sm:text-xs md:text-sm text-blue-800 leading-relaxed">
-                    {plan === "subscription_monthly_3_99" 
-                      ? "Dieses Jahresabo verlängert sich automatisch monatlich. 12 Monate Bindung."
-                      : plan === "subscription_monthly_4_99"
+                    {plan === "subscription_monthly_4_99"
                       ? "Dieses Abonnement verlängert sich automatisch monatlich. Du kannst es jederzeit kündigen."
+                      : plan === "subscription_yearly_44_99"
+                      ? "Dieses Jahresabo verlängert sich automatisch jährlich. Du kannst es jederzeit kündigen."
                       : "Einmalzahlung für lebenslangen Zugang. Keine automatische Verlängerung."}
                   </p>
                 </div>

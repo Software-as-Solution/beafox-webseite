@@ -81,11 +81,11 @@ function AccountContent() {
   };
   const getPlanName = (plan: string | null) => {
     if (!plan) return "Unbekannt";
-    if (plan === "subscription_monthly_3_99") return "Jahresabo - 3,99€/Monat";
     if (plan === "subscription_monthly_4_99")
-      return "Monatliches Abo - 4,99€/Monat";
+      return "Monatsabo - 4,99€/Monat";
+    if (plan === "subscription_yearly_44_99")
+      return "Jahresabo - 44,99€/Jahr";
     if (plan === "lifetime") return "Lifetime-Zugang";
-    if (plan === "yearly") return "Jahreslizenz";
     return plan;
   };
   const formatDate = (date: string | Date | null) => {
