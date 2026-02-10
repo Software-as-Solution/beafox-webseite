@@ -30,111 +30,25 @@ export default function AboutPage() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   const stats = [
-    {
-      value: "3,000+",
-      label: t("stats.activeUsers"),
-      icon: Users,
-      color: "text-primaryOrange",
-    },
-    {
-      value: "5+",
-      label: t("stats.schoolsCompanies"),
-      icon: Building2,
-      color: "text-primaryOrange",
-    },
-    {
-      value: "1,000+",
-      label: t("stats.studentsApprentices"),
-      icon: Users,
-      color: "text-primaryOrange",
-    },
-    {
-      value: "5",
-      label: t("stats.awards"),
-      icon: Award,
-      color: "text-primaryOrange",
-    },
+    { value: "3,000+", label: t("stats.activeUsers"), icon: Users, color: "text-primaryOrange" },
+    { value: "5+", label: t("stats.schoolsCompanies"), icon: Building2, color: "text-primaryOrange" },
+    { value: "1,000+", label: t("stats.studentsApprentices"), icon: Users, color: "text-primaryOrange" },
+    { value: "5", label: t("stats.awards"), icon: Award, color: "text-primaryOrange" },
   ];
 
-  const timeline = [
-    {
-      year: "2023",
-      title: "Die Idee entsteht",
-      description:
-        "Unsere Gründer erkannten das Problem: Junge Menschen haben zu wenig Finanzwissen und geraten in Schulden. Aus eigener Erfahrung entsteht die Vision, Finanzbildung spielerisch, verständlich und für alle zugänglich zu machen.",
-    },
-    {
-      year: "2024",
-      title: "BeAFox wird geboren",
-      description:
-        "Die Entwicklung der ersten Version beginnt. Mit Know-how, Kreativität und Leidenschaft arbeiten wir an der ersten spielerischen Lern-App für Finanzbildung. Das Konzept nimmt Form an.",
-    },
-    {
-      year: "2025",
-      title: "Gründung & Release",
-      description:
-        "BeAFox UG wird offiziell gegründet. Die App geht live und wird erstmals der Öffentlichkeit zugänglich gemacht. Ein wichtiger Meilenstein auf unserem Weg zur finanziellen Bildung für alle.",
-    },
-    {
-      year: "2025",
-      title: "Erste Erfolge",
-      description:
-        "Deggendorfer Gründerpreis und 2. Platz beim Startup Summit Deutschland. Unser Durchhaltevermögen zahlt sich aus und bestätigt unseren innovativen Ansatz. Die Anerkennung motiviert uns weiterzumachen.",
-    },
-    {
-      year: "2025",
-      title: "Wachstum & Expansion",
-      description:
-        "Über 3.000 aktive Nutzer, Partnerschaften mit Schulen und Unternehmen. BeAFox wird zur führenden Finanzbildungs-App und wächst kontinuierlich. Unsere Mission erreicht immer mehr Menschen.",
-    },
-  ];
+  const timelineData = t.raw("timeline.items") as { year: string; title: string; description: string }[];
+  const valueIcons = [Target, Lightbulb, Building2];
+  const valuesData = t.raw("values") as { title: string; description: string }[];
+  const values = valuesData.map((v, i) => ({ icon: valueIcons[i], title: v.title, description: v.description }));
 
-  const teamMembers = [
-    {
-      name: "Alexandru Tapelea",
-      role: "Gründer – CEO & CTO",
-      image: "/Team/Alex.png",
-      linkedin: "https://www.linkedin.com/in/alexandru-tapelea-43a400245/",
-    },
-    {
-      name: "Selina Fuchs",
-      role: "Mitgründerin – CMO",
-      image: "/Team/Selina.png",
-      linkedin: "https://www.linkedin.com/in/selina-fuchs-7b0873371/",
-    },
-    {
-      name: "Prof. Dr. Marcel Dulgeridis",
-      role: "Mitgründer – CFO",
-      image: "/Team/Marcel.png",
-      linkedin: "https://www.linkedin.com/in/marceldulgeridis/",
-    },
-    {
-      name: "Nico Moos",
-      role: "CSO",
-      image: "/Team/Nico.png",
-      linkedin: "https://www.linkedin.com/in/nico-moos-355b881a8/",
-    },
+  const teamMembersTranslated = t.raw("team.members") as { name: string; role: string }[];
+  const teamMemberMeta = [
+    { image: "/Team/Alex.png", linkedin: "https://www.linkedin.com/in/alexandru-tapelea-43a400245/" },
+    { image: "/Team/Selina.png", linkedin: "https://www.linkedin.com/in/selina-fuchs-7b0873371/" },
+    { image: "/Team/Marcel.png", linkedin: "https://www.linkedin.com/in/marceldulgeridis/" },
+    { image: "/Team/Nico.png", linkedin: "https://www.linkedin.com/in/nico-moos-355b881a8/" },
   ];
-
-  const values = [
-    {
-      icon: Target,
-      title: "Unsere Mission",
-      description:
-        "Wir machen Finanzbildung einfach, spielerisch und alltagstauglich. Ohne Werbung, ohne Verkaufsdruck.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Unsere Vision",
-      description:
-        "BeAFox wird die führende Plattform für Finanzbildung weltweit.",
-    },
-    {
-      icon: Building2,
-      title: "Unser Motto",
-      description: "Nimm deine Finanzen selbst in die Pfote!",
-    },
-  ];
+  const teamMembers = teamMemberMeta.map((meta, i) => ({ ...meta, ...teamMembersTranslated[i] }));
 
   return (
     <>
@@ -149,7 +63,7 @@ export default function AboutPage() {
           >
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              Über uns
+              {t("hero.badge")}
             </h2>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
@@ -159,7 +73,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
           >
-            Das wollen <span className="text-primaryOrange">Wir</span>
+            {t("hero.titlePre")}<span className="text-primaryOrange">{t("hero.titleHighlight")}</span>{t("hero.titlePost")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -167,8 +81,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
           >
-            Mit Know-how, Kreativität und Leidenschaft arbeiten wir täglich
-            daran finanzielle Bildung für alle zugänglich zu machen.
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* Stats Grid */}
@@ -230,16 +143,10 @@ export default function AboutPage() {
                 <Sparkles className="w-8 h-8 text-primaryOrange flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-3">
-                    Das Problem, das uns antreibt
+                    {t("story.problemTitle")}
                   </h3>
                   <p className="text-lightGray text-sm md:text-base leading-relaxed">
-                    Unsere Gründer sind selbst erst 21 Jahre alt und wissen aus
-                    eigener Erfahrung genau, wie es sich anfühlt, bei Finanzen
-                    komplett planlos zu sein. Während ihrer Ausbildung gerieten
-                    sie selbst in Schulden, kämpften sich jedoch eigenständig
-                    wieder heraus. Diese persönliche Erfahrung motivierte sie,
-                    eine Lösung zu schaffen, die anderen jungen Menschen helfen
-                    sollte, diese Herausforderungen zu vermeiden.
+                    {t("story.problemText")}
                   </p>
                 </div>
               </div>
@@ -256,17 +163,10 @@ export default function AboutPage() {
                 <Target className="w-8 h-8 text-primaryOrange flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-3">
-                    Unsere Lösung
+                    {t("story.solutionTitle")}
                   </h3>
                   <p className="text-lightGray text-sm md:text-base leading-relaxed">
-                    Mit BeAFox haben wir endlich eine Möglichkeit geschaffen,
-                    das oft als langweilig empfundene Thema Finanzen nachhaltig
-                    und verständlich zu vermitteln. Wir möchten, dass die junge
-                    Generation selbstständig und motiviert Finanzwissen erwirbt.
-                    Ganz ohne Druck und ohne das Gefühl, dazu gezwungen zu
-                    werden. Durch spielerische Elemente, klare Strukturen und
-                    wissenschaftlich fundierte Lehrmethoden machen wir
-                    Finanzbildung zu einem Erlebnis, das Spaß macht.
+                    {t("story.solutionText")}
                   </p>
                 </div>
               </div>
@@ -329,7 +229,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/assets/Mockups/Mockup-Profil.png"
-                  alt="BeAFox Profil Mockup"
+                  alt={t("mockups.profilAlt")}
                   width={200}
                   height={428}
                   className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
@@ -346,7 +246,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/assets/Mockups/Mockup-Lernpfad.png"
-                  alt="BeAFox Lernpfad Mockup"
+                  alt={t("mockups.learningPathAlt")}
                   width={240}
                   height={514}
                   className="object-contain drop-shadow-2xl w-[120px] sm:w-[160px] md:w-[240px] lg:w-[280px] h-auto"
@@ -364,7 +264,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/assets/Mockups/Mockup-Rangliste.png"
-                  alt="BeAFox Rangliste Mockup"
+                  alt={t("mockups.rankingAlt")}
                   width={200}
                   height={428}
                   className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
@@ -430,7 +330,7 @@ export default function AboutPage() {
             className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8"
           >
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            <span className="font-bold">Unser Team</span>
+            <span className="font-bold">{t("team.tag")}</span>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
           <motion.h2
@@ -440,7 +340,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4"
           >
-            Lerne <span className="text-primaryOrange">BeAFox</span> kennen
+            {t("team.titlePre")}<span className="text-primaryOrange">{t("team.titleHighlight")}</span>{t("team.titlePost")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -449,8 +349,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl text-lightGray max-w-3xl mx-auto"
           >
-            Wir sind BeAFox – ein Team mit Vision, Herz und dem festen Ziel,
-            finanzielle Bildung neu zu denken.
+            {t("team.subtitle")}
           </motion.p>
         </div>
 
@@ -510,21 +409,20 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Calendar className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <span className="font-bold">Unsere Reise</span>
+              <span className="font-bold">{t("timeline.tag")}</span>
               <Calendar className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              Von der Vision zur{" "}
-              <span className="text-primaryOrange">Realität</span>
+              {t("timeline.titlePre")}
+              <span className="text-primaryOrange">{t("timeline.titleHighlight")}</span>
             </h2>
           </motion.div>
 
           <div className="relative px-4 md:px-0">
-            {/* Timeline Line - zentriert */}
             <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-0.5 md:w-1 bg-primaryOrange/30 transform -translate-x-1/2 md:-translate-x-1/2"></div>
 
             <div className="space-y-4 md:space-y-6">
-              {timeline.map((item, index) => (
+              {timelineData.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
@@ -569,12 +467,12 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Award className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <span className="font-bold">Unsere Auszeichnungen</span>
+              <span className="font-bold">{t("achievements.tag")}</span>
               <Award className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4">
-              Anerkennung für unsere{" "}
-              <span className="text-primaryOrange">Arbeit</span>
+              {t("achievements.titlePre")}
+              <span className="text-primaryOrange">{t("achievements.titleHighlight")}</span>
             </h2>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -590,13 +488,10 @@ export default function AboutPage() {
               <div className="relative z-10">
                 <Award className="w-12 h-12 text-primaryOrange mb-4" />
                 <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-3 md:mb-4">
-                  Deggendorfer Gründerpreis
+                  {t("achievements.award1Title")}
                 </h3>
                 <p className="text-lightGray text-base md:text-lg">
-                  BeAFox wurde mit dem Deggendorfer Gründerpreis ausgezeichnet.
-                  Rund 60% des Publikums haben für uns gestimmt. Ein großes
-                  Dankeschön an das gesamte Team für die hervorragende
-                  Organisation und für das Preisgeld in Höhe von 2.500€.
+                  {t("achievements.award1Text")}
                 </p>
               </div>
             </motion.div>
@@ -612,19 +507,15 @@ export default function AboutPage() {
               <div className="relative z-10">
                 <TrendingUp className="w-12 h-12 text-primaryOrange mb-4" />
                 <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-3 md:mb-4">
-                  Startup Summit Deutschland - 2. Platz
+                  {t("achievements.award2Title")}
                 </h3>
                 <p className="text-lightGray text-base md:text-lg">
-                  Mit BeAFox haben wir den 2. Platz beim Startup Summit
-                  Deutschland erreicht – unsere erste offizielle Auszeichnung!
-                  Nach zwei Jahren harter Arbeit zeigt dies, dass
-                  Durchhaltevermögen, Mut und Teamwork sich auszahlen.
+                  {t("achievements.award2Text")}
                 </p>
               </div>
             </motion.div>
           </div>
 
-          {/* Blog Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -637,7 +528,7 @@ export default function AboutPage() {
               variant="secondary"
               className="flex items-center justify-center gap-2 !border-primaryOrange !text-primaryWhite hover:!bg-primaryOrange hover:!text-primaryWhite !px-4 !py-2 md:!px-6 md:!py-3"
             >
-              Zu unserem Blog
+              {t("achievements.blogCta")}
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
@@ -657,22 +548,15 @@ export default function AboutPage() {
             <Quote className="w-12 h-12 md:w-16 md:h-16 text-primaryOrange/20 absolute top-4 left-4" />
             <div className="relative z-10">
               <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-darkerGray mb-6 italic leading-relaxed">
-                "Wir glauben daran, dass jeder Mensch das Recht auf finanzielle
-                Bildung hat. BeAFox ist mehr als eine App – es ist eine
-                Bewegung, die junge Menschen befähigt, ihre finanzielle Zukunft
-                selbst in die Hand zu nehmen."
+                &quot;{t("quote.text")}&quot;
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-primaryOrange rounded-full flex items-center justify-center">
                   <PawPrint className="w-6 h-6 text-primaryWhite" />
                 </div>
                 <div>
-                  <div className="font-bold text-darkerGray">
-                    Das BeAFox Team
-                  </div>
-                  <div className="text-lightGray text-sm">
-                    Gemeinsam für finanzielle Bildung
-                  </div>
+                  <div className="font-bold text-darkerGray">{t("quote.teamName")}</div>
+                  <div className="text-lightGray text-sm">{t("quote.teamSubtitle")}</div>
                 </div>
               </div>
             </div>
@@ -700,7 +584,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
           >
-            Werde Teil unserer <span className="text-darkerGray">Mission</span>
+            {t("cta.titlePre")}<span className="text-darkerGray">{t("cta.titleHighlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -709,8 +593,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl mb-8 text-primaryWhite/90"
           >
-            Hilf uns dabei, Finanzkompetenz für alle erlebbar zu machen. Ob als
-            Nutzer, Partner oder Unterstützer – jeder Beitrag zählt.
+            {t("cta.description")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -724,7 +607,7 @@ export default function AboutPage() {
               variant="secondary"
               className="flex items-center justify-center gap-1.5 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
-              Jetzt Partner werden
+              {t("cta.partnerCta")}
             </Button>
             <Button
               onClick={() => setIsDownloadModalOpen(true)}
@@ -732,7 +615,7 @@ export default function AboutPage() {
               className="flex items-center justify-center gap-1.5 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-              App herunterladen
+              {t("cta.downloadCta")}
             </Button>
           </motion.div>
         </div>

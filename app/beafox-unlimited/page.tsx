@@ -40,12 +40,40 @@ export default function BeAFoxUnlimitedPage() {
     setIsDownloadModalOpen(true);
   };
 
+  type IconId =
+    | "school"
+    | "graduationCap"
+    | "briefcase"
+    | "user"
+    | "users"
+    | "award"
+    | "clock"
+    | "trendingUp"
+    | "bookOpen"
+    | "target"
+    | "zap"
+    | "shield";
+
+  const iconById: Record<IconId, React.ElementType> = {
+    school: School,
+    graduationCap: GraduationCap,
+    briefcase: Briefcase,
+    user: User,
+    users: Users,
+    award: Award,
+    clock: Clock,
+    trendingUp: TrendingUp,
+    bookOpen: BookOpen,
+    target: Target,
+    zap: Zap,
+    shield: Shield,
+  };
+
   const targetGroups = [
     {
       icon: School,
       title: t("hero.targetGroups.school.title"),
-      description:
-        t("hero.targetGroups.school.description"),
+      description: t("hero.targetGroups.school.description"),
     },
     {
       icon: GraduationCap,
@@ -64,118 +92,45 @@ export default function BeAFoxUnlimitedPage() {
     },
   ];
 
-  const features = [
-    {
-      icon: BookOpen,
-      title: "Vollständige Lernmodule",
-      description:
-        "Zugriff auf alle Lektionen und Themen rund um Finanzen – von Budgetplanung bis Investitionen.",
-    },
-    {
-      icon: Target,
-      title: "Spielerisches Lernen",
-      description:
-        "Punkte sammeln, Missionen abschließen und deinen Fortschritt verfolgen – so macht Lernen Spaß.",
-    },
-    {
-      icon: Award,
-      title: "Wissenschaftlich fundiert",
-      description:
-        "Unsere Inhalte basieren auf bewährten Lehrmethoden und werden kontinuierlich aktualisiert.",
-    },
-    {
-      icon: Shield,
-      title: "100% neutral & unabhängig",
-      description:
-        "Keine versteckten Verkaufsinteressen. Wir fokussieren uns auf reine Wissensvermittlung.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Dein Tempo, deine Zeit",
-      description:
-        "Lerne wann und wo du willst. Die App passt sich deinem Alltag an.",
-    },
-    {
-      icon: Zap,
-      title: "Regelmäßige Updates",
-      description:
-        "Neue Inhalte, Features und Verbesserungen – ohne zusätzliche Kosten.",
-    },
-  ];
+  const statsItems =
+    (t.raw("stats.items") as { iconId: IconId; value: string; label: string }[]) ??
+    [];
 
-  const plans = [
-    {
-      title: "Standard-Abo",
-      price: "4,99 €",
-      period: "/ monat",
-      features: [
-        "Vollständiger Zugang zu allen Lektionen",
-        "Spielerisches Lernsystem",
-        "Karteikartensystem",
-        "Fortschritts-Tracking",
-        "Monatlich kündbar",
-      ],
-      monthly: true,
-    },
-    {
-      title: "Jahresabo",
-      price: "3,99 €",
-      period: "/ monat",
-      yearlyNote: "pro Jahr",
-      features: [
-        "Vollständiger Zugang zu allen Lektionen",
-        "Spielerisches Lernsystem",
-        "Karteikartensystem",
-        "Fortschritts-Tracking",
-        "2 Monate gespart",
-        "Jährlich kündbar",
-      ],
-      popular: true,
-    },
-    {
-      title: "Lifetime",
-      price: "49,99 €",
-      period: "einmalig",
-      features: [
-        "Vollständiger Zugang zu allen Lektionen",
-        "Spielerisches Lernsystem",
-        "Karteikartensystem",
-        "Fortschritts-Tracking",
-        "Lebenslanger Zugang",
-        "Alle zukünftigen Updates",
-      ],
-      cheapest: true,
-    },
-  ];
+  const howItWorksSteps =
+    (t.raw("howItWorks.steps") as { title: string; description: string }[]) ?? [];
 
-  const benefits = [
-    {
-      icon: Users,
-      value: "3,000+",
-      label: "Aktive Privatnutzer",
-    },
-    {
-      icon: Award,
-      value: "98%",
-      label: "Zufriedenheit",
-    },
-    {
-      icon: Clock,
-      value: "24/7",
-      label: "Verfügbar",
-    },
-    {
-      icon: TrendingUp,
-      value: "500+",
-      label: "Lektionen",
-    },
-  ];
+  const appFeatures =
+    (t.raw("appFeatures.items") as {
+      id: string;
+      title: string;
+      description: string;
+      mockup: string;
+    }[]) ?? [];
+
+  const whyUnlimitedFeatures =
+    (t.raw("whyUnlimited.features") as {
+      iconId: IconId;
+      title: string;
+      description: string;
+    }[]) ?? [];
+
+  const plans =
+    (t.raw("pricing.plans") as {
+      title: string;
+      price: string;
+      period: string;
+      yearlyNote?: string;
+      features: string[];
+      monthly?: boolean;
+      popular?: boolean;
+      cheapest?: boolean;
+    }[]) ?? [];
 
   return (
     <>
       {/* Breadcrumbs */}
       <Breadcrumbs
-        items={[{ label: "BeAFox Unlimited", href: "/beafox-unlimited" }]}
+        items={[{ label: t("breadcrumbs.current"), href: "/beafox-unlimited" }]}
       />
 
       {/* Hero Section */}
@@ -256,7 +211,9 @@ export default function BeAFoxUnlimitedPage() {
       <Section className="bg-white py-0 md:py-6 lg:py-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {benefits.map((benefit, index) => (
+            {statsItems.map((benefit, index) => {
+              const Icon = iconById[benefit.iconId] ?? Users;
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -265,7 +222,7 @@ export default function BeAFoxUnlimitedPage() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="text-center bg-primaryOrange/5 rounded-xl p-3 md:p-6 border-2 border-primaryOrange/20"
               >
-                <benefit.icon
+                <Icon
                   className={`w-6 h-6 md:w-8 md:h-8 text-primaryOrange mx-auto mb-2 md:mb-3`}
                 />
                 <div className="text-xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-1 md:mb-2">
@@ -275,7 +232,7 @@ export default function BeAFoxUnlimitedPage() {
                   {benefit.label}
                 </div>
               </motion.div>
-            ))}
+            )})}
           </div>
         </div>
       </Section>
@@ -291,34 +248,15 @@ export default function BeAFoxUnlimitedPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
-              In drei einfachen Schritten{" "}
+              {t("howItWorks.title.pre")}{" "}
               <span className="text-primaryOrange">
-                zu deiner Finanzkompetenz
+                {t("howItWorks.title.highlight")}
               </span>
             </h2>
           </motion.div>
 
           <div className="space-y-8">
-            {[
-              {
-                step: "1",
-                title: "App herunterladen",
-                description:
-                  "Lade BeAFox kostenlos im App Store oder Google Play Store herunter.",
-              },
-              {
-                step: "2",
-                title: "Abo wählen",
-                description:
-                  "Wähle das Abo, das zu dir passt – monatlich, jährlich oder Lifetime.",
-              },
-              {
-                step: "3",
-                title: "Loslegen",
-                description:
-                  "Starte deine Finanzbildungs-Reise und lerne in deinem eigenen Tempo.",
-              },
-            ].map((item, index) => (
+            {howItWorksSteps.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
@@ -328,7 +266,7 @@ export default function BeAFoxUnlimitedPage() {
                 className="flex items-start gap-6 bg-white rounded-xl p-6 border-2 border-primaryOrange/20"
               >
                 <div className="bg-primaryOrange text-primaryWhite w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-                  {item.step}
+                  {index + 1}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-darkerGray mb-2">
@@ -353,68 +291,20 @@ export default function BeAFoxUnlimitedPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
-              So funktioniert <span className="text-primaryOrange">BeAFox</span>
+              {t("appFeatures.title.pre")}{" "}
+              <span className="text-primaryOrange">
+                {t("appFeatures.title.highlight")}
+              </span>
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Entdecke alle Features, die deine Finanzbildung zu einem Erlebnis
-              machen.
+              {t("appFeatures.subtitle")}
             </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 items-center">
             {/* Left: Feature Tabs */}
             <div className="space-y-4">
-              {[
-                {
-                  id: "stufen",
-                  title: "Stufen",
-                  description:
-                    "Wähle frei aus, was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden.",
-                  mockup: "/assets/Mockups/Mockup-Stufen.png",
-                },
-                {
-                  id: "lernpfad",
-                  title: "Lernpfad",
-                  description:
-                    "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer, wo du stehst.",
-                  mockup: "/assets/Mockups/Mockup-Lernpfad.png",
-                },
-                {
-                  id: "lektion",
-                  title: "Lektionen",
-                  description:
-                    "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich.",
-                  mockup: "/assets/Mockups/Mockup-Lektion.png",
-                },
-                {
-                  id: "quiz",
-                  title: "Quiz",
-                  description:
-                    "Teste dein Wissen mit interaktiven Quizzen und vertiefe das Gelernte. Mit jedem erfolgreich abgeschlossenen Quiz sammelst du Punkte.",
-                  mockup: "/assets/Mockups/Mockup-Quiz.png",
-                },
-                {
-                  id: "rangliste",
-                  title: "Rangliste",
-                  description:
-                    "Vergleiche dich mit anderen Lernenden und motiviere dich durch freundschaftlichen Wettbewerb. Sammle Punkte und erreiche neue Level.",
-                  mockup: "/assets/Mockups/Mockup-Rangliste.png",
-                },
-                {
-                  id: "missionen",
-                  title: "Missionen & Ziele",
-                  description:
-                    "Erfülle spannende Missionen und erreiche deine persönlichen Ziele. Jede erfolgreich abgeschlossene Mission wird belohnt.",
-                  mockup: "/assets/Mockups/Mockup-Missionen.png",
-                },
-                {
-                  id: "profil",
-                  title: "Profil",
-                  description:
-                    "Sammle Statistiken über deinen Lernfortschritt und erhalte deinen persönlichen Fox Score. Dein Profil zeigt dir alle deine Leistungen.",
-                  mockup: "/assets/Mockups/Mockup-Profil.png",
-                },
-              ].map((feature, index) => (
+              {appFeatures.map((feature, index) => (
                 <motion.div
                   key={feature.id}
                   initial={{ opacity: 0, x: -20 }}
@@ -444,18 +334,10 @@ export default function BeAFoxUnlimitedPage() {
                 className="relative"
               >
                 <Image
-                  src={
-                    [
-                      "/assets/Mockups/Mockup-Stufen.png",
-                      "/assets/Mockups/Mockup-Lernpfad.png",
-                      "/assets/Mockups/Mockup-Lektion.png",
-                      "/assets/Mockups/Mockup-Quiz.png",
-                      "/assets/Mockups/Mockup-Rangliste.png",
-                      "/assets/Mockups/Mockup-Missionen.png",
-                      "/assets/Mockups/Mockup-Profil.png",
-                    ][selectedFeature]
-                  }
-                  alt="BeAFox App Feature"
+                  src={appFeatures[selectedFeature]?.mockup ?? "/assets/Mockups/Mockup-Start.png"}
+                  alt={t("appFeatures.mockupAlt", {
+                    feature: appFeatures[selectedFeature]?.title ?? "BeAFox",
+                  })}
                   width={300}
                   height={600}
                   className="object-contain drop-shadow-2xl w-full max-w-[200px] md:max-w-[350px] lg:max-w-[400px] h-auto"
@@ -477,17 +359,21 @@ export default function BeAFoxUnlimitedPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
-              Warum <span className="text-primaryOrange">BeAFox Unlimited</span>
-              ?
+              {t("whyUnlimited.title.pre")}{" "}
+              <span className="text-primaryOrange">
+                {t("whyUnlimited.title.highlight")}
+              </span>
+              {t("whyUnlimited.title.post")}
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Alles, was du brauchst, um deine Finanzkompetenz zu steigern – in
-              einer App.
+              {t("whyUnlimited.subtitle")}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {features.map((feature, index) => (
+            {whyUnlimitedFeatures.map((feature, index) => {
+              const Icon = iconById[feature.iconId] ?? BookOpen;
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -497,14 +383,14 @@ export default function BeAFoxUnlimitedPage() {
                 className="bg-primaryWhite rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-sm h-full flex flex-col"
               >
                 <div className="bg-primaryOrange/10 rounded-lg p-3 w-fit mb-4">
-                  <feature.icon className="w-8 h-8 text-primaryOrange" />
+                  <Icon className="w-8 h-8 text-primaryOrange" />
                 </div>
                 <h3 className="text-xl font-bold text-darkerGray mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-lightGray flex-1">{feature.description}</p>
               </motion.div>
-            ))}
+            )})}
           </div>
         </div>
       </Section>
@@ -520,10 +406,11 @@ export default function BeAFoxUnlimitedPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
-              Wähle dein <span className="text-primaryOrange">Abo</span>
+              {t("pricing.title.pre")}{" "}
+              <span className="text-primaryOrange">{t("pricing.title.highlight")}</span>
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Flexible Preise für jeden Bedarf – von monatlich bis lebenslang.
+              {t("pricing.subtitle")}
             </p>
           </motion.div>
 
@@ -545,17 +432,17 @@ export default function BeAFoxUnlimitedPage() {
               >
                 {plan.popular && (
                   <div className="bg-primaryOrange text-primaryWhite text-sm font-semibold px-3 py-1 rounded-full w-fit mb-4">
-                    Beliebt
+                    {t("pricing.badges.popular")}
                   </div>
                 )}
                 {plan.cheapest && (
                   <div className="bg-primaryOrange/20 text-primaryOrange text-sm font-semibold px-3 py-1 rounded-full w-fit mb-4">
-                    Am Billigsten
+                    {t("pricing.badges.cheapest")}
                   </div>
                 )}
                 {plan.monthly && (
                   <div className="bg-primaryOrange/20 text-primaryOrange text-sm font-semibold px-3 py-1 rounded-full w-fit mb-4">
-                    Monatlich kündbar
+                    {t("pricing.badges.monthlyCancelable")}
                   </div>
                 )}
                 <h3 className="text-2xl font-bold text-darkerGray mb-2">
@@ -568,6 +455,11 @@ export default function BeAFoxUnlimitedPage() {
                     </span>
                     <span className="text-lightGray">{plan.period}</span>
                   </div>
+                  {plan.yearlyNote && (
+                    <div className="text-xs md:text-sm text-lightGray mt-1">
+                      {plan.yearlyNote}
+                    </div>
+                  )}
                 </div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((feature, featureIndex) => (
@@ -587,7 +479,7 @@ export default function BeAFoxUnlimitedPage() {
                     plan.popular && "relative sm:top-1"
                   }`}
                 >
-                  Jetzt starten
+                  {t("pricing.cta.start")}
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </motion.div>
@@ -615,7 +507,7 @@ export default function BeAFoxUnlimitedPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
             >
-              Bereit, deine Finanzkompetenz zu steigern?
+              {t("cta.title")}
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -624,8 +516,7 @@ export default function BeAFoxUnlimitedPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg md:text-xl mb-8 text-primaryWhite/90"
             >
-              Lade BeAFox jetzt herunter und starte deine Reise zu mehr
-              Finanzwissen.
+              {t("cta.subtitle")}
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -639,7 +530,7 @@ export default function BeAFoxUnlimitedPage() {
                 variant="secondary"
                 className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
               >
-                App herunterladen
+                {t("cta.button")}
               </Button>
             </motion.div>
           </motion.div>
@@ -663,7 +554,7 @@ export default function BeAFoxUnlimitedPage() {
             >
               <Image
                 src="/assets/Mockups/Mockup-Start.png"
-                alt="BeAFox Profil Mockup"
+                alt={t("cta.mockups.profileAlt")}
                 width={200}
                 height={428}
                 className="object-contain drop-shadow-2xl w-[140px] sm:w-[160px] md:w-[180px] lg:w-[220px] xl:w-[280px] h-auto"
@@ -680,7 +571,7 @@ export default function BeAFoxUnlimitedPage() {
             >
               <Image
                 src="/assets/Mockups/Mockup-Lernpfad.png"
-                alt="BeAFox Rangliste Mockup"
+                alt={t("cta.mockups.pathAlt")}
                 width={240}
                 height={514}
                 className="object-contain drop-shadow-2xl w-[140px] sm:w-[180px] md:w-[200px] lg:w-[240px] xl:w-[280px] h-auto"

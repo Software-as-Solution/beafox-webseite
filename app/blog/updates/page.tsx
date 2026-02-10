@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
-import { PawPrint, Calendar, Sparkles, CheckCircle2 } from "lucide-react";
+import { Calendar, Sparkles, CheckCircle2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function AppUpdatesPage() {

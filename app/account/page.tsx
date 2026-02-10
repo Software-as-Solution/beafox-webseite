@@ -282,9 +282,11 @@ function AccountContent() {
                   <p className="text-xs sm:text-sm text-lightGray">
                     {t("subscriptionStatus.paymentMethod")}{" "}
                     <span className="font-semibold text-darkerGray">
-                      {subscriptionData?.paymentMethod === "app_store" ? "Apple App Store" : 
-                       subscriptionData?.paymentMethod === "google_play" ? "Google Play Store" : 
-                       "Apple/Google"}
+                      {subscriptionData?.paymentMethod === "app_store"
+                        ? t("subscriptionStatus.stores.apple")
+                        : subscriptionData?.paymentMethod === "google_play"
+                        ? t("subscriptionStatus.stores.google")
+                        : t("subscriptionStatus.stores.appleOrGoogle")}
                     </span>
                   </p>
                 )}

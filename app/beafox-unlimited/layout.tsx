@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "BeAFox Unlimited – Vollzugang zur Finanzbildung-App",
-  description:
-    "Lern-App für Finanzen: BeAFox Unlimited ist die Finanz-App für Finanzbildung. Finanzbildung App für alle, die Finanzwissen lernen wollen. Alle Lernmodule, Missionen und Features ohne Einschränkungen.",
-  openGraph: {
-    title: "BeAFox Unlimited – Vollzugang zur Finanzbildung-App",
-    description:
-      "Voller Zugang zu allen Premium-Inhalten. Alle Lernmodule, Missionen und Features ohne Einschränkungen.",
-    url: "https://beafox.app/beafox-unlimited",
-  },
-  alternates: {
-    canonical: "https://beafox.app/beafox-unlimited",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("unlimited");
+
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    openGraph: {
+      title: t("meta.ogTitle"),
+      description: t("meta.ogDescription"),
+      url: "https://beafox.app/beafox-unlimited",
+    },
+    alternates: {
+      canonical: "https://beafox.app/beafox-unlimited",
+    },
+  };
+}
 
 export default function UnlimitedLayout({
   children,

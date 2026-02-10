@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "BeAFox for Business – Finanzbildung für Unternehmen & Azubis",
-  description:
-    "Finanzbildung für Unternehmen: BeAFox bietet Finanzbildung für Azubis, Finanzbildung in der Ausbildung und Finanztraining für Mitarbeiter. Digitale Finanzbildungsplattform für nachhaltige Mitarbeiterentwicklung.",
-  openGraph: {
-    title: "BeAFox for Business – Finanzbildung für Unternehmen & Azubis",
-    description:
-      "Maßgeschneiderte Finanzbildungs-Lösungen für Unternehmen. Steigern Sie die Finanzkompetenz Ihrer Mitarbeiter mit BeAFox.",
-    url: "https://beafox.app/fuer-unternehmen",
-  },
-  alternates: {
-    canonical: "https://beafox.app/fuer-unternehmen",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("business");
+
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    openGraph: {
+      title: t("meta.ogTitle"),
+      description: t("meta.ogDescription"),
+      url: "https://beafox.app/fuer-unternehmen",
+    },
+    alternates: {
+      canonical: "https://beafox.app/fuer-unternehmen",
+    },
+  };
+}
 
 export default function BusinessLayout({
   children,

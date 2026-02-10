@@ -65,105 +65,34 @@ export default function PricingPage() {
     },
   ];
 
+  const consumerPlans = t.raw("consumer.plans") as Array<{
+    title: string;
+    subtitle: string;
+    price: string;
+    period: string;
+    yearlyNote?: string;
+    features: string[];
+    popular?: boolean;
+    cheapest?: boolean;
+  }>;
+
+  const schoolFeaturesData = t.raw("school.features") as string[];
+  const schoolFeatureIcons = [Infinity, BookOpen, BarChart, CreditCard, FileText];
   const schoolPlan = {
-    price: "€1",
-    period: "pro Schüler",
-    period2: "pro Jahr",
-    subtitle:
-      "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution,",
-    features: [
-      { text: "Lernen ohne Grenzen", icon: Infinity },
-      { text: "Vollständige Lernmodule", icon: BookOpen },
-      { text: "Lehrer-Dashboards", icon: BarChart },
-      { text: "Karteikartensysteme", icon: CreditCard },
-      { text: "Analoge Unterlagen", icon: FileText },
-    ],
+    price: t("school.price"),
+    period: t("school.period"),
+    period2: t("school.period2"),
+    subtitle: t("school.subtitle"),
+    features: schoolFeaturesData.map((text, i) => ({ text, icon: schoolFeatureIcons[i] })),
   };
 
-  const businessPlans = [
-    {
-      title: "Ab 10 Lizenzen",
-      price: "€6.99",
-      period: "/ monat",
-      setupFee: 199,
-      features: [
-        { text: "Lernen ohne Grenzen", icon: Infinity },
-        { text: "Vollständige Lernmodule", icon: BookOpen },
-        { text: "Integriertes Karteikartensystem", icon: Layers },
-      ],
-    },
-    {
-      title: "Ab 50 Lizenzen",
-      price: "€5.99",
-      period: "/ monat",
-      setupFee: 299,
-      features: [
-        { text: "Lernen ohne Grenzen", icon: Infinity },
-        { text: "Vollständige Lernmodule", icon: BookOpen },
-        { text: "Integriertes Karteikartensystem", icon: Layers },
-      ],
-      popular: true,
-    },
-    {
-      title: "Ab 100 Lizenzen",
-      price: "€4.99",
-      period: "/ monat",
-      setupFee: 499,
-      features: [
-        { text: "Lernen ohne Grenzen", icon: Infinity },
-        { text: "Vollständige Lernmodule", icon: BookOpen },
-        { text: "Integriertes Karteikartensystem", icon: Layers },
-      ],
-    },
-  ];
+  const servicesData = t.raw("services.items") as Array<{ title: string; description: string; features: string[]; cta: string }>;
+  const serviceIcons = [Presentation, Megaphone, FileText, MessageSquare, BarChart, GraduationCap];
 
-  const consumerPlans = [
-    {
-      title: "Standard-Abo",
-      subtitle: "Monatlich kündbar.",
-      price: "4,99 €",
-      period: "/ monat",
-      features: [
-        "Vollständiger Zugang zu allen Lektionen",
-        "Spielerisches Lernsystem",
-        "Karteikartensystem",
-        "Fortschritts-Tracking",
-        "Monatlich kündbar",
-      ],
-      monthly: true,
-    },
-    {
-      title: "Jahresabo",
-      subtitle: "Am Beliebtesten",
-      price: "3,99 €",
-      period: "/ monat",
-      yearlyNote: "pro Jahr",
-      features: [
-        "Vollständiger Zugang zu allen Lektionen",
-        "Spielerisches Lernsystem",
-        "Karteikartensystem",
-        "Fortschritts-Tracking",
-        "2 Monate gespart",
-        "Jährlich kündbar",
-      ],
-      popular: true,
-    },
-    {
-      title: "Lifetime",
-      subtitle: "Am Billigsten",
-      price: "49,99 €",
-      period: "einmalig",
-      features: [
-        "Vollständiger Zugang zu allen Lektionen",
-        "Spielerisches Lernsystem",
-        "Karteikartensystem",
-        "Fortschritts-Tracking",
-        "Lebenslanger Zugang",
-        "Alle zukünftigen Updates",
-      ],
-      cheapest: true,
-    },
-  ];
+  const valuePropItems = t.raw("valueProp.items") as Array<{ title: string; description: string }>;
+  const valuePropIcons = [Globe, Award, Target];
+
+  const faqItems = t.raw("faq.items") as Array<{ q: string; a: string }>;
 
   return (
     <>
@@ -259,17 +188,17 @@ export default function PricingPage() {
             >
               <div className="text-center">
                 <div className="mb-6">
-                  <p className="text-sm md:text-base text-lightGray mb-2">Ab</p>
+                  <p className="text-sm md:text-base text-lightGray mb-2">{t("business.fromLabel")}</p>
                   <div className="flex items-baseline justify-center gap-2">
                     <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primaryOrange">
-                      3,99 €
+                      {t("business.price")}
                     </span>
                     <span className="text-lg md:text-xl text-lightGray">
-                      / Monat
+                      {t("business.perMonth")}
                     </span>
                   </div>
                   <p className="text-base md:text-lg text-lightGray mt-2">
-                    pro Mitarbeiter
+                    {t("business.perEmployee")}
                   </p>
                 </div>
                 <a
@@ -279,7 +208,7 @@ export default function PricingPage() {
                   className="inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-primaryOrange/90 text-primaryWhite px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl w-full"
                 >
                   <Calendar className="w-5 h-5" />
-                  Termin vereinbaren
+                  {t("business.bookCta")}
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -294,9 +223,7 @@ export default function PricingPage() {
               className="space-y-6"
             >
               <p className="text-base md:text-lg text-lightGray">
-                Investieren Sie in den wichtigsten Future Skill für Ihre
-                Mitarbeitenden und das bei Kosten, die nicht einmal 1 % eines
-                Mitarbeitenden ausmachen.
+                {t("business.paragraph")}
               </p>
 
               {/* Individual Offer Info */}
@@ -305,11 +232,10 @@ export default function PricingPage() {
                   <Sparkles className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm md:text-base font-medium text-darkerGray mb-1">
-                      Individuelle Pakete immer möglich
+                      {t("business.individualTitle")}
                     </p>
                     <p className="text-sm text-lightGray">
-                      Jederzeit können wir ein maßgeschneidertes Angebot für Ihr
-                      Unternehmen erstellen. Kontaktieren Sie uns einfach!
+                      {t("business.individualText")}
                     </p>
                   </div>
                 </div>
@@ -321,7 +247,7 @@ export default function PricingPage() {
                   variant="outline"
                   className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full md:w-auto"
                 >
-                  Mehr Informationen
+                  {t("business.moreInfoCta")}
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
               </div>
@@ -339,10 +265,10 @@ export default function PricingPage() {
             className="text-center mb-8"
           >
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
-              Für Endkunden
+              {t("consumer.heading")}
             </h3>
             <p className="text-base md:text-xl text-lightGray">
-              Wähle das Modell, das zu deinem Alltag passt.
+              {t("consumer.subtitle")}
             </p>
           </motion.div>
 
@@ -422,7 +348,7 @@ export default function PricingPage() {
                     variant={plan.popular ? "primary" : "outline"}
                     className="w-full md:w-auto flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                   >
-                    Jetzt downloaden
+                    {t("consumer.downloadCta")}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </div>
@@ -441,10 +367,10 @@ export default function PricingPage() {
             className="text-center mb-8"
           >
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
-              Für Schulen
+              {t("school.heading")}
             </h3>
             <p className="text-base md:text-xl text-lightGray">
-              {schoolPlan.subtitle}
+              {t("school.subtitle")}
             </p>
           </motion.div>
 
@@ -477,7 +403,7 @@ export default function PricingPage() {
                     variant="primary"
                     className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 text-sm md:text-base !w-[240px] md:!w-[280px]"
                   >
-                    Jetzt Partner werden
+                    {t("school.partnerCta")}
                     <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                   </Button>
                   <a
@@ -487,7 +413,7 @@ export default function PricingPage() {
                     className="inline-flex items-center justify-center gap-2 border-2 border-primaryOrange text-primaryOrange hover:bg-primaryOrange hover:text-primaryWhite px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold transition-all duration-300 text-sm md:text-base shadow-lg hover:shadow-xl w-[240px] md:w-[280px]"
                   >
                     <Calendar className="w-4 h-4 md:w-5 md:h-5" />
-                    Termin buchen
+                    {t("school.bookCta")}
                     <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                   </a>
                 </div>
@@ -541,98 +467,19 @@ export default function PricingPage() {
             >
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
               <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-                Weitere Dienstleistungen
+                {t("services.heading")}
               </h2>
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </motion.div>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Über die App hinaus bieten wir zusätzliche Services für eine
-              ganzheitliche Finanzbildung – maßgeschneidert für Ihre
-              Bedürfnisse.
+              {t("services.paragraph")}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
-            {[
-              {
-                icon: Presentation,
-                title: "Finanzbildungs-Workshops",
-                description:
-                  "Interaktive Workshops vor Ort oder online. Theorie und Praxis verbinden für nachhaltiges Lernen.",
-                features: [
-                  "Erfahrene Referenten",
-                  "Kleine Gruppen",
-                  "Materialien zum Mitnehmen",
-                  "Follow-up Support",
-                ],
-                cta: "Workshop anfragen",
-              },
-              {
-                icon: Megaphone,
-                title: "PR Events & Veranstaltungen",
-                description:
-                  "Professionelle Events zur Finanzbildung für Ihre Zielgruppe. Von Messen bis zu internen Veranstaltungen.",
-                features: [
-                  "Maßgeschneiderte Konzepte",
-                  "Professionelle Durchführung",
-                  "Branding möglich",
-                  "Nachhaltige Wirkung",
-                ],
-                cta: "Event planen",
-              },
-              {
-                icon: FileText,
-                title: "Individuelle analoge Unterlagen",
-                description:
-                  "Maßgeschneiderte Lernmaterialien, Arbeitsblätter und Handouts für Ihre spezifischen Anforderungen.",
-                features: [
-                  "Individuelles Design",
-                  "Branding Integration",
-                  "Verschiedene Formate",
-                  "Professionelle Qualität",
-                ],
-                cta: "Unterlagen anfragen",
-              },
-              {
-                icon: MessageSquare,
-                title: "Beratung & Consulting",
-                description:
-                  "Strategische Beratung zur Implementierung von Finanzbildung in Ihrer Organisation oder Institution.",
-                features: [
-                  "Strategieentwicklung",
-                  "Best Practices",
-                  "Implementierungsplan",
-                  "Langfristige Begleitung",
-                ],
-                cta: "Beratung buchen",
-              },
-              {
-                icon: BarChart,
-                title: "Analytics & Reporting",
-                description:
-                  "Detaillierte Einblicke in den Lernfortschritt Ihrer Teilnehmer. Umfassende Reports und Analysen für datengetriebene Entscheidungen.",
-                features: [
-                  "Fortschritts-Tracking",
-                  "Detaillierte Reports",
-                  "Export-Funktionen",
-                  "Individuelle Dashboards",
-                ],
-                cta: "Analytics anfragen",
-              },
-              {
-                icon: GraduationCap,
-                title: "Schulungen & Trainings",
-                description:
-                  "Schulungen für Lehrkräfte, Trainer oder Multiplikatoren zur effektiven Nutzung von BeAFox.",
-                features: [
-                  "Train-the-Trainer",
-                  "Didaktische Schulungen",
-                  "Technische Einweisung",
-                  "Zertifikate",
-                ],
-                cta: "Schulung buchen",
-              },
-            ].map((service, index) => (
+            {servicesData.map((service, index) => {
+              const ServiceIcon = serviceIcons[index];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -642,7 +489,7 @@ export default function PricingPage() {
                 className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all h-full flex flex-col group"
               >
                 <div className="bg-primaryOrange/10 rounded-lg p-3 w-fit mb-4 group-hover:scale-110 transition-transform">
-                  <service.icon className="w-8 h-8 text-primaryOrange" />
+                  <ServiceIcon className="w-8 h-8 text-primaryOrange" />
                 </div>
                 <h3 className="text-xl font-bold text-darkerGray mb-3">
                   {service.title}
@@ -670,7 +517,8 @@ export default function PricingPage() {
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </motion.div>
-            ))}
+            );
+            })}
           </div>
 
           <motion.div
@@ -681,12 +529,10 @@ export default function PricingPage() {
             className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-2xl p-6 md:p-8 lg:p-10 border-2 border-primaryOrange text-center"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-4">
-              Individuelle Lösungen für jeden Bedarf
+              {t("services.bottomTitle")}
             </h3>
             <p className="text-base text-lightGray mb-6 max-w-2xl mx-auto">
-              Alle unsere Dienstleistungen können individuell kombiniert und
-              angepasst werden. Sprechen Sie uns an, wir finden die perfekte
-              Lösung für Ihre Anforderungen.
+              {t("services.bottomParagraph")}
             </p>
             <div className="flex justify-center">
               <Button
@@ -694,7 +540,7 @@ export default function PricingPage() {
                 variant="primary"
                 className="flex items-center justify-center gap-2 w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
               >
-                Kostenlose Beratung anfragen
+                {t("services.bottomCta")}
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               </Button>
             </div>
@@ -713,35 +559,17 @@ export default function PricingPage() {
             className="text-center mb-8 lg:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 lg:mb-4">
-              Warum <span className="text-primaryOrange">BeAFox</span>?
+              {t("valueProp.titlePre")}<span className="text-primaryOrange">{t("valueProp.titleHighlight")}</span>{t("valueProp.titlePost")}
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Investiere in die Zukunft deiner Schüler, Azubis oder Mitarbeiter
-              – mit einem fairen Preis-Leistungs-Verhältnis.
+              {t("valueProp.subtitle")}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                icon: Globe,
-                title: "Das erste Finanzbildungsökosystem",
-                description:
-                  "BeAFox ist mehr als eine App – es ist ein ganzheitliches Ökosystem aus digitalen Lerninhalten, Workshops, analogen Materialien und Support. Alles perfekt aufeinander abgestimmt für maximalen Lernerfolg.",
-              },
-              {
-                icon: Award,
-                title: "Wissenschaftlich fundiert durch Forschung",
-                description:
-                  "Basierend auf einem umfangreichen Forschungsprojekt mit über 500 Teilnehmern. Unsere Methoden sind evidenzbasiert und erprobt – keine Experimente, sondern bewährte Didaktik.",
-              },
-              {
-                icon: Target,
-                title: "100% zielgruppenorientiert",
-                description:
-                  "Wir wissen genau, wie man Finanzbildung lehren muss. Jede Zielgruppe – Schüler, Azubis, Studenten, Mitarbeiter – erhält maßgeschneiderte Inhalte, die wirklich ankommen und nachhaltig wirken.",
-              },
-            ].map((item, index) => (
+            {valuePropItems.map((item, index) => {
+              const ValueIcon = valuePropIcons[index];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -750,13 +578,14 @@ export default function PricingPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
               >
-                <item.icon className="w-10 h-10 text-primaryOrange mb-4" />
+                <ValueIcon className="w-10 h-10 text-primaryOrange mb-4" />
                 <h3 className="text-xl font-bold text-darkerGray mb-3">
                   {item.title}
                 </h3>
                 <p className="text-lightGray">{item.description}</p>
               </motion.div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </Section>
@@ -772,47 +601,22 @@ export default function PricingPage() {
             className="text-center mb-8 lg:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 lg:mb-4">
-              Häufige Fragen zu den{" "}
-              <span className="text-primaryOrange">Preisen</span>
+              {t("faq.titlePre")}
+              <span className="text-primaryOrange">{t("faq.titleHighlight")}</span>
             </h2>
           </motion.div>
 
           <div className="space-y-4 md:space-y-6">
-            {[
-              {
-                id: 1,
-                q: "Gibt es Rabatte für mehrere Klassen oder Standorte?",
-                a: "Ja, wir bieten gestaffelte Preise für größere Institutionen. Kontaktieren Sie uns für ein individuelles Angebot, das perfekt auf Ihre Bedürfnisse zugeschnitten ist.",
-              },
-              {
-                id: 2,
-                q: "Kann ich die App vor dem Kauf testen?",
-                a: "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und starten Sie Ihr Pilotprojekt.",
-              },
-              {
-                id: 3,
-                q: "Was ist im Preis enthalten?",
-                a: "Der Preis beinhaltet den vollständigen Zugang zur App, alle Lernmodule, Monitoring-Dashboards (für Schulen/Unternehmen), Support und regelmäßige Updates.",
-              },
-              {
-                id: 4,
-                q: "Kann ich jederzeit kündigen?",
-                a: "Bei Privatpersonen: Das monatliche Abo kann jederzeit gekündigt werden. Jahresabos laufen über die vereinbarte Laufzeit. Für Schulen und Unternehmen gelten individuelle Vereinbarungen.",
-              },
-              {
-                id: 5,
-                q: "Gibt es versteckte Kosten?",
-                a: "Nein, alle Preise sind transparent. Bei Unternehmen fällt einmalig eine Einrichtungsgebühr an, die im Preis klar ausgewiesen ist.",
-              },
-            ].map((faq, index) => {
-              const isOpen = openFAQId === faq.id;
+            {faqItems.map((faq, index) => {
+              const id = index + 1;
+              const isOpen = openFAQId === id;
               const handleToggle = () => {
-                setOpenFAQId(isOpen ? null : faq.id);
+                setOpenFAQId(isOpen ? null : id);
               };
 
               return (
                 <motion.div
-                  key={faq.id}
+                  key={id}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -857,7 +661,7 @@ export default function PricingPage() {
 
           <div className="text-center mt-10">
             <Button href="/faq" variant="outline" className="!px-6 !py-3">
-              Alle FAQ's ansehen
+              {t("faq.viewAllCta")}
             </Button>
           </div>
         </div>
@@ -883,7 +687,7 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
           >
-            Noch Fragen? Wir helfen gerne!
+            {t("cta.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -892,8 +696,7 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl mb-8 text-primaryWhite/90"
           >
-            Kontaktiere uns für ein unverbindliches Beratungsgespräch und
-            erhalte ein individuelles Angebot, das zu dir passt.
+            {t("cta.subtitle")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -907,14 +710,14 @@ export default function PricingPage() {
               variant="secondary"
               className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite text-sm md:text-base"
             >
-              Kostenlose Beratung
+              {t("cta.consultationCta")}
             </Button>
             <Button
               href="/faq"
               variant="secondary"
               className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite text-sm md:text-base"
             >
-              FAQ's durchsuchen
+              {t("cta.faqCta")}
             </Button>
           </motion.div>
         </div>

@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Über BeAFox",
-  description:
-    "Erfahre mehr über BeAFox - unsere Mission, Werte und wie wir Finanzbildung für junge Menschen revolutionieren. Lerne unser Team und unsere Vision kennen.",
-  openGraph: {
-    title: "Über BeAFox - Unsere Mission & Vision",
-    description:
-      "Erfahre mehr über BeAFox - unsere Mission, Werte und wie wir Finanzbildung für junge Menschen revolutionieren.",
-    url: "https://beafox.app/ueber-beafox",
-  },
-  alternates: {
-    canonical: "https://beafox.app/ueber-beafox",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("about");
+
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    alternates: {
+      canonical: "https://beafox.app/ueber-beafox",
+    },
+  };
+}
 
 export default function AboutLayout({
   children,

@@ -132,13 +132,11 @@ export default function Footer() {
                 </div>
               </div>
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4">
-                Bleib auf dem{" "}
-                <span className="text-primaryOrange">Laufenden</span>
+                {t("newsletter.titlePre")}
+                <span className="text-primaryOrange">{t("newsletter.titleHighlight")}</span>
               </h3>
               <p className="text-base md:text-lg text-lightGray max-w-2xl mx-auto">
-                Melde dich für unseren Newsletter an und verpasse keine Updates,
-                Tipps zur Finanzbildung und Einblicke hinter die Kulissen von
-                BeAFox.
+                {t("newsletter.description")}
               </p>
             </motion.div>
 
@@ -158,7 +156,7 @@ export default function Footer() {
                     type="email"
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
-                    placeholder="Deine Email-Adresse"
+                    placeholder={t("newsletter.placeholder")}
                     required
                     className="w-full pl-12 pr-4 py-3 md:py-4 rounded-full border-2 border-primaryOrange/30 bg-white text-darkerGray placeholder-lightGray focus:outline-none focus:border-primaryOrange focus:ring-2 focus:ring-primaryOrange/20 transition-all text-sm md:text-base shadow-sm"
                   />
@@ -169,10 +167,10 @@ export default function Footer() {
                   className="px-6 py-3 md:py-4 bg-primaryOrange hover:bg-primaryOrange/90 text-primaryWhite border-2 border-primaryOrange rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 whitespace-nowrap text-sm md:text-base"
                 >
                   {isNewsletterSubmitting ? (
-                    "Wird gesendet..."
+                    t("newsletter.submitting")
                   ) : (
                     <>
-                      Anmelden
+                      {t("newsletter.submit")}
                       <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                     </>
                   )}
@@ -213,7 +211,7 @@ export default function Footer() {
               <Link href="/" className="inline-block">
                 <Image
                   src="/assets/Logo-EST.jpg"
-                  alt="BeAFox Logo"
+                  alt={t("brand.logoAlt")}
                   width={150}
                   height={50}
                   className="object-contain h-12"
@@ -221,7 +219,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-lightGray mb-6 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 md:max-w-xs">
-              Die erste unabhängige und spielerische Lern-App für Finanzbildung.
+              {t("brand.tagline")}
             </p>
             <div className="flex space-x-4 justify-center md:justify-start">
               <a
@@ -274,46 +272,31 @@ export default function Footer() {
 
           {/* Menu */}
           <div>
-            <h3 className="text-darkerGray font-bold mb-6 text-lg">Menü</h3>
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("menu.title")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href="/"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Startseite
+                <Link href="/" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("menu.home")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/preise"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Preise
+                <Link href="/preise" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("menu.pricing")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/shop"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Shop
+                <Link href="/shop" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("menu.shop")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/kontakt"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Kontakt
+                <Link href="/kontakt" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("menu.contact")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/ueber-beafox"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Über BeAFox
+                <Link href="/ueber-beafox" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("menu.about")}
                 </Link>
               </li>
             </ul>
@@ -321,38 +304,26 @@ export default function Footer() {
 
           {/* Produkte */}
           <div>
-            <h3 className="text-darkerGray font-bold mb-6 text-lg">Produkte</h3>
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("products.title")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href="/beafox-unlimited"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  BeAFox Unlimited
+                <Link href="/beafox-unlimited" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("products.unlimited")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/fuer-unternehmen"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  BeAFox for Business
+                <Link href="/fuer-unternehmen" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("products.business")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/fuer-schulen"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  BeAFox for Schools
+                <Link href="/fuer-schulen" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("products.schools")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/fuer-clubs"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  BeAFox for Clubs
+                <Link href="/fuer-clubs" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("products.clubs")}
                 </Link>
               </li>
             </ul>
@@ -360,48 +331,31 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-darkerGray font-bold mb-6 text-lg">
-              Rechtliches
-            </h3>
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("legal.title")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href="/agb"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  AGB
+                <Link href="/agb" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("legal.agb")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/faq"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  FAQ
+                <Link href="/faq" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("legal.faq")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/impressum"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Impressum
+                <Link href="/impressum" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("legal.imprint")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/datenschutz"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Datenschutz
+                <Link href="/datenschutz" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("legal.privacy")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/guidelines"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm"
-                >
-                  Community-Richtlinien
+                <Link href="/guidelines" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                  {t("legal.guidelines")}
                 </Link>
               </li>
             </ul>
@@ -409,7 +363,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-darkerGray font-bold mb-6 text-lg">Kontakt</h3>
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("contact.title")}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
@@ -440,22 +394,16 @@ export default function Footer() {
 
           {/* Blog */}
           <div>
-            <h3 className="text-darkerGray font-bold mb-6 text-lg">Blog</h3>
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("blog.title")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm block"
-                >
-                  Alle Artikel
+                <Link href="/blog" className="hover:text-primaryOrange transition-colors text-lightGray text-sm block">
+                  {t("blog.allArticles")}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blog/updates"
-                  className="hover:text-primaryOrange transition-colors text-lightGray text-sm block"
-                >
-                  App-Updates
+                <Link href="/blog/updates" className="hover:text-primaryOrange transition-colors text-lightGray text-sm block">
+                  {t("blog.appUpdates")}
                 </Link>
               </li>
             </ul>
@@ -465,10 +413,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-lightGray">
-            <p>
-              Copyright © {new Date().getFullYear()} BeAFox UG
-              (haftungsbeschränkt)
-            </p>
+            <p>{t("copyright", { year: new Date().getFullYear() })}</p>
           </div>
         </div>
       </div>

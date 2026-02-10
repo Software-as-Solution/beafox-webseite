@@ -142,7 +142,7 @@ function CheckoutSuccessContent() {
                       >
                         <img
                           src="/assets/Apple.png"
-                          alt="Download on the App Store"
+                          alt={t("storeBadges.appleAlt")}
                           className="h-12 sm:h-14 w-auto hover:opacity-90 transition-opacity scale-150 relative bottom-[1px] left-[9.5%] sm:left-0"
                         />
                       </a>
@@ -154,7 +154,7 @@ function CheckoutSuccessContent() {
                       >
                         <img
                           src="/assets/Android.png"
-                          alt="GET IT ON Google Play"
+                          alt={t("storeBadges.googleAlt")}
                           className="h-12 sm:h-14 w-auto hover:opacity-90 transition-opacity scale-105"
                         />
                       </a>

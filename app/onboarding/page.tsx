@@ -4,18 +4,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { ArrowRight, Gift } from "lucide-react";
+import { useTranslations } from "next-intl";
 // COMPONENTS
 import Button from "@/components/Button";
 
 export default function OnboardingPage() {
+  const t = useTranslations("onboarding");
   // STATE
   const [typedText, setTypedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  // CONSTANTS
-  const words = ["FREIHEIT", "SICHERHEIT"];
+  // CONSTANTS – typing words from translations (DE: FREIHEIT, SICHERHEIT / EN: FREEDOM, SECURITY)
+  const words = useMemo(() => (t.raw("hero.typingWords") as string[]) ?? ["FREIHEIT", "SICHERHEIT"], [t]);
   // USE EFFECTS
   useEffect(() => {
     const currentWord = words[currentWordIndex];
@@ -56,7 +58,7 @@ export default function OnboardingPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-darkerGray mb-3 sm:mb-4 leading-tight px-2">
-                WISSEN. <span className="text-primaryOrange">GELD.</span>{" "}
+                {t("hero.headlineKnow")} <span className="text-primaryOrange">{t("hero.headlineMoney")}</span>{" "}
                 <span className="inline-block min-w-[140px] sm:min-w-[180px] md:min-w-[200px] lg:min-w-[350px] text-left">
                   {typedText}
                   <span className="inline-block w-0.5 h-[1em] bg-primaryOrange ml-1 animate-pulse"></span>
@@ -75,7 +77,7 @@ export default function OnboardingPage() {
                 <Image
                   width={160}
                   height={360}
-                  alt="BeAFox Training Mockup"
+                  alt={t("mockups.trainingAlt")}
                   src="/assets/Mockups/Mockup-Training.png"
                   className="object-contain drop-shadow-2xl w-[80px] sm:w-[120px] md:w-[160px] lg:w-[180px] xl:w-[190px] h-auto"
                 />
@@ -84,7 +86,7 @@ export default function OnboardingPage() {
                 <Image
                   width={200}
                   height={420}
-                  alt="BeAFox Lernpfad Mockup"
+                  alt={t("mockups.learningPathAlt")}
                   src="/assets/Mockups/Mockup-Lernpfad.png"
                   className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
                 />
@@ -93,7 +95,7 @@ export default function OnboardingPage() {
                 <Image
                   width={160}
                   height={360}
-                  alt="BeAFox Rangliste Mockup"
+                  alt={t("mockups.leaderboardAlt")}
                   src="/assets/Mockups/Mockup-Rangliste.png"
                   className="object-contain drop-shadow-2xl w-[80px] sm:w-[120px] md:w-[160px] lg:w-[180px] xl:w-[190px] h-auto"
                 />
@@ -118,13 +120,12 @@ export default function OnboardingPage() {
                   <Gift className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 px-2 leading-tight">
-                  Hast du einen Rabattcode oder Empfehlungscode erhalten?
+                  {t("discount.title")}
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-2">
-                  Dann registriere dich jetzt für{" "}
-                  <span className="font-bold">BeAFox Unlimited</span> und
-                  nutze deinen Code beim Checkout, um von exklusiven Vorteilen
-                  zu profitieren!
+                  {t("discount.descriptionPre")}
+                  <span className="font-bold">BeAFox Unlimited</span>
+                  {t("discount.descriptionPost")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-2">
                   <Link href="/registrierung" className="w-full sm:w-auto">
@@ -132,13 +133,13 @@ export default function OnboardingPage() {
                       variant="secondary"
                       className="!bg-white !text-primaryOrange hover:!bg-white/90 !px-6 sm:!px-8 !py-3 sm:!py-4 text-base sm:text-lg font-semibold flex items-center justify-center gap-2 w-full sm:w-auto"
                     >
-                      Jetzt registrieren
+                      {t("discount.registerCta")}
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </Button>
                   </Link>
                   <Link href="/login" className="w-full sm:w-auto">
                     <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-white text-white rounded-full hover:bg-white/10 transition-all font-semibold text-base sm:text-lg">
-                      Ich habe einen Account
+                      {t("discount.haveAccount")}
                     </button>
                   </Link>
                 </div>
@@ -155,15 +156,14 @@ export default function OnboardingPage() {
             className="max-w-2xl mx-auto text-center px-2"
           >
             <p className="text-lightGray text-sm sm:text-base md:text-lg mb-4 sm:mb-6 leading-relaxed">
-              Kein Code? Kein Problem! <br className="hidden sm:block" /> Du kannst dich trotzdem registrieren und
-              später jederzeit BeAFox Unlimited freischalten.
+              {t("cta.noCodePre")} <br className="hidden sm:block" /> {t("cta.noCodePost")}
             </p>
             <Link href="/registrierung" className="inline-block">
               <Button
                 variant="outline"
                 className="!px-6 sm:!px-8 !py-2.5 sm:!py-3 text-sm sm:text-base md:text-lg w-full sm:w-auto"
               >
-                Weiter zur Registrierung
+                {t("cta.continueCta")}
               </Button>
             </Link>
           </motion.div>

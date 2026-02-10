@@ -65,10 +65,52 @@
   },
   "footer": {
     "newsletter": {
+      "titlePre": "Stay ",
+      "titleHighlight": "in the loop",
+      "description": "Subscribe to our newsletter and never miss updates, financial education tips, and behind-the-scenes insights from BeAFox.",
+      "placeholder": "Your email address",
+      "submitting": "Sending...",
+      "submit": "Subscribe",
       "successFallback": "Successfully subscribed!",
       "errorFallback": "Something went wrong.",
       "errorRetryFallback": "Something went wrong. Please try again later."
-    }
+    },
+    "brand": {
+      "tagline": "The first independent, playful learning app for financial education.",
+      "logoAlt": "BeAFox logo"
+    },
+    "menu": {
+      "title": "Menu",
+      "home": "Home",
+      "pricing": "Pricing",
+      "shop": "Shop",
+      "contact": "Contact",
+      "about": "About BeAFox"
+    },
+    "products": {
+      "title": "Products",
+      "unlimited": "BeAFox Unlimited",
+      "business": "BeAFox for Business",
+      "schools": "BeAFox for Schools",
+      "clubs": "BeAFox for Clubs"
+    },
+    "legal": {
+      "title": "Legal",
+      "agb": "Terms",
+      "faq": "FAQ",
+      "imprint": "Imprint",
+      "privacy": "Privacy",
+      "guidelines": "Community guidelines"
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "blog": {
+      "title": "Blog",
+      "allArticles": "All articles",
+      "appUpdates": "App updates"
+    },
+    "copyright": "Copyright © {year} BeAFox UG (limited liability)"
   }
   ,
   "home": {
@@ -261,6 +303,10 @@
   }
   ,
   "faq": {
+    "meta": {
+      "title": "FAQ – Frequently Asked Questions | BeAFox",
+      "description": "Frequently asked questions about BeAFox – Answers on pricing, features, usage, schools, businesses and more."
+    },
     "hero": {
       "tag": "FAQ",
       "title": "Frequently asked questions about",
@@ -270,7 +316,8 @@
     },
     "popular": {
       "title": "Most common questions",
-      "subtitle": "The questions we get asked the most"
+      "subtitle": "The questions we get asked the most",
+      "badge": "Popular"
     },
     "categories": {
       "all": "All",
@@ -279,10 +326,60 @@
       "schoolsBusiness": "Schools & Business",
       "tech": "Tech",
       "support": "Support"
-    }
+    },
+    "noResults": {
+      "title": "No results found",
+      "text": "Try different search terms or contact us directly.",
+      "cta": "Contact us"
+    },
+    "quickLinks": {
+      "title": "More helpful links",
+      "subtitle": "Quick access to important information",
+      "learnMore": "Learn more",
+      "links": [
+        { "title": "BeAFox for Business", "description": "BeAFox for Business in detail", "href": "/fuer-unternehmen" },
+        { "title": "BeAFox Unlimited", "description": "Unlimited learning for individuals", "href": "/beafox-unlimited" },
+        { "title": "For Schools", "description": "All about BeAFox for Schools", "href": "/fuer-schulen" },
+        { "title": "Contact", "description": "Contact us for questions", "href": "/kontakt" }
+      ]
+    },
+    "contactCta": {
+      "title": "Still have questions?",
+      "subtitle": "If you have more questions that weren't answered here, feel free to contact us. We're happy to help!",
+      "cta": "Contact us"
+    },
+    "items": [
+      { "id": 1, "question": "Are there rewards or progress indicators?", "answer": "Yes! You can earn points, complete missions and track your progress at any time – learning made fun. The gamified system motivates you to learn continuously and improve your financial literacy.", "categoryId": "general", "popular": true },
+      { "id": 2, "question": "How much does BeAFox cost for educational institutions?", "answer": "To make financial education accessible to all students, we offer fair, tiered pricing for schools. For schools the price is €1 per student per year. For businesses we offer tiered pricing from 10 licenses from €3.99 per month. Contact us for a custom quote.", "categoryId": "pricing", "popular": true },
+      { "id": 3, "question": "Is there a teacher or admin access?", "answer": "Yes, for teachers, trainers and admins we offer a comprehensive dashboard where you can create student accounts, manage classes and view participants' learning progress in detail. The dashboard also provides analytics and reports.", "categoryId": "schoolsBusiness", "popular": true },
+      { "id": 4, "question": "Is BeAFox really independent and neutral?", "answer": "Yes, absolutely! We focus purely on knowledge transfer. No financial products are promoted in the app, so the content feels honest and trustworthy. Our mission is to provide real financial education, not to sell products.", "categoryId": "general", "popular": true },
+      { "id": 5, "question": "How does the gamified system work?", "answer": "With a gamified system of points, missions, rewards and leaderboards, learning no longer feels like a chore. Students stay motivated and learn sustainably. You can level up, unlock achievements and compete with others.", "categoryId": "general" },
+      { "id": 6, "question": "Can I use BeAFox as an individual?", "answer": "Yes! BeAFox is also available to individuals. You get full access to all lessons and can learn at your own pace. We offer different subscription models: Monthly (€4.99), annual (€3.99/month) or lifetime (€49.99 one-time).", "categoryId": "pricing" },
+      { "id": 7, "question": "How evidence-based is BeAFox?", "answer": "We use evidence-based teaching methods to create lessons that successfully improve your financial knowledge. Our research project with over 500 participants has shown that our methods work. Content is developed by financial experts and educators.", "categoryId": "general" },
+      { "id": 8, "question": "What is the difference between BeAFox for Schools and BeAFox for Business?", "answer": "BeAFox for Schools targets educational institutions and offers a monitoring dashboard for teachers. BeAFox for Business targets training companies and additionally includes regular workshops (every 6 months), official certificates and extended reporting.", "categoryId": "schoolsBusiness" },
+      { "id": 9, "question": "Can I try BeAFox before buying?", "answer": "Yes, we're happy to offer a free trial. Contact us for more information and a demo. Schools can start a pilot project to try BeAFox with no obligation.", "categoryId": "pricing" },
+      { "id": 10, "question": "How often is new content added?", "answer": "We continuously work on new lessons and features. All users receive regular updates with new content and improvements. Our goal is to publish new lessons monthly and larger feature updates quarterly.", "categoryId": "general" },
+      { "id": 11, "question": "Is there support if I have questions?", "answer": "Yes, our support is there for you around the clock and will answer your requests as quickly and helpfully as possible. Contact us anytime via email, the contact form or directly in the app!", "categoryId": "support" },
+      { "id": 12, "question": "Does BeAFox work on all devices?", "answer": "BeAFox is available as an app for iOS and Android. The monitoring dashboard for teachers and trainers works in the browser on all devices (desktop, tablet, smartphone). The app syncs your progress automatically across devices.", "categoryId": "tech" },
+      { "id": 13, "question": "How secure is my data?", "answer": "Data protection and security are our top priorities. We use modern encryption and strictly comply with GDPR. Your data is stored securely and never shared with third parties.", "categoryId": "tech" },
+      { "id": 14, "question": "Can I export my progress?", "answer": "Yes, you can export your progress and certificates at any time. For schools and businesses we also offer detailed reports and analytics as PDF or Excel export.", "categoryId": "schoolsBusiness" },
+      { "id": 15, "question": "Are there workshops or training sessions?", "answer": "Yes! We offer interactive financial education workshops for schools, companies and associations. Workshops can be held on-site or online and are led by experienced facilitators. Contact us for more information.", "categoryId": "schoolsBusiness" },
+      { "id": 16, "question": "What is included in the price?", "answer": "The price includes full app access, all learning modules, monitoring dashboards (for schools/businesses), support and regular updates. Business packages also include workshops and certificates.", "categoryId": "pricing" },
+      { "id": 17, "question": "Can I cancel anytime?", "answer": "For individuals: The monthly subscription can be cancelled at any time. Annual subscriptions run for the agreed term. For schools and businesses, individual agreements apply and can be flexible.", "categoryId": "pricing" },
+      { "id": 18, "question": "Are there discounts for multiple classes or locations?", "answer": "Yes, we offer tiered pricing for larger institutions. The more students or employees, the lower the price per person. Contact us for a custom offer tailored to your needs.", "categoryId": "pricing" }
+    ]
   }
   ,
   "unlimited": {
+    "meta": {
+      "title": "BeAFox Unlimited – Full access to financial education",
+      "description": "A finance learning app: BeAFox Unlimited gives you full access to all modules, missions, and features—without limitations.",
+      "ogTitle": "BeAFox Unlimited – Full access to financial education",
+      "ogDescription": "Full access to all premium content. All learning modules, missions, and features—without limitations."
+    },
+    "breadcrumbs": {
+      "current": "BeAFox Unlimited"
+    },
     "hero": {
       "tag": "BeAFox Unlimited",
       "title": "Financial education for",
@@ -306,6 +403,179 @@
           "title": "For you",
           "description": "Financial education that fits you—regardless of age."
         }
+      }
+    },
+    "stats": {
+      "items": [
+        { "iconId": "users", "value": "3,000+", "label": "Active individual users" },
+        { "iconId": "award", "value": "98%", "label": "Satisfaction" },
+        { "iconId": "clock", "value": "24/7", "label": "Available" },
+        { "iconId": "trendingUp", "value": "500+", "label": "Lessons" }
+      ]
+    },
+    "howItWorks": {
+      "title": { "pre": "In three simple steps", "highlight": "to your money skills" },
+      "steps": [
+        {
+          "title": "Download the app",
+          "description": "Download BeAFox for free from the App Store or Google Play."
+        },
+        {
+          "title": "Choose a plan",
+          "description": "Pick the plan that fits you—monthly, yearly, or lifetime."
+        },
+        {
+          "title": "Get started",
+          "description": "Start your financial learning journey and progress at your own pace."
+        }
+      ]
+    },
+    "appFeatures": {
+      "title": { "pre": "How", "highlight": "BeAFox works" },
+      "subtitle": "Explore the features that turn financial education into an experience.",
+      "mockupAlt": "BeAFox {feature} mockup",
+      "items": [
+        {
+          "id": "stufen",
+          "title": "Levels",
+          "description": "Choose freely what you want to learn. Our level structure gives you the flexibility to explore topics based on your interests and needs.",
+          "mockup": "/assets/Mockups/Mockup-Stufen.png"
+        },
+        {
+          "id": "lernpfad",
+          "title": "Learning path",
+          "description": "Follow a structured learning path that guides you step by step through the most important topics. You always know where you stand.",
+          "mockup": "/assets/Mockups/Mockup-Lernpfad.png"
+        },
+        {
+          "id": "lektion",
+          "title": "Lessons",
+          "description": "Learn step by step everything you need to know about finance. Our interactive lessons make complex topics easy to understand.",
+          "mockup": "/assets/Mockups/Mockup-Lektion.png"
+        },
+        {
+          "id": "quiz",
+          "title": "Quiz",
+          "description": "Test your knowledge with interactive quizzes and deepen what you’ve learned. Every successful quiz earns you points.",
+          "mockup": "/assets/Mockups/Mockup-Quiz.png"
+        },
+        {
+          "id": "rangliste",
+          "title": "Leaderboard",
+          "description": "Compare yourself with other learners and stay motivated through friendly competition. Collect points and reach new levels.",
+          "mockup": "/assets/Mockups/Mockup-Rangliste.png"
+        },
+        {
+          "id": "missionen",
+          "title": "Missions & goals",
+          "description": "Complete exciting missions and reach your personal goals. Every completed mission is rewarded.",
+          "mockup": "/assets/Mockups/Mockup-Missionen.png"
+        },
+        {
+          "id": "profil",
+          "title": "Profile",
+          "description": "Track your progress and get your personal Fox Score. Your profile shows all your achievements.",
+          "mockup": "/assets/Mockups/Mockup-Profil.png"
+        }
+      ]
+    },
+    "whyUnlimited": {
+      "title": { "pre": "Why", "highlight": "BeAFox Unlimited", "post": "?" },
+      "subtitle": "Everything you need to improve your financial skills—in one app.",
+      "features": [
+        {
+          "iconId": "bookOpen",
+          "title": "Complete learning modules",
+          "description": "Access all lessons and topics—from budgeting to investing."
+        },
+        {
+          "iconId": "target",
+          "title": "Playful learning",
+          "description": "Earn points, complete missions, and track progress—learning that stays fun."
+        },
+        {
+          "iconId": "award",
+          "title": "Evidence-based",
+          "description": "Our content is based on proven learning methods and is continuously updated."
+        },
+        {
+          "iconId": "shield",
+          "title": "100% neutral & independent",
+          "description": "No hidden sales interests. We focus purely on knowledge transfer."
+        },
+        {
+          "iconId": "trendingUp",
+          "title": "Your pace, your time",
+          "description": "Learn whenever and wherever you want. The app adapts to your everyday life."
+        },
+        {
+          "iconId": "zap",
+          "title": "Regular updates",
+          "description": "New content, features, and improvements—at no extra cost."
+        }
+      ]
+    },
+    "pricing": {
+      "title": { "pre": "Choose your", "highlight": "plan" },
+      "subtitle": "Flexible pricing for every need—from monthly to lifetime.",
+      "badges": {
+        "popular": "Popular",
+        "cheapest": "Best value",
+        "monthlyCancelable": "Cancel monthly"
+      },
+      "cta": { "start": "Get started" },
+      "plans": [
+        {
+          "title": "Standard plan",
+          "price": "€4.99",
+          "period": "/ month",
+          "features": [
+            "Full access to all lessons",
+            "Playful learning system",
+            "Flashcard system",
+            "Progress tracking",
+            "Cancel monthly"
+          ],
+          "monthly": true
+        },
+        {
+          "title": "Yearly plan",
+          "price": "€3.99",
+          "period": "/ month",
+          "yearlyNote": "per year",
+          "features": [
+            "Full access to all lessons",
+            "Playful learning system",
+            "Flashcard system",
+            "Progress tracking",
+            "Save 2 months",
+            "Cancel yearly"
+          ],
+          "popular": true
+        },
+        {
+          "title": "Lifetime",
+          "price": "€49.99",
+          "period": "one-time",
+          "features": [
+            "Full access to all lessons",
+            "Playful learning system",
+            "Flashcard system",
+            "Progress tracking",
+            "Lifetime access",
+            "All future updates"
+          ],
+          "cheapest": true
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to improve your money skills?",
+      "subtitle": "Download BeAFox now and start your journey to better financial knowledge.",
+      "button": "Download the app",
+      "mockups": {
+        "profileAlt": "BeAFox profile mockup",
+        "pathAlt": "BeAFox learning path mockup"
       }
     }
   }
@@ -340,11 +610,95 @@
         "pre": "Get your",
         "highlight": "team",
         "post": "ready"
-      }
+      },
+      "fromLabel": "From",
+      "price": "€3.99",
+      "perMonth": "/ month",
+      "perEmployee": "per employee",
+      "bookCta": "Book a call",
+      "paragraph": "Invest in the most important future skill for your team at a cost that's less than 1% of an employee's value.",
+      "individualTitle": "Custom packages always available",
+      "individualText": "We can create a tailored offer for your company at any time. Just get in touch!",
+      "moreInfoCta": "More information"
+    },
+    "consumer": {
+      "heading": "For individuals",
+      "subtitle": "Choose the plan that fits your lifestyle.",
+      "plans": [
+        { "title": "Standard plan", "subtitle": "Cancel anytime.", "price": "€4.99", "period": "/ month", "features": ["Full access to all lessons", "Playful learning system", "Flashcard system", "Progress tracking", "Cancel monthly"] },
+        { "title": "Annual plan", "subtitle": "Most popular", "price": "€3.99", "period": "/ month", "yearlyNote": "per year", "features": ["Full access to all lessons", "Playful learning system", "Flashcard system", "Progress tracking", "2 months free", "Cancel annually"], "popular": true },
+        { "title": "Lifetime", "subtitle": "Best value", "price": "€49.99", "period": "one-time", "features": ["Full access to all lessons", "Playful learning system", "Flashcard system", "Progress tracking", "Lifetime access", "All future updates"], "cheapest": true }
+      ],
+      "downloadCta": "Download now"
+    },
+    "school": {
+      "heading": "For schools",
+      "subtitle": "Flexible tiered pricing tailored to your school or institution.",
+      "price": "€1",
+      "period": "per pupil",
+      "period2": "per year",
+      "partnerCta": "Become a partner",
+      "bookCta": "Book a call",
+      "features": ["Unlimited learning", "Full learning modules", "Teacher dashboards", "Flashcard systems", "Printed materials"]
+    },
+    "services": {
+      "heading": "Additional services",
+      "paragraph": "Beyond the app we offer extra services for comprehensive financial education – tailored to your needs.",
+      "items": [
+        { "title": "Financial education workshops", "description": "Interactive workshops on-site or online. Combine theory and practice for lasting learning.", "features": ["Experienced facilitators", "Small groups", "Takeaway materials", "Follow-up support"], "cta": "Request workshop" },
+        { "title": "PR events & activities", "description": "Professional financial education events for your audience. From trade fairs to in-house events.", "features": ["Tailored concepts", "Professional delivery", "Branding options", "Lasting impact"], "cta": "Plan event" },
+        { "title": "Custom printed materials", "description": "Tailored learning materials, worksheets and handouts for your specific requirements.", "features": ["Custom design", "Brand integration", "Various formats", "Professional quality"], "cta": "Request materials" },
+        { "title": "Consulting & advice", "description": "Strategic advice on implementing financial education in your organisation or institution.", "features": ["Strategy development", "Best practices", "Implementation plan", "Ongoing support"], "cta": "Book consultation" },
+        { "title": "Analytics & reporting", "description": "Detailed insights into your participants' learning progress. Comprehensive reports and analyses for data-driven decisions.", "features": ["Progress tracking", "Detailed reports", "Export options", "Custom dashboards"], "cta": "Request analytics" },
+        { "title": "Training & workshops", "description": "Training for teachers, trainers or multipliers on using BeAFox effectively.", "features": ["Train-the-trainer", "Teaching methods", "Technical onboarding", "Certificates"], "cta": "Book training" }
+      ],
+      "bottomTitle": "Custom solutions for every need",
+      "bottomParagraph": "All our services can be combined and adapted to your needs. Get in touch and we'll find the right solution for you.",
+      "bottomCta": "Request free consultation"
+    },
+    "valueProp": {
+      "titlePre": "Why ",
+      "titleHighlight": "BeAFox",
+      "titlePost": "?",
+      "subtitle": "Invest in the future of your pupils, apprentices or employees – with fair value for money.",
+      "items": [
+        { "title": "The first financial education ecosystem", "description": "BeAFox is more than an app – it's an ecosystem of digital learning, workshops, printed materials and support. All designed to work together for the best learning outcomes." },
+        { "title": "Research-based and evidence-backed", "description": "Based on a large research project with over 500 participants. Our methods are evidence-based and proven – no experiments, just solid pedagogy." },
+        { "title": "100% audience-focused", "description": "We know how to teach financial education effectively. Every audience – pupils, apprentices, students, employees – gets content that resonates and has lasting impact." }
+      ]
+    },
+    "faq": {
+      "titlePre": "Frequently asked questions about ",
+      "titleHighlight": "pricing",
+      "items": [
+        { "q": "Are there discounts for multiple classes or locations?", "a": "Yes, we offer tiered pricing for larger institutions. Contact us for a custom quote that fits your needs." },
+        { "q": "Can I try the app before buying?", "a": "Yes, we're happy to offer a free trial. Contact us for details and to start your pilot project." },
+        { "q": "What's included in the price?", "a": "The price includes full app access, all learning modules, monitoring dashboards (for schools/businesses), support and regular updates." },
+        { "q": "Can I cancel anytime?", "a": "For individuals: the monthly plan can be cancelled anytime. Annual plans run for the agreed term. For schools and businesses, custom terms apply." },
+        { "q": "Are there any hidden costs?", "a": "No, all prices are transparent. For businesses there is a one-time setup fee, which is clearly shown." }
+      ],
+      "viewAllCta": "View all FAQs"
+    },
+    "cta": {
+      "title": "Still have questions? We're here to help!",
+      "subtitle": "Contact us for a no-obligation consultation and get a custom quote that works for you.",
+      "consultationCta": "Free consultation",
+      "faqCta": "Browse FAQs"
     }
   }
   ,
   "about": {
+    "meta": {
+      "title": "About BeAFox | BeAFox",
+      "description": "Learn more about BeAFox – our mission, values, and how we're revolutionizing financial education for young people. Meet our team and our vision."
+    },
+    "hero": {
+      "badge": "About us",
+      "titlePre": "This is what ",
+      "titleHighlight": "we",
+      "titlePost": " stand for",
+      "subtitle": "With expertise, creativity, and passion we work every day to make financial education accessible to everyone."
+    },
     "stats": {
       "activeUsers": "Active users",
       "schoolsCompanies": "Schools & companies",
@@ -353,7 +707,68 @@
     },
     "story": {
       "tag": "Our story",
-      "title": { "pre": "From idea to", "highlight": "reality" }
+      "title": { "pre": "From idea to", "highlight": "reality" },
+      "problemTitle": "The problem that drives us",
+      "problemText": "Our founders are only 21 years old and know from their own experience what it feels like to be completely at sea with money. During their training they got into debt themselves but fought their way back. That personal experience motivated them to build a solution to help other young people avoid these challenges.",
+      "solutionTitle": "Our solution",
+      "solutionText": "With BeAFox we've finally created a way to teach finance – often seen as boring – in a lasting and understandable way. We want the next generation to gain financial knowledge independently and with motivation. No pressure, no feeling of being forced. Through gamification, clear structure, and evidence-based methods we make financial education an experience that's fun."
+    },
+    "mockups": {
+      "profilAlt": "BeAFox profile mockup",
+      "learningPathAlt": "BeAFox learning path mockup",
+      "rankingAlt": "BeAFox ranking mockup"
+    },
+    "values": [
+      { "title": "Our mission", "description": "We make financial education simple, playful, and practical. No ads, no sales pressure." },
+      { "title": "Our vision", "description": "BeAFox will be the leading platform for financial education worldwide." },
+      { "title": "Our motto", "description": "Take your finances into your own paws!" }
+    ],
+    "team": {
+      "tag": "Our team",
+      "titlePre": "Meet ",
+      "titleHighlight": "BeAFox",
+      "titlePost": "",
+      "subtitle": "We are BeAFox – a team with vision, heart, and a clear goal to rethink financial education.",
+      "members": [
+        { "name": "Alexandru Tapelea", "role": "Founder – CEO & CTO" },
+        { "name": "Selina Fuchs", "role": "Co-founder – CMO" },
+        { "name": "Prof. Dr. Marcel Dulgeridis", "role": "Co-founder – CFO" },
+        { "name": "Nico Moos", "role": "CSO" }
+      ]
+    },
+    "timeline": {
+      "tag": "Our journey",
+      "titlePre": "From vision to ",
+      "titleHighlight": "reality",
+      "items": [
+        { "year": "2023", "title": "The idea is born", "description": "Our founders saw the problem: young people lack financial knowledge and fall into debt. From their own experience came the vision to make financial education playful, clear, and accessible to all." },
+        { "year": "2024", "title": "BeAFox is born", "description": "Development of the first version begins. With know-how, creativity, and passion we build the first playful learning app for financial education. The concept takes shape." },
+        { "year": "2025", "title": "Foundation & release", "description": "BeAFox UG is officially founded. The app goes live and is made available to the public for the first time. A major milestone on our path to financial education for everyone." },
+        { "year": "2025", "title": "First successes", "description": "Deggendorf Founder Award and 2nd place at Startup Summit Germany. Our perseverance pays off and confirms our innovative approach. The recognition motivates us to keep going." },
+        { "year": "2025", "title": "Growth & expansion", "description": "Over 3,000 active users, partnerships with schools and companies. BeAFox becomes the leading financial education app and continues to grow. Our mission reaches more and more people." }
+      ]
+    },
+    "achievements": {
+      "tag": "Our awards",
+      "titlePre": "Recognition for our ",
+      "titleHighlight": "work",
+      "award1Title": "Deggendorf Founder Award",
+      "award1Text": "BeAFox was awarded the Deggendorf Founder Award. Around 60% of the audience voted for us. A big thank you to the whole team for the excellent organisation and for the prize money of €2,500.",
+      "award2Title": "Startup Summit Germany – 2nd place",
+      "award2Text": "With BeAFox we achieved 2nd place at Startup Summit Germany – our first official award! After two years of hard work this shows that perseverance, courage, and teamwork pay off.",
+      "blogCta": "To our blog"
+    },
+    "quote": {
+      "text": "We believe that everyone has the right to financial education. BeAFox is more than an app – it's a movement that empowers young people to take their financial future into their own hands.",
+      "teamName": "The BeAFox Team",
+      "teamSubtitle": "Together for financial education"
+    },
+    "cta": {
+      "titlePre": "Join our ",
+      "titleHighlight": "mission",
+      "description": "Help us make financial literacy a reality for everyone. As a user, partner, or supporter – every contribution counts.",
+      "partnerCta": "Become a partner",
+      "downloadCta": "Download the app"
     },
     "drive": {
       "tag": "What drives us",
@@ -365,12 +780,131 @@
   }
   ,
   "business": {
+    "meta": {
+      "title": "BeAFox for Business – Financial Education for Companies & Apprentices",
+      "description": "Financial education for companies: BeAFox offers financial education for apprentices, training in vocational education, and finance training for employees. Digital financial education platform for sustainable workforce development.",
+      "ogTitle": "BeAFox for Business – Financial Education for Companies & Apprentices",
+      "ogDescription": "Tailored financial education solutions for companies. Boost your employees' financial literacy with BeAFox."
+    },
+    "breadcrumbs": {
+      "parentLabel": "Offers",
+      "current": "BeAFox for Business"
+    },
     "hero": {
+      "badge": "BeAFox for Business",
       "title": "Education packages against",
       "titleHighlight": "skills shortages",
       "description": "Employees who understand money work more focused, stay healthier, and remain with the company longer.",
       "ctaPartner": "Become a partner",
       "ctaBook": "Book a call"
+    },
+    "mockups": {
+      "trainingAlt": "BeAFox training mockup",
+      "pathAlt": "BeAFox learning path mockup",
+      "rankingAlt": "BeAFox ranking mockup"
+    },
+    "stats": [
+      { "value": "500+", "label": "Employees use BeAFox" },
+      { "value": "3+", "label": "Companies trust us" },
+      { "value": "95%", "label": "Knowledge retention" },
+      { "value": "4.9/5", "label": "Rating" }
+    ],
+    "problemSolution": {
+      "title": "Invest in the most important",
+      "titleHighlight": "future skill",
+      "subtitle": "Financial education is one of the most important future skills. We make it easy to strengthen your employees.",
+      "problemTitle": "Why financial education?",
+      "problemText": "Financial literacy is one of the most important future skills for your employees. It strengthens not only personal development but also professional performance and satisfaction.",
+      "problemBullets": ["Key future skill for the future", "Strengthens personal & professional development", "Increases employee satisfaction", "Makes your company more attractive"],
+      "solutionTitle": "With BeAFox for Business",
+      "solutionText": "Holistic financial education: With our gamified app, your employees learn continuously and sustainably.",
+      "solutionText2": "So you invest in one of the most important future skills while strengthening employee retention and employer branding.",
+      "solutionBullets": ["Sustainable financial education as a future skill", "Gamified learning with the app", "Optional: Regular workshops", "Strengthens retention & employer branding"],
+      "ctaText": "Ready to invest in financial education?",
+      "ctaButton": "Become a partner"
+    },
+    "benefits": {
+      "title": "Why",
+      "titleHighlight": "BeAFox for Business",
+      "subtitle": "All benefits for your company and your employees at a glance.",
+      "items": [
+        { "title": "Develop future skills", "description": "Financial education is one of the most important future skills. Strengthen your employees for the future and make your company future-ready." },
+        { "title": "Monitoring dashboards", "description": "Keep track of your employees' learning progress in real time. See who is active and where support is needed." },
+        { "title": "Official certificates", "description": "Your employees receive official certificates for their progress in financial education – valuable for personal development." },
+        { "title": "More motivated employees", "description": "The gamified system keeps your employees motivated and engaged in learning. Financial education becomes an experience." },
+        { "title": "Sustainable learning", "description": "Continuous learning in the app ensures long-term knowledge retention. Complemented by workshops for maximum impact." },
+        { "title": "GDPR-compliant & secure", "description": "All data is stored securely and in compliance with GDPR. Your company data is in good hands." }
+      ]
+    },
+    "useCases": {
+      "title": "How",
+      "titleHighlight": "companies",
+      "titlePost": " benefit from BeAFox",
+      "subtitle": "Many good reasons why companies use BeAFox.",
+      "items": [
+        { "title": "Tackle skills shortages", "description": "Strengthen your employees through practical financial education and make your company more attractive to talent." },
+        { "title": "Increase employee retention", "description": "Show that you invest in your employees' future. Financial education is a valuable benefit that binds." },
+        { "title": "Promote independence", "description": "Financial competence makes your employees more independent and responsible – also in everyday work." },
+        { "title": "Employer branding", "description": "Position yourself as a modern, forward-looking company that cares about its employees." }
+      ],
+      "cta": "Become a partner"
+    },
+    "features": {
+      "title": "What you get",
+      "subtitle": "A comprehensive package for sustainable financial education.",
+      "items": [
+        { "id": "app", "title": "Gamified learning app", "description": "Your employees learn with a modern, gamified app that is fun and motivating. Points, missions and leaderboards ensure lasting engagement.", "mockup": "/assets/Mockups/Mockup-Lernpfad.png" },
+        { "id": "workshops", "title": "Regular workshops", "description": "Complement app use with regular workshops. Every 6 months we run interactive workshops on changing financial topics for maximum impact.", "mockup": "/assets/Mockups/Mockup-Quiz.png" },
+        { "id": "dashboard", "title": "Monitoring dashboard", "description": "Keep track of your employees' learning progress. See in real time who is active and where support is needed.", "mockup": "/Mockup-Macbook/Live-Fortschritt.png" },
+        { "id": "zertifikate", "title": "Official certificates", "description": "Your employees receive official certificates upon successful completion, which they can use in their application portfolio.", "mockup": "/assets/Mockups/Mockup-Profil.png" }
+      ]
+    },
+    "process": {
+      "title": "How it works",
+      "subtitle": "Five simple steps to sustainable financial education in your company.",
+      "steps": [
+        { "step": "1", "title": "Free consultation", "description": "We discuss your requirements, the number of your employees and create an individual offer for your company." },
+        { "step": "2", "title": "Setup & onboarding", "description": "We set up the app for your employees, run an onboarding and ensure everyone is ready to go." },
+        { "step": "3", "title": "Start financial education", "description": "Your employees start with the app and continuously develop their financial literacy. We also combine app use with regular workshops." },
+        { "step": "4", "title": "Continuous learning", "description": "Your employees learn in the app, review content and sustainably develop their financial literacy – one of the most important future skills." },
+        { "step": "5", "title": "Regular workshops", "description": "We complement app use with regular workshops. Every 6 months on changing topics for maximum impact." }
+      ]
+    },
+    "ihk": {
+      "title": "BeAFox as",
+      "titleHighlight": "official partner",
+      "titlePost": " of IHK",
+      "subtitle": "As an official partner of the IHK Academy, we rely on proven standards and practical expertise.",
+      "text": "In close cooperation with the IHK, we have developed an innovative workshop specifically for company employees. This workshop combines IHK-certified content with our gamified learning app BeAFox to prepare young talent for everyday life and working life.",
+      "cta": "Become a partner"
+    },
+    "price": {
+      "headingPre": "Get your",
+      "headingHighlight": "employees",
+      "headingPost": " ready",
+      "fromLabel": "From",
+      "price": "€3.99",
+      "perMonth": "/ month",
+      "perEmployee": "per employee",
+      "bookCta": "Book a call",
+      "paragraph": "Invest in the most important future skill for your employees at a cost that's less than 1% of an employee's value.",
+      "individualTitle": "Custom offers always available",
+      "individualText": "We can create a tailored offer for your company at any time. Just get in touch!",
+      "moreInfoCta": "More information"
+    },
+    "cta": {
+      "title": "Ready to support your employees?",
+      "subtitle": "Contact us for a no-obligation consultation and receive an individual offer for your company.",
+      "partnerCta": "Become a partner",
+      "downloadCta": "Download the app"
+    },
+    "calculator": {
+      "employeesLabel": "Employees",
+      "pricePerAccount": "Price per account",
+      "totalYear": "Total (year)",
+      "perMonthSuffix": "/month",
+      "bestPrice": "You get the best price!",
+      "saveMore": "Save even more with 100+ employees!"
     }
   }
   ,
@@ -684,6 +1218,11 @@
       "title": "Subscription status",
       "currentPlanLabel": "Current plan",
       "paymentMethod": "Payment method:",
+      "stores": {
+        "apple": "Apple App Store",
+        "google": "Google Play Store",
+        "appleOrGoogle": "Apple/Google"
+      },
       "validUntil": "Valid until",
       "expiresOn": "Expires on",
       "nextRenewal": "Next renewal",
@@ -719,6 +1258,384 @@
     "cancelledNotice": {
       "pre": "Your subscription has been cancelled. You can use it until",
       "post": "."
+    }
+  },
+  "agb": {
+    "meta": {
+      "title": "Terms - General terms and conditions",
+      "description": "General terms and conditions of BeAFox UG (limited liability) – terms of use, pricing, payment, and legal provisions."
+    },
+    "hero": {
+      "badge": "Terms",
+      "title": "General terms and conditions",
+      "subtitle": "The legal basis for using our services and products."
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Scope",
+        "iconId": "scale",
+        "content": [
+          {
+            "text": "These General Terms and Conditions (GTC) apply to all contracts between BeAFox UG (limited liability), Siemensweg 2, 93073 Neutraubling (hereinafter \"BeAFox\") and its customers regarding the use of the BeAFox app and related services."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Subject matter of the contract",
+        "iconId": "fileText",
+        "content": [
+          {
+            "text": "BeAFox provides a mobile learning app for financial education. The app enables users to gain and deepen financial knowledge in a playful way. Additional services such as workshops, monitoring dashboards, and certificates are offered for educational institutions and companies."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Conclusion of contract",
+        "iconId": "handshake",
+        "content": [
+          {
+            "text": "The contract is concluded by BeAFox accepting the offer. Acceptance may be in writing, by email, or by using the app. For in-app purchases via app stores (Apple App Store, Google Play Store), the payment contract is concluded exclusively with the respective app store operator. BeAFox only provides the content."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Right of withdrawal for consumers",
+        "iconId": "rotate",
+        "content": [
+          {
+            "subtitle": "Right of withdrawal",
+            "text": "Consumers have the right to withdraw from this contract within 14 days without giving any reason. The withdrawal period is 14 days from the day the contract is concluded."
+          },
+          {
+            "subtitle": "Expiry of the right of withdrawal",
+            "text": "The right of withdrawal expires early if BeAFox has begun to perform the service and the consumer has expressly agreed that BeAFox may begin performance before the end of the withdrawal period and has acknowledged that the right of withdrawal is lost once BeAFox has fully performed the service."
+          },
+          {
+            "subtitle": "Withdrawal instructions",
+            "text": "To exercise the right of withdrawal, you must inform us (BeAFox UG (limited liability), Siemensweg 2, 93073 Neutraubling, email: info@beafox.app) of your decision to withdraw from this contract by means of a clear statement (e.g., a letter sent by post, fax, or email)."
+          },
+          {
+            "subtitle": "Consequences of withdrawal",
+            "text": "If you withdraw from this contract, we shall reimburse all payments received from you without undue delay and at the latest within 14 days from the day on which we receive notice of your withdrawal from this contract."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Services and availability",
+        "iconId": "check",
+        "content": [
+          {
+            "text": "BeAFox undertakes to provide the agreed services carefully and to the best of its knowledge and belief. The exact scope of services results from the respective contractual offer."
+          },
+          {
+            "subtitle": "Changes to functions",
+            "text": "BeAFox reserves the right to change, extend, or remove app functions. Users will be informed about material changes. There is no entitlement to specific functions."
+          },
+          {
+            "subtitle": "Availability",
+            "text": "BeAFox strives to ensure high availability. Maintenance work, further development, or technical issues may temporarily restrict access. There is no entitlement to uninterrupted availability at all times. Maintenance windows will be announced in advance where possible."
+          },
+          {
+            "subtitle": "Updates",
+            "text": "Users are obliged to install available app updates to ensure functionality and security. Older versions of the app may no longer be supported."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Prices and payment",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "text": "Prices are stated in euros plus statutory VAT. Payment is made as agreed in the contract. In the event of late payment, default interest of 9 percentage points above the base interest rate will be charged."
+          },
+          {
+            "subtitle": "App store payments",
+            "text": "For in-app purchases, payment processing is handled via the respective app store (Apple App Store or Google Play Store). The purchase contract for payment is concluded exclusively with the app store operator. BeAFox only receives confirmations of successful payments and no payment data."
+          },
+          {
+            "subtitle": "Terms and renewal",
+            "text": "Subscriptions renew automatically for the agreed term unless cancelled in due time. The notice period is one month to the end of the term."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Rights of use",
+        "iconId": "shield",
+        "content": [
+          {
+            "text": "The customer is granted a simple, non-transferable, non-exclusive right to use the app for the agreed purpose. Passing on access credentials to third parties is not permitted."
+          },
+          {
+            "subtitle": "Restrictions",
+            "text": "Use of the app is permitted only for the agreed purpose. Commercial use of the content, copying, reproducing, or distributing content is not permitted without BeAFox’s written consent."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Data protection and processing",
+        "iconId": "database",
+        "content": [
+          {
+            "text": "Personal data is processed in accordance with the General Data Protection Regulation (GDPR) and the German Telecommunications and Telemedia Data Protection Act (TTDSG)."
+          },
+          {
+            "subtitle": "Privacy policy",
+            "text": "The privacy policy applies at: https://beafox.app/datenschutz"
+          },
+          {
+            "subtitle": "Data processing agreement",
+            "text": "For educational institutions and companies, a data processing agreement (DPA) in accordance with Art. 28 GDPR may be required. This will be concluded separately if needed."
+          },
+          {
+            "subtitle": "Data deletion",
+            "text": "After termination of the contractual relationship, personal data will be deleted unless statutory retention obligations prevent this."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Warranty for digital products",
+        "iconId": "wrench",
+        "content": [
+          {
+            "subtitle": "Update obligation",
+            "text": "BeAFox is obliged to keep digital content up to date in accordance with § 327f German Civil Code (BGB) and to provide necessary updates. Users must install available updates to ensure functionality."
+          },
+          {
+            "subtitle": "Defect rights",
+            "text": "In the event of defects in digital content, statutory provisions apply. BeAFox endeavors to remedy defects without undue delay. There is no entitlement to specific functions or content unless expressly agreed."
+          },
+          {
+            "subtitle": "No guarantee",
+            "text": "BeAFox does not guarantee completeness, accuracy, or timeliness of the information provided. The content serves general education and does not constitute individual advice."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Copyright and prohibited use",
+        "iconId": "copyright",
+        "content": [
+          {
+            "text": "All app content (texts, illustrations, graphics, design, logic, software) is protected by copyright and is the property of BeAFox or its licensors. Reproduction, publication, distribution, or commercial use is not permitted without written consent."
+          },
+          {
+            "subtitle": "Prohibited actions",
+            "text": "In particular, it is prohibited to: use screenshots or content for commercial purposes, copy or reverse engineer the app, share access credentials, use automated systems to use the app, or manipulate the app."
+          },
+          {
+            "subtitle": "Legal consequences",
+            "text": "In case of violations, BeAFox reserves the right to block access and take legal action."
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Obligations of educational institutions and companies",
+        "iconId": "building",
+        "content": [
+          {
+            "subtitle": "Permitted user group",
+            "text": "Use of the app is permitted only for the organization’s own employees, pupils/students, or apprentices. Transfer to third parties is not permitted."
+          },
+          {
+            "subtitle": "Minimum user counts",
+            "text": "Agreed minimum user counts or license scopes must be adhered to. Exceeding them requires an adjustment of the contract."
+          },
+          {
+            "subtitle": "Youth protection",
+            "text": "When used by minors, compliance with legal requirements must be ensured. For users under 16 years of age, consent of a parent/guardian is required."
+          },
+          {
+            "subtitle": "Responsibility for access data",
+            "text": "The contractual partner is responsible for secure administration and distribution of access data. In case of loss or misuse, BeAFox must be informed without delay."
+          },
+          {
+            "subtitle": "Compliance with terms",
+            "text": "The contractual partner ensures that all users comply with these terms and conditions."
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "No financial or tax advice",
+        "iconId": "ban",
+        "content": [
+          {
+            "text": "The content provided by BeAFox does not constitute investment advice, tax advice, financial advice, or legal advice. It serves solely general education and knowledge transfer."
+          },
+          {
+            "subtitle": "Personal responsibility",
+            "text": "Decisions about investments, insurance, tax topics, or other financial decisions are made by the user at their own responsibility. BeAFox assumes no liability for economic decisions users make based on the content provided."
+          },
+          {
+            "subtitle": "No recommendations",
+            "text": "The content contains no recommendations for specific financial products or investment strategies. BeAFox is independent and neutral."
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Liability",
+        "iconId": "alert",
+        "content": [
+          {
+            "subtitle": "Liability for intent and gross negligence",
+            "text": "BeAFox is liable without limitation for intent and gross negligence."
+          },
+          {
+            "subtitle": "Liability for slight negligence",
+            "text": "In cases of slight negligence, BeAFox is liable only for breach of an essential contractual obligation whose fulfillment is necessary for proper performance of the contract. Liability is limited to the foreseeable damage typical for the contract at the time of conclusion."
+          },
+          {
+            "subtitle": "Exclusion of liability",
+            "text": "BeAFox is not liable for data loss unless caused by intent or gross negligence. Liability for economic decisions users make based on the app content is excluded. Liability for slight negligence is excluded in cases of injury to life, body, or health."
+          },
+          {
+            "subtitle": "Liability for third parties",
+            "text": "BeAFox is not liable for actions of third parties, in particular app store operators or other service providers."
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Termination",
+        "iconId": "xCircle",
+        "content": [
+          {
+            "subtitle": "Termination by consumers",
+            "text": "Consumers may terminate subscriptions at any time with one month’s notice to the end of the term. Termination must be in writing or by email to info@beafox.app."
+          },
+          {
+            "subtitle": "Termination by companies and educational institutions",
+            "text": "For companies and educational institutions, the terms and notice periods agreed in the contract apply. Typically, the notice period is three months to the end of the term unless agreed otherwise."
+          },
+          {
+            "subtitle": "Extraordinary termination",
+            "text": "The right to extraordinary termination for good cause remains unaffected. Good cause exists in particular in the event of serious breaches of these terms or payment default of more than two months."
+          },
+          {
+            "subtitle": "Consequences of termination",
+            "text": "After termination, access to the app ends at the end of the term. Services already provided will not be refunded proportionally unless there is a good cause for termination."
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Support rules",
+        "iconId": "messageSquare",
+        "content": [
+          {
+            "subtitle": "Support channels",
+            "text": "BeAFox provides support via email (info@beafox.app) and within the app. Support hours are weekdays from 9:00 to 17:00."
+          },
+          {
+            "subtitle": "Response time",
+            "text": "BeAFox strives to process inquiries quickly but does not guarantee a specific response time. There is no entitlement to an immediate reply."
+          },
+          {
+            "subtitle": "Scope of support",
+            "text": "Support covers technical questions regarding use of the app and general inquiries. Individual consulting or trainings are not included in standard support and may be booked separately."
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "title": "Workshops and additional services",
+        "iconId": "graduationCap",
+        "content": [
+          {
+            "subtitle": "Workshops",
+            "text": "Workshops are carried out by agreement. Travel costs, material costs, and, if applicable, accommodation costs are charged separately unless agreed otherwise."
+          },
+          {
+            "subtitle": "Cancellation rules",
+            "text": "If a workshop is cancelled by BeAFox, an alternative date will be offered or the fee already paid will be refunded. If cancelled by the customer, the agreed cancellation terms apply."
+          },
+          {
+            "subtitle": "Cancellation policy",
+            "text": "Workshop cancellations must be made at least 14 days before the scheduled date to receive a full refund. Later cancellations may incur cancellation fees."
+          },
+          {
+            "subtitle": "Certificates and materials",
+            "text": "Certificates and physical materials are provided by agreement. Costs are stated in the respective offer."
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "title": "Changes to the terms",
+        "iconId": "refresh",
+        "content": [
+          {
+            "subtitle": "Right to amend",
+            "text": "BeAFox reserves the right to adapt these terms so they always comply with current legal requirements or reflect changes to services."
+          },
+          {
+            "subtitle": "Notification",
+            "text": "Users will be informed about material changes to these terms at least two months before they take effect. Notification is provided by email or via the app."
+          },
+          {
+            "subtitle": "Consent",
+            "text": "Silence does not constitute consent. If the user does not agree to the amended terms, they may terminate the contract before the changes take effect. Continued use of the app after the changes take effect is deemed consent."
+          },
+          {
+            "subtitle": "Objection",
+            "text": "If the user does not object to the changes within six weeks after notification, the changes are deemed approved. BeAFox will point out this legal consequence in the notification."
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "title": "Transfer of contract",
+        "iconId": "handshake",
+        "content": [
+          {
+            "text": "BeAFox is entitled to transfer rights and obligations from this contract in whole or in part to a legal successor or third parties, provided this is reasonable for the customer. The customer will be informed about such transfer."
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "title": "Final provisions",
+        "iconId": "gavel",
+        "content": [
+          {
+            "subtitle": "Applicable law",
+            "text": "German law applies, excluding the UN Convention on Contracts for the International Sale of Goods (CISG) and conflict-of-law rules."
+          },
+          {
+            "subtitle": "Place of jurisdiction",
+            "text": "The place of jurisdiction for all disputes arising from this contract is BeAFox’s registered office (Regensburg), provided the customer is a merchant, a legal entity under public law, or a special fund under public law. For consumers, statutory rules on jurisdiction apply."
+          },
+          {
+            "subtitle": "Severability clause",
+            "text": "Should individual provisions of these terms be or become invalid, the validity of the remaining provisions remains unaffected. The invalid provision will be replaced by a valid one that comes closest to the economic purpose."
+          },
+          {
+            "subtitle": "Language",
+            "text": "These terms are written in German. Translations are provided for information only. The German version is authoritative."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Questions about our terms?",
+      "text": "If you have any questions about our general terms and conditions, feel free to contact us:",
+      "labels": { "email": "Email:", "phone": "Phone:" },
+      "cta": "Contact us"
+    },
+    "lastUpdated": {
+      "stand": "Version of these terms: December 2025",
+      "notice": "We reserve the right to adjust these terms so they always comply with current legal requirements or reflect changes to our services. You will be informed about changes in due time."
     }
   },
   "checkout": {
@@ -851,6 +1768,34 @@
       "text": "Your payment was received successfully. Activation may take a few minutes. You'll receive an email once your account is activated.",
       "questionsLabel": "Questions?",
       "contact": "Contact us at"
+    },
+    "storeBadges": {
+      "appleAlt": "Download on the App Store",
+      "googleAlt": "Get it on Google Play"
+    }
+  },
+  "onboarding": {
+    "hero": {
+      "headlineKnow": "KNOWLEDGE.",
+      "headlineMoney": "MONEY.",
+      "typingWords": ["FREEDOM", "SECURITY"]
+    },
+    "mockups": {
+      "trainingAlt": "BeAFox Training mockup",
+      "learningPathAlt": "BeAFox learning path mockup",
+      "leaderboardAlt": "BeAFox leaderboard mockup"
+    },
+    "discount": {
+      "title": "Have you received a discount or referral code?",
+      "descriptionPre": "Then register now for ",
+      "descriptionPost": " and use your code at checkout to enjoy exclusive benefits!",
+      "registerCta": "Register now",
+      "haveAccount": "I already have an account"
+    },
+    "cta": {
+      "noCodePre": "No code? No problem!",
+      "noCodePost": "You can still register and unlock BeAFox Unlimited anytime.",
+      "continueCta": "Continue to registration"
     }
   },
   "referral": {
@@ -921,7 +1866,200 @@
       ]
     }
   },
+  "blog": {
+    "meta": {
+      "title": "Blog",
+      "description": "BeAFox blog — articles, updates, and news about financial education, our app, and the BeAFox community.",
+      "ogTitle": "BeAFox blog — articles & updates",
+      "ogDescription": "Articles, updates, and news about financial education and the BeAFox community."
+    },
+    "hero": {
+      "badge": "Our blog",
+      "title": {
+        "pre": "Discover how BeAFox",
+        "highlight": "comes to life",
+        "post": "behind the scenes"
+      },
+      "subtitle": "Learn more about our journey, events, updates, and how we’re revolutionizing financial education for young people."
+    },
+    "specialMomentsSection": {
+      "title": { "pre": "Our", "highlight": "special moments" },
+      "subtitle": "The most important milestones of our journey with BeAFox."
+    },
+    "allArticlesSection": {
+      "title": { "pre": "All our", "highlight": "articles" },
+      "subtitle": "Explore all our blog posts and updates.",
+      "imageAltFallback": "Blog article {id}"
+    },
+    "specialMoments": [
+      {
+        "id": 1,
+        "title": "We won!",
+        "description": "We’re proud to have won the Deggendorfer Gründerpreis! Despite nerves and a last-minute pitch update, our work paid off—around 60% of the audience voted for us. Thanks to the whole team for the great organization and the €2,500 prize. We’re excited for the next steps with BeAFox!",
+        "image": "/assets/Blogs/Blog1.jpeg",
+        "date": "Nov 20, 2025",
+        "category": "Events"
+      },
+      {
+        "id": 2,
+        "title": "BeAFox at Ed.One in Munich!",
+        "description": "This is what financial education feels like in the classroom. At the Ed.One Summit in Munich, students, teachers, and trainers tested BeAFox live—from the dashboard to the learning app and worksheets. We received valuable feedback, made exciting connections, and presented our pitch. BeAFox shows how simple financial education can be. We’re looking for you!",
+        "image": "/assets/Blogs/Blog2.jpeg",
+        "date": "Oct 9, 2025",
+        "category": "Events"
+      },
+      {
+        "id": 3,
+        "title": "BeAFox wins Startup Summit!",
+        "description": "BeAFox achieved 2nd place at Startup Summit Germany—our first official award! For the first time, we pitched as a duo with a new pitch, deck, and an even clearer vision. After two years of hard work, it shows that perseverance, courage, and teamwork pay off. Thanks to Volksbank am Württemberg eG for this great event!",
+        "image": "/assets/Blogs/Blog3.jpg",
+        "date": "Sep 29, 2025",
+        "category": "Events"
+      }
+    ],
+    "articles": [
+      {
+        "id": 19,
+        "image": "/assets/Blogs/19.jpeg",
+        "title": "Startchancen program",
+        "description": "Big news: BeAFox is part of the Startchancen program! This allows schools to fully fund our learning app through subsidies. For us, it’s a strong signal that financial education belongs in everyday school life. Many of us would have loved an offer like this in school—practical, playful, and relevant. Now we can reach schools that previously had little access to such opportunities, bringing us closer to real equal opportunities.",
+        "category": "News"
+      },
+      {
+        "id": 18,
+        "image": "/assets/Blogs/18.jpeg",
+        "title": "Rütteltest with the Economic Junior Chamber Regensburg",
+        "description": "At the Rütteltest of the Wirtschaftsjunioren Regensburg we pitched BeAFox for over 20 minutes and then received more than an hour of honest, in-depth feedback from six experts. Our entire business model was constructively challenged—exactly what we wanted. We’re taking away many impulses, set new priorities, and decided to join the organization right away. An experience we recommend to any startup.",
+        "category": "Events"
+      },
+      {
+        "id": 17,
+        "image": "/assets/Blogs/17.jpeg",
+        "title": "Our first workshop.",
+        "description": "Our first financial education workshop for apprentices—combined with the BeAFox app—was a great success. Instead of one-off theory, we focus on practical exercises: building personal budgets, opening a brokerage account, planning first investments, understanding insurance, and using a tax return. The best part: with BeAFox, participants can keep learning after the workshop and deepen their knowledge. Companies get a sustainable education offering.",
+        "category": "News"
+      },
+      {
+        "id": 16,
+        "image": "/assets/Blogs/16.jpeg",
+        "title": "BeAFox at DemoNight in Nuremberg",
+        "description": "BeAFox at BayStartup’s DemoNight in Nuremberg: right when we arrived, a founder approached us who knew us from social media—a small moment that motivated us a lot. The evening was full of exciting conversations, new contacts, and innovative ideas. Events like this remind us why we build BeAFox: to solve real problems and bring financial education to where it truly matters in young people’s everyday lives.",
+        "category": "Events"
+      },
+      {
+        "id": 15,
+        "image": "/assets/Blogs/15.jpeg",
+        "title": "What an experience: YFC",
+        "description": "What an experience: we attended YFC in Munich with BeAFox, the first conference of the Young Founders Network. Between inspiring speakers, many startups, and great networking, we showcased our learning app at our own booth. The organization, atmosphere, and conversations impressed us. A special highlight: the announcement of the Young Founders Fund—a chance we definitely want to pursue.",
+        "category": "Events"
+      },
+      {
+        "id": 14,
+        "image": "/assets/Blogs/14.jpeg",
+        "title": "BeAFox at the Summit of the Entrepreneurship Foundation",
+        "description": "BeAFox at the Summit of the Stiftung Entrepreneurship in Berlin—an inspiring weekend. Again and again we heard: “Financial education is important!” and felt how big the need for modern solutions is. We presented our app, received consistently positive feedback, and had intense conversations with people who take the topic as seriously as we do. This event strengthened our vision even more.",
+        "category": "Events"
+      },
+      {
+        "id": 13,
+        "image": "/assets/Blogs/13.jpeg",
+        "title": "BeAFox at the BÖB Congress",
+        "description": "At the congress of Bündnis Ökonomische Bildung Deutschland, there was a lot of discussion about making financial education a standalone school subject—with new textbooks, courses, and training. I asked: is that really enough? With teacher shortages and a topic many people avoid talking about? I believe we also need new paths: digital tools, gamification, and project-based learning. That’s exactly where BeAFox comes in—as a complement, not a competitor to teaching.",
+        "category": "News"
+      },
+      {
+        "id": 12,
+        "image": "/assets/Blogs/12.jpeg",
+        "title": "We did it",
+        "description": "With BeAFox we achieved 2nd place at Startup Summit Germany! Our first team pitch together, a new deck, a new concept—and an award including prize money. After two intense years of testing, discarding, and improving, this moment feels like a strong sign: our idea works. A huge thank you to everyone supporting us and to Volksbank am Württemberg eG.",
+        "category": "News"
+      },
+      {
+        "id": 11,
+        "image": "/assets/Blogs/11.jpeg",
+        "title": "I pitched BeAFox at Innovation Day",
+        "description": "My first pitch in English—five minutes at Innovation Day in front of an international audience. Even though we didn’t win this time, it was an incredibly valuable experience. I presented BeAFox on a new stage, gained new perspectives on financial education, and made many exciting connections. Moments like these show how important it is to be brave, try new things, and continuously improve.",
+        "category": "Events"
+      },
+      {
+        "id": 10,
+        "image": "/assets/Blogs/10.jpeg",
+        "title": "BeAFox at ChamlandSchau",
+        "description": "Left school at 18, no plan for life, and built up debt—that’s how my story began. Today I’ve learned how to handle money and built a startup with BeAFox that tackles exactly that. At ChamlandSchau, our small booth stood among big companies—and still we had nonstop conversations. It shows: young people feel that financial education is missing and are looking for answers.",
+        "category": "Events"
+      },
+      {
+        "id": 9,
+        "image": "/assets/Blogs/9.jpeg",
+        "title": "Release in App Store & Play Store",
+        "description": "It’s happening: BeAFox is officially available in the App Store and Play Store! After more than 1.5 years of development, testing, and countless adjustments, we went live—three months earlier than planned. Our goal: make financial education as simple and accessible as possible, without ads or hidden sales interests. Now every download, every feedback, and every recommendation helps us reach more young people.",
+        "category": "News"
+      },
+      {
+        "id": 8,
+        "image": "/assets/Blogs/8.jpeg",
+        "title": "Donau-Post article",
+        "description": "BeAFox in the newspaper—this time with a very special headline: “We need to talk about money!” Donau-Post published an in-depth article about us and how an idea became a real learning offer for schools. After 1.5 years of work, doubts, and many late nights, this moment is special. It shows that the time invested pays off—and our mission is reaching more and more people.",
+        "category": "News"
+      },
+      {
+        "id": 7,
+        "image": "/assets/Blogs/7.jpeg",
+        "title": "A new logo for BeAFox",
+        "description": "Feedback is gold: our first logo felt improvised and not professional enough—so we acted. Together with a designer, we created a new BeAFox logo: more modern, clear, friendly, and perfectly aligned with our target group. For us this is more than a design update. It’s a symbol of how seriously we take our mission and how important a consistent brand presence is for schools, companies, and users.",
+        "category": "News"
+      },
+      {
+        "id": 6,
+        "image": "/assets/Blogs/6.jpeg",
+        "title": "Mittelbayerische Zeitung",
+        "description": "“From smartphone to finance fox” — that was the headline of our first major article in Mittelbayerische Zeitung. A goosebump moment to see our vision in print. Focus: why financial education is so important for young people, how BeAFox supports teachers in class, and why we intentionally stay independent from ads and sales interests. A huge thank you to everyone involved!",
+        "category": "News"
+      },
+      {
+        "id": 5,
+        "image": "/assets/Blogs/5.jpeg",
+        "title": "BeAFox in the classroom for the first time",
+        "description": "Today was special: BeAFox was used in real class for the first time—at the State Secondary School Neutraubling. Together with 25 students we tried financial education with the app. Result: 24 out of 25 want BeAFox to be a fixed part of their lessons. For us, a strong signal that young people want digital, interactive formats—and that our approach fits the classroom.",
+        "category": "Events"
+      },
+      {
+        "id": 4,
+        "image": "/assets/Blogs/4.jpeg",
+        "title": "Another successful pitch for BeAFox",
+        "description": "At Ideenpitch Region Nürnberg we presented BeAFox outside Regensburg for the first time. The improved pitch was well received and helped make our idea clearer and more tangible. We especially enjoyed the many conversations with people from education and business. Our goal: bring BeAFox to schools in time for the Bavarian school start—so financial education finally arrives where it belongs.",
+        "category": "Events"
+      },
+      {
+        "id": 3,
+        "image": "/assets/Blogs/3.jpeg",
+        "title": "My first pitch — in front of 200+ people",
+        "description": "My very first pitch—and straight away in front of more than 200 people at the “Tigers” of TechBase Regensburg! I presented our BeAFox vision, why financial education is so important for young people, and how our app addresses that gap. The conversations afterward were especially valuable: teachers, students, and companies recognized themselves in the story and showed interest in collaborating.",
+        "category": "Events"
+      },
+      {
+        "id": 2,
+        "image": "/assets/Blogs/2.jpeg",
+        "title": "It’s official. We went to the notary",
+        "description": "BeAFox is officially founded: we went to the notary and signed the articles of association—a major milestone after months of ideas, feedback, and testing. Our goal remains clear: make financial education understandable, independent, and playful for young people. Next up: trademark registration, more pilot projects with schools and companies, and the next big step toward a breakthrough.",
+        "category": "News"
+      },
+      {
+        "id": 1,
+        "image": "/assets/Blogs/1.jpeg",
+        "title": "What a day: DENK.Summit",
+        "description": "With BeAFox we presented our startup in the startup area of DENK.Summit—with overwhelmingly positive feedback: “insanely beautiful booth”, “cool branding, you really stand out”. In just two hours, 50+ pupils and students tested the app. Almost everyone confirmed: financial education barely happens in schools today. This experience once again showed us how important our mission is.",
+        "category": "Events"
+      }
+    ]
+  },
   "appUpdates": {
+    "meta": {
+      "title": "App updates",
+      "description": "BeAFox app updates — all new features, improvements, and changes. Stay up to date.",
+      "ogTitle": "BeAFox app updates — new features & improvements",
+      "ogDescription": "All new features, improvements, and changes in the BeAFox app."
+    },
     "hero": {
       "badge": "App updates",
       "title": { "pre": "Stay", "highlight": "up to date" },
@@ -995,6 +2133,10 @@
     ]
   },
   "guidelines": {
+    "meta": {
+      "title": "Community Guidelines | BeAFox",
+      "description": "Our guidelines for respectful behavior, constructive communication, and a positive learning environment."
+    },
     "hero": {
       "badge": "Community guidelines",
       "title": { "pre": "Our", "highlight": "community guidelines" },
@@ -1092,6 +2234,10 @@
     }
   },
   "imprint": {
+    "meta": {
+      "title": "Imprint | BeAFox",
+      "description": "Imprint of BeAFox UG (limited liability) – Legal information, contact details and company registration."
+    },
     "hero": {
       "badge": "Imprint",
       "title": "Imprint",
