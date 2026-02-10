@@ -17,12 +17,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
+import { useLocale, useTranslations } from "next-intl";
 // COMPONENTS
 import Button from "@/components/Button";
 // API
 import client from "@/lib/api-client";
 
 function AccountContent() {
+  const t = useTranslations("account");
+  const locale = useLocale();
   // ROUTER
   const router = useRouter();
   // STATES
@@ -41,15 +44,13 @@ function AccountContent() {
   const handleCancelSubscription = async () => {
     // Only allow cancellation for Stripe subscriptions
     if (!isStripeSubscription) {
-      alert(
-        "Native Abos (Apple/Google) können nur über die App oder die entsprechenden Stores verwaltet werden."
-      );
+      alert(t("alerts.nativeSubscriptionsOnlyInStores"));
       return;
     }
 
     if (
       !confirm(
-        "Möchtest du dein Abo wirklich kündigen? Dein Zugang bleibt bis zum Ende der aktuellen Laufzeit aktiv."
+        t("confirm.cancelSubscription")
       )
     ) {
       return;
@@ -61,12 +62,12 @@ function AccountContent() {
       // Refresh subscription details
       const response = await client.get("/stripe/subscription");
       setSubscriptionData(response.data.subscription);
-      alert("Dein Abo wurde erfolgreich gekündigt.");
+      alert(t("alerts.cancelSuccess"));
     } catch (err: any) {
       console.error("Error cancelling subscription:", err);
       alert(
         err.response?.data?.error ||
-          "Fehler beim Kündigen des Abos. Bitte versuche es erneut."
+          t("alerts.cancelFailedFallback")
       );
     } finally {
       setIsCancelling(false);
@@ -80,18 +81,18 @@ function AccountContent() {
     router.push("/");
   };
   const getPlanName = (plan: string | null) => {
-    if (!plan) return "Unbekannt";
+    if (!plan) return t("plan.unknown");
     if (plan === "subscription_monthly_4_99")
-      return "Monatsabo - 4,99€/Monat";
+      return t("plan.monthly");
     if (plan === "subscription_yearly_44_99")
-      return "Jahresabo - 44,99€/Jahr";
-    if (plan === "lifetime") return "Lifetime-Zugang";
+      return t("plan.yearly");
+    if (plan === "lifetime") return t("plan.lifetime");
     return plan;
   };
   const formatDate = (date: string | Date | null) => {
-    if (!date) return "Nicht verfügbar";
+    if (!date) return t("date.notAvailable");
     const d = new Date(date);
-    return d.toLocaleDateString("de-DE", {
+    return d.toLocaleDateString(locale, {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -105,22 +106,22 @@ function AccountContent() {
       active: {
         color: "bg-green-100 text-green-800 border-green-200",
         icon: CheckCircle,
-        text: "Aktiv",
+        text: t("status.active"),
       },
       cancelled: {
         color: "bg-yellow-100 text-yellow-800 border-yellow-200",
         icon: Clock,
-        text: "Gekündigt",
+        text: t("status.cancelled"),
       },
       expired: {
         color: "bg-red-100 text-red-800 border-red-200",
         icon: XCircle,
-        text: "Abgelaufen",
+        text: t("status.expired"),
       },
       pending: {
         color: "bg-blue-100 text-blue-800 border-blue-200",
         icon: RefreshCw,
-        text: "Ausstehend",
+        text: t("status.pending"),
       },
     };
 
@@ -170,7 +171,7 @@ function AccountContent() {
         } else {
           setError(
             err.response?.data?.error ||
-              "Fehler beim Laden der Abo-Details. Bitte versuche es erneut."
+              t("errors.loadSubscriptionFallback")
           );
         }
       } finally {
@@ -186,7 +187,7 @@ function AccountContent() {
       <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 pt-20 sm:pt-24 md:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-10 h-10 sm:w-12 sm:h-12 text-primaryOrange animate-spin mx-auto mb-3 sm:mb-4" />
-          <p className="text-sm sm:text-base text-lightGray">Lade Abo-Details...</p>
+          <p className="text-sm sm:text-base text-lightGray">{t("loading")}</p>
         </div>
       </div>
     );
@@ -204,7 +205,7 @@ function AccountContent() {
             <div className="text-center">
               <AlertCircle className="w-12 h-12 sm:w-16 sm:h-16 text-red-500 mx-auto mb-3 sm:mb-4" />
               <h2 className="text-xl sm:text-2xl font-bold text-darkerGray mb-2">
-                Fehler beim Laden
+                {t("error.title")}
               </h2>
               <p className="text-sm sm:text-base text-lightGray mb-4 sm:mb-6">{error}</p>
               <Button
@@ -212,7 +213,7 @@ function AccountContent() {
                 variant="primary"
                 className="!px-6 !py-3 text-sm sm:text-base"
               >
-                Erneut versuchen
+                {t("error.retry")}
               </Button>
             </div>
           </motion.div>
@@ -232,10 +233,10 @@ function AccountContent() {
           className="text-center mb-6 sm:mb-8"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-2 sm:mb-3 px-2">
-            Mein Account
+            {t("title")}
           </h1>
           <p className="text-base sm:text-lg text-lightGray px-2">
-            Verwalte dein BeAFox Unlimited Abo
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -249,7 +250,7 @@ function AccountContent() {
             className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 md:p-10"
           >
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 sm:mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-darkerGray">Abo-Status</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-darkerGray">{t("subscriptionStatus.title")}</h2>
               {getStatusBadge(subscriptionData?.status || "pending")}
             </div>
 
@@ -262,7 +263,7 @@ function AccountContent() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-lightGray font-medium">
-                      Aktuelles Modell
+                      {t("subscriptionStatus.currentPlanLabel")}
                     </p>
                     <h3 className="text-lg sm:text-xl font-bold text-darkerGray break-words">
                       {getPlanName(subscriptionData?.plan)}
@@ -271,7 +272,7 @@ function AccountContent() {
                 </div>
                 {subscriptionData?.paymentMethod && isStripeSubscription && (
                   <p className="text-xs sm:text-sm text-lightGray">
-                    Zahlungsmethode:{" "}
+                    {t("subscriptionStatus.paymentMethod")}{" "}
                     <span className="font-semibold text-darkerGray capitalize">
                       {subscriptionData.paymentMethod}
                     </span>
@@ -279,7 +280,7 @@ function AccountContent() {
                 )}
                 {isNativeSubscription && (
                   <p className="text-xs sm:text-sm text-lightGray">
-                    Zahlungsmethode:{" "}
+                    {t("subscriptionStatus.paymentMethod")}{" "}
                     <span className="font-semibold text-darkerGray">
                       {subscriptionData?.paymentMethod === "app_store" ? "Apple App Store" : 
                        subscriptionData?.paymentMethod === "google_play" ? "Google Play Store" : 
@@ -298,23 +299,23 @@ function AccountContent() {
                   <div className="min-w-0">
                     <p className="text-xs sm:text-sm text-lightGray font-medium">
                       {isLifetime
-                        ? "Gültig bis"
+                        ? t("subscriptionStatus.validUntil")
                         : isCancelled
-                        ? "Läuft ab am"
+                        ? t("subscriptionStatus.expiresOn")
                         : isSubscription
-                        ? "Nächste Verlängerung"
-                        : "Läuft ab am"}
+                        ? t("subscriptionStatus.nextRenewal")
+                        : t("subscriptionStatus.expiresOn")}
                     </p>
                     <h3 className="text-lg sm:text-xl font-bold text-darkerGray break-words">
                       {isLifetime
-                        ? "Unbegrenzt"
+                        ? t("subscriptionStatus.unlimited")
                         : formatDate(subscriptionData?.expiresAt)}
                     </h3>
                   </div>
                 </div>
                 {isSubscription && !isCancelled && (
                   <p className="text-xs sm:text-sm text-lightGray">
-                    Automatische Verlängerung aktiviert
+                    {t("subscriptionStatus.autoRenewal")}
                   </p>
                 )}
               </div>
@@ -334,7 +335,7 @@ function AccountContent() {
                   <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange" />
                 </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-darkerGray">
-                  Letzte Rechnung
+                  {t("invoice.title")}
                 </h2>
               </div>
 
@@ -342,7 +343,7 @@ function AccountContent() {
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-3 sm:mb-4">
                   <div>
                     <p className="text-xs sm:text-sm text-lightGray font-medium">
-                      Zahlungsdatum
+                      {t("invoice.paymentDate")}
                     </p>
                     <p className="text-base sm:text-lg font-semibold text-darkerGray">
                       {formatDate(subscriptionData.lastPaymentDate)}
@@ -351,7 +352,7 @@ function AccountContent() {
                   {subscriptionData.paymentIntentId && (
                     <div className="text-left sm:text-right">
                       <p className="text-xs sm:text-sm text-lightGray font-medium">
-                        Zahlungs-ID
+                        {t("invoice.paymentId")}
                       </p>
                       <p className="text-xs sm:text-sm font-mono text-darkerGray break-all">
                         {subscriptionData.paymentIntentId.slice(0, 20)}...
@@ -360,7 +361,7 @@ function AccountContent() {
                   )}
                 </div>
                 <p className="text-xs sm:text-sm text-lightGray">
-                  Deine Rechnung wurde per E-Mail an dich gesendet.
+                  {t("invoice.sentByEmail")}
                 </p>
               </div>
             </motion.div>
@@ -374,7 +375,7 @@ function AccountContent() {
             className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8 md:p-10"
           >
             <h2 className="text-xl sm:text-2xl font-bold text-darkerGray mb-4 sm:mb-6">
-              Aktionen
+              {t("actions.title")}
             </h2>
 
             <div className="space-y-3">
@@ -385,11 +386,10 @@ function AccountContent() {
                     <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <h3 className="font-semibold text-sm sm:text-base text-blue-900 mb-1">
-                        Native Abo (Apple/Google)
+                        {t("nativeInfo.title")}
                       </h3>
                       <p className="text-xs sm:text-sm text-blue-800 leading-relaxed">
-                        Dein Abo wurde über Apple oder Google erworben. Um dein Abo zu verwalten, zu kündigen oder zu ändern, 
-                        musst du dies über die BeAFox App oder direkt in den Einstellungen deines Apple/Google Accounts tun.
+                        {t("nativeInfo.text")}
                       </p>
                     </div>
                   </div>
@@ -399,11 +399,11 @@ function AccountContent() {
               {isCancelled && (
                 <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
                   <p className="text-xs sm:text-sm text-yellow-800">
-                    Dein Abo wurde gekündigt. Du kannst es bis zum{" "}
+                    {t("cancelledNotice.pre")}{" "}
                     <span className="font-semibold">
                       {formatDate(subscriptionData?.expiresAt)}
                     </span>{" "}
-                    nutzen.
+                    {t("cancelledNotice.post")}
                   </p>
                 </div>
               )}
@@ -419,10 +419,10 @@ function AccountContent() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="font-semibold text-sm sm:text-base truncate">
-                            Abo ändern oder upgraden
+                            {t("actions.changeOrUpgrade.title")}
                           </p>
                           <p className="text-xs sm:text-sm text-white/80 truncate">
-                            Wechsle zu einem anderen Plan
+                            {t("actions.changeOrUpgrade.subtitle")}
                           </p>
                         </div>
                       </div>
@@ -464,10 +464,10 @@ function AccountContent() {
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="font-semibold text-sm sm:text-base text-left truncate">
-                          {isCancelling ? "Wird gekündigt..." : "Abo kündigen"}
+                          {isCancelling ? t("actions.cancel.loading") : t("actions.cancel.title")}
                         </p>
                         <p className="text-xs sm:text-sm text-lightGray text-left truncate">
-                          Kündigung zum Ende der Laufzeit
+                          {t("actions.cancel.subtitle")}
                         </p>
                       </div>
                     </div>
@@ -501,10 +501,10 @@ function AccountContent() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="font-semibold text-sm sm:text-base text-left">
-                      Abmelden
+                      {t("actions.logout.title")}
                     </p>
                     <p className="text-xs sm:text-sm text-lightGray text-left">
-                      Von deinem Account abmelden
+                      {t("actions.logout.subtitle")}
                     </p>
                   </div>
                 </div>

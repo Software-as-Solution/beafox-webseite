@@ -6,6 +6,7 @@ import Section from "@/components/Section";
 import Button from "@/components/Button";
 import DownloadModal from "@/components/DownloadModal";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import {
   Target,
   Lightbulb,
@@ -25,30 +26,31 @@ import {
 } from "lucide-react";
 
 export default function AboutPage() {
+  const t = useTranslations("about");
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   const stats = [
     {
       value: "3,000+",
-      label: "Aktive Nutzer",
+      label: t("stats.activeUsers"),
       icon: Users,
       color: "text-primaryOrange",
     },
     {
       value: "5+",
-      label: "Schulen & Unternehmen",
+      label: t("stats.schoolsCompanies"),
       icon: Building2,
       color: "text-primaryOrange",
     },
     {
       value: "1,000+",
-      label: "Schüler & Azubis",
+      label: t("stats.studentsApprentices"),
       icon: Users,
       color: "text-primaryOrange",
     },
     {
       value: "5",
-      label: "Auszeichnungen",
+      label: t("stats.awards"),
       icon: Award,
       color: "text-primaryOrange",
     },
@@ -207,12 +209,12 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Heart className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <span className="font-bold">Unsere Geschichte</span>
+              <span className="font-bold">{t("story.tag")}</span>
               <Heart className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 lg:mb-6">
-              Von der Idee zur{" "}
-              <span className="text-primaryOrange">Realität</span>
+              {t("story.title.pre")}{" "}
+              <span className="text-primaryOrange">{t("story.title.highlight")}</span>
             </h2>
           </motion.div>
 
@@ -286,25 +288,24 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto md:mx-0 mb-6 md:mb-8">
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <span className="font-bold">Unser Antrieb</span>
+              <span className="font-bold">{t("drive.tag")}</span>
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 text-center md:text-left">
-              Wir wollen:
+              {t("drive.title")}
             </h2>
             <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-primaryOrange mb-6 text-center md:text-left">
-              Bildung, die verändert.
+              {t("drive.subtitle")}
             </h3>
             <p className="text-lightGray text-base md:text-lg mb-6 md:mb-8">
-              Wir glauben an eine Welt, in der jeder Mensch Finanzbildung
-              versteht und nutzen kann.
+              {t("drive.description")}
             </p>
             <Button
               href="/kontakt"
               variant="primary"
               className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
             >
-              Jetzt Partner werden →
+              {t("drive.ctaPartner")} →
             </Button>
           </motion.div>
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Cookie, Settings, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface CookiePreferences {
   necessary: boolean;
@@ -12,6 +13,7 @@ interface CookiePreferences {
 }
 
 export default function CookieBanner() {
+  const t = useTranslations("cookie");
   const [showBanner, setShowBanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
@@ -134,20 +136,15 @@ export default function CookieBanner() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-darkerGray mb-2 text-lg">
-                      Cookie-Einstellungen
+                      {t("banner.title")}
                     </h3>
                     <p className="text-lightGray text-sm leading-relaxed">
-                      Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung
-                      auf unserer Website zu bieten. Einige Cookies sind
-                      notwendig für den Betrieb der Website, während andere uns
-                      helfen, diese Website und die Nutzererfahrung zu
-                      verbessern (Tracking-Cookies). Sie können selbst
-                      entscheiden, ob Sie die Cookies zulassen möchten.{" "}
+                      {t("banner.text")}{" "}
                       <Link
                         href="/datenschutz"
                         className="text-primaryOrange hover:underline font-medium"
                       >
-                        Weitere Informationen
+                        {t("banner.more")}
                       </Link>
                     </p>
                   </div>
@@ -160,19 +157,19 @@ export default function CookieBanner() {
                     className="px-6 py-2.5 border-2 border-primaryOrange text-primaryOrange rounded-full font-semibold hover:bg-primaryOrange/10 transition-colors text-sm whitespace-nowrap"
                   >
                     <Settings className="w-4 h-4 inline-block mr-2" />
-                    Einstellungen
+                    {t("banner.settings")}
                   </button>
                   <button
                     onClick={handleRejectAll}
                     className="px-6 py-2.5 border-2 border-gray-300 text-darkerGray rounded-full font-semibold hover:bg-gray-50 transition-colors text-sm whitespace-nowrap"
                   >
-                    Ablehnen
+                    {t("banner.reject")}
                   </button>
                   <button
                     onClick={handleAcceptAll}
                     className="px-6 py-2.5 bg-primaryOrange text-white rounded-full font-semibold hover:bg-primaryOrange/90 transition-colors text-sm whitespace-nowrap shadow-lg"
                   >
-                    Alle akzeptieren
+                    {t("banner.acceptAll")}
                   </button>
                 </div>
               </div>
@@ -205,7 +202,7 @@ export default function CookieBanner() {
                     <Settings className="w-5 h-5 text-primaryOrange" />
                   </div>
                   <h2 className="text-2xl font-bold text-darkerGray">
-                    Cookie-Einstellungen
+                    {t("modal.title")}
                   </h2>
                 </div>
                 <button
@@ -219,13 +216,12 @@ export default function CookieBanner() {
               {/* Content */}
               <div className="p-6 space-y-6">
                 <p className="text-lightGray text-sm leading-relaxed">
-                  Sie können Ihre Cookie-Präferenzen jederzeit anpassen. Weitere
-                  Informationen finden Sie in unserer{" "}
+                  {t("modal.intro")}{" "}
                   <Link
                     href="/datenschutz"
                     className="text-primaryOrange hover:underline font-medium"
                   >
-                    Datenschutzerklärung
+                    {t("modal.privacy")}
                   </Link>
                   .
                 </p>
@@ -236,18 +232,15 @@ export default function CookieBanner() {
                     <div className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-primaryOrange" />
                       <h3 className="font-bold text-darkerGray">
-                        Notwendige Cookies
+                        {t("modal.necessary.title")}
                       </h3>
                     </div>
                     <span className="bg-primaryOrange/10 text-primaryOrange px-3 py-1 rounded-full text-xs font-semibold">
-                      Immer aktiv
+                      {t("modal.necessary.alwaysOn")}
                     </span>
                   </div>
                   <p className="text-lightGray text-sm mt-2">
-                    Diese Cookies sind für das ordnungsgemäße Funktionieren der
-                    Website erforderlich und können nicht deaktiviert werden.
-                    Sie werden normalerweise nur als Reaktion auf Ihre Aktionen
-                    gesetzt, z.B. beim Festlegen Ihrer Datenschutzeinstellungen.
+                    {t("modal.necessary.text")}
                   </p>
                 </div>
 
@@ -256,7 +249,7 @@ export default function CookieBanner() {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <h3 className="font-bold text-darkerGray">
-                        Analyse-Cookies
+                        {t("modal.analytics.title")}
                       </h3>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
@@ -270,10 +263,7 @@ export default function CookieBanner() {
                     </label>
                   </div>
                   <p className="text-lightGray text-sm mt-2">
-                    Diese Cookies helfen uns zu verstehen, wie Besucher mit
-                    unserer Website interagieren, indem sie Informationen
-                    anonymisiert sammeln und melden. Dies hilft uns, unsere
-                    Website zu verbessern.
+                    {t("modal.analytics.text")}
                   </p>
                 </div>
 
@@ -282,7 +272,7 @@ export default function CookieBanner() {
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <h3 className="font-bold text-darkerGray">
-                        Marketing-Cookies
+                        {t("modal.marketing.title")}
                       </h3>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
@@ -296,10 +286,7 @@ export default function CookieBanner() {
                     </label>
                   </div>
                   <p className="text-lightGray text-sm mt-2">
-                    Diese Cookies werden verwendet, um Ihnen relevante Werbung
-                    und Marketinginhalte anzuzeigen. Sie können auch verwendet
-                    werden, um die Anzahl der Anzeigen zu begrenzen und die
-                    Wirksamkeit von Werbekampagnen zu messen.
+                    {t("modal.marketing.text")}
                   </p>
                 </div>
 
@@ -309,13 +296,13 @@ export default function CookieBanner() {
                     onClick={() => setShowSettings(false)}
                     className="px-6 py-2.5 border-2 border-gray-300 text-darkerGray rounded-full font-semibold hover:bg-gray-50 transition-colors"
                   >
-                    Abbrechen
+                    {t("modal.cancel")}
                   </button>
                   <button
                     onClick={handleSavePreferences}
                     className="px-6 py-2.5 bg-primaryOrange text-white rounded-full font-semibold hover:bg-primaryOrange/90 transition-colors shadow-lg"
                   >
-                    Einstellungen speichern
+                    {t("modal.save")}
                   </button>
                 </div>
               </div>

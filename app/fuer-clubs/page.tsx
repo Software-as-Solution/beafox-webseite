@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import DownloadModal from "@/components/DownloadModal";
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { useTranslations } from "next-intl";
 import {
   Check,
   Sparkles,
@@ -31,6 +32,7 @@ import {
 } from "lucide-react";
 
 export default function ForClubsPage() {
+  const t = useTranslations("clubs");
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   const handleAppStoreClick = (
@@ -43,12 +45,10 @@ export default function ForClubsPage() {
   };
 
   const coreMessage = {
-    headline: "Geben Sie Ihren Sportlern BeAFox.",
-    subheadline: "Sie konzentrieren sich auf den Sport – nicht auf Finanzen.",
-    description:
-      "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler. Mit BeAFox geben Sie ihnen die Sicherheit, die sie brauchen, um sich voll auf ihre Sportart zu konzentrieren.",
-    impact:
-      "Ihre Sportler lernen verantwortungsvoll mit Geld umzugehen, während Sie den Überblick behalten. Finanzielle Sorgen gehören der Vergangenheit an – Ihre Talente können sich auf das Wesentliche fokussieren.",
+    headline: t("hero.headline"),
+    subheadline: t("hero.subheadline"),
+    description: t("hero.description"),
+    impact: t("hero.impact"),
   };
 
   const journey = [
@@ -194,7 +194,7 @@ export default function ForClubsPage() {
             <div className="inline-flex items-center gap-1.5 md:gap-2 text-primaryWhite text-xs md:text-base border-2 border-primaryWhite/40 rounded-full px-3 md:px-6 py-1.5 md:py-2.5 bg-primaryWhite/10 backdrop-blur-sm">
               <Sparkles className="w-3 h-3 md:w-5 md:h-5 text-primaryWhite" />
               <span className="font-semibold text-xs md:text-base">
-                BeAFox for Clubs
+                {t("hero.tag")}
               </span>
               <Sparkles className="w-3 h-3 md:w-5 md:h-5 text-primaryWhite" />
             </div>
@@ -230,7 +230,7 @@ export default function ForClubsPage() {
               variant="secondary"
               className="flex items-center justify-center gap-2 !px-4 !py-2.5 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite font-semibold shadow-lg text-sm md:text-base w-full sm:w-auto"
             >
-              Jetzt Partner werden
+              {t("hero.ctaPartner")}
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>

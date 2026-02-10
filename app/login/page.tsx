@@ -14,12 +14,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 // COMPONENTS
 import Button from "@/components/Button";
 // API
 import client from "@/lib/api-client";
 
 export default function LoginPage() {
+  const t = useTranslations("authLogin");
   // ROUTER
   const router = useRouter();
   // STATES
@@ -42,10 +44,10 @@ export default function LoginPage() {
         field === "email" &&
         (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       ) {
-        newErrors.email = "Bitte gib eine gültige E-Mail-Adresse ein";
+        newErrors.email = t("validation.emailInvalid");
       }
       if (field === "password" && !formData.password) {
-        newErrors.password = "Passwort ist erforderlich";
+        newErrors.password = t("validation.passwordRequired");
       }
       if (newErrors[field]) {
         setErrors({ ...errors, ...newErrors });
@@ -60,11 +62,11 @@ export default function LoginPage() {
     const newErrors: Record<string, string> = {};
 
     if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Bitte gib eine gültige E-Mail-Adresse ein";
+      newErrors.email = t("validation.emailInvalid");
     }
 
     if (!formData.password) {
-      newErrors.password = "Passwort ist erforderlich";
+      newErrors.password = t("validation.passwordRequired");
     }
 
     setErrors(newErrors);
@@ -146,7 +148,7 @@ export default function LoginPage() {
       const errorMessage =
         error.response?.data?.error ||
         error.message ||
-        "Anmeldung fehlgeschlagen. Bitte überprüfe deine Zugangsdaten.";
+        t("errors.loginFailedFallback");
       setErrors({ submit: errorMessage });
     } finally {
       setIsLoading(false);
@@ -164,10 +166,10 @@ export default function LoginPage() {
           initial={{ opacity: 0, y: -20 }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-2 sm:mb-3 whitespace-nowrap px-2">
-            Bei BeAFox anmelden
+            {t("title")}
           </h1>
           <p className="text-base sm:text-lg text-lightGray px-2">
-            Melde dich mit deinem Account an
+            {t("subtitle")}
           </p>
         </motion.div>
         {/* Main Form Card */}
@@ -184,7 +186,7 @@ export default function LoginPage() {
                 htmlFor="email"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                E-Mail-Adresse
+                {t("fields.email.label")}
               </label>
               <div className="relative">
                 <input
@@ -192,7 +194,7 @@ export default function LoginPage() {
                   type="email"
                   autoCapitalize="none"
                   value={formData.email}
-                  placeholder="Deine E-Mail-Adresse"
+                  placeholder={t("fields.email.placeholder")}
                   onBlur={() => handleBlur("email")}
                   onChange={(e) => {
                     setFormData({ ...formData, email: e.target.value });
@@ -236,13 +238,13 @@ export default function LoginPage() {
                 htmlFor="password"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                Passwort
+                {t("fields.password.label")}
               </label>
               <div className="relative">
                 <input
                   id="password"
                   value={formData.password}
-                  placeholder="Dein Passwort"
+                  placeholder={t("fields.password.placeholder")}
                   onBlur={() => handleBlur("password")}
                   type={showPassword ? "text" : "password"}
                   onChange={(e) => {
@@ -273,7 +275,9 @@ export default function LoginPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors p-1"
                   aria-label={
-                    showPassword ? "Passwort verbergen" : "Passwort anzeigen"
+                    showPassword
+                      ? t("fields.password.hideAria")
+                      : t("fields.password.showAria")
                   }
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -316,12 +320,12 @@ export default function LoginPage() {
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
                     <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
-                    <span className="text-sm sm:text-base">Wird angemeldet...</span>
+                    <span className="text-sm sm:text-base">{t("button.loading")}</span>
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="text-sm sm:text-base">Anmelden</span>
+                    <span className="text-sm sm:text-base">{t("button.submit")}</span>
                   </span>
                 )}
               </Button>
@@ -330,12 +334,12 @@ export default function LoginPage() {
             {/* Links */}
             <div className="text-center pt-3 sm:pt-4 border-t border-gray-200 space-y-1.5 sm:space-y-2">
               <p className="text-xs sm:text-sm text-lightGray">
-                Noch kein Konto?{" "}
+                {t("links.noAccount")}{" "}
                 <Link
                   href="/registrierung"
                   className="text-primaryOrange hover:underline font-semibold transition-colors"
                 >
-                  Jetzt registrieren
+                  {t("links.register")}
                 </Link>
               </p>
               <p className="text-xs sm:text-sm text-lightGray">
@@ -343,7 +347,7 @@ export default function LoginPage() {
                   href="/forgot-password"
                   className="text-primaryOrange hover:underline font-medium transition-colors"
                 >
-                  Passwort vergessen?
+                  {t("links.forgotPassword")}
                 </Link>
               </p>
             </div>

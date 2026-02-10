@@ -3,8 +3,10 @@
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { Mail, CheckCircle, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 function UnsubscribeContent() {
+  const t = useTranslations("unsubscribe");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -19,7 +21,7 @@ function UnsubscribeContent() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(emailFromUrl)) {
       setStatus("error");
-      setMessage("Die E-Mail-Adresse im Link ist ungültig. Bitte nutze das Formular unten.");
+      setMessage(t("errors.invalidEmailInLink"));
       return;
     }
 
@@ -36,12 +38,12 @@ function UnsubscribeContent() {
           setMessage(data.message);
         } else {
           setStatus("error");
-          setMessage(data.error || "Abmeldung fehlgeschlagen.");
+          setMessage(data.error || t("errors.failed"));
         }
       })
       .catch(() => {
         setStatus("error");
-        setMessage("Ein Fehler ist aufgetreten. Bitte schreibe uns an info@beafox.app.");
+        setMessage(t("errors.unexpected"));
       });
   }, [status]);
 
@@ -59,14 +61,14 @@ function UnsubscribeContent() {
       const data = await res.json();
       if (res.ok) {
         setStatus("success");
-        setMessage(data.message || "Du bist abgemeldet.");
+        setMessage(data.message || t("success.fallbackMessage"));
       } else {
         setStatus("error");
-        setMessage(data.error || "Abmeldung fehlgeschlagen.");
+        setMessage(data.error || t("errors.failed"));
       }
     } catch {
       setStatus("error");
-      setMessage("Ein Fehler ist aufgetreten. Bitte schreibe uns an info@beafox.app.");
+      setMessage(t("errors.unexpected"));
     }
   };
 
@@ -79,16 +81,16 @@ function UnsubscribeContent() {
           </div>
         </div>
         <h1 className="text-center text-2xl font-bold text-gray-900">
-          Newsletter abmelden
+          {t("title")}
         </h1>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Du wirst vom BeAFox-Newsletter abgemeldet. Wir benachrichtigen info@beafox.app, damit wir dich aus dem Verteiler entfernen.
+          {t("description")}
         </p>
 
         {status === "loading" && (
           <div className="mt-8 flex flex-col items-center gap-3">
             <Loader2 className="h-10 w-10 animate-spin text-primaryOrange" />
-            <p className="text-sm text-gray-600">Abmeldung wird durchgeführt…</p>
+            <p className="text-sm text-gray-600">{t("loading")}</p>
           </div>
         )}
 
@@ -97,7 +99,7 @@ function UnsubscribeContent() {
             <div className="flex items-start gap-3">
               <CheckCircle className="h-6 w-6 shrink-0 text-green-600" />
               <div>
-                <p className="font-medium text-green-800">Abmeldung erfolgreich</p>
+                <p className="font-medium text-green-800">{t("success.title")}</p>
                 <p className="mt-1 text-sm text-green-700">{message}</p>
               </div>
             </div>
@@ -114,14 +116,14 @@ function UnsubscribeContent() {
           <form onSubmit={handleSubmit} className="mt-8 space-y-4">
             <div>
               <label htmlFor="unsubscribe-email" className="block text-sm font-medium text-gray-700 mb-1">
-                Deine E-Mail-Adresse
+                {t("form.emailLabel")}
               </label>
               <input
                 id="unsubscribe-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="deine@email.de"
+                placeholder={t("form.emailPlaceholder")}
                 required
                 className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primaryOrange focus:outline-none focus:ring-2 focus:ring-primaryOrange/20"
               />
@@ -130,14 +132,14 @@ function UnsubscribeContent() {
               type="submit"
               className="w-full rounded-lg bg-primaryOrange px-6 py-3 text-sm font-semibold text-white transition hover:bg-primaryOrange/90 focus:outline-none focus:ring-2 focus:ring-primaryOrange focus:ring-offset-2"
             >
-              Vom Newsletter abmelden
+              {t("form.submit")}
             </button>
           </form>
         )}
 
         <p className="mt-8 text-center">
           <Link href="/" className="text-sm font-medium text-primaryOrange hover:underline">
-            Zurück zur Startseite
+            {t("backHome")}
           </Link>
         </p>
       </div>

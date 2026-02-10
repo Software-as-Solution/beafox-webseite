@@ -1,0 +1,1172 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About BeAFox",
+      "pricing": "Pricing",
+      "faq": "FAQ"
+    },
+    "products": {
+      "label": "Products",
+      "unlimited": "BeAFox Unlimited",
+      "business": "BeAFox for Business",
+      "schools": "BeAFox for Schools",
+      "clubs": "BeAFox for Clubs"
+    },
+    "language": {
+      "label": "Language",
+      "de": "DE",
+      "en": "EN"
+    },
+    "actions": {
+      "contact": "Contact",
+      "login": "Login",
+      "loginRegister": "Login / Sign up"
+    }
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "homeAria": "Home"
+  },
+  "downloadModal": {
+    "closeAria": "Close",
+    "title": "Download the BeAFox app",
+    "description": "The BeAFox app is only available on mobile devices. Open this link on your smartphone or tablet to download the app."
+  },
+  "cookie": {
+    "banner": {
+      "title": "Cookie settings",
+      "text": "We use cookies to provide you with the best possible experience on our website. Some cookies are necessary for the operation of the website, while others help us improve the website and user experience (tracking cookies). You can decide whether you want to allow cookies.",
+      "more": "Learn more",
+      "settings": "Settings",
+      "reject": "Reject",
+      "acceptAll": "Accept all"
+    },
+    "modal": {
+      "title": "Cookie settings",
+      "intro": "You can adjust your cookie preferences at any time. More information can be found in our",
+      "privacy": "Privacy Policy",
+      "necessary": {
+        "title": "Necessary cookies",
+        "alwaysOn": "Always active",
+        "text": "These cookies are required for the website to function properly and cannot be disabled. They are usually set only in response to actions you take, such as setting your privacy preferences."
+      },
+      "analytics": {
+        "title": "Analytics cookies",
+        "text": "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve our website."
+      },
+      "marketing": {
+        "title": "Marketing cookies",
+        "text": "These cookies are used to show you relevant advertising and marketing content. They may also be used to limit the number of ads and measure the effectiveness of advertising campaigns."
+      },
+      "cancel": "Cancel",
+      "save": "Save settings"
+    }
+  },
+  "footer": {
+    "newsletter": {
+      "successFallback": "Successfully subscribed!",
+      "errorFallback": "Something went wrong.",
+      "errorRetryFallback": "Something went wrong. Please try again later."
+    }
+  }
+  ,
+  "home": {
+    "hero": {
+      "badge": "The first financial education ecosystem",
+      "headline": {
+        "knowledge": "KNOWLEDGE",
+        "money": "MONEY"
+      },
+      "words": ["FREEDOM", "SECURITY"],
+      "description": "BeAFox is an independent, playful learning platform for financial education for young people—focused on unbiased knowledge and developed especially for schools and training companies.",
+      "mockups": {
+        "trainingAlt": "BeAFox training mockup",
+        "pathAlt": "BeAFox learning path mockup",
+        "rankingAlt": "BeAFox ranking mockup"
+      },
+      "cta": {
+        "download": "Download the app",
+        "partner": "Become a partner"
+      }
+    },
+    "stats": {
+      "privateUsers": "Active individual users",
+      "schools": { "pre": "Schools & training companies that", "post": "use BeAFox" },
+      "learners": { "pre": "Pupils, students and apprentices that", "post": "use BeAFox" }
+    },
+    "partnersCarousel": { "alt": "Partner {index}" },
+    "useCasesSection": {
+      "title": { "pre": "An app for every", "highlight": "use case" },
+      "subtitle": "Discover tailored solutions for individuals, businesses, schools, and clubs—built for every need",
+      "more": "Learn more"
+    },
+    "useCases": {
+      "unlimited": {
+        "title": "BeAFox Unlimited",
+        "description": "The premium version for anyone who wants to take their financial education to the next level.",
+        "features": ["Exclusive premium content", "Active community", "Personal learning paths", "Unlimited access"]
+      },
+      "business": {
+        "title": "BeAFox for Business",
+        "description": "Empower your team with professional financial education and position yourself as a responsible employer.",
+        "features": ["Employer branding", "Custom workshops", "Employee certificates", "Company dashboards"]
+      },
+      "schools": {
+        "title": "BeAFox for Schools",
+        "description": "Enhance your classes with playful financial education that inspires students and creates lasting impact.",
+        "features": ["GDPR-compliant", "Preventive approach", "Teaching materials", "Motivating learning methods"]
+      },
+      "partners": {
+        "title": "BeAFox for Clubs",
+        "description": "Join our network and strengthen your community with valuable financial education.",
+        "features": ["Co-branding", "Donation programs", "Social responsibility", "Exclusive member benefits"]
+      }
+    },
+    "ecosystem": {
+      "title": "Financial education ecosystem",
+      "left": {
+        "anytime": {
+          "title": "Learn anytime",
+          "text": "Learn whenever and wherever you want—on your phone on the go, on your laptop at home, or on your tablet during a break. BeAFox fits into your everyday life. Your progress is synced automatically so you can switch devices seamlessly."
+        },
+        "school": {
+          "title": "Learning at school",
+          "text": "BeAFox is built for classroom use. Teachers can track class progress and start playful competitions. This way, financial education can be taught even beyond the standard curriculum."
+        }
+      },
+      "right": {
+        "training": {
+          "title": "Learning in training companies",
+          "text": "Apprentices get practical financial education they can apply directly in everyday work. Companies can support young talent and show they care about their apprentices’ financial future."
+        },
+        "clubs": {
+          "title": "Learning for clubs",
+          "text": "Clubs and organizations can offer valuable financial education to their members—sports clubs, youth centers, or nonprofits. BeAFox helps strengthen young people financially and teaches essential life skills."
+        }
+      },
+      "mockups": {
+        "phoneAlt": "BeAFox phone mockup",
+        "laptopAlt": "BeAFox laptop mockup",
+        "tabletAlt": "BeAFox tablet mockup"
+      }
+    },
+    "howItWorks": {
+      "title": "How BeAFox works",
+      "scrollMore": "Scroll for more",
+      "mockupAlt": "BeAFox {feature} mockup",
+      "ctaPartner": "Become a partner"
+    },
+    "appFeatures": {
+      "stufen": {
+        "title": "Levels",
+        "description": "Choose freely what you want to learn. Our level structure gives you the flexibility to explore topics based on your interests and needs. Whether you're a beginner or advanced, you'll find the right level and can learn at your own pace."
+      },
+      "lernpfad": {
+        "title": "Learning path",
+        "description": "Follow a structured learning path that guides you step by step through the most important financial topics. You always know where you stand and what comes next. The learning path visualizes your progress and helps you stay on track."
+      },
+      "lektion": {
+        "title": "Lessons",
+        "description": "Learn step by step everything you need to know about finance. Our interactive lessons make complex topics easy to understand—from budgeting and saving to investing. We cover all the essentials and combine videos, text, and interactive elements."
+      },
+      "quiz": {
+        "title": "Quiz",
+        "description": "After theory comes practice. Test your knowledge with interactive quizzes and deepen what you've learned. With instant feedback, you learn from mistakes and can review targeted topics. Every successful quiz earns points and boosts your ranking."
+      },
+      "rangliste": {
+        "title": "Leaderboard",
+        "description": "Compare yourself with other learners and stay motivated through friendly competition. Collect points, reach new levels, and become a finance expert. Different categories and timeframes ensure everyone has a fair shot at the top."
+      },
+      "missionen": {
+        "title": "Missions & goals",
+        "description": "Complete exciting missions and reach your personal goals. Missions range from daily challenges to long-term goals. Each completed mission is rewarded and brings you closer to your bigger goals. Set your own goals or follow predefined missions."
+      },
+      "profil": {
+        "title": "Profile",
+        "description": "Track your learning progress and get your personal Fox Score. Your profile shows all achievements: completed lessons, points earned, and passed quizzes. The Fox Score is your personal indicator of financial knowledge and grows with every step."
+      }
+    },
+    "whyFinance": {
+      "title": "Why financial education?",
+      "items": [
+        {
+          "title": "Financial education as a future skill",
+          "text": "Finance is becoming more complex—and more important. In a fast-changing world, financial competence is a key future skill that prepares young people for tomorrow’s challenges."
+        },
+        {
+          "title": "Financial education as a success factor",
+          "text": "Studies show financially educated people are more successful in life, at work, and beyond. Financial knowledge isn’t just a bonus—it’s a crucial factor for personal and professional growth."
+        },
+        {
+          "title": "Equal opportunities",
+          "text": "Everyone should have the same chance to learn about money—regardless of background or family resources. BeAFox supports equal opportunities with accessible, neutral financial education for all."
+        }
+      ],
+      "mascotAlt": "BeAFox mascot"
+    },
+    "downloadBanner": {
+      "title": { "pre": "Download the", "highlight": "BeAFox app", "post": "now and become the expert of your own finances!" },
+      "storeBadges": {
+        "appleAlt": "Download on the App Store",
+        "googleAlt": "Get it on Google Play"
+      },
+      "mockups": {
+        "trainingAlt": "BeAFox training mockup",
+        "pathAlt": "BeAFox learning path mockup"
+      }
+    },
+    "cta": {
+      "badge": "Ready for BeAFox?",
+      "title": "Become a partner!",
+      "description": "With our learning app, we’ve finally created a way to teach finance in a sustainable and easy-to-understand way—without it feeling boring. We want the next generation to learn financial knowledge independently and with motivation.",
+      "buttons": { "partner": "Become a partner", "book": "Book a meeting" }
+    },
+    "blogPreview": {
+      "title": "Our blog",
+      "subtitle": "Discover how BeAFox comes to life behind the scenes.",
+      "more": "Learn more",
+      "posts": [
+        {
+          "image": "/assets/Blogs/Blog1.jpeg",
+          "imageAlt": "We won - Deggendorfer Gründerpreis",
+          "title": "We won!",
+          "excerpt": "We’re proud to have won the Deggendorfer Gründerpreis! Despite nerves and a last-minute pitch update, our work paid off—around 60% of the audience voted for us. Thanks to the whole team for the great organization and the €2,500 prize. We’re excited for the next steps with BeAFox!"
+        },
+        {
+          "image": "/assets/Blogs/Blog2.jpeg",
+          "imageAlt": "BeAFox at Ed.One in Munich",
+          "title": "BeAFox at Ed.One in Munich!",
+          "excerpt": "This is how financial education feels in the classroom. At the Ed.One Summit in Munich, students, teachers, and trainers tested BeAFox live—from the dashboard to the learning app and worksheets. We received valuable feedback, made exciting connections, and presented our pitch. BeAFox shows how simple financial education can be. We’re looking for you!"
+        },
+        {
+          "image": "/assets/Blogs/Blog3.jpg",
+          "imageAlt": "BeAFox wins Startup Summit",
+          "title": "BeAFox wins Startup Summit!",
+          "excerpt": "BeAFox achieved 2nd place at Startup Summit Germany—our first official award! For the first time, we pitched as a duo with a new pitch, deck, and an even clearer vision. After two years of hard work, it shows that perseverance, courage, and teamwork pay off. Thanks to Volksbank am Württemberg eG for this great event!"
+        }
+      ]
+    },
+    "seo": {
+      "organization": {
+        "description": "The first independent, playful learning app for financial education for young people—developed especially for schools and training companies."
+      },
+      "website": {
+        "description": "The first independent, playful learning app for financial education for young people."
+      },
+      "softwareApplication": {
+        "description": "Playful learning app for financial education for young people. Learn money skills with gamification, missions, and challenges."
+      }
+    }
+  }
+  ,
+  "faq": {
+    "hero": {
+      "tag": "FAQ",
+      "title": "Frequently asked questions about",
+      "brand": "BeAFox",
+      "description": "Our support team is here for you and will answer your questions as quickly and helpfully as possible.",
+      "searchPlaceholder": "Search questions..."
+    },
+    "popular": {
+      "title": "Most common questions",
+      "subtitle": "The questions we get asked the most"
+    },
+    "categories": {
+      "all": "All",
+      "general": "General",
+      "pricing": "Pricing",
+      "schoolsBusiness": "Schools & Business",
+      "tech": "Tech",
+      "support": "Support"
+    }
+  }
+  ,
+  "unlimited": {
+    "hero": {
+      "tag": "BeAFox Unlimited",
+      "title": "Financial education for",
+      "highlight": "individuals",
+      "description": "Learn finance your way—playful, flexible, and at your own pace. BeAFox Unlimited gives you access to all learning modules and features.",
+      "cta": { "download": "Download the app" },
+      "targetGroups": {
+        "school": {
+          "title": "For pupils",
+          "description": "Playful, simple financial education at your own pace."
+        },
+        "students": {
+          "title": "For students",
+          "description": "Practical, everyday tips for student life."
+        },
+        "apprentices": {
+          "title": "For apprentices",
+          "description": "Discover what’s possible with your salary today."
+        },
+        "you": {
+          "title": "For you",
+          "description": "Financial education that fits you—regardless of age."
+        }
+      }
+    }
+  }
+  ,
+  "pricing": {
+    "hero": {
+      "tag": "Our goal",
+      "title": "Financial education for",
+      "highlight": "everyone",
+      "targetGroups": {
+        "school": {
+          "title": "For pupils",
+          "description": "Playful, simple financial education in school."
+        },
+        "apprentices": {
+          "title": "For apprentices",
+          "description": "Discover what’s possible with your salary today."
+        },
+        "students": {
+          "title": "For students",
+          "description": "Practical, everyday tips for student life."
+        },
+        "you": {
+          "title": "For you",
+          "description": "Financial education that fits you—regardless of age."
+        }
+      }
+    },
+    "prices": { "tag": "Pricing" },
+    "business": {
+      "heading": {
+        "pre": "Get your",
+        "highlight": "team",
+        "post": "ready"
+      }
+    }
+  }
+  ,
+  "about": {
+    "stats": {
+      "activeUsers": "Active users",
+      "schoolsCompanies": "Schools & companies",
+      "studentsApprentices": "Pupils & apprentices",
+      "awards": "Awards"
+    },
+    "story": {
+      "tag": "Our story",
+      "title": { "pre": "From idea to", "highlight": "reality" }
+    },
+    "drive": {
+      "tag": "What drives us",
+      "title": "We want:",
+      "subtitle": "Education that makes a difference.",
+      "description": "We believe in a world where everyone understands and can use financial education.",
+      "ctaPartner": "Become a partner"
+    }
+  }
+  ,
+  "business": {
+    "hero": {
+      "title": "Education packages against",
+      "titleHighlight": "skills shortages",
+      "description": "Employees who understand money work more focused, stay healthier, and remain with the company longer.",
+      "ctaPartner": "Become a partner",
+      "ctaBook": "Book a call"
+    }
+  }
+  ,
+  "schools": {
+    "hero": {
+      "priceHighlight": "€1 per pupil",
+      "pricePost": "per year",
+      "description": "We create real social impact by making financial education accessible to all pupils—regardless of background or circumstances.",
+      "ctaPartner": "Become a partner",
+      "ctaBook": "Book a call"
+    }
+  }
+  ,
+  "clubs": {
+    "hero": {
+      "tag": "BeAFox for Clubs",
+      "headline": "Give your athletes BeAFox.",
+      "subheadline": "They focus on sport—not on finances.",
+      "description": "As a club, you invest in your athletes’ financial education. With BeAFox, you give them the confidence they need to fully focus on their sport.",
+      "impact": "Your athletes learn to handle money responsibly while you keep an overview. Financial worries become a thing of the past—your talents can focus on what matters.",
+      "ctaPartner": "Become a partner"
+    }
+  }
+  ,
+  "contact": {
+    "hero": {
+      "tag": "Contact",
+      "title": { "pre": "We look forward to", "highlight": "your message" },
+      "description": "Our support team is here for you and will answer your questions as quickly and helpfully as possible."
+    },
+    "info": {
+      "title": "Contact details",
+      "booking": {
+        "title": "Book a meeting",
+        "text": "Book an appointment for a personal call or consultation.",
+        "button": "Book appointment"
+      },
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "responseTime": {
+        "prefix": "Average response time:",
+        "value": "under 24 hours"
+      }
+    },
+    "form": {
+      "title": "Send a message",
+      "errorSendFallback": "Error sending the message",
+      "errorUnexpected": "An unexpected error occurred. Please try again later or contact us directly via email.",
+      "success": "Thank you! Your message has been sent successfully. We'll get back to you as soon as possible.",
+      "errorTitle": "Something went wrong",
+      "sending": "Sending...",
+      "submit": "Send message",
+      "fields": {
+        "name": { "label": "Name *", "placeholder": "Your name" },
+        "email": { "label": "Email *", "placeholder": "you@email.com" },
+        "phone": {
+          "label": "Phone",
+          "optional": "optional",
+          "placeholder": "+49 123 456789"
+        },
+        "type": {
+          "label": "I'm interested in",
+          "options": {
+            "general": "General inquiry",
+            "schools": "For schools",
+            "business": "For businesses",
+            "clubs": "For clubs",
+            "private": "Private customer",
+            "pilot": "Pilot program",
+            "support": "Support"
+          }
+        },
+        "subject": { "label": "Subject *", "placeholder": "What is it about?" },
+        "message": {
+          "label": "Message *",
+          "placeholder": "Tell us how we can help..."
+        }
+      }
+    },
+    "cta": {
+      "title": "Need more help?",
+      "description": "We're happy to help. \\nJust contact us via the form, email, or phone.",
+      "email": "Send email",
+      "call": "Call us"
+    },
+    "quickLinks": {
+      "schools": {
+        "title": "For schools",
+        "description": "Start a pilot program for your school"
+      },
+      "business": {
+        "title": "For businesses",
+        "description": "Financial education for your employees"
+      },
+      "clubs": {
+        "title": "For clubs",
+        "description": "Holistic development for your players"
+      },
+      "private": {
+        "title": "Individuals",
+        "description": "BeAFox Unlimited for you"
+      }
+    }
+  },
+  "authLogin": {
+    "title": "Sign in to BeAFox",
+    "subtitle": "Sign in with your account",
+    "fields": {
+      "email": { "label": "Email address", "placeholder": "Your email address" },
+      "password": {
+        "label": "Password",
+        "placeholder": "Your password",
+        "showAria": "Show password",
+        "hideAria": "Hide password"
+      }
+    },
+    "button": { "loading": "Signing in...", "submit": "Sign in" },
+    "links": {
+      "noAccount": "No account yet?",
+      "register": "Create one now",
+      "forgotPassword": "Forgot password?"
+    },
+    "validation": {
+      "emailInvalid": "Please enter a valid email address",
+      "passwordRequired": "Password is required"
+    },
+    "errors": {
+      "loginFailedFallback": "Sign-in failed. Please check your credentials."
+    }
+  },
+  "authRegister": {
+    "title": "Create your BeAFox account",
+    "subtitle": {
+      "pre": "Create your account and get instant access to",
+      "highlight": "BeAFox Unlimited"
+    },
+    "fields": {
+      "username": { "label": "Username", "placeholder": "Your username" },
+      "email": { "label": "Email address", "placeholder": "Your email address" },
+      "password": {
+        "label": "Password",
+        "placeholder": "At least 8 characters",
+        "showAria": "Show password",
+        "hideAria": "Hide password"
+      },
+      "confirmPassword": {
+        "label": "Confirm password",
+        "placeholder": "Repeat password",
+        "showAria": "Show password",
+        "hideAria": "Hide password"
+      }
+    },
+    "button": { "loading": "Creating...", "submit": "Create account" },
+    "links": { "hasAccount": "Already have an account?", "login": "Sign in here" },
+    "info": {
+      "title": "Next steps",
+      "text": {
+        "pre": "After registering, you'll receive an email with a verification code. Once verified, you can",
+        "highlight": "BeAFox Unlimited",
+        "post": "and unlock all premium features."
+      }
+    },
+    "validation": {
+      "username": { "missing": "Username is required", "tooShort": "Username is too short", "tooLong": "Username is too long" },
+      "email": { "missing": "Email is required", "invalid": "Email is not valid" },
+      "password": { "missing": "Password is required", "tooShort": "Password is too short", "weak": "Use numbers and special characters" },
+      "confirmPassword": { "missing": "Please confirm your password", "mismatch": "Passwords do not match" },
+      "role": { "invalid": "Invalid role" },
+      "schoolName": { "missing": "School name is required", "tooShort": "School name is too short" },
+      "schoolLocation": { "missing": "School location is required", "tooShort": "School location is too short" }
+    },
+    "errors": { "registerFailedFallback": "Registration failed. Please try again." }
+  },
+  "authForgotPassword": {
+    "title": "Reset password",
+    "subtitle": {
+      "default": "Enter your email address to request a new password",
+      "success": "Email sent"
+    },
+    "fields": {
+      "email": { "label": "Email address", "placeholder": "Your email address" }
+    },
+    "button": { "loading": "Sending...", "submit": "Send link" },
+    "links": { "backToLogin": "Back to sign in" },
+    "validation": { "emailInvalid": "Please enter a valid email address" },
+    "errors": { "sendFailedFallback": "Error sending the email. Please try again." },
+    "success": {
+      "title": "Email sent!",
+      "text": "We've sent you an email with a link to reset your password. Please also check your spam folder if you can't find it.",
+      "backToLogin": "Back to sign in"
+    },
+    "info": {
+      "title": "Important note",
+      "text": "If you don't receive the email, please also check your spam folder. The reset link is valid for 1 hour."
+    }
+  },
+  "authResetPassword": {
+    "validating": "Validating reset link...",
+    "token": {
+      "invalidOrMissing": "Invalid or missing reset link",
+      "invalidOrExpired": "The reset link is invalid or has expired"
+    },
+    "invalidLink": {
+      "title": "Invalid link",
+      "fallbackText": "The reset link is invalid or has expired. Please request a new link.",
+      "requestNew": "Request new link"
+    },
+    "success": {
+      "title": "Password reset successful!",
+      "text": "Your password has been changed successfully. You can now sign in with your new password.",
+      "toLogin": "Go to sign in"
+    },
+    "title": "Set a new password",
+    "subtitle": "Enter your new password",
+    "fields": {
+      "password": {
+        "label": "New password",
+        "placeholder": "At least 8 characters",
+        "showAria": "Show password",
+        "hideAria": "Hide password"
+      },
+      "confirmPassword": {
+        "label": "Confirm password",
+        "placeholder": "Repeat password",
+        "showAria": "Show password",
+        "hideAria": "Hide password"
+      }
+    },
+    "button": { "loading": "Saving...", "submit": "Reset password" },
+    "info": {
+      "title": "Password requirements",
+      "text": "Your password must be at least 8 characters long and include letters, numbers, and special characters."
+    },
+    "errors": {
+      "fillAllFields": "Please fill in all fields",
+      "passwordRequirements": "Password must be at least 8 characters long and include letters, numbers, and special characters",
+      "passwordMismatch": "Passwords do not match",
+      "invalidResetLink": "Invalid reset link",
+      "resetFailedFallback": "Error resetting the password. Please try again.",
+      "differentPasswordHint": "Please choose a different password. The reset link is still valid."
+    }
+  },
+  "authVerification": {
+    "title": "Verify",
+    "subtitle": "Code sent to:",
+    "fields": { "otp": { "label": "Enter the 6-digit code:" } },
+    "actions": { "resend": "Resend code" },
+    "countdownSeconds": "sec",
+    "button": { "loading": "Verifying...", "submit": "Verify" },
+    "links": { "backToRegister": "Back to registration" },
+    "validation": { "otpInvalid": "Please enter a valid 6-digit code" },
+    "errors": {
+      "invalidUserData": "Invalid user data",
+      "verifyFailedFallback": "Verification failed. Please try again.",
+      "tokenExpired": "Token not found or expired. Please request a new code.",
+      "sendCodeFailedFallback": "Error sending the code. Please try again."
+    },
+    "info": "Check your inbox for the verification code. If you didn't receive an email, also check your spam folder."
+  },
+  "unsubscribe": {
+    "title": "Unsubscribe from newsletter",
+    "description": "You will be unsubscribed from the BeAFox newsletter. We'll notify info@beafox.app so we can remove you from the mailing list.",
+    "loading": "Unsubscribing…",
+    "success": {
+      "title": "Successfully unsubscribed",
+      "fallbackMessage": "You're unsubscribed."
+    },
+    "errors": {
+      "invalidEmailInLink": "The email address in the link is invalid. Please use the form below.",
+      "failed": "Unsubscribe failed.",
+      "unexpected": "Something went wrong. Please email us at info@beafox.app."
+    },
+    "form": {
+      "emailLabel": "Your email address",
+      "emailPlaceholder": "you@email.com",
+      "submit": "Unsubscribe"
+    },
+    "backHome": "Back to home"
+  },
+  "account": {
+    "title": "My account",
+    "subtitle": "Manage your BeAFox Unlimited subscription",
+    "loading": "Loading subscription details...",
+    "error": { "title": "Loading failed", "retry": "Try again" },
+    "errors": {
+      "loadSubscriptionFallback": "Error loading subscription details. Please try again."
+    },
+    "alerts": {
+      "nativeSubscriptionsOnlyInStores": "Native subscriptions (Apple/Google) can only be managed via the app or the respective stores.",
+      "cancelSuccess": "Your subscription was cancelled successfully.",
+      "cancelFailedFallback": "Error cancelling the subscription. Please try again."
+    },
+    "confirm": {
+      "cancelSubscription": "Do you really want to cancel your subscription? Your access will remain active until the end of the current billing period."
+    },
+    "plan": {
+      "unknown": "Unknown",
+      "monthly": "Monthly plan - €4.99/month",
+      "yearly": "Yearly plan - €44.99/year",
+      "lifetime": "Lifetime access"
+    },
+    "date": { "notAvailable": "Not available" },
+    "status": {
+      "active": "Active",
+      "cancelled": "Cancelled",
+      "expired": "Expired",
+      "pending": "Pending"
+    },
+    "subscriptionStatus": {
+      "title": "Subscription status",
+      "currentPlanLabel": "Current plan",
+      "paymentMethod": "Payment method:",
+      "validUntil": "Valid until",
+      "expiresOn": "Expires on",
+      "nextRenewal": "Next renewal",
+      "unlimited": "Unlimited",
+      "autoRenewal": "Auto-renewal enabled"
+    },
+    "invoice": {
+      "title": "Latest invoice",
+      "paymentDate": "Payment date",
+      "paymentId": "Payment ID",
+      "sentByEmail": "Your invoice has been sent to you by email."
+    },
+    "actions": {
+      "title": "Actions",
+      "changeOrUpgrade": {
+        "title": "Change or upgrade subscription",
+        "subtitle": "Switch to another plan"
+      },
+      "cancel": {
+        "loading": "Cancelling...",
+        "title": "Cancel subscription",
+        "subtitle": "Cancellation at end of billing period"
+      },
+      "logout": {
+        "title": "Sign out",
+        "subtitle": "Sign out of your account"
+      }
+    },
+    "nativeInfo": {
+      "title": "Native subscription (Apple/Google)",
+      "text": "Your subscription was purchased via Apple or Google. To manage, cancel, or change your subscription, please use the BeAFox app or your Apple/Google account settings."
+    },
+    "cancelledNotice": {
+      "pre": "Your subscription has been cancelled. You can use it until",
+      "post": "."
+    }
+  },
+  "checkout": {
+    "stripeLoading": "Loading Stripe...",
+    "planSelection": {
+      "title": "Choose your plan",
+      "subtitle": "All plans include unlimited access to all lessons and premium features",
+      "selected": "Selected",
+      "cta": "Continue to checkout",
+      "note": "Secure payment via Stripe • No hidden fees"
+    },
+    "plans": {
+      "monthly": {
+        "title": "Monthly plan",
+        "descriptor": "Cancel monthly",
+        "unit": "per month",
+        "features": [
+          "Monthly billing",
+          "Cancel anytime",
+          "All premium features",
+          "Maximum flexibility"
+        ]
+      },
+      "yearly": {
+        "title": "Yearly plan",
+        "descriptor": "Billed yearly",
+        "unit": "per year",
+        "features": [
+          "Yearly billing",
+          "Cancel anytime",
+          "All premium features",
+          "Best value"
+        ]
+      },
+      "lifetime": {
+        "title": "Lifetime access",
+        "descriptor": "Lifetime – one-time payment",
+        "unit": "one-time payment",
+        "badge": "Best deal",
+        "features": [
+          "Lifetime access",
+          "All premium features",
+          "No hidden costs",
+          "Future updates included"
+        ]
+      }
+    },
+    "backToPlanSelection": "Back to plan selection",
+    "backToPlanSelectionArrow": "← Back to plan selection",
+    "creatingPayment": "Preparing payment...",
+    "waitingForPaymentData": "Waiting for payment details...",
+    "orderSummary": {
+      "title": "Order summary",
+      "selectedPlanLabel": "Selected plan",
+      "originalPrice": "Original price:",
+      "discount": "Discount:",
+      "perMonth": "/ month",
+      "perYear": "/ year"
+    },
+    "promo": {
+      "label": "Promo code",
+      "placeholder": "e.g. FRIENDS10",
+      "apply": "Apply",
+      "errors": {
+        "empty": "Please enter a promo code",
+        "invalid": "Invalid promo code",
+        "validateFailed": "Error validating the code"
+      },
+      "applied": "✓ Promo code applied: {discount} off"
+    },
+    "subscriptionDetails": {
+      "monthly": "This subscription renews automatically every month. You can cancel anytime.",
+      "yearly": "This yearly subscription renews automatically every year. You can cancel anytime.",
+      "lifetime": "One-time payment for lifetime access. No automatic renewal."
+    },
+    "benefits": { "title": "What you'll get:" },
+    "paymentInfo": {
+      "secureStripe": "Secure payment via Stripe",
+      "title": "Payment details",
+      "subtitle": "Your payment data is processed securely"
+    },
+    "pay": {
+      "loading": "Processing...",
+      "cta": "Pay {amount} now",
+      "securityNote": "Your payment is processed securely by Stripe. We do not store credit card details."
+    },
+    "errors": {
+      "submitFormFallback": "Error submitting the form",
+      "paymentFailedFallback": "Payment failed",
+      "unexpected": "An unexpected error occurred. Please try again.",
+      "stripeNotConfigured": "Stripe is not configured on the server. Please contact support.",
+      "createPaymentFallback": "Error creating the payment. Please try again.",
+      "noPlanSelected": "No plan selected"
+    }
+  },
+  "checkoutSuccess": {
+    "verifying": {
+      "title": "Verifying payment...",
+      "subtitle": "Please wait a moment"
+    },
+    "success": {
+      "title": "Payment successful! 🎉",
+      "subtitle": {
+        "pre": "Congratulations!",
+        "post": "You now have access to"
+      }
+    },
+    "steps": {
+      "title": "What to do next:",
+      "step1": {
+        "title": "Download the app",
+        "text": "Download the BeAFox app to your smartphone."
+      },
+      "step2": {
+        "title": "Sign in",
+        "text": "Sign in with the credentials you just created."
+      },
+      "step3": {
+        "title": "Enjoy premium",
+        "text": "Enjoy all premium features of BeAFox Unlimited!"
+      }
+    },
+    "info": {
+      "activatedTitle": "Your account is activated!",
+      "activatedText": "You can manage your subscription now or sign in anytime in the app.",
+      "toAccount": "Go to account"
+    },
+    "pending": {
+      "title": "Payment processing",
+      "text": "Your payment was received successfully. Activation may take a few minutes. You'll receive an email once your account is activated.",
+      "questionsLabel": "Questions?",
+      "contact": "Contact us at"
+    }
+  },
+  "referral": {
+    "opening": {
+      "title": "Opening BeAFox...",
+      "subtitle": "Please wait a moment."
+    },
+    "title": "Invitation detected",
+    "subtitle": "If the app doesn't open automatically, use your code below. You'll be redirected shortly.",
+    "code": {
+      "label": "Your referral code",
+      "copy": "Copy code",
+      "copied": "Copied",
+      "hint": "Copy this code. It will be detected automatically on first launch (Android via Install Referrer, iOS via clipboard)."
+    },
+    "redirectNote": "You will be redirected to the appropriate app store automatically."
+  },
+  "shop": {
+    "hero": {
+      "badge": "BeAFox Merch Shop",
+      "title": "BeAFox Merch Shop",
+      "subtitle": "Show your BeAFox passion with our exclusive merchandise"
+    },
+    "categories": {
+      "all": "All",
+      "clothing": "Clothing",
+      "accessories": "Accessories"
+    },
+    "empty": "No products found in this category.",
+    "addToCart": "Add to cart",
+    "products": {
+      "tshirt": {
+        "name": "BeAFox T-shirt",
+        "description": "Premium cotton T-shirt with BeAFox logo"
+      },
+      "hoodie": {
+        "name": "BeAFox hoodie",
+        "description": "Warm hooded sweatshirt with BeAFox branding"
+      },
+      "mug": {
+        "name": "BeAFox mug",
+        "description": "Ceramic mug with BeAFox logo — perfect for your morning coffee"
+      },
+      "stickers": {
+        "name": "BeAFox sticker pack",
+        "description": "Set of 5 different BeAFox stickers"
+      },
+      "notebook": {
+        "name": "BeAFox notebook",
+        "description": "High-quality notebook with BeAFox design"
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "How long does shipping take?",
+          "a": "Shipping usually takes 3–5 business days after we receive your order."
+        },
+        {
+          "q": "Which payment methods are accepted?",
+          "a": "We accept common payment methods such as credit card, PayPal, and SEPA direct debit."
+        },
+        {
+          "q": "Is there a return policy?",
+          "a": "Yes, you can return items within 14 days of receiving them. See our terms for details."
+        }
+      ]
+    }
+  },
+  "appUpdates": {
+    "hero": {
+      "badge": "App updates",
+      "title": { "pre": "Stay", "highlight": "up to date" },
+      "description": "Here you'll find all updates, new features, and improvements for the BeAFox app. We're continuously working to make the app better."
+    },
+    "types": {
+      "major": "Major update",
+      "feature": "New features",
+      "patch": "Bug fixes",
+      "default": "Update"
+    },
+    "whatsNew": "What's new:",
+    "updates": [
+      {
+        "id": 1,
+        "version": "v2.1.0",
+        "date": "December 2024",
+        "title": "New features & improvements",
+        "description": "We added new features and improved performance. Learning paths are now even more intuitive and the stats give you a better overview of your progress.",
+        "features": [
+          "New learning paths for advanced finance topics",
+          "Improved statistics and progress tracking",
+          "Performance optimizations for faster load times",
+          "Bug fixes and stability improvements"
+        ],
+        "type": "feature"
+      },
+      {
+        "id": 2,
+        "version": "v2.0.0",
+        "date": "November 2024",
+        "title": "Big update: new design & features",
+        "description": "The biggest update since launch! We completely revamped the app with a modern design, new features, and improved usability.",
+        "features": [
+          "Completely new, modern design",
+          "New gamification elements",
+          "Improved leaderboards and challenges",
+          "New learning modules on investing",
+          "Optimized user interface"
+        ],
+        "type": "major"
+      },
+      {
+        "id": 3,
+        "version": "v1.5.2",
+        "date": "October 2024",
+        "title": "Stability & bug fixes",
+        "description": "This update focuses on stability and bug fixes to make the app even more reliable.",
+        "features": [
+          "Various bug fixes",
+          "Improved app stability",
+          "Minor UI improvements",
+          "Performance optimizations"
+        ],
+        "type": "patch"
+      },
+      {
+        "id": 4,
+        "version": "v1.5.0",
+        "date": "September 2024",
+        "title": "New learning modules & improvements",
+        "description": "We added new learning modules and improved existing features to make learning even more effective.",
+        "features": [
+          "New learning modules on insurance",
+          "Expanded quiz features",
+          "Improved flashcards",
+          "New missions and challenges"
+        ],
+        "type": "feature"
+      }
+    ]
+  },
+  "guidelines": {
+    "hero": {
+      "badge": "Community guidelines",
+      "title": { "pre": "Our", "highlight": "community guidelines" },
+      "description": "BeAFox is a community where young people learn about finance together. These guidelines help us create a safe, respectful, and supportive learning environment."
+    },
+    "items": [
+      {
+        "id": 1,
+        "title": "Respectful behavior",
+        "description": "Treat all members of the BeAFox community with respect and kindness.",
+        "rules": [
+          "Be respectful and polite in all interactions",
+          "Avoid insulting, discriminatory, or demeaning language",
+          "Respect different opinions and experiences",
+          "Help others learn instead of criticizing them",
+          "Celebrate others' successes and encourage their progress"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Constructive communication",
+        "description": "Share knowledge constructively and help others learn.",
+        "rules": [
+          "Ask questions when you don't understand something",
+          "Share your experiences and tips with the community",
+          "Give constructive feedback that helps others",
+          "Avoid spam, advertising, or unwanted content",
+          "Keep discussions factual and on topic"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Safety and privacy",
+        "description": "Protect your personal data and the data of other users.",
+        "rules": [
+          "Do not share personal financial data or account information",
+          "Do not share passwords or login details",
+          "Respect other users' privacy",
+          "Report suspicious activities or content",
+          "Use strong passwords for your account"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Honesty and integrity",
+        "description": "Be honest in your interactions and while learning.",
+        "rules": [
+          "Do not use cheating methods or exploits",
+          "Do not share false information",
+          "Respect others' learning progress",
+          "Only share information you understand yourself",
+          "Cite sources when sharing information"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Age-appropriate content",
+        "description": "BeAFox is for young people — keep content age-appropriate.",
+        "rules": [
+          "Use appropriate language for all age groups",
+          "Avoid inappropriate or offensive content",
+          "Remember that many users are minors",
+          "Keep discussions educational and constructive",
+          "Report inappropriate content immediately"
+        ]
+      },
+      {
+        "id": 6,
+        "title": "No financial advice",
+        "description": "BeAFox provides education, not individual financial advice.",
+        "rules": [
+          "BeAFox is a learning platform, not a financial advisor",
+          "Do not give specific investment recommendations",
+          "Refer to professional advice for complex questions",
+          "Share knowledge, not personal financial decisions",
+          "Remind others that individual advice can be important"
+        ]
+      }
+    ],
+    "violations": {
+      "title": "Violations of the guidelines",
+      "description": "If these community guidelines are violated, we may take the following actions:",
+      "actions": [
+        "Warning and request to change behavior",
+        "Temporary account suspension",
+        "Permanent suspension for severe violations",
+        "Removal of inappropriate content",
+        "Reporting illegal activities to the authorities"
+      ]
+    },
+    "contact": {
+      "title": "Questions about our guidelines?",
+      "text": "If you have questions about our community guidelines or want to report a violation, feel free to contact us.",
+      "cta": "Contact us"
+    }
+  },
+  "imprint": {
+    "hero": {
+      "badge": "Imprint",
+      "title": "Imprint",
+      "subtitle": "Information pursuant to § 5 TMG and responsibility for content pursuant to § 55(2) RStV"
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Information pursuant to § 5 TMG",
+        "content": [
+          { "details": ["BeAFox UG (limited liability)", "Siemensweg 2", "93073 Neutraubling", "Germany"] }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Contact",
+        "content": [
+          { "details": ["Phone: +49 178 2723 673", "Email: info@beafox.app"] }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Represented by",
+        "content": [
+          { "details": ["Managing director: Alexandru Tapelea"] }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Register entry",
+        "content": [
+          { "details": ["Registered in the commercial register", "Register court: Regensburg", "Register number: HRB 21689"] }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "VAT ID",
+        "content": [
+          {
+            "text": "VAT identification number pursuant to § 27a of the German VAT Act:",
+            "details": ["DE455701438"]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Responsible for content pursuant to § 55(2) RStV",
+        "content": [
+          { "details": ["BeAFox UG (limited liability)", "Siemensweg 2", "93073 Neutraubling", "Germany"] }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Disclaimer",
+        "content": [
+          {
+            "subtitle": "Liability for content",
+            "text": "The contents of our pages were created with great care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7(1) TMG and the general laws."
+          },
+          {
+            "subtitle": "Liability for links",
+            "text": "Our offer contains links to external third-party websites over which we have no control. Therefore, we cannot accept any liability for these external contents. The respective provider or operator of the linked pages is always responsible for the content. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not identifiable at the time of linking."
+          },
+          {
+            "subtitle": "Copyright",
+            "text": "The content and works created by the site operators on these pages are subject to German copyright law. Duplication, processing, distribution, and any form of exploitation beyond the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are permitted for private, non-commercial use only."
+          },
+          {
+            "subtitle": "Data protection",
+            "text": "If personal data (such as name, address, or email addresses) is collected on our pages, this is done, as far as possible, on a voluntary basis. Use of the services is generally possible without providing personal data where feasible.",
+            "link": { "text": "Further information can be found in our privacy policy.", "href": "/datenschutz" }
+          }
+        ]
+      }
+    ]
+  }
+}
+

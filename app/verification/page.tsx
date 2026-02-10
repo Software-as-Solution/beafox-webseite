@@ -6,8 +6,10 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import client from "@/lib/api-client";
 import { CheckCircle, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 function VerificationContent() {
+  const t = useTranslations("authVerification");
   const router = useRouter();
   const searchParams = useSearchParams();
   const [otp, setOtp] = useState("");
@@ -72,12 +74,12 @@ function VerificationContent() {
     e.preventDefault();
 
     if (!isValidOtp) {
-      setError("Bitte gib einen gültigen 6-stelligen Code ein");
+      setError(t("validation.otpInvalid"));
       return;
     }
 
     if (!user?.id) {
-      setError("Ungültige Nutzerdaten");
+      setError(t("errors.invalidUserData"));
       router.push("/registrierung");
       return;
     }
@@ -109,7 +111,7 @@ function VerificationContent() {
       const errorMessage =
         error.response?.data?.error ||
         error.message ||
-        "Verifizierung fehlgeschlagen. Bitte versuche es erneut.";
+        t("errors.verifyFailedFallback");
 
       // Check if it's a token error
       if (
@@ -117,7 +119,7 @@ function VerificationContent() {
         errorMessage.includes("Invalid") ||
         errorMessage.includes("expired")
       ) {
-        setError("Token nicht gefunden oder abgelaufen. Bitte neuen Code anfordern.");
+        setError(t("errors.tokenExpired"));
       } else {
         setError(errorMessage);
       }
@@ -142,7 +144,7 @@ function VerificationContent() {
       const errorMessage =
         error.response?.data?.error ||
         error.message ||
-        "Fehler beim Senden des Codes. Bitte versuche es erneut.";
+        t("errors.sendCodeFailedFallback");
       setError(errorMessage);
       setCanSendNewOtpRequest(true);
       setCountDown(0);
@@ -164,10 +166,10 @@ function VerificationContent() {
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <CheckCircle className="w-8 h-8 text-primaryOrange" />
-              <h1 className="text-3xl font-bold text-darkerGray">Verifizieren</h1>
+              <h1 className="text-3xl font-bold text-darkerGray">{t("title")}</h1>
             </div>
             <div className="space-y-2">
-              <p className="text-lightGray">Code gesendet an:</p>
+              <p className="text-lightGray">{t("subtitle")}</p>
               <p className="text-primaryOrange font-semibold">{user.email}</p>
             </div>
           </div>
@@ -178,7 +180,7 @@ function VerificationContent() {
                 htmlFor="otp"
                 className="block text-sm font-medium text-darkerGray mb-2"
               >
-                Geben Sie den 6-stelligen Code ein:
+                {t("fields.otp.label")}
               </label>
               <input
                 ref={otpInputRef}
@@ -208,10 +210,12 @@ function VerificationContent() {
                   !canSendNewOtpRequest ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
-                Code erneut senden
+                {t("actions.resend")}
               </button>
               {countDown > 0 && (
-                <span className="text-lightGray">({countDown} Sek)</span>
+                <span className="text-lightGray">
+                  ({countDown} {t("countdownSeconds")})
+                </span>
               )}
             </div>
 
@@ -224,10 +228,10 @@ function VerificationContent() {
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                  Wird verifiziert...
+                  {t("button.loading")}
                 </>
               ) : (
-                "Verifizieren"
+                t("button.submit")
               )}
             </Button>
 
@@ -236,7 +240,7 @@ function VerificationContent() {
                 href="/registrierung"
                 className="text-sm text-primaryOrange hover:underline"
               >
-                Zurück zur Registrierung
+                {t("links.backToRegister")}
               </Link>
             </div>
           </form>
@@ -245,8 +249,7 @@ function VerificationContent() {
         {/* Info Box */}
         <div className="mt-6 bg-primaryOrange/10 rounded-lg p-4">
           <p className="text-sm text-darkerGray text-center">
-            Prüfe dein E-Mail-Postfach für den Verifizierungscode. Falls du keine E-Mail
-            erhalten hast, prüfe auch deinen Spam-Ordner.
+            {t("info")}
           </p>
         </div>
       </div>

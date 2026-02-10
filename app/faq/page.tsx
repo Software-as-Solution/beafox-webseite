@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
+import { useTranslations } from "next-intl";
 import {
   ChevronDown,
   MessageCircle,
@@ -34,6 +35,7 @@ interface FAQItem {
 }
 
 export default function FAQPage() {
+  const t = useTranslations("faq");
   const [openId, setOpenId] = useState<number | null>(null);
   const [openPopularId, setOpenPopularId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -174,12 +176,12 @@ export default function FAQPage() {
   ];
 
   const categories = [
-    "Alle",
-    "Allgemein",
-    "Preise",
-    "Schulen & Business",
-    "Technik",
-    "Support",
+    { id: "Alle", label: t("categories.all") },
+    { id: "Allgemein", label: t("categories.general") },
+    { id: "Preise", label: t("categories.pricing") },
+    { id: "Schulen & Business", label: t("categories.schoolsBusiness") },
+    { id: "Technik", label: t("categories.tech") },
+    { id: "Support", label: t("categories.support") },
   ];
 
   const filteredFAQs = useMemo(() => {
@@ -215,7 +217,7 @@ export default function FAQPage() {
           >
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h1 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              FAQ's
+              {t("hero.tag")}
             </h1>
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
@@ -225,7 +227,7 @@ export default function FAQPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4"
           >
-            Häufige Fragen zu <span className="text-primaryOrange">BeAFox</span>
+            {t("hero.title")} <span className="text-primaryOrange">{t("hero.brand")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -233,8 +235,7 @@ export default function FAQPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base md:text-xl text-lightGray max-w-3xl mx-auto"
           >
-            Unser Support ist rund um die Uhr für dich da und beantwortet deine
-            Anliegen so schnell und hilfreich wie möglich.
+            {t("hero.description")}
           </motion.p>
         </div>
 
@@ -249,7 +250,7 @@ export default function FAQPage() {
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-lightGray" />
             <input
               type="text"
-              placeholder="Suche nach Fragen..."
+              placeholder={t("hero.searchPlaceholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-primaryOrange/20 focus:border-primaryOrange focus:outline-none text-darkerGray placeholder-lightGray"
@@ -267,15 +268,15 @@ export default function FAQPage() {
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
                 className={`px-4 py-2 rounded-full text-sm md:text-base font-semibold transition-all ${
-                  selectedCategory === category
+                  selectedCategory === category.id
                     ? "bg-primaryOrange text-primaryWhite border-2 border-primaryOrange"
                     : "bg-white text-darkerGray border-2 border-primaryOrange/20 hover:border-primaryOrange/40"
                 }`}
               >
-                {category}
+                {category.label}
               </button>
             ))}
           </div>
@@ -294,10 +295,10 @@ export default function FAQPage() {
               className="text-center mb-8"
             >
               <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-2">
-                Häufigste Fragen
+                {t("popular.title")}
               </h3>
               <p className="text-lightGray">
-                Die am häufigsten gestellten Fragen
+                {t("popular.subtitle")}
               </p>
             </motion.div>
             <div className="grid md:grid-cols-2 gap-4 mb-8">

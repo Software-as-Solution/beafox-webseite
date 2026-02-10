@@ -4,6 +4,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface DownloadModalProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export default function DownloadModal({
   onClose,
   onAppStoreClick,
 }: DownloadModalProps) {
+  const t = useTranslations("downloadModal");
   const handleAppStoreClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onAppStoreClick) {
       onAppStoreClick(e);
@@ -43,21 +45,19 @@ export default function DownloadModal({
             <button
               onClick={onClose}
               className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
-              aria-label="Schließen"
+              aria-label={t("closeAria")}
             >
               <X className="w-5 h-5 text-darkerGray" />
             </button>
 
             {/* Title */}
             <h2 className="text-2xl md:text-3xl font-bold text-primaryOrange mb-4 text-center">
-              BeAFox-App herunterladen
+              {t("title")}
             </h2>
 
             {/* Info Text */}
             <p className="text-lightGray mb-6 text-center">
-              Die BeAFox App ist nur für mobile Geräte verfügbar. Öffne diesen
-              Link auf deinem Smartphone oder Tablet, um die App
-              herunterzuladen.
+              {t("description")}
             </p>
 
             {/* App Store Buttons */}

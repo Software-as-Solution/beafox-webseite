@@ -6,6 +6,7 @@ import Section from "@/components/Section";
 import Button from "@/components/Button";
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { useTranslations } from "next-intl";
 import {
   Check,
   Sparkles,
@@ -26,6 +27,7 @@ import {
 } from "lucide-react";
 
 export default function ForSchoolsPage() {
+  const t = useTranslations("schools");
   const [selectedDashboard, setSelectedDashboard] = useState(0);
   const [openFAQId, setOpenFAQId] = useState<number | null>(null);
 
@@ -197,8 +199,8 @@ export default function ForSchoolsPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
               >
-                <span className="text-primaryOrange">1€ pro Schüler</span> pro
-                Jahr
+                <span className="text-primaryOrange">{t("hero.priceHighlight")}</span>{" "}
+                {t("hero.pricePost")}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -206,9 +208,7 @@ export default function ForSchoolsPage() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-base md:text-xl text-lightGray mb-8 md:mb-12"
               >
-                Wir schaffen echten gesellschaftlichen Mehrwert, indem wir
-                Finanzbildung für alle Schüler:innen unabhängig von Hintergrund
-                oder Voraussetzungen zugänglich machen.
+                {t("hero.description")}
               </motion.p>
 
               {/* CTA Buttons */}
@@ -223,7 +223,7 @@ export default function ForSchoolsPage() {
                   variant="primary"
                   className="flex items-center justify-center gap-2 !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base w-full sm:w-auto"
                 >
-                  Jetzt Partner werden
+                  {t("hero.ctaPartner")}
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
                 <a
@@ -233,7 +233,7 @@ export default function ForSchoolsPage() {
                   className="inline-flex items-center justify-center gap-2 border-2 border-primaryOrange text-primaryOrange hover:bg-primaryOrange hover:text-primaryWhite px-4 py-2 md:px-8 md:py-4 rounded-full font-semibold transition-all duration-300 text-sm md:text-base w-full sm:w-auto shadow-lg hover:shadow-xl"
                 >
                   <Calendar className="w-4 h-4 md:w-5 md:h-5" />
-                  Termin buchen
+                  {t("hero.ctaBook")}
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               </motion.div>

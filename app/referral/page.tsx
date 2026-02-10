@@ -3,10 +3,12 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Check, Copy, Loader2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export const dynamic = 'force-dynamic';
 
 export default function ReferralPage() {
+  const t = useTranslations('referral');
   return (
     <Suspense
       fallback={
@@ -14,9 +16,9 @@ export default function ReferralPage() {
           <div className="text-center">
             <div className="mx-auto mb-6 w-12 h-12 rounded-full border-4 border-primaryOrange/20 border-t-primaryOrange animate-spin" />
             <h1 className="text-2xl md:text-3xl font-bold text-darkerGray">
-              BeAFox wird geöffnet...
+              {t('opening.title')}
             </h1>
-            <p className="text-lightGray mt-2">Bitte einen Moment gedulden.</p>
+            <p className="text-lightGray mt-2">{t('opening.subtitle')}</p>
           </div>
         </div>
       }
@@ -27,6 +29,7 @@ export default function ReferralPage() {
 }
 
 function ReferralPageInner() {
+  const t = useTranslations('referral');
   const searchParams = useSearchParams();
   const router = useRouter();
   const ref = searchParams.get('ref');
@@ -101,21 +104,20 @@ function ReferralPageInner() {
           <div className="inline-flex items-center gap-2 bg-primaryOrange/10 px-4 py-2 rounded-full mb-6 border border-primaryOrange/20">
             <Loader2 className="w-4 h-4 text-primaryOrange animate-spin" />
             <span className="text-primaryOrange font-semibold text-sm">
-              BeAFox wird geöffnet...
+              {t('opening.title')}
             </span>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold text-darkerGray mb-3">
-            Einladung erkannt
+            {t('title')}
           </h1>
           <p className="text-darkerGray/80 max-w-xl mx-auto">
-            Falls die App sich nicht automatisch öffnet, nutze deinen Code
-            unten. Du wirst in Kürze weitergeleitet.
+            {t('subtitle')}
           </p>
         </div>
 
         <div className="max-w-xl mx-auto mt-10">
           <div className="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
-            <p className="text-sm text-lightGray">Dein Referral-Code</p>
+            <p className="text-sm text-lightGray">{t('code.label')}</p>
             <div className="mt-3 flex items-center justify-between gap-3">
               <div className="flex-1">
                 <div className="w-full text-center font-mono text-3xl md:text-4xl font-bold tracking-widest text-primaryOrange select-all break-all">
@@ -134,24 +136,23 @@ function ReferralPageInner() {
                 {copied ? (
                   <>
                     <Check className="w-4 h-4" />
-                    Kopiert
+                    {t('code.copied')}
                   </>
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    Code kopieren
+                    {t('code.copy')}
                   </>
                 )}
               </button>
             </div>
             <p className="mt-4 text-sm text-lightGray">
-              Kopiere diesen Code. Er wird beim ersten Start automatisch erkannt
-              (Android via Install Referrer, iOS via Zwischenablage).
+              {t('code.hint')}
             </p>
           </div>
 
           <div className="text-center text-sm text-lightGray mt-6">
-            Du wirst automatisch zum passenden App Store weitergeleitet.
+            {t('redirectNote')}
           </div>
         </div>
       </div>

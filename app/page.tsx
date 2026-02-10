@@ -6,6 +6,7 @@ import Button from "@/components/Button";
 import Section from "@/components/Section";
 import Image from "next/image";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowRight,
   CheckCircle,
@@ -31,73 +32,39 @@ import kontaktAnimation from "@/public/assets/Lottie/Kontakt.json";
 import StructuredData from "@/components/StructuredData";
 
 export default function HomePage() {
+  const t = useTranslations("home");
+  const locale = useLocale();
   const [typedText, setTypedText] = useState("");
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState(0);
 
-  const words = ["FREIHEIT", "SICHERHEIT"];
+  const words = (t.raw("hero.words") as string[]) ?? ["FREIHEIT", "SICHERHEIT"];
 
   const useCases = [
     {
       id: "unlimited",
-      title: "BeAFox Unlimited",
-      description:
-        "Die Premium-Version für alle, die ihre Finanzbildung auf das nächste Level bringen wollen.",
       href: "/beafox-unlimited",
-      features: [
-        "Exklusive Premium-Inhalte",
-        "Aktive Community",
-        "Individuelle Lernpfade",
-        "Unbegrenzter Zugang",
-      ],
       icon: Smartphone,
       secondaryIcon: DollarSign,
       delay: 0.1,
     },
     {
       id: "business",
-      title: "BeAFox for Business",
-      description:
-        "Stärke deine Mitarbeiter mit professioneller Finanzbildung und positioniere dich als verantwortungsvoller Arbeitgeber.",
       href: "/fuer-unternehmen",
-      features: [
-        "Employer Branding",
-        "Individuelle Workshops",
-        "Mitarbeiter-Zertifikate",
-        "Unternehmens-Dashboards",
-      ],
       icon: Building2,
       delay: 0.2,
     },
     {
       id: "schools",
-      title: "BeAFox for Schools",
-      description:
-        "Ergänze deinen Unterricht mit spielerischer Finanzbildung, die Schüler begeistert und nachhaltig wirkt.",
       href: "/fuer-schulen",
-      features: [
-        "DSGVO-konform",
-        "Präventive Maßnahmen",
-        "Unterrichtsmaterialien",
-        "Motivierende Lernmethoden",
-      ],
       icon: School,
       delay: 0.3,
     },
     {
       id: "partners",
-      title: "BeAFox for Clubs",
-      description:
-        "Werde Teil unseres Netzwerks und stärke deine Gemeinschaft mit wertvoller Finanzbildung.",
       href: "/fuer-clubs",
-      features: [
-        "Co-Branding",
-        "Spendenprogramme",
-        "Soziale Verantwortung",
-        "Exklusive Mitglieder-Vorteile",
-      ],
       icon: Handshake,
       delay: 0.4,
     },
@@ -106,57 +73,36 @@ export default function HomePage() {
   const appFeatures = [
     {
       id: "stufen",
-      title: "Stufen",
-      description:
-        "Wähle frei aus was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden. Egal ob Anfänger oder Fortgeschrittener, bei BeAFox findest du die passende Stufe für dich und kannst in deinem eigenen Tempo lernen.",
       mockup: "/assets/Mockups/Mockup-Stufen.png",
       color: "primaryOrange",
     },
     {
       id: "lernpfad",
-      title: "Lernpfad",
-      description:
-        "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer wo du stehst und was als Nächstes kommt. Der Lernpfad zeigt dir deinen Fortschritt visuell an und hilft dir, den Überblick zu behalten.",
       mockup: "/assets/Mockups/Mockup-Lernpfad.png",
       color: "primaryOrange",
     },
     {
       id: "lektion",
-      title: "Lektionen",
-      description:
-        "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich. Von Budgetplanung über Sparen bis hin zu Investitionen. Wir decken alle wichtigen Bereiche ab und kombinieren Videos, Texte und interaktive Elemente.",
       mockup: "/assets/Mockups/Mockup-Lektion.png",
       color: "primaryOrange",
     },
     {
       id: "quiz",
-      title: "Quiz",
-      description:
-        "Nach der Theorie kommt die Praxis. Teste dein Wissen mit interaktiven Quizzen und vertiefe das Gelernte. Durch sofortiges Feedback lernst du aus deinen Fehlern und kannst gezielt nacharbeiten. Mit jedem erfolgreich abgeschlossenen Quiz sammelst du Punkte und steigst in der Rangliste auf.",
       mockup: "/assets/Mockups/Mockup-Quiz.png",
       color: "primaryOrange",
     },
     {
       id: "rangliste",
-      title: "Rangliste",
-      description:
-        "Vergleiche dich mit anderen Lernenden und motiviere dich durch freundschaftlichen Wettbewerb. Sammle Punkte, erreiche neue Level und werde zum Finanz-Experten. Verschiedene Kategorien und Zeiträume sorgen dafür, dass jeder eine faire Chance hat, ganz oben zu stehen.",
       mockup: "/assets/Mockups/Mockup-Rangliste.png",
       color: "primaryOrange",
     },
     {
       id: "missionen",
-      title: "Missionen & Ziele",
-      description:
-        "Erfülle spannende Missionen und erreiche deine persönlichen Ziele. Die Missionen reichen von täglichen Herausforderungen bis hin zu langfristigen Zielen. Jede erfolgreich abgeschlossene Mission wird belohnt und bringt dich deinem großen Ziel näher. Setze dir eigene Ziele oder nimm an vordefinierten Missionen teil.",
       mockup: "/assets/Mockups/Mockup-Missionen.png",
       color: "primaryOrange",
     },
     {
       id: "profil",
-      title: "Profil",
-      description:
-        "Sammle Statistiken über deinen Lernfortschritt und erhalte deinen persönlichen Fox Score. Dein Profil zeigt dir alle deine Leistungen: abgeschlossene Lektionen, erreichte Punkte und bestandene Quizze. Der Fox Score ist dein persönlicher Indikator für dein Finanzwissen und steigt mit jedem Fortschritt.",
       mockup: "/assets/Mockups/Mockup-Profil.png",
       color: "primaryOrange",
     },
@@ -211,20 +157,23 @@ export default function HomePage() {
   }, [typedText, currentWordIndex, isDeleting, words]);
 
   const stats = [
-    { value: "5,000+", label: "Aktive Privatnutzer", icon: Users },
+    { value: "5,000+", label: t("stats.privateUsers"), icon: Users },
     {
       value: "5+",
-      label: "Schulen & Ausbildungsbetriebe die",
-      label2: "BeAFox nutzen",
+      label: t("stats.schools.pre"),
+      label2: t("stats.schools.post"),
       icon: Building2,
     },
     {
       value: "3,000+",
-      label: "Schüler, Studenten und Azubis die",
-      label2: "BeAFox nutzen",
+      label: t("stats.learners.pre"),
+      label2: t("stats.learners.post"),
       icon: School,
     },
   ];
+
+  const availableLanguage =
+    locale === "de" ? ["German"] : locale === "en" ? ["English"] : ["German"];
 
   return (
     <>
@@ -243,7 +192,7 @@ export default function HomePage() {
               <div className="flex items-center gap-2 text-lightGray text-xs md:text-sm border text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 py-1.5 md:py-2 w-full sm:w-auto sm:max-w-fit">
                 <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryOrange flex-shrink-0" />
                 <span className="font-bold text-center md:w-full">
-                  Das erste Finanzbildungs-Ökosystem
+                  {t("hero.badge")}
                 </span>
                 <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryOrange flex-shrink-0" />
               </div>
@@ -251,7 +200,10 @@ export default function HomePage() {
               {/* Main Headline */}
               <div>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-darkerGray mb-3 md:mb-4 leading-tight">
-                  WISSEN. <span className="text-primaryOrange">GELD.</span>{" "}
+                  {t("hero.headline.knowledge")}.{" "}
+                  <span className="text-primaryOrange">
+                    {t("hero.headline.money")}.
+                  </span>{" "}
                   <span className="inline-block min-w-[180px] sm:min-w-[200px] md:min-w-[350px] text-left">
                     {typedText}
                     <span className="inline-block w-0.5 h-[1em] bg-primaryOrange ml-1 animate-pulse"></span>
@@ -259,10 +211,7 @@ export default function HomePage() {
                   .
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-lightGray leading-relaxed">
-                  BeAFox ist die erste unabhängige und spielerische Lern-App für
-                  Finanzbildung junger Menschen, die sich auf unabhängige
-                  Wissensvermittlung konzentriert und speziell für Schulen und
-                  Ausbildungsbetriebe entwickelt wurde.
+                  {t("hero.description")}
                 </p>
               </div>
 
@@ -274,7 +223,7 @@ export default function HomePage() {
                   className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
                   <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5" />
-                  App herunterladen
+                  {t("hero.cta.download")}
                 </Button>
                 <Button
                   href="/kontakt"
@@ -282,7 +231,7 @@ export default function HomePage() {
                   className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
                   <Award className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5" />
-                  Jetzt Partner werden
+                  {t("hero.cta.partner")}
                 </Button>
               </div>
 
@@ -329,7 +278,7 @@ export default function HomePage() {
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Training.png"
-                    alt="BeAFox Training Mockup"
+                    alt={t("hero.mockups.trainingAlt")}
                     width={200}
                     height={425}
                     className="object-contain drop-shadow-2xl w-[120px] h-auto sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[300px] 2xl:w-[320px]"
@@ -345,7 +294,7 @@ export default function HomePage() {
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Lernpfad.png"
-                    alt="BeAFox Lernpfad Mockup"
+                    alt={t("hero.mockups.pathAlt")}
                     width={240}
                     height={473}
                     className="object-contain drop-shadow-2xl w-[140px] h-auto sm:w-[220px] md:w-[260px] lg:w-[300px] xl:w-[340px] 2xl:w-[380px]"
@@ -361,7 +310,7 @@ export default function HomePage() {
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Rangliste.png"
-                    alt="BeAFox Rangliste Mockup"
+                    alt={t("hero.mockups.rankingAlt")}
                     width={200}
                     height={425}
                     className="object-contain drop-shadow-2xl w-[120px] h-auto sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[300px] 2xl:w-[320px]"
@@ -391,7 +340,7 @@ export default function HomePage() {
                 >
                   <Image
                     src={`/Partners/${i}.png`}
-                    alt={`Partner ${i}`}
+                    alt={t("partnersCarousel.alt", { index: i })}
                     width={100}
                     height={120}
                     className="object-contain max-w-full max-h-full"
@@ -406,7 +355,7 @@ export default function HomePage() {
                 >
                   <Image
                     src={`/Partners/${i}.png`}
-                    alt={`Partner ${i}`}
+                    alt={t("partnersCarousel.alt", { index: i })}
                     width={100}
                     height={120}
                     className="object-contain max-w-full max-h-full"
@@ -432,14 +381,15 @@ export default function HomePage() {
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8">
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
               <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-                Eine App für jeden{" "}
-                <span className="text-primaryOrange">Einsatz</span>
+                {t("useCasesSection.title.pre")}{" "}
+                <span className="text-primaryOrange">
+                  {t("useCasesSection.title.highlight")}
+                </span>
               </h2>
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
             <p className="text-lightGray text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
-              Entdecke unsere maßgeschneiderten Lösungen für Privatpersonen,
-              Unternehmen, Schulen und Vereine – entwickelt für jeden Bedarf
+              {t("useCasesSection.subtitle")}
             </p>
           </motion.div>
 
@@ -499,17 +449,19 @@ export default function HomePage() {
 
                     {/* Title - Exakter Anchor-Text für SEO */}
                     <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-3 md:mb-4 flex-shrink-0 group-hover:underline">
-                      {useCase.title}
+                      {t(`useCases.${useCase.id}.title`)}
                     </h3>
 
                     {/* Description */}
                     <p className="text-sm md:text-base text-lightGray mb-4 md:mb-6 flex-shrink-0">
-                      {useCase.description}
+                      {t(`useCases.${useCase.id}.description`)}
                     </p>
 
                     {/* Features List */}
                     <ul className="space-y-3 md:space-y-4 flex-grow mb-6 md:mb-8">
-                      {useCase.features.map((feature, index) => (
+                      {(t.raw(
+                        `useCases.${useCase.id}.features`
+                      ) as string[]).map((feature, index) => (
                         <li key={index} className="flex items-start gap-3">
                           <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange flex-shrink-0 mt-0.5" />
                           <span className="text-sm md:text-base text-darkerGray">
@@ -521,7 +473,7 @@ export default function HomePage() {
 
                     {/* CTA - pushed to bottom */}
                     <div className="mt-auto flex-shrink-0 flex items-center justify-center gap-2 text-primaryOrange font-semibold text-sm md:text-base group-hover:gap-3 transition-all">
-                      Mehr erfahren
+                      {t("useCasesSection.more")}
                       <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </motion.div>
@@ -538,7 +490,7 @@ export default function HomePage() {
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-              Finanzbildungs-Ökosystem
+              {t("ecosystem.title")}
             </h2>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
@@ -559,15 +511,11 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:ml-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
-                <span className="font-bold">Finanzbildung jederzeit</span>
+                <span className="font-bold">{t("ecosystem.left.anytime.title")}</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
               </div>
               <p className="text-darkerGray text-sm">
-                Lerne wann und wo du willst. Ob auf dem Smartphone in der Bahn,
-                am Laptop zu Hause oder auf dem Tablet in der Pause. BeAFox
-                passt sich deinem Alltag an. Dein Fortschritt wird automatisch
-                synchronisiert, sodass du nahtlos zwischen Geräten wechseln
-                kannst.
+                {t("ecosystem.left.anytime.text")}
               </p>
             </motion.div>
 
@@ -583,14 +531,11 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:ml-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
-                <span className="font-bold">Finanzbildung in der Schule</span>
+                <span className="font-bold">{t("ecosystem.left.school.title")}</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
               </div>
               <p className="text-darkerGray text-sm">
-                BeAFox ist speziell für den Einsatz im Unterricht entwickelt.
-                Lehrkräfte können den Lernfortschritt ihrer Klasse verfolgen und
-                spielerische Wettbewerbe starten. So kann Finannzbildung auch
-                außerhalb des Lehrplans unterrichtet werden.
+                {t("ecosystem.left.school.text")}
               </p>
             </motion.div>
           </div>
@@ -611,7 +556,7 @@ export default function HomePage() {
               <div className="[transform:scale(0.75)] sm:[transform:scale(0.8)] md:[transform:scale(0.85)] lg:[transform:scale(0.95)] xl:[transform:scale(1.05)]">
                 <Image
                   src="/assets/Mockups/Mockup-Start.png"
-                  alt="BeAFox Smartphone Mockup"
+                  alt={t("ecosystem.mockups.phoneAlt")}
                   width={200}
                   height={430}
                   className="object-contain drop-shadow-2xl w-[200px] h-auto"
@@ -630,7 +575,7 @@ export default function HomePage() {
               <div className="[transform:scale(0.65)] sm:[transform:scale(0.7)] md:[transform:scale(0.8)] lg:[transform:scale(0.9)] xl:[transform:scale(0.95)]">
                 <Image
                   src="/assets/Mockups/Mockup-Macbook.png"
-                  alt="BeAFox Macbook Mockup"
+                  alt={t("ecosystem.mockups.laptopAlt")}
                   width={600}
                   height={400}
                   className="object-contain drop-shadow-2xl w-[600px] h-auto"
@@ -649,7 +594,7 @@ export default function HomePage() {
               <div className="[transform:scale(0.75)] sm:[transform:scale(0.8)] md:[transform:scale(0.85)] lg:[transform:scale(0.9)] xl:[transform:scale(0.95)]">
                 <Image
                   src="/assets/Mockups/Mockup-Ipad.png"
-                  alt="BeAFox iPad Mockup"
+                  alt={t("ecosystem.mockups.tabletAlt")}
                   width={300}
                   height={400}
                   className="object-contain drop-shadow-2xl w-[300px] h-auto"
@@ -673,15 +618,12 @@ export default function HomePage() {
               <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:mr-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
                 <span className="font-bold">
-                  Finanzbildung in Ausbildungsbetriebe
+                  {t("ecosystem.right.training.title")}
                 </span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
               </div>
               <p className="text-darkerGray text-sm">
-                Auszubildende erhalten mit BeAFox praxisnahe Finanzbildung, die
-                direkt im Berufsalltag anwendbar ist. Betriebe können ihren
-                Nachwuchs gezielt fördern und zeigen, dass ihnen die finanzielle
-                Zukunft ihrer Auszubildenden wichtig ist.
+                {t("ecosystem.right.training.text")}
               </p>
             </motion.div>
 
@@ -697,15 +639,11 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2 text-lightGray text-sm border text-center justify-center border-primaryOrange rounded-full px-4 py-2 w-fit mb-2 mx-auto lg:mx-0 lg:mr-auto">
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
-                <span className="font-bold">Finanzbildung für Vereine</span>
+                <span className="font-bold">{t("ecosystem.right.clubs.title")}</span>
                 <PawPrint className="w-4 h-4 text-primaryOrange" />
               </div>
               <p className="text-darkerGray text-sm">
-                Vereine und Organisationen können ihren Mitgliedern wertvolle
-                Finanzbildung anbieten. Ob Sportverein, Jugendzentrum oder
-                gemeinnützige Organisation. BeAFox hilft dabei, junge Menschen
-                finanziell zu stärken und ihnen wichtige Lebenskompetenzen zu
-                vermitteln.
+                {t("ecosystem.right.clubs.text")}
               </p>
             </motion.div>
           </div>
@@ -718,7 +656,7 @@ export default function HomePage() {
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6 md:mb-8">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl">
-              So funktioniert BeAFox
+              {t("howItWorks.title")}
             </h2>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
@@ -741,7 +679,7 @@ export default function HomePage() {
                         : "bg-gray-100 text-darkerGray hover:bg-gray-200"
                     }`}
                   >
-                    {feature.title}
+                    {t(`appFeatures.${feature.id}.title`)}
                   </button>
                 ))}
               </div>
@@ -751,7 +689,9 @@ export default function HomePage() {
             <div className="flex justify-center mt-2 md:hidden">
               <div className="flex items-center gap-2 text-primaryOrange">
                 <ArrowRight className="w-3 h-3 rotate-180 animate-pulse" />
-                <span className="text-xs font-medium">Scrollen für mehr</span>
+                <span className="text-xs font-medium">
+                  {t("howItWorks.scrollMore")}
+                </span>
                 <ArrowRight className="w-3 h-3 animate-pulse" />
               </div>
             </div>
@@ -778,7 +718,9 @@ export default function HomePage() {
               >
                 <Image
                   src={appFeatures[selectedFeature].mockup}
-                  alt={`BeAFox ${appFeatures[selectedFeature].title} Mockup`}
+                  alt={t("howItWorks.mockupAlt", {
+                    feature: t(`appFeatures.${appFeatures[selectedFeature].id}.title`),
+                  })}
                   width={240}
                   height={520}
                   className="object-contain drop-shadow-2xl w-[240px] h-auto md:w-[280px] lg:w-[300px]"
@@ -793,17 +735,17 @@ export default function HomePage() {
                 className="order-1 md:order-2"
               >
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4 md:mb-6">
-                  {appFeatures[selectedFeature].title}
+                  {t(`appFeatures.${appFeatures[selectedFeature].id}.title`)}
                 </h3>
                 <p className="text-base md:text-lg text-lightGray leading-relaxed mb-6">
-                  {appFeatures[selectedFeature].description}
+                  {t(`appFeatures.${appFeatures[selectedFeature].id}.description`)}
                 </p>
                 <Button
                   href="/kontakt"
                   variant="primary"
                   className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
                 >
-                  Jetzt Partner werden →
+                  {t("howItWorks.ctaPartner")} →
                 </Button>
               </motion.div>
             </div>
@@ -1216,7 +1158,7 @@ export default function HomePage() {
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              Warum Finanzbildung?
+              {t("whyFinance.title")}
             </h2>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
@@ -1237,13 +1179,10 @@ export default function HomePage() {
                 1
               </div>
               <h3 className="text-xl font-bold text-primaryOrange mb-3">
-                Finanzbildung als Future Skill
+                {t("whyFinance.items.0.title")}
               </h3>
               <p className="text-sm md:text-base text-darkerGray leading-relaxed">
-                Finanzbildung wird immer komplizierter, gleichzeitig aber auch
-                wichtiger. In einer sich schnell verändernden Welt ist
-                finanzielle Kompetenz ein entscheidender Future Skill, der junge
-                Menschen auf die Herausforderungen von morgen vorbereitet.
+                {t("whyFinance.items.0.text")}
               </p>
             </motion.div>
 
@@ -1259,13 +1198,10 @@ export default function HomePage() {
                 2
               </div>
               <h3 className="text-xl font-bold text-primaryOrange mb-3">
-                Finanzbildung als Erfolgsfaktor
+                {t("whyFinance.items.1.title")}
               </h3>
               <p className="text-sm md:text-base text-darkerGray leading-relaxed">
-                Studien zeigen: Finanziell gebildete Menschen sind erfolgreicher
-                im Leben, in der Arbeit und überall. Finanzwissen ist nicht nur
-                ein Vorteil, sondern ein entscheidender Erfolgsfaktor für die
-                persönliche und berufliche Entwicklung.
+                {t("whyFinance.items.1.text")}
               </p>
             </motion.div>
 
@@ -1281,14 +1217,10 @@ export default function HomePage() {
                 3
               </div>
               <h3 className="text-xl font-bold text-primaryOrange mb-3">
-                Chancengerechtigkeit
+                {t("whyFinance.items.2.title")}
               </h3>
               <p className="text-sm md:text-base text-darkerGray leading-relaxed">
-                Jede:r sollte die gleichen Chancen haben, finanzielle Bildung zu
-                erhalten - unabhängig vom sozialen Hintergrund oder den
-                finanziellen Ressourcen der Familie. BeAFox schafft
-                Chancengerechtigkeit durch zugängliche, neutrale Finanzbildung
-                für alle.
+                {t("whyFinance.items.2.text")}
               </p>
             </motion.div>
           </div>
@@ -1303,7 +1235,7 @@ export default function HomePage() {
           >
             <Image
               src="/assets/Maskottchen.jpeg"
-              alt="BeAFox Maskottchen"
+              alt={t("whyFinance.mascotAlt")}
               width={400}
               height={400}
               className="object-contain rounded-2xl w-full max-w-[300px] md:max-w-[350px] lg:max-w-[400px] h-auto"
@@ -1324,9 +1256,11 @@ export default function HomePage() {
             className="order-2 md:order-1 text-center md:text-left"
           >
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-4 md:mb-6 leading-tight">
-              Lade jetzt die{" "}
-              <span className="text-primaryOrange">BeAFox-App</span> herunter
-              und werde Experte deiner eigenen Finanzen!
+              {t("downloadBanner.title.pre")}{" "}
+              <span className="text-primaryOrange">
+                {t("downloadBanner.title.highlight")}
+              </span>{" "}
+              {t("downloadBanner.title.post")}
             </h2>
 
             {/* Download Buttons */}
@@ -1339,7 +1273,7 @@ export default function HomePage() {
               >
                 <Image
                   src="/assets/Apple.png"
-                  alt="Download on the App Store"
+                  alt={t("downloadBanner.storeBadges.appleAlt")}
                   width={190}
                   height={60}
                   className="object-contain hover:opacity-80 transition-opacity w-[200px] sm:w-[150px] md:w-[175px] h-auto relative bottom-1"
@@ -1353,7 +1287,7 @@ export default function HomePage() {
               >
                 <Image
                   src="/assets/Android.png"
-                  alt="GET IT ON Google Play"
+                  alt={t("downloadBanner.storeBadges.googleAlt")}
                   width={180}
                   height={60}
                   className="object-contain hover:opacity-80 transition-opacity w-[200px] sm:w-[170px] md:w-[180px] h-auto relative bottom-[2px]"
@@ -1381,7 +1315,7 @@ export default function HomePage() {
             >
               <Image
                 src="/assets/Mockups/Mockup-Training.png"
-                alt="BeAFox Training Mockup"
+                alt={t("downloadBanner.mockups.trainingAlt")}
                 width={200}
                 height={428}
                 className="object-contain drop-shadow-2xl w-[160px] sm:w-[160px] md:w-[180px] lg:w-[220px] xl:w-[280px] h-auto"
@@ -1398,7 +1332,7 @@ export default function HomePage() {
             >
               <Image
                 src="/assets/Mockups/Mockup-Lernpfad.png"
-                alt="BeAFox Lernpfad Mockup"
+                alt={t("downloadBanner.mockups.pathAlt")}
                 width={240}
                 height={514}
                 className="object-contain drop-shadow-2xl w-[160px] sm:w-[180px] md:w-[200px] lg:w-[240px] xl:w-[280px] h-auto"
@@ -1421,19 +1355,16 @@ export default function HomePage() {
           >
             <div className="flex items-center gap-2 text-primaryWhite text-xs md:text-sm border-2 border-primaryWhite/30 rounded-full px-3 md:px-4 py-1.5 md:py-2 w-fit mx-auto md:mx-0 mb-4 md:mb-6">
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryWhite" />
-              <span className="font-bold">Bereit für BeAFox?</span>
+              <span className="font-bold">{t("cta.badge")}</span>
               <PawPrint className="w-3 h-3 md:w-4 md:h-4 text-primaryWhite" />
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primaryWhite mb-3 md:mb-4">
-              Jetzt Partner werden!
+              {t("cta.title")}
             </h2>
 
             <p className="text-base md:text-lg lg:text-xl text-primaryWhite/90 mb-6 md:mb-8 leading-relaxed">
-              Mit unserer Lern-App haben wir endlich eine Möglichkeit
-              geschaffen, das oft als langweilig empfundene Thema Finanzen
-              nachhaltig und verständlich zu vermitteln. Wir möchten, dass die
-              junge Generation selbstständig und motiviert Finanzwissen erwirbt.
+              {t("cta.description")}
             </p>
 
             <div className="flex flex-col gap-3 md:gap-4 justify-center md:justify-start">
@@ -1442,7 +1373,7 @@ export default function HomePage() {
                 variant="secondary"
                 className="!bg-primaryWhite !text-primaryOrange hover:!bg-primaryWhite/90 px-6 md:px-8 py-3 md:py-4 text-base md:text-lg flex justify-center items-center w-full sm:w-auto"
               >
-                Jetzt Partner werden
+                {t("cta.buttons.partner")}
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
               </Button>
               <a
@@ -1452,7 +1383,7 @@ export default function HomePage() {
                 className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-primaryWhite text-primaryWhite hover:bg-primaryWhite/10 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-all duration-300 text-base md:text-lg w-full sm:w-auto text-center"
               >
                 <Calendar className="w-4 h-4 md:w-5 md:h-5" />
-                Termin vereinbaren
+                {t("cta.buttons.book")}
               </a>
             </div>
           </motion.div>
@@ -1482,132 +1413,55 @@ export default function HomePage() {
           <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-4 md:mb-6">
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl text-darkerGray">
-              Unser Blog
+              {t("blogPreview.title")}
             </h2>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </div>
           <p className="text-base md:text-lg text-lightGray max-w-2xl mx-auto px-4">
-            Entdecke, wie BeAFox im Hintergrund zum Leben erweckt wird.
+            {t("blogPreview.subtitle")}
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto px-4">
-          {/* Blog Post 1 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
-          >
-            <div className="relative h-72 md:h-80 overflow-hidden">
-              <Image
-                src="/assets/Blogs/Blog1.jpeg"
-                alt="Wir haben gewonnen - Deggendorfer Gründerpreis"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
-                Wir haben gewonnen!
-              </h4>
-              <p className="text-lightGray text-sm leading-relaxed flex-1 mb-4">
-                Wir sind stolz darauf, den Deggendorfer Gründerpreis gewonnen zu
-                haben! Trotz Nervosität und einem in letzter Minute
-                überarbeiteten Pitch hat sich unsere Arbeit ausgezahlt - etwa
-                60% des Publikums haben für uns gestimmt. Vielen Dank an das
-                gesamte Team für die tolle Organisation und die 2.500€
-                Preisgeld. Wir freuen uns auf weitere Schritte mit BeAFox!
-              </p>
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-lg hover:bg-primaryOrange/90 transition-colors text-sm font-semibold mt-auto"
-              >
-                Mehr erfahren
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Blog Post 2 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
-          >
-            <div className="relative h-72 md:h-80 overflow-hidden">
-              <Image
-                src="/assets/Blogs/Blog2.jpeg"
-                alt="BeAFox bei Ed.One in München"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
-                BeAFox bei Ed.One in München!
-              </h4>
-              <p className="text-lightGray text-sm leading-relaxed flex-1 mb-4">
-                So erlebt man Finanzbildung im Klassenzimmer. Beim Ed.One Summit
-                in München haben Schüler, Lehrer und Ausbilder BeAFox live
-                getestet - vom Dashboard über die Lern-App bis hin zu den
-                Arbeitsblättern. Wir haben wertvolles Feedback erhalten,
-                spannende Kontakte geknüpft und unseren Pitch präsentiert.
-                BeAFox zeigt, wie einfach Finanzbildung sein kann. Wir suchen
-                dich!
-              </p>
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-lg hover:bg-primaryOrange/90 transition-colors text-sm font-semibold mt-auto"
-              >
-                Mehr erfahren
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Blog Post 3 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
-          >
-            <div className="relative h-72 md:h-80 overflow-hidden">
-              <Image
-                src="/assets/Blogs/Blog3.jpg"
-                alt="BeAFox gewinnt Startup Summit"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-6 flex flex-col flex-1">
-              <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
-                BeAFox gewinnt Startup Summit!
-              </h4>
-              <p className="text-lightGray text-sm leading-relaxed flex-1 mb-4">
-                BeAFox hat den 2. Platz beim Startup Summit Germany erreicht -
-                unser erster offizieller Preis! Zum ersten Mal haben wir als Duo
-                gepitcht, mit einem neuen Pitch, Pitch Deck und einer
-                Präsentation, die unsere Vision noch stärker vermittelt hat.
-                Nach zwei Jahren harter Arbeit zeigt es, dass
-                Durchhaltevermögen, Mut und Teamarbeit sich auszahlen. Vielen
-                Dank an die Volksbank am Württemberg eG für diese großartige
-                Veranstaltung!
-              </p>
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-lg hover:bg-primaryOrange/90 transition-colors text-sm font-semibold mt-auto"
-              >
-                Mehr erfahren
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
+          {(t.raw("blogPreview.posts") as {
+            image: string;
+            imageAlt: string;
+            title: string;
+            excerpt: string;
+          }[]).map((post, idx) => (
+            <motion.div
+              key={post.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className="border-2 border-primaryOrange rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-shadow flex flex-col"
+            >
+              <div className="relative h-72 md:h-80 overflow-hidden">
+                <Image
+                  src={post.image}
+                  alt={post.imageAlt}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <h4 className="text-xl font-bold text-primaryOrange text-center mb-3">
+                  {post.title}
+                </h4>
+                <p className="text-lightGray text-sm leading-relaxed flex-1 mb-4">
+                  {post.excerpt}
+                </p>
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite px-4 py-2 rounded-lg hover:bg-primaryOrange/90 transition-colors text-sm font-semibold mt-auto"
+                >
+                  {t("blogPreview.more")}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </Section>
 
@@ -1627,7 +1481,7 @@ export default function HomePage() {
           url: "https://beafox.app",
           logo: "https://beafox.app/assets/logo.png",
           description:
-            "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen. Speziell für Schulen und Ausbildungsbetriebe entwickelt.",
+            t("seo.organization.description"),
           address: {
             "@type": "PostalAddress",
             streetAddress: "Siemensweg 2",
@@ -1640,7 +1494,7 @@ export default function HomePage() {
             telephone: "+49-178-2723-673",
             contactType: "customer service",
             email: "info@beafox.app",
-            availableLanguage: ["German"],
+            availableLanguage,
           },
           sameAs: [
             "https://www.instagram.com/beafox_app",
@@ -1657,7 +1511,7 @@ export default function HomePage() {
           name: "BeAFox",
           url: "https://beafox.app",
           description:
-            "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen.",
+            t("seo.website.description"),
           publisher: {
             "@type": "Organization",
             name: "BeAFox UG (haftungsbeschränkt)",
@@ -1690,7 +1544,7 @@ export default function HomePage() {
             ratingCount: "150",
           },
           description:
-            "Spielerische Lern-App für Finanzbildung junger Menschen. Lerne Finanzwissen mit Gamification, Missionen und Challenges.",
+            t("seo.softwareApplication.description"),
         }}
       />
     </>

@@ -15,6 +15,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 // COMPONENTS
 import Button from "@/components/Button";
 // API
@@ -22,6 +23,7 @@ import client from "@/lib/api-client";
 import { validateSignUp, SignUpFormData } from "@/lib/validation";
 
 export default function RegistrierungPage() {
+  const t = useTranslations("authRegister");
   // ROUTER
   const router = useRouter();
   // STATES
@@ -45,7 +47,23 @@ export default function RegistrierungPage() {
     setTouched({ ...touched, [field]: true });
     // Only validate if form has been submitted
     if (hasSubmitted) {
-      const validationErrors = validateSignUp(formData);
+      const validationErrors = validateSignUp(formData, {
+        usernameMissing: t("validation.username.missing"),
+        usernameTooShort: t("validation.username.tooShort"),
+        usernameTooLong: t("validation.username.tooLong"),
+        emailMissing: t("validation.email.missing"),
+        emailInvalid: t("validation.email.invalid"),
+        passwordMissing: t("validation.password.missing"),
+        passwordTooShort: t("validation.password.tooShort"),
+        passwordWeak: t("validation.password.weak"),
+        confirmPasswordMissing: t("validation.confirmPassword.missing"),
+        confirmPasswordMismatch: t("validation.confirmPassword.mismatch"),
+        roleInvalid: t("validation.role.invalid"),
+        schoolNameMissing: t("validation.schoolName.missing"),
+        schoolNameTooShort: t("validation.schoolName.tooShort"),
+        schoolLocationMissing: t("validation.schoolLocation.missing"),
+        schoolLocationTooShort: t("validation.schoolLocation.tooShort"),
+      });
       if (validationErrors[field]) {
         setErrors({ ...errors, [field]: validationErrors[field] });
       } else {
@@ -82,7 +100,23 @@ export default function RegistrierungPage() {
     setTouched(allTouched);
 
     // Validate form
-    const validationErrors = validateSignUp(formData);
+    const validationErrors = validateSignUp(formData, {
+      usernameMissing: t("validation.username.missing"),
+      usernameTooShort: t("validation.username.tooShort"),
+      usernameTooLong: t("validation.username.tooLong"),
+      emailMissing: t("validation.email.missing"),
+      emailInvalid: t("validation.email.invalid"),
+      passwordMissing: t("validation.password.missing"),
+      passwordTooShort: t("validation.password.tooShort"),
+      passwordWeak: t("validation.password.weak"),
+      confirmPasswordMissing: t("validation.confirmPassword.missing"),
+      confirmPasswordMismatch: t("validation.confirmPassword.mismatch"),
+      roleInvalid: t("validation.role.invalid"),
+      schoolNameMissing: t("validation.schoolName.missing"),
+      schoolNameTooShort: t("validation.schoolName.tooShort"),
+      schoolLocationMissing: t("validation.schoolLocation.missing"),
+      schoolLocationTooShort: t("validation.schoolLocation.tooShort"),
+    });
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -125,7 +159,7 @@ export default function RegistrierungPage() {
       const errorMessage =
         error.response?.data?.error ||
         error.message ||
-        "Registrierung fehlgeschlagen. Bitte versuche es erneut.";
+        t("errors.registerFailedFallback");
       setErrors({ submit: errorMessage });
     } finally {
       setIsLoading(false);
@@ -143,12 +177,12 @@ export default function RegistrierungPage() {
           initial={{ opacity: 0, y: -20 }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-2 sm:mb-3 px-2">
-            BeAFox Account erstellen
+            {t("title")}
           </h1>
           <p className="text-base sm:text-lg text-lightGray px-2">
-            Erstelle dein Konto und erhalte sofort Zugang zu{" "}
+            {t("subtitle.pre")}{" "}
             <span className="font-semibold text-primaryOrange">
-              BeAFox Unlimited
+              {t("subtitle.highlight")}
             </span>
           </p>
         </motion.div>
@@ -166,7 +200,7 @@ export default function RegistrierungPage() {
                 htmlFor="username"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                Benutzername
+                {t("fields.username.label")}
               </label>
               <div className="relative">
                 <input
@@ -175,7 +209,7 @@ export default function RegistrierungPage() {
                   autoCorrect="off"
                   autoCapitalize="none"
                   value={formData.username}
-                  placeholder="Dein Benutzername"
+                  placeholder={t("fields.username.placeholder")}
                   onChange={handleChange("username")}
                   onBlur={() => handleBlur("username")}
                   className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
@@ -211,7 +245,7 @@ export default function RegistrierungPage() {
                 htmlFor="email"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                E-Mail-Adresse
+                {t("fields.email.label")}
               </label>
               <div className="relative">
                 <input
@@ -220,7 +254,7 @@ export default function RegistrierungPage() {
                   autoCapitalize="none"
                   value={formData.email}
                   onChange={handleChange("email")}
-                  placeholder="Deine E-Mail-Adresse"
+                  placeholder={t("fields.email.placeholder")}
                   onBlur={() => handleBlur("email")}
                   className={`w-full px-3 sm:px-4 py-3 sm:py-3.5 pl-10 sm:pl-12 text-sm sm:text-base border-2 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-primaryOrange/50 transition-all ${
                     hasSubmitted && errors.email && touched.email
@@ -255,13 +289,13 @@ export default function RegistrierungPage() {
                 htmlFor="password"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                Passwort
+                {t("fields.password.label")}
               </label>
               <div className="relative">
                 <input
                   id="password"
                   value={formData.password}
-                  placeholder="Mindestens 8 Zeichen"
+                  placeholder={t("fields.password.placeholder")}
                   onChange={handleChange("password")}
                   onBlur={() => handleBlur("password")}
                   type={showPassword ? "text" : "password"}
@@ -284,7 +318,9 @@ export default function RegistrierungPage() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors p-1"
                   aria-label={
-                    showPassword ? "Passwort verbergen" : "Passwort anzeigen"
+                    showPassword
+                      ? t("fields.password.hideAria")
+                      : t("fields.password.showAria")
                   }
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -308,13 +344,13 @@ export default function RegistrierungPage() {
                 htmlFor="confirmPassword"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                Passwort bestätigen
+                {t("fields.confirmPassword.label")}
               </label>
               <div className="relative">
                 <input
                   id="confirmPassword"
                   value={formData.confirmPassword}
-                  placeholder="Passwort wiederholen"
+                  placeholder={t("fields.confirmPassword.placeholder")}
                   onChange={handleChange("confirmPassword")}
                   onBlur={() => handleBlur("confirmPassword")}
                   type={showConfirmPassword ? "text" : "password"}
@@ -342,8 +378,8 @@ export default function RegistrierungPage() {
                   className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors p-1"
                   aria-label={
                     showConfirmPassword
-                      ? "Passwort verbergen"
-                      : "Passwort anzeigen"
+                      ? t("fields.confirmPassword.hideAria")
+                      : t("fields.confirmPassword.showAria")
                   }
                 >
                   {showConfirmPassword ? (
@@ -392,12 +428,12 @@ export default function RegistrierungPage() {
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
                     <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
-                    <span className="text-sm sm:text-base">Wird erstellt...</span>
+                    <span className="text-sm sm:text-base">{t("button.loading")}</span>
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="text-sm sm:text-base">Jetzt registrieren</span>
+                    <span className="text-sm sm:text-base">{t("button.submit")}</span>
                   </span>
                 )}
               </Button>
@@ -406,12 +442,12 @@ export default function RegistrierungPage() {
             {/* Login Link */}
             <div className="text-center pt-3 sm:pt-4 border-t border-gray-200">
               <p className="text-xs sm:text-sm text-lightGray">
-                Du hast bereits einen Account?{" "}
+                {t("links.hasAccount")}{" "}
                 <Link
                   href="/login"
                   className="text-primaryOrange hover:underline font-semibold transition-colors"
                 >
-                  Hier anmelden
+                  {t("links.login")}
                 </Link>
               </p>
             </div>
@@ -431,15 +467,14 @@ export default function RegistrierungPage() {
             </div>
             <div>
               <h3 className="text-sm sm:text-base font-semibold text-darkerGray mb-1">
-                Nächste Schritte
+                {t("info.title")}
               </h3>
               <p className="text-xs sm:text-sm text-darkerGray leading-relaxed">
-                Nach der Registrierung erhältst du eine E-Mail mit einem
-                Verifizierungscode. Nach der Verifizierung kannst du{" "}
+                {t("info.text.pre")}{" "}
                 <span className="font-semibold text-primaryOrange">
-                  BeAFox Unlimited
+                  {t("info.text.highlight")}
                 </span>{" "}
-                erwerben und alle Premium-Funktionen nutzen.
+                {t("info.text.post")}
               </p>
             </div>
           </div>

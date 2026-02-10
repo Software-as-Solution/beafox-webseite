@@ -6,8 +6,10 @@ import Link from "next/link";
 import { CheckCircle, Download, ArrowRight, Loader2, Smartphone, LogIn, Sparkles, CheckCircle2 } from "lucide-react";
 import Button from "@/components/Button";
 import client from "@/lib/api-client";
+import { useTranslations } from "next-intl";
 
 function CheckoutSuccessContent() {
+  const t = useTranslations("checkoutSuccess");
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isVerifying, setIsVerifying] = useState(true);
@@ -81,8 +83,8 @@ function CheckoutSuccessContent() {
       <div className="min-h-screen bg-gradient-to-br from-primaryOrange/5 via-primaryWhite to-primaryOrange/5 flex items-center justify-center pt-20 sm:pt-24 px-4">
         <div className="text-center">
           <div className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-primaryOrange border-t-transparent rounded-full animate-spin mx-auto mb-4 sm:mb-6"></div>
-          <h2 className="text-xl sm:text-2xl font-bold text-darkerGray mb-2">Zahlung wird überprüft...</h2>
-          <p className="text-sm sm:text-base text-lightGray">Bitte warte einen Moment</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-darkerGray mb-2">{t("verifying.title")}</h2>
+          <p className="text-sm sm:text-base text-lightGray">{t("verifying.subtitle")}</p>
         </div>
       </div>
     );
@@ -99,10 +101,11 @@ function CheckoutSuccessContent() {
                 <CheckCircle className="w-12 h-12 sm:w-14 sm:h-14 text-white" strokeWidth={2.5} />
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-3 sm:mb-4 leading-tight">
-                Zahlung erfolgreich! 🎉
+                {t("success.title")}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-lightGray max-w-2xl mx-auto leading-relaxed">
-                Herzlichen Glückwunsch! <br /> Du hast jetzt Zugang zu <span className="font-semibold text-primaryOrange">BeAFox Unlimited</span>.
+                {t("success.subtitle.pre")} <br /> {t("success.subtitle.post")}{" "}
+                <span className="font-semibold text-primaryOrange">BeAFox Unlimited</span>.
               </p>
             </div>
 
@@ -110,7 +113,7 @@ function CheckoutSuccessContent() {
             <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8 md:p-10 mb-6 sm:mb-8 border-2 border-primaryOrange/20">
               <div className="flex items-center gap-3 mb-6 sm:mb-8">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-darkerGray">
-                  So geht's weiter:
+                  {t("steps.title")}
                 </h2>
               </div>
               
@@ -124,11 +127,11 @@ function CheckoutSuccessContent() {
                     <div className="flex items-center gap-2 sm:gap-3 mb-2">
                       <Smartphone className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange flex-shrink-0" />
                       <h3 className="text-lg sm:text-xl font-bold text-darkerGray">
-                        App herunterladen
+                        {t("steps.step1.title")}
                       </h3>
                     </div>
                     <p className="text-sm sm:text-base md:text-lg text-lightGray leading-relaxed">
-                      Lade die BeAFox App auf dein Smartphone herunter.
+                      {t("steps.step1.text")}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-3 sm:mt-4">
                       <a
@@ -168,11 +171,11 @@ function CheckoutSuccessContent() {
                     <div className="flex items-center gap-2 sm:gap-3 mb-2">
                       <LogIn className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange flex-shrink-0" />
                       <h3 className="text-lg sm:text-xl font-bold text-darkerGray">
-                        Anmelden
+                        {t("steps.step2.title")}
                       </h3>
                     </div>
                     <p className="text-sm sm:text-base md:text-lg text-lightGray leading-relaxed">
-                      Melde dich mit deinen Login-Daten an, die du gerade erstellt hast.
+                      {t("steps.step2.text")}
                     </p>
                   </div>
                 </div>
@@ -186,11 +189,11 @@ function CheckoutSuccessContent() {
                     <div className="flex items-center gap-2 sm:gap-3 mb-2">
                       <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-primaryOrange flex-shrink-0" />
                       <h3 className="text-lg sm:text-xl font-bold text-darkerGray">
-                        Premium genießen
+                        {t("steps.step3.title")}
                       </h3>
                     </div>
                     <p className="text-sm sm:text-base md:text-lg text-lightGray leading-relaxed">
-                      Genieße alle Premium-Funktionen von BeAFox Unlimited!
+                      {t("steps.step3.text")}
                     </p>
                   </div>
                 </div>
@@ -203,11 +206,12 @@ function CheckoutSuccessContent() {
                 <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0 mt-0.5 sm:mt-1" />
                 <div className="min-w-0 flex-1">
                   <p className="text-sm sm:text-base text-lightGray mb-4 leading-relaxed">
-                    <span className="font-semibold text-darkerGray">Dein Account ist aktiviert!</span> Du kannst dein Abo jetzt verwalten oder dich jederzeit in der App anmelden.
+                    <span className="font-semibold text-darkerGray">{t("info.activatedTitle")}</span>{" "}
+                    {t("info.activatedText")}
                   </p>
                   <Link href="/account" className="block">
                     <Button variant="outline" className="!px-5 sm:!px-6 !py-2.5 sm:!py-3 text-sm sm:text-base w-full sm:w-auto">
-                      Zum Account
+                      {t("info.toAccount")}
                     </Button>
                   </Link>
                 </div>
@@ -222,16 +226,17 @@ function CheckoutSuccessContent() {
               </div>
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-darkerGray mb-3 sm:mb-4 leading-tight px-2">
-                Zahlung wird verarbeitet
+                {t("pending.title")}
               </h1>
 
               <p className="text-sm sm:text-base md:text-lg text-lightGray mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
-                Deine Zahlung wurde erfolgreich übermittelt. Die Aktivierung kann einige Minuten dauern. Du erhältst eine E-Mail, sobald dein Account aktiviert ist.
+                {t("pending.text")}
               </p>
 
               <div className="bg-yellow-50 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 border border-yellow-200">
                 <p className="text-sm sm:text-base text-lightGray leading-relaxed">
-                  <span className="font-semibold text-darkerGray">Fragen?</span> Kontaktiere uns unter{" "}
+                  <span className="font-semibold text-darkerGray">{t("pending.questionsLabel")}</span>{" "}
+                  {t("pending.contact")}{" "}
                   <a
                     href="mailto:info@beafox.app"
                     className="text-primaryOrange hover:underline font-medium break-all"
@@ -243,7 +248,7 @@ function CheckoutSuccessContent() {
 
               <Link href="/account" className="block">
                 <Button variant="outline" className="!px-5 sm:!px-6 !py-2.5 sm:!py-3 text-sm sm:text-base w-full sm:w-auto">
-                  Zum Account
+                  {t("info.toAccount")}
                 </Button>
               </Link>
             </div>

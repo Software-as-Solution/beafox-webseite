@@ -14,112 +14,28 @@ import {
   Copyright,
   ExternalLink,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function ImpressumPage() {
-  const sections = [
-    {
-      id: 1,
-      title: "Angaben gemäß § 5 TMG",
-      icon: Building2,
-      content: [
-        {
-          details: [
-            "BeAFox UG (haftungsbeschränkt)",
-            "Siemensweg 2",
-            "93073 Neutraubling",
-            "Deutschland",
-          ],
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Kontakt",
-      icon: Mail,
-      content: [
-        {
-          details: ["Telefon: +49 178 2723 673", "E-Mail: info@beafox.app"],
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Vertreten durch",
-      icon: Scale,
-      content: [
-        {
-          details: ["Die Geschäftsführung: Alexandru Tapelea"],
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Registereintrag",
-      icon: FileText,
-      content: [
-        {
-          details: [
-            "Eintragung im Handelsregister",
-            "Registergericht: Regensburg",
-            "Registernummer: HRB 21689",
-          ],
-        },
-      ],
-    },
-    {
-      id: 5,
-      title: "Umsatzsteuer-ID",
-      icon: FileText,
-      content: [
-        {
-          text: "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-          details: ["DE455701438"],
-        },
-      ],
-    },
-    {
-      id: 6,
-      title: "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
-      icon: Shield,
-      content: [
-        {
-          details: [
-            "BeAFox UG (haftungsbeschränkt)",
-            "Siemensweg 2",
-            "93073 Neutraubling",
-            "Deutschland",
-          ],
-        },
-      ],
-    },
-    {
-      id: 7,
-      title: "Haftungsausschluss",
-      icon: AlertCircle,
-      content: [
-        {
-          subtitle: "Haftung für Inhalte",
-          text: "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.",
-        },
-        {
-          subtitle: "Haftung für Links",
-          text: "Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.",
-        },
-        {
-          subtitle: "Urheberrecht",
-          text: "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.",
-        },
-        {
-          subtitle: "Datenschutz",
-          text: "Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Die Nutzung der Angebote und Dienste ist, soweit möglich, stets ohne Angabe personenbezogener Daten möglich.",
-          link: {
-            text: "Weitere Informationen finden Sie in unserer Datenschutzerklärung.",
-            href: "/datenschutz",
-          },
-        },
-      ],
-    },
-  ];
+  const t = useTranslations("imprint");
+
+  const iconById: Record<number, any> = {
+    1: Building2,
+    2: Mail,
+    3: Scale,
+    4: FileText,
+    5: FileText,
+    6: Shield,
+    7: AlertCircle,
+  };
+
+  const sections = t.raw("sections") as {
+    id: number;
+    title: string;
+    content: Array<
+      | { subtitle?: string; text?: string; details?: string[]; link?: { text: string; href: string } }
+    >;
+  }[];
 
   return (
     <>
@@ -134,7 +50,7 @@ export default function ImpressumPage() {
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-4 md:mb-6">
               <FileText className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <span className="font-bold">Impressum</span>
+              <span className="font-bold">{t("hero.badge")}</span>
               <FileText className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
           </motion.div>
@@ -144,7 +60,7 @@ export default function ImpressumPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-5xl lg:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
           >
-            Impressum
+            {t("hero.title")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -152,8 +68,7 @@ export default function ImpressumPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base md:text-xl text-lightGray max-w-2xl mx-auto"
           >
-            Angaben gemäß § 5 TMG und verantwortlich für den Inhalt nach § 55
-            Abs. 2 RStV
+            {t("hero.subtitle")}
           </motion.p>
         </div>
       </Section>
@@ -163,7 +78,7 @@ export default function ImpressumPage() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="space-y-6 md:space-y-12">
             {sections.map((section, index) => {
-              const IconComponent = section.icon;
+              const IconComponent = iconById[section.id] ?? FileText;
               return (
                 <motion.div
                   key={section.id}

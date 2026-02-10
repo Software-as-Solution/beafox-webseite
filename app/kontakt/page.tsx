@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
+import { useTranslations } from "next-intl";
 import {
   Mail,
   Phone,
@@ -24,6 +25,7 @@ import {
 } from "lucide-react";
 
 export default function ContactPage() {
+  const t = useTranslations("contact");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -56,7 +58,7 @@ export default function ContactPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        setErrorMessage(data.error || "Fehler beim Senden der Nachricht");
+        setErrorMessage(data.error || t("form.errorSendFallback"));
         setSubmitStatus("error");
         return;
       }
@@ -75,7 +77,7 @@ export default function ContactPage() {
     } catch (error) {
       console.error("Form submission error:", error);
       setErrorMessage(
-        "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es später erneut oder kontaktiere uns direkt per Email."
+        t("form.errorUnexpected")
       );
       setSubmitStatus("error");
     } finally {
@@ -97,32 +99,32 @@ export default function ContactPage() {
   const quickLinks = [
     {
       icon: GraduationCap,
-      title: "Für Schulen",
-      description: "Pilotprojekt für Ihre Schule starten",
+      title: t("quickLinks.schools.title"),
+      description: t("quickLinks.schools.description"),
       href: "/fuer-schulen",
       color: "bg-white border-primaryOrange/20",
       iconColor: "text-primaryOrange",
     },
     {
       icon: Building2,
-      title: "Für Unternehmen",
-      description: "Finanzbildung für Ihre Mitarbeiter",
+      title: t("quickLinks.business.title"),
+      description: t("quickLinks.business.description"),
       href: "/fuer-unternehmen",
       color: "bg-white border-primaryOrange/20",
       iconColor: "text-primaryOrange",
     },
     {
       icon: Trophy,
-      title: "Für Clubs",
-      description: "Ganzheitliche Förderung Ihrer Spieler",
+      title: t("quickLinks.clubs.title"),
+      description: t("quickLinks.clubs.description"),
       href: "/fuer-clubs",
       color: "bg-white border-primaryOrange/20",
       iconColor: "text-primaryOrange",
     },
     {
       icon: Users,
-      title: "Privatpersonen",
-      description: "BeAFox Unlimited für dich",
+      title: t("quickLinks.private.title"),
+      description: t("quickLinks.private.description"),
       href: "/beafox-unlimited",
       color: "bg-white border-primaryOrange/20",
       iconColor: "text-primaryOrange",
@@ -142,7 +144,7 @@ export default function ContactPage() {
           >
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h1 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              Kontakt
+              {t("hero.tag")}
             </h1>
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
@@ -152,8 +154,8 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
           >
-            Wir freuen uns auf{" "}
-            <span className="text-primaryOrange">deine Nachricht</span>
+            {t("hero.title.pre")}{" "}
+            <span className="text-primaryOrange">{t("hero.title.highlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -161,8 +163,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base md:text-xl text-lightGray max-w-2xl mx-auto"
           >
-            Unser Support steht dir zuverlässig zur Seite und beantwortet deine
-            Anliegen so schnell und hilfreich wie möglich.
+            {t("hero.description")}
           </motion.p>
         </div>
       </Section>
@@ -179,7 +180,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl text-center sm:text-left font-bold text-darkerGray mb-4 sm:mb-8">
-                Kontaktdaten
+                {t("info.title")}
               </h2>
 
               {/* Cal.com Booking */}
@@ -196,11 +197,10 @@ export default function ContactPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-darkerGray mb-2 text-lg">
-                      Termin vereinbaren
+                      {t("info.booking.title")}
                     </h3>
                     <p className="text-lightGray text-sm mb-4">
-                      Buche direkt einen Termin für ein persönliches Gespräch
-                      oder eine Beratung.
+                      {t("info.booking.text")}
                     </p>
                     <a
                       href="https://app.cal.eu/beafox"
@@ -209,7 +209,7 @@ export default function ContactPage() {
                       className="inline-flex items-center gap-2 bg-primaryOrange hover:bg-primaryOrange/90 text-primaryWhite px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
                     >
                       <Calendar className="w-5 h-5" />
-                      Termin buchen
+                      {t("info.booking.button")}
                       <ArrowRight className="w-4 h-4" />
                     </a>
                   </div>
@@ -229,7 +229,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-darkerGray mb-1 text-lg">
-                      Telefon
+                      {t("info.phone")}
                     </h3>
                     <a
                       href="tel:+491782723673"
@@ -252,7 +252,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-darkerGray mb-1 text-lg">
-                      Email
+                      {t("info.email")}
                     </h3>
                     <a
                       href="mailto:info@beafox.app"
@@ -275,7 +275,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-darkerGray mb-1 text-lg">
-                      Adresse
+                      {t("info.address")}
                     </h3>
                     <p className="text-lightGray text-base md:text-lg">
                       BeAFox UG (haftungsbeschränkt)
@@ -298,8 +298,8 @@ export default function ContactPage() {
               >
                 <Clock className="w-5 h-5 text-primaryOrange" />
                 <span className="text-sm">
-                  Durchschnittliche Antwortzeit:{" "}
-                  <strong>unter 24 Stunden</strong>
+                  {t("info.responseTime.prefix")}{" "}
+                  <strong>{t("info.responseTime.value")}</strong>
                 </span>
               </motion.div>
             </motion.div>
@@ -312,7 +312,7 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl text-center sm:text-left font-bold text-darkerGray mb-4 sm:mb-8">
-                Nachricht senden
+                {t("form.title")}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -320,7 +320,7 @@ export default function ContactPage() {
                     htmlFor="name"
                     className="block text-sm font-medium text-darkerGray mb-2"
                   >
-                    Name *
+                    {t("form.fields.name.label")}
                   </label>
                   <input
                     type="text"
@@ -330,7 +330,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder="Dein Name"
+                    placeholder={t("form.fields.name.placeholder")}
                   />
                 </div>
 
@@ -339,7 +339,7 @@ export default function ContactPage() {
                     htmlFor="email"
                     className="block text-sm font-medium text-darkerGray mb-2"
                   >
-                    Email *
+                    {t("form.fields.email.label")}
                   </label>
                   <input
                     type="email"
@@ -349,7 +349,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder="deine@email.de"
+                    placeholder={t("form.fields.email.placeholder")}
                   />
                 </div>
 
@@ -358,7 +358,8 @@ export default function ContactPage() {
                     htmlFor="phone"
                     className="block text-sm font-medium text-darkerGray mb-2"
                   >
-                    Telefon <span className="text-lightGray">(optional)</span>
+                    {t("form.fields.phone.label")}{" "}
+                    <span className="text-lightGray">({t("form.fields.phone.optional")})</span>
                   </label>
                   <input
                     type="tel"
@@ -367,7 +368,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder="+49 123 456789"
+                    placeholder={t("form.fields.phone.placeholder")}
                   />
                 </div>
 
@@ -376,7 +377,7 @@ export default function ContactPage() {
                     htmlFor="type"
                     className="block text-sm font-medium text-darkerGray mb-2"
                   >
-                    Ich interessiere mich für
+                    {t("form.fields.type.label")}
                   </label>
                   <select
                     id="type"
@@ -385,13 +386,13 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
                   >
-                    <option value="general">Allgemeine Anfrage</option>
-                    <option value="schools">Für Schulen</option>
-                    <option value="business">Für Unternehmen</option>
-                    <option value="clubs">Für Clubs</option>
-                    <option value="private">Privatperson</option>
-                    <option value="pilot">Pilotprojekt</option>
-                    <option value="support">Support</option>
+                    <option value="general">{t("form.fields.type.options.general")}</option>
+                    <option value="schools">{t("form.fields.type.options.schools")}</option>
+                    <option value="business">{t("form.fields.type.options.business")}</option>
+                    <option value="clubs">{t("form.fields.type.options.clubs")}</option>
+                    <option value="private">{t("form.fields.type.options.private")}</option>
+                    <option value="pilot">{t("form.fields.type.options.pilot")}</option>
+                    <option value="support">{t("form.fields.type.options.support")}</option>
                   </select>
                 </div>
 
@@ -400,7 +401,7 @@ export default function ContactPage() {
                     htmlFor="subject"
                     className="block text-sm font-medium text-darkerGray mb-2"
                   >
-                    Betreff *
+                    {t("form.fields.subject.label")}
                   </label>
                   <input
                     type="text"
@@ -410,7 +411,7 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder="Worum geht es?"
+                    placeholder={t("form.fields.subject.placeholder")}
                   />
                 </div>
 
@@ -419,7 +420,7 @@ export default function ContactPage() {
                     htmlFor="message"
                     className="block text-sm font-medium text-darkerGray mb-2"
                   >
-                    Nachricht *
+                    {t("form.fields.message.label")}
                   </label>
                   <textarea
                     id="message"
@@ -429,7 +430,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white resize-none"
-                    placeholder="Erzähle uns von deinem Anliegen..."
+                    placeholder={t("form.fields.message.placeholder")}
                   />
                 </div>
 
@@ -443,8 +444,7 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold mb-1">Nachricht gesendet!</p>
                       <p className="text-sm">
-                        Vielen Dank! Deine Nachricht wurde erfolgreich gesendet.
-                        Wir melden uns schnellstmöglich bei dir.
+                        {t("form.success")}
                       </p>
                     </div>
                   </motion.div>
@@ -456,7 +456,7 @@ export default function ContactPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="bg-red-50 border-2 border-red-300 text-red-700 px-4 py-4 rounded-lg"
                   >
-                    <p className="font-semibold mb-1">Fehler aufgetreten</p>
+                    <p className="font-semibold mb-1">{t("form.errorTitle")}</p>
                     <p className="text-sm">{errorMessage}</p>
                   </motion.div>
                 )}
@@ -469,12 +469,12 @@ export default function ContactPage() {
                   {isSubmitting ? (
                     <>
                       <div className="w-5 h-5 border-2 border-primaryWhite border-t-transparent rounded-full animate-spin" />
-                      <span>Wird gesendet...</span>
+                      <span>{t("form.sending")}</span>
                     </>
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
-                      <span>Nachricht senden</span>
+                      <span>{t("form.submit")}</span>
                     </>
                   )}
                 </button>
@@ -504,7 +504,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
           >
-            Weitere Hilfe nötig?
+            {t("cta.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -513,8 +513,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl mb-8 text-primaryWhite/90"
           >
-            Wir helfen dir gerne weiter. <br /> Kontaktiere uns einfach per
-            Formular, Email oder Telefon.
+            {t("cta.description")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -529,7 +528,7 @@ export default function ContactPage() {
               className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
               <Mail className="w-4 h-4 md:w-5 md:h-5" />
-              Email schreiben
+              {t("cta.email")}
             </Button>
             <Button
               href="tel:+491782723673"
@@ -537,7 +536,7 @@ export default function ContactPage() {
               className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
               <Phone className="w-4 h-4 md:w-5 md:h-5" />
-              Anrufen
+              {t("cta.call")}
             </Button>
           </motion.div>
         </div>

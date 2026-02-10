@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 import DownloadModal from "@/components/DownloadModal";
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { useTranslations } from "next-intl";
 import {
   Check,
   Sparkles,
@@ -26,6 +27,7 @@ import {
 } from "lucide-react";
 
 export default function BeAFoxUnlimitedPage() {
+  const t = useTranslations("unlimited");
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState(0);
 
@@ -41,24 +43,24 @@ export default function BeAFoxUnlimitedPage() {
   const targetGroups = [
     {
       icon: School,
-      title: "Für Schüler",
+      title: t("hero.targetGroups.school.title"),
       description:
-        "Spielerische und simple Finanzbildung für dein eigenes Tempo.",
+        t("hero.targetGroups.school.description"),
     },
     {
       icon: GraduationCap,
-      title: "Für Studenten",
-      description: "Praxis- und alltagstaugliche Tipps für das Studentenleben.",
+      title: t("hero.targetGroups.students.title"),
+      description: t("hero.targetGroups.students.description"),
     },
     {
       icon: Briefcase,
-      title: "Für Azubis",
-      description: "Finde heraus, was mit deinem Gehalt heute möglich ist.",
+      title: t("hero.targetGroups.apprentices.title"),
+      description: t("hero.targetGroups.apprentices.description"),
     },
     {
       icon: User,
-      title: "Für Dich",
-      description: "Finanzbildung, die zu dir passt, unabhängig vom Alter.",
+      title: t("hero.targetGroups.you.title"),
+      description: t("hero.targetGroups.you.description"),
     },
   ];
 
@@ -187,7 +189,7 @@ export default function BeAFoxUnlimitedPage() {
           >
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h1 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              BeAFox Unlimited
+              {t("hero.tag")}
             </h1>
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
@@ -197,8 +199,8 @@ export default function BeAFoxUnlimitedPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
           >
-            Finanzbildung für{" "}
-            <span className="text-primaryOrange">Privatnutzer</span>
+            {t("hero.title")}{" "}
+            <span className="text-primaryOrange">{t("hero.highlight")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -206,9 +208,7 @@ export default function BeAFoxUnlimitedPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base md:text-xl text-lightGray max-w-3xl mx-auto mb-8 md:mb-12"
           >
-            Lerne Finanzen auf deine Art. Spielerisch, flexibel und in deinem
-            eigenen Tempo. BeAFox Unlimited gibt dir Zugang zu allen Lernmodulen
-            und Features.
+            {t("hero.description")}
           </motion.p>
 
           {/* Target Groups Grid */}
@@ -245,7 +245,7 @@ export default function BeAFoxUnlimitedPage() {
               variant="primary"
               className="flex items-center justify-center gap-2 !w-full sm:!w-auto !px-4 !py-2 md:!px-8 md:!py-4 text-sm md:text-base"
             >
-              App herunterladen
+              {t("hero.cta.download")}
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>

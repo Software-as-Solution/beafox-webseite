@@ -3,71 +3,19 @@
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import { PawPrint, Calendar, Sparkles, CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function AppUpdatesPage() {
-  const updates = [
-    {
-      id: 1,
-      version: "v2.1.0",
-      date: "Dezember 2024",
-      title: "Neue Features & Verbesserungen",
-      description:
-        "Wir haben die App mit neuen Features ausgestattet und die Performance verbessert. Die Lernpfade sind jetzt noch intuitiver und die Statistiken geben dir einen besseren Überblick über deinen Fortschritt.",
-      features: [
-        "Neue Lernpfade für erweiterte Finanzthemen",
-        "Verbesserte Statistiken und Fortschrittsanzeige",
-        "Performance-Optimierungen für schnellere Ladezeiten",
-        "Bug-Fixes und Stabilitätsverbesserungen",
-      ],
-      type: "feature",
-    },
-    {
-      id: 2,
-      version: "v2.0.0",
-      date: "November 2024",
-      title: "Großes Update: Neues Design & Features",
-      description:
-        "Das größte Update seit dem Launch! Wir haben die App komplett überarbeitet mit einem modernen Design, neuen Features und verbesserter Benutzerfreundlichkeit.",
-      features: [
-        "Komplett neues, modernes Design",
-        "Neue Gamification-Elemente",
-        "Verbesserte Ranglisten und Challenges",
-        "Neue Lernmodule zu Investitionen",
-        "Optimierte Benutzeroberfläche",
-      ],
-      type: "major",
-    },
-    {
-      id: 3,
-      version: "v1.5.2",
-      date: "Oktober 2024",
-      title: "Stabilität & Bug-Fixes",
-      description:
-        "Dieses Update konzentriert sich auf Stabilität und die Behebung von Fehlern, um die App noch zuverlässiger zu machen.",
-      features: [
-        "Verschiedene Bug-Fixes",
-        "Verbesserte App-Stabilität",
-        "Kleinere UI-Verbesserungen",
-        "Performance-Optimierungen",
-      ],
-      type: "patch",
-    },
-    {
-      id: 4,
-      version: "v1.5.0",
-      date: "September 2024",
-      title: "Neue Lernmodule & Verbesserungen",
-      description:
-        "Wir haben neue Lernmodule hinzugefügt und bestehende Features verbessert, um das Lernen noch effektiver zu gestalten.",
-      features: [
-        "Neue Lernmodule zu Versicherungen",
-        "Erweiterte Quiz-Funktionen",
-        "Verbesserte Karteikarten",
-        "Neue Missionen und Challenges",
-      ],
-      type: "feature",
-    },
-  ];
+  const t = useTranslations("appUpdates");
+  const updates = t.raw("updates") as {
+    id: number;
+    version: string;
+    date: string;
+    title: string;
+    description: string;
+    features: string[];
+    type: "major" | "feature" | "patch";
+  }[];
 
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -85,13 +33,13 @@ export default function AppUpdatesPage() {
   const getTypeLabel = (type: string) => {
     switch (type) {
       case "major":
-        return "Major Update";
+        return t("types.major");
       case "feature":
-        return "Neue Features";
+        return t("types.feature");
       case "patch":
-        return "Bug-Fixes";
+        return t("types.patch");
       default:
-        return "Update";
+        return t("types.default");
     }
   };
 
@@ -108,7 +56,7 @@ export default function AppUpdatesPage() {
           >
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <span className="font-bold">App-Updates</span>
+              <span className="font-bold">{t("hero.badge")}</span>
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
           </motion.div>
@@ -118,8 +66,8 @@ export default function AppUpdatesPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-darkerGray mb-6"
           >
-            Bleib auf dem{" "}
-            <span className="text-primaryOrange">neuesten Stand</span>
+            {t("hero.title.pre")}{" "}
+            <span className="text-primaryOrange">{t("hero.title.highlight")}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -127,9 +75,7 @@ export default function AppUpdatesPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl text-lightGray max-w-2xl mx-auto"
           >
-            Hier findest du alle Updates, neue Features und Verbesserungen der
-            BeAFox App. Wir arbeiten kontinuierlich daran, die App besser zu
-            machen.
+            {t("hero.description")}
           </motion.p>
         </div>
       </Section>
@@ -181,7 +127,7 @@ export default function AppUpdatesPage() {
                   {/* Features List */}
                   <div className="space-y-3">
                     <h4 className="font-semibold text-darkerGray text-sm md:text-base">
-                      Was ist neu:
+                      {t("whatsNew")}
                     </h4>
                     <ul className="space-y-2">
                       {update.features.map((feature, featureIndex) => (

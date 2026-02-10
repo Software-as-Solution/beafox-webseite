@@ -12,12 +12,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 // COMPONENTS
 import Button from "@/components/Button";
 // API
 import client from "@/lib/api-client";
 
 export default function ForgotPasswordPage() {
+  const t = useTranslations("authForgotPassword");
   // ROUTER
   const router = useRouter();
   // STATES
@@ -36,7 +38,7 @@ export default function ForgotPasswordPage() {
     setError(null);
 
     if (!email || !validateEmail(email)) {
-      setError("Bitte gib eine gültige E-Mail-Adresse ein");
+      setError(t("validation.emailInvalid"));
       return;
     }
 
@@ -53,7 +55,7 @@ export default function ForgotPasswordPage() {
       const errorMessage =
         err.response?.data?.error ||
         err.message ||
-        "Fehler beim Senden der E-Mail. Bitte versuche es erneut.";
+        t("errors.sendFailedFallback");
       setError(errorMessage);
     } finally {
       setIsLoading(false);
@@ -71,12 +73,12 @@ export default function ForgotPasswordPage() {
           initial={{ opacity: 0, y: -20 }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-2 sm:mb-3">
-            Passwort zurücksetzen
+            {t("title")}
           </h1>
           <p className="text-base sm:text-lg text-lightGray">
             {success
-              ? "E-Mail wurde gesendet"
-              : "Gib deine E-Mail-Adresse ein, um ein neues Passwort anzufordern"}
+              ? t("subtitle.success")
+              : t("subtitle.default")}
           </p>
         </motion.div>
 
@@ -93,16 +95,14 @@ export default function ForgotPasswordPage() {
                 <CheckCircle className="w-10 h-10 text-green-600" />
               </div>
               <h2 className="text-2xl font-bold text-darkerGray mb-4">
-                E-Mail wurde gesendet!
+                {t("success.title")}
               </h2>
               <p className="text-sm sm:text-base text-lightGray mb-6 leading-relaxed">
-                Wir haben dir eine E-Mail mit einem Link zum Zurücksetzen deines
-                Passworts gesendet. Bitte überprüfe auch deinen Spam-Ordner, falls
-                du die E-Mail nicht findest.
+                {t("success.text")}
               </p>
               <Link href="/login">
                 <Button variant="primary" className="w-full !px-6 !py-3 text-base">
-                  Zurück zur Anmeldung
+                  {t("success.backToLogin")}
                 </Button>
               </Link>
             </div>
@@ -114,7 +114,7 @@ export default function ForgotPasswordPage() {
                   htmlFor="email"
                   className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
                 >
-                  E-Mail-Adresse
+                  {t("fields.email.label")}
                 </label>
                 <div className="relative">
                   <input
@@ -122,7 +122,7 @@ export default function ForgotPasswordPage() {
                     type="email"
                     autoCapitalize="none"
                     value={email}
-                    placeholder="Deine E-Mail-Adresse"
+                    placeholder={t("fields.email.placeholder")}
                     onChange={(e) => {
                       setEmail(e.target.value);
                       setError(null);
@@ -179,12 +179,12 @@ export default function ForgotPasswordPage() {
                   {isLoading ? (
                     <span className="flex items-center justify-center gap-2">
                       <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
-                      <span className="text-sm sm:text-base">Wird gesendet...</span>
+                      <span className="text-sm sm:text-base">{t("button.loading")}</span>
                     </span>
                   ) : (
                     <span className="flex items-center justify-center gap-2">
                       <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-                      <span className="text-sm sm:text-base">Link senden</span>
+                      <span className="text-sm sm:text-base">{t("button.submit")}</span>
                     </span>
                   )}
                 </Button>
@@ -197,7 +197,7 @@ export default function ForgotPasswordPage() {
                   className="inline-flex items-center gap-2 text-xs sm:text-sm text-lightGray hover:text-primaryOrange transition-colors"
                 >
                   <ArrowLeft size={14} />
-                  Zurück zur Anmeldung
+                  {t("links.backToLogin")}
                 </Link>
               </div>
             </form>
@@ -218,11 +218,10 @@ export default function ForgotPasswordPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-sm sm:text-base text-darkerGray mb-1">
-                  Wichtiger Hinweis
+                  {t("info.title")}
                 </h3>
                 <p className="text-xs sm:text-sm text-darkerGray leading-relaxed">
-                  Falls du die E-Mail nicht erhältst, überprüfe bitte auch deinen
-                  Spam-Ordner. Der Link zum Zurücksetzen ist 1 Stunde gültig.
+                  {t("info.text")}
                 </p>
               </div>
             </div>

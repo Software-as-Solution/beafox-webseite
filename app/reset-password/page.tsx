@@ -13,12 +13,14 @@ import Link from "next/link";
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 // COMPONENTS
 import Button from "@/components/Button";
 // API
 import client from "@/lib/api-client";
 
 function ResetPasswordContent() {
+  const t = useTranslations("authResetPassword");
   // ROUTER
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -36,6 +38,9 @@ function ResetPasswordContent() {
   const [userId, setUserId] = useState<string | null>(null);
   const [tokenValidationError, setTokenValidationError] = useState<string | null>(null);
   // FUNCTIONS
+  const isDifferentPasswordError = (msg: string) =>
+    /unterscheid|differ/i.test(msg);
+
   useEffect(() => {
     const tokenParam = searchParams.get("token");
     const userIdParam = searchParams.get("userId");
@@ -44,7 +49,7 @@ function ResetPasswordContent() {
 
     if (!tokenParam || !userIdParam) {
       console.error("Missing token or userId in URL");
-      setTokenValidationError("Ungültiger oder fehlender Reset-Link");
+      setTokenValidationError(t("token.invalidOrMissing"));
       setIsValidating(false);
       return;
     }
@@ -66,12 +71,12 @@ function ResetPasswordContent() {
         if (response.data.valid) {
           setIsValid(true);
         } else {
-          setTokenValidationError("Der Reset-Link ist ungültig oder abgelaufen");
+          setTokenValidationError(t("token.invalidOrExpired"));
         }
       } catch (err: any) {
         console.error("Token validation error:", err);
         console.error("Error response:", err.response?.data);
-        let errorMessage = "Der Reset-Link ist ungültig oder abgelaufen";
+        let errorMessage = t("token.invalidOrExpired");
         if (err.response?.data?.error) {
           errorMessage = err.response.data.error;
         } else if (err.message && !err.message.includes("Network Error") && !err.message.includes("timeout")) {
@@ -98,24 +103,24 @@ function ResetPasswordContent() {
     setError(null);
 
     if (!password || !confirmPassword) {
-      setError("Bitte fülle alle Felder aus");
+      setError(t("errors.fillAllFields"));
       return;
     }
 
     if (!validatePassword(password)) {
       setError(
-        "Passwort muss mindestens 8 Zeichen lang sein und Buchstaben, Zahlen und Sonderzeichen enthalten"
+        t("errors.passwordRequirements")
       );
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwörter stimmen nicht überein");
+      setError(t("errors.passwordMismatch"));
       return;
     }
 
     if (!token || !userId) {
-      setError("Ungültiger Reset-Link");
+      setError(t("errors.invalidResetLink"));
       return;
     }
 
@@ -134,7 +139,7 @@ function ResetPasswordContent() {
       const errorMessage =
         err.response?.data?.error ||
         err.message ||
-        "Fehler beim Zurücksetzen des Passworts. Bitte versuche es erneut.";
+        t("errors.resetFailedFallback");
       setError(errorMessage);
     } finally {
       setIsLoading(false);
@@ -147,7 +152,7 @@ function ResetPasswordContent() {
         <div className="text-center">
           <Loader2 className="w-10 h-10 sm:w-12 sm:h-12 text-primaryOrange animate-spin mx-auto mb-4" />
           <p className="text-sm sm:text-base text-lightGray">
-            Reset-Link wird überprüft...
+            {t("validating")}
           </p>
         </div>
       </div>
@@ -169,15 +174,15 @@ function ResetPasswordContent() {
               <AlertCircle className="w-10 h-10 text-red-600" />
             </div>
             <h2 className="text-2xl font-bold text-darkerGray mb-4">
-              Link ungültig
+              {t("invalidLink.title")}
             </h2>
             <p className="text-sm sm:text-base text-lightGray mb-6">
               {tokenValidationError ||
-                "Der Reset-Link ist ungültig oder abgelaufen. Bitte fordere einen neuen Link an."}
+                t("invalidLink.fallbackText")}
             </p>
             <Link href="/forgot-password">
               <Button variant="primary" className="w-full !px-6 !py-3 text-base">
-                Neuen Link anfordern
+                {t("invalidLink.requestNew")}
               </Button>
             </Link>
           </motion.div>
@@ -204,15 +209,14 @@ function ResetPasswordContent() {
               <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
             <h2 className="text-2xl font-bold text-darkerGray mb-4">
-              Passwort erfolgreich zurückgesetzt!
+              {t("success.title")}
             </h2>
             <p className="text-sm sm:text-base text-lightGray mb-6">
-              Dein Passwort wurde erfolgreich geändert. Du kannst dich jetzt mit
-              deinem neuen Passwort anmelden.
+              {t("success.text")}
             </p>
             <Link href="/login">
               <Button variant="primary" className="w-full !px-6 !py-3 text-base">
-                Zur Anmeldung
+                {t("success.toLogin")}
               </Button>
             </Link>
           </motion.div>
@@ -232,10 +236,10 @@ function ResetPasswordContent() {
           initial={{ opacity: 0, y: -20 }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-darkerGray mb-2 sm:mb-3">
-            Neues Passwort setzen
+            {t("title")}
           </h1>
           <p className="text-base sm:text-lg text-lightGray">
-            Gib dein neues Passwort ein
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -253,17 +257,17 @@ function ResetPasswordContent() {
                 htmlFor="password"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                Neues Passwort
+                {t("fields.password.label")}
               </label>
               <div className="relative">
                 <input
                   id="password"
                   value={password}
-                  placeholder="Mindestens 8 Zeichen"
+                  placeholder={t("fields.password.placeholder")}
                   onChange={(e) => {
                     setPassword(e.target.value);
                     // Clear error when user starts typing, but keep it if it's about same password
-                    if (error && !error.includes("unterscheiden")) {
+                    if (error && !isDifferentPasswordError(error)) {
                       setError(null);
                     }
                   }}
@@ -287,7 +291,9 @@ function ResetPasswordContent() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors p-1"
                   aria-label={
-                    showPassword ? "Passwort verbergen" : "Passwort anzeigen"
+                    showPassword
+                      ? t("fields.password.hideAria")
+                      : t("fields.password.showAria")
                   }
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -301,17 +307,17 @@ function ResetPasswordContent() {
                 htmlFor="confirmPassword"
                 className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-darkerGray mb-2 sm:mb-3"
               >
-                Passwort bestätigen
+                {t("fields.confirmPassword.label")}
               </label>
               <div className="relative">
                 <input
                   id="confirmPassword"
                   value={confirmPassword}
-                  placeholder="Passwort wiederholen"
+                  placeholder={t("fields.confirmPassword.placeholder")}
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
                     // Clear error when user starts typing, but keep it if it's about same password
-                    if (error && !error.includes("unterscheiden")) {
+                    if (error && !isDifferentPasswordError(error)) {
                       setError(null);
                     }
                   }}
@@ -338,8 +344,8 @@ function ResetPasswordContent() {
                   className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-lightGray hover:text-darkerGray transition-colors p-1"
                   aria-label={
                     showConfirmPassword
-                      ? "Passwort verbergen"
-                      : "Passwort anzeigen"
+                      ? t("fields.confirmPassword.hideAria")
+                      : t("fields.confirmPassword.showAria")
                   }
                 >
                   {showConfirmPassword ? (
@@ -363,9 +369,9 @@ function ResetPasswordContent() {
                   <p className="text-xs sm:text-sm text-red-600 font-medium mb-1">
                     {error}
                   </p>
-                  {error.includes("unterscheiden") && (
+                  {isDifferentPasswordError(error) && (
                     <p className="text-xs text-red-500">
-                      Bitte gib ein anderes Passwort ein. Der Reset-Link bleibt gültig.
+                      {t("errors.differentPasswordHint")}
                     </p>
                   )}
                 </div>
@@ -383,12 +389,12 @@ function ResetPasswordContent() {
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
                     <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
-                    <span className="text-sm sm:text-base">Wird gespeichert...</span>
+                    <span className="text-sm sm:text-base">{t("button.loading")}</span>
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="text-sm sm:text-base">Passwort zurücksetzen</span>
+                    <span className="text-sm sm:text-base">{t("button.submit")}</span>
                   </span>
                 )}
               </Button>
@@ -409,11 +415,10 @@ function ResetPasswordContent() {
             </div>
             <div>
               <h3 className="font-semibold text-sm sm:text-base text-darkerGray mb-1">
-                Passwort-Anforderungen
+                {t("info.title")}
               </h3>
               <p className="text-xs sm:text-sm text-darkerGray leading-relaxed">
-                Dein Passwort muss mindestens 8 Zeichen lang sein und Buchstaben,
-                Zahlen und Sonderzeichen enthalten.
+                {t("info.text")}
               </p>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Instagram,
   Linkedin,
@@ -60,6 +61,7 @@ function YouTubeIcon({ size = 20 }: { size?: number }) {
 }
 
 export default function Footer() {
+  const t = useTranslations("footer");
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
   const [newsletterStatus, setNewsletterStatus] = useState<{
@@ -86,19 +88,19 @@ export default function Footer() {
       if (response.ok) {
         setNewsletterStatus({
           type: "success",
-          message: data.message || "Erfolgreich angemeldet!",
+          message: data.message || t("newsletter.successFallback"),
         });
         setNewsletterEmail("");
       } else {
         setNewsletterStatus({
           type: "error",
-          message: data.error || "Ein Fehler ist aufgetreten.",
+          message: data.error || t("newsletter.errorFallback"),
         });
       }
     } catch (error) {
       setNewsletterStatus({
         type: "error",
-        message: "Ein Fehler ist aufgetreten. Bitte versuche es später erneut.",
+        message: t("newsletter.errorRetryFallback"),
       });
     } finally {
       setIsNewsletterSubmitting(false);

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface BreadcrumbItem {
   label: string;
@@ -14,7 +15,8 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
-  const breadcrumbItems = [{ label: "Startseite", href: "/" }, ...items];
+  const t = useTranslations("breadcrumbs");
+  const breadcrumbItems = [{ label: t("home"), href: "/" }, ...items];
   const baseUrl = "https://beafox.app";
 
   // JSON-LD BreadcrumbList Schema
@@ -66,7 +68,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
                 <Link
                   href={item.href}
                   className="flex items-center hover:text-primaryOrange transition-colors"
-                  aria-label="Startseite"
+                  aria-label={t("homeAria")}
                 >
                   <Home className="w-4 h-4" />
                 </Link>

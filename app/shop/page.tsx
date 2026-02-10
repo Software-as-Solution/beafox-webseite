@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ShoppingBag,
   Shirt,
@@ -16,11 +17,11 @@ import {
 // Produkt-Datenstruktur
 interface Product {
   id: string;
-  name: string;
-  description: string;
+  nameKey: string;
+  descriptionKey: string;
   price: number;
   image: string;
-  category: string;
+  categoryKey: "clothing" | "accessories";
   icon: React.ReactNode;
 }
 
@@ -28,61 +29,69 @@ interface Product {
 const products: Product[] = [
   {
     id: "tshirt-beafox-001",
-    name: "BeAFox T-Shirt",
-    description: "Premium Baumwoll-T-Shirt mit BeAFox-Logo",
+    nameKey: "products.tshirt.name",
+    descriptionKey: "products.tshirt.description",
     price: 29.99,
     image: "/merch/tshirt.jpg", // Platzhalter - echte Bilder hinzufügen
-    category: "Kleidung",
+    categoryKey: "clothing",
     icon: <Shirt className="w-6 h-6" />,
   },
   {
     id: "hoodie-beafox-001",
-    name: "BeAFox Hoodie",
-    description: "Warmes Kapuzen-Sweatshirt mit BeAFox-Branding",
+    nameKey: "products.hoodie.name",
+    descriptionKey: "products.hoodie.description",
     price: 49.99,
     image: "/merch/hoodie.jpg",
-    category: "Kleidung",
+    categoryKey: "clothing",
     icon: <Shirt className="w-6 h-6" />,
   },
   {
     id: "mug-beafox-001",
-    name: "BeAFox Tasse",
-    description:
-      "Keramik-Tasse mit BeAFox-Logo - perfekt für deinen Morgenkaffee",
+    nameKey: "products.mug.name",
+    descriptionKey: "products.mug.description",
     price: 14.99,
     image: "/merch/mug.jpg",
-    category: "Accessoires",
+    categoryKey: "accessories",
     icon: <Coffee className="w-6 h-6" />,
   },
   {
     id: "sticker-beafox-001",
-    name: "BeAFox Sticker Pack",
-    description: "Set mit 5 verschiedenen BeAFox-Stickern",
+    nameKey: "products.stickers.name",
+    descriptionKey: "products.stickers.description",
     price: 4.99,
     image: "/merch/stickers.jpg",
-    category: "Accessoires",
+    categoryKey: "accessories",
     icon: <Sticker className="w-6 h-6" />,
   },
   {
     id: "notebook-beafox-001",
-    name: "BeAFox Notizbuch",
-    description: "Hochwertiges Notizbuch mit BeAFox-Design",
+    nameKey: "products.notebook.name",
+    descriptionKey: "products.notebook.description",
     price: 12.99,
     image: "/merch/notebook.jpg",
-    category: "Accessoires",
+    categoryKey: "accessories",
     icon: <BookOpen className="w-6 h-6" />,
   },
 ];
 
-const categories = ["Alle", "Kleidung", "Accessoires"];
-
 export default function ShopPage() {
-  const [selectedCategory, setSelectedCategory] = useState("Alle");
+  const t = useTranslations("shop");
+  const locale = useLocale();
+  const [selectedCategory, setSelectedCategory] = useState<
+    "all" | "clothing" | "accessories"
+  >("all");
+
+  const categories: { key: "all" | "clothing" | "accessories"; label: string }[] =
+    [
+      { key: "all", label: t("categories.all") },
+      { key: "clothing", label: t("categories.clothing") },
+      { key: "accessories", label: t("categories.accessories") },
+    ];
 
   const filteredProducts =
-    selectedCategory === "Alle"
+    selectedCategory === "all"
       ? products
-      : products.filter((product) => product.category === selectedCategory);
+      : products.filter((product) => product.categoryKey === selectedCategory);
 
   return (
     <>
@@ -97,14 +106,14 @@ export default function ShopPage() {
             <div className="inline-flex items-center gap-2 bg-primaryOrange/10 px-4 py-2 rounded-full mb-6">
               <ShoppingBag className="w-5 h-5 text-primaryOrange" />
               <span className="text-primaryOrange font-semibold text-sm md:text-base">
-                BeAFox Merch Shop
+                {t("hero.badge")}
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-darkerGray mb-4">
-              BeAFox Merch Shop
+              {t("hero.title")}
             </h1>
             <p className="text-lg md:text-xl text-darkerGray/80 max-w-2xl mx-auto">
-              Zeige deine BeAFox-Leidenschaft mit unserem exklusiven Merchandise
+              {t("hero.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -116,15 +125,15 @@ export default function ShopPage() {
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
+                key={category.key}
+                onClick={() => setSelectedCategory(category.key)}
                 className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                  selectedCategory === category
+                  selectedCategory === category.key
                     ? "bg-primaryOrange text-primaryWhite shadow-lg"
                     : "bg-gray-100 text-darkerGray hover:bg-gray-200"
                 }`}
               >
-                {category}
+                {category.label}
               </button>
             ))}
           </div>
@@ -137,7 +146,7 @@ export default function ShopPage() {
           {filteredProducts.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-darkerGray text-lg">
-                Keine Produkte in dieser Kategorie gefunden.
+                {t("empty")}
               </p>
             </div>
           ) : (
@@ -171,14 +180,17 @@ export default function ShopPage() {
                   {/* Produktinfo */}
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-darkerGray mb-2">
-                      {product.name}
+                      {t(product.nameKey)}
                     </h3>
                     <p className="text-darkerGray/70 text-sm mb-4 min-h-[40px]">
-                      {product.description}
+                      {t(product.descriptionKey)}
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold text-primaryOrange">
-                        {product.price.toFixed(2)} €
+                        {product.price.toLocaleString(locale, {
+                          style: "currency",
+                          currency: "EUR",
+                        })}
                       </span>
                       <button
                         className="snipcart-add-item flex items-center gap-2 bg-primaryOrange text-primaryWhite px-6 py-3 rounded-full font-semibold hover:bg-primaryOrange/90 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -186,14 +198,14 @@ export default function ShopPage() {
                         data-item-price={
                           product.price ? product.price.toFixed(2) : "0.00"
                         }
-                        data-item-description={product.description || ""}
+                        data-item-description={t(product.descriptionKey) || ""}
                         data-item-image={product.image || ""}
-                        data-item-name={product.name || ""}
+                        data-item-name={t(product.nameKey) || ""}
                         // data-item-url ist optional seit Snipcart 3.2.2
                         // Wenn nicht gesetzt, wird automatisch window.location.href verwendet
                       >
                         <ShoppingCart className="w-4 h-4" />
-                        In den Warenkorb
+                        {t("addToCart")}
                       </button>
                     </div>
                   </div>
@@ -209,36 +221,19 @@ export default function ShopPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-darkerGray mb-6">
-              Häufig gestellte Fragen
+              {t("faq.title")}
             </h2>
             <div className="space-y-6 text-left">
-              <div>
-                <h3 className="font-semibold text-darkerGray mb-2">
-                  Wie lange dauert der Versand?
-                </h3>
-                <p className="text-darkerGray/70">
-                  Der Versand erfolgt innerhalb von 3-5 Werktagen nach
-                  Bestelleingang.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-darkerGray mb-2">
-                  Welche Zahlungsmethoden werden akzeptiert?
-                </h3>
-                <p className="text-darkerGray/70">
-                  Wir akzeptieren alle gängigen Zahlungsmethoden wie
-                  Kreditkarte, PayPal und SEPA-Lastschrift.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-darkerGray mb-2">
-                  Gibt es ein Rückgaberecht?
-                </h3>
-                <p className="text-darkerGray/70">
-                  Ja, innerhalb von 14 Tagen nach Erhalt können Sie Artikel
-                  zurückgeben. Weitere Details finden Sie in unseren AGB.
-                </p>
-              </div>
+              {(t.raw("faq.items") as { q: string; a: string }[]).map(
+                (item, idx) => (
+                  <div key={idx}>
+                    <h3 className="font-semibold text-darkerGray mb-2">
+                      {item.q}
+                    </h3>
+                    <p className="text-darkerGray/70">{item.a}</p>
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>

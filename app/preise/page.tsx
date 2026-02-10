@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import DownloadModal from "@/components/DownloadModal";
+import { useTranslations } from "next-intl";
 import {
   Check,
   School,
@@ -37,29 +38,30 @@ import {
 } from "lucide-react";
 
 export default function PricingPage() {
+  const t = useTranslations("pricing");
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [openFAQId, setOpenFAQId] = useState<number | null>(null);
 
   const targetGroups = [
     {
       icon: School,
-      title: "Für Schüler",
-      description: "Spielerische und simple Finanzbildung in der Schule.",
+      title: t("hero.targetGroups.school.title"),
+      description: t("hero.targetGroups.school.description"),
     },
     {
       icon: Briefcase,
-      title: "Für Azubis",
-      description: "Finde heraus, was mit deinem Gehalt heute möglich ist.",
+      title: t("hero.targetGroups.apprentices.title"),
+      description: t("hero.targetGroups.apprentices.description"),
     },
     {
       icon: GraduationCap,
-      title: "Für Studenten",
-      description: "Praxis- und Alltagstaugliche Tipps für das Studentenleben.",
+      title: t("hero.targetGroups.students.title"),
+      description: t("hero.targetGroups.students.description"),
     },
     {
       icon: User,
-      title: "Für Dich",
-      description: "Finanzbildung, die zu dir passt, unabhängig vom Alter.",
+      title: t("hero.targetGroups.you.title"),
+      description: t("hero.targetGroups.you.description"),
     },
   ];
 
@@ -176,7 +178,7 @@ export default function PricingPage() {
           >
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              Unser Ziel
+              {t("hero.tag")}
             </h2>
             <PawPrint className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
@@ -186,7 +188,7 @@ export default function PricingPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
           >
-            Finanzbildung für <span className="text-primaryOrange">alle</span>
+            {t("hero.title")} <span className="text-primaryOrange">{t("hero.highlight")}</span>
           </motion.h1>
 
           {/* Target Groups Grid */}
@@ -225,7 +227,7 @@ export default function PricingPage() {
           >
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              Preise
+              {t("prices.tag")}
             </h2>
             <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
           </motion.div>
@@ -241,8 +243,9 @@ export default function PricingPage() {
             className="text-center mb-6 sm:mb-12"
           >
             <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Jetzt Ihre <span className="text-primaryOrange">Mitarbeiter</span>{" "}
-              fit machen
+              {t("business.heading.pre")}{" "}
+              <span className="text-primaryOrange">{t("business.heading.highlight")}</span>{" "}
+              {t("business.heading.post")}
             </h3>
           </motion.div>
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">

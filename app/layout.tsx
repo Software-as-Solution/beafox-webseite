@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -125,14 +127,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang="de" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <body className="antialiased bg-primaryWhite">
+        <NextIntlClientProvider locale={locale} messages={messages}>
         {/* Google Analytics - wird nur geladen wenn Cookie-Consent gegeben wurde */}
         <Script
           id="google-analytics-init"
@@ -195,6 +201,7 @@ export default function RootLayout({
         <ScrollToTop />
         <CookieBanner />
         <SnipcartProvider />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

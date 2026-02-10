@@ -6,12 +6,25 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const t = useTranslations("header");
+  const locale = useLocale();
+
+  const setWebsiteLocale = (nextLocale: "de" | "en") => {
+    if (nextLocale === locale) return;
+    // Persist user preference; i18n/request.ts reads this cookie.
+    document.cookie = `locale=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+    // Reload to ensure Server Components pick up new messages/locale.
+    window.location.reload();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,17 +56,17 @@ export default function Header() {
   }, [isDropdownOpen]);
 
   const navItems = [
-    { href: "/", label: "Startseite" },
-    { href: "/ueber-beafox", label: "Über BeAFox" },
-    { href: "/preise", label: "Preise" },
-    { href: "/faq", label: "FAQ's" },
+    { href: "/", label: t("nav.home") },
+    { href: "/ueber-beafox", label: t("nav.about") },
+    { href: "/preise", label: t("nav.pricing") },
+    { href: "/faq", label: t("nav.faq") },
   ];
 
   const productItems = [
-    { href: "/beafox-unlimited", label: "BeAFox Unlimited" },
-    { href: "/fuer-unternehmen", label: "BeAFox for Business" },
-    { href: "/fuer-schulen", label: "BeAFox for Schools" },
-    { href: "/fuer-clubs", label: "BeAFox for Clubs" },
+    { href: "/beafox-unlimited", label: t("products.unlimited") },
+    { href: "/fuer-unternehmen", label: t("products.business") },
+    { href: "/fuer-schulen", label: t("products.schools") },
+    { href: "/fuer-clubs", label: t("products.clubs") },
   ];
 
   return (
@@ -106,7 +119,7 @@ export default function Header() {
                     : "text-darkerGray hover:text-primaryOrange"
                 }`}
               >
-                Produkte
+                {t("products.label")}
                 <ChevronDown
                   size={16}
                   className={`transition-transform ${
@@ -146,17 +159,45 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
+            {/* Language switch */}
+            <div className="flex items-center gap-1 pl-3 border-l border-gray-200">
+              <button
+                type="button"
+                onClick={() => setWebsiteLocale("de")}
+                aria-pressed={locale === "de"}
+                className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors ${
+                  locale === "de"
+                    ? "bg-primaryOrange text-white"
+                    : "text-darkerGray hover:bg-gray-100"
+                }`}
+              >
+                {t("language.de")}
+              </button>
+              <button
+                type="button"
+                onClick={() => setWebsiteLocale("en")}
+                aria-pressed={locale === "en"}
+                className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors ${
+                  locale === "en"
+                    ? "bg-primaryOrange text-white"
+                    : "text-darkerGray hover:bg-gray-100"
+                }`}
+              >
+                {t("language.en")}
+              </button>
+            </div>
+
             <Link
               href="/kontakt"
               className="bg-primaryOrange text-primaryWhite px-6 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium"
             >
-              Kontakt
+              {t("actions.contact")}
             </Link>
             <Link
               href="/onboarding"
               className="bg-primaryOrange text-primaryWhite px-6 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium"
             >
-              Login
+              {t("actions.login")}
             </Link>
           </div>
 
@@ -209,7 +250,7 @@ export default function Header() {
                       : "text-darkerGray hover:text-primaryOrange"
                   }`}
                 >
-                  Produkte
+                  {t("products.label")}
                   <ChevronDown
                     size={16}
                     className={`transition-transform ${
@@ -250,12 +291,40 @@ export default function Header() {
                 </AnimatePresence>
               </div>
 
+              {/* Language switch (mobile) */}
+              <div className="flex items-center gap-2 pt-2 border-t border-gray-200">
+                <button
+                  type="button"
+                  onClick={() => setWebsiteLocale("de")}
+                  aria-pressed={locale === "de"}
+                  className={`px-3 py-2 rounded-md text-sm font-semibold transition-colors ${
+                    locale === "de"
+                      ? "bg-primaryOrange text-white"
+                      : "text-darkerGray hover:bg-gray-100"
+                  }`}
+                >
+                  {t("language.de")}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setWebsiteLocale("en")}
+                  aria-pressed={locale === "en"}
+                  className={`px-3 py-2 rounded-md text-sm font-semibold transition-colors ${
+                    locale === "en"
+                      ? "bg-primaryOrange text-white"
+                      : "text-darkerGray hover:bg-gray-100"
+                  }`}
+                >
+                  {t("language.en")}
+                </button>
+              </div>
+
               <Link
                 href="/kontakt"
                 className="block bg-primaryOrange text-primaryWhite px-6 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Kontakt
+                {t("actions.contact")}
               </Link>
 
               <Link
@@ -263,7 +332,7 @@ export default function Header() {
                 className="block bg-primaryOrange text-primaryWhite px-6 py-2 rounded-full hover:bg-primaryOrange/80 transition-colors font-medium text-center mt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Login / Registrieren
+                {t("actions.loginRegister")}
               </Link>
             </div>
           </motion.div>
