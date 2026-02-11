@@ -917,16 +917,160 @@
   }
   ,
   "schools": {
+    "meta": {
+      "title": "BeAFox for Schools – Finanzbildung für Schulen",
+      "description": "Finanzbildung für Schulen: Digitale Lernplattform für Finanzbildung im Schulunterricht. Ideal für Lehrer und Schüler ab der 7. Klasse.",
+      "ogTitle": "BeAFox for Schools – Finanzbildung für Schulen",
+      "ogDescription": "Spielerische Finanzbildungs-Lösungen für Schulen. Ideal für Lehrer und Schüler ab der 7. Klasse."
+    },
+    "breadcrumbs": {
+      "parentLabel": "Angebote",
+      "current": "BeAFox for Schools"
+    },
     "hero": {
+      "badge": "BeAFox for Schools",
       "priceHighlight": "1€ pro Schüler",
       "pricePost": "pro Jahr",
       "description": "Wir schaffen echten gesellschaftlichen Mehrwert, indem wir Finanzbildung für alle Schüler:innen unabhängig von Hintergrund oder Voraussetzungen zugänglich machen.",
       "ctaPartner": "Jetzt Partner werden",
       "ctaBook": "Termin buchen"
+    },
+    "mockups": {
+      "pathAlt": "BeAFox Lernpfad Mockup",
+      "stufenAlt": "BeAFox Stufen Mockup",
+      "rankingAlt": "BeAFox Rangliste Mockup",
+      "mascotAlt": "BeAFox Maskottchen"
+    },
+    "stats": [
+      { "value": "1,000+", "label": "Schüler nutzen BeAFox" },
+      { "value": "5+", "label": "Schulen vertrauen uns" },
+      { "value": "98%", "label": "Zufriedenheit" },
+      { "value": "24/7", "label": "Verfügbar" }
+    ],
+    "problemSolution": {
+      "title": "Wir schließen die Lücke",
+      "titleHighlight": "in der Finanzbildung",
+      "problemTitle": "Die Herausforderungen",
+      "problemText": "Ein Lehrer betreut gleichzeitig mehrere Klassen. Die Schüler benötigen eine Möglichkeit, selbstständig zu lernen, auch wenn der Lehrer nicht direkt vor Ort ist.",
+      "problemBullets": ["Unterrichtsausfall durch Krankheit", "Mehrere Klassen gleichzeitig betreuen", "Schüler brauchen sinnvolle Beschäftigung", "Finanzbildung fehlt im Lehrplan"],
+      "solutionTitle": "Unsere Lösung",
+      "solutionText": "Die Schüler arbeiten selbstständig und interaktiv mit BeAFox. Ganz ohne direkte Anwesenheit des Lehrers vor Ort.",
+      "solutionText2": "Für Lehrer: Das integrierte Monitoring-Dashboard zeigt in Echtzeit, was jeder Schüler gerade lernt, wo er steht und wie er vorankommt.",
+      "solutionBullets": ["Selbstständiges Lernen der Schüler", "Echtzeit-Überblick für Lehrer", "Sofortige Erkennung von Schwächen", "Spielerisches System motiviert"]
+    },
+    "benefits": {
+      "title": "Warum",
+      "titleHighlight": "BeAFox for Schools",
+      "subtitle": "Alle Vorteile für Ihre Schule, Lehrer und Schüler auf einen Blick.",
+      "items": [
+        { "title": "Zeitersparnis", "description": "Schüler lernen selbstständig. Sie sparen wertvolle Unterrichtszeit und können sich auf andere wichtige Aufgaben konzentrieren." },
+        { "title": "Echtzeit-Überblick", "description": "Das Dashboard zeigt Ihnen jederzeit, was Ihre Schüler lernen, wo sie stehen und wie sie vorankommen." },
+        { "title": "Gezielte Unterstützung", "description": "Schwächen werden sofort sichtbar, sodass Sie gezielt unterstützen können. Stärken werden belohnt und motivieren zum Weitermachen." },
+        { "title": "DSGVO-konform", "description": "Wir sammeln 0,0% Daten. Ihre Schülerdaten sind bei uns in besten Händen." },
+        { "title": "Wissenschaftlich fundiert", "description": "Unsere Inhalte basieren auf bewährten Lehrmethoden und wurden in einem Forschungsprojekt mit über 500 Teilnehmern getestet." },
+        { "title": "Motivierte Schüler", "description": "Durch das spielerische System mit Punkten, Missionen und Ranglisten bleiben Ihre Schüler motiviert und lernen nachhaltig." }
+      ]
+    },
+    "useCases": {
+      "title": "So setzen Schulen",
+      "titleHighlight": "BeAFox",
+      "titlePost": " ein",
+      "subtitle": "Flexible Einsatzmöglichkeiten für verschiedene Unterrichtssituationen",
+      "items": [
+        { "title": "Unterrichtsausfall", "description": "Wenn ein Lehrer ausfällt, können Schüler selbstständig mit BeAFox lernen. Sie bleiben beschäftigt und lernen dabei wichtige Finanzkompetenzen." },
+        { "title": "Hausaufgaben & Vertiefung", "description": "Schüler können zu Hause oder in der Freizeit mit BeAFox lernen. Das spielerische System motiviert sie, auch außerhalb des Unterrichts aktiv zu sein." },
+        { "title": "Projektwochen", "description": "Perfekt für Projektwochen zum Thema Finanzen. Schüler arbeiten selbstständig, Lehrer behalten den Überblick über den Fortschritt." },
+        { "title": "Wahlpflichtfach", "description": "BeAFox eignet sich ideal als Basis für ein Wahlpflichtfach Finanzbildung. Strukturierte Inhalte, klare Lernpfade und motivierendes Lernen." }
+      ],
+      "cta": "Jetzt Partner werden"
+    },
+    "howItWorks": {
+      "title": "So funktioniert's",
+      "subtitle": "In vier einfachen Schritten zu BeAFox in Ihrer Schule.",
+      "steps": [
+        { "step": "1", "title": "Kostenlose Beratung", "description": "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule." },
+        { "step": "2", "title": "Einfache Einrichtung", "description": "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert." },
+        { "step": "3", "title": "Schüler starten", "description": "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit." },
+        { "step": "4", "title": "Sie behalten Überblick", "description": "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen." }
+      ]
+    },
+    "pricing": {
+      "title": "Faire Preise für",
+      "titleHighlight": "Schulen",
+      "subtitle": "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution.",
+      "price": "€1",
+      "perPupil": "pro Schüler",
+      "perYear": "pro Jahr",
+      "tagline": "Transparent, fair und ohne versteckte Kosten.",
+      "partnerCta": "Jetzt Partner werden",
+      "includedTitle": "Im Preis enthalten:",
+      "includedItems": ["Vollständiger Zugang für alle Schüler", "Monitoring-Dashboard für Lehrer", "Unbegrenzte Lektionen & Features", "PDF-Export für Reports", "Support & Updates"],
+      "extraTitle": "Zusätzliche Vorteile:",
+      "extraItems": ["Keine versteckten Kosten", "Monatlich kündbar", "DSGVO-konform", "Einfache Einrichtung", "Persönlicher Ansprechpartner"]
+    },
+    "dashboard": {
+      "title": "Das",
+      "titleHighlight": "Monitoring-Dashboard",
+      "subtitle": "Vollständige Kontrolle über den Lernfortschritt Ihrer Schüler – alles auf einen Blick.",
+      "items": [
+        { "id": "schueler", "title": "Schüler verwalten", "description": "Erstellen Sie einfach Schüler-Accounts, verwalten Sie Klassen und behalten Sie den Überblick über alle Teilnehmer.", "mockup": "/Mockup-Macbook/Schueler.png" },
+        { "id": "fortschritt", "title": "Live-Fortschritt", "description": "Sehen Sie in Echtzeit, was jeder Schüler gerade lernt und wie er vorankommt.", "mockup": "/Mockup-Macbook/Live-Fortschritt.png" },
+        { "id": "stufen", "title": "Stufen-Tracking", "description": "Verfolgen Sie den Fortschritt Ihrer Schüler durch alle Lernstufen. Sehen Sie auf einen Blick, wer welche Themen bereits abgeschlossen hat.", "mockup": "/Mockup-Macbook/Stufen-Tracking.png" },
+        { "id": "verwalten", "title": "Klasse verwalten", "description": "Organisieren Sie Ihre Klassen, weisen Sie Lektionen zu und verwalten Sie den Zugriff.", "mockup": "/Mockup-Macbook/Verwalten.png" },
+        { "id": "pdf", "title": "Schüler-PDF Export", "description": "Exportieren Sie detaillierte Reports und Fortschrittsberichte als PDF. Perfekt für Elterngespräche, Zeugnisse oder Dokumentation.", "mockup": "/Mockup-Macbook/Schueler-PDF.png" },
+        { "id": "klasse", "title": "Klasse erstellen", "description": "Erstellen Sie neue Klassen mit wenigen Klicks. Laden Sie Schüler per CSV-Import ein oder fügen Sie sie manuell hinzu.", "mockup": "/Mockup-Macbook/Klasse-erstellen.png" }
+      ],
+      "cta": "Jetzt Partner werden"
+    },
+    "whyFinance": {
+      "badgeTitle": "Warum Finanzbildung?",
+      "points": [
+        { "number": "1", "title": "Finanzbildung ist Allgemeinbildung", "description": "Finanzielle Bildung ist ein wichtiger Teil der Allgemeinbildung. Jeder junge Mensch sollte die Möglichkeit haben, finanzielle Kompetenzen zu erlernen – unabhängig vom familiären Hintergrund." },
+        { "number": "2", "title": "Schulden-Prävention", "description": "Statistisch gesehen wird sich mindestens ein:e Schüler:in pro Klasse im Laufe des Lebens überschulden. Hochwertige finanzielle Bildung beugt Überschuldung effektiv vor." },
+        { "number": "3", "title": "Chancengerechtigkeit", "description": "Jede:r sollte über Finanzen Bescheid wissen, um sich eine eigene Meinung bilden zu können; unabhängig davon, welche eigenen finanziellen und familiären Ressourcen man mitbringt." }
+      ]
+    },
+    "testimonials": {
+      "title": "Feedback von",
+      "titleHighlight": "Lehrkräften",
+      "subtitle": "Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.",
+      "items": [
+        { "quote": "Die Fortbildung war äußerst bereichernd und ist absolut empfehlenswert. Der Referentin gelang es hervorragend, ein komplexes Thema lebendig und verständlich darzustellen. Ich freue mich bereits darauf, die Unterlagen in meinem Unterricht einzusetzen.", "author": "Lehrkraft, Gymnasium" },
+        { "quote": "Die Fortbildung war mega interessant und hat viele praktische und im Unterricht leicht umsetzbare Methoden vermittelt. Die Materialen sind toll aufbereitet und sofort einsetzbar.", "author": "Lehrkraft, Realschule" },
+        { "quote": "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln.", "author": "Lehrkraft, Berufsschule" }
+      ]
+    },
+    "faq": {
+      "title": "Häufige Fragen",
+      "subtitle": "Alles, was Sie über BeAFox for Schools wissen müssen.",
+      "items": [
+        { "id": 1, "question": "Wie lange dauert die Einrichtung?", "answer": "Die Einrichtung geht schnell und unkompliziert. Nach der Beratung richten wir die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Der gesamte Prozess dauert in der Regel nur wenige Tage." },
+        { "id": 2, "question": "Benötigen die Schüler eigene Geräte?", "answer": "Nein, BeAFox funktioniert auf allen gängigen Geräten – Smartphones, Tablets und Computern. Die Schüler können die App auf ihren eigenen Geräten nutzen oder auf schuleigenen Geräten." },
+        { "id": 3, "question": "Wie werden die Daten geschützt?", "answer": "Alle Daten werden sicher und DSGVO-konform gespeichert. Wir legen großen Wert auf Datenschutz und Sicherheit. Ihre Schülerdaten sind bei uns in besten Händen." },
+        { "id": 4, "question": "Können wir BeAFox testen, bevor wir uns entscheiden?", "answer": "Ja, gerne! Wir bieten eine kostenlose Beratung und können Ihnen auch eine Testphase ermöglichen. Kontaktieren Sie uns einfach für weitere Informationen." },
+        { "id": 5, "question": "Was passiert, wenn wir BeAFox nicht mehr nutzen möchten?", "answer": "Kein Problem! Sie können BeAFox jederzeit monatlich kündigen. Es gibt keine langfristigen Verträge oder versteckten Kosten." },
+        { "id": 6, "question": "Gibt es Schulungen für Lehrkräfte?", "answer": "Ja, wir bieten Fortbildungen für Lehrkräfte an, in denen wir das System, das Dashboard und die besten Praktiken für den Einsatz im Unterricht erklären." }
+      ],
+      "viewAllCta": "Alle FAQs ansehen"
+    },
+    "cta": {
+      "title": "Bereit, Finanzbildung in Ihre Schule zu bringen?",
+      "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihre Schule.",
+      "cta": "Jetzt Partner werden"
     }
   }
   ,
   "clubs": {
+    "meta": {
+      "title": "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
+      "description": "Finanzbildung für Vereine: BeAFox for Clubs bietet Finanzbildung für Sportvereine, Finanzbildung für Jugendvereine und Finanzbildung in Communities. Finanzwissen für mentale Stärke und bessere Leistung.",
+      "ogTitle": "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
+      "ogDescription": "Ganzheitliche Förderung für Sportvereine. Finanzwissen für mentale Stärke und bessere Leistung auf dem Platz."
+    },
+    "breadcrumbs": {
+      "parentLabel": "Angebote",
+      "current": "BeAFox for Clubs"
+    },
     "hero": {
       "tag": "BeAFox for Clubs",
       "headline": "Geben Sie Ihren Sportlern BeAFox.",
@@ -934,6 +1078,93 @@
       "description": "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler. Mit BeAFox geben Sie ihnen die Sicherheit, die sie brauchen, um sich voll auf ihre Sportart zu konzentrieren.",
       "impact": "Ihre Sportler lernen verantwortungsvoll mit Geld umzugehen, während Sie den Überblick behalten. Finanzielle Sorgen gehören der Vergangenheit an – Ihre Talente können sich auf das Wesentliche fokussieren.",
       "ctaPartner": "Jetzt Partner werden"
+    },
+    "journey": {
+      "title": "Die",
+      "titleHighlight": "Transformation",
+      "subtitle": "Von finanziellen Sorgen zu mentaler Stärke.",
+      "withoutTitle": "Ohne BeAFox",
+      "withTitle": "Mit BeAFox",
+      "problems": [
+        "Sportler denken an Finanzen statt an Training",
+        "Finanzielle Sorgen lenken vom Sport ab",
+        "Mentale Belastung beeinträchtigt die Leistung",
+        "Keine Unterstützung durch den Verein"
+      ],
+      "benefits": [
+        "Verein stellt BeAFox für alle Sportler bereit",
+        "Sportler konzentrieren sich auf den Sport",
+        "Finanzielle Bildung läuft automatisch",
+        "Verein behält Überblick über Fortschritte"
+      ]
+    },
+    "benefits": {
+      "title": "Warum Vereine",
+      "titleHighlight": "BeAFox",
+      "titlePost": " nutzen",
+      "subtitle": "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler – mit messbaren Ergebnissen auf und neben dem Platz.",
+      "items": [
+        { "title": "Fokus auf den Sport", "description": "Ihre Sportler müssen sich keine Sorgen um Finanzen machen. Sie konzentrieren sich voll auf Training und Wettkämpfe – dank BeAFox, das Sie als Verein bereitstellen.", "stat": "85%", "statLabel": "Bessere Fokussierung" },
+        { "title": "Bessere Leistungen", "description": "Ausgeglichene Sportler ohne finanzielle Belastung zeigen messbar bessere Leistungen. Ihre Investition in die finanzielle Bildung zahlt sich auf dem Platz aus.", "stat": "92%", "statLabel": "Zufriedenheit" },
+        { "title": "Einfache Verwaltung", "description": "Als Verein stellen Sie BeAFox für alle Ihre Sportler bereit. Einfache Verwaltung, klare Kosten, vollständige Übersicht über alle Aktivitäten.", "stat": "200+", "statLabel": "Sportler" },
+        { "title": "Zukunftssicherheit", "description": "Ihre Sportler lernen früh verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere. Eine Investition, die sich langfristig auszahlt.", "stat": "15+", "statLabel": "Vereine" }
+      ]
+    },
+    "features": {
+      "title": "So funktioniert",
+      "titleHighlight": "BeAFox for Clubs",
+      "titlePost": "",
+      "subtitle": "Als Verein stellen Sie BeAFox bereit – Ihre Sportler lernen automatisch",
+      "items": [
+        { "id": "stufen", "title": "Automatische Finanzbildung", "description": "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese automatisch Zugang zu allen Lerninhalten. Sie müssen sich keine Gedanken über Finanzen machen – die App übernimmt die Bildung im Hintergrund, während sie sich auf den Sport konzentrieren.", "mockup": "/assets/Mockups/Mockup-Stufen.png" },
+        { "id": "lernpfad", "title": "Strukturiertes Lernen", "description": "Ihre Sportler lernen Schritt für Schritt alles, was sie über Finanzen wissen müssen – ohne dass Sie als Verein eingreifen müssen. Die App führt jeden Sportler automatisch durch die wichtigsten Themen, perfekt für die Zeit zwischen Trainingseinheiten.", "mockup": "/assets/Mockups/Mockup-Lernpfad.png" },
+        { "id": "rangliste", "title": "Motivation durch Wettbewerb", "description": "Ihre Sportler können untereinander antreten und sich gegenseitig motivieren. Ranglisten, Missionen und Challenges sorgen dafür, dass die Finanzbildung spielerisch bleibt – genau wie im Sport. So lernen sie, ohne es als Belastung zu empfinden.", "mockup": "/assets/Mockups/Mockup-Rangliste.png" },
+        { "id": "profil", "title": "Vollständige Übersicht für Vereine", "description": "Als Verein behalten Sie den Überblick: Sie sehen, welche Sportler aktiv lernen, wie der Fortschritt aussieht und wo Unterstützung benötigt wird. Dank BeAFox haben Sie alle Informationen zentral verfügbar.", "mockup": "/assets/Mockups/Mockup-Profil.png" }
+      ]
+    },
+    "package": {
+      "title": "Was im",
+      "titleHighlight": "Paket",
+      "titlePost": " enthalten ist",
+      "subtitle": "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese vollständigen Zugang zu allen BeAFox-Features",
+      "items": [
+        { "title": "Sportlerische Lern-App", "description": "Gamifizierte Finanzbildung, die Ihre Sportler motiviert und nachhaltig lernt" },
+        { "title": "Vollständiger Zugang", "description": "Alle Lernmodule, Missionen und Features ohne Einschränkungen" },
+        { "title": "Fortschritts-Tracking", "description": "Detaillierte Einblicke in den Lernfortschritt jedes einzelnen Sportlers" },
+        { "title": "Offizielle Zertifikate", "description": "Anerkannte Zertifikate für erfolgreich abgeschlossene Module" },
+        { "title": "Flexible Paketgröße", "description": "Stellen Sie BeAFox für einzelne Sportler oder das gesamte Team bereit – ganz nach Ihrem Bedarf" },
+        { "title": "Persönlicher Ansprechpartner", "description": "Dedizierter Account Manager für individuelle Betreuung" },
+        { "title": "DSGVO-konform", "description": "Vollständiger Datenschutz nach höchsten europäischen Standards" },
+        { "title": "Support & Updates", "description": "Kontinuierliche Updates und persönlicher Support bei Fragen" }
+      ]
+    },
+    "refundProgram": {
+      "title": "Rückführungsprogramm",
+      "titlePost": " für kleinere Vereine",
+      "subtitle": "Als kleiner Verein können Sie auch ohne große Pakete von BeAFox profitieren – mit unserem Rückführungsprogramm.",
+      "howTitle": "So funktioniert's",
+      "steps": [
+        { "title": "Partnercode erhalten", "description": "Als Partner-Verein erhalten Sie einen individuellen Partnercode, den Sie an Ihre Mitglieder weitergeben können." },
+        { "title": "Mitglieder nutzen den Code", "description": "Wenn ein Vereinsmitglied BeAFox Unlimited mit Ihrem Partnercode kauft, wird automatisch ein Teil des Betrags an Ihren Verein gespendet." },
+        { "title": "Verein profitiert", "description": "Die Spenden fließen direkt an Ihren Verein – ohne zusätzlichen Aufwand für Sie. Ihre Mitglieder unterstützen den Verein automatisch." }
+      ],
+      "benefitsTitle": "Ihre Vorteile",
+      "benefits": [
+        "Keine Mindestanzahl erforderlich",
+        "Automatische Spenden ohne Verwaltungsaufwand",
+        "Ihre Mitglieder unterstützen den Verein",
+        "Finanzielle Bildung für alle Vereinsmitglieder",
+        "Flexibel und unkompliziert"
+      ],
+      "idealFor": "Ideal für:",
+      "idealForText": "Kleinere Vereine, die ihre Mitglieder unterstützen möchten, ohne große Pakete zu kaufen.",
+      "cta": "Partnercode anfragen"
+    },
+    "cta": {
+      "title": "Bereit, BeAFox für Ihre Sportler bereitzustellen?",
+      "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch. Wir erstellen Ihnen ein individuelles Angebot für Ihren Verein – oder informieren Sie über unser Rückführungsprogramm für kleinere Vereine.",
+      "ctaPartner": "Jetzt Partner werden",
+      "ctaApp": "App herunterladen"
     }
   }
   ,

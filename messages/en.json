@@ -909,16 +909,160 @@
   }
   ,
   "schools": {
+    "meta": {
+      "title": "BeAFox for Schools – Financial Education for Schools",
+      "description": "Financial education for schools: Digital learning platform for financial education in the classroom. Ideal for teachers and pupils from year 7.",
+      "ogTitle": "BeAFox for Schools – Financial Education for Schools",
+      "ogDescription": "Playful financial education solutions for schools. Ideal for teachers and pupils from year 7."
+    },
+    "breadcrumbs": {
+      "parentLabel": "Offers",
+      "current": "BeAFox for Schools"
+    },
     "hero": {
+      "badge": "BeAFox for Schools",
       "priceHighlight": "€1 per pupil",
       "pricePost": "per year",
       "description": "We create real social impact by making financial education accessible to all pupils—regardless of background or circumstances.",
       "ctaPartner": "Become a partner",
       "ctaBook": "Book a call"
+    },
+    "mockups": {
+      "pathAlt": "BeAFox learning path mockup",
+      "stufenAlt": "BeAFox levels mockup",
+      "rankingAlt": "BeAFox ranking mockup",
+      "mascotAlt": "BeAFox mascot"
+    },
+    "stats": [
+      { "value": "1,000+", "label": "Pupils use BeAFox" },
+      { "value": "5+", "label": "Schools trust us" },
+      { "value": "98%", "label": "Satisfaction" },
+      { "value": "24/7", "label": "Available" }
+    ],
+    "problemSolution": {
+      "title": "We're closing the gap",
+      "titleHighlight": "in financial education",
+      "problemTitle": "The challenges",
+      "problemText": "A teacher looks after several classes at once. Pupils need a way to learn independently, even when the teacher isn't there in person.",
+      "problemBullets": ["Lesson cancellations due to illness", "Supervising multiple classes at once", "Pupils need meaningful activities", "Financial education missing from the curriculum"],
+      "solutionTitle": "Our solution",
+      "solutionText": "Pupils work independently and interactively with BeAFox. Without the teacher having to be there in person.",
+      "solutionText2": "For teachers: The integrated monitoring dashboard shows in real time what each pupil is learning, where they are and how they're progressing.",
+      "solutionBullets": ["Pupils learn independently", "Real-time overview for teachers", "Weak spots identified immediately", "Gamified system motivates"]
+    },
+    "benefits": {
+      "title": "Why",
+      "titleHighlight": "BeAFox for Schools",
+      "subtitle": "All benefits for your school, teachers and pupils at a glance.",
+      "items": [
+        { "title": "Time savings", "description": "Pupils learn independently. You save valuable lesson time and can focus on other important tasks." },
+        { "title": "Real-time overview", "description": "The dashboard shows you at any time what your pupils are learning, where they stand and how they're progressing." },
+        { "title": "Targeted support", "description": "Weak spots become visible immediately so you can support where needed. Strengths are rewarded and motivate pupils to keep going." },
+        { "title": "GDPR-compliant", "description": "We collect 0% data. Your pupils' data is in safe hands." },
+        { "title": "Evidence-based", "description": "Our content is based on proven teaching methods and was tested in a research project with over 500 participants." },
+        { "title": "Motivated pupils", "description": "The gamified system with points, missions and leaderboards keeps your pupils motivated and learning sustainably." }
+      ]
+    },
+    "useCases": {
+      "title": "How schools use",
+      "titleHighlight": "BeAFox",
+      "titlePost": "",
+      "subtitle": "Flexible use cases for different teaching situations",
+      "items": [
+        { "title": "Lesson cover", "description": "When a teacher is absent, pupils can learn independently with BeAFox. They stay busy and build important financial skills." },
+        { "title": "Homework & revision", "description": "Pupils can learn with BeAFox at home or in their free time. The gamified system motivates them to stay active outside the classroom too." },
+        { "title": "Project weeks", "description": "Perfect for project weeks on finance. Pupils work independently, teachers keep track of progress." },
+        { "title": "Elective subject", "description": "BeAFox works ideally as a basis for an elective in financial education. Structured content, clear learning paths and motivating learning." }
+      ],
+      "cta": "Become a partner"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Four simple steps to BeAFox in your school.",
+      "steps": [
+        { "step": "1", "title": "Free consultation", "description": "We discuss your requirements and create an individual offer for your school." },
+        { "step": "2", "title": "Simple setup", "description": "We set up the app for your school and create accounts for all pupils. It's quick and straightforward." },
+        { "step": "3", "title": "Pupils get started", "description": "Pupils can learn with BeAFox anytime – in class, at home or in their free time." },
+        { "step": "4", "title": "You stay in control", "description": "The monitoring dashboard shows you in real time which pupils are active, where they are and how they're progressing." }
+      ]
+    },
+    "pricing": {
+      "title": "Fair pricing for",
+      "titleHighlight": "schools",
+      "subtitle": "Flexible tiered pricing tailored to your school or institution.",
+      "price": "€1",
+      "perPupil": "per pupil",
+      "perYear": "per year",
+      "tagline": "Transparent, fair and no hidden costs.",
+      "partnerCta": "Become a partner",
+      "includedTitle": "Included in the price:",
+      "includedItems": ["Full access for all pupils", "Monitoring dashboard for teachers", "Unlimited lessons & features", "PDF export for reports", "Support & updates"],
+      "extraTitle": "Additional benefits:",
+      "extraItems": ["No hidden costs", "Cancel monthly", "GDPR-compliant", "Simple setup", "Personal contact"]
+    },
+    "dashboard": {
+      "title": "The",
+      "titleHighlight": "monitoring dashboard",
+      "subtitle": "Full control over your pupils' learning progress – everything at a glance.",
+      "items": [
+        { "id": "schueler", "title": "Manage pupils", "description": "Create pupil accounts, manage classes and keep track of all participants.", "mockup": "/Mockup-Macbook/Schueler.png" },
+        { "id": "fortschritt", "title": "Live progress", "description": "See in real time what each pupil is learning and how they're progressing.", "mockup": "/Mockup-Macbook/Live-Fortschritt.png" },
+        { "id": "stufen", "title": "Level tracking", "description": "Track your pupils' progress through all learning levels. See at a glance who has completed which topics.", "mockup": "/Mockup-Macbook/Stufen-Tracking.png" },
+        { "id": "verwalten", "title": "Manage class", "description": "Organise your classes, assign lessons and manage access.", "mockup": "/Mockup-Macbook/Verwalten.png" },
+        { "id": "pdf", "title": "Pupil PDF export", "description": "Export detailed reports and progress summaries as PDF. Perfect for parent meetings, reports or documentation.", "mockup": "/Mockup-Macbook/Schueler-PDF.png" },
+        { "id": "klasse", "title": "Create class", "description": "Create new classes in a few clicks. Invite pupils via CSV import or add them manually.", "mockup": "/Mockup-Macbook/Klasse-erstellen.png" }
+      ],
+      "cta": "Become a partner"
+    },
+    "whyFinance": {
+      "badgeTitle": "Why financial education?",
+      "points": [
+        { "number": "1", "title": "Financial education is general education", "description": "Financial literacy is an important part of general education. Every young person should have the chance to learn financial skills – regardless of family background." },
+        { "number": "2", "title": "Debt prevention", "description": "Statistically, at least one pupil per class will become over-indebted in their lifetime. High-quality financial education effectively helps prevent over-indebtedness." },
+        { "number": "3", "title": "Equal opportunities", "description": "Everyone should understand finances to form their own opinion; regardless of their own financial and family resources." }
+      ]
+    },
+    "testimonials": {
+      "title": "Feedback from",
+      "titleHighlight": "teachers",
+      "subtitle": "What participating teachers say after introducing BeAFox.",
+      "items": [
+        { "quote": "The training was extremely enriching and is highly recommended. The presenter did an excellent job of bringing a complex topic to life in an accessible way. I'm already looking forward to using the materials in my teaching.", "author": "Teacher, Grammar school" },
+        { "quote": "The training was really interesting and provided many practical methods that are easy to implement in the classroom. The materials are well prepared and ready to use.", "author": "Teacher, Secondary school" },
+        { "quote": "Financial education is taught here in a very practical way with lots of good application tips. After this, there's really no reason not to cover this important and interesting topic in school.", "author": "Teacher, Vocational school" }
+      ]
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "subtitle": "Everything you need to know about BeAFox for Schools.",
+      "items": [
+        { "id": 1, "question": "How long does setup take?", "answer": "Setup is quick and straightforward. After the consultation we set up the app for your school and create accounts for all pupils. The whole process usually takes just a few days." },
+        { "id": 2, "question": "Do pupils need their own devices?", "answer": "No, BeAFox works on all common devices – smartphones, tablets and computers. Pupils can use the app on their own devices or on school devices." },
+        { "id": 3, "question": "How is data protected?", "answer": "All data is stored securely and in line with GDPR. We take data protection and security seriously. Your pupils' data is in safe hands." },
+        { "id": 4, "question": "Can we try BeAFox before deciding?", "answer": "Yes! We offer a free consultation and can arrange a trial period. Just get in touch for more information." },
+        { "id": 5, "question": "What if we no longer want to use BeAFox?", "answer": "No problem! You can cancel BeAFox at any time on a monthly basis. There are no long-term contracts or hidden costs." },
+        { "id": 6, "question": "Is there training for teachers?", "answer": "Yes, we offer training for teachers where we explain the system, the dashboard and best practices for use in the classroom." }
+      ],
+      "viewAllCta": "View all FAQs"
+    },
+    "cta": {
+      "title": "Ready to bring financial education to your school?",
+      "subtitle": "Contact us for a no-obligation consultation and receive an individual offer for your school.",
+      "cta": "Become a partner"
     }
   }
   ,
   "clubs": {
+    "meta": {
+      "title": "BeAFox for Clubs – Financial Education for Clubs & Communities",
+      "description": "Financial education for clubs: BeAFox for Clubs offers financial education for sports clubs, youth clubs and communities. Financial literacy for mental strength and better performance.",
+      "ogTitle": "BeAFox for Clubs – Financial Education for Clubs & Communities",
+      "ogDescription": "Holistic support for sports clubs. Financial literacy for mental strength and better performance on the pitch."
+    },
+    "breadcrumbs": {
+      "parentLabel": "Offers",
+      "current": "BeAFox for Clubs"
+    },
     "hero": {
       "tag": "BeAFox for Clubs",
       "headline": "Give your athletes BeAFox.",
@@ -926,6 +1070,93 @@
       "description": "As a club, you invest in your athletes’ financial education. With BeAFox, you give them the confidence they need to fully focus on their sport.",
       "impact": "Your athletes learn to handle money responsibly while you keep an overview. Financial worries become a thing of the past—your talents can focus on what matters.",
       "ctaPartner": "Become a partner"
+    },
+    "journey": {
+      "title": "The",
+      "titleHighlight": "Transformation",
+      "subtitle": "From financial worries to mental strength.",
+      "withoutTitle": "Without BeAFox",
+      "withTitle": "With BeAFox",
+      "problems": [
+        "Athletes think about finances instead of training",
+        "Financial worries distract from sport",
+        "Mental pressure affects performance",
+        "No support from the club"
+      ],
+      "benefits": [
+        "Club provides BeAFox for all athletes",
+        "Athletes focus on sport",
+        "Financial education runs automatically",
+        "Club keeps track of progress"
+      ]
+    },
+    "benefits": {
+      "title": "Why clubs use",
+      "titleHighlight": "BeAFox",
+      "titlePost": "",
+      "subtitle": "As a club, you invest in your athletes' financial education—with measurable results on and off the pitch.",
+      "items": [
+        { "title": "Focus on sport", "description": "Your athletes don't have to worry about finances. They focus fully on training and competitions—thanks to BeAFox, which you provide as a club.", "stat": "85%", "statLabel": "Better focus" },
+        { "title": "Better performance", "description": "Balanced athletes without financial burden show measurably better performance. Your investment in financial education pays off on the pitch.", "stat": "92%", "statLabel": "Satisfaction" },
+        { "title": "Easy administration", "description": "As a club, you provide BeAFox for all your athletes. Simple administration, clear costs, full overview of all activities.", "stat": "200+", "statLabel": "Athletes" },
+        { "title": "Future security", "description": "Your athletes learn to handle money responsibly early—including for life after their career. An investment that pays off in the long run.", "stat": "15+", "statLabel": "Clubs" }
+      ]
+    },
+    "features": {
+      "title": "How",
+      "titleHighlight": "BeAFox for Clubs",
+      "titlePost": " works",
+      "subtitle": "As a club you provide BeAFox—your athletes learn automatically",
+      "items": [
+        { "id": "stufen", "title": "Automatic financial education", "description": "When you provide BeAFox for your athletes as a club, they automatically get access to all learning content. They don't have to think about finances—the app handles education in the background while they focus on sport.", "mockup": "/assets/Mockups/Mockup-Stufen.png" },
+        { "id": "lernpfad", "title": "Structured learning", "description": "Your athletes learn step by step everything they need to know about finance—without you having to intervene as a club. The app guides each athlete automatically through the most important topics, perfect for the time between training sessions.", "mockup": "/assets/Mockups/Mockup-Lernpfad.png" },
+        { "id": "rangliste", "title": "Motivation through competition", "description": "Your athletes can compete with each other and motivate one another. Leaderboards, missions and challenges keep financial education playful—just like sport. They learn without feeling it as a burden.", "mockup": "/assets/Mockups/Mockup-Rangliste.png" },
+        { "id": "profil", "title": "Full overview for clubs", "description": "As a club, you keep an overview: you see which athletes are learning actively, what progress looks like and where support is needed. Thanks to BeAFox, all information is available centrally.", "mockup": "/assets/Mockups/Mockup-Profil.png" }
+      ]
+    },
+    "package": {
+      "title": "What's included in",
+      "titleHighlight": "the package",
+      "titlePost": "",
+      "subtitle": "When you provide BeAFox for your athletes as a club, they get full access to all BeAFox features",
+      "items": [
+        { "title": "Athlete learning app", "description": "Gamified financial education that motivates your athletes and helps them learn sustainably" },
+        { "title": "Full access", "description": "All learning modules, missions and features without restrictions" },
+        { "title": "Progress tracking", "description": "Detailed insights into each athlete's learning progress" },
+        { "title": "Official certificates", "description": "Recognised certificates for successfully completed modules" },
+        { "title": "Flexible package size", "description": "Provide BeAFox for individual athletes or the whole team—according to your needs" },
+        { "title": "Personal contact", "description": "Dedicated account manager for individual support" },
+        { "title": "GDPR-compliant", "description": "Full data protection to the highest European standards" },
+        { "title": "Support & updates", "description": "Continuous updates and personal support for any questions" }
+      ]
+    },
+    "refundProgram": {
+      "title": "Referral programme",
+      "titlePost": " for smaller clubs",
+      "subtitle": "As a smaller club, you can benefit from BeAFox even without large packages—with our referral programme.",
+      "howTitle": "How it works",
+      "steps": [
+        { "title": "Receive partner code", "description": "As a partner club, you receive an individual partner code that you can pass on to your members." },
+        { "title": "Members use the code", "description": "When a club member buys BeAFox Unlimited with your partner code, a portion of the amount is automatically donated to your club." },
+        { "title": "Club benefits", "description": "The donations go directly to your club—without any extra effort on your part. Your members automatically support the club." }
+      ],
+      "benefitsTitle": "Your benefits",
+      "benefits": [
+        "No minimum number required",
+        "Automatic donations without administrative effort",
+        "Your members support the club",
+        "Financial education for all club members",
+        "Flexible and straightforward"
+      ],
+      "idealFor": "Ideal for:",
+      "idealForText": "Smaller clubs that want to support their members without buying large packages.",
+      "cta": "Request partner code"
+    },
+    "cta": {
+      "title": "Ready to provide BeAFox for your athletes?",
+      "subtitle": "Contact us for a no-obligation consultation. We'll create an individual offer for your club—or tell you about our referral programme for smaller clubs.",
+      "ctaPartner": "Become a partner",
+      "ctaApp": "Download app"
     }
   }
   ,

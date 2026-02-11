@@ -31,147 +31,24 @@ export default function ForSchoolsPage() {
   const [selectedDashboard, setSelectedDashboard] = useState(0);
   const [openFAQId, setOpenFAQId] = useState<number | null>(null);
 
-  const dashboardFeatures = [
-    {
-      id: "schueler",
-      title: "Schüler verwalten",
-      description:
-        "Erstellen Sie einfach Schüler-Accounts, verwalten Sie Klassen und behalten Sie den Überblick über alle Teilnehmer.",
-      mockup: "/Mockup-Macbook/Schueler.png",
-    },
-    {
-      id: "fortschritt",
-      title: "Live-Fortschritt",
-      description:
-        "Sehen Sie in Echtzeit, was jeder Schüler gerade lernt und wie er vorankommt.",
-      mockup: "/Mockup-Macbook/Live-Fortschritt.png",
-    },
-    {
-      id: "stufen",
-      title: "Stufen-Tracking",
-      description:
-        "Verfolgen Sie den Fortschritt Ihrer Schüler durch alle Lernstufen. Sehen Sie auf einen Blick, wer welche Themen bereits abgeschlossen hat.",
-      mockup: "/Mockup-Macbook/Stufen-Tracking.png",
-    },
-    {
-      id: "verwalten",
-      title: "Klasse verwalten",
-      description:
-        "Organisieren Sie Ihre Klassen, weisen Sie Lektionen zu und verwalten Sie den Zugriff.",
-      mockup: "/Mockup-Macbook/Verwalten.png",
-    },
-    {
-      id: "pdf",
-      title: "Schüler-PDF Export",
-      description:
-        "Exportieren Sie detaillierte Reports und Fortschrittsberichte als PDF. Perfekt für Elterngespräche, Zeugnisse oder Dokumentation.",
-      mockup: "/Mockup-Macbook/Schueler-PDF.png",
-    },
-    {
-      id: "klasse",
-      title: "Klasse erstellen",
-      description:
-        "Erstellen Sie neue Klassen mit wenigen Klicks. Laden Sie Schüler per CSV-Import ein oder fügen Sie sie manuell hinzu.",
-      mockup: "/Mockup-Macbook/Klasse-erstellen.png",
-    },
-  ];
-
-  const benefits = [
-    {
-      icon: Clock,
-      title: "Zeitersparnis",
-      description:
-        "Schüler lernen selbstständig. Sie sparen wertvolle Unterrichtszeit und können sich auf andere wichtige Aufgaben konzentrieren.",
-    },
-    {
-      icon: BarChart,
-      title: "Echtzeit-Überblick",
-      description:
-        "Das Dashboard zeigt Ihnen jederzeit, was Ihre Schüler lernen, wo sie stehen und wie sie vorankommen.",
-    },
-    {
-      icon: Target,
-      title: "Gezielte Unterstützung",
-      description:
-        "Schwächen werden sofort sichtbar, sodass Sie gezielt unterstützen können. Stärken werden belohnt und motivieren zum Weitermachen.",
-    },
-    {
-      icon: Shield,
-      title: "DSGVO-konform",
-      description:
-        "Wir sammeln 0,0% Daten. Ihre Schülerdaten sind bei uns in besten Händen.",
-    },
-    {
-      icon: Award,
-      title: "Wissenschaftlich fundiert",
-      description:
-        "Unsere Inhalte basieren auf bewährten Lehrmethoden und wurden in einem Forschungsprojekt mit über 500 Teilnehmern getestet.",
-    },
-    {
-      icon: Zap,
-      title: "Motivierte Schüler",
-      description:
-        "Durch das spielerische System mit Punkten, Missionen und Ranglisten bleiben Ihre Schüler motiviert und lernen nachhaltig.",
-    },
-  ];
-
-  const stats = [
-    {
-      icon: Users,
-      value: "1,000+",
-      label: "Schüler nutzen BeAFox",
-    },
-    {
-      icon: School,
-      value: "5+",
-      label: "Schulen vertrauen uns",
-    },
-    {
-      icon: TrendingUp,
-      value: "98%",
-      label: "Zufriedenheit",
-    },
-    {
-      icon: Clock,
-      value: "24/7",
-      label: "Verfügbar",
-    },
-  ];
-
-  const useCases = [
-    {
-      title: "Unterrichtsausfall",
-      description:
-        "Wenn ein Lehrer ausfällt, können Schüler selbstständig mit BeAFox lernen. Sie bleiben beschäftigt und lernen dabei wichtige Finanzkompetenzen.",
-      icon: BookOpen,
-    },
-    {
-      title: "Hausaufgaben & Vertiefung",
-      description:
-        "Schüler können zu Hause oder in der Freizeit mit BeAFox lernen. Das spielerische System motiviert sie, auch außerhalb des Unterrichts aktiv zu sein.",
-      icon: GraduationCap,
-    },
-    {
-      title: "Projektwochen",
-      description:
-        "Perfekt für Projektwochen zum Thema Finanzen. Schüler arbeiten selbstständig, Lehrer behalten den Überblick über den Fortschritt.",
-      icon: Target,
-    },
-    {
-      title: "Wahlpflichtfach",
-      description:
-        "BeAFox eignet sich ideal als Basis für ein Wahlpflichtfach Finanzbildung. Strukturierte Inhalte, klare Lernpfade und motivierendes Lernen.",
-      icon: Award,
-    },
-  ];
+  const dashboardFeatures = (t.raw("dashboard.items") as { id: string; title: string; description: string; mockup: string }[]) ?? [];
+  const benefitsRaw = (t.raw("benefits.items") as { title: string; description: string }[]) ?? [];
+  const benefitIcons = [Clock, BarChart, Target, Shield, Award, Zap];
+  const benefits = benefitsRaw.map((b, i) => ({ ...b, icon: benefitIcons[i] }));
+  const statsRaw = (t.raw("stats") as { value: string; label: string }[]) ?? [];
+  const statIcons = [Users, School, TrendingUp, Clock];
+  const stats = statsRaw.map((s, i) => ({ ...s, icon: statIcons[i] }));
+  const useCasesRaw = (t.raw("useCases.items") as { title: string; description: string }[]) ?? [];
+  const useCaseIcons = [BookOpen, GraduationCap, Target, Award];
+  const useCases = useCasesRaw.map((u, i) => ({ ...u, icon: useCaseIcons[i] }));
 
   return (
     <>
       {/* Breadcrumbs */}
       <Breadcrumbs
         items={[
-          { label: "Angebote", href: "/preise" },
-          { label: "BeAFox for Schools", href: "/fuer-schulen" },
+          { label: t("breadcrumbs.parentLabel"), href: "/preise" },
+          { label: t("breadcrumbs.current"), href: "/fuer-schulen" },
         ]}
       />
 
@@ -189,7 +66,7 @@ export default function ForSchoolsPage() {
               >
                 <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
                 <h1 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-                  BeAFox for Schools
+                  {t("hero.badge")}
                 </h1>
                 <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
               </motion.div>
@@ -257,7 +134,7 @@ export default function ForSchoolsPage() {
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Lernpfad.png"
-                    alt="BeAFox Lernpfad Mockup"
+                    alt={t("mockups.pathAlt")}
                     width={200}
                     height={428}
                     className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
@@ -273,7 +150,7 @@ export default function ForSchoolsPage() {
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Stufen.png"
-                    alt="BeAFox Stufen Mockup"
+                    alt={t("mockups.stufenAlt")}
                     width={240}
                     height={514}
                     className="object-contain drop-shadow-2xl w-[120px] sm:w-[160px] md:w-[240px] lg:w-[280px] h-auto"
@@ -290,7 +167,7 @@ export default function ForSchoolsPage() {
                 >
                   <Image
                     src="/assets/Mockups/Mockup-Rangliste.png"
-                    alt="BeAFox Rangliste Mockup"
+                    alt={t("mockups.rankingAlt")}
                     width={200}
                     height={428}
                     className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
@@ -339,8 +216,8 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
-              Wir schließen die Lücke{" "}
-              <span className="text-primaryOrange">in der Finanzbildung</span>
+              {t("problemSolution.title")}{" "}
+              <span className="text-primaryOrange">{t("problemSolution.titleHighlight")}</span>
             </h2>
           </motion.div>
 
@@ -354,20 +231,13 @@ export default function ForSchoolsPage() {
               className="bg-white rounded-xl p-6 md:p-8 border-2 border-primaryOrange/20"
             >
               <h3 className="text-2xl font-bold text-darkerGray mb-4">
-                Die Herausforderungen
+                {t("problemSolution.problemTitle")}
               </h3>
               <p className="hidden md:block text-lightGray mb-4 text-base md:text-lg">
-                Ein Lehrer betreut gleichzeitig mehrere Klassen. Die Schüler
-                benötigen eine Möglichkeit, selbstständig zu lernen, auch wenn
-                der Lehrer nicht direkt vor Ort ist.
+                {t("problemSolution.problemText")}
               </p>
               <ul className="space-y-2">
-                {[
-                  "Unterrichtsausfall durch Krankheit",
-                  "Mehrere Klassen gleichzeitig betreuen",
-                  "Schüler brauchen sinnvolle Beschäftigung",
-                  "Finanzbildung fehlt im Lehrplan",
-                ].map((item, index) => (
+                {(t.raw("problemSolution.problemBullets") as string[]).map((item, index) => (
                   <li
                     key={index}
                     className="flex items-start gap-2 text-lightGray"
@@ -388,25 +258,16 @@ export default function ForSchoolsPage() {
               className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 md:p-8 border-2 border-primaryOrange"
             >
               <h3 className="text-2xl font-bold text-primaryOrange mb-4">
-                Unsere Lösung
+                {t("problemSolution.solutionTitle")}
               </h3>
               <p className="text-lightGray mb-4 text-base md:text-lg">
-                Die Schüler arbeiten selbstständig und interaktiv mit{" "}
-                <strong>BeAFox</strong>. Ganz ohne direkte Anwesenheit des
-                Lehrers vor Ort.
+                {t("problemSolution.solutionText")}
               </p>
               <p className="text-lightGray text-base md:text-lg mb-4">
-                <strong>Für Lehrer:</strong> Das integrierte{" "}
-                <strong>Monitoring-Dashboard</strong> zeigt in Echtzeit, was
-                jeder Schüler gerade lernt, wo er steht und wie er vorankommt.
+                {t("problemSolution.solutionText2")}
               </p>
               <ul className="space-y-2">
-                {[
-                  "Selbstständiges Lernen der Schüler",
-                  "Echtzeit-Überblick für Lehrer",
-                  "Sofortige Erkennung von Schwächen",
-                  "Spielerisches System motiviert",
-                ].map((item, index) => (
+                {(t.raw("problemSolution.solutionBullets") as string[]).map((item, index) => (
                   <li
                     key={index}
                     className="flex items-start gap-2 text-darkerGray"
@@ -432,11 +293,11 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Warum{" "}
-              <span className="text-primaryOrange">BeAFox for Schools</span>?
+              {t("benefits.title")}{" "}
+              <span className="text-primaryOrange">{t("benefits.titleHighlight")}</span>?
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Alle Vorteile für Ihre Schule, Lehrer und Schüler auf einen Blick.
+              {t("benefits.subtitle")}
             </p>
           </motion.div>
 
@@ -474,12 +335,11 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              So setzen Schulen{" "}
-              <span className="text-primaryOrange">BeAFox</span> ein
+              {t("useCases.title")}{" "}
+              <span className="text-primaryOrange">{t("useCases.titleHighlight")}</span>{t("useCases.titlePost")}
             </h2>
             <p className="text-lg md:text-xl text-lightGray">
-              Flexible Einsatzmöglichkeiten für verschiedene
-              Unterrichtssituationen
+              {t("useCases.subtitle")}
             </p>
           </motion.div>
 
@@ -519,7 +379,7 @@ export default function ForSchoolsPage() {
               variant="primary"
               className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
             >
-              Jetzt Partner werden
+              {t("useCases.cta")}
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
@@ -537,40 +397,15 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              So funktioniert's
+              {t("howItWorks.title")}
             </h2>
             <p className="text-base md:text-xl text-lightGray">
-              In vier einfachen Schritten zu BeAFox in Ihrer Schule.
+              {t("howItWorks.subtitle")}
             </p>
           </motion.div>
 
           <div className="space-y-8">
-            {[
-              {
-                step: "1",
-                title: "Kostenlose Beratung",
-                description:
-                  "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule.",
-              },
-              {
-                step: "2",
-                title: "Einfache Einrichtung",
-                description:
-                  "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert.",
-              },
-              {
-                step: "3",
-                title: "Schüler starten",
-                description:
-                  "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit.",
-              },
-              {
-                step: "4",
-                title: "Sie behalten Überblick",
-                description:
-                  "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen.",
-              },
-            ].map((item, index) => (
+            {((t.raw("howItWorks.steps") as { step: string; title: string; description: string }[]) ?? []).map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
@@ -605,12 +440,11 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Faire Preise für{" "}
-              <span className="text-primaryOrange">Schulen</span>
+              {t("pricing.title")}{" "}
+              <span className="text-primaryOrange">{t("pricing.titleHighlight")}</span>
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Flexible Staffelpreise: passgenau für Ihre Schule oder
-              Institution.
+              {t("pricing.subtitle")}
             </p>
           </motion.div>
 
@@ -626,20 +460,20 @@ export default function ForSchoolsPage() {
               <div className="text-center mb-8">
                 <div className="flex items-baseline justify-center gap-2 mb-2">
                   <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-primaryOrange">
-                    €1
+                    {t("pricing.price")}
                   </span>
                 </div>
                 <div className="text-xl md:text-2xl text-lightGray mb-1">
-                  pro Schüler
+                  {t("pricing.perPupil")}
                 </div>
                 <div className="text-xl md:text-2xl text-lightGray">
-                  pro Jahr
+                  {t("pricing.perYear")}
                 </div>
               </div>
 
               <div className="bg-primaryOrange/5 rounded-xl p-6 mb-8">
                 <p className="text-base md:text-lg text-darkerGray font-medium text-center">
-                  Transparent, fair und ohne versteckte Kosten.
+                  {t("pricing.tagline")}
                 </p>
               </div>
 
@@ -649,7 +483,7 @@ export default function ForSchoolsPage() {
                   variant="primary"
                   className="flex items-center justify-center gap-2 mx-auto w-full !px-6 !py-3 md:!px-8 md:!py-4"
                 >
-                  Jetzt Partner werden
+                  {t("pricing.partnerCta")}
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
               </div>
@@ -665,16 +499,10 @@ export default function ForSchoolsPage() {
             >
               <div className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20">
                 <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
-                  Im Preis enthalten:
+                  {t("pricing.includedTitle")}
                 </h3>
                 <ul className="space-y-4">
-                  {[
-                    "Vollständiger Zugang für alle Schüler",
-                    "Monitoring-Dashboard für Lehrer",
-                    "Unbegrenzte Lektionen & Features",
-                    "PDF-Export für Reports",
-                    "Support & Updates",
-                  ].map((item, index) => (
+                  {(t.raw("pricing.includedItems") as string[]).map((item, index) => (
                     <li
                       key={index}
                       className="flex items-start gap-3 text-darkerGray"
@@ -688,16 +516,10 @@ export default function ForSchoolsPage() {
 
               <div className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20">
                 <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
-                  Zusätzliche Vorteile:
+                  {t("pricing.extraTitle")}
                 </h3>
                 <ul className="space-y-4">
-                  {[
-                    "Keine versteckten Kosten",
-                    "Monatlich kündbar",
-                    "DSGVO-konform",
-                    "Einfache Einrichtung",
-                    "Persönlicher Ansprechpartner",
-                  ].map((item, index) => (
+                  {(t.raw("pricing.extraItems") as string[]).map((item, index) => (
                     <li
                       key={index}
                       className="flex items-start gap-3 text-darkerGray"
@@ -724,12 +546,11 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-0 sm:mb-4">
-              Das{" "}
-              <span className="text-primaryOrange">Monitoring-Dashboard</span>
+              {t("dashboard.title")}{" "}
+              <span className="text-primaryOrange">{t("dashboard.titleHighlight")}</span>
             </h2>
             <p className="text-base md:text-xl text-lightGray max-w-3xl mx-auto">
-              Vollständige Kontrolle über den Lernfortschritt Ihrer Schüler –
-              alles auf einen Blick.
+              {t("dashboard.subtitle")}
             </p>
           </motion.div>
 
@@ -770,13 +591,15 @@ export default function ForSchoolsPage() {
                 transition={{ duration: 0.3 }}
                 className="relative w-full"
               >
+                {dashboardFeatures.length > 0 && (
                 <Image
-                  src={dashboardFeatures[selectedDashboard].mockup}
-                  alt={dashboardFeatures[selectedDashboard].title}
+                  src={dashboardFeatures[Math.min(selectedDashboard, dashboardFeatures.length - 1)].mockup}
+                  alt={dashboardFeatures[Math.min(selectedDashboard, dashboardFeatures.length - 1)].title}
                   width={1200}
                   height={800}
                   className="object-contain drop-shadow-2xl w-full h-auto rounded-lg border-2 border-primaryOrange/20"
                 />
+                )}
               </motion.div>
               {/* CTA Buttons */}
               <motion.div
@@ -790,7 +613,7 @@ export default function ForSchoolsPage() {
                   variant="primary"
                   className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4"
                 >
-                  Jetzt Partner werden
+                  {t("dashboard.cta")}
                   <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
                 </Button>
               </motion.div>
@@ -812,7 +635,7 @@ export default function ForSchoolsPage() {
             <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6">
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
               <h2 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-                Warum Finanzbildung?
+                {t("whyFinance.badgeTitle")}
               </h2>
               <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
             </div>
@@ -821,26 +644,7 @@ export default function ForSchoolsPage() {
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Three Points */}
             <div className="space-y-6">
-              {[
-                {
-                  number: "1",
-                  title: "Finanzbildung ist Allgemeinbildung",
-                  description:
-                    "Finanzielle Bildung ist ein wichtiger Teil der Allgemeinbildung. Jeder junge Mensch sollte die Möglichkeit haben, finanzielle Kompetenzen zu erlernen – unabhängig vom familiären Hintergrund.",
-                },
-                {
-                  number: "2",
-                  title: "Schulden-Prävention",
-                  description:
-                    "Statistisch gesehen wird sich mindestens ein:e Schüler:in pro Klasse im Laufe des Lebens überschulden. Hochwertige finanzielle Bildung beugt Überschuldung effektiv vor.",
-                },
-                {
-                  number: "3",
-                  title: "Chancengerechtigkeit",
-                  description:
-                    "Jede:r sollte über Finanzen Bescheid wissen, um sich eine eigene Meinung bilden zu können; unabhängig davon, welche eigenen finanziellen und familiären Ressourcen man mitbringt.",
-                },
-              ].map((point, index) => (
+              {((t.raw("whyFinance.points") as { number: string; title: string; description: string }[]) ?? []).map((point, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
@@ -875,7 +679,7 @@ export default function ForSchoolsPage() {
               <div className="relative">
                 <Image
                   src="/assets/Maskottchen.jpeg"
-                  alt="BeAFox Maskottchen"
+                  alt={t("mockups.mascotAlt")}
                   width={400}
                   height={400}
                   className="object-contain drop-shadow-2xl w-full max-w-[300px] md:max-w-[400px] h-auto rounded-2xl"
@@ -897,32 +701,16 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Feedback von{" "}
-              <span className="text-primaryOrange">Lehrkräften</span>
+              {t("testimonials.title")}{" "}
+              <span className="text-primaryOrange">{t("testimonials.titleHighlight")}</span>
             </h2>
             <p className="text-base md:text-xl text-lightGray">
-              Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.
+              {t("testimonials.subtitle")}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                quote:
-                  "Die Fortbildung war äußerst bereichernd und ist absolut empfehlenswert. Der Referentin gelang es hervorragend, ein komplexes Thema lebendig und verständlich darzustellen. Ich freue mich bereits darauf, die Unterlagen in meinem Unterricht einzusetzen.",
-                author: "Lehrkraft, Gymnasium",
-              },
-              {
-                quote:
-                  "Die Fortbildung war mega interessant und hat viele praktische und im Unterricht leicht umsetzbare Methoden vermittelt. Die Materialen sind toll aufbereitet und sofort einsetzbar.",
-                author: "Lehrkraft, Realschule",
-              },
-              {
-                quote:
-                  "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln.",
-                author: "Lehrkraft, Berufsschule",
-              },
-            ].map((testimonial, index) => (
+            {((t.raw("testimonials.items") as { quote: string; author: string }[]) ?? []).map((testimonial, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -964,54 +752,15 @@ export default function ForSchoolsPage() {
             className="text-center mb-8 sm:mb-12"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-2 sm:mb-4">
-              Häufige Fragen
+              {t("faq.title")}
             </h2>
             <p className="text-base md:text-xl text-lightGray">
-              Alles, was Sie über BeAFox for Schools wissen müssen.
+              {t("faq.subtitle")}
             </p>
           </motion.div>
 
           <div className="space-y-4">
-            {[
-              {
-                id: 1,
-                question: "Wie lange dauert die Einrichtung?",
-                answer:
-                  "Die Einrichtung geht schnell und unkompliziert. Nach der Beratung richten wir die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Der gesamte Prozess dauert in der Regel nur wenige Tage.",
-              },
-              {
-                id: 2,
-                question: "Benötigen die Schüler eigene Geräte?",
-                answer:
-                  "Nein, BeAFox funktioniert auf allen gängigen Geräten – Smartphones, Tablets und Computern. Die Schüler können die App auf ihren eigenen Geräten nutzen oder auf schuleigenen Geräten.",
-              },
-              {
-                id: 3,
-                question: "Wie werden die Daten geschützt?",
-                answer:
-                  "Alle Daten werden sicher und DSGVO-konform gespeichert. Wir legen großen Wert auf Datenschutz und Sicherheit. Ihre Schülerdaten sind bei uns in besten Händen.",
-              },
-              {
-                id: 4,
-                question:
-                  "Können wir BeAFox testen, bevor wir uns entscheiden?",
-                answer:
-                  "Ja, gerne! Wir bieten eine kostenlose Beratung und können Ihnen auch eine Testphase ermöglichen. Kontaktieren Sie uns einfach für weitere Informationen.",
-              },
-              {
-                id: 5,
-                question:
-                  "Was passiert, wenn wir BeAFox nicht mehr nutzen möchten?",
-                answer:
-                  "Kein Problem! Sie können BeAFox jederzeit monatlich kündigen. Es gibt keine langfristigen Verträge oder versteckten Kosten.",
-              },
-              {
-                id: 6,
-                question: "Gibt es Schulungen für Lehrkräfte?",
-                answer:
-                  "Ja, wir bieten Fortbildungen für Lehrkräfte an, in denen wir das System, das Dashboard und die besten Praktiken für den Einsatz im Unterricht erklären.",
-              },
-            ].map((faq, index) => {
+            {((t.raw("faq.items") as { id: number; question: string; answer: string }[]) ?? []).map((faq, index) => {
               const isOpen = openFAQId === faq.id;
               const handleToggle = () => {
                 setOpenFAQId(isOpen ? null : faq.id);
@@ -1074,7 +823,7 @@ export default function ForSchoolsPage() {
               variant="outline"
               className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
             >
-              Alle FAQs ansehen
+              {t("faq.viewAllCta")}
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
@@ -1101,7 +850,7 @@ export default function ForSchoolsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
           >
-            Bereit, Finanzbildung in Ihre Schule zu bringen?
+            {t("cta.title")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -1110,8 +859,7 @@ export default function ForSchoolsPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg md:text-xl mb-8 text-primaryWhite/90"
           >
-            Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und
-            erhalten Sie ein individuelles Angebot für Ihre Schule.
+            {t("cta.subtitle")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -1125,7 +873,7 @@ export default function ForSchoolsPage() {
               variant="secondary"
               className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
             >
-              Jetzt Partner werden{" "}
+              {t("cta.cta")}{" "}
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>

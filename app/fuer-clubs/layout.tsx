@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
-  description:
-    "Finanzbildung für Vereine: BeAFox for Clubs bietet Finanzbildung für Sportvereine, Finanzbildung für Jugendvereine und Finanzbildung in Communities. Finanzwissen für mentale Stärke und bessere Leistung.",
-  openGraph: {
-    title: "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
-    description:
-      "Ganzheitliche Förderung für Sportvereine. Finanzwissen für mentale Stärke und bessere Leistung auf dem Platz.",
-    url: "https://beafox.app/fuer-clubs",
-  },
-  alternates: {
-    canonical: "https://beafox.app/fuer-clubs",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("clubs");
+
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    openGraph: {
+      title: t("meta.ogTitle"),
+      description: t("meta.ogDescription"),
+      url: "https://beafox.app/fuer-clubs",
+    },
+    alternates: {
+      canonical: "https://beafox.app/fuer-clubs",
+    },
+  };
+}
 
 export default function ClubsLayout({
   children,
