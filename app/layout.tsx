@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,90 +12,66 @@ import SnipcartProvider from "@/components/SnipcartProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://beafox.app"),
-  title: {
-    default: "BeAFox - Finanzbildungs-Ökosystem für junge Menschen",
-    template: "%s | BeAFox",
-  },
-  description:
-    "Digitale Finanzbildungsplattform für junge Menschen: Finanzbildung App für Privatnutzer, Finanzbildung für Unternehmen und Finanzbildung für Schulen. Spielerische Lern-App mit Finanzbildung für Azubis, Finanzbildung im Schulunterricht und Finanzbildung für Vereine.",
-  keywords: [
-    "Finanzbildung",
-    "Finanzbildung App",
-    "digitale Finanzbildung",
-    "Finanzbildung für Unternehmen",
-    "Finanzbildung für Schulen",
-    "Finanzbildung für Azubis",
-    "Finanzbildung im Schulunterricht",
-    "Finanzbildung Schüler",
-    "Finanzbildung für Vereine",
-    "Finanzbildung für Jugendvereine",
-    "Finanzbildung Community",
-    "Lern-App für Finanzen",
-    "Finanz-App Premium",
-    "Finanzwissen lernen",
-    "Geld lernen",
-    "Finanztraining Azubis",
-    "digitale Lernplattform",
-    "spielerische Lernplattform",
-    "gamification lernen",
-    "BeAFox",
-  ],
-  authors: [{ name: "BeAFox UG (haftungsbeschränkt)" }],
-  creator: "BeAFox",
-  publisher: "BeAFox UG (haftungsbeschränkt)",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  openGraph: {
-    type: "website",
-    locale: "de_DE",
-    url: "https://beafox.app",
-    siteName: "BeAFox",
-    title: "BeAFox - Finanzbildungs-Ökosystem für junge Menschen",
-    description:
-      "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen. Speziell für Schulen und Ausbildungsbetriebe entwickelt.",
-    images: [
-      {
-        url: "/assets/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "BeAFox - Finanzbildungs-Ökosystem",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "BeAFox - Finanzbildungs-Ökosystem für junge Menschen",
-    description:
-      "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen.",
-    images: ["/assets/og-image.jpg"],
-    creator: "@beafox_app",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("rootMeta");
+  const locale = await getLocale();
+  const keywords = (t.raw("keywords") as string[]) ?? [];
+
+  return {
+    metadataBase: new URL("https://beafox.app"),
+    title: {
+      default: t("title"),
+      template: t("titleTemplate"),
+    },
+    description: t("description"),
+    keywords,
+    authors: [{ name: "BeAFox UG (haftungsbeschränkt)" }],
+    creator: "BeAFox",
+    publisher: "BeAFox UG (haftungsbeschränkt)",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "de" ? "de_DE" : "en_US",
+      url: "https://beafox.app",
+      siteName: "BeAFox",
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      images: [
+        {
+          url: "/assets/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: t("ogImageAlt"),
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("twitterTitle"),
+      description: t("twitterDescription"),
+      images: ["/assets/og-image.jpg"],
+      creator: "@beafox_app",
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-  verification: {
-    // Google Search Console
-    // google: "your-google-verification-code",
-    // Bing Webmaster Tools
-    // other: "your-bing-verification-code",
-  },
-  alternates: {
-    canonical: "https://beafox.app",
-  },
-  icons: {
+    verification: {},
+    alternates: {
+      canonical: "https://beafox.app",
+    },
+    icons: {
     icon: [
       // Hauptfavicon - Logo.png als Browser-Tab Icon
       { url: "/Logo.png", sizes: "any", type: "image/png" },
@@ -124,8 +100,9 @@ export const metadata: Metadata = {
       },
     ],
     shortcut: "/Logo.png",
-  },
+  }
 };
+}
 
 export default async function RootLayout({
   children,

@@ -1,11 +1,13 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { getTranslations } from "next-intl/server";
 
-export default function manifest(): MetadataRoute.Manifest {
+export default async function manifest(): Promise<MetadataRoute.Manifest> {
+  const t = await getTranslations("manifest");
+
   return {
-    name: "BeAFox - Finanzbildungs-Ökosystem",
-    short_name: "BeAFox",
-    description:
-      "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen.",
+    name: t("name"),
+    short_name: t("shortName"),
+    description: t("description"),
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Datenschutzerklärung",
-  description:
-    "Datenschutzerklärung der BeAFox UG (haftungsbeschränkt) - Informationen zur Datenverarbeitung, Cookies und Ihren Rechten gemäß DSGVO.",
-  robots: {
-    index: false,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://beafox.app/datenschutz",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("privacy");
+
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+    robots: {
+      index: false,
+      follow: true,
+    },
+    alternates: {
+      canonical: "https://beafox.app/datenschutz",
+    },
+  };
+}
 
 export default function PrivacyLayout({
   children,
