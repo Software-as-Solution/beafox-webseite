@@ -3,7 +3,28 @@
     "title": "BeAFox - Finanzbildungs-Ökosystem für junge Menschen",
     "titleTemplate": "%s | BeAFox",
     "description": "Digitale Finanzbildungsplattform für junge Menschen: Finanzbildung App für Privatnutzer, Finanzbildung für Unternehmen und Finanzbildung für Schulen. Spielerische Lern-App mit Finanzbildung für Azubis, Finanzbildung im Schulunterricht und Finanzbildung für Vereine.",
-    "keywords": ["Finanzbildung", "Finanzbildung App", "digitale Finanzbildung", "Finanzbildung für Unternehmen", "Finanzbildung für Schulen", "Finanzbildung für Azubis", "Finanzbildung im Schulunterricht", "Finanzbildung Schüler", "Finanzbildung für Vereine", "Finanzbildung für Jugendvereine", "Finanzbildung Community", "Lern-App für Finanzen", "Finanz-App Premium", "Finanzwissen lernen", "Geld lernen", "Finanztraining Azubis", "digitale Lernplattform", "spielerische Lernplattform", "gamification lernen", "BeAFox"],
+    "keywords": [
+      "Finanzbildung",
+      "Finanzbildung App",
+      "digitale Finanzbildung",
+      "Finanzbildung für Unternehmen",
+      "Finanzbildung für Schulen",
+      "Finanzbildung für Azubis",
+      "Finanzbildung im Schulunterricht",
+      "Finanzbildung Schüler",
+      "Finanzbildung für Vereine",
+      "Finanzbildung für Jugendvereine",
+      "Finanzbildung Community",
+      "Lern-App für Finanzen",
+      "Finanz-App Premium",
+      "Finanzwissen lernen",
+      "Geld lernen",
+      "Finanztraining Azubis",
+      "digitale Lernplattform",
+      "spielerische Lernplattform",
+      "gamification lernen",
+      "BeAFox"
+    ],
     "ogTitle": "BeAFox - Finanzbildungs-Ökosystem für junge Menschen",
     "ogDescription": "Das erste unabhängige, spielerische Lern-App für Finanzbildung junger Menschen. Speziell für Schulen und Ausbildungsbetriebe entwickelt.",
     "ogImageAlt": "BeAFox - Finanzbildungs-Ökosystem",
@@ -127,14 +148,13 @@
       "appUpdates": "App-Updates"
     },
     "copyright": "Copyright © {year} BeAFox UG (haftungsbeschränkt)"
-  }
-  ,
+  },
   "home": {
     "hero": {
       "badge": "Das erste Finanzbildungs-Ökosystem",
       "headline": {
-        "knowledge": "WISSEN",
-        "money": "GELD"
+        "line1": "Deine Finanzen.",
+        "line2": "Einfach durchgespielt."
       },
       "words": ["FREIHEIT", "SICHERHEIT"],
       "description": "BeAFox ist die erste unabhängige und spielerische Lern-App für Finanzbildung junger Menschen, die sich auf unabhängige Wissensvermittlung konzentriert und speziell für Schulen und Ausbildungsbetriebe entwickelt wurde.",
@@ -145,41 +165,76 @@
       },
       "cta": {
         "download": "App herunterladen",
-        "partner": "Jetzt Partner werden"
+        "partner": "Pilotprojekt anfordern"
       }
     },
     "stats": {
       "privateUsers": "Aktive Privatnutzer",
-      "schools": { "pre": "Schulen & Ausbildungsbetriebe die", "post": "BeAFox nutzen" },
-      "learners": { "pre": "Schüler, Studenten und Azubis die", "post": "BeAFox nutzen" }
+      "schools": {
+        "pre": "Schulen & Ausbildungsbetriebe die",
+        "post": "BeAFox nutzen"
+      },
+      "learners": {
+        "pre": "Schüler, Studenten und Azubis die",
+        "post": "BeAFox nutzen"
+      }
     },
     "partnersCarousel": { "alt": "Partner {index}" },
     "useCasesSection": {
       "title": { "pre": "Eine App für jeden", "highlight": "Einsatz" },
-      "subtitle": "Entdecke unsere maßgeschneiderten Lösungen für Privatpersonen, Unternehmen, Schulen und Vereine – entwickelt für jeden Bedarf",
+      "subtitle": "Entdecke unsere maßgeschneiderten Lösungen für Schulen und Ausbildungsbetriebe.",
       "more": "Mehr erfahren"
     },
     "useCases": {
       "unlimited": {
         "title": "BeAFox Unlimited",
         "description": "Die Premium-Version für alle, die ihre Finanzbildung auf das nächste Level bringen wollen.",
-        "features": ["Exklusive Premium-Inhalte", "Aktive Community", "Individuelle Lernpfade", "Unbegrenzter Zugang"]
+        "features": [
+          "Exklusive Premium-Inhalte",
+          "Aktive Community",
+          "Individuelle Lernpfade",
+          "Unbegrenzter Zugang"
+        ]
       },
       "business": {
         "title": "BeAFox for Business",
-        "description": "Stärke deine Mitarbeiter mit professioneller Finanzbildung und positioniere dich als verantwortungsvoller Arbeitgeber.",
-        "features": ["Employer Branding", "Individuelle Workshops", "Mitarbeiter-Zertifikate", "Unternehmens-Dashboards"]
+        "description": "Mach deine Azubis finanziell handlungsfähig und unterstreiche deine Rolle als zukunftsorientierter Arbeitgeber.",
+        "features": [
+          "Moderner Benefit in der Ausbildung",
+          "Stärkung Ihrer Arbeitgeberattraktivität",
+          "Weniger finanzielle Belastung und Stress",
+          "Handlungsorientierte Workshops & Lernmodule"
+        ]
       },
       "schools": {
         "title": "BeAFox for Schools",
-        "description": "Ergänze deinen Unterricht mit spielerischer Finanzbildung, die Schüler begeistert und nachhaltig wirkt.",
-        "features": ["DSGVO-konform", "Präventive Maßnahmen", "Unterrichtsmaterialien", "Motivierende Lernmethoden"]
+        "description": "Digitale Finanzbildung, die Schüler begeistert, echte Handlungskompetenz vermittelt und Lehrkräfte im Unterricht spürbar entlastet.",
+        "features": [
+          "DSGVO-konforme & sichere Plattform",
+          "Strukturierte Materialien & Lehrkräfte-Guide",
+          "Interaktive Lernmodule mit nachhaltigem Lerneffekt",
+          "Präventive Finanzbildung zur Schulden- und Fehlentscheidungsprävention"
+        ]
       },
       "partners": {
         "title": "BeAFox for Clubs",
         "description": "Werde Teil unseres Netzwerks und stärke deine Gemeinschaft mit wertvoller Finanzbildung.",
-        "features": ["Co-Branding", "Spendenprogramme", "Soziale Verantwortung", "Exklusive Mitglieder-Vorteile"]
+        "features": [
+          "Co-Branding",
+          "Spendenprogramme",
+          "Soziale Verantwortung",
+          "Exklusive Mitglieder-Vorteile"
+        ]
       }
+    },
+    "experienceSection": {
+      "badge": "Unsere Geschichte",
+      "title": "Wir sprechen aus",
+      "titleHighlight": "Erfahrung",
+      "quote": "\"Erstes Gehalt, alles ausgegeben, Monat vorbei und dann standen da Rechnungen, Mahnungen und Schulden. Niemand hat uns je beigebracht, wie Geld wirklich funktioniert.\"",
+      "paragraph1": "Wir waren selbst Azubis – jung, aufgeregt, endlich eigenes Geld. Doch ohne Wissen über Budgets, Sparen oder Verträge haben wir jeden Cent verbrannt. Dispo überzogen, Ratenzahlung hier, Abo-Falle da. Was als Freiheit begann, wurde schnell zu echtem Stress: schlaflose Nächte, Scham und das Gefühl, komplett allein damit zu sein.",
+      "paragraph2": "Genau dieses Gefühl war der Startschuss für BeAFox. Wir wollen, dass die nächste Generation diese Fehler nicht wiederholen muss. Deshalb haben wir ein Finanzbildungs-Ökosystem aufgebaut, das Schüler und Auszubildende befähigt, selbstbewusst und eigenständig finanzielle Entscheidungen zu treffen.",
+      "paragraph3": "Wenn auch nur eine Person durch BeAFox einen Fehler weniger macht – dann hat sich alles gelohnt."
     },
     "ecosystem": {
       "title": "Finanzbildungs-Ökosystem",
@@ -187,6 +242,10 @@
         "anytime": {
           "title": "Finanzbildung jederzeit",
           "text": "Lerne wann und wo du willst. Ob auf dem Smartphone in der Bahn, am Laptop zu Hause oder auf dem Tablet in der Pause. BeAFox passt sich deinem Alltag an. Dein Fortschritt wird automatisch synchronisiert, sodass du nahtlos zwischen Geräten wechseln kannst."
+        },
+        "action": {
+          "title": "Finanzielle Handlungsfähigkeit",
+          "text": "Wir vermitteln nicht nur Wissen, sondern echte Handlungskompetenz. Damit jede Person Finanzen im echten Leben sicher anwenden kann – von Budgetplanung über Verträge bis hin zu wichtigen Alltagsentscheidungen."
         },
         "school": {
           "title": "Finanzbildung in der Schule",
@@ -197,6 +256,10 @@
         "training": {
           "title": "Finanzbildung in Ausbildungsbetrieben",
           "text": "Auszubildende erhalten mit BeAFox praxisnahe Finanzbildung, die direkt im Berufsalltag anwendbar ist. Betriebe können ihren Nachwuchs gezielt fördern und zeigen, dass ihnen die finanzielle Zukunft ihrer Auszubildenden wichtig ist."
+        },
+        "school": {
+          "title": "Finanzbildung in Schulen",
+          "text": "BeAFox ist speziell für den Einsatz im Unterricht entwickelt. Lehrkräfte können den Lernfortschritt ihrer Klasse verfolgen und spielerische Wettbewerbe starten. So kann Finanzbildung auch außerhalb des Lehrplans unterrichtet werden."
         },
         "clubs": {
           "title": "Finanzbildung für Vereine",
@@ -213,7 +276,7 @@
       "title": "So funktioniert BeAFox",
       "scrollMore": "Scrollen für mehr",
       "mockupAlt": "BeAFox {feature} Mockup",
-      "ctaPartner": "Jetzt Partner werden"
+      "ctaPartner": "Pilotprojekt anfordern"
     },
     "appFeatures": {
       "stufen": {
@@ -250,18 +313,30 @@
       "items": [
         {
           "title": "Finanzbildung als Future Skill",
-          "text": "Finanzbildung wird immer komplizierter, gleichzeitig aber auch wichtiger. In einer sich schnell verändernden Welt ist finanzielle Kompetenz ein entscheidender Future Skill, der junge Menschen auf die Herausforderungen von morgen vorbereitet."
+          "text": "Finanzwissen ist ein zentraler Future Skill, der junge Menschen auf die Herausforderungen von morgen vorbereitet."
         },
         {
           "title": "Finanzbildung als Erfolgsfaktor",
-          "text": "Studien zeigen: Finanziell gebildete Menschen sind erfolgreicher im Leben, in der Arbeit und überall. Finanzwissen ist nicht nur ein Vorteil, sondern ein entscheidender Erfolgsfaktor für die persönliche und berufliche Entwicklung."
+          "text": "Wer Finanzen versteht, trifft bessere Entscheidungen in Alltag, Beruf und Zukunft."
         },
         {
           "title": "Chancengerechtigkeit",
-          "text": "Jede:r sollte die gleichen Chancen haben, finanzielle Bildung zu erhalten - unabhängig vom sozialen Hintergrund oder den finanziellen Ressourcen der Familie. BeAFox schafft Chancengerechtigkeit durch zugängliche, neutrale Finanzbildung für alle."
+          "text": "Jede:r sollte unabhängig von Herkunft oder Einkommen Zugang zu neutraler Finanzbildung haben."
         }
       ],
-      "mascotAlt": "BeAFox Maskottchen"
+      "mascotAlt": "BeAFox Maskottchen",
+      "sdgTitle": "Unsere Ziele für nachhaltige Entwicklung",
+      "sdgSubtitle": "BeAFox orientiert sich an den UN-Nachhaltigkeitszielen (SDGs) und trägt aktiv zu einer gerechteren und nachhaltigeren Zukunft bei.",
+      "sdgs": [
+        { "id": "01", "name": "Keine Armut" },
+        { "id": "03", "name": "Gesundheit und Wohlergehen" },
+        { "id": "04", "name": "Hochwertige Bildung" },
+        { "id": "05", "name": "Geschlechtergleichheit" },
+        { "id": "08", "name": "Menschenwürdige Arbeit und Wirtschaftswachstum" },
+        { "id": "09", "name": "Industrie, Innovation und Infrastruktur" },
+        { "id": "10", "name": "Weniger Ungleichheiten" },
+        { "id": "17", "name": "Partnerschaften zur Erreichung der Ziele" }
+      ]
     },
     "downloadBanner": {
       "title": {
@@ -280,9 +355,12 @@
     },
     "cta": {
       "badge": "Bereit für BeAFox?",
-      "title": "Jetzt Partner werden!",
+      "title": "Pilotprojekt anfordern!",
       "description": "Mit unserer Lern-App haben wir endlich eine Möglichkeit geschaffen, das oft als langweilig empfundene Thema Finanzen nachhaltig und verständlich zu vermitteln. Wir möchten, dass die junge Generation selbstständig und motiviert Finanzwissen erwirbt.",
-      "buttons": { "partner": "Jetzt Partner werden", "book": "Termin vereinbaren" }
+      "buttons": {
+        "partner": "Pilotprojekt anfordern",
+        "book": "Termin vereinbaren"
+      }
     },
     "blogPreview": {
       "title": "Unser Blog",
@@ -320,8 +398,7 @@
         "description": "Spielerische Lern-App für Finanzbildung junger Menschen. Lerne Finanzwissen mit Gamification, Missionen und Challenges."
       }
     }
-  }
-  ,
+  },
   "faq": {
     "meta": {
       "title": "FAQ – Häufige Fragen | BeAFox",
@@ -357,10 +434,26 @@
       "subtitle": "Schnellzugriff auf wichtige Informationen",
       "learnMore": "Mehr erfahren",
       "links": [
-        { "title": "BeAFox for Business", "description": "BeAFox for Business im Detail", "href": "/fuer-unternehmen" },
-        { "title": "BeAFox Unlimited", "description": "Unbegrenztes Lernen für Privatpersonen", "href": "/beafox-unlimited" },
-        { "title": "Für Schulen", "description": "Alles über BeAFox for Schools", "href": "/fuer-schulen" },
-        { "title": "Kontakt", "description": "Kontaktiere uns für Fragen", "href": "/kontakt" }
+        {
+          "title": "BeAFox for Business",
+          "description": "BeAFox for Business im Detail",
+          "href": "/fuer-unternehmen"
+        },
+        {
+          "title": "BeAFox Unlimited",
+          "description": "Unbegrenztes Lernen für Privatpersonen",
+          "href": "/beafox-unlimited"
+        },
+        {
+          "title": "Für Schulen",
+          "description": "Alles über BeAFox for Schools",
+          "href": "/fuer-schulen"
+        },
+        {
+          "title": "Kontakt",
+          "description": "Kontaktiere uns für Fragen",
+          "href": "/kontakt"
+        }
       ]
     },
     "contactCta": {
@@ -369,27 +462,120 @@
       "cta": "Kontakt aufnehmen"
     },
     "items": [
-      { "id": 1, "question": "Gibt es Belohnungen oder Fortschrittsanzeigen?", "answer": "Ja! Du kannst Punkte sammeln, Missionen abschließen und deinen Fortschritt jederzeit verfolgen – so macht Lernen Spaß. Das gamifizierte System motiviert dich, kontinuierlich zu lernen und deine Finanzkompetenz zu steigern.", "categoryId": "general", "popular": true },
-      { "id": 2, "question": "Wie viel kostet BeAFox für Bildungseinrichtungen?", "answer": "Um Finanzbildung für alle Schüler*innen zugänglich zu machen, bieten wir Schulen faire, gestaffelte Preise an. Für Schulen beträgt der Preis 1€ pro Schüler pro Jahr. Für Unternehmen bieten wir ab 10 Lizenzen gestaffelte Preise ab 3,99€ pro Monat. Kontaktieren Sie uns für ein individuelles Angebot.", "categoryId": "pricing", "popular": true },
-      { "id": 3, "question": "Gibt es einen Lehrer bzw. Admin-Zugang?", "answer": "Ja, für Lehrkräfte, Ausbilder*innen und Admins bieten wir ein umfassendes Dashboard an, über das Schüler-Accounts erstellt, Klassen verwaltet und der Lernfortschritt der Teilnehmenden detailliert eingesehen werden können. Das Dashboard bietet auch Analysen und Reports.", "categoryId": "schoolsBusiness", "popular": true },
-      { "id": 4, "question": "Ist BeAFox wirklich unabhängig und neutral?", "answer": "Ja, absolut! Wir fokussieren uns auf die reine Wissensvermittlung. In der App werden keine Finanzprodukte beworben, sodass sich die Inhalte ehrlich und vertrauensvoll anfühlen. Unsere Mission ist es, echte Finanzbildung zu vermitteln, nicht Produkte zu verkaufen.", "categoryId": "general", "popular": true },
-      { "id": 5, "question": "Wie funktioniert das spielerische System?", "answer": "Durch ein spielerisches System mit Punkten, Missionen, Belohnungen und Ranglisten fühlt sich lernen nicht mehr wie eine lästige Pflicht an. Die Schüler bleiben motiviert und lernen nachhaltig. Du kannst Level aufsteigen, Achievements freischalten und dich mit anderen messen.", "categoryId": "general" },
-      { "id": 6, "question": "Kann ich BeAFox auch als Privatperson nutzen?", "answer": "Ja! BeAFox steht auch Privatpersonen zur Verfügung. Du erhältst vollen Zugriff auf alle Lektionen und kannst in deinem eigenen Tempo lernen. Wir bieten verschiedene Abo-Modelle: Monatlich (4,99€), Jahresabo (3,99€/Monat) oder Lifetime (49,99€ einmalig).", "categoryId": "pricing" },
-      { "id": 7, "question": "Wie wissenschaftlich fundiert ist BeAFox?", "answer": "Wir verwenden wissenschaftlich fundierte Lehrmethoden, um Lektionen zu erstellen, die erfolgreich dein Finanzwissen verbessern. Unser Forschungsprojekt mit über 500 Teilnehmern hat gezeigt, dass unsere Methoden funktionieren. Die Inhalte werden von Finanzexperten und Pädagogen entwickelt.", "categoryId": "general" },
-      { "id": 8, "question": "Was ist der Unterschied zwischen BeAFox for Schools und BeAFox for Business?", "answer": "BeAFox for Schools richtet sich an Bildungseinrichtungen und bietet ein Monitoring-Dashboard für Lehrer. BeAFox for Business richtet sich an Ausbildungsbetriebe und beinhaltet zusätzlich regelmäßige Workshops (alle 6 Monate), offizielle Zertifikate und erweiterte Reporting-Funktionen.", "categoryId": "schoolsBusiness" },
-      { "id": 9, "question": "Kann ich BeAFox vor dem Kauf testen?", "answer": "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und eine Demo-Version. Schulen können ein Pilotprojekt starten, um BeAFox unverbindlich zu testen.", "categoryId": "pricing" },
-      { "id": 10, "question": "Wie oft werden neue Inhalte hinzugefügt?", "answer": "Wir arbeiten kontinuierlich an neuen Lektionen und Features. Alle Nutzer erhalten regelmäßige Updates mit neuen Inhalten und Verbesserungen. Unser Ziel ist es, monatlich neue Lektionen und vierteljährlich größere Feature-Updates zu veröffentlichen.", "categoryId": "general" },
-      { "id": 11, "question": "Gibt es Support, wenn ich Fragen habe?", "answer": "Ja, unser Support ist rund um die Uhr für dich da und beantwortet deine Anliegen so schnell und hilfreich wie möglich. Kontaktiere uns jederzeit über E-Mail, das Kontaktformular oder direkt in der App!", "categoryId": "support" },
-      { "id": 12, "question": "Funktioniert BeAFox auf allen Geräten?", "answer": "BeAFox ist als App für iOS und Android verfügbar. Das Monitoring-Dashboard für Lehrer und Ausbilder funktioniert im Browser auf allen Geräten (Desktop, Tablet, Smartphone). Die App synchronisiert deinen Fortschritt automatisch zwischen allen Geräten.", "categoryId": "tech" },
-      { "id": 13, "question": "Wie sicher sind meine Daten?", "answer": "Datenschutz und Sicherheit haben für uns höchste Priorität. Wir verwenden moderne Verschlüsselungstechnologien und halten uns strikt an die DSGVO. Deine Daten werden sicher gespeichert und niemals an Dritte weitergegeben.", "categoryId": "tech" },
-      { "id": 14, "question": "Kann ich meine Fortschritte exportieren?", "answer": "Ja, du kannst deine Fortschritte und Zertifikate jederzeit exportieren. Für Schulen und Unternehmen bieten wir auch detaillierte Reports und Analysen als PDF oder Excel-Export an.", "categoryId": "schoolsBusiness" },
-      { "id": 15, "question": "Gibt es Workshops oder Schulungen?", "answer": "Ja! Wir bieten interaktive Finanzbildungs-Workshops für Schulen, Unternehmen und Vereine an. Die Workshops können vor Ort oder online durchgeführt werden und werden von erfahrenen Referenten geleitet. Kontaktieren Sie uns für weitere Informationen.", "categoryId": "schoolsBusiness" },
-      { "id": 16, "question": "Was ist im Preis enthalten?", "answer": "Der Preis beinhaltet den vollständigen Zugang zur App, alle Lernmodule, Monitoring-Dashboards (für Schulen/Unternehmen), Support und regelmäßige Updates. Bei Business-Paketen sind auch Workshops und Zertifikate enthalten.", "categoryId": "pricing" },
-      { "id": 17, "question": "Kann ich jederzeit kündigen?", "answer": "Bei Privatpersonen: Das monatliche Abo kann jederzeit gekündigt werden. Jahresabos laufen über die vereinbarte Laufzeit. Für Schulen und Unternehmen gelten individuelle Vereinbarungen, die flexibel gestaltet werden können.", "categoryId": "pricing" },
-      { "id": 18, "question": "Gibt es Rabatte für mehrere Klassen oder Standorte?", "answer": "Ja, wir bieten gestaffelte Preise für größere Institutionen. Je mehr Schüler oder Mitarbeiter, desto günstiger wird der Preis pro Person. Kontaktieren Sie uns für ein individuelles Angebot, das perfekt auf Ihre Bedürfnisse zugeschnitten ist.", "categoryId": "pricing" }
+      {
+        "id": 1,
+        "question": "Gibt es Belohnungen oder Fortschrittsanzeigen?",
+        "answer": "Ja! Du kannst Punkte sammeln, Missionen abschließen und deinen Fortschritt jederzeit verfolgen – so macht Lernen Spaß. Das gamifizierte System motiviert dich, kontinuierlich zu lernen und deine Finanzkompetenz zu steigern.",
+        "categoryId": "general",
+        "popular": true
+      },
+      {
+        "id": 2,
+        "question": "Wie viel kostet BeAFox für Bildungseinrichtungen?",
+        "answer": "Um Finanzbildung für alle Schüler*innen zugänglich zu machen, bieten wir Schulen faire, gestaffelte Preise an. Für Schulen beträgt der Preis 1€ pro Schüler pro Jahr. Für Unternehmen bieten wir ab 10 Lizenzen gestaffelte Preise ab 3,99€ pro Monat. Kontaktieren Sie uns für ein individuelles Angebot.",
+        "categoryId": "pricing",
+        "popular": true
+      },
+      {
+        "id": 3,
+        "question": "Gibt es einen Lehrer bzw. Admin-Zugang?",
+        "answer": "Ja, für Lehrkräfte, Ausbilder*innen und Admins bieten wir ein umfassendes Dashboard an, über das Schüler-Accounts erstellt, Klassen verwaltet und der Lernfortschritt der Teilnehmenden detailliert eingesehen werden können. Das Dashboard bietet auch Analysen und Reports.",
+        "categoryId": "schoolsBusiness",
+        "popular": true
+      },
+      {
+        "id": 4,
+        "question": "Ist BeAFox wirklich unabhängig und neutral?",
+        "answer": "Ja, absolut! Wir fokussieren uns auf die reine Wissensvermittlung. In der App werden keine Finanzprodukte beworben, sodass sich die Inhalte ehrlich und vertrauensvoll anfühlen. Unsere Mission ist es, echte Finanzbildung zu vermitteln, nicht Produkte zu verkaufen.",
+        "categoryId": "general",
+        "popular": true
+      },
+      {
+        "id": 5,
+        "question": "Wie funktioniert das spielerische System?",
+        "answer": "Durch ein spielerisches System mit Punkten, Missionen, Belohnungen und Ranglisten fühlt sich lernen nicht mehr wie eine lästige Pflicht an. Die Schüler bleiben motiviert und lernen nachhaltig. Du kannst Level aufsteigen, Achievements freischalten und dich mit anderen messen.",
+        "categoryId": "general"
+      },
+      {
+        "id": 6,
+        "question": "Kann ich BeAFox auch als Privatperson nutzen?",
+        "answer": "Ja! BeAFox steht auch Privatpersonen zur Verfügung. Du erhältst vollen Zugriff auf alle Lektionen und kannst in deinem eigenen Tempo lernen. Wir bieten verschiedene Abo-Modelle: Monatlich (4,99€), Jahresabo (3,99€/Monat) oder Lifetime (49,99€ einmalig).",
+        "categoryId": "pricing"
+      },
+      {
+        "id": 7,
+        "question": "Wie wissenschaftlich fundiert ist BeAFox?",
+        "answer": "Wir verwenden wissenschaftlich fundierte Lehrmethoden, um Lektionen zu erstellen, die erfolgreich dein Finanzwissen verbessern. Unser Forschungsprojekt mit über 500 Teilnehmern hat gezeigt, dass unsere Methoden funktionieren. Die Inhalte werden von Finanzexperten und Pädagogen entwickelt.",
+        "categoryId": "general"
+      },
+      {
+        "id": 8,
+        "question": "Was ist der Unterschied zwischen BeAFox for Schools und BeAFox for Business?",
+        "answer": "BeAFox for Schools richtet sich an Bildungseinrichtungen und bietet ein Monitoring-Dashboard für Lehrer. BeAFox for Business richtet sich an Ausbildungsbetriebe und beinhaltet zusätzlich regelmäßige Workshops (alle 6 Monate), offizielle Zertifikate und erweiterte Reporting-Funktionen.",
+        "categoryId": "schoolsBusiness"
+      },
+      {
+        "id": 9,
+        "question": "Kann ich BeAFox vor dem Kauf testen?",
+        "answer": "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und eine Demo-Version. Schulen können ein Pilotprojekt starten, um BeAFox unverbindlich zu testen.",
+        "categoryId": "pricing"
+      },
+      {
+        "id": 10,
+        "question": "Wie oft werden neue Inhalte hinzugefügt?",
+        "answer": "Wir arbeiten kontinuierlich an neuen Lektionen und Features. Alle Nutzer erhalten regelmäßige Updates mit neuen Inhalten und Verbesserungen. Unser Ziel ist es, monatlich neue Lektionen und vierteljährlich größere Feature-Updates zu veröffentlichen.",
+        "categoryId": "general"
+      },
+      {
+        "id": 11,
+        "question": "Gibt es Support, wenn ich Fragen habe?",
+        "answer": "Ja, unser Support ist rund um die Uhr für dich da und beantwortet deine Anliegen so schnell und hilfreich wie möglich. Kontaktiere uns jederzeit über E-Mail, das Kontaktformular oder direkt in der App!",
+        "categoryId": "support"
+      },
+      {
+        "id": 12,
+        "question": "Funktioniert BeAFox auf allen Geräten?",
+        "answer": "BeAFox ist als App für iOS und Android verfügbar. Das Monitoring-Dashboard für Lehrer und Ausbilder funktioniert im Browser auf allen Geräten (Desktop, Tablet, Smartphone). Die App synchronisiert deinen Fortschritt automatisch zwischen allen Geräten.",
+        "categoryId": "tech"
+      },
+      {
+        "id": 13,
+        "question": "Wie sicher sind meine Daten?",
+        "answer": "Datenschutz und Sicherheit haben für uns höchste Priorität. Wir verwenden moderne Verschlüsselungstechnologien und halten uns strikt an die DSGVO. Deine Daten werden sicher gespeichert und niemals an Dritte weitergegeben.",
+        "categoryId": "tech"
+      },
+      {
+        "id": 14,
+        "question": "Kann ich meine Fortschritte exportieren?",
+        "answer": "Ja, du kannst deine Fortschritte und Zertifikate jederzeit exportieren. Für Schulen und Unternehmen bieten wir auch detaillierte Reports und Analysen als PDF oder Excel-Export an.",
+        "categoryId": "schoolsBusiness"
+      },
+      {
+        "id": 15,
+        "question": "Gibt es Workshops oder Schulungen?",
+        "answer": "Ja! Wir bieten interaktive Finanzbildungs-Workshops für Schulen, Unternehmen und Vereine an. Die Workshops können vor Ort oder online durchgeführt werden und werden von erfahrenen Referenten geleitet. Kontaktieren Sie uns für weitere Informationen.",
+        "categoryId": "schoolsBusiness"
+      },
+      {
+        "id": 16,
+        "question": "Was ist im Preis enthalten?",
+        "answer": "Der Preis beinhaltet den vollständigen Zugang zur App, alle Lernmodule, Monitoring-Dashboards (für Schulen/Unternehmen), Support und regelmäßige Updates. Bei Business-Paketen sind auch Workshops und Zertifikate enthalten.",
+        "categoryId": "pricing"
+      },
+      {
+        "id": 17,
+        "question": "Kann ich jederzeit kündigen?",
+        "answer": "Bei Privatpersonen: Das monatliche Abo kann jederzeit gekündigt werden. Jahresabos laufen über die vereinbarte Laufzeit. Für Schulen und Unternehmen gelten individuelle Vereinbarungen, die flexibel gestaltet werden können.",
+        "categoryId": "pricing"
+      },
+      {
+        "id": 18,
+        "question": "Gibt es Rabatte für mehrere Klassen oder Standorte?",
+        "answer": "Ja, wir bieten gestaffelte Preise für größere Institutionen. Je mehr Schüler oder Mitarbeiter, desto günstiger wird der Preis pro Person. Kontaktieren Sie uns für ein individuelles Angebot, das perfekt auf Ihre Bedürfnisse zugeschnitten ist.",
+        "categoryId": "pricing"
+      }
     ]
-  }
-  ,
+  },
   "unlimited": {
     "meta": {
       "title": "BeAFox Unlimited – Vollzugang zur Finanzbildung-App",
@@ -427,14 +613,21 @@
     },
     "stats": {
       "items": [
-        { "iconId": "users", "value": "3,000+", "label": "Aktive Privatnutzer" },
+        {
+          "iconId": "users",
+          "value": "3,000+",
+          "label": "Aktive Privatnutzer"
+        },
         { "iconId": "award", "value": "98%", "label": "Zufriedenheit" },
         { "iconId": "clock", "value": "24/7", "label": "Verfügbar" },
         { "iconId": "trendingUp", "value": "500+", "label": "Lektionen" }
       ]
     },
     "howItWorks": {
-      "title": { "pre": "In drei einfachen Schritten", "highlight": "zu deiner Finanzkompetenz" },
+      "title": {
+        "pre": "In drei einfachen Schritten",
+        "highlight": "zu deiner Finanzkompetenz"
+      },
       "steps": [
         {
           "title": "App herunterladen",
@@ -598,8 +791,7 @@
         "pathAlt": "BeAFox Lernpfad Mockup"
       }
     }
-  }
-  ,
+  },
   "pricing": {
     "meta": {
       "title": "Preise | BeAFox",
@@ -649,9 +841,50 @@
       "heading": "Für Endkunden",
       "subtitle": "Wähle das Modell, das zu deinem Alltag passt.",
       "plans": [
-        { "title": "Standard-Abo", "subtitle": "Monatlich kündbar.", "price": "4,99 €", "period": "/ monat", "features": ["Vollständiger Zugang zu allen Lektionen", "Spielerisches Lernsystem", "Karteikartensystem", "Fortschritts-Tracking", "Monatlich kündbar"] },
-        { "title": "Jahresabo", "subtitle": "Am Beliebtesten", "price": "3,99 €", "period": "/ monat", "yearlyNote": "pro Jahr", "features": ["Vollständiger Zugang zu allen Lektionen", "Spielerisches Lernsystem", "Karteikartensystem", "Fortschritts-Tracking", "2 Monate gespart", "Jährlich kündbar"], "popular": true },
-        { "title": "Lifetime", "subtitle": "Am Billigsten", "price": "49,99 €", "period": "einmalig", "features": ["Vollständiger Zugang zu allen Lektionen", "Spielerisches Lernsystem", "Karteikartensystem", "Fortschritts-Tracking", "Lebenslanger Zugang", "Alle zukünftigen Updates"], "cheapest": true }
+        {
+          "title": "Standard-Abo",
+          "subtitle": "Monatlich kündbar.",
+          "price": "4,99 €",
+          "period": "/ monat",
+          "features": [
+            "Vollständiger Zugang zu allen Lektionen",
+            "Spielerisches Lernsystem",
+            "Karteikartensystem",
+            "Fortschritts-Tracking",
+            "Monatlich kündbar"
+          ]
+        },
+        {
+          "title": "Jahresabo",
+          "subtitle": "Am Beliebtesten",
+          "price": "3,99 €",
+          "period": "/ monat",
+          "yearlyNote": "pro Jahr",
+          "features": [
+            "Vollständiger Zugang zu allen Lektionen",
+            "Spielerisches Lernsystem",
+            "Karteikartensystem",
+            "Fortschritts-Tracking",
+            "2 Monate gespart",
+            "Jährlich kündbar"
+          ],
+          "popular": true
+        },
+        {
+          "title": "Lifetime",
+          "subtitle": "Am Billigsten",
+          "price": "49,99 €",
+          "period": "einmalig",
+          "features": [
+            "Vollständiger Zugang zu allen Lektionen",
+            "Spielerisches Lernsystem",
+            "Karteikartensystem",
+            "Fortschritts-Tracking",
+            "Lebenslanger Zugang",
+            "Alle zukünftigen Updates"
+          ],
+          "cheapest": true
+        }
       ],
       "downloadCta": "Jetzt downloaden"
     },
@@ -661,20 +894,86 @@
       "price": "€1",
       "period": "pro Schüler",
       "period2": "pro Jahr",
-      "partnerCta": "Jetzt Partner werden",
+      "partnerCta": "Pilotprojekt anfordern",
       "bookCta": "Termin buchen",
-      "features": ["Lernen ohne Grenzen", "Vollständige Lernmodule", "Lehrer-Dashboards", "Karteikartensysteme", "Analoge Unterlagen"]
+      "features": [
+        "Lernen ohne Grenzen",
+        "Vollständige Lernmodule",
+        "Lehrer-Dashboards",
+        "Karteikartensysteme",
+        "Analoge Unterlagen"
+      ]
     },
     "services": {
       "heading": "Weitere Dienstleistungen",
       "paragraph": "Über die App hinaus bieten wir zusätzliche Services für eine ganzheitliche Finanzbildung – maßgeschneidert für Ihre Bedürfnisse.",
       "items": [
-        { "title": "Finanzbildungs-Workshops", "description": "Interaktive Workshops vor Ort oder online. Theorie und Praxis verbinden für nachhaltiges Lernen.", "features": ["Erfahrene Referenten", "Kleine Gruppen", "Materialien zum Mitnehmen", "Follow-up Support"], "cta": "Workshop anfragen" },
-        { "title": "PR Events & Veranstaltungen", "description": "Professionelle Events zur Finanzbildung für Ihre Zielgruppe. Von Messen bis zu internen Veranstaltungen.", "features": ["Maßgeschneiderte Konzepte", "Professionelle Durchführung", "Branding möglich", "Nachhaltige Wirkung"], "cta": "Event planen" },
-        { "title": "Individuelle analoge Unterlagen", "description": "Maßgeschneiderte Lernmaterialien, Arbeitsblätter und Handouts für Ihre spezifischen Anforderungen.", "features": ["Individuelles Design", "Branding Integration", "Verschiedene Formate", "Professionelle Qualität"], "cta": "Unterlagen anfragen" },
-        { "title": "Beratung & Consulting", "description": "Strategische Beratung zur Implementierung von Finanzbildung in Ihrer Organisation oder Institution.", "features": ["Strategieentwicklung", "Best Practices", "Implementierungsplan", "Langfristige Begleitung"], "cta": "Beratung buchen" },
-        { "title": "Analytics & Reporting", "description": "Detaillierte Einblicke in den Lernfortschritt Ihrer Teilnehmer. Umfassende Reports und Analysen für datengetriebene Entscheidungen.", "features": ["Fortschritts-Tracking", "Detaillierte Reports", "Export-Funktionen", "Individuelle Dashboards"], "cta": "Analytics anfragen" },
-        { "title": "Schulungen & Trainings", "description": "Schulungen für Lehrkräfte, Trainer oder Multiplikatoren zur effektiven Nutzung von BeAFox.", "features": ["Train-the-Trainer", "Didaktische Schulungen", "Technische Einweisung", "Zertifikate"], "cta": "Schulung buchen" }
+        {
+          "title": "Finanzbildungs-Workshops",
+          "description": "Interaktive Workshops vor Ort oder online. Theorie und Praxis verbinden für nachhaltiges Lernen.",
+          "features": [
+            "Erfahrene Referenten",
+            "Kleine Gruppen",
+            "Materialien zum Mitnehmen",
+            "Follow-up Support"
+          ],
+          "cta": "Workshop anfragen"
+        },
+        {
+          "title": "PR Events & Veranstaltungen",
+          "description": "Professionelle Events zur Finanzbildung für Ihre Zielgruppe. Von Messen bis zu internen Veranstaltungen.",
+          "features": [
+            "Maßgeschneiderte Konzepte",
+            "Professionelle Durchführung",
+            "Branding möglich",
+            "Nachhaltige Wirkung"
+          ],
+          "cta": "Event planen"
+        },
+        {
+          "title": "Individuelle analoge Unterlagen",
+          "description": "Maßgeschneiderte Lernmaterialien, Arbeitsblätter und Handouts für Ihre spezifischen Anforderungen.",
+          "features": [
+            "Individuelles Design",
+            "Branding Integration",
+            "Verschiedene Formate",
+            "Professionelle Qualität"
+          ],
+          "cta": "Unterlagen anfragen"
+        },
+        {
+          "title": "Beratung & Consulting",
+          "description": "Strategische Beratung zur Implementierung von Finanzbildung in Ihrer Organisation oder Institution.",
+          "features": [
+            "Strategieentwicklung",
+            "Best Practices",
+            "Implementierungsplan",
+            "Langfristige Begleitung"
+          ],
+          "cta": "Beratung buchen"
+        },
+        {
+          "title": "Analytics & Reporting",
+          "description": "Detaillierte Einblicke in den Lernfortschritt Ihrer Teilnehmer. Umfassende Reports und Analysen für datengetriebene Entscheidungen.",
+          "features": [
+            "Fortschritts-Tracking",
+            "Detaillierte Reports",
+            "Export-Funktionen",
+            "Individuelle Dashboards"
+          ],
+          "cta": "Analytics anfragen"
+        },
+        {
+          "title": "Schulungen & Trainings",
+          "description": "Schulungen für Lehrkräfte, Trainer oder Multiplikatoren zur effektiven Nutzung von BeAFox.",
+          "features": [
+            "Train-the-Trainer",
+            "Didaktische Schulungen",
+            "Technische Einweisung",
+            "Zertifikate"
+          ],
+          "cta": "Schulung buchen"
+        }
       ],
       "bottomTitle": "Individuelle Lösungen für jeden Bedarf",
       "bottomParagraph": "Alle unsere Dienstleistungen können individuell kombiniert und angepasst werden. Sprechen Sie uns an, wir finden die perfekte Lösung für Ihre Anforderungen.",
@@ -686,20 +985,44 @@
       "titlePost": "?",
       "subtitle": "Investiere in die Zukunft deiner Schüler, Azubis oder Mitarbeiter – mit einem fairen Preis-Leistungs-Verhältnis.",
       "items": [
-        { "title": "Das erste Finanzbildungsökosystem", "description": "BeAFox ist mehr als eine App – es ist ein ganzheitliches Ökosystem aus digitalen Lerninhalten, Workshops, analogen Materialien und Support. Alles perfekt aufeinander abgestimmt für maximalen Lernerfolg." },
-        { "title": "Wissenschaftlich fundiert durch Forschung", "description": "Basierend auf einem umfangreichen Forschungsprojekt mit über 500 Teilnehmern. Unsere Methoden sind evidenzbasiert und erprobt – keine Experimente, sondern bewährte Didaktik." },
-        { "title": "100% zielgruppenorientiert", "description": "Wir wissen genau, wie man Finanzbildung lehren muss. Jede Zielgruppe – Schüler, Azubis, Studenten, Mitarbeiter – erhält maßgeschneiderte Inhalte, die wirklich ankommen und nachhaltig wirken." }
+        {
+          "title": "Das erste Finanzbildungsökosystem",
+          "description": "BeAFox ist mehr als eine App – es ist ein ganzheitliches Ökosystem aus digitalen Lerninhalten, Workshops, analogen Materialien und Support. Alles perfekt aufeinander abgestimmt für maximalen Lernerfolg."
+        },
+        {
+          "title": "Wissenschaftlich fundiert durch Forschung",
+          "description": "Basierend auf einem umfangreichen Forschungsprojekt mit über 500 Teilnehmern. Unsere Methoden sind evidenzbasiert und erprobt – keine Experimente, sondern bewährte Didaktik."
+        },
+        {
+          "title": "100% zielgruppenorientiert",
+          "description": "Wir wissen genau, wie man Finanzbildung lehren muss. Jede Zielgruppe – Schüler, Azubis, Studenten, Mitarbeiter – erhält maßgeschneiderte Inhalte, die wirklich ankommen und nachhaltig wirken."
+        }
       ]
     },
     "faq": {
       "titlePre": "Häufige Fragen zu den ",
       "titleHighlight": "Preisen",
       "items": [
-        { "q": "Gibt es Rabatte für mehrere Klassen oder Standorte?", "a": "Ja, wir bieten gestaffelte Preise für größere Institutionen. Kontaktieren Sie uns für ein individuelles Angebot, das perfekt auf Ihre Bedürfnisse zugeschnitten ist." },
-        { "q": "Kann ich die App vor dem Kauf testen?", "a": "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und starten Sie Ihr Pilotprojekt." },
-        { "q": "Was ist im Preis enthalten?", "a": "Der Preis beinhaltet den vollständigen Zugang zur App, alle Lernmodule, Monitoring-Dashboards (für Schulen/Unternehmen), Support und regelmäßige Updates." },
-        { "q": "Kann ich jederzeit kündigen?", "a": "Bei Privatpersonen: Das monatliche Abo kann jederzeit gekündigt werden. Jahresabos laufen über die vereinbarte Laufzeit. Für Schulen und Unternehmen gelten individuelle Vereinbarungen." },
-        { "q": "Gibt es versteckte Kosten?", "a": "Nein, alle Preise sind transparent. Bei Unternehmen fällt einmalig eine Einrichtungsgebühr an, die im Preis klar ausgewiesen ist." }
+        {
+          "q": "Gibt es Rabatte für mehrere Klassen oder Standorte?",
+          "a": "Ja, wir bieten gestaffelte Preise für größere Institutionen. Kontaktieren Sie uns für ein individuelles Angebot, das perfekt auf Ihre Bedürfnisse zugeschnitten ist."
+        },
+        {
+          "q": "Kann ich die App vor dem Kauf testen?",
+          "a": "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und starten Sie Ihr Pilotprojekt."
+        },
+        {
+          "q": "Was ist im Preis enthalten?",
+          "a": "Der Preis beinhaltet den vollständigen Zugang zur App, alle Lernmodule, Monitoring-Dashboards (für Schulen/Unternehmen), Support und regelmäßige Updates."
+        },
+        {
+          "q": "Kann ich jederzeit kündigen?",
+          "a": "Bei Privatpersonen: Das monatliche Abo kann jederzeit gekündigt werden. Jahresabos laufen über die vereinbarte Laufzeit. Für Schulen und Unternehmen gelten individuelle Vereinbarungen."
+        },
+        {
+          "q": "Gibt es versteckte Kosten?",
+          "a": "Nein, alle Preise sind transparent. Bei Unternehmen fällt einmalig eine Einrichtungsgebühr an, die im Preis klar ausgewiesen ist."
+        }
       ],
       "viewAllCta": "Alle FAQ's ansehen"
     },
@@ -709,8 +1032,7 @@
       "consultationCta": "Kostenlose Beratung",
       "faqCta": "FAQ's durchsuchen"
     }
-  }
-  ,
+  },
   "about": {
     "meta": {
       "title": "Über BeAFox | BeAFox",
@@ -743,9 +1065,18 @@
       "rankingAlt": "BeAFox Rangliste Mockup"
     },
     "values": [
-      { "title": "Unsere Mission", "description": "Wir machen Finanzbildung einfach, spielerisch und alltagstauglich. Ohne Werbung, ohne Verkaufsdruck." },
-      { "title": "Unsere Vision", "description": "BeAFox wird die führende Plattform für Finanzbildung weltweit." },
-      { "title": "Unser Motto", "description": "Nimm deine Finanzen selbst in die Pfote!" }
+      {
+        "title": "Unsere Mission",
+        "description": "Wir machen Finanzbildung einfach, spielerisch und alltagstauglich. Ohne Werbung, ohne Verkaufsdruck."
+      },
+      {
+        "title": "Unsere Vision",
+        "description": "BeAFox wird die führende Plattform für Finanzbildung weltweit."
+      },
+      {
+        "title": "Unser Motto",
+        "description": "Nimm deine Finanzen selbst in die Pfote!"
+      }
     ],
     "team": {
       "tag": "Unser Team",
@@ -765,11 +1096,31 @@
       "titlePre": "Von der Vision zur ",
       "titleHighlight": "Realität",
       "items": [
-        { "year": "2023", "title": "Die Idee entsteht", "description": "Unsere Gründer erkannten das Problem: Junge Menschen haben zu wenig Finanzwissen und geraten in Schulden. Aus eigener Erfahrung entsteht die Vision, Finanzbildung spielerisch, verständlich und für alle zugänglich zu machen." },
-        { "year": "2024", "title": "BeAFox wird geboren", "description": "Die Entwicklung der ersten Version beginnt. Mit Know-how, Kreativität und Leidenschaft arbeiten wir an der ersten spielerischen Lern-App für Finanzbildung. Das Konzept nimmt Form an." },
-        { "year": "2025", "title": "Gründung & Release", "description": "BeAFox UG wird offiziell gegründet. Die App geht live und wird erstmals der Öffentlichkeit zugänglich gemacht. Ein wichtiger Meilenstein auf unserem Weg zur finanziellen Bildung für alle." },
-        { "year": "2025", "title": "Erste Erfolge", "description": "Deggendorfer Gründerpreis und 2. Platz beim Startup Summit Deutschland. Unser Durchhaltevermögen zahlt sich aus und bestätigt unseren innovativen Ansatz. Die Anerkennung motiviert uns weiterzumachen." },
-        { "year": "2025", "title": "Wachstum & Expansion", "description": "Über 3.000 aktive Nutzer, Partnerschaften mit Schulen und Unternehmen. BeAFox wird zur führenden Finanzbildungs-App und wächst kontinuierlich. Unsere Mission erreicht immer mehr Menschen." }
+        {
+          "year": "2023",
+          "title": "Die Idee entsteht",
+          "description": "Unsere Gründer erkannten das Problem: Junge Menschen haben zu wenig Finanzwissen und geraten in Schulden. Aus eigener Erfahrung entsteht die Vision, Finanzbildung spielerisch, verständlich und für alle zugänglich zu machen."
+        },
+        {
+          "year": "2024",
+          "title": "BeAFox wird geboren",
+          "description": "Die Entwicklung der ersten Version beginnt. Mit Know-how, Kreativität und Leidenschaft arbeiten wir an der ersten spielerischen Lern-App für Finanzbildung. Das Konzept nimmt Form an."
+        },
+        {
+          "year": "2025",
+          "title": "Gründung & Release",
+          "description": "BeAFox UG wird offiziell gegründet. Die App geht live und wird erstmals der Öffentlichkeit zugänglich gemacht. Ein wichtiger Meilenstein auf unserem Weg zur finanziellen Bildung für alle."
+        },
+        {
+          "year": "2025",
+          "title": "Erste Erfolge",
+          "description": "Deggendorfer Gründerpreis und 2. Platz beim Startup Summit Deutschland. Unser Durchhaltevermögen zahlt sich aus und bestätigt unseren innovativen Ansatz. Die Anerkennung motiviert uns weiterzumachen."
+        },
+        {
+          "year": "2025",
+          "title": "Wachstum & Expansion",
+          "description": "Über 3.000 aktive Nutzer, Partnerschaften mit Schulen und Unternehmen. BeAFox wird zur führenden Finanzbildungs-App und wächst kontinuierlich. Unsere Mission erreicht immer mehr Menschen."
+        }
       ]
     },
     "achievements": {
@@ -791,7 +1142,7 @@
       "titlePre": "Werde Teil unserer ",
       "titleHighlight": "Mission",
       "description": "Hilf uns dabei, Finanzkompetenz für alle erlebbar zu machen. Ob als Nutzer, Partner oder Unterstützer – jeder Beitrag zählt.",
-      "partnerCta": "Jetzt Partner werden",
+      "partnerCta": "Pilotprojekt anfordern",
       "downloadCta": "App herunterladen"
     },
     "drive": {
@@ -799,10 +1150,9 @@
       "title": "Wir wollen:",
       "subtitle": "Bildung, die verändert.",
       "description": "Wir glauben an eine Welt, in der jeder Mensch Finanzbildung versteht und nutzen kann.",
-      "ctaPartner": "Jetzt Partner werden"
+      "ctaPartner": "Pilotprojekt anfordern"
     }
-  }
-  ,
+  },
   "business": {
     "meta": {
       "title": "BeAFox for Business – Finanzbildung für Unternehmen & Azubis",
@@ -819,7 +1169,7 @@
       "title": "Bildungspakete gegen",
       "titleHighlight": "Fachkräftemangel",
       "description": "Mitarbeitende, die Geld verstehen arbeiten fokussierter, bleiben gesünder und länger im Unternehmen.",
-      "ctaPartner": "Jetzt Partner werden",
+      "ctaPartner": "Pilotprojekt anfordern",
       "ctaBook": "Termin buchen"
     },
     "mockups": {
@@ -839,25 +1189,53 @@
       "subtitle": "Finanzbildung ist einer der wichtigsten Future Skills. Wir machen es einfach, Ihre Mitarbeiter zu stärken.",
       "problemTitle": "Warum Finanzbildung?",
       "problemText": "Finanzielle Kompetenz ist einer der wichtigsten Future Skills für Ihre Mitarbeiter. Sie stärkt nicht nur die persönliche Entwicklung, sondern auch die berufliche Leistungsfähigkeit und Zufriedenheit.",
-      "problemBullets": ["Wichtigster Future Skill für die Zukunft", "Stärkt persönliche & berufliche Entwicklung", "Erhöht Mitarbeiterzufriedenheit", "Macht Ihr Unternehmen attraktiver"],
+      "problemBullets": [
+        "Wichtigster Future Skill für die Zukunft",
+        "Stärkt persönliche & berufliche Entwicklung",
+        "Erhöht Mitarbeiterzufriedenheit",
+        "Macht Ihr Unternehmen attraktiver"
+      ],
       "solutionTitle": "Mit BeAFox for Business",
       "solutionText": "Ganzheitliche Finanzbildung: Mit unserer spielerischen App lernen Ihre Mitarbeiter kontinuierlich und nachhaltig.",
       "solutionText2": "So investieren Sie in einen der wichtigsten Future Skills und stärken gleichzeitig Ihre Mitarbeiterbindung und Ihr Employer Branding.",
-      "solutionBullets": ["Nachhaltige Finanzbildung als Future Skill", "Spielerisches Lernen mit der App", "Optional: Regelmäßige Workshops", "Stärkt Mitarbeiterbindung & Employer Branding"],
+      "solutionBullets": [
+        "Nachhaltige Finanzbildung als Future Skill",
+        "Spielerisches Lernen mit der App",
+        "Optional: Regelmäßige Workshops",
+        "Stärkt Mitarbeiterbindung & Employer Branding"
+      ],
       "ctaText": "Bereit, in Finanzbildung zu investieren?",
-      "ctaButton": "Jetzt Partner werden"
+      "ctaButton": "Pilotprojekt anfordern"
     },
     "benefits": {
       "title": "Warum",
       "titleHighlight": "BeAFox for Business",
       "subtitle": "Alle Vorteile für Ihr Unternehmen und Ihre Mitarbeiter auf einen Blick.",
       "items": [
-        { "title": "Future Skill entwickeln", "description": "Finanzbildung ist einer der wichtigsten Future Skills. Stärken Sie Ihre Mitarbeiter für die Zukunft und machen Sie Ihr Unternehmen zukunftsfähig." },
-        { "title": "Monitoring Dashboards", "description": "Behalten Sie den Überblick über den Lernfortschritt Ihrer Mitarbeiter in Echtzeit. Sehen Sie, wer aktiv ist und wo Unterstützung benötigt wird." },
-        { "title": "Offizielle Zertifikate", "description": "Ihre Mitarbeiter erhalten offizielle Zertifikate für ihre Fortschritte in der Finanzbildung – wertvoll für die persönliche Entwicklung." },
-        { "title": "Motiviertere Mitarbeiter", "description": "Durch das spielerische System sind Ihre Mitarbeiter motivierter und engagierter beim Lernen. Finanzbildung wird zum Erlebnis." },
-        { "title": "Nachhaltiges Lernen", "description": "Kontinuierliches Lernen in der App sorgt für langfristige Wissensverankerung. Ergänzt durch Workshops für maximale Wirkung." },
-        { "title": "DSGVO-konform & sicher", "description": "Alle Daten werden sicher und DSGVO-konform gespeichert. Ihre Unternehmensdaten sind bei uns in besten Händen." }
+        {
+          "title": "Future Skill entwickeln",
+          "description": "Finanzbildung ist einer der wichtigsten Future Skills. Stärken Sie Ihre Mitarbeiter für die Zukunft und machen Sie Ihr Unternehmen zukunftsfähig."
+        },
+        {
+          "title": "Monitoring Dashboards",
+          "description": "Behalten Sie den Überblick über den Lernfortschritt Ihrer Mitarbeiter in Echtzeit. Sehen Sie, wer aktiv ist und wo Unterstützung benötigt wird."
+        },
+        {
+          "title": "Offizielle Zertifikate",
+          "description": "Ihre Mitarbeiter erhalten offizielle Zertifikate für ihre Fortschritte in der Finanzbildung – wertvoll für die persönliche Entwicklung."
+        },
+        {
+          "title": "Motiviertere Mitarbeiter",
+          "description": "Durch das spielerische System sind Ihre Mitarbeiter motivierter und engagierter beim Lernen. Finanzbildung wird zum Erlebnis."
+        },
+        {
+          "title": "Nachhaltiges Lernen",
+          "description": "Kontinuierliches Lernen in der App sorgt für langfristige Wissensverankerung. Ergänzt durch Workshops für maximale Wirkung."
+        },
+        {
+          "title": "DSGVO-konform & sicher",
+          "description": "Alle Daten werden sicher und DSGVO-konform gespeichert. Ihre Unternehmensdaten sind bei uns in besten Händen."
+        }
       ]
     },
     "useCases": {
@@ -866,32 +1244,84 @@
       "titlePost": " von BeAFox",
       "subtitle": "Viele gute Gründe, warum Unternehmen BeAFox nutzen.",
       "items": [
-        { "title": "Fachkräftemangel bekämpfen", "description": "Stärken Sie Ihre Mitarbeiter durch praxisnahe Finanzbildung und machen Sie Ihr Unternehmen attraktiver für Talente." },
-        { "title": "Mitarbeiter-Bindung erhöhen", "description": "Zeigen Sie, dass Sie in die Zukunft Ihrer Mitarbeiter investieren. Finanzbildung ist ein wertvolles Benefit, das bindet." },
-        { "title": "Selbstständigkeit fördern", "description": "Finanzielle Kompetenz macht Ihre Mitarbeiter selbstständiger und verantwortungsvoller – auch im Berufsalltag." },
-        { "title": "Employer Branding", "description": "Positionieren Sie sich als modernes, zukunftsorientiertes Unternehmen, das sich für seine Mitarbeiter engagiert." }
+        {
+          "title": "Fachkräftemangel bekämpfen",
+          "description": "Stärken Sie Ihre Mitarbeiter durch praxisnahe Finanzbildung und machen Sie Ihr Unternehmen attraktiver für Talente."
+        },
+        {
+          "title": "Mitarbeiter-Bindung erhöhen",
+          "description": "Zeigen Sie, dass Sie in die Zukunft Ihrer Mitarbeiter investieren. Finanzbildung ist ein wertvolles Benefit, das bindet."
+        },
+        {
+          "title": "Selbstständigkeit fördern",
+          "description": "Finanzielle Kompetenz macht Ihre Mitarbeiter selbstständiger und verantwortungsvoller – auch im Berufsalltag."
+        },
+        {
+          "title": "Employer Branding",
+          "description": "Positionieren Sie sich als modernes, zukunftsorientiertes Unternehmen, das sich für seine Mitarbeiter engagiert."
+        }
       ],
-      "cta": "Jetzt Partner werden"
+      "cta": "Pilotprojekt anfordern"
     },
     "features": {
       "title": "Was Sie erhalten",
       "subtitle": "Ein umfassendes Paket für nachhaltige Finanzbildung.",
       "items": [
-        { "id": "app", "title": "Spielerische Lern-App", "description": "Ihre Mitarbeiter lernen mit einer modernen, spielerischen App, die Spaß macht und motiviert. Punkte, Missionen und Ranglisten sorgen für nachhaltiges Engagement.", "mockup": "/assets/Mockups/Mockup-Lernpfad.png" },
-        { "id": "workshops", "title": "Regelmäßige Workshops", "description": "Ergänzen Sie die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate veranstalten wir interaktive Workshops zu wechselnden Finanzthemen für maximale Wirkung.", "mockup": "/assets/Mockups/Mockup-Quiz.png" },
-        { "id": "dashboard", "title": "Monitoring-Dashboard", "description": "Behalten Sie den Überblick über den Lernfortschritt Ihrer Mitarbeiter. Sehen Sie in Echtzeit, wer aktiv ist und wo Unterstützung benötigt wird.", "mockup": "/Mockup-Macbook/Live-Fortschritt.png" },
-        { "id": "zertifikate", "title": "Offizielle Zertifikate", "description": "Ihre Mitarbeiter erhalten nach erfolgreichem Abschluss offizielle Zertifikate, die sie in ihrer Bewerbungsmappe nutzen können.", "mockup": "/assets/Mockups/Mockup-Profil.png" }
+        {
+          "id": "app",
+          "title": "Spielerische Lern-App",
+          "description": "Ihre Mitarbeiter lernen mit einer modernen, spielerischen App, die Spaß macht und motiviert. Punkte, Missionen und Ranglisten sorgen für nachhaltiges Engagement.",
+          "mockup": "/assets/Mockups/Mockup-Lernpfad.png"
+        },
+        {
+          "id": "workshops",
+          "title": "Regelmäßige Workshops",
+          "description": "Ergänzen Sie die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate veranstalten wir interaktive Workshops zu wechselnden Finanzthemen für maximale Wirkung.",
+          "mockup": "/assets/Mockups/Mockup-Quiz.png"
+        },
+        {
+          "id": "dashboard",
+          "title": "Monitoring-Dashboard",
+          "description": "Behalten Sie den Überblick über den Lernfortschritt Ihrer Mitarbeiter. Sehen Sie in Echtzeit, wer aktiv ist und wo Unterstützung benötigt wird.",
+          "mockup": "/Mockup-Macbook/Live-Fortschritt.png"
+        },
+        {
+          "id": "zertifikate",
+          "title": "Offizielle Zertifikate",
+          "description": "Ihre Mitarbeiter erhalten nach erfolgreichem Abschluss offizielle Zertifikate, die sie in ihrer Bewerbungsmappe nutzen können.",
+          "mockup": "/assets/Mockups/Mockup-Profil.png"
+        }
       ]
     },
     "process": {
       "title": "So funktioniert's",
       "subtitle": "In fünf einfachen Schritten zu nachhaltiger Finanzbildung in Ihrem Unternehmen.",
       "steps": [
-        { "step": "1", "title": "Kostenlose Beratung", "description": "Wir besprechen Ihre Anforderungen, die Anzahl Ihrer Mitarbeiter und erstellen ein individuelles Angebot für Ihr Unternehmen." },
-        { "step": "2", "title": "Setup & Onboarding", "description": "Wir richten die App für Ihre Mitarbeiter ein, führen ein Onboarding durch und stellen sicher, dass alle startklar sind." },
-        { "step": "3", "title": "Start der Finanzbildung", "description": "Ihre Mitarbeiter starten mit der App und entwickeln kontinuierlich ihre Finanzkompetenz. Zusätzlich kombinieren wir die App-Nutzung mit regelmäßigen Workshops." },
-        { "step": "4", "title": "Kontinuierliches Lernen", "description": "Ihre Mitarbeiter lernen in der App, wiederholen Inhalte und entwickeln nachhaltig ihre Finanzkompetenz – eines der wichtigsten Future Skills." },
-        { "step": "5", "title": "Regelmäßige Workshops", "description": "Wir ergänzen die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate zu wechselnden Themen für maximale Wirkung." }
+        {
+          "step": "1",
+          "title": "Kostenlose Beratung",
+          "description": "Wir besprechen Ihre Anforderungen, die Anzahl Ihrer Mitarbeiter und erstellen ein individuelles Angebot für Ihr Unternehmen."
+        },
+        {
+          "step": "2",
+          "title": "Setup & Onboarding",
+          "description": "Wir richten die App für Ihre Mitarbeiter ein, führen ein Onboarding durch und stellen sicher, dass alle startklar sind."
+        },
+        {
+          "step": "3",
+          "title": "Start der Finanzbildung",
+          "description": "Ihre Mitarbeiter starten mit der App und entwickeln kontinuierlich ihre Finanzkompetenz. Zusätzlich kombinieren wir die App-Nutzung mit regelmäßigen Workshops."
+        },
+        {
+          "step": "4",
+          "title": "Kontinuierliches Lernen",
+          "description": "Ihre Mitarbeiter lernen in der App, wiederholen Inhalte und entwickeln nachhaltig ihre Finanzkompetenz – eines der wichtigsten Future Skills."
+        },
+        {
+          "step": "5",
+          "title": "Regelmäßige Workshops",
+          "description": "Wir ergänzen die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate zu wechselnden Themen für maximale Wirkung."
+        }
       ]
     },
     "ihk": {
@@ -900,7 +1330,7 @@
       "titlePost": " von IHK",
       "subtitle": "Als offizieller Partner der IHK-Akademie setzen wir auf bewährte Standards und praxisnahe Expertise.",
       "text": "In enger Zusammenarbeit mit der IHK haben wir einen innovativen Workshop speziell für die Mitarbeiter eines Unternehmens entwickelt. Dieser Workshop kombiniert IHK-geprüfte Inhalte mit unserer spielerischen Lern-App BeAFox, um junge Talente fit für den Alltag und das Berufsleben zu machen.",
-      "cta": "Jetzt Partner werden"
+      "cta": "Pilotprojekt anfordern"
     },
     "price": {
       "headingPre": "Jetzt Ihre",
@@ -919,7 +1349,7 @@
     "cta": {
       "title": "Bereit, Ihre Mitarbeiter zu unterstützen?",
       "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihr Unternehmen.",
-      "partnerCta": "Jetzt Partner werden",
+      "partnerCta": "Pilotprojekt anfordern",
       "downloadCta": "App herunterladen"
     },
     "calculator": {
@@ -930,8 +1360,7 @@
       "bestPrice": "Sie erhalten den besten Preis!",
       "saveMore": "Sparen Sie noch mehr ab 100 Mitarbeitern!"
     }
-  }
-  ,
+  },
   "schools": {
     "meta": {
       "title": "BeAFox for Schools – Finanzbildung für Schulen",
@@ -948,7 +1377,7 @@
       "priceHighlight": "1€ pro Schüler",
       "pricePost": "pro Jahr",
       "description": "Wir schaffen echten gesellschaftlichen Mehrwert, indem wir Finanzbildung für alle Schüler:innen unabhängig von Hintergrund oder Voraussetzungen zugänglich machen.",
-      "ctaPartner": "Jetzt Partner werden",
+      "ctaPartner": "Pilotprojekt anfordern",
       "ctaBook": "Termin buchen"
     },
     "mockups": {
@@ -968,23 +1397,51 @@
       "titleHighlight": "in der Finanzbildung",
       "problemTitle": "Die Herausforderungen",
       "problemText": "Ein Lehrer betreut gleichzeitig mehrere Klassen. Die Schüler benötigen eine Möglichkeit, selbstständig zu lernen, auch wenn der Lehrer nicht direkt vor Ort ist.",
-      "problemBullets": ["Unterrichtsausfall durch Krankheit", "Mehrere Klassen gleichzeitig betreuen", "Schüler brauchen sinnvolle Beschäftigung", "Finanzbildung fehlt im Lehrplan"],
+      "problemBullets": [
+        "Unterrichtsausfall durch Krankheit",
+        "Mehrere Klassen gleichzeitig betreuen",
+        "Schüler brauchen sinnvolle Beschäftigung",
+        "Finanzbildung fehlt im Lehrplan"
+      ],
       "solutionTitle": "Unsere Lösung",
       "solutionText": "Die Schüler arbeiten selbstständig und interaktiv mit BeAFox. Ganz ohne direkte Anwesenheit des Lehrers vor Ort.",
       "solutionText2": "Für Lehrer: Das integrierte Monitoring-Dashboard zeigt in Echtzeit, was jeder Schüler gerade lernt, wo er steht und wie er vorankommt.",
-      "solutionBullets": ["Selbstständiges Lernen der Schüler", "Echtzeit-Überblick für Lehrer", "Sofortige Erkennung von Schwächen", "Spielerisches System motiviert"]
+      "solutionBullets": [
+        "Selbstständiges Lernen der Schüler",
+        "Echtzeit-Überblick für Lehrer",
+        "Sofortige Erkennung von Schwächen",
+        "Spielerisches System motiviert"
+      ]
     },
     "benefits": {
       "title": "Warum",
       "titleHighlight": "BeAFox for Schools",
       "subtitle": "Alle Vorteile für Ihre Schule, Lehrer und Schüler auf einen Blick.",
       "items": [
-        { "title": "Zeitersparnis", "description": "Schüler lernen selbstständig. Sie sparen wertvolle Unterrichtszeit und können sich auf andere wichtige Aufgaben konzentrieren." },
-        { "title": "Echtzeit-Überblick", "description": "Das Dashboard zeigt Ihnen jederzeit, was Ihre Schüler lernen, wo sie stehen und wie sie vorankommen." },
-        { "title": "Gezielte Unterstützung", "description": "Schwächen werden sofort sichtbar, sodass Sie gezielt unterstützen können. Stärken werden belohnt und motivieren zum Weitermachen." },
-        { "title": "DSGVO-konform", "description": "Wir sammeln 0,0% Daten. Ihre Schülerdaten sind bei uns in besten Händen." },
-        { "title": "Wissenschaftlich fundiert", "description": "Unsere Inhalte basieren auf bewährten Lehrmethoden und wurden in einem Forschungsprojekt mit über 500 Teilnehmern getestet." },
-        { "title": "Motivierte Schüler", "description": "Durch das spielerische System mit Punkten, Missionen und Ranglisten bleiben Ihre Schüler motiviert und lernen nachhaltig." }
+        {
+          "title": "Zeitersparnis",
+          "description": "Schüler lernen selbstständig. Sie sparen wertvolle Unterrichtszeit und können sich auf andere wichtige Aufgaben konzentrieren."
+        },
+        {
+          "title": "Echtzeit-Überblick",
+          "description": "Das Dashboard zeigt Ihnen jederzeit, was Ihre Schüler lernen, wo sie stehen und wie sie vorankommen."
+        },
+        {
+          "title": "Gezielte Unterstützung",
+          "description": "Schwächen werden sofort sichtbar, sodass Sie gezielt unterstützen können. Stärken werden belohnt und motivieren zum Weitermachen."
+        },
+        {
+          "title": "DSGVO-konform",
+          "description": "Wir sammeln 0,0% Daten. Ihre Schülerdaten sind bei uns in besten Händen."
+        },
+        {
+          "title": "Wissenschaftlich fundiert",
+          "description": "Unsere Inhalte basieren auf bewährten Lehrmethoden und wurden in einem Forschungsprojekt mit über 500 Teilnehmern getestet."
+        },
+        {
+          "title": "Motivierte Schüler",
+          "description": "Durch das spielerische System mit Punkten, Missionen und Ranglisten bleiben Ihre Schüler motiviert und lernen nachhaltig."
+        }
       ]
     },
     "useCases": {
@@ -993,21 +1450,49 @@
       "titlePost": " ein",
       "subtitle": "Flexible Einsatzmöglichkeiten für verschiedene Unterrichtssituationen",
       "items": [
-        { "title": "Unterrichtsausfall", "description": "Wenn ein Lehrer ausfällt, können Schüler selbstständig mit BeAFox lernen. Sie bleiben beschäftigt und lernen dabei wichtige Finanzkompetenzen." },
-        { "title": "Hausaufgaben & Vertiefung", "description": "Schüler können zu Hause oder in der Freizeit mit BeAFox lernen. Das spielerische System motiviert sie, auch außerhalb des Unterrichts aktiv zu sein." },
-        { "title": "Projektwochen", "description": "Perfekt für Projektwochen zum Thema Finanzen. Schüler arbeiten selbstständig, Lehrer behalten den Überblick über den Fortschritt." },
-        { "title": "Wahlpflichtfach", "description": "BeAFox eignet sich ideal als Basis für ein Wahlpflichtfach Finanzbildung. Strukturierte Inhalte, klare Lernpfade und motivierendes Lernen." }
+        {
+          "title": "Unterrichtsausfall",
+          "description": "Wenn ein Lehrer ausfällt, können Schüler selbstständig mit BeAFox lernen. Sie bleiben beschäftigt und lernen dabei wichtige Finanzkompetenzen."
+        },
+        {
+          "title": "Hausaufgaben & Vertiefung",
+          "description": "Schüler können zu Hause oder in der Freizeit mit BeAFox lernen. Das spielerische System motiviert sie, auch außerhalb des Unterrichts aktiv zu sein."
+        },
+        {
+          "title": "Projektwochen",
+          "description": "Perfekt für Projektwochen zum Thema Finanzen. Schüler arbeiten selbstständig, Lehrer behalten den Überblick über den Fortschritt."
+        },
+        {
+          "title": "Wahlpflichtfach",
+          "description": "BeAFox eignet sich ideal als Basis für ein Wahlpflichtfach Finanzbildung. Strukturierte Inhalte, klare Lernpfade und motivierendes Lernen."
+        }
       ],
-      "cta": "Jetzt Partner werden"
+      "cta": "Pilotprojekt anfordern"
     },
     "howItWorks": {
       "title": "So funktioniert's",
       "subtitle": "In vier einfachen Schritten zu BeAFox in Ihrer Schule.",
       "steps": [
-        { "step": "1", "title": "Kostenlose Beratung", "description": "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule." },
-        { "step": "2", "title": "Einfache Einrichtung", "description": "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert." },
-        { "step": "3", "title": "Schüler starten", "description": "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit." },
-        { "step": "4", "title": "Sie behalten Überblick", "description": "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen." }
+        {
+          "step": "1",
+          "title": "Kostenlose Beratung",
+          "description": "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule."
+        },
+        {
+          "step": "2",
+          "title": "Einfache Einrichtung",
+          "description": "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert."
+        },
+        {
+          "step": "3",
+          "title": "Schüler starten",
+          "description": "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit."
+        },
+        {
+          "step": "4",
+          "title": "Sie behalten Überblick",
+          "description": "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen."
+        }
       ]
     },
     "pricing": {
@@ -1018,32 +1503,86 @@
       "perPupil": "pro Schüler",
       "perYear": "pro Jahr",
       "tagline": "Transparent, fair und ohne versteckte Kosten.",
-      "partnerCta": "Jetzt Partner werden",
+      "partnerCta": "Pilotprojekt anfordern",
       "includedTitle": "Im Preis enthalten:",
-      "includedItems": ["Vollständiger Zugang für alle Schüler", "Monitoring-Dashboard für Lehrer", "Unbegrenzte Lektionen & Features", "PDF-Export für Reports", "Support & Updates"],
+      "includedItems": [
+        "Vollständiger Zugang für alle Schüler",
+        "Monitoring-Dashboard für Lehrer",
+        "Unbegrenzte Lektionen & Features",
+        "PDF-Export für Reports",
+        "Support & Updates"
+      ],
       "extraTitle": "Zusätzliche Vorteile:",
-      "extraItems": ["Keine versteckten Kosten", "Monatlich kündbar", "DSGVO-konform", "Einfache Einrichtung", "Persönlicher Ansprechpartner"]
+      "extraItems": [
+        "Keine versteckten Kosten",
+        "Monatlich kündbar",
+        "DSGVO-konform",
+        "Einfache Einrichtung",
+        "Persönlicher Ansprechpartner"
+      ]
     },
     "dashboard": {
       "title": "Das",
       "titleHighlight": "Monitoring-Dashboard",
       "subtitle": "Vollständige Kontrolle über den Lernfortschritt Ihrer Schüler – alles auf einen Blick.",
       "items": [
-        { "id": "schueler", "title": "Schüler verwalten", "description": "Erstellen Sie einfach Schüler-Accounts, verwalten Sie Klassen und behalten Sie den Überblick über alle Teilnehmer.", "mockup": "/Mockup-Macbook/Schueler.png" },
-        { "id": "fortschritt", "title": "Live-Fortschritt", "description": "Sehen Sie in Echtzeit, was jeder Schüler gerade lernt und wie er vorankommt.", "mockup": "/Mockup-Macbook/Live-Fortschritt.png" },
-        { "id": "stufen", "title": "Stufen-Tracking", "description": "Verfolgen Sie den Fortschritt Ihrer Schüler durch alle Lernstufen. Sehen Sie auf einen Blick, wer welche Themen bereits abgeschlossen hat.", "mockup": "/Mockup-Macbook/Stufen-Tracking.png" },
-        { "id": "verwalten", "title": "Klasse verwalten", "description": "Organisieren Sie Ihre Klassen, weisen Sie Lektionen zu und verwalten Sie den Zugriff.", "mockup": "/Mockup-Macbook/Verwalten.png" },
-        { "id": "pdf", "title": "Schüler-PDF Export", "description": "Exportieren Sie detaillierte Reports und Fortschrittsberichte als PDF. Perfekt für Elterngespräche, Zeugnisse oder Dokumentation.", "mockup": "/Mockup-Macbook/Schueler-PDF.png" },
-        { "id": "klasse", "title": "Klasse erstellen", "description": "Erstellen Sie neue Klassen mit wenigen Klicks. Laden Sie Schüler per CSV-Import ein oder fügen Sie sie manuell hinzu.", "mockup": "/Mockup-Macbook/Klasse-erstellen.png" }
+        {
+          "id": "schueler",
+          "title": "Schüler verwalten",
+          "description": "Erstellen Sie einfach Schüler-Accounts, verwalten Sie Klassen und behalten Sie den Überblick über alle Teilnehmer.",
+          "mockup": "/Mockup-Macbook/Schueler.png"
+        },
+        {
+          "id": "fortschritt",
+          "title": "Live-Fortschritt",
+          "description": "Sehen Sie in Echtzeit, was jeder Schüler gerade lernt und wie er vorankommt.",
+          "mockup": "/Mockup-Macbook/Live-Fortschritt.png"
+        },
+        {
+          "id": "stufen",
+          "title": "Stufen-Tracking",
+          "description": "Verfolgen Sie den Fortschritt Ihrer Schüler durch alle Lernstufen. Sehen Sie auf einen Blick, wer welche Themen bereits abgeschlossen hat.",
+          "mockup": "/Mockup-Macbook/Stufen-Tracking.png"
+        },
+        {
+          "id": "verwalten",
+          "title": "Klasse verwalten",
+          "description": "Organisieren Sie Ihre Klassen, weisen Sie Lektionen zu und verwalten Sie den Zugriff.",
+          "mockup": "/Mockup-Macbook/Verwalten.png"
+        },
+        {
+          "id": "pdf",
+          "title": "Schüler-PDF Export",
+          "description": "Exportieren Sie detaillierte Reports und Fortschrittsberichte als PDF. Perfekt für Elterngespräche, Zeugnisse oder Dokumentation.",
+          "mockup": "/Mockup-Macbook/Schueler-PDF.png"
+        },
+        {
+          "id": "klasse",
+          "title": "Klasse erstellen",
+          "description": "Erstellen Sie neue Klassen mit wenigen Klicks. Laden Sie Schüler per CSV-Import ein oder fügen Sie sie manuell hinzu.",
+          "mockup": "/Mockup-Macbook/Klasse-erstellen.png"
+        }
       ],
-      "cta": "Jetzt Partner werden"
+      "cta": "Pilotprojekt anfordern"
     },
     "whyFinance": {
       "badgeTitle": "Warum Finanzbildung?",
       "points": [
-        { "number": "1", "title": "Finanzbildung ist Allgemeinbildung", "description": "Finanzielle Bildung ist ein wichtiger Teil der Allgemeinbildung. Jeder junge Mensch sollte die Möglichkeit haben, finanzielle Kompetenzen zu erlernen – unabhängig vom familiären Hintergrund." },
-        { "number": "2", "title": "Schulden-Prävention", "description": "Statistisch gesehen wird sich mindestens ein:e Schüler:in pro Klasse im Laufe des Lebens überschulden. Hochwertige finanzielle Bildung beugt Überschuldung effektiv vor." },
-        { "number": "3", "title": "Chancengerechtigkeit", "description": "Jede:r sollte über Finanzen Bescheid wissen, um sich eine eigene Meinung bilden zu können; unabhängig davon, welche eigenen finanziellen und familiären Ressourcen man mitbringt." }
+        {
+          "number": "1",
+          "title": "Finanzbildung ist Allgemeinbildung",
+          "description": "Finanzielle Bildung ist ein wichtiger Teil der Allgemeinbildung. Jeder junge Mensch sollte die Möglichkeit haben, finanzielle Kompetenzen zu erlernen – unabhängig vom familiären Hintergrund."
+        },
+        {
+          "number": "2",
+          "title": "Schulden-Prävention",
+          "description": "Statistisch gesehen wird sich mindestens ein:e Schüler:in pro Klasse im Laufe des Lebens überschulden. Hochwertige finanzielle Bildung beugt Überschuldung effektiv vor."
+        },
+        {
+          "number": "3",
+          "title": "Chancengerechtigkeit",
+          "description": "Jede:r sollte über Finanzen Bescheid wissen, um sich eine eigene Meinung bilden zu können; unabhängig davon, welche eigenen finanziellen und familiären Ressourcen man mitbringt."
+        }
       ]
     },
     "testimonials": {
@@ -1051,31 +1590,63 @@
       "titleHighlight": "Lehrkräften",
       "subtitle": "Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.",
       "items": [
-        { "quote": "Die Fortbildung war äußerst bereichernd und ist absolut empfehlenswert. Der Referentin gelang es hervorragend, ein komplexes Thema lebendig und verständlich darzustellen. Ich freue mich bereits darauf, die Unterlagen in meinem Unterricht einzusetzen.", "author": "Lehrkraft, Gymnasium" },
-        { "quote": "Die Fortbildung war mega interessant und hat viele praktische und im Unterricht leicht umsetzbare Methoden vermittelt. Die Materialen sind toll aufbereitet und sofort einsetzbar.", "author": "Lehrkraft, Realschule" },
-        { "quote": "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln.", "author": "Lehrkraft, Berufsschule" }
+        {
+          "quote": "Die Fortbildung war äußerst bereichernd und ist absolut empfehlenswert. Der Referentin gelang es hervorragend, ein komplexes Thema lebendig und verständlich darzustellen. Ich freue mich bereits darauf, die Unterlagen in meinem Unterricht einzusetzen.",
+          "author": "Lehrkraft, Gymnasium"
+        },
+        {
+          "quote": "Die Fortbildung war mega interessant und hat viele praktische und im Unterricht leicht umsetzbare Methoden vermittelt. Die Materialen sind toll aufbereitet und sofort einsetzbar.",
+          "author": "Lehrkraft, Realschule"
+        },
+        {
+          "quote": "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln.",
+          "author": "Lehrkraft, Berufsschule"
+        }
       ]
     },
     "faq": {
       "title": "Häufige Fragen",
       "subtitle": "Alles, was Sie über BeAFox for Schools wissen müssen.",
       "items": [
-        { "id": 1, "question": "Wie lange dauert die Einrichtung?", "answer": "Die Einrichtung geht schnell und unkompliziert. Nach der Beratung richten wir die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Der gesamte Prozess dauert in der Regel nur wenige Tage." },
-        { "id": 2, "question": "Benötigen die Schüler eigene Geräte?", "answer": "Nein, BeAFox funktioniert auf allen gängigen Geräten – Smartphones, Tablets und Computern. Die Schüler können die App auf ihren eigenen Geräten nutzen oder auf schuleigenen Geräten." },
-        { "id": 3, "question": "Wie werden die Daten geschützt?", "answer": "Alle Daten werden sicher und DSGVO-konform gespeichert. Wir legen großen Wert auf Datenschutz und Sicherheit. Ihre Schülerdaten sind bei uns in besten Händen." },
-        { "id": 4, "question": "Können wir BeAFox testen, bevor wir uns entscheiden?", "answer": "Ja, gerne! Wir bieten eine kostenlose Beratung und können Ihnen auch eine Testphase ermöglichen. Kontaktieren Sie uns einfach für weitere Informationen." },
-        { "id": 5, "question": "Was passiert, wenn wir BeAFox nicht mehr nutzen möchten?", "answer": "Kein Problem! Sie können BeAFox jederzeit monatlich kündigen. Es gibt keine langfristigen Verträge oder versteckten Kosten." },
-        { "id": 6, "question": "Gibt es Schulungen für Lehrkräfte?", "answer": "Ja, wir bieten Fortbildungen für Lehrkräfte an, in denen wir das System, das Dashboard und die besten Praktiken für den Einsatz im Unterricht erklären." }
+        {
+          "id": 1,
+          "question": "Wie lange dauert die Einrichtung?",
+          "answer": "Die Einrichtung geht schnell und unkompliziert. Nach der Beratung richten wir die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Der gesamte Prozess dauert in der Regel nur wenige Tage."
+        },
+        {
+          "id": 2,
+          "question": "Benötigen die Schüler eigene Geräte?",
+          "answer": "Nein, BeAFox funktioniert auf allen gängigen Geräten – Smartphones, Tablets und Computern. Die Schüler können die App auf ihren eigenen Geräten nutzen oder auf schuleigenen Geräten."
+        },
+        {
+          "id": 3,
+          "question": "Wie werden die Daten geschützt?",
+          "answer": "Alle Daten werden sicher und DSGVO-konform gespeichert. Wir legen großen Wert auf Datenschutz und Sicherheit. Ihre Schülerdaten sind bei uns in besten Händen."
+        },
+        {
+          "id": 4,
+          "question": "Können wir BeAFox testen, bevor wir uns entscheiden?",
+          "answer": "Ja, gerne! Wir bieten eine kostenlose Beratung und können Ihnen auch eine Testphase ermöglichen. Kontaktieren Sie uns einfach für weitere Informationen."
+        },
+        {
+          "id": 5,
+          "question": "Was passiert, wenn wir BeAFox nicht mehr nutzen möchten?",
+          "answer": "Kein Problem! Sie können BeAFox jederzeit monatlich kündigen. Es gibt keine langfristigen Verträge oder versteckten Kosten."
+        },
+        {
+          "id": 6,
+          "question": "Gibt es Schulungen für Lehrkräfte?",
+          "answer": "Ja, wir bieten Fortbildungen für Lehrkräfte an, in denen wir das System, das Dashboard und die besten Praktiken für den Einsatz im Unterricht erklären."
+        }
       ],
       "viewAllCta": "Alle FAQs ansehen"
     },
     "cta": {
       "title": "Bereit, Finanzbildung in Ihre Schule zu bringen?",
       "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihre Schule.",
-      "cta": "Jetzt Partner werden"
+      "cta": "Pilotprojekt anfordern"
     }
-  }
-  ,
+  },
   "clubs": {
     "meta": {
       "title": "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
@@ -1093,7 +1664,7 @@
       "subheadline": "Sie konzentrieren sich auf den Sport – nicht auf Finanzen.",
       "description": "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler. Mit BeAFox geben Sie ihnen die Sicherheit, die sie brauchen, um sich voll auf ihre Sportart zu konzentrieren.",
       "impact": "Ihre Sportler lernen verantwortungsvoll mit Geld umzugehen, während Sie den Überblick behalten. Finanzielle Sorgen gehören der Vergangenheit an – Ihre Talente können sich auf das Wesentliche fokussieren.",
-      "ctaPartner": "Jetzt Partner werden"
+      "ctaPartner": "Pilotprojekt anfordern"
     },
     "journey": {
       "title": "Die",
@@ -1120,10 +1691,30 @@
       "titlePost": " nutzen",
       "subtitle": "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler – mit messbaren Ergebnissen auf und neben dem Platz.",
       "items": [
-        { "title": "Fokus auf den Sport", "description": "Ihre Sportler müssen sich keine Sorgen um Finanzen machen. Sie konzentrieren sich voll auf Training und Wettkämpfe – dank BeAFox, das Sie als Verein bereitstellen.", "stat": "85%", "statLabel": "Bessere Fokussierung" },
-        { "title": "Bessere Leistungen", "description": "Ausgeglichene Sportler ohne finanzielle Belastung zeigen messbar bessere Leistungen. Ihre Investition in die finanzielle Bildung zahlt sich auf dem Platz aus.", "stat": "92%", "statLabel": "Zufriedenheit" },
-        { "title": "Einfache Verwaltung", "description": "Als Verein stellen Sie BeAFox für alle Ihre Sportler bereit. Einfache Verwaltung, klare Kosten, vollständige Übersicht über alle Aktivitäten.", "stat": "200+", "statLabel": "Sportler" },
-        { "title": "Zukunftssicherheit", "description": "Ihre Sportler lernen früh verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere. Eine Investition, die sich langfristig auszahlt.", "stat": "15+", "statLabel": "Vereine" }
+        {
+          "title": "Fokus auf den Sport",
+          "description": "Ihre Sportler müssen sich keine Sorgen um Finanzen machen. Sie konzentrieren sich voll auf Training und Wettkämpfe – dank BeAFox, das Sie als Verein bereitstellen.",
+          "stat": "85%",
+          "statLabel": "Bessere Fokussierung"
+        },
+        {
+          "title": "Bessere Leistungen",
+          "description": "Ausgeglichene Sportler ohne finanzielle Belastung zeigen messbar bessere Leistungen. Ihre Investition in die finanzielle Bildung zahlt sich auf dem Platz aus.",
+          "stat": "92%",
+          "statLabel": "Zufriedenheit"
+        },
+        {
+          "title": "Einfache Verwaltung",
+          "description": "Als Verein stellen Sie BeAFox für alle Ihre Sportler bereit. Einfache Verwaltung, klare Kosten, vollständige Übersicht über alle Aktivitäten.",
+          "stat": "200+",
+          "statLabel": "Sportler"
+        },
+        {
+          "title": "Zukunftssicherheit",
+          "description": "Ihre Sportler lernen früh verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere. Eine Investition, die sich langfristig auszahlt.",
+          "stat": "15+",
+          "statLabel": "Vereine"
+        }
       ]
     },
     "features": {
@@ -1132,10 +1723,30 @@
       "titlePost": "",
       "subtitle": "Als Verein stellen Sie BeAFox bereit – Ihre Sportler lernen automatisch",
       "items": [
-        { "id": "stufen", "title": "Automatische Finanzbildung", "description": "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese automatisch Zugang zu allen Lerninhalten. Sie müssen sich keine Gedanken über Finanzen machen – die App übernimmt die Bildung im Hintergrund, während sie sich auf den Sport konzentrieren.", "mockup": "/assets/Mockups/Mockup-Stufen.png" },
-        { "id": "lernpfad", "title": "Strukturiertes Lernen", "description": "Ihre Sportler lernen Schritt für Schritt alles, was sie über Finanzen wissen müssen – ohne dass Sie als Verein eingreifen müssen. Die App führt jeden Sportler automatisch durch die wichtigsten Themen, perfekt für die Zeit zwischen Trainingseinheiten.", "mockup": "/assets/Mockups/Mockup-Lernpfad.png" },
-        { "id": "rangliste", "title": "Motivation durch Wettbewerb", "description": "Ihre Sportler können untereinander antreten und sich gegenseitig motivieren. Ranglisten, Missionen und Challenges sorgen dafür, dass die Finanzbildung spielerisch bleibt – genau wie im Sport. So lernen sie, ohne es als Belastung zu empfinden.", "mockup": "/assets/Mockups/Mockup-Rangliste.png" },
-        { "id": "profil", "title": "Vollständige Übersicht für Vereine", "description": "Als Verein behalten Sie den Überblick: Sie sehen, welche Sportler aktiv lernen, wie der Fortschritt aussieht und wo Unterstützung benötigt wird. Dank BeAFox haben Sie alle Informationen zentral verfügbar.", "mockup": "/assets/Mockups/Mockup-Profil.png" }
+        {
+          "id": "stufen",
+          "title": "Automatische Finanzbildung",
+          "description": "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese automatisch Zugang zu allen Lerninhalten. Sie müssen sich keine Gedanken über Finanzen machen – die App übernimmt die Bildung im Hintergrund, während sie sich auf den Sport konzentrieren.",
+          "mockup": "/assets/Mockups/Mockup-Stufen.png"
+        },
+        {
+          "id": "lernpfad",
+          "title": "Strukturiertes Lernen",
+          "description": "Ihre Sportler lernen Schritt für Schritt alles, was sie über Finanzen wissen müssen – ohne dass Sie als Verein eingreifen müssen. Die App führt jeden Sportler automatisch durch die wichtigsten Themen, perfekt für die Zeit zwischen Trainingseinheiten.",
+          "mockup": "/assets/Mockups/Mockup-Lernpfad.png"
+        },
+        {
+          "id": "rangliste",
+          "title": "Motivation durch Wettbewerb",
+          "description": "Ihre Sportler können untereinander antreten und sich gegenseitig motivieren. Ranglisten, Missionen und Challenges sorgen dafür, dass die Finanzbildung spielerisch bleibt – genau wie im Sport. So lernen sie, ohne es als Belastung zu empfinden.",
+          "mockup": "/assets/Mockups/Mockup-Rangliste.png"
+        },
+        {
+          "id": "profil",
+          "title": "Vollständige Übersicht für Vereine",
+          "description": "Als Verein behalten Sie den Überblick: Sie sehen, welche Sportler aktiv lernen, wie der Fortschritt aussieht und wo Unterstützung benötigt wird. Dank BeAFox haben Sie alle Informationen zentral verfügbar.",
+          "mockup": "/assets/Mockups/Mockup-Profil.png"
+        }
       ]
     },
     "package": {
@@ -1144,14 +1755,38 @@
       "titlePost": " enthalten ist",
       "subtitle": "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese vollständigen Zugang zu allen BeAFox-Features",
       "items": [
-        { "title": "Sportlerische Lern-App", "description": "Gamifizierte Finanzbildung, die Ihre Sportler motiviert und nachhaltig lernt" },
-        { "title": "Vollständiger Zugang", "description": "Alle Lernmodule, Missionen und Features ohne Einschränkungen" },
-        { "title": "Fortschritts-Tracking", "description": "Detaillierte Einblicke in den Lernfortschritt jedes einzelnen Sportlers" },
-        { "title": "Offizielle Zertifikate", "description": "Anerkannte Zertifikate für erfolgreich abgeschlossene Module" },
-        { "title": "Flexible Paketgröße", "description": "Stellen Sie BeAFox für einzelne Sportler oder das gesamte Team bereit – ganz nach Ihrem Bedarf" },
-        { "title": "Persönlicher Ansprechpartner", "description": "Dedizierter Account Manager für individuelle Betreuung" },
-        { "title": "DSGVO-konform", "description": "Vollständiger Datenschutz nach höchsten europäischen Standards" },
-        { "title": "Support & Updates", "description": "Kontinuierliche Updates und persönlicher Support bei Fragen" }
+        {
+          "title": "Sportlerische Lern-App",
+          "description": "Gamifizierte Finanzbildung, die Ihre Sportler motiviert und nachhaltig lernt"
+        },
+        {
+          "title": "Vollständiger Zugang",
+          "description": "Alle Lernmodule, Missionen und Features ohne Einschränkungen"
+        },
+        {
+          "title": "Fortschritts-Tracking",
+          "description": "Detaillierte Einblicke in den Lernfortschritt jedes einzelnen Sportlers"
+        },
+        {
+          "title": "Offizielle Zertifikate",
+          "description": "Anerkannte Zertifikate für erfolgreich abgeschlossene Module"
+        },
+        {
+          "title": "Flexible Paketgröße",
+          "description": "Stellen Sie BeAFox für einzelne Sportler oder das gesamte Team bereit – ganz nach Ihrem Bedarf"
+        },
+        {
+          "title": "Persönlicher Ansprechpartner",
+          "description": "Dedizierter Account Manager für individuelle Betreuung"
+        },
+        {
+          "title": "DSGVO-konform",
+          "description": "Vollständiger Datenschutz nach höchsten europäischen Standards"
+        },
+        {
+          "title": "Support & Updates",
+          "description": "Kontinuierliche Updates und persönlicher Support bei Fragen"
+        }
       ]
     },
     "refundProgram": {
@@ -1160,9 +1795,18 @@
       "subtitle": "Als kleiner Verein können Sie auch ohne große Pakete von BeAFox profitieren – mit unserem Rückführungsprogramm.",
       "howTitle": "So funktioniert's",
       "steps": [
-        { "title": "Partnercode erhalten", "description": "Als Partner-Verein erhalten Sie einen individuellen Partnercode, den Sie an Ihre Mitglieder weitergeben können." },
-        { "title": "Mitglieder nutzen den Code", "description": "Wenn ein Vereinsmitglied BeAFox Unlimited mit Ihrem Partnercode kauft, wird automatisch ein Teil des Betrags an Ihren Verein gespendet." },
-        { "title": "Verein profitiert", "description": "Die Spenden fließen direkt an Ihren Verein – ohne zusätzlichen Aufwand für Sie. Ihre Mitglieder unterstützen den Verein automatisch." }
+        {
+          "title": "Partnercode erhalten",
+          "description": "Als Partner-Verein erhalten Sie einen individuellen Partnercode, den Sie an Ihre Mitglieder weitergeben können."
+        },
+        {
+          "title": "Mitglieder nutzen den Code",
+          "description": "Wenn ein Vereinsmitglied BeAFox Unlimited mit Ihrem Partnercode kauft, wird automatisch ein Teil des Betrags an Ihren Verein gespendet."
+        },
+        {
+          "title": "Verein profitiert",
+          "description": "Die Spenden fließen direkt an Ihren Verein – ohne zusätzlichen Aufwand für Sie. Ihre Mitglieder unterstützen den Verein automatisch."
+        }
       ],
       "benefitsTitle": "Ihre Vorteile",
       "benefits": [
@@ -1179,11 +1823,10 @@
     "cta": {
       "title": "Bereit, BeAFox für Ihre Sportler bereitzustellen?",
       "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch. Wir erstellen Ihnen ein individuelles Angebot für Ihren Verein – oder informieren Sie über unser Rückführungsprogramm für kleinere Vereine.",
-      "ctaPartner": "Jetzt Partner werden",
+      "ctaPartner": "Pilotprojekt anfordern",
       "ctaApp": "App herunterladen"
     }
-  }
-  ,
+  },
   "contact": {
     "hero": {
       "tag": "Kontakt",
@@ -1269,7 +1912,10 @@
     "title": "Bei BeAFox anmelden",
     "subtitle": "Melde dich mit deinem Account an",
     "fields": {
-      "email": { "label": "E-Mail-Adresse", "placeholder": "Deine E-Mail-Adresse" },
+      "email": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "Deine E-Mail-Adresse"
+      },
       "password": {
         "label": "Passwort",
         "placeholder": "Dein Passwort",
@@ -1298,8 +1944,14 @@
       "highlight": "BeAFox Unlimited"
     },
     "fields": {
-      "username": { "label": "Benutzername", "placeholder": "Dein Benutzername" },
-      "email": { "label": "E-Mail-Adresse", "placeholder": "Deine E-Mail-Adresse" },
+      "username": {
+        "label": "Benutzername",
+        "placeholder": "Dein Benutzername"
+      },
+      "email": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "Deine E-Mail-Adresse"
+      },
       "password": {
         "label": "Passwort",
         "placeholder": "Mindestens 8 Zeichen",
@@ -1314,7 +1966,10 @@
       }
     },
     "button": { "loading": "Wird erstellt...", "submit": "Jetzt registrieren" },
-    "links": { "hasAccount": "Du hast bereits einen Account?", "login": "Hier anmelden" },
+    "links": {
+      "hasAccount": "Du hast bereits einen Account?",
+      "login": "Hier anmelden"
+    },
     "info": {
       "title": "Nächste Schritte",
       "text": {
@@ -1324,15 +1979,37 @@
       }
     },
     "validation": {
-      "username": { "missing": "Benutzername fehlt!", "tooShort": "Benutzername ist zu kurz!", "tooLong": "Benutzername ist zu lang!" },
-      "email": { "missing": "E-Mail fehlt!", "invalid": "E-Mail nicht gültig!" },
-      "password": { "missing": "Passwort fehlt!", "tooShort": "Passwort ist zu kurz!", "weak": "Benutze Sonderzeichen und Zahlen!" },
-      "confirmPassword": { "missing": "Passwort-Bestätigung fehlt!", "mismatch": "Passwörter stimmen nicht überein!" },
+      "username": {
+        "missing": "Benutzername fehlt!",
+        "tooShort": "Benutzername ist zu kurz!",
+        "tooLong": "Benutzername ist zu lang!"
+      },
+      "email": {
+        "missing": "E-Mail fehlt!",
+        "invalid": "E-Mail nicht gültig!"
+      },
+      "password": {
+        "missing": "Passwort fehlt!",
+        "tooShort": "Passwort ist zu kurz!",
+        "weak": "Benutze Sonderzeichen und Zahlen!"
+      },
+      "confirmPassword": {
+        "missing": "Passwort-Bestätigung fehlt!",
+        "mismatch": "Passwörter stimmen nicht überein!"
+      },
       "role": { "invalid": "Ungültige Rolle!" },
-      "schoolName": { "missing": "Schulname fehlt!", "tooShort": "Schulname ist zu kurz!" },
-      "schoolLocation": { "missing": "Schulort fehlt!", "tooShort": "Schulort ist zu kurz!" }
+      "schoolName": {
+        "missing": "Schulname fehlt!",
+        "tooShort": "Schulname ist zu kurz!"
+      },
+      "schoolLocation": {
+        "missing": "Schulort fehlt!",
+        "tooShort": "Schulort ist zu kurz!"
+      }
     },
-    "errors": { "registerFailedFallback": "Registrierung fehlgeschlagen. Bitte versuche es erneut." }
+    "errors": {
+      "registerFailedFallback": "Registrierung fehlgeschlagen. Bitte versuche es erneut."
+    }
   },
   "authForgotPassword": {
     "title": "Passwort zurücksetzen",
@@ -1341,12 +2018,19 @@
       "success": "E-Mail wurde gesendet"
     },
     "fields": {
-      "email": { "label": "E-Mail-Adresse", "placeholder": "Deine E-Mail-Adresse" }
+      "email": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "Deine E-Mail-Adresse"
+      }
     },
     "button": { "loading": "Wird gesendet...", "submit": "Link senden" },
     "links": { "backToLogin": "Zurück zur Anmeldung" },
-    "validation": { "emailInvalid": "Bitte gib eine gültige E-Mail-Adresse ein" },
-    "errors": { "sendFailedFallback": "Fehler beim Senden der E-Mail. Bitte versuche es erneut." },
+    "validation": {
+      "emailInvalid": "Bitte gib eine gültige E-Mail-Adresse ein"
+    },
+    "errors": {
+      "sendFailedFallback": "Fehler beim Senden der E-Mail. Bitte versuche es erneut."
+    },
     "success": {
       "title": "E-Mail wurde gesendet!",
       "text": "Wir haben dir eine E-Mail mit einem Link zum Zurücksetzen deines Passworts gesendet. Bitte überprüfe auch deinen Spam-Ordner, falls du die E-Mail nicht findest.",
@@ -1389,7 +2073,10 @@
         "hideAria": "Passwort verbergen"
       }
     },
-    "button": { "loading": "Wird gespeichert...", "submit": "Passwort zurücksetzen" },
+    "button": {
+      "loading": "Wird gespeichert...",
+      "submit": "Passwort zurücksetzen"
+    },
     "info": {
       "title": "Passwort-Anforderungen",
       "text": "Dein Passwort muss mindestens 8 Zeichen lang sein und Buchstaben, Zahlen und Sonderzeichen enthalten."
@@ -1411,7 +2098,9 @@
     "countdownSeconds": "Sek",
     "button": { "loading": "Wird verifiziert...", "submit": "Verifizieren" },
     "links": { "backToRegister": "Zurück zur Registrierung" },
-    "validation": { "otpInvalid": "Bitte gib einen gültigen 6-stelligen Code ein" },
+    "validation": {
+      "otpInvalid": "Bitte gib einen gültigen 6-stelligen Code ein"
+    },
     "errors": {
       "invalidUserData": "Ungültige Nutzerdaten",
       "verifyFailedFallback": "Verifizierung fehlgeschlagen. Bitte versuche es erneut.",
@@ -2507,28 +3196,41 @@
         "id": 1,
         "title": "Angaben gemäß § 5 TMG",
         "content": [
-          { "details": ["BeAFox UG (haftungsbeschränkt)", "Siemensweg 2", "93073 Neutraubling", "Deutschland"] }
+          {
+            "details": [
+              "BeAFox UG (haftungsbeschränkt)",
+              "Siemensweg 2",
+              "93073 Neutraubling",
+              "Deutschland"
+            ]
+          }
         ]
       },
       {
         "id": 2,
         "title": "Kontakt",
         "content": [
-          { "details": ["Telefon: +49 178 2723 673", "E-Mail: info@beafox.app"] }
+          {
+            "details": ["Telefon: +49 178 2723 673", "E-Mail: info@beafox.app"]
+          }
         ]
       },
       {
         "id": 3,
         "title": "Vertreten durch",
-        "content": [
-          { "details": ["Die Geschäftsführung: Alexandru Tapelea"] }
-        ]
+        "content": [{ "details": ["Die Geschäftsführung: Alexandru Tapelea"] }]
       },
       {
         "id": 4,
         "title": "Registereintrag",
         "content": [
-          { "details": ["Eintragung im Handelsregister", "Registergericht: Regensburg", "Registernummer: HRB 21689"] }
+          {
+            "details": [
+              "Eintragung im Handelsregister",
+              "Registergericht: Regensburg",
+              "Registernummer: HRB 21689"
+            ]
+          }
         ]
       },
       {
@@ -2545,7 +3247,14 @@
         "id": 6,
         "title": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
         "content": [
-          { "details": ["BeAFox UG (haftungsbeschränkt)", "Siemensweg 2", "93073 Neutraubling", "Deutschland"] }
+          {
+            "details": [
+              "BeAFox UG (haftungsbeschränkt)",
+              "Siemensweg 2",
+              "93073 Neutraubling",
+              "Deutschland"
+            ]
+          }
         ]
       },
       {
@@ -2567,7 +3276,10 @@
           {
             "subtitle": "Datenschutz",
             "text": "Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Die Nutzung der Angebote und Dienste ist, soweit möglich, stets ohne Angabe personenbezogener Daten möglich.",
-            "link": { "text": "Weitere Informationen finden Sie in unserer Datenschutzerklärung.", "href": "/datenschutz" }
+            "link": {
+              "text": "Weitere Informationen finden Sie in unserer Datenschutzerklärung.",
+              "href": "/datenschutz"
+            }
           }
         ]
       }
@@ -2584,22 +3296,414 @@
       "description": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten."
     },
     "sections": [
-      { "id": 1, "title": "Information über die Erhebung personenbezogener Daten", "content": [{ "subtitle": "Allgemeines", "text": "Im Folgenden informieren wir über die Erhebung personenbezogener Daten bei Nutzung dieser Website und unserer App. Personenbezogene Daten sind alle Daten, die auf Sie persönlich beziehbar sind, also z.B. Name, Adresse, E-Mail-Adressen, Nutzerverhalten." }, { "subtitle": "Verantwortliche Stelle", "text": "Verantwortliche Stelle im Sinne der DSGVO und zugleich Diensteanbieter im Sinne des TTDSG ist:", "details": ["BeAFox UG (haftungsbeschränkt)", "Siemensweg 2", "93073 Neutraubling", "Deutschland", "Vertreten durch: Die Geschäftsführung", "Handelsregister: HRB 21689, Registergericht Regensburg", "Telefon: +49 178 2723 673", "E-Mail: info@beafox.app"] }, { "subtitle": "Datenschutzbeauftragte:r", "text": "Wir haben derzeit keinen Datenschutzbeauftragten bestellt, da dies nach den gesetzlichen Bestimmungen nicht erforderlich ist." }] },
-      { "id": 2, "title": "Ihre Rechte als betroffene Person", "content": [{ "subtitle": "Recht auf Auskunft (Art. 15 DS-GVO)", "text": "Sie haben das Recht, Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen. Insbesondere können Sie Auskunft verlangen über:", "list": ["die zu Ihnen bei uns gespeicherten Daten", "deren Herkunft", "Empfänger oder Kategorien von Empfängern, an die diese Daten weitergegeben werden", "den Zweck der Speicherung", "die Dauer der Speicherung"] }, { "subtitle": "Recht auf Berichtigung (Art. 16 DS-GVO)", "text": "Sie haben das Recht, die Berichtigung unrichtiger oder die Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen." }, { "subtitle": "Recht auf Löschung (Art. 17 DS-GVO)", "text": "Sie haben das Recht, die Löschung Ihrer personenbezogenen Daten zu verlangen, soweit nicht gesetzliche Aufbewahrungspflichten oder andere rechtliche Gründe der Löschung entgegenstehen." }, { "subtitle": "Recht auf Einschränkung der Verarbeitung (Art. 18 DS-GVO)", "text": "Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen." }, { "subtitle": "Recht auf Datenübertragbarkeit (Art. 20 DS-GVO)", "text": "Sie haben das Recht, Ihre personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten." }, { "subtitle": "Widerspruchsrecht (Art. 21 DS-GVO)", "text": "Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DS-GVO erfolgt, Widerspruch einzulegen." }, { "subtitle": "Widerruf von Einwilligungen", "text": "Wenn Sie eine Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten erteilt haben, können Sie diese jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung wird dadurch nicht berührt. Alle Informationswünsche, Auskunftsanfragen oder Widersprüche zur Datenverarbeitung richten Sie bitte per E-Mail an info@beafox.app oder an die oben genannte Adresse." }, { "subtitle": "Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DS-GVO)", "text": "Sie haben zudem das Recht, sich bei einer Datenschutzaufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Zuständig ist in der Regel die Aufsichtsbehörde Ihres üblichen Aufenthaltsortes, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.", "details": ["Für uns zuständig ist:", "Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)", "Promenade 18", "91522 Ansbach", "Deutschland", "", "Website: https://www.lda.bayern.de", "E-Mail: poststelle@lda.bayern.de"] }] },
-      { "id": 3, "title": "Datensicherheit", "content": [{ "text": "Wir unterhalten aktuelle technische Maßnahmen zur Gewährleistung der Datensicherheit, insbesondere zum Schutz Ihrer personenbezogenen Daten vor Gefahren bei Datenübertragungen sowie vor Kenntniserlangung durch Dritte. Diese werden dem aktuellen Stand der Technik entsprechend jeweils angepasst." }, { "subtitle": "TLS-Verschlüsselung", "text": "Wir verwenden für die Übertragung von Inhalten eine TLS-Verschlüsselung (erkennbar an \"https://\" und dem Schloss-Symbol im Browser). So werden Ihre Daten vor unbefugter Mitlesung geschützt." }] },
-      { "id": 4, "title": "Hosting & Server-Logfiles", "content": [{ "subtitle": "Hosting", "text": "Unsere Website wird bei Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA gehostet. Wir haben mit dem Hoster einen Vertrag zur Auftragsverarbeitung gem. Art. 28 DS-GVO geschlossen." }, { "subtitle": "Server-Logfiles", "text": "Beim Aufruf unserer Website erfasst unser Hoster automatisiert Daten und Informationen in sogenannten Server-Logfiles. Dazu gehören insbesondere:", "list": ["IP-Adresse", "Datum und Uhrzeit des Abrufs", "Zeitzonendifferenz zur Greenwich Mean Time (GMT)", "URL der abgerufenen Seite", "Referrer-URL (Website, von der die Anforderung kommt)", "Verwendeter Browser und Betriebssystem", "Sprache und Version der Browsersoftware"] }, { "subtitle": "Rechtsgrundlage", "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DS-GVO. Unser berechtigtes Interesse liegt in der technischen Bereitstellung der Website, der Gewährleistung von Stabilität und Sicherheit sowie der Aufklärung von Missbrauchs- oder Betrugshandlungen." }] },
-      { "id": 5, "title": "Cookies & Einwilligungs-Management", "content": [{ "subtitle": "Was sind Cookies?", "text": "Bei Cookies handelt es sich um kleine Textdateien, die auf Ihrer Festplatte dem von Ihnen verwendeten Browser zugeordnet gespeichert werden und durch welche der Stelle, die den Cookie setzt (in diesem Fall also uns), bestimmte Informationen zufließen. Cookies können keine Programme ausführen oder Viren auf Ihren Computer übertragen. Sie dienen dazu, das Internetangebot insgesamt nutzerfreundlicher und effektiver zu machen." }, { "subtitle": "Verwendung von Cookies", "text": "Wir setzen Cookies dazu ein, um Sie für Folgebesuche identifizieren zu können, falls Sie über einen Account bei uns verfügen. Andernfalls müssten Sie sich für jeden Besuch erneut einloggen." }, { "subtitle": "Cookie-Arten", "text": "Diese Website nutzt Cookies in folgendem Umfang:", "list": ["Transiente Cookies (temporärer Einsatz): Transiente Cookies werden automatisiert gelöscht, wenn Sie den Browser schließen. Dazu zählen insbesondere die Session-Cookies. Diese speichern eine sogenannte Session-ID, mit welcher sich verschiedene Anfragen Ihres Browsers der gemeinsamen Sitzung zuordnen lassen. Dadurch kann Ihr Rechner wiedererkannt werden, wenn Sie auf die Website zurückkehren. Die Session-Cookies werden gelöscht, wenn Sie sich ausloggen oder Sie den Browser schließen."] }, { "subtitle": "Einwilligung über Consent-Tool", "text": "Soweit wir nicht technisch notwendige Cookies (z.B. zu Statistik- oder Marketingzwecken) einsetzen, holen wir hierfür zuvor Ihre Einwilligung über ein Einwilligungs-Management-Tool ein. Wir verwenden derzeit keine Cookies zu Analyse- oder Marketingzwecken." }, { "subtitle": "Rechtsgrundlage", "text": "Die Speicherung von Informationen in Ihrem Endgerät oder der Zugriff hierauf erfolgt, soweit nicht unbedingt erforderlich, auf Grundlage Ihrer Einwilligung (§ 25 Abs. 1 TTDSG i.V.m. Art. 6 Abs. 1 lit. a DS-GVO). Technisch notwendige Cookies verwenden wir auf Grundlage von § 25 Abs. 2 TTDSG und Art. 6 Abs. 1 lit. f DS-GVO." }, { "subtitle": "Datentrennung", "text": "Diese gespeicherten Informationen werden getrennt von eventuell weiter bei uns angegeben Daten gespeichert. Insbesondere werden die Daten der Cookies nicht mit Ihren weiteren Daten verknüpft." }] },
-      { "id": 6, "title": "Kontaktformular und E-Mail-Kommunikation", "content": [{ "subtitle": "Kontaktformular", "text": "Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter." }, { "subtitle": "E-Mail-Kommunikation", "text": "Wenn Sie uns per E-Mail kontaktieren, speichern wir Ihre E-Mail-Adresse und die von Ihnen mitgeteilten Informationen, um Ihre Anfrage zu beantworten." }, { "subtitle": "Versand über SendGrid", "text": "Für den Versand von E-Mails nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DS-GVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart, um einen angemessenen Datenschutzstandard zu gewährleisten." }, { "subtitle": "Rechtsgrundlage", "text": "Rechtsgrundlage für die Verarbeitung der Daten aus Kontaktformular und E-Mails ist Art. 6 Abs. 1 lit. b DS-GVO, soweit Ihre Anfrage auf den Abschluss oder die Erfüllung eines Vertrags gerichtet ist, sowie Art. 6 Abs. 1 lit. f DS-GVO im Übrigen. Unser berechtigtes Interesse liegt in der Bearbeitung von Anfragen." }, { "subtitle": "Speicherdauer", "text": "Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen." }] },
-      { "id": 7, "title": "Newsletter", "content": [{ "subtitle": "Newsletter-Anmeldung", "text": "Wenn Sie sich für unseren Newsletter anmelden, verwenden wir die von Ihnen angegebene E-Mail-Adresse, um Ihnen regelmäßig Informationen über BeAFox, Updates und Tipps zur Finanzbildung zuzusenden." }, { "subtitle": "Versand über SendGrid", "text": "Für den Versand unseres Newsletters nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DS-GVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart." }, { "subtitle": "Anmeldeverfahren", "text": "Die Anmeldung erfolgt im Double-Opt-In-Verfahren. Sie erhalten nach der Anmeldung eine E-Mail, in der Sie um die Bestätigung Ihrer Anmeldung gebeten werden. Erst nach dieser Bestätigung wird Ihre E-Mail-Adresse zum Versand des Newsletters freigeschaltet." }, { "subtitle": "Logging des Opt-Ins", "text": "Ihre Einwilligung sowie der Zeitpunkt der Anmeldung werden protokolliert, um diese rechtlich nachweisen zu können." }, { "subtitle": "Rechtsgrundlage", "text": "Rechtsgrundlage für den Versand des Newsletters ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)." }, { "subtitle": "Widerruf", "text": "Sie können Ihre Einwilligung zum Erhalt des Newsletters jederzeit widerrufen. In jeder Newsletter-E-Mail finden Sie einen entsprechenden Link. Sie können auch jederzeit eine E-Mail an info@beafox.app senden." }] },
-      { "id": 8, "title": "Nutzung der BeAFox-App / Erstellung eines Nutzerkontos", "content": [{ "subtitle": "Registrierung", "text": "Bei der Registrierung für ein Nutzerkonto in der BeAFox-App erheben wir folgende Daten:", "list": ["Benutzername", "E-Mail-Adresse", "Passwort (verschlüsselt gespeichert)"] }, { "subtitle": "Zweck der Verarbeitung", "text": "Diese Daten werden benötigt, um Ihnen Zugang zur App zu gewähren, Ihr Nutzerkonto zu verwalten und Ihnen personalisierte Lerninhalte anzubieten." }, { "subtitle": "Rechtsgrundlage", "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO zur Erfüllung des Nutzungsvertrags." }, { "subtitle": "Speicherdauer", "text": "Ihre Account-Daten werden gespeichert, solange Ihr Nutzerkonto besteht. Nach Löschung Ihres Kontos werden die Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen." }] },
-      { "id": 9, "title": "Verarbeitung von Lern- und Nutzungsdaten", "content": [{ "subtitle": "Erhobene Daten", "text": "Bei der Nutzung der BeAFox-App verarbeiten wir folgende Daten:", "list": ["Lernfortschritt (abgeschlossene Lektionen, Missionen, XP-Punkte)", "Statistiken (Richtige/Falsche Antworten, Lernzeit)", "Ranglisten-Position", "Geräteinformationen (Gerätetyp, Betriebssystem, App-Version)", "Nutzungszeiten und Zugriffszeiten"] }, { "subtitle": "Zweck der Verarbeitung", "text": "Diese Daten werden verwendet, um:", "list": ["Ihren Lernfortschritt zu speichern und anzuzeigen", "Personalisierte Lernempfehlungen zu geben", "Ranglisten zu erstellen", "Die App zu verbessern und zu optimieren", "Technische Probleme zu identifizieren und zu beheben"] }, { "subtitle": "Rechtsgrundlage", "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO zur Erfüllung des Nutzungsvertrags sowie Art. 6 Abs. 1 lit. f DS-GVO zur Verbesserung unserer Dienste." }, { "subtitle": "Speicherung in der Cloud", "text": "Ihre Lern- und Nutzungsdaten werden auf unseren Servern gespeichert, um eine Synchronisation zwischen verschiedenen Geräten zu ermöglichen. So können Sie Ihre Lernfortschritte auf jedem Gerät abrufen." }] },
-      { "id": 10, "title": "In-App-Käufe und Zahlungen", "content": [{ "subtitle": "Zahlungsabwicklung", "text": "Wenn Sie In-App-Käufe in der BeAFox-App tätigen (z.B. Premium-Abo), erfolgt die Zahlungsabwicklung über den jeweiligen App-Store (Apple App Store oder Google Play Store)." }, { "subtitle": "Verarbeitung durch App-Stores", "text": "Die App-Stores verarbeiten folgende Daten:", "list": ["Zahlungsinformationen (Kreditkarte, PayPal, etc.)", "Kaufhistorie", "App Store Account-Informationen"] }, { "subtitle": "Rechtsgrundlage", "text": "Die Verarbeitung der Zahlungsdaten erfolgt durch die App-Stores auf Grundlage ihrer jeweiligen Datenschutzerklärungen. Wir erhalten lediglich Bestätigungen über erfolgreiche Zahlungen, keine Zahlungsdaten." }, { "subtitle": "Hinweis", "text": "Bitte beachten Sie die Datenschutzerklärungen von Apple (https://www.apple.com/privacy/) und Google (https://policies.google.com/privacy) für weitere Informationen zur Verarbeitung Ihrer Zahlungsdaten." }] },
-      { "id": 11, "title": "Push-Benachrichtigungen", "content": [{ "subtitle": "Zweck", "text": "Wir können Ihnen Push-Benachrichtigungen senden, um Sie über neue Lerninhalte, Missionen, Ranglisten-Updates oder wichtige App-Updates zu informieren." }, { "subtitle": "Einwilligung", "text": "Push-Benachrichtigungen werden nur mit Ihrer ausdrücklichen Einwilligung versendet. Sie können diese jederzeit in den App-Einstellungen deaktivieren." }, { "subtitle": "Technische Umsetzung", "text": "Für den Versand von Push-Benachrichtigungen nutzen wir die Dienste der jeweiligen Plattformbetreiber (Apple Push Notification Service bzw. Firebase Cloud Messaging von Google)." }, { "subtitle": "Rechtsgrundlage", "text": "Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)." }] },
-      { "id": 12, "title": "Externe Links und eingebettete Inhalte", "content": [{ "subtitle": "Links zu anderen Websites", "text": "Unsere Webseite enthält Links zu Websites Dritter. Wenn Sie einem Link zu einer dieser Websites (die außerhalb unserer Verantwortung liegen) folgen, weisen wir Sie darauf hin, dass diese Websites ihre eigenen Datenschutzrichtlinien haben und dass wir für diese Richtlinien keine Verantwortung oder Haftung übernehmen. Bitte überprüfen Sie diese Datenschutzrichtlinien, bevor Sie freiwillig personenbezogene Daten an diese Websites weitergeben." }, { "subtitle": "Technische Notwendigkeit", "text": "Erst wenn Sie auf einen externen Link klicken, werden Daten zum Linkziel übertragen. Dies ist aufgrund des dem Internet zugrunde liegenden Protokolls (TCP/IP) technisch notwendig. Die übertragenen Daten sind insbesondere: Ihre IP-Adresse, der Zeitpunkt, zu dem Sie den Link angeklickt haben, die Seite auf der Sie den Link angeklickt haben sowie die oben genannten Informationen." }, { "subtitle": "Social Media Links", "text": "Auf unserer Website finden Sie Links zu unseren Social Media Profilen (Instagram, LinkedIn, TikTok). Wenn Sie diese Links anklicken, werden Sie zu den jeweiligen Plattformen weitergeleitet. Die Verarbeitung Ihrer Daten erfolgt dann nach den Datenschutzbestimmungen der jeweiligen Plattform." }] },
-      { "id": 13, "title": "Rechtsgrundlage der Verarbeitung", "content": [{ "subtitle": "Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)", "text": "Wenn Sie in die Verarbeitung Ihrer personenbezogenen Daten eingewilligt haben, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DS-GVO." }, { "subtitle": "Vertragserfüllung (Art. 6 Abs. 1 lit. b DS-GVO)", "text": "Wenn die Verarbeitung zur Erfüllung eines Vertrags erforderlich ist, dessen Vertragspartei Sie sind, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO." }, { "subtitle": "Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DS-GVO)", "text": "Wenn die Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. c DS-GVO." }, { "subtitle": "Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DS-GVO)", "text": "Die Verarbeitung kann auch auf Grundlage von Art. 6 Abs. 1 lit. f DS-GVO erfolgen, wenn die Verarbeitung zur Wahrung eines berechtigten Interesses unseres Unternehmens oder eines Dritten erforderlich ist und die Interessen, Grundrechte und Grundfreiheiten des Betroffenen nicht überwiegen." }] },
-      { "id": 14, "title": "Dauer der Speicherung", "content": [{ "text": "Das Kriterium für die Dauer der Speicherung von personenbezogenen Daten ist die jeweilige gesetzliche Aufbewahrungsfrist. Nach Ablauf der Frist werden die entsprechenden Daten routinemäßig gelöscht, sofern sie nicht mehr zur Vertragserfüllung oder Vertragsanbahnung erforderlich sind." }, { "subtitle": "Speicherdauer im Einzelnen", "text": "Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben." }] },
-      { "id": 15, "title": "Automatisierte Entscheidungsfindung", "content": [{ "text": "Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein Profiling. Ihre personenbezogenen Daten werden nicht für automatisierte Entscheidungsprozesse verwendet." }] },
-      { "id": 16, "title": "Datenschutz bei Minderjährigen", "content": [{ "subtitle": "Schutz Minderjähriger", "text": "Unsere Dienste richten sich auch an Minderjährige. Wir nehmen den Schutz der Privatsphäre von Minderjährigen sehr ernst. Wenn Sie unter 16 Jahren sind, benötigen wir die Einwilligung Ihrer Eltern oder Erziehungsberechtigten, bevor wir Ihre personenbezogenen Daten verarbeiten können." }, { "subtitle": "Sicherstellung der elterlichen Zustimmung", "text": "Wir stellen sicher, dass Einwilligungen Minderjähriger unter 16 Jahren nur mit Zustimmung der Eltern erfolgen. Bei der Registrierung in der App wird dies durch eine entsprechende Checkbox und Bestätigung durch Erziehungsberechtigte sichergestellt." }, { "subtitle": "Elterliche Kontrolle", "text": "Eltern und Erziehungsberechtigte können jederzeit Auskunft über die von uns gespeicherten Daten ihrer Kinder verlangen und deren Löschung beantragen." }, { "subtitle": "Keine sensiblen Daten", "text": "Wir verarbeiten bewusst keine sensiblen Daten nach Art. 9 DS-GVO (Gesundheitsdaten, Daten zur Religion, etc.). Unsere App fokussiert sich ausschließlich auf die Vermittlung von Finanzwissen." }] }
+      {
+        "id": 1,
+        "title": "Information über die Erhebung personenbezogener Daten",
+        "content": [
+          {
+            "subtitle": "Allgemeines",
+            "text": "Im Folgenden informieren wir über die Erhebung personenbezogener Daten bei Nutzung dieser Website und unserer App. Personenbezogene Daten sind alle Daten, die auf Sie persönlich beziehbar sind, also z.B. Name, Adresse, E-Mail-Adressen, Nutzerverhalten."
+          },
+          {
+            "subtitle": "Verantwortliche Stelle",
+            "text": "Verantwortliche Stelle im Sinne der DSGVO und zugleich Diensteanbieter im Sinne des TTDSG ist:",
+            "details": [
+              "BeAFox UG (haftungsbeschränkt)",
+              "Siemensweg 2",
+              "93073 Neutraubling",
+              "Deutschland",
+              "Vertreten durch: Die Geschäftsführung",
+              "Handelsregister: HRB 21689, Registergericht Regensburg",
+              "Telefon: +49 178 2723 673",
+              "E-Mail: info@beafox.app"
+            ]
+          },
+          {
+            "subtitle": "Datenschutzbeauftragte:r",
+            "text": "Wir haben derzeit keinen Datenschutzbeauftragten bestellt, da dies nach den gesetzlichen Bestimmungen nicht erforderlich ist."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Ihre Rechte als betroffene Person",
+        "content": [
+          {
+            "subtitle": "Recht auf Auskunft (Art. 15 DS-GVO)",
+            "text": "Sie haben das Recht, Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen. Insbesondere können Sie Auskunft verlangen über:",
+            "list": [
+              "die zu Ihnen bei uns gespeicherten Daten",
+              "deren Herkunft",
+              "Empfänger oder Kategorien von Empfängern, an die diese Daten weitergegeben werden",
+              "den Zweck der Speicherung",
+              "die Dauer der Speicherung"
+            ]
+          },
+          {
+            "subtitle": "Recht auf Berichtigung (Art. 16 DS-GVO)",
+            "text": "Sie haben das Recht, die Berichtigung unrichtiger oder die Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen."
+          },
+          {
+            "subtitle": "Recht auf Löschung (Art. 17 DS-GVO)",
+            "text": "Sie haben das Recht, die Löschung Ihrer personenbezogenen Daten zu verlangen, soweit nicht gesetzliche Aufbewahrungspflichten oder andere rechtliche Gründe der Löschung entgegenstehen."
+          },
+          {
+            "subtitle": "Recht auf Einschränkung der Verarbeitung (Art. 18 DS-GVO)",
+            "text": "Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen."
+          },
+          {
+            "subtitle": "Recht auf Datenübertragbarkeit (Art. 20 DS-GVO)",
+            "text": "Sie haben das Recht, Ihre personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten."
+          },
+          {
+            "subtitle": "Widerspruchsrecht (Art. 21 DS-GVO)",
+            "text": "Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DS-GVO erfolgt, Widerspruch einzulegen."
+          },
+          {
+            "subtitle": "Widerruf von Einwilligungen",
+            "text": "Wenn Sie eine Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten erteilt haben, können Sie diese jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung wird dadurch nicht berührt. Alle Informationswünsche, Auskunftsanfragen oder Widersprüche zur Datenverarbeitung richten Sie bitte per E-Mail an info@beafox.app oder an die oben genannte Adresse."
+          },
+          {
+            "subtitle": "Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DS-GVO)",
+            "text": "Sie haben zudem das Recht, sich bei einer Datenschutzaufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Zuständig ist in der Regel die Aufsichtsbehörde Ihres üblichen Aufenthaltsortes, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.",
+            "details": [
+              "Für uns zuständig ist:",
+              "Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)",
+              "Promenade 18",
+              "91522 Ansbach",
+              "Deutschland",
+              "",
+              "Website: https://www.lda.bayern.de",
+              "E-Mail: poststelle@lda.bayern.de"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Datensicherheit",
+        "content": [
+          {
+            "text": "Wir unterhalten aktuelle technische Maßnahmen zur Gewährleistung der Datensicherheit, insbesondere zum Schutz Ihrer personenbezogenen Daten vor Gefahren bei Datenübertragungen sowie vor Kenntniserlangung durch Dritte. Diese werden dem aktuellen Stand der Technik entsprechend jeweils angepasst."
+          },
+          {
+            "subtitle": "TLS-Verschlüsselung",
+            "text": "Wir verwenden für die Übertragung von Inhalten eine TLS-Verschlüsselung (erkennbar an \"https://\" und dem Schloss-Symbol im Browser). So werden Ihre Daten vor unbefugter Mitlesung geschützt."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Hosting & Server-Logfiles",
+        "content": [
+          {
+            "subtitle": "Hosting",
+            "text": "Unsere Website wird bei Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA gehostet. Wir haben mit dem Hoster einen Vertrag zur Auftragsverarbeitung gem. Art. 28 DS-GVO geschlossen."
+          },
+          {
+            "subtitle": "Server-Logfiles",
+            "text": "Beim Aufruf unserer Website erfasst unser Hoster automatisiert Daten und Informationen in sogenannten Server-Logfiles. Dazu gehören insbesondere:",
+            "list": [
+              "IP-Adresse",
+              "Datum und Uhrzeit des Abrufs",
+              "Zeitzonendifferenz zur Greenwich Mean Time (GMT)",
+              "URL der abgerufenen Seite",
+              "Referrer-URL (Website, von der die Anforderung kommt)",
+              "Verwendeter Browser und Betriebssystem",
+              "Sprache und Version der Browsersoftware"
+            ]
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DS-GVO. Unser berechtigtes Interesse liegt in der technischen Bereitstellung der Website, der Gewährleistung von Stabilität und Sicherheit sowie der Aufklärung von Missbrauchs- oder Betrugshandlungen."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Cookies & Einwilligungs-Management",
+        "content": [
+          {
+            "subtitle": "Was sind Cookies?",
+            "text": "Bei Cookies handelt es sich um kleine Textdateien, die auf Ihrer Festplatte dem von Ihnen verwendeten Browser zugeordnet gespeichert werden und durch welche der Stelle, die den Cookie setzt (in diesem Fall also uns), bestimmte Informationen zufließen. Cookies können keine Programme ausführen oder Viren auf Ihren Computer übertragen. Sie dienen dazu, das Internetangebot insgesamt nutzerfreundlicher und effektiver zu machen."
+          },
+          {
+            "subtitle": "Verwendung von Cookies",
+            "text": "Wir setzen Cookies dazu ein, um Sie für Folgebesuche identifizieren zu können, falls Sie über einen Account bei uns verfügen. Andernfalls müssten Sie sich für jeden Besuch erneut einloggen."
+          },
+          {
+            "subtitle": "Cookie-Arten",
+            "text": "Diese Website nutzt Cookies in folgendem Umfang:",
+            "list": [
+              "Transiente Cookies (temporärer Einsatz): Transiente Cookies werden automatisiert gelöscht, wenn Sie den Browser schließen. Dazu zählen insbesondere die Session-Cookies. Diese speichern eine sogenannte Session-ID, mit welcher sich verschiedene Anfragen Ihres Browsers der gemeinsamen Sitzung zuordnen lassen. Dadurch kann Ihr Rechner wiedererkannt werden, wenn Sie auf die Website zurückkehren. Die Session-Cookies werden gelöscht, wenn Sie sich ausloggen oder Sie den Browser schließen."
+            ]
+          },
+          {
+            "subtitle": "Einwilligung über Consent-Tool",
+            "text": "Soweit wir nicht technisch notwendige Cookies (z.B. zu Statistik- oder Marketingzwecken) einsetzen, holen wir hierfür zuvor Ihre Einwilligung über ein Einwilligungs-Management-Tool ein. Wir verwenden derzeit keine Cookies zu Analyse- oder Marketingzwecken."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Speicherung von Informationen in Ihrem Endgerät oder der Zugriff hierauf erfolgt, soweit nicht unbedingt erforderlich, auf Grundlage Ihrer Einwilligung (§ 25 Abs. 1 TTDSG i.V.m. Art. 6 Abs. 1 lit. a DS-GVO). Technisch notwendige Cookies verwenden wir auf Grundlage von § 25 Abs. 2 TTDSG und Art. 6 Abs. 1 lit. f DS-GVO."
+          },
+          {
+            "subtitle": "Datentrennung",
+            "text": "Diese gespeicherten Informationen werden getrennt von eventuell weiter bei uns angegeben Daten gespeichert. Insbesondere werden die Daten der Cookies nicht mit Ihren weiteren Daten verknüpft."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Kontaktformular und E-Mail-Kommunikation",
+        "content": [
+          {
+            "subtitle": "Kontaktformular",
+            "text": "Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter."
+          },
+          {
+            "subtitle": "E-Mail-Kommunikation",
+            "text": "Wenn Sie uns per E-Mail kontaktieren, speichern wir Ihre E-Mail-Adresse und die von Ihnen mitgeteilten Informationen, um Ihre Anfrage zu beantworten."
+          },
+          {
+            "subtitle": "Versand über SendGrid",
+            "text": "Für den Versand von E-Mails nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DS-GVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart, um einen angemessenen Datenschutzstandard zu gewährleisten."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Rechtsgrundlage für die Verarbeitung der Daten aus Kontaktformular und E-Mails ist Art. 6 Abs. 1 lit. b DS-GVO, soweit Ihre Anfrage auf den Abschluss oder die Erfüllung eines Vertrags gerichtet ist, sowie Art. 6 Abs. 1 lit. f DS-GVO im Übrigen. Unser berechtigtes Interesse liegt in der Bearbeitung von Anfragen."
+          },
+          {
+            "subtitle": "Speicherdauer",
+            "text": "Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Newsletter",
+        "content": [
+          {
+            "subtitle": "Newsletter-Anmeldung",
+            "text": "Wenn Sie sich für unseren Newsletter anmelden, verwenden wir die von Ihnen angegebene E-Mail-Adresse, um Ihnen regelmäßig Informationen über BeAFox, Updates und Tipps zur Finanzbildung zuzusenden."
+          },
+          {
+            "subtitle": "Versand über SendGrid",
+            "text": "Für den Versand unseres Newsletters nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DS-GVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart."
+          },
+          {
+            "subtitle": "Anmeldeverfahren",
+            "text": "Die Anmeldung erfolgt im Double-Opt-In-Verfahren. Sie erhalten nach der Anmeldung eine E-Mail, in der Sie um die Bestätigung Ihrer Anmeldung gebeten werden. Erst nach dieser Bestätigung wird Ihre E-Mail-Adresse zum Versand des Newsletters freigeschaltet."
+          },
+          {
+            "subtitle": "Logging des Opt-Ins",
+            "text": "Ihre Einwilligung sowie der Zeitpunkt der Anmeldung werden protokolliert, um diese rechtlich nachweisen zu können."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Rechtsgrundlage für den Versand des Newsletters ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)."
+          },
+          {
+            "subtitle": "Widerruf",
+            "text": "Sie können Ihre Einwilligung zum Erhalt des Newsletters jederzeit widerrufen. In jeder Newsletter-E-Mail finden Sie einen entsprechenden Link. Sie können auch jederzeit eine E-Mail an info@beafox.app senden."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Nutzung der BeAFox-App / Erstellung eines Nutzerkontos",
+        "content": [
+          {
+            "subtitle": "Registrierung",
+            "text": "Bei der Registrierung für ein Nutzerkonto in der BeAFox-App erheben wir folgende Daten:",
+            "list": [
+              "Benutzername",
+              "E-Mail-Adresse",
+              "Passwort (verschlüsselt gespeichert)"
+            ]
+          },
+          {
+            "subtitle": "Zweck der Verarbeitung",
+            "text": "Diese Daten werden benötigt, um Ihnen Zugang zur App zu gewähren, Ihr Nutzerkonto zu verwalten und Ihnen personalisierte Lerninhalte anzubieten."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO zur Erfüllung des Nutzungsvertrags."
+          },
+          {
+            "subtitle": "Speicherdauer",
+            "text": "Ihre Account-Daten werden gespeichert, solange Ihr Nutzerkonto besteht. Nach Löschung Ihres Kontos werden die Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Verarbeitung von Lern- und Nutzungsdaten",
+        "content": [
+          {
+            "subtitle": "Erhobene Daten",
+            "text": "Bei der Nutzung der BeAFox-App verarbeiten wir folgende Daten:",
+            "list": [
+              "Lernfortschritt (abgeschlossene Lektionen, Missionen, XP-Punkte)",
+              "Statistiken (Richtige/Falsche Antworten, Lernzeit)",
+              "Ranglisten-Position",
+              "Geräteinformationen (Gerätetyp, Betriebssystem, App-Version)",
+              "Nutzungszeiten und Zugriffszeiten"
+            ]
+          },
+          {
+            "subtitle": "Zweck der Verarbeitung",
+            "text": "Diese Daten werden verwendet, um:",
+            "list": [
+              "Ihren Lernfortschritt zu speichern und anzuzeigen",
+              "Personalisierte Lernempfehlungen zu geben",
+              "Ranglisten zu erstellen",
+              "Die App zu verbessern und zu optimieren",
+              "Technische Probleme zu identifizieren und zu beheben"
+            ]
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO zur Erfüllung des Nutzungsvertrags sowie Art. 6 Abs. 1 lit. f DS-GVO zur Verbesserung unserer Dienste."
+          },
+          {
+            "subtitle": "Speicherung in der Cloud",
+            "text": "Ihre Lern- und Nutzungsdaten werden auf unseren Servern gespeichert, um eine Synchronisation zwischen verschiedenen Geräten zu ermöglichen. So können Sie Ihre Lernfortschritte auf jedem Gerät abrufen."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "In-App-Käufe und Zahlungen",
+        "content": [
+          {
+            "subtitle": "Zahlungsabwicklung",
+            "text": "Wenn Sie In-App-Käufe in der BeAFox-App tätigen (z.B. Premium-Abo), erfolgt die Zahlungsabwicklung über den jeweiligen App-Store (Apple App Store oder Google Play Store)."
+          },
+          {
+            "subtitle": "Verarbeitung durch App-Stores",
+            "text": "Die App-Stores verarbeiten folgende Daten:",
+            "list": [
+              "Zahlungsinformationen (Kreditkarte, PayPal, etc.)",
+              "Kaufhistorie",
+              "App Store Account-Informationen"
+            ]
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung der Zahlungsdaten erfolgt durch die App-Stores auf Grundlage ihrer jeweiligen Datenschutzerklärungen. Wir erhalten lediglich Bestätigungen über erfolgreiche Zahlungen, keine Zahlungsdaten."
+          },
+          {
+            "subtitle": "Hinweis",
+            "text": "Bitte beachten Sie die Datenschutzerklärungen von Apple (https://www.apple.com/privacy/) und Google (https://policies.google.com/privacy) für weitere Informationen zur Verarbeitung Ihrer Zahlungsdaten."
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Push-Benachrichtigungen",
+        "content": [
+          {
+            "subtitle": "Zweck",
+            "text": "Wir können Ihnen Push-Benachrichtigungen senden, um Sie über neue Lerninhalte, Missionen, Ranglisten-Updates oder wichtige App-Updates zu informieren."
+          },
+          {
+            "subtitle": "Einwilligung",
+            "text": "Push-Benachrichtigungen werden nur mit Ihrer ausdrücklichen Einwilligung versendet. Sie können diese jederzeit in den App-Einstellungen deaktivieren."
+          },
+          {
+            "subtitle": "Technische Umsetzung",
+            "text": "Für den Versand von Push-Benachrichtigungen nutzen wir die Dienste der jeweiligen Plattformbetreiber (Apple Push Notification Service bzw. Firebase Cloud Messaging von Google)."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)."
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "title": "Externe Links und eingebettete Inhalte",
+        "content": [
+          {
+            "subtitle": "Links zu anderen Websites",
+            "text": "Unsere Webseite enthält Links zu Websites Dritter. Wenn Sie einem Link zu einer dieser Websites (die außerhalb unserer Verantwortung liegen) folgen, weisen wir Sie darauf hin, dass diese Websites ihre eigenen Datenschutzrichtlinien haben und dass wir für diese Richtlinien keine Verantwortung oder Haftung übernehmen. Bitte überprüfen Sie diese Datenschutzrichtlinien, bevor Sie freiwillig personenbezogene Daten an diese Websites weitergeben."
+          },
+          {
+            "subtitle": "Technische Notwendigkeit",
+            "text": "Erst wenn Sie auf einen externen Link klicken, werden Daten zum Linkziel übertragen. Dies ist aufgrund des dem Internet zugrunde liegenden Protokolls (TCP/IP) technisch notwendig. Die übertragenen Daten sind insbesondere: Ihre IP-Adresse, der Zeitpunkt, zu dem Sie den Link angeklickt haben, die Seite auf der Sie den Link angeklickt haben sowie die oben genannten Informationen."
+          },
+          {
+            "subtitle": "Social Media Links",
+            "text": "Auf unserer Website finden Sie Links zu unseren Social Media Profilen (Instagram, LinkedIn, TikTok). Wenn Sie diese Links anklicken, werden Sie zu den jeweiligen Plattformen weitergeleitet. Die Verarbeitung Ihrer Daten erfolgt dann nach den Datenschutzbestimmungen der jeweiligen Plattform."
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "title": "Rechtsgrundlage der Verarbeitung",
+        "content": [
+          {
+            "subtitle": "Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)",
+            "text": "Wenn Sie in die Verarbeitung Ihrer personenbezogenen Daten eingewilligt haben, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DS-GVO."
+          },
+          {
+            "subtitle": "Vertragserfüllung (Art. 6 Abs. 1 lit. b DS-GVO)",
+            "text": "Wenn die Verarbeitung zur Erfüllung eines Vertrags erforderlich ist, dessen Vertragspartei Sie sind, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO."
+          },
+          {
+            "subtitle": "Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DS-GVO)",
+            "text": "Wenn die Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. c DS-GVO."
+          },
+          {
+            "subtitle": "Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DS-GVO)",
+            "text": "Die Verarbeitung kann auch auf Grundlage von Art. 6 Abs. 1 lit. f DS-GVO erfolgen, wenn die Verarbeitung zur Wahrung eines berechtigten Interesses unseres Unternehmens oder eines Dritten erforderlich ist und die Interessen, Grundrechte und Grundfreiheiten des Betroffenen nicht überwiegen."
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Dauer der Speicherung",
+        "content": [
+          {
+            "text": "Das Kriterium für die Dauer der Speicherung von personenbezogenen Daten ist die jeweilige gesetzliche Aufbewahrungsfrist. Nach Ablauf der Frist werden die entsprechenden Daten routinemäßig gelöscht, sofern sie nicht mehr zur Vertragserfüllung oder Vertragsanbahnung erforderlich sind."
+          },
+          {
+            "subtitle": "Speicherdauer im Einzelnen",
+            "text": "Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben."
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Automatisierte Entscheidungsfindung",
+        "content": [
+          {
+            "text": "Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein Profiling. Ihre personenbezogenen Daten werden nicht für automatisierte Entscheidungsprozesse verwendet."
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "title": "Datenschutz bei Minderjährigen",
+        "content": [
+          {
+            "subtitle": "Schutz Minderjähriger",
+            "text": "Unsere Dienste richten sich auch an Minderjährige. Wir nehmen den Schutz der Privatsphäre von Minderjährigen sehr ernst. Wenn Sie unter 16 Jahren sind, benötigen wir die Einwilligung Ihrer Eltern oder Erziehungsberechtigten, bevor wir Ihre personenbezogenen Daten verarbeiten können."
+          },
+          {
+            "subtitle": "Sicherstellung der elterlichen Zustimmung",
+            "text": "Wir stellen sicher, dass Einwilligungen Minderjähriger unter 16 Jahren nur mit Zustimmung der Eltern erfolgen. Bei der Registrierung in der App wird dies durch eine entsprechende Checkbox und Bestätigung durch Erziehungsberechtigte sichergestellt."
+          },
+          {
+            "subtitle": "Elterliche Kontrolle",
+            "text": "Eltern und Erziehungsberechtigte können jederzeit Auskunft über die von uns gespeicherten Daten ihrer Kinder verlangen und deren Löschung beantragen."
+          },
+          {
+            "subtitle": "Keine sensiblen Daten",
+            "text": "Wir verarbeiten bewusst keine sensiblen Daten nach Art. 9 DS-GVO (Gesundheitsdaten, Daten zur Religion, etc.). Unsere App fokussiert sich ausschließlich auf die Vermittlung von Finanzwissen."
+          }
+        ]
+      }
     ],
     "contact": {
       "title": "Fragen zum Datenschutz?",
@@ -2614,4 +3718,3 @@
     }
   }
 }
-

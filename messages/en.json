@@ -133,8 +133,8 @@
     "hero": {
       "badge": "The first financial education ecosystem",
       "headline": {
-        "knowledge": "KNOWLEDGE",
-        "money": "MONEY"
+        "line1": "Your finances.",
+        "line2": "Simply played through."
       },
       "words": ["FREEDOM", "SECURITY"],
       "description": "BeAFox is an independent, playful learning platform for financial education for young people—focused on unbiased knowledge and developed especially for schools and training companies.",
@@ -181,12 +181,25 @@
         "features": ["Co-branding", "Donation programs", "Social responsibility", "Exclusive member benefits"]
       }
     },
+    "experienceSection": {
+      "badge": "Our story",
+      "title": "We speak from",
+      "titleHighlight": "experience",
+      "quote": "\"First paycheck, spent it all, month over – and then came the bills, late notices, and debt. Nobody ever taught us how money really works.\"",
+      "paragraph1": "We were apprentices ourselves – young, excited, finally earning our own money. But without knowing anything about budgets, saving, or contracts, we burned through every cent. Overdrafts, installment traps, subscription pitfalls. What started as freedom quickly turned into real stress: sleepless nights, shame, and the feeling of being completely alone with it.",
+      "paragraph2": "That exact feeling was the spark behind BeAFox. We don't want the next generation to repeat these mistakes. So we built an app that teaches financial knowledge the way we wished someone had taught us back then: honestly, clearly, and without judgment.",
+      "paragraph3": "If even one person makes one fewer mistake because of BeAFox – it was all worth it."
+    },
     "ecosystem": {
       "title": "Financial education ecosystem",
       "left": {
         "anytime": {
           "title": "Learn anytime",
           "text": "Learn whenever and wherever you want—on your phone on the go, on your laptop at home, or on your tablet during a break. BeAFox fits into your everyday life. Your progress is synced automatically so you can switch devices seamlessly."
+        },
+        "action": {
+          "title": "Financial actionability",
+          "text": "We don't just teach theory—we build real financial capability. So everyone can actually apply finance in real life, from budgeting and contracts to confident everyday decisions."
         },
         "school": {
           "title": "Learning at school",
@@ -197,6 +210,10 @@
         "training": {
           "title": "Learning in training companies",
           "text": "Apprentices get practical financial education they can apply directly in everyday work. Companies can support young talent and show they care about their apprentices’ financial future."
+        },
+        "school": {
+          "title": "Learning at schools",
+          "text": "BeAFox is built for classroom use. Teachers can track class progress and start playful competitions. This way, financial education can be taught even beyond the standard curriculum."
         },
         "clubs": {
           "title": "Learning for clubs",
@@ -250,18 +267,30 @@
       "items": [
         {
           "title": "Financial education as a future skill",
-          "text": "Finance is becoming more complex—and more important. In a fast-changing world, financial competence is a key future skill that prepares young people for tomorrow’s challenges."
+          "text": "Financial literacy is a key future skill that prepares young people for tomorrow's challenges."
         },
         {
           "title": "Financial education as a success factor",
-          "text": "Studies show financially educated people are more successful in life, at work, and beyond. Financial knowledge isn’t just a bonus—it’s a crucial factor for personal and professional growth."
+          "text": "People who understand money make better decisions in daily life, work, and long-term planning."
         },
         {
           "title": "Equal opportunities",
-          "text": "Everyone should have the same chance to learn about money—regardless of background or family resources. BeAFox supports equal opportunities with accessible, neutral financial education for all."
+          "text": "Everyone should have access to neutral financial education, regardless of background or family resources."
         }
       ],
-      "mascotAlt": "BeAFox mascot"
+      "mascotAlt": "BeAFox mascot",
+      "sdgTitle": "Our Sustainable Development Goals",
+      "sdgSubtitle": "BeAFox aligns with the UN Sustainable Development Goals (SDGs) and actively contributes to a fairer and more sustainable future.",
+      "sdgs": [
+        { "id": "01", "name": "No Poverty" },
+        { "id": "03", "name": "Good Health and Well-Being" },
+        { "id": "04", "name": "Quality Education" },
+        { "id": "05", "name": "Gender Equality" },
+        { "id": "08", "name": "Decent Work and Economic Growth" },
+        { "id": "09", "name": "Industry, Innovation and Infrastructure" },
+        { "id": "10", "name": "Reduced Inequalities" },
+        { "id": "17", "name": "Partnerships for the Goals" }
+      ]
     },
     "downloadBanner": {
       "title": { "pre": "Download the", "highlight": "BeAFox app", "post": "now and become the expert of your own finances!" },

@@ -751,7 +751,7 @@ export default function ForBusinessPage() {
               variant="outline"
               className="flex items-center justify-center gap-2 mx-auto !px-6 !py-3 md:!px-8 md:!py-4"
             >
-              Jetzt Partner werden
+              Pilotprojekt anfordern
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
             </Button>
           </motion.div>
