@@ -827,9 +827,9 @@
   "business": {
     "meta": {
       "title": "BeAFox for Business – Financial Education for Companies & Apprentices",
-      "description": "Financial education for companies: BeAFox offers financial education for apprentices, training in vocational education, and finance training for employees. Digital financial education platform for sustainable workforce development.",
+      "description": "Financial education for companies: BeAFox empowers apprentices with practical money skills, reduces financial stress, and supports long-term development in training.",
       "ogTitle": "BeAFox for Business – Financial Education for Companies & Apprentices",
-      "ogDescription": "Tailored financial education solutions for companies. Boost your employees' financial literacy with BeAFox."
+      "ogDescription": "Tailored financial education solutions for companies that strengthen, retain, and develop apprentices."
     },
     "breadcrumbs": {
       "parentLabel": "Offers",
@@ -839,7 +839,7 @@
       "badge": "BeAFox for Business",
       "title": "Education packages against",
       "titleHighlight": "skills shortages",
-      "description": "Employees who understand money work more focused, stay healthier, and remain with the company longer.",
+      "description": "Apprentices who understand money stay more focused, less stressed, and grow into strong future professionals.",
       "ctaPartner": "Become a partner",
       "ctaBook": "Book a call"
     },
@@ -849,7 +849,7 @@
       "rankingAlt": "BeAFox ranking mockup"
     },
     "stats": [
-      { "value": "500+", "label": "Employees use BeAFox" },
+      { "value": "500+", "label": "Apprentices use BeAFox" },
       { "value": "3+", "label": "Companies trust us" },
       { "value": "95%", "label": "Knowledge retention" },
       { "value": "4.9/5", "label": "Rating" }
@@ -857,26 +857,26 @@
     "problemSolution": {
       "title": "Invest in the most important",
       "titleHighlight": "future skill",
-      "subtitle": "Financial education is one of the most important future skills. We make it easy to strengthen your employees.",
+      "subtitle": "Financial education is one of the most important future skills. We help you strengthen apprentices not only professionally, but for real life.",
       "problemTitle": "Why financial education?",
-      "problemText": "Financial literacy is one of the most important future skills for your employees. It strengthens not only personal development but also professional performance and satisfaction.",
-      "problemBullets": ["Key future skill for the future", "Strengthens personal & professional development", "Increases employee satisfaction", "Makes your company more attractive"],
+      "problemText": "Many apprentices start with their first paycheck—but without guidance. That often leads to uncertainty, poor decisions, and avoidable stress.",
+      "problemBullets": ["Financial stress impacts focus and performance", "Lack of knowledge leads to costly everyday mistakes", "Apprentices need practical guidance, not theory", "Companies need resilient and self-reliant young talent"],
       "solutionTitle": "With BeAFox for Business",
-      "solutionText": "Holistic financial education: With our gamified app, your employees learn continuously and sustainably.",
-      "solutionText2": "So you invest in one of the most important future skills while strengthening employee retention and employer branding.",
-      "solutionBullets": ["Sustainable financial education as a future skill", "Gamified learning with the app", "Optional: Regular workshops", "Strengthens retention & employer branding"],
+      "solutionText": "Holistic financial education for apprentices: with our gamified app, they learn continuously, practically, and with direct relevance to everyday life.",
+      "solutionText2": "This way, you invest in a key future skill, strengthen apprentice retention, and position yourself as a modern training company.",
+      "solutionBullets": ["Financial skills apprentices can apply immediately", "Gamified learning with long-term retention", "Optional: Regular workshops", "Strengthens apprentice retention & employer branding"],
       "ctaText": "Ready to invest in financial education?",
       "ctaButton": "Become a partner"
     },
     "benefits": {
       "title": "Why",
       "titleHighlight": "BeAFox for Business",
-      "subtitle": "All benefits for your company and your employees at a glance.",
+      "subtitle": "All benefits for your company and your apprentices at a glance.",
       "items": [
-        { "title": "Develop future skills", "description": "Financial education is one of the most important future skills. Strengthen your employees for the future and make your company future-ready." },
-        { "title": "Monitoring dashboards", "description": "Keep track of your employees' learning progress in real time. See who is active and where support is needed." },
-        { "title": "Official certificates", "description": "Your employees receive official certificates for their progress in financial education – valuable for personal development." },
-        { "title": "More motivated employees", "description": "The gamified system keeps your employees motivated and engaged in learning. Financial education becomes an experience." },
+        { "title": "Develop future skills", "description": "Apprentices build financial confidence early and gain skills that support them throughout their professional life." },
+        { "title": "Monitoring dashboards", "description": "Track your apprentices' progress in real time and see immediately where support is needed." },
+        { "title": "Official certificates", "description": "Your apprentices receive official certificates for their progress—clear proof of growth and ownership." },
+        { "title": "More motivated apprentices", "description": "The gamified system keeps apprentices motivated and engaged. Financial education becomes genuinely relevant." },
         { "title": "Sustainable learning", "description": "Continuous learning in the app ensures long-term knowledge retention. Complemented by workshops for maximum impact." },
         { "title": "GDPR-compliant & secure", "description": "All data is stored securely and in compliance with GDPR. Your company data is in good hands." }
       ]
@@ -885,12 +885,12 @@
       "title": "How",
       "titleHighlight": "companies",
       "titlePost": " benefit from BeAFox",
-      "subtitle": "Many good reasons why companies use BeAFox.",
+      "subtitle": "Why companies use BeAFox for their apprentices.",
       "items": [
-        { "title": "Tackle skills shortages", "description": "Strengthen your employees through practical financial education and make your company more attractive to talent." },
-        { "title": "Increase employee retention", "description": "Show that you invest in your employees' future. Financial education is a valuable benefit that binds." },
-        { "title": "Promote independence", "description": "Financial competence makes your employees more independent and responsible – also in everyday work." },
-        { "title": "Employer branding", "description": "Position yourself as a modern, forward-looking company that cares about its employees." }
+        { "title": "Tackle skills shortages", "description": "Strengthen apprentices through practical financial education and make your company more attractive to top young talent." },
+        { "title": "Increase apprentice retention", "description": "Show that you invest in your apprentices' future. Financial education is a meaningful benefit that builds trust and loyalty." },
+        { "title": "Promote independence", "description": "Financial competence makes apprentices more self-reliant and responsible—in training and beyond." },
+        { "title": "Employer branding", "description": "Position yourself as a modern training company that supports young people holistically." }
       ],
       "cta": "Become a partner"
     },
@@ -898,20 +898,20 @@
       "title": "What you get",
       "subtitle": "A comprehensive package for sustainable financial education.",
       "items": [
-        { "id": "app", "title": "Gamified learning app", "description": "Your employees learn with a modern, gamified app that is fun and motivating. Points, missions and leaderboards ensure lasting engagement.", "mockup": "/assets/Mockups/Mockup-Lernpfad.png" },
+        { "id": "app", "title": "Gamified learning app", "description": "Your apprentices learn with a modern, gamified app that feels relevant and motivating. Points, missions and leaderboards drive lasting engagement.", "mockup": "/assets/Mockups/Mockup-Lernpfad.png" },
         { "id": "workshops", "title": "Regular workshops", "description": "Complement app use with regular workshops. Every 6 months we run interactive workshops on changing financial topics for maximum impact.", "mockup": "/assets/Mockups/Mockup-Quiz.png" },
-        { "id": "dashboard", "title": "Monitoring dashboard", "description": "Keep track of your employees' learning progress. See in real time who is active and where support is needed.", "mockup": "/Mockup-Macbook/Live-Fortschritt.png" },
-        { "id": "zertifikate", "title": "Official certificates", "description": "Your employees receive official certificates upon successful completion, which they can use in their application portfolio.", "mockup": "/assets/Mockups/Mockup-Profil.png" }
+        { "id": "dashboard", "title": "Monitoring dashboard", "description": "Keep track of your apprentices' learning progress. See in real time who is active and where support is needed.", "mockup": "/Mockup-Macbook/Live-Fortschritt.png" },
+        { "id": "zertifikate", "title": "Official certificates", "description": "Your apprentices receive official certificates upon successful completion—clear proof of commitment and growth.", "mockup": "/assets/Mockups/Mockup-Profil.png" }
       ]
     },
     "process": {
       "title": "How it works",
-      "subtitle": "Five simple steps to sustainable financial education in your company.",
+      "subtitle": "Five simple steps to sustainable financial education for your apprentices.",
       "steps": [
-        { "step": "1", "title": "Free consultation", "description": "We discuss your requirements, the number of your employees and create an individual offer for your company." },
-        { "step": "2", "title": "Setup & onboarding", "description": "We set up the app for your employees, run an onboarding and ensure everyone is ready to go." },
-        { "step": "3", "title": "Start financial education", "description": "Your employees start with the app and continuously develop their financial literacy. We also combine app use with regular workshops." },
-        { "step": "4", "title": "Continuous learning", "description": "Your employees learn in the app, review content and sustainably develop their financial literacy – one of the most important future skills." },
+        { "step": "1", "title": "Free consultation", "description": "We discuss your requirements, your number of apprentices, and create an individual offer for your company." },
+        { "step": "2", "title": "Setup & onboarding", "description": "We set up the app for your apprentices, run onboarding, and ensure everyone is ready to start." },
+        { "step": "3", "title": "Start financial education", "description": "Your apprentices start in the app and continuously build financial literacy. We can combine this with regular workshops." },
+        { "step": "4", "title": "Continuous learning", "description": "Your apprentices learn and review in the app, building sustainable financial competence—one of the most important future skills." },
         { "step": "5", "title": "Regular workshops", "description": "We complement app use with regular workshops. Every 6 months on changing topics for maximum impact." }
       ]
     },
@@ -920,36 +920,36 @@
       "titleHighlight": "official partner",
       "titlePost": " of IHK",
       "subtitle": "As an official partner of the IHK Academy, we rely on proven standards and practical expertise.",
-      "text": "In close cooperation with the IHK, we have developed an innovative workshop specifically for company employees. This workshop combines IHK-certified content with our gamified learning app BeAFox to prepare young talent for everyday life and working life.",
+      "text": "In close cooperation with the IHK, we developed an innovative workshop specifically for apprentices. It combines IHK-certified content with our gamified learning app BeAFox to prepare young talent for everyday and working life.",
       "cta": "Become a partner"
     },
     "price": {
       "headingPre": "Get your",
-      "headingHighlight": "employees",
+      "headingHighlight": "apprentices",
       "headingPost": " ready",
       "fromLabel": "From",
       "price": "€3.99",
       "perMonth": "/ month",
-      "perEmployee": "per employee",
+      "perEmployee": "per apprentice",
       "bookCta": "Book a call",
-      "paragraph": "Invest in the most important future skill for your employees at a cost that's less than 1% of an employee's value.",
+      "paragraph": "Invest in one of the most important future skills for your apprentices—at a cost that is small compared to the long-term impact.",
       "individualTitle": "Custom offers always available",
       "individualText": "We can create a tailored offer for your company at any time. Just get in touch!",
       "moreInfoCta": "More information"
     },
     "cta": {
-      "title": "Ready to support your employees?",
+      "title": "Ready to truly empower your apprentices?",
       "subtitle": "Contact us for a no-obligation consultation and receive an individual offer for your company.",
       "partnerCta": "Become a partner",
       "downloadCta": "Download the app"
     },
     "calculator": {
-      "employeesLabel": "Employees",
+      "employeesLabel": "Apprentices",
       "pricePerAccount": "Price per account",
       "totalYear": "Total (year)",
       "perMonthSuffix": "/month",
       "bestPrice": "You get the best price!",
-      "saveMore": "Save even more with 100+ employees!"
+      "saveMore": "Save even more with 100+ apprentices!"
     }
   }
   ,
