@@ -103,10 +103,8 @@ export default function FAQPage() {
       {/* ─── 1. HERO ─── */}
       <LandingHero
         badge={t("hero.tag")}
-        cardIcon={CheckCircle2}
         mascotAlt={t("hero.tag")}
         mascotClassName="scale-90 md:top-2"
-        cardTitle={t("popular.title")}
         cardText={t("popular.subtitle")}
         mascotSrc="/Maskottchen/Maskottchen-Herzen.png"
         title={
