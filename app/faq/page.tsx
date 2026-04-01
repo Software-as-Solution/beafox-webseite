@@ -1,412 +1,302 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Section from "@/components/Section";
+// STANDARD COMPONENTS
+import Image from "next/image";
+// CUSTOM COMPONENTS
 import Button from "@/components/Button";
+import Section from "@/components/Section";
+import LandingHero from "@/components/LandingHero";
+import RatgeberSection from "@/components/RatGeber";
+import TrustSignalBar from "@/components/TrustSignalBar";
+import StructuredData from "@/components/StructuredData";
+import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
+import ContentShowcaseSection from "@/components/ContentShowcaseSection";
+import FaqAccordion, { type FaqAccordionItem } from "@/components/FaqAccordion";
+// IMPORTS
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import {
-  ChevronDown,
-  MessageCircle,
-  Search,
-  Sparkles,
-  HelpCircle,
-  Tag,
-  School,
-  Briefcase,
-  Smartphone,
-  Users,
-  BookOpen,
-  ArrowRight,
-  CheckCircle2,
-  Clock,
-  Shield,
-  Zap,
-  Infinity,
-  Mail,
-} from "lucide-react";
+import { useState, useMemo, useCallback } from "react";
+// ICONS
+import { Search, CheckCircle2, MessageCircle } from "lucide-react";
 
-const CATEGORY_IDS = ["all", "general", "pricing", "schoolsBusiness", "tech", "support"] as const;
-
-interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-  categoryId: string;
+// TYPES
+interface FAQItem extends FaqAccordionItem {
   popular?: boolean;
+  categoryId: string;
 }
-
+// CONSTANTS
+const CATEGORY_IDS = [
+  "all",
+  "general",
+  "pricing",
+  "schoolsBusiness",
+  "tech",
+  "support",
+] as const;
+const CONTACT_CTA_STYLE = {
+  boxShadow: "0 8px 32px rgba(0,0,0,0.04)",
+  border: "1px solid rgba(232,119,32,0.15)",
+  background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 60%, #FFF2E8 100%)",
+} as const;
 export default function FAQPage() {
+  // HOOKS
   const t = useTranslations("faq");
-  const [openId, setOpenId] = useState<number | null>(null);
-  const [openPopularId, setOpenPopularId] = useState<number | null>(null);
+  // STATES
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-
-  const faqs: FAQItem[] = (t.raw("items") as FAQItem[]) ?? [];
-  const quickLinks = (t.raw("quickLinks.links") as { title: string; description: string; href: string }[]) ?? [];
-  const quickLinkIcons = [Briefcase, Infinity, School, Mail];
-
-  const categories = CATEGORY_IDS.map((id) => ({
-    id,
-    label: t(`categories.${id}`),
-  }));
-
-  const filteredFAQs = useMemo(() => {
-    let filtered = faqs;
+  // FUNCTIONS
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value),
+    [],
+  );
+  const handleCategoryClick = useCallback(
+    (id: string) => setSelectedCategory(id),
+    [],
+  );
+  const scrollToFaqList = useCallback(() => {
+    document
+      .getElementById("faq-search")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+  // CONSTANTS
+  const faqs: FAQItem[] = useMemo(
+    () => (t.raw("items") as FAQItem[]) ?? [],
+    [t],
+  );
+  const categories = useMemo(
+    () => CATEGORY_IDS.map((id) => ({ id, label: t(`categories.${id}`) })),
+    [t],
+  );
+  const filteredFAQs: FaqAccordionItem[] = useMemo(() => {
+    let filtered: FAQItem[] = faqs;
 
     if (selectedCategory !== "all") {
       filtered = filtered.filter((faq) => faq.categoryId === selectedCategory);
     }
 
     if (searchQuery) {
+      const q = searchQuery.toLowerCase();
       filtered = filtered.filter(
         (faq) =>
-          faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+          faq.question.toLowerCase().includes(q) ||
+          faq.answer.toLowerCase().includes(q),
       );
     }
 
     return filtered;
   }, [faqs, selectedCategory, searchQuery]);
-
-  const popularFAQs = faqs.filter((faq) => faq.popular);
+  const faqStructuredData = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.slice(0, 10).map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    }),
+    [faqs],
+  );
 
   return (
     <>
-      {/* Hero */}
-      <Section className="bg-primaryWhite pt-14 md:pt-16 lg:pt-20 mt-12">
-        <div className="text-center mb-6 md:mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6"
-          >
-            <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              {t("hero.tag")}
-            </h1>
-            <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-4"
-          >
-            {t("hero.title")} <span className="text-primaryOrange">{t("hero.brand")}</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base md:text-xl text-lightGray max-w-3xl mx-auto"
-          >
-            {t("hero.description")}
-          </motion.p>
-        </div>
-
-        {/* Search Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-2xl mx-auto mb-8"
-        >
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-lightGray" />
-            <input
-              type="text"
-              placeholder={t("hero.searchPlaceholder")}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-primaryOrange/20 focus:border-primaryOrange focus:outline-none text-darkerGray placeholder-lightGray"
-            />
-          </div>
-        </motion.div>
-
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="max-w-4xl mx-auto mb-8"
-        >
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm md:text-base font-semibold transition-all ${
-                  selectedCategory === category.id
-                    ? "bg-primaryOrange text-primaryWhite border-2 border-primaryOrange"
-                    : "bg-white text-darkerGray border-2 border-primaryOrange/20 hover:border-primaryOrange/40"
-                }`}
-              >
-                {category.label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-      </Section>
-
-      {/* Popular FAQs */}
-      {selectedCategory === "all" && searchQuery === "" && (
-        <Section className="bg-white py-0 md:py-2 lg:py-2 relative bottom-2 pt-0 md:pt-6 lg:pt-10">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-8"
+      {/* ─── 1. HERO ─── */}
+      <LandingHero
+        badge={t("hero.tag")}
+        cardIcon={CheckCircle2}
+        mascotAlt={t("hero.tag")}
+        mascotClassName="scale-90 md:top-2"
+        cardTitle={t("popular.title")}
+        cardText={t("popular.subtitle")}
+        mascotSrc="/Maskottchen/Maskottchen-Herzen.png"
+        title={
+          <>
+            {t("hero.title")}{" "}
+            <span className="text-primaryOrange">{t("hero.brand")}</span>
+          </>
+        }
+        actions={
+          <>
+            <Button
+              onClick={scrollToFaqList}
+              variant="primary"
+              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-2">
-                {t("popular.title")}
-              </h3>
-              <p className="text-lightGray">
-                {t("popular.subtitle")}
-              </p>
-            </motion.div>
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-              {popularFAQs.slice(0, 4).map((faq, index) => {
-                const isOpen = openPopularId === faq.id;
-                const handleToggle = (e: React.MouseEvent) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  if (isOpen) {
-                    setOpenPopularId(null);
-                  } else {
-                    setOpenPopularId(faq.id);
-                  }
-                };
-                return (
-                  <motion.div
-                    key={`popular-${faq.id}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-5 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
-                  >
-                    <button
-                      type="button"
-                      onClick={handleToggle}
-                      className="w-full text-left cursor-pointer focus:outline-none"
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Zap className="w-4 h-4 text-primaryOrange" />
-                            <span className="text-xs font-semibold text-primaryOrange">
-                              {t("popular.badge")}
-                            </span>
-                          </div>
-                          <h4 className="font-semibold text-darkerGray mb-2">
-                            {faq.question}
-                          </h4>
-                          <AnimatePresence>
-                            {isOpen && (
-                              <motion.p
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="text-sm text-lightGray mt-2 overflow-hidden"
-                              >
-                                {faq.answer}
-                              </motion.p>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                        <ChevronDown
-                          className={`w-5 h-5 text-primaryOrange flex-shrink-0 transition-transform duration-200 ${
-                            isOpen ? "transform rotate-180" : ""
-                          }`}
-                        />
-                      </div>
-                    </button>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </Section>
-      )}
-
-      {/* FAQ Items */}
-      <Section className="bg-primaryWhite py-4 md:py-8 lg:py-12">
+              <Search
+                aria-hidden="true"
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
+              />
+              {t("hero.searchPlaceholder")}
+            </Button>
+            <Button
+              href="/kontakt"
+              variant="outline"
+              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
+            >
+              <MessageCircle
+                aria-hidden="true"
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
+              />
+              {t("contactCta.cta")}
+            </Button>
+          </>
+        }
+      />
+      {/* ─── 2. TRUST SIGNAL ─── */}
+      <TrustSignalBar />
+      {/* ─── 3. SEARCH + FILTER + FAQ LIST ─── */}
+      <Section
+        id="faq-search"
+        className="bg-primaryWhite py-8 md:py-12 lg:py-16"
+      >
         <div className="max-w-4xl mx-auto">
-          {filteredFAQs.length > 0 ? (
-            <div className="space-y-4">
-              {filteredFAQs.map((faq, index) => {
-                return (
-                  <motion.div
-                    key={faq.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="bg-white rounded-xl overflow-hidden border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-sm"
-                  >
-                    <button
-                      onClick={() =>
-                        setOpenId(openId === faq.id ? null : faq.id)
-                      }
-                      className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-primaryOrange/5 transition-colors"
-                    >
-                      <div className="flex items-start gap-3 flex-1">
-                        <HelpCircle className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                        <span className="font-semibold text-darkerGray pr-4 text-left">
-                          {faq.question}
-                        </span>
-                      </div>
-                      <ChevronDown
-                        className={`w-5 h-5 text-primaryOrange flex-shrink-0 transition-transform ${
-                          openId === faq.id ? "transform rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-                    <AnimatePresence>
-                      {openId === faq.id && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="px-6 py-4 text-lightGray border-t border-primaryOrange/20 bg-primaryOrange/5">
-                            {faq.answer}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                );
-              })}
+          {/* Search */}
+          <motion.div
+            className="mb-6"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+          >
+            <div className="relative">
+              <Search
+                aria-hidden="true"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-lightGray"
+              />
+              <input
+                type="search"
+                value={searchQuery}
+                aria-label="FAQ durchsuchen"
+                onChange={handleSearchChange}
+                placeholder={t("hero.searchPlaceholder")}
+                className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-primaryOrange/20 focus:border-primaryOrange focus:outline-none text-darkerGray placeholder-lightGray bg-white transition-colors"
+              />
             </div>
+          </motion.div>
+          {/* Category Filter */}
+          <motion.div
+            className="mb-8"
+            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div
+              role="tablist"
+              aria-label="FAQ Kategorien"
+              className="flex flex-wrap gap-2 justify-center"
+            >
+              {categories.map((category) => (
+                <button
+                  role="tab"
+                  key={category.id}
+                  aria-selected={selectedCategory === category.id}
+                  onClick={() => handleCategoryClick(category.id)}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                    selectedCategory === category.id
+                      ? "bg-primaryOrange text-primaryWhite"
+                      : "bg-white text-darkerGray border border-gray-200 hover:border-primaryOrange/30"
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+          {/* FAQ List */}
+          {filteredFAQs.length > 0 ? (
+            <FaqAccordion items={filteredFAQs} className="max-w-4xl" />
           ) : (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="text-center py-12"
             >
-              <HelpCircle className="w-16 h-16 text-primaryOrange/50 mx-auto mb-4" />
+              <Image
+                alt=""
+                width={120}
+                height={120}
+                aria-hidden="true"
+                src="/Maskottchen/Maskottchen-Hero.png"
+                className="object-contain w-24 h-24 mx-auto mb-4"
+                style={{ filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))" }}
+              />
               <h3 className="text-xl font-bold text-darkerGray mb-2">
                 {t("noResults.title")}
               </h3>
-              <p className="text-lightGray mb-6">
+              <p className="text-lightGray mb-6 text-sm">
                 {t("noResults.text")}
               </p>
-              <Button href="/kontakt" variant="primary">
+              <Button
+                href="/kontakt"
+                variant="primary"
+                className="flex items-center justify-center gap-2 mx-auto !px-6 !py-2.5"
+              >
+                <MessageCircle className="w-4 h-4" aria-hidden="true" />
                 {t("noResults.cta")}
               </Button>
             </motion.div>
           )}
         </div>
       </Section>
-
-      {/* Quick Links */}
-      <Section className="bg-white py-8 md:py-12 lg:py-16 pt-6 md:pt-0 lg:pt-0">
-        <div className="max-w-6xl mx-auto">
+      {/* ─── 4. QUICK LINKS ─── */}
+      <ContentShowcaseSection
+        sectionClassName="bg-gray-50"
+        innerClassName="max-w-6xl mx-auto"
+        sectionHeaderProps={{
+          preTitle: t("quickLinks.title"),
+        }}
+      >
+        <RatgeberSection variant="faqProducts" />
+      </ContentShowcaseSection>
+      {/* ─── 5. NOCH FRAGEN ─── */}
+      <Section className="bg-primaryWhite py-8 md:py-12">
+        <div className="max-w-2xl mx-auto px-1 sm:px-0">
           <motion.div
+            style={CONTACT_CTA_STYLE}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 lg:mb-12"
+            className="relative overflow-hidden rounded-2xl p-6 md:p-10"
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-darkerGray mb-0 lg:mb-4">
-              {t("quickLinks.title")}
-            </h3>
-            <p className="text-lightGray">
-              {t("quickLinks.subtitle")}
-            </p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {quickLinks.map((link, index) => {
-              const Icon = quickLinkIcons[index];
-              return (
-                <motion.a
-                  key={index}
-                  href={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all shadow-sm group h-full flex flex-col"
-                >
-                  <div className="bg-primaryOrange/10 text-primaryOrange rounded-lg p-3 w-fit mb-4 group-hover:scale-110 transition-transform">
-                    {Icon && <Icon className="w-6 h-6" />}
-                  </div>
-                  <h4 className="text-lg font-bold text-darkerGray mb-2">
-                    {link.title}
-                  </h4>
-                  <p className="text-sm text-lightGray mb-3 flex-1">
-                    {link.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-primaryOrange text-sm font-semibold mt-auto">
-                    {t("quickLinks.learnMore")}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </motion.a>
-              );
-            })}
-          </div>
-        </div>
-      </Section>
-
-      {/* Contact CTA */}
-      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-8 md:py-12 lg:py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-5"></div>
-        <div className="text-center max-w-3xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-6"
-          >
-            <MessageCircle className="w-16 h-16 text-primaryWhite mx-auto mb-4" />
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
-          >
-            {t("contactCta.title")}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base md:text-xl mb-8 text-primaryWhite/90"
-          >
-            {t("contactCta.subtitle")}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
-          >
-            <Button
-              href="/kontakt"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
-            >
-              {t("contactCta.cta")}
-            </Button>
+            <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 lg:gap-10">
+              <div className="flex-1 min-w-0 text-left">
+                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-2 md:mb-3">
+                  {t("contactCta.title")}
+                </h3>
+                <p className="text-sm md:text-base text-lightGray leading-relaxed">
+                  {t("contactCta.text")}
+                </p>
+              </div>
+              <div className="flex justify-center md:justify-end shrink-0">
+                <Image
+                  alt=""
+                  width={260}
+                  height={260}
+                  loading="lazy"
+                  aria-hidden="true"
+                  src="/Maskottchen/Maskottchen-Hero.png"
+                  className="object-contain w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 scale-150"
+                  style={{ filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.08))" }}
+                />
+              </div>
+            </div>
+            <div className="flex justify-center mt-8 md:mt-10">
+              <Button
+                href="/kontakt"
+                variant="primary"
+                className="flex items-center justify-center gap-2 !px-6 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
+              >
+                <Search className="w-4 h-4" aria-hidden="true" />
+                {t("contactCta.cta")}
+              </Button>
+            </div>
           </motion.div>
         </div>
       </Section>
+      {/* ─── 6. CTA ─── */}
+      <DemoBookingCtaSection />
+      {/* STRUCTURED DATA */}
+      <StructuredData id="faq" data={faqStructuredData} />
     </>
   );
 }

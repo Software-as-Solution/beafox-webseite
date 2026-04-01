@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
+import LandingHero from "@/components/LandingHero";
+import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
 import { useTranslations } from "next-intl";
 import {
   Mail,
@@ -20,7 +22,6 @@ import {
   Users,
   Building2,
   GraduationCap,
-  Trophy,
   Calendar,
 } from "lucide-react";
 
@@ -114,14 +115,6 @@ export default function ContactPage() {
       iconColor: "text-primaryOrange",
     },
     {
-      icon: Trophy,
-      title: t("quickLinks.clubs.title"),
-      description: t("quickLinks.clubs.description"),
-      href: "/fuer-clubs",
-      color: "bg-white border-primaryOrange/20",
-      iconColor: "text-primaryOrange",
-    },
-    {
       icon: Users,
       title: t("quickLinks.private.title"),
       description: t("quickLinks.private.description"),
@@ -134,42 +127,71 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="bg-primaryWhite pb-0 sm::pb-12 lg:pb-16 pt-12 md:pt-16 lg:pt-20 mt-14">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-6"
-          >
-            <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray">
-              {t("hero.tag")}
-            </h1>
-            <Sparkles className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
-          >
+      <LandingHero
+        badge={t("hero.tag")}
+        title={
+          <>
             {t("hero.title.pre")}{" "}
             <span className="text-primaryOrange">{t("hero.title.highlight")}</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base md:text-xl text-lightGray max-w-2xl mx-auto"
-          >
-            {t("hero.description")}
-          </motion.p>
-        </div>
-      </Section>
+          </>
+        }
+        description={t("hero.description")}
+        actions={
+          <>
+            <button
+              type="button"
+              onClick={() =>
+                document
+                  .getElementById("contact-form")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
+              className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite rounded-full font-semibold !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base hover:bg-primaryOrange/90 transition-colors w-full sm:w-auto"
+            >
+              <Send className="w-4 h-4 md:w-5 md:h-5" />
+              {t("form.submit")}
+            </button>
+            <a
+              href="https://app.cal.eu/beafox"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border-2 border-primaryOrange text-primaryOrange hover:bg-primaryOrange/5 rounded-full font-semibold !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base transition-colors w-full sm:w-auto"
+            >
+              <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+              {t("info.booking.button")}
+            </a>
+          </>
+        }
+        chips={
+          <>
+            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
+              <Phone className="w-4 h-4 md:w-5 md:h-5 text-primaryOrange" />
+              <span className="text-xs md:text-sm text-darkerGray">
+                +49 178 2723 673
+              </span>
+            </div>
+            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
+              <Mail className="w-4 h-4 md:w-5 md:h-5 text-primaryOrange" />
+              <span className="text-xs md:text-sm text-darkerGray">
+                info@beafox.app
+              </span>
+            </div>
+            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
+              <Clock className="w-4 h-4 md:w-5 md:h-5 text-primaryOrange" />
+              <span className="text-xs md:text-sm text-darkerGray">
+                {t("info.responseTime.value")}
+              </span>
+            </div>
+          </>
+        }
+        mascotSrc="/Maskottchen/Maskottchen-Hero.png"
+        mascotAlt={t("hero.tag")}
+        cardIcon={MessageCircle}
+        cardTitle={t("info.title")}
+        cardText={t("info.booking.text")}
+      />
 
       {/* Contact Section */}
-      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
+      <Section id="contact-form" className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Info */}
@@ -294,7 +316,7 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.5 }}
-                className=" mt-4sm:mt-6 flex items-center gap-3 text-lightGray mb-6"
+                className="mt-4 sm:mt-6 flex items-center gap-3 text-lightGray mb-6"
               >
                 <Clock className="w-5 h-5 text-primaryOrange" />
                 <span className="text-sm">
@@ -389,7 +411,6 @@ export default function ContactPage() {
                     <option value="general">{t("form.fields.type.options.general")}</option>
                     <option value="schools">{t("form.fields.type.options.schools")}</option>
                     <option value="business">{t("form.fields.type.options.business")}</option>
-                    <option value="clubs">{t("form.fields.type.options.clubs")}</option>
                     <option value="private">{t("form.fields.type.options.private")}</option>
                     <option value="pilot">{t("form.fields.type.options.pilot")}</option>
                     <option value="support">{t("form.fields.type.options.support")}</option>
@@ -484,63 +505,7 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primaryOrange via-primaryOrange to-primaryOrange/90 py-8 md:py-12 lg:py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-5"></div>
-        <div className="text-center max-w-3xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-6"
-          >
-            <MessageCircle className="w-16 h-16 text-primaryWhite mx-auto mb-4" />
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primaryWhite"
-          >
-            {t("cta.title")}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl mb-8 text-primaryWhite/90"
-          >
-            {t("cta.description")}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
-          >
-            <Button
-              href="mailto:info@beafox.app"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
-            >
-              <Mail className="w-4 h-4 md:w-5 md:h-5" />
-              {t("cta.email")}
-            </Button>
-            <Button
-              href="tel:+491782723673"
-              variant="secondary"
-              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 !bg-primaryWhite hover:!bg-primaryWhite/90 !text-primaryOrange !border-primaryWhite"
-            >
-              <Phone className="w-4 h-4 md:w-5 md:h-5" />
-              {t("cta.call")}
-            </Button>
-          </motion.div>
-        </div>
-      </Section>
+      <DemoBookingCtaSection />
     </>
   );
 }

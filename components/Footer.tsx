@@ -1,67 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
-  Instagram,
-  Linkedin,
   Mail,
   Phone,
   MapPin,
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
+import { BLOG_CATEGORIES } from "@/lib/blog";
 
-// TikTok Icon Component (not available in lucide-react)
-function TikTokIcon({ size = 20 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-    </svg>
-  );
-}
-
-// X (Twitter) Icon Component (not available in lucide-react)
-function XIcon({ size = 20 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-    </svg>
-  );
-}
-
-// YouTube Icon Component (not available in lucide-react)
-function YouTubeIcon({ size = 20 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-    </svg>
-  );
-}
+const LOCALE_COOKIE_MAX_AGE = 31536000;
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const tHeader = useTranslations("header");
+  const locale = useLocale();
+
+  // Ensure "Investieren" appears before "Berufseinsteiger" in footer.
+  const orderedBlogCategories = [...BLOG_CATEGORIES];
+  const investSlug = "investieren-fuer-anfaenger";
+  const berufSlug = "finanzen-fuer-berufseinsteiger";
+  const investIdx = orderedBlogCategories.findIndex((c) => c.slug === investSlug);
+  const berufIdx = orderedBlogCategories.findIndex((c) => c.slug === berufSlug);
+  if (
+    investIdx !== -1 &&
+    berufIdx !== -1 &&
+    investIdx > berufIdx
+  ) {
+    const [investCat] = orderedBlogCategories.splice(investIdx, 1);
+    orderedBlogCategories.splice(berufIdx, 0, investCat);
+  }
+
+  const setWebsiteLocale = useCallback(
+    (nextLocale: "de" | "en") => {
+      if (nextLocale === locale) return;
+      document.cookie = `locale=${nextLocale}; path=/; max-age=${LOCALE_COOKIE_MAX_AGE}; samesite=lax`;
+      window.location.reload();
+    },
+    [locale]
+  );
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false);
   const [newsletterStatus, setNewsletterStatus] = useState<{
@@ -110,21 +91,21 @@ export default function Footer() {
   return (
     <footer className="bg-white text-darkerGray border-t border-gray-200">
       {/* Newsletter Section */}
-      <div className="bg-primaryWhite py-12 md:py-16 relative overflow-hidden">
+      <div className="bg-primaryWhite pt-8 relative overflow-hidden">
         {/* Decorative Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-0 left-0 w-64 h-64 bg-primaryOrange rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-primaryOrange rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-8"
+              className="text-center mb-6"
             >
               <div className="inline-flex items-center justify-center mb-4">
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-primaryOrange/10 rounded-full flex items-center justify-center border-2 border-primaryOrange/20">
@@ -204,70 +185,24 @@ export default function Footer() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12 mb-12">
           {/* Brand */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-1 text-center md:text-left">
-            <div className="flex justify-center md:justify-start mb-6">
-              <Link href="/" className="inline-block">
-                <Image
-                  src="/assets/Logo-EST.jpg"
-                  alt={t("brand.logoAlt")}
-                  width={150}
-                  height={50}
-                  className="object-contain h-12"
-                />
-              </Link>
-            </div>
-            <p className="text-lightGray mb-6 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 md:max-w-xs">
-              {t("brand.tagline")}
-            </p>
-            <div className="flex space-x-4 justify-center md:justify-start">
-              <a
-                href="https://instagram.com/beafox_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-lightGray hover:text-primaryOrange hover:bg-primaryOrange/10 transition-all"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/beafox-app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-lightGray hover:text-primaryOrange hover:bg-primaryOrange/10 transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="https://www.tiktok.com/@beafox_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-lightGray hover:text-primaryOrange hover:bg-primaryOrange/10 transition-all"
-                aria-label="TikTok"
-              >
-                <TikTokIcon size={20} />
-              </a>
-              <a
-                href="https://x.com/beafox_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-lightGray hover:text-primaryOrange hover:bg-primaryOrange/10 transition-all"
-                aria-label="X (Twitter)"
-              >
-                <XIcon size={20} />
-              </a>
-              <a
-                href="https://www.youtube.com/@beafox_app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-lightGray hover:text-primaryOrange hover:bg-primaryOrange/10 transition-all"
-                aria-label="YouTube"
-              >
-                <YouTubeIcon size={20} />
-              </a>
-            </div>
+          <div className="col-span-1 md:col-span-2 lg:col-span-1 text-left">
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">
+              {t("content.ratgeber")}
+            </h3>
+            <ul className="space-y-3">
+              {orderedBlogCategories.map((cat) => (
+                <li key={cat.slug}>
+                  <Link
+                    href={`/ratgeber/${cat.slug}`}
+                    className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                  >
+                    {cat.navLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Menu */}
@@ -275,28 +210,43 @@ export default function Footer() {
             <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("menu.title")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link
+                  href="/"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
                   {t("menu.home")}
                 </Link>
               </li>
               <li>
-                <Link href="/preise" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
-                  {t("menu.pricing")}
+                <Link
+                  href="/ueber-uns"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
+                  {t("menu.about")}
                 </Link>
               </li>
               <li>
-                <Link href="/shop" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
-                  {t("menu.shop")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/kontakt" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link
+                  href="/kontakt"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
                   {t("menu.contact")}
                 </Link>
               </li>
               <li>
-                <Link href="/ueber-beafox" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
-                  {t("menu.about")}
+                <Link
+                  href="/faq"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
+                  {t("menu.faq")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shop"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
+                  {t("menu.shop")}
                 </Link>
               </li>
             </ul>
@@ -307,23 +257,27 @@ export default function Footer() {
             <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("products.title")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/beafox-unlimited" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link
+                  href="/beafox-unlimited"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
                   {t("products.unlimited")}
                 </Link>
               </li>
               <li>
-                <Link href="/fuer-unternehmen" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link
+                  href="/fuer-unternehmen"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
                   {t("products.business")}
                 </Link>
               </li>
               <li>
-                <Link href="/fuer-schulen" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link
+                  href="/fuer-schulen"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm"
+                >
                   {t("products.schools")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/fuer-clubs" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
-                  {t("products.clubs")}
                 </Link>
               </li>
             </ul>
@@ -334,76 +288,103 @@ export default function Footer() {
             <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("legal.title")}</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/agb" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link href="/agb" className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm">
                   {t("legal.agb")}
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link href="/faq" className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm">
                   {t("legal.faq")}
                 </Link>
               </li>
               <li>
-                <Link href="/impressum" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link href="/impressum" className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm">
                   {t("legal.imprint")}
                 </Link>
               </li>
               <li>
-                <Link href="/datenschutz" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link href="/datenschutz" className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm">
                   {t("legal.privacy")}
                 </Link>
               </li>
               <li>
-                <Link href="/guidelines" className="hover:text-primaryOrange transition-colors text-lightGray text-sm">
+                <Link href="/guidelines" className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm">
                   {t("legal.guidelines")}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Social, News, App-Updates */}
           <div>
-            <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("contact.title")}</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                <a
-                  href="tel:+491782723673"
-                  className="text-lightGray hover:text-primaryOrange transition-colors text-sm"
-                >
-                  +49 178 2723 673
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                <a
-                  href="mailto:info@beafox.app"
-                  className="text-lightGray hover:text-primaryOrange transition-colors text-sm"
-                >
-                  info@beafox.app
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5" />
-                <span className="text-lightGray text-sm">
-                  93073 Neutraubling
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Blog */}
-          <div>
-            <h3 className="text-darkerGray font-bold mb-6 text-lg">{t("blog.title")}</h3>
+            <h3 className="text-darkerGray font-bold mb-6 text-lg">
+              {t("content.title")}
+            </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/blog" className="hover:text-primaryOrange transition-colors text-lightGray text-sm block">
-                  {t("blog.allArticles")}
+                <a
+                  href="https://www.linkedin.com/company/beafox-app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm block"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/beafox_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm block"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.tiktok.com/@beafox_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm block"
+                >
+                  TikTok
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.youtube.com/@beafox_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm block"
+                >
+                  YouTube
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://x.com/beafox_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm block"
+                >
+                  X
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/news"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm block"
+                >
+                  {t("content.news")}
                 </Link>
               </li>
               <li>
-                <Link href="/blog/updates" className="hover:text-primaryOrange transition-colors text-lightGray text-sm block">
-                  {t("blog.appUpdates")}
+                <Link
+                  href="/app-updates"
+                  className="hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm block"
+                >
+                  {t("content.appUpdates")}
                 </Link>
               </li>
             </ul>
@@ -412,8 +393,41 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-lightGray">
-            <p>{t("copyright", { year: new Date().getFullYear() })}</p>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-lightGray">
+            <p className="text-center sm:text-left">{t("copyright", { year: new Date().getFullYear() })}</p>
+            <div
+              role="radiogroup"
+              aria-label="Sprache wählen"
+              className="flex items-center bg-gray-100/80 rounded-full p-0.5 gap-1 flex-shrink-0"
+            >
+              <button
+                type="button"
+                role="radio"
+                aria-checked={locale === "de"}
+                onClick={() => setWebsiteLocale("de")}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap ${
+                  locale === "de"
+                    ? "bg-primaryOrange text-white shadow-sm"
+                    : "text-darkerGray hover:text-primaryOrange"
+                }`}
+              >
+                {tHeader("language.de")}
+              </button>
+              <span aria-hidden="true" className="w-px h-5 bg-gray-300/70 rounded-full" />
+              <button
+                type="button"
+                role="radio"
+                aria-checked={locale === "en"}
+                onClick={() => setWebsiteLocale("en")}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap ${
+                  locale === "en"
+                    ? "bg-primaryOrange text-white shadow-sm"
+                    : "text-darkerGray hover:text-primaryOrange"
+                }`}
+              >
+                {tHeader("language.en")}
+              </button>
+            </div>
           </div>
         </div>
       </div>

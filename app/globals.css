@@ -39,6 +39,22 @@ body {
   }
 }
 
+@keyframes scroll-left-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll-left-slow {
+  animation: scroll-left-slow 40s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll-left {
+  animation: scroll-left 25s linear infinite;
+}
+
 .animate-scroll {
   animation: scroll 30s linear infinite;
   display: flex;

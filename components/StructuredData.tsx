@@ -1,33 +1,49 @@
-"use client";
+import { useMemo } from "react";
 
-import { useEffect } from "react";
-
+// TYPES
+type JsonLdData = Record<string, unknown>;
 interface StructuredDataProps {
-  data: object;
+  id?: string;
+  data: JsonLdData;
 }
 
-export default function StructuredData({ data }: StructuredDataProps) {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.text = JSON.stringify(data);
-    script.id = "structured-data";
-
-    // Entferne vorheriges Script falls vorhanden
-    const existingScript = document.getElementById("structured-data");
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    document.head.appendChild(script);
-
-    return () => {
-      const scriptToRemove = document.getElementById("structured-data");
-      if (scriptToRemove) {
-        scriptToRemove.remove();
+// ─── Component ───
+/**
+ * Renders a JSON-LD structured data script tag.
+ *
+ * Works as a Server Component — no useEffect, no DOM manipulation.
+ * Safe to use multiple times on the same page (each gets its own script tag).
+ *
+ * @example
+ * <StructuredData
+ *   id="organization"
+ *   data={{
+ *     "@context": "https://schema.org",
+ *     "@type": "Organization",
+ *     name: "BeAFox",
+ *   }}
+ * />
+ */
+export default function StructuredData({ data, id }: StructuredDataProps) {
+  // Stable serialization — only recompute when data changes
+  const jsonString = useMemo(() => {
+    try {
+      return JSON.stringify(data);
+    } catch {
+      if (process.env.NODE_ENV === "development") {
+        console.error("[StructuredData] Failed to serialize data:", data);
       }
-    };
+      return null;
+    }
   }, [data]);
 
-  return null;
+  if (!jsonString) return null;
+
+  return (
+    <script
+      type="application/ld+json"
+      id={id ? `structured-data-${id}` : undefined}
+      dangerouslySetInnerHTML={{ __html: jsonString }}
+    />
+  );
 }

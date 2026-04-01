@@ -1,16 +1,25 @@
 import { MetadataRoute } from "next";
 
-export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://beafox.app";
+const BASE_URL = "https://beafox.app";
 
+export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/admin/",
+          "/auth/",
+          "/checkout/",
+          "/shop/warenkorb",
+          "/studio/",
+        ],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${BASE_URL}/sitemap.xml`,
+    host: BASE_URL,
   };
 }

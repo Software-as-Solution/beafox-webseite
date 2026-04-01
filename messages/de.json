@@ -1,8 +1,47 @@
 {
+  "__i18nUsage": {
+    "_note": "JSON erlaubt keine // Kommentare. Dieses Objekt ist nur Entwickler-Dokumentation und wird in i18n/request.ts entfernt, bevor die Messages an NextIntlClientProvider gehen (nicht an den Browser). Schlüssel unter \"namespaces\" entsprechen dem ersten Argument von useTranslations(...) / getTranslations(...).",
+    "namespaces": {
+      "rootMeta": "app/layout.tsx — generateMetadata (title, description, keywords, Open Graph, Twitter)",
+      "manifest": "app/manifest.ts — PWA manifest name/description",
+      "header": "components/Header.tsx — nav, products mega-menu, CTAs, mobile menu",
+      "breadcrumbs": "components/Breadcrumbs.tsx — home, homeAria",
+      "downloadModal": "components/DownloadModal.tsx — closeAria only (title/description keys exist but are unused; modal headline is hardcoded)",
+      "cookie": "components/CookieBanner.tsx — banner + preferences modal",
+      "footer": "components/Footer.tsx — newsletter, link columns, copyright; language labels via useTranslations(\"header\")",
+      "home": "app/page.tsx — landing (hero, stats, use cases, how it works, app features, FAQ teaser, JSON-LD seo.*); components/DownloadBannerSection, DemoBookingCtaSection; components/DownloadModal — home.downloadBanner store badge alts/labels; components/TestimonialCarousel — useTranslations(\"home.testimonialsSection\"); components/RatGeber + app/page.tsx — home.ratgeberHomeSection; components/StickyMobileCta — home.stickyMobileCta; app/ueber-beafox/page.tsx — home.experienceSection, home.cta.buttons.book; app/fuer-unternehmen/page.tsx + app/fuer-schulen/page.tsx — home.whyFinance (incl. sdgs via raw)",
+      "faq": "app/faq/page.tsx + app/faq/layout.tsx",
+      "unlimited": "app/unlimited/page.tsx; components/RatGeber.tsx — unlimited.hero (variant unlimitedTargets)",
+      "about": "app/ueber-beafox/page.tsx + app/ueber-beafox/layout.tsx; app/ueber-uns/layout.tsx — metadata",
+      "business": "app/unternehmen/page.tsx",
+      "schools": "app/schulen/page.tsx + app/schulen/layout.tsx",
+      "contact": "app/kontakt/page.tsx (kontakt/layout.tsx metadata is hardcoded German)",
+      "authLogin": "app/login/page.tsx",
+      "authRegister": "app/registrierung/page.tsx",
+      "authForgotPassword": "app/forgot-password/page.tsx",
+      "authResetPassword": "app/reset-password/page.tsx",
+      "authVerification": "app/verification/page.tsx",
+      "unsubscribe": "app/unsubscribe/page.tsx + app/unsubscribe/layout.tsx",
+      "account": "app/account/page.tsx",
+      "agb": "app/agb/page.tsx + app/agb/layout.tsx",
+      "privacy": "app/datenschutz/page.tsx + app/datenschutz/layout.tsx",
+      "imprint": "app/impressum/page.tsx + app/impressum/layout.tsx",
+      "guidelines": "app/guidelines/page.tsx + app/guidelines/layout.tsx",
+      "checkout": "app/checkout/page.tsx",
+      "checkoutSuccess": "app/checkout/success/page.tsx",
+      "onboarding": "app/onboarding/page.tsx",
+      "referral": "app/referral/page.tsx",
+      "shop": "app/shop/page.tsx",
+      "ratgeber": "app/ratgeber/layout.tsx — meta/SEO only; article/category UI from lib/blog.ts + Sanity",
+      "news": "app/news/layout.tsx — meta only; /news hub copy mostly inline in app/news/page.tsx",
+      "appUpdates": "app/updates/page.tsx + app/updates/layout.tsx",
+      "blog": "Kein useTranslations(\"blog\") im Code — Legacy-Spiegel alter Blog-Texte; live: /news, /ratgeber, lib/blog.ts"
+    }
+  },
   "rootMeta": {
     "title": "BeAFox - Finanzbildungs-Ökosystem für junge Menschen",
     "titleTemplate": "%s | BeAFox",
-    "description": "Digitale Finanzbildungsplattform für junge Menschen: Finanzbildung App für Privatnutzer, Finanzbildung für Unternehmen und Finanzbildung für Schulen. Spielerische Lern-App mit Finanzbildung für Azubis, Finanzbildung im Schulunterricht und Finanzbildung für Vereine.",
+    "description": "BeAFox ist der KI-Begleiter für Finanzbildung. Spielerisch, unabhängig und für junge Menschen zwischen 16 und 30 — als App, für Schulen und Unternehmen.",
     "keywords": [
       "Finanzbildung",
       "Finanzbildung App",
@@ -12,8 +51,6 @@
       "Finanzbildung für Azubis",
       "Finanzbildung im Schulunterricht",
       "Finanzbildung Schüler",
-      "Finanzbildung für Vereine",
-      "Finanzbildung für Jugendvereine",
       "Finanzbildung Community",
       "Lern-App für Finanzen",
       "Finanz-App Premium",
@@ -39,16 +76,35 @@
   "header": {
     "nav": {
       "home": "Startseite",
-      "about": "Über BeAFox",
-      "pricing": "Preise",
+      "about": "Über uns",
       "faq": "FAQ's"
     },
     "products": {
       "label": "Produkte",
+      "sidebarTitle": "Übersicht",
+      "cta": "Zur Seite",
       "unlimited": "BeAFox Unlimited",
-      "business": "BeAFox for Business",
-      "schools": "BeAFox for Schools",
-      "clubs": "BeAFox for Clubs"
+      "business": "BeAFox für Unternehmen",
+      "schools": "BeAFox für Schulen",
+      "partnerIhk": "BeAFox × IHK Akademie",
+      "partnerVhs": "BeAFox × VHS",
+      "panel": {
+        "unlimited": {
+          "description": "Voller Zugang zu Bea, allen Lernmodulen und Premium-Features — für alle, die Finanzbildung privat und flexibel vertiefen wollen."
+        },
+        "schools": {
+          "description": "Finanzbildung für den Unterricht: strukturiert, spielerisch und mit Monitoring für Lehrkräfte — perfekt für Schulen und Bildungseinrichtungen."
+        },
+        "business": {
+          "description": "Ganzheitliche Finanzbildung für Azubis und Teams: App, optional Workshops und Einblicke über Dashboards — für moderne Ausbildungsbetriebe."
+        },
+        "ihk": {
+          "description": "Gemeinsam mit der IHK-Akademie: bewährte Standards, praxisnahe Inhalte und Workshops, die junge Talente im Berufsalltag stärken."
+        },
+        "vhs": {
+          "description": "Partnerschaft mit der Volkshochschule: Finanzkompetenz für Teilnehmende in Kursen und Bildungsangeboten — verständlich und alltagstauglich."
+        }
+      }
     },
     "language": {
       "label": "Sprache",
@@ -57,6 +113,7 @@
     },
     "actions": {
       "contact": "Kontakt",
+      "download": "App herunterladen",
       "login": "Login",
       "loginRegister": "Login / Registrieren"
     }
@@ -104,7 +161,7 @@
     "newsletter": {
       "titlePre": "Bleib auf dem ",
       "titleHighlight": "Laufenden",
-      "description": "Melde dich für unseren Newsletter an und verpasse keine Updates, Tipps zur Finanzbildung und Einblicke hinter die Kulissen von BeAFox.",
+      "description": "Melde dich für unseren Newsletter an und verpasse keine Updates, neue Ratgeber und Einblicke hinter die Kulissen von BeAFox.",
       "placeholder": "Deine E-Mail-Adresse",
       "submitting": "Wird gesendet...",
       "submit": "Anmelden",
@@ -119,16 +176,16 @@
     "menu": {
       "title": "Menü",
       "home": "Startseite",
-      "pricing": "Preise",
       "shop": "Shop",
       "contact": "Kontakt",
-      "about": "Über BeAFox"
+      "about": "Über uns",
+      "faq": "FAQ"
     },
     "products": {
       "title": "Produkte",
       "unlimited": "BeAFox Unlimited",
-      "business": "BeAFox for Business",
-      "schools": "BeAFox for Schools",
+      "business": "BeAFox für Unternehmen",
+      "schools": "BeAFox für Schulen",
       "clubs": "BeAFox for Clubs"
     },
     "legal": {
@@ -142,16 +199,20 @@
     "contact": {
       "title": "Kontakt"
     },
-    "blog": {
-      "title": "Blog",
-      "allArticles": "Alle Artikel",
+    "content": {
+      "title": "Soziales",
+      "ratgeber": "Ratgeber",
+      "news": "News",
       "appUpdates": "App-Updates"
     },
     "copyright": "Copyright © {year} BeAFox UG (haftungsbeschränkt)"
   },
   "home": {
     "hero": {
-      "badge": "Das erste Finanzbildungs-Ökosystem",
+      "badge": "Dein Begleiter für jede Finanzentscheidung",
+      "aiIntroTitle": "Hi, ich bin Bea 👋",
+      "aiIntroText": "Ich begleite dich bei deinen Finanzentscheidungen!",
+      "mascotAlt": "Bea — Dein persönlicher KI-Finanzbegleiter in der BeAFox App",
       "headline": {
         "line1": "Deine Finanzen.",
         "line2": "Einfach durchgespielt."
@@ -159,46 +220,149 @@
       "words": ["FREIHEIT", "SICHERHEIT"],
       "description": "BeAFox ist die erste unabhängige und spielerische Lern-App für Finanzbildung junger Menschen, die sich auf unabhängige Wissensvermittlung konzentriert und speziell für Schulen und Ausbildungsbetriebe entwickelt wurde.",
       "mockups": {
-        "trainingAlt": "BeAFox Training Mockup",
-        "pathAlt": "BeAFox Lernpfad Mockup",
-        "rankingAlt": "BeAFox Rangliste Mockup"
+        "trainingAlt": "BeAFox Finanz-App Training Screen — Lernmodule für Finanzbildung",
+        "pathAlt": "BeAFox Lernpfad — Spielerische Finanzbildung Schritt für Schritt",
+        "rankingAlt": "BeAFox Rangliste — Gamification in der Finanz-App"
       },
       "cta": {
         "download": "App herunterladen",
-        "partner": "Pilotprojekt anfordern"
+        "partner": "Demo anfordern"
       }
     },
     "stats": {
       "privateUsers": "Aktive Privatnutzer",
       "schools": {
-        "pre": "Schulen & Ausbildungsbetriebe die",
-        "post": "BeAFox nutzen"
-      },
-      "learners": {
-        "pre": "Schüler, Studenten und Azubis die",
-        "post": "BeAFox nutzen"
+        "pre": "Schulen & Ausbildungsbetriebe"
       }
     },
-    "partnersCarousel": { "alt": "Partner {index}" },
+    "partnersCarousel": {
+      "alt": "Partner {index}"
+    },
+    "mockupShowcase": {
+      "titleLine1": "Finanzbildung war gestern.",
+      "titleLine2": "Heute:\nKI-basierte Handlungsfähigkeit!",
+      "subtitle": "BeAFox verbindet interaktive App-Features mit intelligenter Begleitung durch Bea - für Entscheidungen, die im Alltag wirklich ankommen."
+    },
+    "simpleStepsSection": {
+      "title": {
+        "pre": "So einfach",
+        "highlight": "geht's"
+      }
+    },
+    "testimonialsSection": {
+      "title": {
+        "pre": "Das sagen unsere",
+        "highlight": "Kunden"
+      },
+      "items": [
+        {
+          "quote": "Durch die enge Zusammenarbeit mit verschiedenen IHKs und Ausbildungsbetrieben trägt BeAFox maßgeblich dazu bei, Finanzwissen praxisnah, verständlich und motivierend zu vermitteln. Wir empfehlen die Initiative uneingeschränkt weiter.",
+          "name": "Robert Wiedemann",
+          "role": "Geschäftsführer",
+          "org": "IHK-Akademie in Ostbayern GmbH",
+          "logo": "/Partners/3.png"
+        },
+        {
+          "quote": "Unsere Lernenden nutzen BeAFox seit dem ersten Tag und zum ersten Mal reden sie freiwillig über Finanzen. Die App macht das Thema greifbar und die Ergebnisse sprechen für sich: weniger Fragen zu Gehaltsabrechnungen, mehr Eigenverantwortung.",
+          "name": "Stephan Koller",
+          "role": "Geschäftsführer",
+          "org": "Dr. Robert Eckert Schulen AG",
+          "logo": "/Partners/1.png"
+        },
+        {
+          "quote": "Als Hub für Gründung und Technologie in der Region sehen wir, wie wichtig finanzielle Handlungsfähigkeit für Teams und Talente ist. BeAFox liefert genau die moderne, praxisnahe Finanzbildung, die zu unserem Ökosystem passt — verständlich, motivierend und messbar.",
+          "name": "Alexander Rupprecht",
+          "role": "Geschäftsführer",
+          "org": "TechBase Regensburg",
+          "logo": "/Partners/8.png"
+        }
+      ],
+      "prevLabel": "Vorheriges Testimonial",
+      "nextLabel": "Nächstes Testimonial",
+      "carouselLabel": "Partner-Testimonials",
+      "carouselRole": "Karussell",
+      "slideRole": "Folie",
+      "slideLabel": "Testimonial {current} von {total}",
+      "controlsLabel": "Karussell-Steuerung",
+      "selectLabel": "Testimonial auswählen",
+      "ratingLabel": "Bewertung 5 von 5 Sternen"
+    },
+    "ratgeberHomeSection": {
+      "title": {
+        "pre": "Entdecke unsere",
+        "highlight": "Ratgeber"
+      },
+      "categories": {
+        "finanzen-fuer-azubis": {
+          "label": "Auszubildende",
+          "desc": "Erstes Gehalt, Gehaltsabrechnung, VWL nutzen"
+        },
+        "finanzen-bei-lebensereignissen": {
+          "label": "Lebenssituationen",
+          "desc": "Erste Wohnung, Zusammenziehen, Heiraten"
+        },
+        "finanzen-fuer-berufseinsteiger": {
+          "label": "Berufseinsteiger",
+          "desc": "Steuererklärung, Gehaltsverhandlung, Versicherungen"
+        }
+      },
+      "viewCategory": "Ratgeber ansehen",
+      "viewCategoryAria": "Ratgeber für {label} ansehen",
+      "viewAll": "Alle Ratgeber entdecken",
+      "listLabel": "Ratgeber-Kategorien",
+      "subtitleLine1": "Ob Schüler, Azubi oder Berufseinsteiger:",
+      "subtitleLine2": "Der Ratgeber der zu dir passt."
+    },
+    "faqSection": {
+      "title": {
+        "pre": "Häufig gestellte",
+        "highlight": "Fragen"
+      },
+      "viewAll": "Alle Fragen ansehen",
+      "items": [
+        {
+          "id": 1,
+          "question": "Ist BeAFox wirklich kostenlos?",
+          "answer": "Ja, der Einstieg ist komplett kostenlos. Du kannst Lektionen absolvieren, Bea kennenlernen und deine erste Situation durchspielen. Für unbegrenzten Zugang gibt es BeAFox Unlimited."
+        },
+        {
+          "id": 2,
+          "question": "Was macht Bea anders als andere Finanz-Apps?",
+          "answer": "Bea ist kein Chatbot der Wikipedia zitiert. Bea kennt deine Lebenssituation! Ob Azubi, Student oder Berufseinsteiger: Bea empfiehlt dir genau die Schritte, die jetzt für dich relevant sind. Personalisiert, neutral und ohne Produktverkauf."
+        },
+        {
+          "id": 3,
+          "question": "Sind meine Daten sicher?",
+          "answer": "Absolut. BeAFox ist 100% DSGVO-konform, wird in Deutschland gehostet und verkauft keine Nutzerdaten. Wir sind unabhängig! Keine Bank, kein Versicherer, kein Produktverkauf."
+        },
+        {
+          "id": 4,
+          "question": "Für wen ist BeAFox geeignet?",
+          "answer": "Für alle zwischen 16 und 30, die ihre Finanzen selbst in die Hand nehmen wollen! Besonders Azubis, Studierende und Berufseinsteiger: BeAFox ist die Plattform für euch."
+        }
+      ]
+    },
     "useCasesSection": {
-      "title": { "pre": "Eine App für jeden", "highlight": "Einsatz" },
-      "subtitle": "Entdecke unsere maßgeschneiderten Lösungen für Schulen und Ausbildungsbetriebe.",
+      "title": {
+        "pre": "BeAFox deckt jeden",
+        "highlight": "Einsatz ab"
+      },
+      "subtitle": {
+        "lead": "Entdecke unsere maßgeschneiderten Lösungen für",
+        "schools": "Schulen",
+        "connector": "und",
+        "businesses": "Unternehmen"
+      },
       "more": "Mehr erfahren"
     },
     "useCases": {
       "unlimited": {
         "title": "BeAFox Unlimited",
-        "description": "Die Premium-Version für alle, die ihre Finanzbildung auf das nächste Level bringen wollen.",
-        "features": [
-          "Exklusive Premium-Inhalte",
-          "Aktive Community",
-          "Individuelle Lernpfade",
-          "Unbegrenzter Zugang"
-        ]
+        "description": "Die Premium-Version für alle, die ihre Finanzbildung auf das nächste Level bringen wollen."
       },
       "business": {
-        "title": "BeAFox for Business",
-        "description": "Mach deine Azubis finanziell handlungsfähig und unterstreiche deine Rolle als zukunftsorientierter Arbeitgeber.",
+        "title": "BeAFox für Unternehmen",
+        "description": "Mach deine Azubis & Mitarbeiter finanziell handlungsfähig und unterstreiche deine Rolle als zukunftsorientierter Arbeitgeber.",
         "features": [
           "Moderner Benefit in der Ausbildung",
           "Stärkung Ihrer Arbeitgeberattraktivität",
@@ -207,34 +371,18 @@
         ]
       },
       "schools": {
-        "title": "BeAFox for Schools",
-        "description": "Digitale Finanzbildung, die Schüler begeistert, echte Handlungskompetenz vermittelt und Lehrkräfte im Unterricht spürbar entlastet.",
-        "features": [
-          "DSGVO-konforme & sichere Plattform",
-          "Strukturierte Materialien & Lehrkräfte-Guide",
-          "Interaktive Lernmodule mit nachhaltigem Lerneffekt",
-          "Präventive Finanzbildung zur Schulden- und Fehlentscheidungsprävention"
-        ]
-      },
-      "partners": {
-        "title": "BeAFox for Clubs",
-        "description": "Werde Teil unseres Netzwerks und stärke deine Gemeinschaft mit wertvoller Finanzbildung.",
-        "features": [
-          "Co-Branding",
-          "Spendenprogramme",
-          "Soziale Verantwortung",
-          "Exklusive Mitglieder-Vorteile"
-        ]
+        "title": "BeAFox für Schulen",
+        "description": "Präventive Finanzbildung, die Schüler begeistert, echte Handlungskompetenz vermittelt und Lehrkräfte im Unterricht spürbar entlastet."
       }
     },
     "experienceSection": {
       "badge": "Unsere Geschichte",
       "title": "Wir sprechen aus",
       "titleHighlight": "Erfahrung",
-      "quote": "\"Erstes Gehalt, alles ausgegeben, Monat vorbei und dann standen da Rechnungen, Mahnungen und Schulden. Niemand hat uns je beigebracht, wie Geld wirklich funktioniert.\"",
-      "paragraph1": "Wir waren selbst Azubis – jung, aufgeregt, endlich eigenes Geld. Doch ohne Wissen über Budgets, Sparen oder Verträge haben wir jeden Cent verbrannt. Dispo überzogen, Ratenzahlung hier, Abo-Falle da. Was als Freiheit begann, wurde schnell zu echtem Stress: schlaflose Nächte, Scham und das Gefühl, komplett allein damit zu sein.",
-      "paragraph2": "Genau dieses Gefühl war der Startschuss für BeAFox. Wir wollen, dass die nächste Generation diese Fehler nicht wiederholen muss. Deshalb haben wir ein Finanzbildungs-Ökosystem aufgebaut, das Schüler und Auszubildende befähigt, selbstbewusst und eigenständig finanzielle Entscheidungen zu treffen.",
-      "paragraph3": "Wenn auch nur eine Person durch BeAFox einen Fehler weniger macht – dann hat sich alles gelohnt."
+      "quote": "\"Erstes Gehalt, alles ausgegeben, Monat vorbei und dann standen da Rechnungen, Mahnungen und Schulden.",
+      "paragraph1": "Wir waren selbst Azubis – jung, aufgeregt, endlich eigenes Geld. Doch ohne Plan haben wir jeden Cent verbrannt. Was als Freiheit begann, wurde schnell zu echtem Stress. Das Problem war nie fehlendes Wissen, sondern dass uns niemand gesagt hat, was wir konkret tun sollen.",
+      "paragraph2": "Genau deshalb haben wir BeAFox gebaut. Nicht noch eine Lern-App, sondern einen KI-Begleiter, der junge Menschen durch echte Finanzsituationen führt. Vom ersten Gehalt bis zur Steuererklärung & Investieren",
+      "paragraph3": "Wenn auch nur eine Person durch BeAFox einen Fehler weniger macht, dann hat sich alles gelohnt."
     },
     "ecosystem": {
       "title": "Finanzbildungs-Ökosystem",
@@ -260,10 +408,6 @@
         "school": {
           "title": "Finanzbildung in Schulen",
           "text": "BeAFox ist speziell für den Einsatz im Unterricht entwickelt. Lehrkräfte können den Lernfortschritt ihrer Klasse verfolgen und spielerische Wettbewerbe starten. So kann Finanzbildung auch außerhalb des Lehrplans unterrichtet werden."
-        },
-        "clubs": {
-          "title": "Finanzbildung für Vereine",
-          "text": "Vereine und Organisationen können ihren Mitgliedern wertvolle Finanzbildung anbieten. Ob Sportverein, Jugendzentrum oder gemeinnützige Organisation. BeAFox hilft dabei, junge Menschen finanziell zu stärken und ihnen wichtige Lebenskompetenzen zu vermitteln."
         }
       },
       "mockups": {
@@ -273,10 +417,13 @@
       }
     },
     "howItWorks": {
-      "title": "So funktioniert BeAFox",
+      "titlePre": "So funktioniert",
+      "titleHighlight": "BeAFox",
+      "titleSuffix": "",
       "scrollMore": "Scrollen für mehr",
       "mockupAlt": "BeAFox {feature} Mockup",
-      "ctaPartner": "Pilotprojekt anfordern"
+      "ctaPartner": "Demo anfordern",
+      "ctaDownload": "Kostenlos testen"
     },
     "appFeatures": {
       "stufen": {
@@ -309,36 +456,68 @@
       }
     },
     "whyFinance": {
-      "title": "Warum Finanzbildung?",
+      "title": "Warum finanzielle Handlungsfähigkeit?",
       "items": [
         {
-          "title": "Finanzbildung als Future Skill",
-          "text": "Finanzwissen ist ein zentraler Future Skill, der junge Menschen auf die Herausforderungen von morgen vorbereitet."
+          "title": "Finanzielle Handlungsfähigkeit als Future Skill",
+          "text": "Finanzielle Handlungsfähigkeit ist ein zentraler Future Skill, der junge Menschen auf die Herausforderungen von morgen vorbereitet."
         },
         {
-          "title": "Finanzbildung als Erfolgsfaktor",
+          "title": "Finanzielle Handlungsfähigkeit als Erfolgsfaktor",
           "text": "Wer Finanzen versteht, trifft bessere Entscheidungen in Alltag, Beruf und Zukunft."
         },
         {
           "title": "Chancengerechtigkeit",
-          "text": "Jede:r sollte unabhängig von Herkunft oder Einkommen Zugang zu neutraler Finanzbildung haben."
+          "text": "Jede:r sollte unabhängig von Herkunft oder Einkommen Zugang zu neutraler finanzielle Handlungsfähigkeit haben."
         }
       ],
       "mascotAlt": "BeAFox Maskottchen",
       "sdgTitle": "Unsere Ziele für nachhaltige Entwicklung",
       "sdgSubtitle": "BeAFox orientiert sich an den UN-Nachhaltigkeitszielen (SDGs) und trägt aktiv zu einer gerechteren und nachhaltigeren Zukunft bei.",
       "sdgs": [
-        { "id": "01", "name": "Keine Armut" },
-        { "id": "03", "name": "Gesundheit und Wohlergehen" },
-        { "id": "04", "name": "Hochwertige Bildung" },
-        { "id": "05", "name": "Geschlechtergleichheit" },
-        { "id": "08", "name": "Menschenwürdige Arbeit und Wirtschaftswachstum" },
-        { "id": "09", "name": "Industrie, Innovation und Infrastruktur" },
-        { "id": "10", "name": "Weniger Ungleichheiten" },
-        { "id": "17", "name": "Partnerschaften zur Erreichung der Ziele" }
+        {
+          "id": "01",
+          "name": "Keine Armut"
+        },
+        {
+          "id": "03",
+          "name": "Gesundheit und Wohlergehen"
+        },
+        {
+          "id": "04",
+          "name": "Hochwertige Bildung"
+        },
+        {
+          "id": "05",
+          "name": "Geschlechtergleichheit"
+        },
+        {
+          "id": "08",
+          "name": "Menschenwürdige Arbeit und Wirtschaftswachstum"
+        },
+        {
+          "id": "09",
+          "name": "Industrie, Innovation und Infrastruktur"
+        },
+        {
+          "id": "10",
+          "name": "Weniger Ungleichheiten"
+        },
+        {
+          "id": "17",
+          "name": "Partnerschaften zur Erreichung der Ziele"
+        }
       ]
     },
     "downloadBanner": {
+      "pill": "Kostenlos starten",
+      "ratingStarsAria": "Bewertung 5 von 5 Sternen",
+      "ratingScore": "5,0",
+      "socialProof": "5,000+ aktive Nutzer",
+      "sectionHeading": {
+        "pre": "Worauf wartest du",
+        "highlight": "noch?"
+      },
       "title": {
         "pre": "Lade jetzt die",
         "highlight": "BeAFox-App",
@@ -348,44 +527,56 @@
         "appleAlt": "Im App Store herunterladen",
         "googleAlt": "Bei Google Play herunterladen"
       },
+      "storeLabels": {
+        "apple": "App Store",
+        "google": "Google Play"
+      },
       "mockups": {
-        "trainingAlt": "BeAFox Training Mockup",
-        "pathAlt": "BeAFox Lernpfad Mockup"
+        "trainingAlt": "BeAFox Finanz-App Training Screen — Lernmodule für Finanzbildung",
+        "pathAlt": "BeAFox Lernpfad — Spielerische Finanzbildung Schritt für Schritt"
       }
     },
     "cta": {
       "badge": "Bereit für BeAFox?",
-      "title": "Pilotprojekt anfordern!",
-      "description": "Mit unserer Lern-App haben wir endlich eine Möglichkeit geschaffen, das oft als langweilig empfundene Thema Finanzen nachhaltig und verständlich zu vermitteln. Wir möchten, dass die junge Generation selbstständig und motiviert Finanzwissen erwirbt.",
+      "title": "Demo anfordern!",
+      "description": "Mit Bea haben wir einen KI-Begleiter geschaffen, der junge Menschen nicht belehrt, sondern durch echte Finanzsituationen führt. Schulen, Ausbildungsbetriebe und IHKs nutzen BeAFox, damit die nächste Generation nicht nur lernt, sondern handelt.",
       "buttons": {
-        "partner": "Pilotprojekt anfordern",
+        "partner": "Demo anfordern",
         "book": "Termin vereinbaren"
       }
     },
-    "blogPreview": {
-      "title": "Unser Blog",
-      "subtitle": "Entdecke, wie BeAFox im Hintergrund zum Leben erweckt wird.",
-      "more": "Mehr erfahren",
-      "posts": [
+    "contentHub": {
+      "title": "Behind the scenes",
+      "subtitle": {
+        "line1": "Ein Blick hinter die Kulissen:",
+        "highlight": "Unsere Stories & alle Neuigkeiten"
+      },
+      "items": [
         {
-          "image": "/assets/Blogs/Blog1.jpeg",
-          "imageAlt": "Wir haben gewonnen - Deggendorfer Gründerpreis",
-          "title": "Wir haben gewonnen!",
-          "excerpt": "Wir sind stolz darauf, den Deggendorfer Gründerpreis gewonnen zu haben! Trotz Nervosität und einem in letzter Minute überarbeiteten Pitch hat sich unsere Arbeit ausgezahlt - etwa 60% des Publikums haben für uns gestimmt. Vielen Dank an das gesamte Team für die tolle Organisation und die 2.500€ Preisgeld. Wir freuen uns auf weitere Schritte mit BeAFox!"
+          "id": "news",
+          "title": "News",
+          "description": "Stories, Events und Artikel. So entsteht und wächst BeAFox.",
+          "href": "/news",
+          "cta": "Zu den News"
         },
         {
-          "image": "/assets/Blogs/Blog2.jpeg",
-          "imageAlt": "BeAFox bei Ed.One in München",
-          "title": "BeAFox bei Ed.One in München!",
-          "excerpt": "So erlebt man Finanzbildung im Klassenzimmer. Beim Ed.One Summit in München haben Schüler, Lehrer und Ausbilder BeAFox live getestet - vom Dashboard über die Lern-App bis hin zu den Arbeitsblättern. Wir haben wertvolles Feedback erhalten, spannende Kontakte geknüpft und unseren Pitch präsentiert. BeAFox zeigt, wie einfach Finanzbildung sein kann. Wir suchen dich!"
-        },
-        {
-          "image": "/assets/Blogs/Blog3.jpg",
-          "imageAlt": "BeAFox gewinnt Startup Summit",
-          "title": "BeAFox gewinnt Startup Summit!",
-          "excerpt": "BeAFox hat den 2. Platz beim Startup Summit Germany erreicht - unser erster offizieller Preis! Zum ersten Mal haben wir als Duo gepitcht, mit einem neuen Pitch, Pitch Deck und einer Präsentation, die unsere Vision noch stärker vermittelt hat. Nach zwei Jahren harter Arbeit zeigt es, dass Durchhaltevermögen, Mut und Teamarbeit sich auszahlen. Vielen Dank an die Volksbank am Württemberg eG für diese großartige Veranstaltung!"
+          "id": "appUpdates",
+          "title": "App-Updates",
+          "description": "Versionen, Features und Fixes der BeAFox-App auf einen Blick.",
+          "href": "/updates",
+          "cta": "Zum Changelog"
         }
       ]
+    },
+    "faqAccordionLabel": "Häufig gestellte Fragen",
+    "stickyMobileCta": {
+      "title": "BeAFox: Finanzen durchgespielt",
+      "ratingLabel": "Bewertung 5 von 5 Sternen",
+      "ctaButton": "App laden",
+      "ctaAria": "BeAFox App herunterladen",
+      "dismiss": "Ausblenden",
+      "dismissAria": "Download-Banner ausblenden",
+      "regionAria": "App herunterladen"
     },
     "seo": {
       "organization": {
@@ -435,29 +626,28 @@
       "learnMore": "Mehr erfahren",
       "links": [
         {
-          "title": "BeAFox for Business",
-          "description": "BeAFox for Business im Detail",
-          "href": "/fuer-unternehmen"
-        },
-        {
+          "id": "unlimited",
           "title": "BeAFox Unlimited",
           "description": "Unbegrenztes Lernen für Privatpersonen",
-          "href": "/beafox-unlimited"
+          "href": "/unlimited"
         },
         {
+          "id": "business",
+          "title": "BeAFox für Unternehmen",
+          "description": "Finanzbildung für Ihre Azubis & Mitarbeiter",
+          "href": "/unternehmen"
+        },
+        {
+          "id": "schools",
           "title": "Für Schulen",
-          "description": "Alles über BeAFox for Schools",
-          "href": "/fuer-schulen"
-        },
-        {
-          "title": "Kontakt",
-          "description": "Kontaktiere uns für Fragen",
-          "href": "/kontakt"
+          "description": "Finanzbildung im Unterricht",
+          "href": "/schulen"
         }
       ]
     },
     "contactCta": {
       "title": "Noch Fragen?",
+      "text": "Deine Frage war nicht dabei? Schreib uns und wir antworten innerhalb von 24 Stunden.",
       "subtitle": "Wenn du weitere Fragen hast, die hier nicht beantwortet wurden, kontaktiere uns gerne. Wir helfen dir gerne weiter!",
       "cta": "Kontakt aufnehmen"
     },
@@ -510,14 +700,14 @@
       },
       {
         "id": 8,
-        "question": "Was ist der Unterschied zwischen BeAFox for Schools und BeAFox for Business?",
-        "answer": "BeAFox for Schools richtet sich an Bildungseinrichtungen und bietet ein Monitoring-Dashboard für Lehrer. BeAFox for Business richtet sich an Ausbildungsbetriebe und beinhaltet zusätzlich regelmäßige Workshops (alle 6 Monate), offizielle Zertifikate und erweiterte Reporting-Funktionen.",
+        "question": "Was ist der Unterschied zwischen BeAFox für Schulen und BeAFox für Unternehmen?",
+        "answer": "BeAFox für Schulen richtet sich an Bildungseinrichtungen und bietet ein Monitoring-Dashboard für Lehrer. BeAFox für Unternehmen richtet sich an Ausbildungsbetriebe und beinhaltet zusätzlich regelmäßige Workshops (alle 6 Monate), offizielle Zertifikate und erweiterte Reporting-Funktionen.",
         "categoryId": "schoolsBusiness"
       },
       {
         "id": 9,
         "question": "Kann ich BeAFox vor dem Kauf testen?",
-        "answer": "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und eine Demo-Version. Schulen können ein Pilotprojekt starten, um BeAFox unverbindlich zu testen.",
+        "answer": "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und eine Demo-Version. Schulen können ein Demo starten, um BeAFox unverbindlich zu testen.",
         "categoryId": "pricing"
       },
       {
@@ -577,76 +767,65 @@
     ]
   },
   "unlimited": {
-    "meta": {
-      "title": "BeAFox Unlimited – Vollzugang zur Finanzbildung-App",
-      "description": "Lern-App für Finanzen: BeAFox Unlimited ist die Finanz-App für Finanzbildung. Finanzbildung App für alle, die Finanzwissen lernen wollen. Alle Lernmodule, Missionen und Features ohne Einschränkungen.",
-      "ogTitle": "BeAFox Unlimited – Vollzugang zur Finanzbildung-App",
-      "ogDescription": "Voller Zugang zu allen Premium-Inhalten. Alle Lernmodule, Missionen und Features ohne Einschränkungen."
-    },
-    "breadcrumbs": {
-      "current": "BeAFox Unlimited"
-    },
     "hero": {
       "tag": "BeAFox Unlimited",
-      "title": "Finanzbildung für",
-      "highlight": "Privatnutzer",
-      "description": "Lerne Finanzen auf deine Art. Spielerisch, flexibel und in deinem eigenen Tempo. BeAFox Unlimited gibt dir Zugang zu allen Lernmodulen und Features.",
-      "cta": { "download": "App herunterladen" },
+      "title": "Dein persönlicher",
+      "highlight": "Finanzbegleiter",
+      "description": "Du musst nie wieder alleine Finanzentscheidungen treffen.",
+      "cta": {
+        "download": "App herunterladen"
+      },
       "targetGroups": {
-        "school": {
-          "title": "Für Schüler",
-          "description": "Spielerische und simple Finanzbildung für dein eigenes Tempo."
-        },
         "students": {
           "title": "Für Studenten",
           "description": "Praxis- und alltagstaugliche Tipps für das Studentenleben."
         },
         "apprentices": {
-          "title": "Für Azubis",
+          "title": "Azubis",
           "description": "Finde heraus, was mit deinem Gehalt heute möglich ist."
         },
-        "you": {
-          "title": "Für Dich",
-          "description": "Finanzbildung, die zu dir passt, unabhängig vom Alter."
+        "careerStarters": {
+          "title": "Berufseinsteiger",
+          "description": "Klare Finanzbildung für den Einstieg in den ersten Job."
         }
       }
     },
-    "stats": {
-      "items": [
-        {
-          "iconId": "users",
-          "value": "3,000+",
-          "label": "Aktive Privatnutzer"
-        },
-        { "iconId": "award", "value": "98%", "label": "Zufriedenheit" },
-        { "iconId": "clock", "value": "24/7", "label": "Verfügbar" },
-        { "iconId": "trendingUp", "value": "500+", "label": "Lektionen" }
-      ]
+    "targetGroupsSection": {
+      "titlePre": "Für wen ist ",
+      "titleHighlight": "Unlimited",
+      "titlePost": "?"
     },
     "howItWorks": {
       "title": {
-        "pre": "In drei einfachen Schritten",
-        "highlight": "zu deiner Finanzkompetenz"
+        "pre": "In vier Schritten",
+        "highlight": "zu Bea"
       },
       "steps": [
         {
-          "title": "App herunterladen",
-          "description": "Lade BeAFox kostenlos im App Store oder Google Play Store herunter."
+          "title": "App laden",
+          "description": "Kostenlos im App Store oder Google Play."
         },
         {
-          "title": "Abo wählen",
-          "description": "Wähle das Abo, das zu dir passt – monatlich, jährlich oder Lifetime."
+          "title": "Bea kennenlernen",
+          "description": "Teste gratis und entdecke was Bea kann."
+        },
+        {
+          "title": "Plan wählen",
+          "description": "Starter, Pro oder Unlimited — was zu dir passt."
         },
         {
           "title": "Loslegen",
-          "description": "Starte deine Finanzbildungs-Reise und lerne in deinem eigenen Tempo."
+          "description": "Bea begleitet dich ab sofort."
         }
       ]
     },
     "appFeatures": {
-      "title": { "pre": "So funktioniert", "highlight": "BeAFox" },
-      "subtitle": "Entdecke alle Features, die deine Finanzbildung zu einem Erlebnis machen.",
+      "title": {
+        "pre": "So funktioniert",
+        "highlight": "Bea"
+      },
       "mockupAlt": "BeAFox {feature} Mockup",
+      "defaultFeatureName": "BeAFox",
       "items": [
         {
           "id": "stufen",
@@ -693,357 +872,125 @@
       ]
     },
     "whyUnlimited": {
-      "title": { "pre": "Warum", "highlight": "BeAFox Unlimited", "post": "?" },
-      "subtitle": "Alles, was du brauchst, um deine Finanzkompetenz zu steigern – in einer App.",
+      "title": {
+        "pre": "Das verändert sich",
+        "highlight": "mit Bea"
+      },
       "features": [
         {
-          "iconId": "bookOpen",
-          "title": "Vollständige Lernmodule",
-          "description": "Zugriff auf alle Lektionen und Themen rund um Finanzen – von Budgetplanung bis Investitionen."
+          "iconId": "shield",
+          "title": "Nie wieder Dispo",
+          "description": "Bea erkennt bevor du überziehst und zeigt dir in 2 Minuten, wie du den Monat noch rettest."
         },
         {
           "iconId": "target",
-          "title": "Spielerisches Lernen",
-          "description": "Punkte sammeln, Missionen abschließen und deinen Fortschritt verfolgen – so macht Lernen Spaß."
-        },
-        {
-          "iconId": "award",
-          "title": "Wissenschaftlich fundiert",
-          "description": "Unsere Inhalte basieren auf bewährten Lehrmethoden und werden kontinuierlich aktualisiert."
-        },
-        {
-          "iconId": "shield",
-          "title": "100% neutral & unabhängig",
-          "description": "Keine versteckten Verkaufsinteressen. Wir fokussieren uns auf reine Wissensvermittlung."
-        },
-        {
-          "iconId": "trendingUp",
-          "title": "Dein Tempo, deine Zeit",
-          "description": "Lerne wann und wo du willst. Die App passt sich deinem Alltag an."
+          "title": "Erstes Gehalt? Bea hat den Plan.",
+          "description": "Budget aufsetzen, VWL nutzen, erste Rücklage bilden — Bea führt dich Schritt für Schritt."
         },
         {
           "iconId": "zap",
-          "title": "Regelmäßige Updates",
-          "description": "Neue Inhalte, Features und Verbesserungen – ohne zusätzliche Kosten."
+          "title": "Steuererklärung in 20 Minuten",
+          "description": "Bea erklärt dir genau was du eintragen musst. Kein Steuerberater nötig, kein Fachchinesisch."
+        },
+        {
+          "iconId": "trendingUp",
+          "title": "Investieren ab 1€",
+          "description": "Bea zeigt dir wie du anfängst — ohne Risiko, ohne Vorwissen. Einfach den ersten Schritt machen."
+        },
+        {
+          "iconId": "bookOpen",
+          "title": "Versicherungen durchblicken",
+          "description": "Welche brauchst du wirklich? Bea sortiert für dich — neutral, ohne Verkaufsinteresse."
+        },
+        {
+          "iconId": "award",
+          "title": "100% unabhängig",
+          "description": "Keine Bank, kein Versicherer, kein Produktverkauf. Was Bea empfiehlt, empfiehlt sie weil es zu dir passt."
         }
       ]
     },
     "pricing": {
-      "title": { "pre": "Wähle dein", "highlight": "Abo" },
-      "subtitle": "Flexible Preise für jeden Bedarf – von monatlich bis lebenslang.",
+      "title": {
+        "pre": "Wähle deinen",
+        "highlight": "Plan"
+      },
+      "subtitle": "Kostenlos starten. Upgraden wenn Bea dich überzeugt.",
+      "conversionHint": {
+        "lead": "Kostenlos starten!",
+        "body": "Unser Free-Plan zeigt was Bea kann. Sobald du merkst, dass Bea dir wirklich weiterhilft, ist ein Upgrade der jederzeit möglich."
+      },
       "badges": {
-        "popular": "Beliebt",
-        "cheapest": "Am Billigsten",
+        "popular": "Empfohlen",
         "monthlyCancelable": "Monatlich kündbar"
       },
-      "cta": { "start": "Jetzt starten" },
+      "cta": {
+        "start": "Kostenlos starten"
+      },
       "plans": [
         {
-          "title": "Standard-Abo",
-          "price": "4,99 €",
-          "period": "/ monat",
+          "id": "starter",
+          "title": "Starter",
+          "price": "3,99 €",
+          "period": "/ Monat",
           "features": [
-            "Vollständiger Zugang zu allen Lektionen",
-            "Spielerisches Lernsystem",
-            "Karteikartensystem",
-            "Fortschritts-Tracking",
-            "Monatlich kündbar"
+            "Alle Basis-Module",
+            "Unbegrenzte Herzen & Lektionen",
+            "BeAFox Collabs",
+            "Keine Werbung",
+            "BeAFox Academy — alle Inhalte"
+          ],
+          "excluded": [
+            "BeAFox Originals & Videos",
+            "Bea AI — persönlicher Begleiter",
+            "1:1 Coaching & Events"
           ],
           "monthly": true
         },
         {
-          "title": "Jahresabo",
-          "price": "3,99 €",
-          "period": "/ monat",
-          "yearlyNote": "pro Jahr",
+          "id": "pro",
+          "title": "Pro",
+          "price": "7,99 €",
+          "period": "/ Monat",
           "features": [
-            "Vollständiger Zugang zu allen Lektionen",
-            "Spielerisches Lernsystem",
-            "Karteikartensystem",
-            "Fortschritts-Tracking",
-            "2 Monate gespart",
-            "Jährlich kündbar"
+            "Alles aus Starter",
+            "BeAFox Originals & Videos",
+            "Karteikarten-System",
+            "Webinare & Live-Sessions",
+            "Bea AI — persönlicher Begleiter"
+          ],
+          "excluded": [
+            "1:1 Coaching (20 Min. / Monat)",
+            "Events & Vor-Ort-Zugang"
           ],
           "popular": true
         },
         {
-          "title": "Lifetime",
-          "price": "49,99 €",
-          "period": "einmalig",
+          "id": "unlimited",
+          "title": "Unlimited",
+          "price": "19,99 €",
+          "period": "/ Monat",
           "features": [
-            "Vollständiger Zugang zu allen Lektionen",
-            "Spielerisches Lernsystem",
-            "Karteikartensystem",
-            "Fortschritts-Tracking",
-            "Lebenslanger Zugang",
-            "Alle zukünftigen Updates"
-          ],
-          "cheapest": true
-        }
-      ]
-    },
-    "cta": {
-      "title": "Bereit, deine Finanzkompetenz zu steigern?",
-      "subtitle": "Lade BeAFox jetzt herunter und starte deine Reise zu mehr Finanzwissen.",
-      "button": "App herunterladen",
-      "mockups": {
-        "profileAlt": "BeAFox Profil Mockup",
-        "pathAlt": "BeAFox Lernpfad Mockup"
-      }
-    }
-  },
-  "pricing": {
-    "meta": {
-      "title": "Preise | BeAFox",
-      "description": "Transparente Preise für BeAFox – passende Pakete für Schulen, Unternehmen oder Privatpersonen. Flexible Lizenzen und individuelle Lösungen."
-    },
-    "hero": {
-      "tag": "Unser Ziel",
-      "title": "Finanzbildung für",
-      "highlight": "alle",
-      "targetGroups": {
-        "school": {
-          "title": "Für Schüler",
-          "description": "Spielerische und simple Finanzbildung in der Schule."
-        },
-        "apprentices": {
-          "title": "Für Azubis",
-          "description": "Finde heraus, was mit deinem Gehalt heute möglich ist."
-        },
-        "students": {
-          "title": "Für Studenten",
-          "description": "Praxis- und Alltagstaugliche Tipps für das Studentenleben."
-        },
-        "you": {
-          "title": "Für Dich",
-          "description": "Finanzbildung, die zu dir passt, unabhängig vom Alter."
-        }
-      }
-    },
-    "prices": { "tag": "Preise" },
-    "business": {
-      "heading": {
-        "pre": "Jetzt Ihre",
-        "highlight": "Mitarbeiter",
-        "post": "fit machen"
-      },
-      "fromLabel": "Ab",
-      "price": "3,99 €",
-      "perMonth": "/ Monat",
-      "perEmployee": "pro Mitarbeiter",
-      "bookCta": "Termin vereinbaren",
-      "paragraph": "Investieren Sie in den wichtigsten Future Skill für Ihre Mitarbeitenden und das bei Kosten, die nicht einmal 1 % eines Mitarbeitenden ausmachen.",
-      "individualTitle": "Individuelle Pakete immer möglich",
-      "individualText": "Jederzeit können wir ein maßgeschneidertes Angebot für Ihr Unternehmen erstellen. Kontaktieren Sie uns einfach!",
-      "moreInfoCta": "Mehr Informationen"
-    },
-    "consumer": {
-      "heading": "Für Endkunden",
-      "subtitle": "Wähle das Modell, das zu deinem Alltag passt.",
-      "plans": [
-        {
-          "title": "Standard-Abo",
-          "subtitle": "Monatlich kündbar.",
-          "price": "4,99 €",
-          "period": "/ monat",
-          "features": [
-            "Vollständiger Zugang zu allen Lektionen",
-            "Spielerisches Lernsystem",
-            "Karteikartensystem",
-            "Fortschritts-Tracking",
-            "Monatlich kündbar"
+            "Alles aus Pro",
+            "1:1 Coaching (20 Min. / Monat)",
+            "Events & Vor-Ort-Zugang",
+            "Frühzugang zu neuen Features",
+            "Lebenslanger Preis-Lock"
           ]
-        },
-        {
-          "title": "Jahresabo",
-          "subtitle": "Am Beliebtesten",
-          "price": "3,99 €",
-          "period": "/ monat",
-          "yearlyNote": "pro Jahr",
-          "features": [
-            "Vollständiger Zugang zu allen Lektionen",
-            "Spielerisches Lernsystem",
-            "Karteikartensystem",
-            "Fortschritts-Tracking",
-            "2 Monate gespart",
-            "Jährlich kündbar"
-          ],
-          "popular": true
-        },
-        {
-          "title": "Lifetime",
-          "subtitle": "Am Billigsten",
-          "price": "49,99 €",
-          "period": "einmalig",
-          "features": [
-            "Vollständiger Zugang zu allen Lektionen",
-            "Spielerisches Lernsystem",
-            "Karteikartensystem",
-            "Fortschritts-Tracking",
-            "Lebenslanger Zugang",
-            "Alle zukünftigen Updates"
-          ],
-          "cheapest": true
-        }
-      ],
-      "downloadCta": "Jetzt downloaden"
-    },
-    "school": {
-      "heading": "Für Schulen",
-      "subtitle": "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution,",
-      "price": "€1",
-      "period": "pro Schüler",
-      "period2": "pro Jahr",
-      "partnerCta": "Pilotprojekt anfordern",
-      "bookCta": "Termin buchen",
-      "features": [
-        "Lernen ohne Grenzen",
-        "Vollständige Lernmodule",
-        "Lehrer-Dashboards",
-        "Karteikartensysteme",
-        "Analoge Unterlagen"
-      ]
-    },
-    "services": {
-      "heading": "Weitere Dienstleistungen",
-      "paragraph": "Über die App hinaus bieten wir zusätzliche Services für eine ganzheitliche Finanzbildung – maßgeschneidert für Ihre Bedürfnisse.",
-      "items": [
-        {
-          "title": "Finanzbildungs-Workshops",
-          "description": "Interaktive Workshops vor Ort oder online. Theorie und Praxis verbinden für nachhaltiges Lernen.",
-          "features": [
-            "Erfahrene Referenten",
-            "Kleine Gruppen",
-            "Materialien zum Mitnehmen",
-            "Follow-up Support"
-          ],
-          "cta": "Workshop anfragen"
-        },
-        {
-          "title": "PR Events & Veranstaltungen",
-          "description": "Professionelle Events zur Finanzbildung für Ihre Zielgruppe. Von Messen bis zu internen Veranstaltungen.",
-          "features": [
-            "Maßgeschneiderte Konzepte",
-            "Professionelle Durchführung",
-            "Branding möglich",
-            "Nachhaltige Wirkung"
-          ],
-          "cta": "Event planen"
-        },
-        {
-          "title": "Individuelle analoge Unterlagen",
-          "description": "Maßgeschneiderte Lernmaterialien, Arbeitsblätter und Handouts für Ihre spezifischen Anforderungen.",
-          "features": [
-            "Individuelles Design",
-            "Branding Integration",
-            "Verschiedene Formate",
-            "Professionelle Qualität"
-          ],
-          "cta": "Unterlagen anfragen"
-        },
-        {
-          "title": "Beratung & Consulting",
-          "description": "Strategische Beratung zur Implementierung von Finanzbildung in Ihrer Organisation oder Institution.",
-          "features": [
-            "Strategieentwicklung",
-            "Best Practices",
-            "Implementierungsplan",
-            "Langfristige Begleitung"
-          ],
-          "cta": "Beratung buchen"
-        },
-        {
-          "title": "Analytics & Reporting",
-          "description": "Detaillierte Einblicke in den Lernfortschritt Ihrer Teilnehmer. Umfassende Reports und Analysen für datengetriebene Entscheidungen.",
-          "features": [
-            "Fortschritts-Tracking",
-            "Detaillierte Reports",
-            "Export-Funktionen",
-            "Individuelle Dashboards"
-          ],
-          "cta": "Analytics anfragen"
-        },
-        {
-          "title": "Schulungen & Trainings",
-          "description": "Schulungen für Lehrkräfte, Trainer oder Multiplikatoren zur effektiven Nutzung von BeAFox.",
-          "features": [
-            "Train-the-Trainer",
-            "Didaktische Schulungen",
-            "Technische Einweisung",
-            "Zertifikate"
-          ],
-          "cta": "Schulung buchen"
-        }
-      ],
-      "bottomTitle": "Individuelle Lösungen für jeden Bedarf",
-      "bottomParagraph": "Alle unsere Dienstleistungen können individuell kombiniert und angepasst werden. Sprechen Sie uns an, wir finden die perfekte Lösung für Ihre Anforderungen.",
-      "bottomCta": "Kostenlose Beratung anfragen"
-    },
-    "valueProp": {
-      "titlePre": "Warum ",
-      "titleHighlight": "BeAFox",
-      "titlePost": "?",
-      "subtitle": "Investiere in die Zukunft deiner Schüler, Azubis oder Mitarbeiter – mit einem fairen Preis-Leistungs-Verhältnis.",
-      "items": [
-        {
-          "title": "Das erste Finanzbildungsökosystem",
-          "description": "BeAFox ist mehr als eine App – es ist ein ganzheitliches Ökosystem aus digitalen Lerninhalten, Workshops, analogen Materialien und Support. Alles perfekt aufeinander abgestimmt für maximalen Lernerfolg."
-        },
-        {
-          "title": "Wissenschaftlich fundiert durch Forschung",
-          "description": "Basierend auf einem umfangreichen Forschungsprojekt mit über 500 Teilnehmern. Unsere Methoden sind evidenzbasiert und erprobt – keine Experimente, sondern bewährte Didaktik."
-        },
-        {
-          "title": "100% zielgruppenorientiert",
-          "description": "Wir wissen genau, wie man Finanzbildung lehren muss. Jede Zielgruppe – Schüler, Azubis, Studenten, Mitarbeiter – erhält maßgeschneiderte Inhalte, die wirklich ankommen und nachhaltig wirken."
         }
       ]
-    },
-    "faq": {
-      "titlePre": "Häufige Fragen zu den ",
-      "titleHighlight": "Preisen",
-      "items": [
-        {
-          "q": "Gibt es Rabatte für mehrere Klassen oder Standorte?",
-          "a": "Ja, wir bieten gestaffelte Preise für größere Institutionen. Kontaktieren Sie uns für ein individuelles Angebot, das perfekt auf Ihre Bedürfnisse zugeschnitten ist."
-        },
-        {
-          "q": "Kann ich die App vor dem Kauf testen?",
-          "a": "Ja, wir bieten gerne eine kostenlose Testphase an. Kontaktieren Sie uns für weitere Informationen und starten Sie Ihr Pilotprojekt."
-        },
-        {
-          "q": "Was ist im Preis enthalten?",
-          "a": "Der Preis beinhaltet den vollständigen Zugang zur App, alle Lernmodule, Monitoring-Dashboards (für Schulen/Unternehmen), Support und regelmäßige Updates."
-        },
-        {
-          "q": "Kann ich jederzeit kündigen?",
-          "a": "Bei Privatpersonen: Das monatliche Abo kann jederzeit gekündigt werden. Jahresabos laufen über die vereinbarte Laufzeit. Für Schulen und Unternehmen gelten individuelle Vereinbarungen."
-        },
-        {
-          "q": "Gibt es versteckte Kosten?",
-          "a": "Nein, alle Preise sind transparent. Bei Unternehmen fällt einmalig eine Einrichtungsgebühr an, die im Preis klar ausgewiesen ist."
-        }
-      ],
-      "viewAllCta": "Alle FAQ's ansehen"
-    },
-    "cta": {
-      "title": "Noch Fragen? Wir helfen gerne!",
-      "subtitle": "Kontaktiere uns für ein unverbindliches Beratungsgespräch und erhalte ein individuelles Angebot, das zu dir passt.",
-      "consultationCta": "Kostenlose Beratung",
-      "faqCta": "FAQ's durchsuchen"
     }
   },
   "about": {
     "meta": {
-      "title": "Über BeAFox | BeAFox",
+      "title": "Über uns",
       "description": "Erfahre mehr über BeAFox – unsere Mission, Werte und wie wir Finanzbildung für junge Menschen revolutionieren. Lerne unser Team und unsere Vision kennen."
     },
     "hero": {
-      "badge": "Über uns",
-      "titlePre": "Das wollen ",
-      "titleHighlight": "Wir",
+      "badge": "Die Geschichte hinter BeAFox",
+      "titlePre": "Wir machen dich ",
+      "titleHighlight": "finanziell handlungsfähig.",
       "titlePost": "",
-      "subtitle": "Mit Know-how, Kreativität und Leidenschaft arbeiten wir täglich daran finanzielle Bildung für alle zugänglich zu machen."
+      "subtitle": "BeAFox ist der KI-Begleiter, der Menschen durch echte Finanzsituationen führt."
     },
     "stats": {
       "activeUsers": "Aktive Nutzer",
@@ -1052,12 +999,15 @@
       "awards": "Auszeichnungen"
     },
     "story": {
-      "tag": "Unsere Geschichte",
-      "title": { "pre": "Von der Idee zur", "highlight": "Realität" },
-      "problemTitle": "Das Problem, das uns antreibt",
-      "problemText": "Unsere Gründer sind selbst erst 21 Jahre alt und wissen aus eigener Erfahrung genau, wie es sich anfühlt, bei Finanzen komplett planlos zu sein. Während ihrer Ausbildung gerieten sie selbst in Schulden, kämpften sich jedoch eigenständig wieder heraus. Diese persönliche Erfahrung motivierte sie, eine Lösung zu schaffen, die anderen jungen Menschen helfen sollte, diese Herausforderungen zu vermeiden.",
-      "solutionTitle": "Unsere Lösung",
-      "solutionText": "Mit BeAFox haben wir endlich eine Möglichkeit geschaffen, das oft als langweilig empfundene Thema Finanzen nachhaltig und verständlich zu vermitteln. Wir möchten, dass die junge Generation selbstständig und motiviert Finanzwissen erwirbt. Ganz ohne Druck und ohne das Gefühl, dazu gezwungen zu werden. Durch spielerische Elemente, klare Strukturen und wissenschaftlich fundierte Lehrmethoden machen wir Finanzbildung zu einem Erlebnis, das Spaß macht."
+      "tag": "Die beste Freundin: Bea",
+      "title": {
+        "pre": "Warum wir ",
+        "highlight": "BeAFox gebaut haben"
+      },
+      "problemTitle": "Das Problem: Niemand sagt dir, was du tun sollst",
+      "problemText": "Wir waren selbst Azubis – jung, aufgeregt, endlich eigenes Geld. Doch ohne Plan haben wir jeden Cent verbrannt. Dispo überzogen, Ratenzahlung hier, Abo-Falle da. Was als Freiheit begann, wurde schnell zu echtem Stress. Das Problem war nie fehlendes Wissen, sondern dass uns niemand gesagt hat, was wir konkret tun sollen.",
+      "solutionTitle": "Die Lösung: Ein Begleiter für echte Situationen",
+      "solutionText": "Bea hilft dir, deine Finanzen zu verstehen und selbstständig zu handeln!"
     },
     "mockups": {
       "profilAlt": "BeAFox Profil Mockup",
@@ -1066,16 +1016,16 @@
     },
     "values": [
       {
-        "title": "Unsere Mission",
-        "description": "Wir machen Finanzbildung einfach, spielerisch und alltagstauglich. Ohne Werbung, ohne Verkaufsdruck."
+        "title": "Mission",
+        "description": "Wir geben jedem jungen Menschen eine Bea. Eine Begleitung die deine Situation kennt und dir im richtigen Moment sagt was du als nächstes tust."
       },
       {
-        "title": "Unsere Vision",
-        "description": "BeAFox wird die führende Plattform für Finanzbildung weltweit."
+        "title": "Vision",
+        "description": "Eine Welt in der niemand mehr allein vor einer Entscheidung steht."
       },
       {
-        "title": "Unser Motto",
-        "description": "Nimm deine Finanzen selbst in die Pfote!"
+        "title": "Prinzip",
+        "description": "Wir glauben nicht an Finanzbildung als Selbstzweck. Wir glauben an finanzielle Handlungsfähigkeit."
       }
     ],
     "team": {
@@ -1083,12 +1033,20 @@
       "titlePre": "Lerne ",
       "titleHighlight": "BeAFox",
       "titlePost": " kennen",
-      "subtitle": "Wir sind BeAFox – ein Team mit Vision, Herz und dem festen Ziel, finanzielle Bildung neu zu denken.",
+      "subtitle": "Wir sind BeAFox! Ein Team mit Vision, Herz und dem festen Ziel, die Finanzwelt neu zu denken.",
       "members": [
-        { "name": "Alexandru Tapelea", "role": "Gründer – CEO & CTO" },
-        { "name": "Selina Fuchs", "role": "Mitgründerin – CMO" },
-        { "name": "Prof. Dr. Marcel Dulgeridis", "role": "Mitgründer – CFO" },
-        { "name": "Nico Moos", "role": "CSO" }
+        {
+          "name": "Alexandru Tapelea",
+          "role": "CEO & CTO"
+        },
+        {
+          "name": "Selina Fuchs",
+          "role": "CMO & COO"
+        },
+        {
+          "name": "Prof. Dr. Marcel Dulgeridis",
+          "role": "CFO"
+        }
       ]
     },
     "timeline": {
@@ -1118,7 +1076,7 @@
         },
         {
           "year": "2025",
-          "title": "Wachstum & Expansion",
+          "title": "Wachstum",
           "description": "Über 3.000 aktive Nutzer, Partnerschaften mit Schulen und Unternehmen. BeAFox wird zur führenden Finanzbildungs-App und wächst kontinuierlich. Unsere Mission erreicht immer mehr Menschen."
         }
       ]
@@ -1134,250 +1092,183 @@
       "blogCta": "Zu unserem Blog"
     },
     "quote": {
-      "text": "Wir glauben daran, dass jeder Mensch das Recht auf finanzielle Bildung hat. BeAFox ist mehr als eine App – es ist eine Bewegung, die junge Menschen befähigt, ihre finanzielle Zukunft selbst in die Hand zu nehmen.",
+      "text": "Wir wollen nicht, dass junge Menschen Finanzen lernen. Wir wollen, dass sie ihre Finanzen in die Pfote nehmen und Bea zeigt ihnen wie.",
       "teamName": "Das BeAFox Team",
       "teamSubtitle": "Gemeinsam für finanzielle Bildung"
     },
     "cta": {
-      "titlePre": "Werde Teil unserer ",
-      "titleHighlight": "Mission",
-      "description": "Hilf uns dabei, Finanzkompetenz für alle erlebbar zu machen. Ob als Nutzer, Partner oder Unterstützer – jeder Beitrag zählt.",
-      "partnerCta": "Pilotprojekt anfordern",
+      "titlePre": "Bereit, ",
+      "titleHighlight": "loszulegen?",
+      "description": "Ob als Schule, Unternehmen oder Privatperson — BeAFox macht Finanzen handhabbar. Nicht irgendwann, sondern jetzt.",
+      "partnerCta": "Demo anfordern",
       "downloadCta": "App herunterladen"
     },
     "drive": {
       "tag": "Unser Antrieb",
-      "title": "Wir wollen:",
-      "subtitle": "Bildung, die verändert.",
-      "description": "Wir glauben an eine Welt, in der jeder Mensch Finanzbildung versteht und nutzen kann.",
-      "ctaPartner": "Pilotprojekt anfordern"
+      "title": "Nicht Wissen.",
+      "subtitle": "Sondern Handeln.",
+      "description": "Finanz-Content gibt es genug. Was fehlt, ist jemand der dir sagt: 'Du bist Azubi, hast gerade 1.200€ bekommen — tu jetzt genau das.' BeAFox mit Bea als KI-Kern macht genau das — personalisiert, neutral und in deinem Tempo.",
+      "ctaPartner": "Jetzt Partner werden"
     }
   },
   "business": {
-    "meta": {
-      "title": "BeAFox for Business – Finanzbildung für Unternehmen & Azubis",
-      "description": "Finanzbildung für Unternehmen: BeAFox stärkt Azubis mit alltagsnaher Finanzbildung, reduziert finanziellen Stress und fördert langfristige Entwicklung in der Ausbildung.",
-      "ogTitle": "BeAFox for Business – Finanzbildung für Unternehmen & Azubis",
-      "ogDescription": "Maßgeschneiderte Finanzbildungs-Lösungen für Unternehmen, die Azubis stärken, binden und nachhaltig fördern."
-    },
-    "breadcrumbs": {
-      "parentLabel": "Angebote",
-      "current": "BeAFox for Business"
-    },
     "hero": {
-      "badge": "BeAFox for Business",
-      "title": "Bildungspakete gegen",
-      "titleHighlight": "Fachkräftemangel",
-      "description": "Azubis, die Geld verstehen, gehen entspannter durch den Alltag, bleiben motivierter in der Ausbildung und wachsen zu starken Fachkräften heran.",
-      "ctaPartner": "Pilotprojekt anfordern",
+      "badge": "BeAFox für Unternehmen",
+      "title": "Wir machen Azubis",
+      "titleHighlight": "finanziell Handlungsfähig",
+      "description": "Ich begleite Azubis durch jede Finanzsituation!",
+      "ctaPartner": "Demo anfordern",
       "ctaBook": "Termin buchen"
     },
-    "mockups": {
-      "trainingAlt": "BeAFox Training Mockup",
-      "pathAlt": "BeAFox Lernpfad Mockup",
-      "rankingAlt": "BeAFox Rangliste Mockup"
+    "trustSignal": {
+      "preTitle": "10+ Unternehmen",
+      "highlight": "vertrauen bereits auf Bea"
     },
-    "stats": [
-      { "value": "500+", "label": "Azubis nutzen BeAFox" },
-      { "value": "3+", "label": "Unternehmen vertrauen uns" },
-      { "value": "95%", "label": "Wissensretention" },
-      { "value": "4.9/5", "label": "Bewertung" }
-    ],
+    "images": {
+      "problemMascotAlt": "Finanzielle Herausforderungen junger Azubis",
+      "solutionMascotAlt": "BeAFox — Die Lösung für Azubi-Finanzbildung"
+    },
     "problemSolution": {
-      "title": "Investieren Sie in den wichtigsten",
-      "titleHighlight": "Future Skill",
-      "subtitle": "Finanzbildung ist einer der wichtigsten Future Skills. Wir helfen Ihnen, Azubis nicht nur fachlich, sondern auch fürs echte Leben zu stärken.",
-      "problemTitle": "Warum Finanzbildung?",
-      "problemText": "Viele Azubis starten mit dem ersten Gehalt, aber ohne Orientierung. Genau dann entstehen Unsicherheit, Fehlentscheidungen und unnötiger Druck.",
+      "problemHeaderPre": "Dispo, Mahnungen &",
+      "problemHeaderHighlight": "Stress",
       "problemBullets": [
-        "Finanzstress wirkt sich auf Fokus und Leistung aus",
-        "Fehlwissen führt zu teuren Alltagsentscheidungen",
-        "Azubis wünschen sich Orientierung statt Theorie",
-        "Unternehmen brauchen starke, selbstständige Nachwuchskräfte"
+        "Azubis haben kein Kopf für die Ausbildung",
+        "Finanzdruck macht krank und erhöht Fehlzeiten",
+        "Ihr Ruf als Arbeitgeber leidet mit jedem Abbruch",
+        "Azubis ohne Plan wechseln den Betrieb oder brechen ab"
       ],
-      "solutionTitle": "Mit BeAFox for Business",
-      "solutionText": "Ganzheitliche Finanzbildung für Azubis: Mit unserer spielerischen App lernen sie kontinuierlich, praxisnah und mit echter Relevanz für ihren Alltag.",
-      "solutionText2": "So investieren Sie in einen der wichtigsten Future Skills, stärken die Bindung Ihrer Azubis und positionieren sich als moderner Ausbildungsbetrieb.",
+      "problemShockStatValue": "Über 43%",
+      "problemShockStatHeadline": "Aller Azubi-Abbrüche haben finanzielle Gründe",
+      "problemShockStatBody": "Jeder Abbruch kostet Ihr Unternehmen mindestens 6.000€ — durch Recruiting, Einarbeitung und verlorene Produktivität. Geld, das Sie nie zurückbekommen.",
+      "solutionHeaderPre": "Von Dispo zu Durchblick ",
+      "solutionHeaderHighlight": "in nur 30 Tagen",
+      "solutionText": "Bea begleitet Ihre Azubis ab dem ersten Gehalt. Kein Frontalunterricht und keine PDFs, sondern eine Begleitung, die Finanzsituationen erkennt und sagt was zu tun ist.",
+      "solutionImpactStatValue": "100%",
+      "solutionImpactStatHeadline": "Zufriedenheit bei Azubis und Ausbildern",
       "solutionBullets": [
-        "Finanzwissen, das Azubis sofort anwenden können",
-        "Spielerisches Lernen mit langfristigem Lerneffekt",
-        "Optional: Regelmäßige Workshops",
-        "Stärkt Azubi-Bindung & Arbeitgeberattraktivität"
+        "Azubis werden durch Bea handlungsfähig",
+        "Inhalte, die sofort im Alltag anwendbar sind",
+        "Monitoring-Dashboard zeigt Ihnen jeden Fortschritt",
+        "Weniger Stress, weniger Fehlzeiten, stärkere Bindung"
       ],
-      "ctaText": "Bereit, Ihre Azubis wirklich zu stärken?",
-      "ctaButton": "Pilotprojekt anfordern"
+      "ctaButton": "Demo anfordern"
     },
     "benefits": {
-      "title": "Warum",
-      "titleHighlight": "BeAFox for Business",
-      "subtitle": "Alle Vorteile für Ihr Unternehmen und Ihre Azubis auf einen Blick.",
+      "title": "Was Sie",
+      "titleHighlight": "konkret bekommen?",
+      "subtitleLine1": "Alles aus einer Hand:",
+      "subtitleLine2": "Keine Eigenentwicklung und kein Aufwand für Ihr Unternehmen.",
       "items": [
         {
-          "title": "Future Skill entwickeln",
-          "description": "Azubis bauen früh finanzielle Sicherheit auf und entwickeln Kompetenzen, die sie ihr ganzes Berufsleben begleiten."
+          "title": "Azubis handlungsfähig in 30 Tagen",
+          "description": "Vom ersten Gehalt bis zur Steuererklärung. Bea führt Ihre Azubis Schritt für Schritt durch jede Finanzsituation."
         },
         {
-          "title": "Monitoring Dashboards",
-          "description": "Behalten Sie den Lernfortschritt Ihrer Azubis in Echtzeit im Blick und erkennen Sie sofort, wo Unterstützung sinnvoll ist."
+          "title": "Live-Dashboard für Ausbilder",
+          "description": "Sie sehen in Echtzeit wer dran bleibt, wo es hakt und wer Unterstützung braucht."
         },
         {
           "title": "Offizielle Zertifikate",
-          "description": "Ihre Azubis erhalten offizielle Zertifikate für ihre Lernfortschritte – ein starkes Signal für Entwicklung und Eigenverantwortung."
+          "description": "Ihre Azubis erhalten Nachweise für abgeschlossene Module. Perfekt für Ausbildungsberichte und Personalgespräche."
         },
         {
-          "title": "Motiviertere Azubis",
-          "description": "Durch das spielerische System bleiben Azubis motiviert und dran. Finanzbildung wird vom Pflichtprogramm zum echten Mehrwert."
+          "title": "Workshops alle 6-12 Monate",
+          "description": "Praxis-Workshops zu allen aktuellen Themen. Wir kommen zu Ihnen, Sie lehnen sich zurück."
         },
         {
-          "title": "Nachhaltiges Lernen",
-          "description": "Kontinuierliches Lernen in der App sorgt für langfristige Wissensverankerung – ergänzt durch Workshops für maximale Wirkung."
+          "title": "Messbare Ergebnisse",
+          "description": "Weniger Dispo-Fälle, weniger Fehlzeiten, höhere Zufriedenheit. Wir liefern Ihnen die Zahlen, die Sie der Geschäftsführung vorlegen können."
         },
         {
-          "title": "DSGVO-konform & sicher",
-          "description": "Alle Daten werden sicher und DSGVO-konform gespeichert. Ihre Unternehmensdaten sind bei uns in besten Händen."
+          "title": "100% DSGVO-konform",
+          "description": "Gehostet in Deutschland, keine Daten an Dritte, keine Werbung in der App. Ihr Betriebsrat sagt ja."
         }
       ]
     },
-    "useCases": {
-      "title": "So profitieren",
-      "titleHighlight": "Unternehmen",
-      "titlePost": " von BeAFox",
-      "subtitle": "Warum Unternehmen BeAFox für ihre Azubis einsetzen.",
-      "items": [
-        {
-          "title": "Fachkräftemangel bekämpfen",
-          "description": "Stärken Sie Azubis durch praxisnahe Finanzbildung und machen Sie Ihr Unternehmen attraktiver für neue Talente."
-        },
-        {
-          "title": "Azubi-Bindung erhöhen",
-          "description": "Zeigen Sie, dass Sie in die Zukunft Ihrer Azubis investieren. Finanzbildung ist ein Benefit, der Vertrauen schafft und bindet."
-        },
-        {
-          "title": "Selbstständigkeit fördern",
-          "description": "Finanzielle Kompetenz macht Azubis selbstständiger und verantwortungsvoller – in Ausbildung, Alltag und Zukunftsplanung."
-        },
-        {
-          "title": "Employer Branding",
-          "description": "Positionieren Sie sich als moderner Ausbildungsbetrieb, der junge Menschen ganzheitlich fördert."
-        }
-      ],
-      "cta": "Pilotprojekt anfordern"
-    },
     "features": {
-      "title": "Was Sie erhalten",
-      "subtitle": "Ein umfassendes Paket für nachhaltige Finanzbildung.",
+      "title": "So sieht das",
+      "titleHighlight": "in der Praxis aus",
+      "mockupAltFallback": "BeAFox",
       "items": [
         {
           "id": "app",
-          "title": "Spielerische Lern-App",
-          "description": "Ihre Azubis lernen mit einer modernen, spielerischen App, die motiviert und im Alltag wirklich ankommt. Punkte, Missionen und Ranglisten sorgen für nachhaltiges Engagement.",
+          "title": "Die App, die Azubis freiwillig öffnen",
+          "description": "Kein Pflichtprogramm, sondern eine App die Spaß macht. Bea erkennt die Lebenssituation Ihrer Azubis und zeigt ihnen genau den nächsten Schritt. Punkte, Missionen und Ranglisten halten sie dran.",
           "mockup": "/assets/Mockups/Mockup-Lernpfad.png"
         },
         {
           "id": "workshops",
-          "title": "Regelmäßige Workshops",
-          "description": "Ergänzen Sie die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate veranstalten wir interaktive Workshops zu wechselnden Finanzthemen für maximale Wirkung.",
-          "mockup": "/assets/Mockups/Mockup-Quiz.png"
+          "title": "Workshops, die im Kopf bleiben",
+          "description": "Alle 6-12 Monate kommen wir zu Ihnen. Live, interaktiv und immer die aktuellsten Themen. Vom ersten Budget bis zum Investieren. Kein Vortrag, sondern echte Übungen mit sofortigem Ergebnis.",
+          "mockup": "/Maskottchen/Maskottchen-Tafel.png"
         },
         {
           "id": "dashboard",
-          "title": "Monitoring-Dashboard",
-          "description": "Behalten Sie den Überblick über den Lernfortschritt Ihrer Azubis. Sehen Sie in Echtzeit, wer aktiv ist und wo Unterstützung benötigt wird.",
+          "title": "Ihr Cockpit für den Überblick",
+          "description": "Ein Dashboard das zeigt wer es am besten umsetzt, wer pausiert und wo es hakt. Fortschritte pro Azubi, pro Jahrgang und als PDF-Export. Sie wissen immer Bescheid, ohne nachzufragen.",
           "mockup": "/Mockup-Macbook/Live-Fortschritt.png"
         },
         {
           "id": "zertifikate",
-          "title": "Offizielle Zertifikate",
-          "description": "Ihre Azubis erhalten nach erfolgreichem Abschluss offizielle Zertifikate, die ihre Entwicklung sichtbar machen.",
-          "mockup": "/assets/Mockups/Mockup-Profil.png"
+          "title": "Zertifikate, die etwas beweisen",
+          "description": "Jeder abgeschlossene Modul wird offiziell zertifiziert. Perfekt für Ausbildungsberichte, Personalgespräche und als Beweis dass Ihr Unternehmen in Azubis investiert.",
+          "mockup": "/Maskottchen/Maskottchen-Zertifikat.png"
         }
       ]
     },
     "process": {
-      "title": "So funktioniert's",
-      "subtitle": "In fünf einfachen Schritten zu nachhaltiger Finanzbildung für Ihre Azubis.",
+      "title": "Startbereit in",
+      "titleHighlight": "nur 48 Stunden",
       "steps": [
         {
           "step": "1",
           "title": "Kostenlose Beratung",
-          "description": "Wir besprechen Ihre Anforderungen, die Anzahl Ihrer Azubis und erstellen ein individuelles Angebot für Ihr Unternehmen."
+          "description": "Wir lernen Ihre Situation kennen, beantworten alle Fragen und finden gemeinsam den passenden Ansatz.",
+          "image": "/Maskottchen/Maskottchen-Beratung.png"
         },
         {
           "step": "2",
-          "title": "Setup & Onboarding",
-          "description": "Wir richten die App für Ihre Azubis ein, führen ein Onboarding durch und stellen sicher, dass alle startklar sind."
+          "title": "Pilotprojekt starten",
+          "description": "Testen Sie BeAFox unverbindlich mit einer Gruppe Azubis. So sehen Sie die Ergebnisse bevor Sie sich entscheiden.",
+          "image": "/Maskottchen/Maskottchen-Start.png"
         },
         {
           "step": "3",
-          "title": "Start der Finanzbildung",
-          "description": "Ihre Azubis starten mit der App und entwickeln kontinuierlich ihre Finanzkompetenz. Zusätzlich kombinieren wir die App-Nutzung mit regelmäßigen Workshops."
+          "title": "Onboarding & Setup",
+          "description": "Wir richten Accounts, Dashboard und Inhalte ein. Ihr Team muss sich um nichts kümmern.",
+          "image": "/Maskottchen/Maskottchen-Setup.png"
         },
         {
           "step": "4",
-          "title": "Kontinuierliches Lernen",
-          "description": "Ihre Azubis lernen in der App, wiederholen Inhalte und entwickeln nachhaltig ihre Finanzkompetenz – eines der wichtigsten Future Skills."
-        },
-        {
-          "step": "5",
-          "title": "Regelmäßige Workshops",
-          "description": "Wir ergänzen die App-Nutzung mit regelmäßigen Workshops. Alle 6 Monate zu wechselnden Themen für maximale Wirkung."
+          "title": "Laufende Begleitung",
+          "description": "Ihre Azubis lernen mit Bea, Sie sehen den Fortschritt live. Alle 6-12 Monate kommen wir für einen Workshop.",
+          "image": "/Maskottchen/Maskottchen-Begleitung.png"
         }
       ]
     },
-    "ihk": {
-      "title": "BeAFox als",
-      "titleHighlight": "offizieller Partner",
-      "titlePost": " von IHK",
-      "subtitle": "Als offizieller Partner der IHK-Akademie setzen wir auf bewährte Standards und praxisnahe Expertise.",
-      "text": "In enger Zusammenarbeit mit der IHK haben wir einen innovativen Workshop speziell für Azubis entwickelt. Dieser Workshop kombiniert IHK-geprüfte Inhalte mit unserer spielerischen Lern-App BeAFox, um junge Talente fit für Alltag, Ausbildung und Berufsleben zu machen.",
-      "cta": "Pilotprojekt anfordern"
-    },
     "price": {
       "headingPre": "Jetzt Ihre",
-      "headingHighlight": "Azubis",
-      "headingPost": " fit machen",
-      "fromLabel": "Ab",
-      "price": "3,99 €",
-      "perMonth": "/ Monat",
-      "perEmployee": "pro Azubi",
-      "bookCta": "Termin vereinbaren",
-      "paragraph": "Investieren Sie in den wichtigsten Future Skill für Ihre Azubis – zu Kosten, die in keinem Verhältnis zum langfristigen Mehrwert stehen.",
-      "individualTitle": "Individuelle Angebote möglich",
-      "individualText": "Jederzeit können wir ein maßgeschneidertes Angebot für Ihr Unternehmen erstellen. Kontaktieren Sie uns einfach!",
-      "moreInfoCta": "Mehr Informationen"
-    },
-    "cta": {
-      "title": "Bereit, Ihre Azubis wirklich zu stärken?",
-      "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihr Unternehmen.",
-      "partnerCta": "Pilotprojekt anfordern",
-      "downloadCta": "App herunterladen"
-    },
-    "calculator": {
-      "employeesLabel": "Azubis",
-      "pricePerAccount": "Preis pro Konto",
-      "totalYear": "Gesamt (Jahr)",
-      "perMonthSuffix": "€/Monat",
-      "bestPrice": "Sie erhalten den besten Preis!",
-      "saveMore": "Sparen Sie noch mehr ab 100 Azubis!"
+      "headingHighlight": "Azubis fit machen",
+      "ctaCardTitle": "Individuelles Angebot für Ihr Unternehmen",
+      "ctaCardBodyLine1": "Jedes Unternehmen hat unterschiedliche Ziele und Anforderungen.",
+      "ctaCardBodyLine2": "Wir erstellen ein Angebot, das zu Ihrer Azubi-Anzahl und Ihrem Budget passt!",
+      "requestQuoteCta": "Angebot anfordern",
+      "bookCta": "Termin vereinbaren"
     }
   },
   "schools": {
     "meta": {
-      "title": "BeAFox for Schools – Finanzbildung für Schulen",
-      "description": "Finanzbildung für Schulen: Digitale Lernplattform für Finanzbildung im Schulunterricht. Ideal für Lehrer und Schüler ab der 7. Klasse.",
-      "ogTitle": "BeAFox for Schools – Finanzbildung für Schulen",
-      "ogDescription": "Spielerische Finanzbildungs-Lösungen für Schulen. Ideal für Lehrer und Schüler ab der 7. Klasse."
-    },
-    "breadcrumbs": {
-      "parentLabel": "Angebote",
-      "current": "BeAFox for Schools"
+      "title": "Schulen – Jeder Schüler verdient eine Bea",
+      "description": "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte — selbstständiges Lernen ohne Unterrichtsausfall. Jetzt Demo anfragen.",
+      "ogTitle": "Schulen – Jeder Schüler verdient eine Bea",
+      "ogDescription": "Bea begleitet Schüler durch jede Finanzsituation. Dashboard für Lehrkräfte, selbstständiges Lernen, null Aufwand."
     },
     "hero": {
-      "badge": "BeAFox for Schools",
-      "priceHighlight": "1€ pro Schüler",
-      "pricePost": "pro Jahr",
-      "description": "Wir schaffen echten gesellschaftlichen Mehrwert, indem wir Finanzbildung für alle Schüler:innen unabhängig von Hintergrund oder Voraussetzungen zugänglich machen.",
-      "ctaPartner": "Pilotprojekt anfordern",
+      "badge": "BeAFox für Schulen",
+      "priceHighlight": "Jeder Schüler",
+      "pricePost": "verdient eine Bea.",
+      "description": "Bea bringt Finanzbildung in Ihre Schule — ohne Lehrplanänderung, ohne Vorbereitung und ohne Unterrichtsausfall. Schüler lernen selbstständig, Sie behalten den Überblick.",
+      "ctaPartner": "Demo anfordern",
       "ctaBook": "Termin buchen"
     },
     "mockups": {
@@ -1387,10 +1278,22 @@
       "mascotAlt": "BeAFox Maskottchen"
     },
     "stats": [
-      { "value": "1,000+", "label": "Schüler nutzen BeAFox" },
-      { "value": "5+", "label": "Schulen vertrauen uns" },
-      { "value": "98%", "label": "Zufriedenheit" },
-      { "value": "24/7", "label": "Verfügbar" }
+      {
+        "value": "1,000+",
+        "label": "Schüler nutzen BeAFox"
+      },
+      {
+        "value": "5+",
+        "label": "Schulen vertrauen uns"
+      },
+      {
+        "value": "100%",
+        "label": "Zufriedenheit"
+      },
+      {
+        "value": "24/7",
+        "label": "Verfügbar"
+      }
     ],
     "problemSolution": {
       "title": "Wir schließen die Lücke",
@@ -1415,7 +1318,7 @@
     },
     "benefits": {
       "title": "Warum",
-      "titleHighlight": "BeAFox for Schools",
+      "titleHighlight": "BeAFox für Schulen",
       "subtitle": "Alle Vorteile für Ihre Schule, Lehrer und Schüler auf einen Blick.",
       "items": [
         {
@@ -1467,31 +1370,35 @@
           "description": "BeAFox eignet sich ideal als Basis für ein Wahlpflichtfach Finanzbildung. Strukturierte Inhalte, klare Lernpfade und motivierendes Lernen."
         }
       ],
-      "cta": "Pilotprojekt anfordern"
+      "cta": "Demo anfordern"
     },
-    "howItWorks": {
-      "title": "So funktioniert's",
-      "subtitle": "In vier einfachen Schritten zu BeAFox in Ihrer Schule.",
+    "schoolProcess": {
+      "title": "In vier Schritten",
+      "titleHighlight": "zu BeAFox",
       "steps": [
         {
           "step": "1",
           "title": "Kostenlose Beratung",
-          "description": "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule."
+          "description": "Wir besprechen Ihre Anforderungen und erstellen ein individuelles Angebot für Ihre Schule.",
+          "image": "/Maskottchen/Maskottchen-Beratung.png"
         },
         {
           "step": "2",
           "title": "Einfache Einrichtung",
-          "description": "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert."
+          "description": "Wir richten die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Das geht schnell und unkompliziert.",
+          "image": "/Maskottchen/Maskottchen-Setup.png"
         },
         {
           "step": "3",
           "title": "Schüler starten",
-          "description": "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit."
+          "description": "Die Schüler können jederzeit mit BeAFox lernen – im Unterricht, zu Hause oder in der Freizeit.",
+          "image": "/Maskottchen/Maskottchen-Start.png"
         },
         {
           "step": "4",
           "title": "Sie behalten Überblick",
-          "description": "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen."
+          "description": "Über das Monitoring-Dashboard sehen Sie in Echtzeit, welche Schüler aktiv sind, wo sie stehen und wie sie vorankommen.",
+          "image": "/Maskottchen/Maskottchen-Begleitung.png"
         }
       ]
     },
@@ -1503,7 +1410,7 @@
       "perPupil": "pro Schüler",
       "perYear": "pro Jahr",
       "tagline": "Transparent, fair und ohne versteckte Kosten.",
-      "partnerCta": "Pilotprojekt anfordern",
+      "partnerCta": "Demo anfordern",
       "includedTitle": "Im Preis enthalten:",
       "includedItems": [
         "Vollständiger Zugang für alle Schüler",
@@ -1520,6 +1427,14 @@
         "Einfache Einrichtung",
         "Persönlicher Ansprechpartner"
       ]
+    },
+    "individualOffer": {
+      "headingPre": "Finanzbildung für",
+      "headingHighlight": "Ihre Schule",
+      "ctaCardTitle": "Individuelles Angebot für Ihre Schule",
+      "ctaCardBodyLine1": "Jede Schule hat unterschiedliche Anforderungen. Wir erstellen ein Angebot, das zu Ihrer Schülerzahl und Ihrem Budget passt — faire Staffelpreise, transparent und ohne versteckte Kosten.",
+      "requestQuoteCta": "Angebot anfordern",
+      "bookCta": "Termin vereinbaren"
     },
     "dashboard": {
       "title": "Das",
@@ -1563,7 +1478,7 @@
           "mockup": "/Mockup-Macbook/Klasse-erstellen.png"
         }
       ],
-      "cta": "Pilotprojekt anfordern"
+      "cta": "Demo anfordern"
     },
     "whyFinance": {
       "badgeTitle": "Warum Finanzbildung?",
@@ -1606,7 +1521,7 @@
     },
     "faq": {
       "title": "Häufige Fragen",
-      "subtitle": "Alles, was Sie über BeAFox for Schools wissen müssen.",
+      "subtitle": "Alles, was Sie über BeAFox für Schulen wissen müssen.",
       "items": [
         {
           "id": 1,
@@ -1644,193 +1559,16 @@
     "cta": {
       "title": "Bereit, Finanzbildung in Ihre Schule zu bringen?",
       "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihre Schule.",
-      "cta": "Pilotprojekt anfordern"
-    }
-  },
-  "clubs": {
-    "meta": {
-      "title": "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
-      "description": "Finanzbildung für Vereine: BeAFox for Clubs bietet Finanzbildung für Sportvereine, Finanzbildung für Jugendvereine und Finanzbildung in Communities. Finanzwissen für mentale Stärke und bessere Leistung.",
-      "ogTitle": "BeAFox for Clubs – Finanzbildung für Vereine & Communities",
-      "ogDescription": "Ganzheitliche Förderung für Sportvereine. Finanzwissen für mentale Stärke und bessere Leistung auf dem Platz."
-    },
-    "breadcrumbs": {
-      "parentLabel": "Angebote",
-      "current": "BeAFox for Clubs"
-    },
-    "hero": {
-      "tag": "BeAFox for Clubs",
-      "headline": "Geben Sie Ihren Sportlern BeAFox.",
-      "subheadline": "Sie konzentrieren sich auf den Sport – nicht auf Finanzen.",
-      "description": "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler. Mit BeAFox geben Sie ihnen die Sicherheit, die sie brauchen, um sich voll auf ihre Sportart zu konzentrieren.",
-      "impact": "Ihre Sportler lernen verantwortungsvoll mit Geld umzugehen, während Sie den Überblick behalten. Finanzielle Sorgen gehören der Vergangenheit an – Ihre Talente können sich auf das Wesentliche fokussieren.",
-      "ctaPartner": "Pilotprojekt anfordern"
-    },
-    "journey": {
-      "title": "Die",
-      "titleHighlight": "Transformation",
-      "subtitle": "Von finanziellen Sorgen zu mentaler Stärke.",
-      "withoutTitle": "Ohne BeAFox",
-      "withTitle": "Mit BeAFox",
-      "problems": [
-        "Sportler denken an Finanzen statt an Training",
-        "Finanzielle Sorgen lenken vom Sport ab",
-        "Mentale Belastung beeinträchtigt die Leistung",
-        "Keine Unterstützung durch den Verein"
-      ],
-      "benefits": [
-        "Verein stellt BeAFox für alle Sportler bereit",
-        "Sportler konzentrieren sich auf den Sport",
-        "Finanzielle Bildung läuft automatisch",
-        "Verein behält Überblick über Fortschritte"
-      ]
-    },
-    "benefits": {
-      "title": "Warum Vereine",
-      "titleHighlight": "BeAFox",
-      "titlePost": " nutzen",
-      "subtitle": "Als Verein investieren Sie in die finanzielle Bildung Ihrer Sportler – mit messbaren Ergebnissen auf und neben dem Platz.",
-      "items": [
-        {
-          "title": "Fokus auf den Sport",
-          "description": "Ihre Sportler müssen sich keine Sorgen um Finanzen machen. Sie konzentrieren sich voll auf Training und Wettkämpfe – dank BeAFox, das Sie als Verein bereitstellen.",
-          "stat": "85%",
-          "statLabel": "Bessere Fokussierung"
-        },
-        {
-          "title": "Bessere Leistungen",
-          "description": "Ausgeglichene Sportler ohne finanzielle Belastung zeigen messbar bessere Leistungen. Ihre Investition in die finanzielle Bildung zahlt sich auf dem Platz aus.",
-          "stat": "92%",
-          "statLabel": "Zufriedenheit"
-        },
-        {
-          "title": "Einfache Verwaltung",
-          "description": "Als Verein stellen Sie BeAFox für alle Ihre Sportler bereit. Einfache Verwaltung, klare Kosten, vollständige Übersicht über alle Aktivitäten.",
-          "stat": "200+",
-          "statLabel": "Sportler"
-        },
-        {
-          "title": "Zukunftssicherheit",
-          "description": "Ihre Sportler lernen früh verantwortungsvoll mit Geld umzugehen – auch für die Zeit nach der Karriere. Eine Investition, die sich langfristig auszahlt.",
-          "stat": "15+",
-          "statLabel": "Vereine"
-        }
-      ]
-    },
-    "features": {
-      "title": "So funktioniert",
-      "titleHighlight": "BeAFox for Clubs",
-      "titlePost": "",
-      "subtitle": "Als Verein stellen Sie BeAFox bereit – Ihre Sportler lernen automatisch",
-      "items": [
-        {
-          "id": "stufen",
-          "title": "Automatische Finanzbildung",
-          "description": "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese automatisch Zugang zu allen Lerninhalten. Sie müssen sich keine Gedanken über Finanzen machen – die App übernimmt die Bildung im Hintergrund, während sie sich auf den Sport konzentrieren.",
-          "mockup": "/assets/Mockups/Mockup-Stufen.png"
-        },
-        {
-          "id": "lernpfad",
-          "title": "Strukturiertes Lernen",
-          "description": "Ihre Sportler lernen Schritt für Schritt alles, was sie über Finanzen wissen müssen – ohne dass Sie als Verein eingreifen müssen. Die App führt jeden Sportler automatisch durch die wichtigsten Themen, perfekt für die Zeit zwischen Trainingseinheiten.",
-          "mockup": "/assets/Mockups/Mockup-Lernpfad.png"
-        },
-        {
-          "id": "rangliste",
-          "title": "Motivation durch Wettbewerb",
-          "description": "Ihre Sportler können untereinander antreten und sich gegenseitig motivieren. Ranglisten, Missionen und Challenges sorgen dafür, dass die Finanzbildung spielerisch bleibt – genau wie im Sport. So lernen sie, ohne es als Belastung zu empfinden.",
-          "mockup": "/assets/Mockups/Mockup-Rangliste.png"
-        },
-        {
-          "id": "profil",
-          "title": "Vollständige Übersicht für Vereine",
-          "description": "Als Verein behalten Sie den Überblick: Sie sehen, welche Sportler aktiv lernen, wie der Fortschritt aussieht und wo Unterstützung benötigt wird. Dank BeAFox haben Sie alle Informationen zentral verfügbar.",
-          "mockup": "/assets/Mockups/Mockup-Profil.png"
-        }
-      ]
-    },
-    "package": {
-      "title": "Was im",
-      "titleHighlight": "Paket",
-      "titlePost": " enthalten ist",
-      "subtitle": "Wenn Sie als Verein BeAFox für Ihre Sportler bereitstellen, erhalten diese vollständigen Zugang zu allen BeAFox-Features",
-      "items": [
-        {
-          "title": "Sportlerische Lern-App",
-          "description": "Gamifizierte Finanzbildung, die Ihre Sportler motiviert und nachhaltig lernt"
-        },
-        {
-          "title": "Vollständiger Zugang",
-          "description": "Alle Lernmodule, Missionen und Features ohne Einschränkungen"
-        },
-        {
-          "title": "Fortschritts-Tracking",
-          "description": "Detaillierte Einblicke in den Lernfortschritt jedes einzelnen Sportlers"
-        },
-        {
-          "title": "Offizielle Zertifikate",
-          "description": "Anerkannte Zertifikate für erfolgreich abgeschlossene Module"
-        },
-        {
-          "title": "Flexible Paketgröße",
-          "description": "Stellen Sie BeAFox für einzelne Sportler oder das gesamte Team bereit – ganz nach Ihrem Bedarf"
-        },
-        {
-          "title": "Persönlicher Ansprechpartner",
-          "description": "Dedizierter Account Manager für individuelle Betreuung"
-        },
-        {
-          "title": "DSGVO-konform",
-          "description": "Vollständiger Datenschutz nach höchsten europäischen Standards"
-        },
-        {
-          "title": "Support & Updates",
-          "description": "Kontinuierliche Updates und persönlicher Support bei Fragen"
-        }
-      ]
-    },
-    "refundProgram": {
-      "title": "Rückführungsprogramm",
-      "titlePost": " für kleinere Vereine",
-      "subtitle": "Als kleiner Verein können Sie auch ohne große Pakete von BeAFox profitieren – mit unserem Rückführungsprogramm.",
-      "howTitle": "So funktioniert's",
-      "steps": [
-        {
-          "title": "Partnercode erhalten",
-          "description": "Als Partner-Verein erhalten Sie einen individuellen Partnercode, den Sie an Ihre Mitglieder weitergeben können."
-        },
-        {
-          "title": "Mitglieder nutzen den Code",
-          "description": "Wenn ein Vereinsmitglied BeAFox Unlimited mit Ihrem Partnercode kauft, wird automatisch ein Teil des Betrags an Ihren Verein gespendet."
-        },
-        {
-          "title": "Verein profitiert",
-          "description": "Die Spenden fließen direkt an Ihren Verein – ohne zusätzlichen Aufwand für Sie. Ihre Mitglieder unterstützen den Verein automatisch."
-        }
-      ],
-      "benefitsTitle": "Ihre Vorteile",
-      "benefits": [
-        "Keine Mindestanzahl erforderlich",
-        "Automatische Spenden ohne Verwaltungsaufwand",
-        "Ihre Mitglieder unterstützen den Verein",
-        "Finanzielle Bildung für alle Vereinsmitglieder",
-        "Flexibel und unkompliziert"
-      ],
-      "idealFor": "Ideal für:",
-      "idealForText": "Kleinere Vereine, die ihre Mitglieder unterstützen möchten, ohne große Pakete zu kaufen.",
-      "cta": "Partnercode anfragen"
-    },
-    "cta": {
-      "title": "Bereit, BeAFox für Ihre Sportler bereitzustellen?",
-      "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch. Wir erstellen Ihnen ein individuelles Angebot für Ihren Verein – oder informieren Sie über unser Rückführungsprogramm für kleinere Vereine.",
-      "ctaPartner": "Pilotprojekt anfordern",
-      "ctaApp": "App herunterladen"
+      "cta": "Demo anfordern"
     }
   },
   "contact": {
     "hero": {
       "tag": "Kontakt",
-      "title": { "pre": "Wir freuen uns auf", "highlight": "deine Nachricht" },
+      "title": {
+        "pre": "Wir freuen uns auf",
+        "highlight": "deine Nachricht"
+      },
       "description": "Unser Support steht dir zuverlässig zur Seite und beantwortet deine Anliegen so schnell und hilfreich wie möglich."
     },
     "info": {
@@ -1857,8 +1595,14 @@
       "sending": "Wird gesendet...",
       "submit": "Nachricht senden",
       "fields": {
-        "name": { "label": "Name *", "placeholder": "Dein Name" },
-        "email": { "label": "Email *", "placeholder": "deine@email.de" },
+        "name": {
+          "label": "Name *",
+          "placeholder": "Dein Name"
+        },
+        "email": {
+          "label": "Email *",
+          "placeholder": "deine@email.de"
+        },
         "phone": {
           "label": "Telefon",
           "optional": "optional",
@@ -1870,13 +1614,15 @@
             "general": "Allgemeine Anfrage",
             "schools": "Für Schulen",
             "business": "Für Unternehmen",
-            "clubs": "Für Clubs",
             "private": "Privatperson",
-            "pilot": "Pilotprojekt",
+            "pilot": "Demo",
             "support": "Support"
           }
         },
-        "subject": { "label": "Betreff *", "placeholder": "Worum geht es?" },
+        "subject": {
+          "label": "Betreff *",
+          "placeholder": "Worum geht es?"
+        },
         "message": {
           "label": "Nachricht *",
           "placeholder": "Erzähle uns von deinem Anliegen..."
@@ -1892,15 +1638,11 @@
     "quickLinks": {
       "schools": {
         "title": "Für Schulen",
-        "description": "Pilotprojekt für Ihre Schule starten"
+        "description": "Demo für Ihre Schule starten"
       },
       "business": {
         "title": "Für Unternehmen",
         "description": "Finanzbildung für Ihre Mitarbeiter"
-      },
-      "clubs": {
-        "title": "Für Clubs",
-        "description": "Ganzheitliche Förderung Ihrer Spieler"
       },
       "private": {
         "title": "Privatpersonen",
@@ -1923,7 +1665,10 @@
         "hideAria": "Passwort verbergen"
       }
     },
-    "button": { "loading": "Wird angemeldet...", "submit": "Anmelden" },
+    "button": {
+      "loading": "Wird angemeldet...",
+      "submit": "Anmelden"
+    },
     "links": {
       "noAccount": "Noch kein Konto?",
       "register": "Jetzt registrieren",
@@ -1965,7 +1710,10 @@
         "hideAria": "Passwort verbergen"
       }
     },
-    "button": { "loading": "Wird erstellt...", "submit": "Jetzt registrieren" },
+    "button": {
+      "loading": "Wird erstellt...",
+      "submit": "Jetzt registrieren"
+    },
     "links": {
       "hasAccount": "Du hast bereits einen Account?",
       "login": "Hier anmelden"
@@ -1997,7 +1745,9 @@
         "missing": "Passwort-Bestätigung fehlt!",
         "mismatch": "Passwörter stimmen nicht überein!"
       },
-      "role": { "invalid": "Ungültige Rolle!" },
+      "role": {
+        "invalid": "Ungültige Rolle!"
+      },
       "schoolName": {
         "missing": "Schulname fehlt!",
         "tooShort": "Schulname ist zu kurz!"
@@ -2023,8 +1773,13 @@
         "placeholder": "Deine E-Mail-Adresse"
       }
     },
-    "button": { "loading": "Wird gesendet...", "submit": "Link senden" },
-    "links": { "backToLogin": "Zurück zur Anmeldung" },
+    "button": {
+      "loading": "Wird gesendet...",
+      "submit": "Link senden"
+    },
+    "links": {
+      "backToLogin": "Zurück zur Anmeldung"
+    },
     "validation": {
       "emailInvalid": "Bitte gib eine gültige E-Mail-Adresse ein"
     },
@@ -2093,11 +1848,22 @@
   "authVerification": {
     "title": "Verifizieren",
     "subtitle": "Code gesendet an:",
-    "fields": { "otp": { "label": "Gib den 6-stelligen Code ein:" } },
-    "actions": { "resend": "Code erneut senden" },
+    "fields": {
+      "otp": {
+        "label": "Gib den 6-stelligen Code ein:"
+      }
+    },
+    "actions": {
+      "resend": "Code erneut senden"
+    },
     "countdownSeconds": "Sek",
-    "button": { "loading": "Wird verifiziert...", "submit": "Verifizieren" },
-    "links": { "backToRegister": "Zurück zur Registrierung" },
+    "button": {
+      "loading": "Wird verifiziert...",
+      "submit": "Verifizieren"
+    },
+    "links": {
+      "backToRegister": "Zurück zur Registrierung"
+    },
     "validation": {
       "otpInvalid": "Bitte gib einen gültigen 6-stelligen Code ein"
     },
@@ -2137,7 +1903,10 @@
     "title": "Mein Account",
     "subtitle": "Verwalte dein BeAFox Unlimited Abo",
     "loading": "Lade Abo-Details...",
-    "error": { "title": "Fehler beim Laden", "retry": "Erneut versuchen" },
+    "error": {
+      "title": "Fehler beim Laden",
+      "retry": "Erneut versuchen"
+    },
     "errors": {
       "loadSubscriptionFallback": "Fehler beim Laden der Abo-Details. Bitte versuche es erneut."
     },
@@ -2155,7 +1924,9 @@
       "yearly": "Jahresabo - 44,99€/Jahr",
       "lifetime": "Lifetime-Zugang"
     },
-    "date": { "notAvailable": "Nicht verfügbar" },
+    "date": {
+      "notAvailable": "Nicht verfügbar"
+    },
     "status": {
       "active": "Aktiv",
       "cancelled": "Gekündigt",
@@ -2578,7 +2349,10 @@
     "contact": {
       "title": "Fragen zu unseren AGB?",
       "text": "Wenn Sie Fragen zu unseren Allgemeinen Geschäftsbedingungen haben, kontaktieren Sie uns gerne:",
-      "labels": { "email": "E-Mail:", "phone": "Telefon:" },
+      "labels": {
+        "email": "E-Mail:",
+        "phone": "Telefon:"
+      },
       "cta": "Kontakt aufnehmen"
     },
     "lastUpdated": {
@@ -2659,7 +2433,9 @@
       "yearly": "Dieses Jahresabo verlängert sich automatisch jährlich. Du kannst es jederzeit kündigen.",
       "lifetime": "Einmalzahlung für lebenslangen Zugang. Keine automatische Verlängerung."
     },
-    "benefits": { "title": "Was du erhältst:" },
+    "benefits": {
+      "title": "Was du erhältst:"
+    },
     "paymentInfo": {
       "secureStripe": "Sichere Zahlung über Stripe",
       "title": "Zahlungsinformationen",
@@ -2770,46 +2546,116 @@
     "categories": {
       "all": "Alle",
       "clothing": "Kleidung",
-      "accessories": "Accessoires"
+      "drinkware": "Tassen",
+      "stickers": "Sticker",
+      "accessories": "Accessoires",
+      "art": "Wandkunst"
     },
     "empty": "Keine Produkte in dieser Kategorie gefunden.",
     "addToCart": "In den Warenkorb",
+    "addedToCart": "Hinzugefügt!",
+    "sale": "Sale",
+    "backToShop": "Zurück zum Shop",
+    "productNotFound": "Produkt nicht gefunden",
     "products": {
       "tshirt": {
-        "name": "BeAFox T-Shirt",
-        "description": "Premium Baumwoll-T-Shirt mit BeAFox-Logo"
+        "name": "BeAFox Classic T-Shirt",
+        "description": "Premium Baumwoll-T-Shirt mit dem BeAFox-Logo. Weich, bequem und perfekt für den Alltag."
       },
       "hoodie": {
-        "name": "BeAFox Hoodie",
-        "description": "Warmes Kapuzen-Sweatshirt mit BeAFox-Branding"
+        "name": "BeAFox Classic Hoodie",
+        "description": "Kuscheliger Hoodie mit BeAFox-Branding. Dein Begleiter für gemütliche Tage und kalte Abende."
       },
       "mug": {
         "name": "BeAFox Tasse",
-        "description": "Keramik-Tasse mit BeAFox-Logo - perfekt für deinen Morgenkaffee"
+        "description": "Keramik-Tasse mit BeAFox-Design. Perfekt für deinen Morgenkaffee oder Tee."
       },
       "stickers": {
         "name": "BeAFox Sticker Pack",
-        "description": "Set mit 5 verschiedenen BeAFox-Stickern"
+        "description": "Set mit 5 coolen BeAFox-Stickern. Bea in verschiedenen Posen für Laptop, Handy & Co."
+      },
+      "totebag": {
+        "name": "BeAFox Jutebeutel",
+        "description": "Robuster Jutebeutel mit BeAFox-Print. Nachhaltig und stylisch — für Einkauf, Uni oder Büro."
+      },
+      "phonecase": {
+        "name": "BeAFox Handy-Hülle",
+        "description": "Schütze dein Smartphone mit einer BeAFox-Hülle. Schlankes Design, solider Schutz."
+      },
+      "poster": {
+        "name": "BeAFox Poster",
+        "description": "Motivierendes Poster mit BeAFox-Design. Premium-Druck auf hochwertigem Papier."
       },
       "notebook": {
         "name": "BeAFox Notizbuch",
         "description": "Hochwertiges Notizbuch mit BeAFox-Design"
       }
     },
+    "detail": {
+      "color": "Farbe",
+      "size": "Größe",
+      "variant": "Variante",
+      "shipping": "3-5 Tage Lieferung",
+      "secure": "Sichere Zahlung",
+      "returns": "14 Tage Rückgabe",
+      "related": "Das könnte dir auch gefallen"
+    },
+    "cart": {
+      "title": "Warenkorb",
+      "close": "Warenkorb schließen",
+      "empty": "Dein Warenkorb ist leer",
+      "remove": "Artikel entfernen",
+      "decrease": "Menge verringern",
+      "increase": "Menge erhöhen",
+      "subtotal": "Zwischensumme",
+      "shippingNote": "Versandkosten werden im Checkout berechnet",
+      "checkout": "Zur Kasse",
+      "processing": "Wird geladen...",
+      "clear": "Warenkorb leeren",
+      "products": {
+        "tshirt": "BeAFox Classic T-Shirt",
+        "hoodie": "BeAFox Classic Hoodie",
+        "mug": "BeAFox Tasse",
+        "stickers": "BeAFox Sticker Pack",
+        "totebag": "BeAFox Jutebeutel",
+        "phonecase": "BeAFox Handy-Hülle",
+        "poster": "BeAFox Poster",
+        "notebook": "BeAFox Notizbuch"
+      }
+    },
+    "success": {
+      "title": "Vielen Dank für deine Bestellung!",
+      "subtitle": "Deine Bestellung wird vorbereitet und bald versandt.",
+      "shipping": {
+        "title": "Versand in 3-5 Werktagen",
+        "description": "Du erhältst eine E-Mail mit Tracking-Link sobald deine Bestellung versandt wurde."
+      },
+      "confirmation": {
+        "title": "Bestellbestätigung per E-Mail",
+        "description": "Eine Bestätigung wurde an deine E-Mail-Adresse gesendet."
+      },
+      "reference": "Bestellreferenz",
+      "continueShopping": "Weiter shoppen",
+      "backToHome": "Zur Startseite"
+    },
     "faq": {
       "title": "Häufig gestellte Fragen",
       "items": [
         {
           "q": "Wie lange dauert der Versand?",
-          "a": "Der Versand erfolgt innerhalb von 3-5 Werktagen nach Bestelleingang."
+          "a": "Der Versand erfolgt innerhalb von 3-5 Werktagen nach Bestelleingang. Wir produzieren in Deutschland, daher sind die Lieferwege kurz."
         },
         {
           "q": "Welche Zahlungsmethoden werden akzeptiert?",
-          "a": "Wir akzeptieren alle gängigen Zahlungsmethoden wie Kreditkarte, PayPal und SEPA-Lastschrift."
+          "a": "Wir akzeptieren Kreditkarte, PayPal und SEPA-Lastschrift."
         },
         {
           "q": "Gibt es ein Rückgaberecht?",
-          "a": "Ja, innerhalb von 14 Tagen nach Erhalt können Sie Artikel zurückgeben. Weitere Details finden Sie in unseren AGB."
+          "a": "Ja, innerhalb von 14 Tagen nach Erhalt kannst du Artikel zurückgeben. Weitere Details findest du in unseren AGB."
+        },
+        {
+          "q": "Wo wird produziert?",
+          "a": "Unsere Produkte werden bei lokalen Druckpartnern in Deutschland produziert — kurze Wege, weniger CO₂."
         }
       ]
     }
@@ -2831,11 +2677,17 @@
       "subtitle": "Erfahre mehr über unsere Reise, Events, Updates und wie wir Finanzbildung für junge Menschen revolutionieren."
     },
     "specialMomentsSection": {
-      "title": { "pre": "Unsere", "highlight": "besonderen Momente" },
+      "title": {
+        "pre": "Unsere",
+        "highlight": "besonderen Momente"
+      },
       "subtitle": "Die wichtigsten Meilensteine unserer Reise mit BeAFox."
     },
     "allArticlesSection": {
-      "title": { "pre": "All unsere", "highlight": "Artikel" },
+      "title": {
+        "pre": "All unsere",
+        "highlight": "Artikel"
+      },
       "subtitle": "Entdecke all unsere Blog-Posts und Updates.",
       "imageAltFallback": "Blog Artikel {id}"
     },
@@ -2989,7 +2841,7 @@
         "id": 2,
         "image": "/assets/Blogs/2.jpeg",
         "title": "Jetzt ist es offiziell. Wir waren beim Notar",
-        "description": "BeAFox ist offiziell gegründet: Wir waren beim Notar und haben den Gesellschaftsvertrag unterschrieben – ein großer Meilenstein nach vielen Monaten voller Ideen, Feedback und Tests. Unser Ziel bleibt klar: Finanzbildung für junge Menschen verständlich, unabhängig und spielerisch machen. Als Nächstes folgen Markeneintragung, weitere Pilotprojekte mit Schulen und Unternehmen und der nächste große Schritt in Richtung Marktdurchbruch.",
+        "description": "BeAFox ist offiziell gegründet: Wir waren beim Notar und haben den Gesellschaftsvertrag unterschrieben – ein großer Meilenstein nach vielen Monaten voller Ideen, Feedback und Tests. Unser Ziel bleibt klar: Finanzbildung für junge Menschen verständlich, unabhängig und spielerisch machen. Als Nächstes folgen Markeneintragung, weitere Demoe mit Schulen und Unternehmen und der nächste große Schritt in Richtung Marktdurchbruch.",
         "category": "News"
       },
       {
@@ -3001,6 +2853,22 @@
       }
     ]
   },
+  "ratgeber": {
+    "meta": {
+      "title": "Ratgeber | BeAFox",
+      "description": "Finanz-Ratgeber für junge Lebensphasen: sechs Themenwelten als Pillar Pages — von Schule bis Investieren.",
+      "ogTitle": "BeAFox Ratgeber — Finanzwissen für junge Lebensphasen",
+      "ogDescription": "Ratgeber-Hub mit Kategorien zu Taschengeld, Ausbildung, Studium, Berufsstart, Lebensereignissen und Investieren."
+    }
+  },
+  "news": {
+    "meta": {
+      "title": "News & Artikel | BeAFox",
+      "description": "Alle Artikel und Stories: Hinter den Kulissen, Finanztipps und Updates — bisheriger Blog-Inhalt unter /news.",
+      "ogTitle": "BeAFox News — Artikel & Stories",
+      "ogDescription": "News-Hub mit allen bisherigen Blog-Artikeln, nach Kategorien sortiert."
+    }
+  },
   "appUpdates": {
     "meta": {
       "title": "App Updates",
@@ -3010,7 +2878,10 @@
     },
     "hero": {
       "badge": "App-Updates",
-      "title": { "pre": "Bleib auf dem", "highlight": "neuesten Stand" },
+      "title": {
+        "pre": "Bleib auf dem",
+        "highlight": "neuesten Stand"
+      },
       "description": "Hier findest du alle Updates, neue Features und Verbesserungen der BeAFox App. Wir arbeiten kontinuierlich daran, die App besser zu machen."
     },
     "types": {
@@ -3087,7 +2958,10 @@
     },
     "hero": {
       "badge": "Community-Richtlinien",
-      "title": { "pre": "Unsere", "highlight": "Community-Richtlinien" },
+      "title": {
+        "pre": "Unsere",
+        "highlight": "Community-Richtlinien"
+      },
       "description": "BeAFox ist eine Community, in der junge Menschen gemeinsam Finanzwissen erwerben. Diese Richtlinien helfen uns, eine sichere, respektvolle und lernförderliche Umgebung zu schaffen."
     },
     "items": [
@@ -3218,7 +3092,11 @@
       {
         "id": 3,
         "title": "Vertreten durch",
-        "content": [{ "details": ["Die Geschäftsführung: Alexandru Tapelea"] }]
+        "content": [
+          {
+            "details": ["Die Geschäftsführung: Alexandru Tapelea"]
+          }
+        ]
       },
       {
         "id": 4,

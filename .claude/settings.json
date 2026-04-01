@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "A file was just written or edited. Check if it is a .ts, .tsx, .js, or .jsx file. If not, respond with: OK\n\nIf yes, run two checks:\n\nCHECK 1 — IMPORTS: Verify the import block follows the BeAFox group order: // NEXT → // STANDARD COMPONENTS → // CUSTOM COMPONENTS → // IMPORTS → // HOOKS → // ICONS → // ASSETS → // API → // TYPES → // CONFIG. Verify 'use client' or 'use server' is on line 1 if present. Verify no blank lines exist between import groups. Verify imports within each group are sorted by line length ascending.\n\nCHECK 2 — CODE BODY: Verify that inside each React component or function, the code sections follow the order: // HOOKS → // STATES → // REFS → // CONTEXT → // QUERIES → // CONSTANTS → // FUNCTIONS → // EFFECTS → // MEMOS → // ANIMATIONS. Verify one blank line exists between each section.\n\nIf CHECK 1 fails, respond with: IMPORTS_NEED_FIXING: <filepath>\nIf CHECK 2 fails, respond with: CODE_NEEDS_FIXING: <filepath>\nIf both fail, respond with both lines.\nIf everything is correct, respond with: OK"
+          }
+        ]
+      }
+    ]
+  }
+}

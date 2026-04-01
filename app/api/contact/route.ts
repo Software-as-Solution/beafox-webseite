@@ -45,9 +45,8 @@ export async function POST(request: NextRequest) {
       general: "Allgemeine Anfrage",
       schools: "Für Schulen",
       business: "Für Unternehmen",
-      clubs: "Für Clubs",
       private: "Privatperson",
-      pilot: "Pilotprojekt",
+      pilot: "Demo",
       support: "Support",
     };
 

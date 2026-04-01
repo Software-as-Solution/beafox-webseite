@@ -26,6 +26,8 @@ function localeFromAcceptLanguage(value: string | null): SupportedLocale | null 
   return null;
 }
 
+const I18N_USAGE_META_KEY = "__i18nUsage";
+
 export default getRequestConfig(async () => {
   const store = await cookies();
   const cookieLocale = normalizeLocale(store.get("locale")?.value);
@@ -35,9 +37,15 @@ export default getRequestConfig(async () => {
 
   const locale: SupportedLocale = cookieLocale ?? headerLocale ?? "de";
 
+  const raw = (await import(`../messages/${locale}.json`)).default as Record<
+    string,
+    unknown
+  >;
+  const { [I18N_USAGE_META_KEY]: _usage, ...messages } = raw;
+
   return {
     locale,
-    messages: (await import(`../messages/${locale}.json`)).default,
+    messages,
   };
 });
 

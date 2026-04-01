@@ -1,27 +1,48 @@
+// IMPORTS
+import Script from "next/script";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
-import "./globals.css";
+// CUSTOM COMPONENTS
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
-import SnipcartProvider from "@/components/SnipcartProvider";
+import ShopCartProvider from "@/components/ShopCartProvider";
+import ShopCart from "@/components/ShopCart";
+// CSS
+import "./globals.css";
 
+// CONSTANTS
+const GA_ID = "G-J0GWX92CNH";
+const THEME_COLOR = "#E87720";
+const BASE_URL = "https://beafox.app";
+const AHREFS_KEY = "6IuvzSgHsLDI1sabZKDkjA";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const GA_INIT_SCRIPT = `
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());
+try{var c=JSON.parse(localStorage.getItem('cookieConsent')||'{}');
+if(c.analytics){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=${GA_ID}';s.async=true;document.head.appendChild(s);
+gtag('consent','default',{'analytics_storage':'granted'});gtag('config','${GA_ID}')}
+else{gtag('consent','default',{'analytics_storage':'denied'})}}
+catch(e){gtag('consent','default',{'analytics_storage':'denied'})}`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("rootMeta");
+  // HOOKS
   const locale = await getLocale();
+  const t = await getTranslations("rootMeta");
+  // CONSTANTS
   const keywords = (t.raw("keywords") as string[]) ?? [];
 
   return {
-    metadataBase: new URL("https://beafox.app"),
+    metadataBase: new URL(BASE_URL),
     title: {
       default: t("title"),
-      template: t("titleTemplate"),
+      template: `%s | BeAFox`,
     },
     description: t("description"),
     keywords,
@@ -36,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       locale: locale === "de" ? "de_DE" : "en_US",
-      url: "https://beafox.app",
+      url: BASE_URL,
       siteName: "BeAFox",
       title: t("ogTitle"),
       description: t("ogDescription"),
@@ -67,41 +88,40 @@ export async function generateMetadata(): Promise<Metadata> {
         "max-snippet": -1,
       },
     },
-    verification: {},
     alternates: {
-      canonical: "https://beafox.app",
+      canonical: BASE_URL,
+      languages: {
+        "de-DE": BASE_URL,
+      },
+    },
+    other: {
+      "theme-color": THEME_COLOR,
     },
     icons: {
-    icon: [
-      // Hauptfavicon - Logo.png als Browser-Tab Icon
-      { url: "/Logo.png", sizes: "any", type: "image/png" },
-      // Fallback auf Standard-Favicons, falls vorhanden
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180" },
-      // Fallback auf Logo.png
-      { url: "/Logo.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      {
-        rel: "icon",
-        url: "/web-app-manifest-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-      },
-      {
-        rel: "icon",
-        url: "/web-app-manifest-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-      },
-    ],
-    shortcut: "/Logo.png",
-  }
-};
+      icon: [
+        { url: "/Logo.png", sizes: "any", type: "image/png" },
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+      other: [
+        {
+          rel: "icon",
+          url: "/web-app-manifest-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          rel: "icon",
+          url: "/web-app-manifest-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+      ],
+      shortcut: "/Logo.png",
+    },
+  };
 }
 
 export default async function RootLayout({
@@ -109,75 +129,49 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // HOOKS
   const locale = await getLocale();
   const messages = await getMessages();
 
   return (
     <html lang={locale} className={inter.variable}>
+      <head>
+        {/* Preconnects for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          crossOrigin="anonymous"
+          href="https://fonts.gstatic.com"
+        />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        {/* Hreflang — DE is primary, self-referencing */}
+        <link rel="alternate" hrefLang="de" href={BASE_URL} />
+        <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
+      </head>
       <body className="antialiased bg-primaryWhite">
         <NextIntlClientProvider locale={locale} messages={messages}>
-        {/* Google Analytics - wird nur geladen wenn Cookie-Consent gegeben wurde */}
-        <Script
-          id="google-analytics-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              
-              // Prüfe Cookie-Consent
-              const cookieConsent = localStorage.getItem('cookieConsent');
-              if (cookieConsent) {
-                try {
-                  const preferences = JSON.parse(cookieConsent);
-                  if (preferences.analytics) {
-                    // Lade Google Analytics Script
-                    const script = document.createElement('script');
-                    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-J0GWX92CNH';
-                    script.async = true;
-                    document.head.appendChild(script);
-                    
-                    // Konfiguriere Google Analytics
-                    gtag('consent', 'default', {
-                      'analytics_storage': 'granted'
-                    });
-                    gtag('config', 'G-J0GWX92CNH');
-                  } else {
-                    // Analytics abgelehnt
-                    gtag('consent', 'default', {
-                      'analytics_storage': 'denied'
-                    });
-                  }
-                } catch (e) {
-                  // Fallback: Analytics standardmäßig deaktiviert
-                  gtag('consent', 'default', {
-                    'analytics_storage': 'denied'
-                  });
-                }
-              } else {
-                // Noch keine Entscheidung: Analytics deaktiviert bis Consent
-                gtag('consent', 'default', {
-                  'analytics_storage': 'denied'
-                });
-              }
-            `,
-          }}
-        />
-
-        {/* Ahrefs Analytics */}
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="6IuvzSgHsLDI1sabZKDkjA"
-          strategy="afterInteractive"
-        />
-
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <ScrollToTop />
-        <CookieBanner />
-        <SnipcartProvider />
+          {/* Google Analytics */}
+          <Script
+            id="ga-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{ __html: GA_INIT_SCRIPT }}
+          />
+          {/* Ahrefs Analytics */}
+          <Script
+            data-key={AHREFS_KEY}
+            strategy="afterInteractive"
+            src="https://analytics.ahrefs.com/analytics.js"
+          />
+          <ShopCartProvider>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <ShopCart />
+            <Footer />
+          </ShopCartProvider>
+          <ScrollToTop />
+          <CookieBanner />
+          <Analytics />
+          <SpeedInsights />
         </NextIntlClientProvider>
       </body>
     </html>
