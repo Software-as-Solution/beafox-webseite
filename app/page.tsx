@@ -165,6 +165,7 @@ export default function HomePage() {
         badge={t("hero.badge")}
         mascotAlt={t("hero.mascotAlt")}
         cardText={t("hero.aiIntroText")}
+        mascotClassName="scale-75 md:top-0"
         mascotSrc="/Maskottchen/Maskottchen-Hero.png"
         title={
           <>

@@ -12,8 +12,11 @@
   margin: 0;
 }
 
+/* Avoid global smooth scrolling on <html>: it fights Next.js scroll restoration
+   during fast client navigations and can make the UI feel stuck. Use
+   scrollIntoView({ behavior: "smooth" }) only where needed. */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {

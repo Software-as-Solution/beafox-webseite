@@ -65,8 +65,8 @@ export default function StickyMobileCTA() {
       const docHeight = document.documentElement.scrollHeight;
       const viewportHeight = window.innerHeight;
       const nearBottom = scrollY + viewportHeight > docHeight - FOOTER_OFFSET;
-
-      setIsVisible(scrollY > SCROLL_THRESHOLD && !nearBottom);
+      const next = scrollY > SCROLL_THRESHOLD && !nearBottom;
+      setIsVisible((prev) => (prev === next ? prev : next));
     });
   }, [isDismissed]);
   const handleDismiss = useCallback(() => {

@@ -7,7 +7,14 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import {
+  useRef,
+  useMemo,
+  useState,
+  useEffect,
+  useCallback,
+  startTransition,
+} from "react";
 // ICONS
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import {
@@ -27,9 +34,9 @@ type ProductNavId =
   | "bildungshaus";
 // CONSTANTS
 const SCROLL_THRESHOLD = 20;
+const PRODUCT_NAV_SPLIT = 4;
 const PROGRESS_BAR_HEIGHT = 8;
 const APP_DOWNLOAD_URL = "https://apps.apple.com/de/app/beafox/id6746110612";
-const PRODUCT_NAV_SPLIT = 4;
 const PRODUCT_NAV: { id: ProductNavId; href: string }[] = [
   { id: "merch", href: "/shop" },
   { id: "unlimited", href: "/unlimited" },
@@ -140,13 +147,12 @@ export default function Header() {
     ratgeberCategories[0];
   // FUNCTIONS
   const handleScroll = useCallback(() => {
-    if (rafRef.current) return;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
       const top = window.scrollY;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setIsScrolled(top > SCROLL_THRESHOLD);
       setScrollProgress(max > 0 ? Math.min((top / max) * 100, 100) : 0);
-      rafRef.current = null;
     });
   }, []);
   const closeAll = useCallback(() => {
@@ -178,6 +184,8 @@ export default function Header() {
   }, []);
   useEffect(() => {
     if (!isDropdownOpen && !isRatgeberOpen) return;
+
+    let registered = false;
     const handler = (e: MouseEvent) => {
       const t = e.target as Node;
       if (
@@ -193,12 +201,15 @@ export default function Header() {
       )
         setIsRatgeberOpen(false);
     };
-    const raf = requestAnimationFrame(() =>
-      document.addEventListener("mousedown", handler),
-    );
+
+    const raf = requestAnimationFrame(() => {
+      document.addEventListener("mousedown", handler);
+      registered = true;
+    });
+
     return () => {
       cancelAnimationFrame(raf);
-      document.removeEventListener("mousedown", handler);
+      if (registered) document.removeEventListener("mousedown", handler);
     };
   }, [isDropdownOpen, isRatgeberOpen]);
   useEffect(() => {
@@ -216,7 +227,9 @@ export default function Header() {
     };
   }, [isMenuOpen]);
   useEffect(() => {
-    closeAll();
+    startTransition(() => {
+      closeAll();
+    });
   }, [pathname, closeAll]);
 
   return (

@@ -168,6 +168,7 @@ export default function ContactPage() {
         mascotAlt={t("hero.tag")}
         cardText={t("hero.cardText")}
         description={t("hero.description")}
+        mascotClassName="scale-75 md:top-0"
         mascotSrc="/Maskottchen/Maskottchen-Hero.png"
         title={
           <>

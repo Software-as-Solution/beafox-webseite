@@ -19,8 +19,9 @@ export default function ScrollToTop() {
   const handleScroll = useCallback(() => {
     if (rafRef.current) return;
     rafRef.current = requestAnimationFrame(() => {
-      setIsVisible(window.scrollY > SCROLL_THRESHOLD);
       rafRef.current = null;
+      const next = window.scrollY > SCROLL_THRESHOLD;
+      setIsVisible((prev) => (prev === next ? prev : next));
     });
   }, []);
   const scrollToTop = useCallback(() => {
