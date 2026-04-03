@@ -5,34 +5,28 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
   const t = await getTranslations("manifest");
 
   return {
+    lang: "de",
     name: t("name"),
-    short_name: t("shortName"),
-    description: t("description"),
     start_url: "/",
     display: "standalone",
-    orientation: "portrait",
-    background_color: "#ffffff",
     theme_color: "#E87720",
-    lang: "de",
+    orientation: "portrait",
+    short_name: t("shortName"),
+    background_color: "#ffffff",
+    description: t("description"),
     categories: ["finance", "education", "learning"],
     icons: [
       {
-        src: "/web-app-manifest-192x192.png",
+        purpose: "any",
         sizes: "192x192",
         type: "image/png",
-        purpose: "any",
+        src: "/assets/Logos/Logo.png",
       },
       {
-        src: "/web-app-manifest-512x512.png",
         sizes: "512x512",
         type: "image/png",
-        purpose: "any",
-      },
-      {
-        src: "/Logo.png",
-        sizes: "any",
-        type: "image/png",
         purpose: "maskable",
+        src: "/assets/Logos/Logo.png",
       },
     ],
   };

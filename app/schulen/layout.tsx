@@ -5,9 +5,9 @@ const BASE_URL = "https://beafox.app";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${BASE_URL}/schulen`;
-  const title = "Schulen – Finanzbildung im Unterricht ab 1€";
+  const title = "Schulen – Jeder Schüler verdient eine Bea";
   const description =
-    "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte, selbstständiges Lernen — ab 1€ pro Schüler pro Jahr.";
+    "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte — ohne Vorbereitung, ohne Unterrichtsausfall. Jetzt Demo anfragen.";
 
   return {
     title,

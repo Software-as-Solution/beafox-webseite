@@ -9,10 +9,10 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 // CUSTOM COMPONENTS
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ShopCart from "@/components/ShopCart";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
 import ShopCartProvider from "@/components/ShopCartProvider";
-import ShopCart from "@/components/ShopCart";
 // CSS
 import "./globals.css";
 
@@ -39,43 +39,43 @@ export async function generateMetadata(): Promise<Metadata> {
   const keywords = (t.raw("keywords") as string[]) ?? [];
 
   return {
+    keywords,
+    creator: "BeAFox",
+    description: t("description"),
     metadataBase: new URL(BASE_URL),
+    publisher: "BeAFox UG (haftungsbeschränkt)",
+    authors: [{ name: "BeAFox UG (haftungsbeschränkt)" }],
     title: {
       default: t("title"),
       template: `%s | BeAFox`,
     },
-    description: t("description"),
-    keywords,
-    authors: [{ name: "BeAFox UG (haftungsbeschränkt)" }],
-    creator: "BeAFox",
-    publisher: "BeAFox UG (haftungsbeschränkt)",
     formatDetection: {
       email: false,
       address: false,
       telephone: false,
     },
     openGraph: {
-      type: "website",
-      locale: locale === "de" ? "de_DE" : "en_US",
       url: BASE_URL,
+      type: "website",
       siteName: "BeAFox",
       title: t("ogTitle"),
       description: t("ogDescription"),
+      locale: locale === "de" ? "de_DE" : "en_US",
       images: [
         {
-          url: "/assets/og-image.jpg",
-          width: 1200,
-          height: 630,
+          width: 512,
+          height: 512,
           alt: t("ogImageAlt"),
+          url: "/assets/Logos/Logo.png",
         },
       ],
     },
     twitter: {
-      card: "summary_large_image",
-      title: t("twitterTitle"),
-      description: t("twitterDescription"),
-      images: ["/assets/og-image.jpg"],
+      card: "summary",
       creator: "@beafox_app",
+      title: t("twitterTitle"),
+      images: ["/assets/Logos/Logo.png"],
+      description: t("twitterDescription"),
     },
     robots: {
       index: true,
@@ -83,9 +83,9 @@ export async function generateMetadata(): Promise<Metadata> {
       googleBot: {
         index: true,
         follow: true,
+        "max-snippet": -1,
         "max-video-preview": -1,
         "max-image-preview": "large",
-        "max-snippet": -1,
       },
     },
     alternates: {
@@ -94,33 +94,12 @@ export async function generateMetadata(): Promise<Metadata> {
         "de-DE": BASE_URL,
       },
     },
-    other: {
-      "theme-color": THEME_COLOR,
-    },
     icons: {
-      icon: [
-        { url: "/Logo.png", sizes: "any", type: "image/png" },
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-      other: [
-        {
-          rel: "icon",
-          url: "/web-app-manifest-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-        {
-          rel: "icon",
-          url: "/web-app-manifest-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-        },
-      ],
-      shortcut: "/Logo.png",
+      shortcut: "/assets/Logos/Logo.png",
+      icon: { url: "/assets/Logos/Logo.png", type: "image/png" },
+      apple: { url: "/assets/Logos/Logo.png", type: "image/png" },
     },
+    themeColor: THEME_COLOR,
   };
 }
 
@@ -136,17 +115,16 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <head>
-        {/* Preconnects for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           crossOrigin="anonymous"
           href="https://fonts.gstatic.com"
         />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        {/* Hreflang — DE is primary, self-referencing */}
         <link rel="alternate" hrefLang="de" href={BASE_URL} />
         <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://analytics.ahrefs.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className="antialiased bg-primaryWhite">
         <NextIntlClientProvider locale={locale} messages={messages}>

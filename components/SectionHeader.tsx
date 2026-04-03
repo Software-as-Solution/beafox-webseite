@@ -23,7 +23,7 @@ const BASE_TITLE =
 const BASE_ICON =
   "w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange";
 const BASE_SUBTITLE =
-  "text-lightGray text-sm md:text-base lg:text-lg max-w-2xl mx-auto";
+  "text-lightGray text-sm md:text-base lg:text-lg max-w-2xl mx-auto whitespace-pre-line";
 
 // COMPONENT
 export default function HomeSectionHeader({

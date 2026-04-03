@@ -54,6 +54,8 @@ const nextConfig = {
       { source: "/fuer-unternehmen", destination: "/unternehmen", permanent: true },
       { source: "/fuer-schulen", destination: "/schulen", permanent: true },
       { source: "/app-updates", destination: "/updates", permanent: true },
+      { source: "/vhs", destination: "/bildungshaus", permanent: true },
+      { source: "/vhs/:path*", destination: "/bildungshaus/:path*", permanent: true },
 
       // ── Ratgeber Kurzlinks ──
       ...ratgeberRedirects,

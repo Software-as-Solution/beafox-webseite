@@ -1,72 +1,33 @@
 {
-  "__i18nUsage": {
-    "_note": "JSON does not allow // comments. This object is developer-only documentation. It is stripped in i18n/request.ts before messages reach NextIntlClientProvider (not sent to the browser). Each key under \"namespaces\" matches the first argument of useTranslations(...) / getTranslations(...).",
-    "namespaces": {
-      "rootMeta": "app/layout.tsx — generateMetadata (title, description, keywords, Open Graph, Twitter)",
-      "manifest": "app/manifest.ts — PWA manifest name/description",
-      "header": "components/Header.tsx — nav, products mega-menu, CTAs, mobile menu",
-      "breadcrumbs": "components/Breadcrumbs.tsx — home, homeAria",
-      "downloadModal": "components/DownloadModal.tsx — closeAria only (title/description keys exist but are unused; modal headline is hardcoded)",
-      "cookie": "components/CookieBanner.tsx — banner + preferences modal",
-      "footer": "components/Footer.tsx — newsletter, link columns, copyright; language labels via useTranslations(\"header\")",
-      "home": "app/page.tsx — landing (hero, stats, use cases, how it works, app features, FAQ teaser, JSON-LD seo.*); components/DownloadBannerSection, DemoBookingCtaSection; components/DownloadModal — home.downloadBanner store badge alts/labels; components/TestimonialCarousel — useTranslations(\"home.testimonialsSection\"); components/RatGeber + app/page.tsx — home.ratgeberHomeSection; components/StickyMobileCta — home.stickyMobileCta; app/ueber-beafox/page.tsx — home.experienceSection, home.cta.buttons.book; app/fuer-unternehmen/page.tsx + app/fuer-schulen/page.tsx — home.whyFinance (incl. sdgs via raw)",
-      "faq": "app/faq/page.tsx + app/faq/layout.tsx",
-      "unlimited": "app/unlimited/page.tsx; components/RatGeber.tsx — unlimited.hero (variant unlimitedTargets)",
-      "about": "app/ueber-beafox/page.tsx + app/ueber-beafox/layout.tsx; app/ueber-uns/layout.tsx — metadata",
-      "business": "app/unternehmen/page.tsx",
-      "schools": "app/fuer-schulen/page.tsx + app/fuer-schulen/layout.tsx",
-      "contact": "app/kontakt/page.tsx (kontakt/layout.tsx metadata is hardcoded German)",
-      "authLogin": "app/login/page.tsx",
-      "authRegister": "app/registrierung/page.tsx",
-      "authForgotPassword": "app/forgot-password/page.tsx",
-      "authResetPassword": "app/reset-password/page.tsx",
-      "authVerification": "app/verification/page.tsx",
-      "unsubscribe": "app/unsubscribe/page.tsx + app/unsubscribe/layout.tsx",
-      "account": "app/account/page.tsx",
-      "agb": "app/agb/page.tsx + app/agb/layout.tsx",
-      "privacy": "app/datenschutz/page.tsx + app/datenschutz/layout.tsx",
-      "imprint": "app/impressum/page.tsx + app/impressum/layout.tsx",
-      "guidelines": "app/guidelines/page.tsx + app/guidelines/layout.tsx",
-      "checkout": "app/checkout/page.tsx",
-      "checkoutSuccess": "app/checkout/success/page.tsx",
-      "onboarding": "app/onboarding/page.tsx",
-      "referral": "app/referral/page.tsx",
-      "shop": "app/shop/page.tsx",
-      "ratgeber": "app/ratgeber/layout.tsx — meta/SEO only; article/category UI from lib/blog.ts + Sanity",
-      "news": "app/news/layout.tsx — meta only; /news hub copy mostly inline in app/news/page.tsx",
-      "appUpdates": "app/app-updates/page.tsx + app/app-updates/layout.tsx",
-      "blog": "No useTranslations(\"blog\") in the codebase — legacy content mirror; live news/guides use /news, /ratgeber, lib/blog.ts"
-    }
-  },
   "rootMeta": {
-    "title": "BeAFox - Financial Education Ecosystem for Young People",
+    "title": "BeAFox – Your finances. Simply played through.",
     "titleTemplate": "%s | BeAFox",
-    "description": "Digital financial education platform for young people: Finance app for individuals, financial education for companies and schools. Gamified learning app with financial education for apprentices and in the classroom.",
+    "description": "BeAFox is your companion for every financial decision. The AI-powered learning app guides apprentices, students, and early-career professionals through real-life money situations — playful, unbiased, and at your own pace.",
     "keywords": [
-      "Financial education",
-      "Finance app",
-      "digital financial education",
-      "Financial education for companies",
-      "Financial education for schools",
-      "Financial education for apprentices",
-      "Financial education in the classroom",
-      "Financial education for pupils",
-      "Financial education community",
-      "Finance learning app",
-      "Premium finance app",
-      "Learn finance",
-      "Learn about money",
-      "Finance training apprentices",
-      "Digital learning platform",
-      "Gamified learning platform",
-      "Gamification learning",
+      "financial education app",
+      "financial education for apprentices",
+      "financial education for schools",
+      "financial education for businesses",
+      "financial education for students",
+      "financial capability",
+      "financial literacy young people",
+      "finance app for apprentices",
+      "learn about money app",
+      "finance learning app",
+      "AI financial companion",
+      "playful financial learning",
+      "debt prevention apprentices",
+      "learn budget planning",
+      "first salary planning",
+      "GDPR finance app schools",
+      "gamification financial education",
       "BeAFox"
     ],
-    "ogTitle": "BeAFox - Financial Education Ecosystem for Young People",
-    "ogDescription": "The first independent, gamified learning app for financial education of young people. Specifically developed for schools and training companies.",
-    "ogImageAlt": "BeAFox - Financial Education Ecosystem",
-    "twitterTitle": "BeAFox - Financial Education Ecosystem for Young People",
-    "twitterDescription": "The first independent, gamified learning app for financial education of young people."
+    "ogTitle": "BeAFox – Your finances. Simply played through.",
+    "ogDescription": "The AI-powered app for apprentices, students, and early-career professionals. Play your way through real financial situations — from your first payslip to your tax return.",
+    "ogImageAlt": "BeAFox – Your finances. Simply played through.",
+    "twitterTitle": "BeAFox – Your finances. Simply played through.",
+    "twitterDescription": "The AI-powered app that guides young people through real financial situations. Playful, unbiased, and at your own pace."
   },
   "manifest": {
     "name": "BeAFox - Financial Education Ecosystem",
@@ -86,8 +47,10 @@
       "unlimited": "BeAFox Unlimited",
       "business": "BeAFox for Business",
       "schools": "BeAFox for Schools",
+      "merch": "BeAFox Merch",
       "partnerIhk": "BeAFox × IHK Academy",
-      "partnerVhs": "BeAFox × Adult Education (VHS)",
+      "partnerBildungshaus": "BeAFox × Bildungshaus",
+      "partnerEduplaces": "BeAFox × Eduplaces",
       "panel": {
         "unlimited": {
           "description": "Full access to Bea, all learning modules, and premium features — for anyone who wants to deepen financial education privately and flexibly."
@@ -101,8 +64,11 @@
         "ihk": {
           "description": "Together with the IHK Academy: proven standards, practical content, and workshops that strengthen young talent in everyday working life."
         },
-        "vhs": {
-          "description": "Partnership with adult education (VHS): financial skills for learners in courses and programs — clear, practical, and approachable."
+        "bildungshaus": {
+          "description": "Partnership with Bildungshaus venues: financial skills for learners in courses and programs — clear, practical, and approachable."
+        },
+        "eduplaces": {
+          "description": "Partnership with Eduplaces: financial education as part of modern learning and education programs — understandable, interactive, and guided by Bea."
         }
       }
     },
@@ -116,6 +82,12 @@
       "download": "Download app",
       "login": "Login",
       "loginRegister": "Login / Sign up"
+    },
+    "images": {
+      "logoAlt": "BeAFox logo",
+      "productNavAlt": "Bea — {product}",
+      "ratgeberMascotAlt": "Bea — {category}",
+      "appIconAlt": "BeAFox app icon"
     }
   },
   "breadcrumbs": {
@@ -157,9 +129,26 @@
       "save": "Save settings"
     }
   },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved. But don't worry — our fox will help you out!",
+    "backButton": "Go back",
+    "homeButton": "Back to Home",
+    "contactButton": "Contact us",
+    "quickLinksTitle": "Quick links",
+    "mascotAlt": "Bea with a guidebook — BeAFox helps you move on",
+    "quickLinks": [
+      { "href": "/", "label": "Home" },
+      { "href": "/unlimited", "label": "BeAFox Unlimited" },
+      { "href": "/schulen", "label": "For schools" },
+      { "href": "/unternehmen", "label": "For businesses" },
+      { "href": "/faq", "label": "FAQ" },
+      { "href": "/kontakt", "label": "Contact" }
+    ]
+  },
   "footer": {
     "newsletter": {
-      "titlePre": "Stay ",
+      "titlePre": "Stay",
       "titleHighlight": "in the loop",
       "description": "Subscribe to our newsletter and never miss updates, financial education tips, and behind-the-scenes insights from BeAFox.",
       "placeholder": "Your email address",
@@ -186,7 +175,10 @@
       "unlimited": "BeAFox Unlimited",
       "business": "BeAFox for Business",
       "schools": "BeAFox for Schools",
-      "clubs": "BeAFox for Clubs"
+      "clubs": "BeAFox for Clubs",
+      "bildungshaus": "BeAFox × Bildungshaus Wolfsburg",
+      "ihk": "BeAFox × IHK Academy",
+      "eduplaces": "BeAFox × Eduplaces"
     },
     "legal": {
       "title": "Legal",
@@ -217,11 +209,6 @@
         "line1": "Your finances.",
         "line2": "Simply played through."
       },
-      "words": [
-        "FREEDOM",
-        "SECURITY"
-      ],
-      "description": "BeAFox is an independent, playful learning platform for financial education for young people—focused on unbiased knowledge and developed especially for schools and training companies.",
       "mockups": {
         "trainingAlt": "BeAFox finance app training screen — financial education learning modules",
         "pathAlt": "BeAFox learning path — step-by-step gamified financial education",
@@ -448,31 +435,38 @@
     "appFeatures": {
       "stufen": {
         "title": "Levels",
-        "description": "Choose freely what you want to learn. Our level structure gives you the flexibility to explore topics based on your interests and needs. Whether you're a beginner or advanced, you'll find the right level and can learn at your own pace."
+        "description": "Choose freely what you want to learn. Our level structure gives you the flexibility to explore topics based on your interests and needs. Whether you're a beginner or advanced, you'll find the right level and can learn at your own pace.",
+        "highlights": ["Learn flexibly", "For every level", "Your own pace"]
       },
       "lernpfad": {
         "title": "Learning path",
-        "description": "Follow a structured learning path that guides you step by step through the most important financial topics. You always know where you stand and what comes next. The learning path visualizes your progress and helps you stay on track."
+        "description": "Follow a structured learning path that guides you step by step through the most important financial topics. You always know where you stand and what comes next. The learning path visualizes your progress and helps you stay on track.",
+        "highlights": ["Structured", "Step by step", "Personalized"]
       },
       "lektion": {
         "title": "Lessons",
-        "description": "Learn step by step everything you need to know about finance. Our interactive lessons make complex topics easy to understand—from budgeting and saving to investing. We cover all the essentials and combine videos, text, and interactive elements."
+        "description": "Learn step by step everything you need to know about finance. Our interactive lessons make complex topics easy to understand—from budgeting and saving to investing. We cover all the essentials and combine videos, text, and interactive elements.",
+        "highlights": ["5-minute lessons", "Practical", "Apply right away"]
       },
       "quiz": {
         "title": "Quiz",
-        "description": "After theory comes practice. Test your knowledge with interactive quizzes and deepen what you've learned. With instant feedback, you learn from mistakes and can review targeted topics. Every successful quiz earns points and boosts your ranking."
+        "description": "After theory comes practice. Test your knowledge with interactive quizzes and deepen what you've learned. With instant feedback, you learn from mistakes and can review targeted topics. Every successful quiz earns points and boosts your ranking.",
+        "highlights": ["Test your knowledge", "Instant feedback", "Earn XP"]
       },
       "rangliste": {
         "title": "Leaderboard",
-        "description": "Compare yourself with other learners and stay motivated through friendly competition. Collect points, reach new levels, and become a finance expert. Different categories and timeframes ensure everyone has a fair shot at the top."
+        "description": "Compare yourself with other learners and stay motivated through friendly competition. Collect points, reach new levels, and become a finance expert. Different categories and timeframes ensure everyone has a fair shot at the top.",
+        "highlights": ["Gamification", "Competition", "Motivation"]
       },
       "missionen": {
         "title": "Missions & goals",
-        "description": "Complete exciting missions and reach your personal goals. Missions range from daily challenges to long-term goals. Each completed mission is rewarded and brings you closer to your bigger goals. Set your own goals or follow predefined missions."
+        "description": "Complete exciting missions and reach your personal goals. Missions range from daily challenges to long-term goals. Each completed mission is rewarded and brings you closer to your bigger goals. Set your own goals or follow predefined missions.",
+        "highlights": ["Daily goals", "Rewards", "Habits"]
       },
       "profil": {
         "title": "Profile",
-        "description": "Track your learning progress and get your personal Fox Score. Your profile shows all achievements: completed lessons, points earned, and passed quizzes. The Fox Score is your personal indicator of financial knowledge and grows with every step."
+        "description": "Track your learning progress and get your personal Fox Score. Your profile shows all achievements: completed lessons, points earned, and passed quizzes. The Fox Score is your personal indicator of financial knowledge and grows with every step.",
+        "highlights": ["See your progress", "Statistics", "Celebrate wins"]
       }
     },
     "whyFinance": {
@@ -1033,6 +1027,10 @@
       "learningPathAlt": "BeAFox learning path mockup",
       "rankingAlt": "BeAFox ranking mockup"
     },
+    "images": {
+      "beaMascotAlt": "Bea — financial companion in the BeAFox app",
+      "teamPhotoAlt": "The BeAFox team"
+    },
     "values": [
       {
         "title": "Our mission",
@@ -1108,6 +1106,7 @@
       "tag": "Our awards",
       "titlePre": "Recognition for our ",
       "titleHighlight": "work",
+      "description": "From regional founder awards to national startup competitions, our work on financial education is getting noticed — thank you to everyone who supports us.",
       "award1Title": "Deggendorf Founder Award",
       "award1Text": "BeAFox was awarded the Deggendorf Founder Award. Around 60% of the audience voted for us. A big thank you to the whole team for the excellent organisation and for the prize money of €2,500.",
       "award2Title": "Startup Summit Germany – 2nd place",
@@ -1279,314 +1278,622 @@
       "bookCta": "Book a call"
     }
   },
-  "schools": {
-    "meta": {
-      "title": "BeAFox for Schools – Financial Education for Schools",
-      "description": "Financial education for schools: Digital learning platform for financial education in the classroom. Ideal for teachers and pupils from year 7.",
-      "ogTitle": "BeAFox for Schools – Financial Education for Schools",
-      "ogDescription": "Playful financial education solutions for schools. Ideal for teachers and pupils from year 7."
-    },
-    "breadcrumbs": {
-      "parentLabel": "Offers",
-      "current": "BeAFox for Schools"
-    },
+  "ihk": {
     "hero": {
-      "badge": "BeAFox for Schools",
-      "priceHighlight": "€1 per pupil",
-      "pricePost": "per year",
-      "description": "We create real social impact by making financial education accessible to all pupils—regardless of background or circumstances.",
-      "ctaPartner": "Become a partner",
+      "badge": "BeAFox × IHK Academy",
+      "title": "Financial capability",
+      "titleHighlight": "for apprentices & professionals",
+      "description": "Together with IHK Academy, we developed a workshop that makes apprentices and professionals financially capable.",
+      "ctaPartner": "Request a workshop",
       "ctaBook": "Book a call"
     },
-    "mockups": {
-      "pathAlt": "BeAFox learning path mockup",
-      "stufenAlt": "BeAFox levels mockup",
-      "rankingAlt": "BeAFox ranking mockup",
-      "mascotAlt": "BeAFox mascot"
+    "trustSignal": {
+      "preTitle": "IHK Academy partnership",
+      "highlight": "officially certified"
     },
-    "stats": [
-      {
-        "value": "1,000+",
-        "label": "Pupils use BeAFox"
-      },
-      {
-        "value": "5+",
-        "label": "Schools trust us"
-      },
-      {
-        "value": "98%",
-        "label": "Satisfaction"
-      },
-      {
-        "value": "24/7",
-        "label": "Available"
-      }
-    ],
+    "images": {
+      "problemMascotAlt": "Financial insecurity among apprentices",
+      "solutionMascotAlt": "BeAFox × IHK Academy workshop solution"
+    },
     "problemSolution": {
-      "title": "We're closing the gap",
-      "titleHighlight": "in financial education",
-      "problemTitle": "The challenges",
-      "problemText": "A teacher looks after several classes at once. Pupils need a way to learn independently, even when the teacher isn't there in person.",
+      "problemHeaderPre": "No plan, no budget,",
+      "problemHeaderHighlight": "no clue",
       "problemBullets": [
-        "Lesson cancellations due to illness",
-        "Supervising multiple classes at once",
-        "Pupils need meaningful activities",
-        "Financial education missing from the curriculum"
+        "Apprentices don't know what's left of their salary",
+        "Taxes, insurance, retirement — all foreign concepts",
+        "Financial stress lowers performance and increases dropout rates",
+        "Traditional trainings are too theoretical and outdated"
       ],
-      "solutionTitle": "Our solution",
-      "solutionText": "Pupils work independently and interactively with BeAFox. Without the teacher having to be there in person.",
-      "solutionText2": "For teachers: The integrated monitoring dashboard shows in real time what each pupil is learning, where they are and how they're progressing.",
+      "problemShockStatValue": "78%",
+      "problemShockStatHeadline": "of apprentices feel financially insecure",
+      "problemShockStatBody": "Most career starters never learned how to handle money. The first paycheck quickly becomes overwhelming — with consequences for both the company and the apprentice.",
+      "solutionHeaderPre": "The workshop that",
+      "solutionHeaderHighlight": "actually lands",
+      "solutionText": "Together with IHK Academy, we developed a workshop that combines financial knowledge with practice. No lectures — real exercises that help immediately in everyday life.",
+      "solutionImpactStatValue": "100%",
+      "solutionImpactStatHeadline": "recommendation rate among workshop participants",
       "solutionBullets": [
-        "Pupils learn independently",
-        "Real-time overview for teachers",
-        "Weak spots identified immediately",
-        "Gamified system motivates"
-      ]
+        "Hands-on workshop with IHK quality standards",
+        "Create your own budget, understand your payslip",
+        "Open a brokerage account, understand insurance, plan your tax return",
+        "BeAFox app as companion after the workshop"
+      ],
+      "ctaButton": "Request a workshop"
     },
     "benefits": {
-      "title": "Why",
-      "titleHighlight": "BeAFox for Schools",
-      "subtitle": "All benefits for your school, teachers and pupils at a glance.",
+      "title": "What your",
+      "titleHighlight": "workshop includes",
+      "subtitleLine1": "One day that prepares apprentices for their entire career.",
+      "subtitleLine2": "Developed with IHK Academy — proven and practical.",
       "items": [
         {
-          "title": "Time savings",
-          "description": "Pupils learn independently. You save valuable lesson time and can focus on other important tasks."
+          "title": "Understand your payslip",
+          "description": "Gross, net, social contributions — apprentices finally understand what's on their payslip and why."
         },
         {
-          "title": "Real-time overview",
-          "description": "The dashboard shows you at any time what your pupils are learning, where they stand and how they're progressing."
+          "title": "Create your own budget",
+          "description": "Every participant creates a personal budget. Not a template, but real numbers from their own life."
         },
         {
-          "title": "Targeted support",
-          "description": "Weak spots become visible immediately so you can support where needed. Strengths are rewarded and motivate pupils to keep going."
+          "title": "Plan first investments",
+          "description": "Set up an ETF savings plan, open a brokerage account — step by step without jargon."
         },
         {
-          "title": "GDPR-compliant",
-          "description": "We collect 0% data. Your pupils' data is in safe hands."
+          "title": "Understand insurance",
+          "description": "Which insurances do I really need? Apprentices learn the essential basics for their career start."
         },
         {
-          "title": "Evidence-based",
-          "description": "Our content is based on proven teaching methods and was tested in a research project with over 500 participants."
+          "title": "IHK certified",
+          "description": "The workshop meets IHK quality standards. Participants receive an official certificate."
         },
         {
-          "title": "Motivated pupils",
-          "description": "The gamified system with points, missions and leaderboards keeps your pupils motivated and learning sustainably."
+          "title": "App companion afterwards",
+          "description": "After the workshop, Bea continues to guide participants — with personalized tasks and reminders."
         }
       ]
     },
-    "useCases": {
-      "title": "How schools use",
-      "titleHighlight": "BeAFox",
-      "titlePost": "",
-      "subtitle": "Flexible use cases for different teaching situations",
-      "items": [
-        {
-          "title": "Lesson cover",
-          "description": "When a teacher is absent, pupils can learn independently with BeAFox. They stay busy and build important financial skills."
-        },
-        {
-          "title": "Homework & revision",
-          "description": "Pupils can learn with BeAFox at home or in their free time. The gamified system motivates them to stay active outside the classroom too."
-        },
-        {
-          "title": "Project weeks",
-          "description": "Perfect for project weeks on finance. Pupils work independently, teachers keep track of progress."
-        },
-        {
-          "title": "Elective subject",
-          "description": "BeAFox works ideally as a basis for an elective in financial education. Structured content, clear learning paths and motivating learning."
-        }
-      ],
-      "cta": "Become a partner"
-    },
-    "schoolProcess": {
-      "title": "In four steps",
-      "titleHighlight": "with BeAFox",
-      "steps": [
+    "workshop": {
+      "title": "How the",
+      "titleHighlight": "workshop works",
+      "format": {
+        "title": "Workshop format",
+        "duration": "Duration: 4-6 hours",
+        "groupSize": "Group size: 10-25 participants",
+        "location": "On-site at your location or at the IHK Academy",
+        "certificate": "Incl. IHK participation certificate"
+      },
+      "modules": [
         {
           "step": "1",
-          "title": "Free consultation",
-          "description": "We discuss your requirements and create an individual offer for your school.",
+          "title": "Payslip & budget planning",
+          "description": "Participants analyze a real payslip and create their personal budget.",
           "image": "/Maskottchen/Maskottchen-Beratung.png"
         },
         {
           "step": "2",
-          "title": "Simple setup",
-          "description": "We set up the app for your school and create accounts for all pupils. It's quick and straightforward.",
+          "title": "Insurance & retirement",
+          "description": "Which insurances are mandatory, which are useful? Practical exercise with real scenarios.",
           "image": "/Maskottchen/Maskottchen-Setup.png"
         },
         {
           "step": "3",
-          "title": "Pupils get started",
-          "description": "Pupils can learn with BeAFox anytime – in class, at home or in their free time.",
+          "title": "Investing & wealth building",
+          "description": "From savings account to ETF savings plan — participants open a demo brokerage account together.",
           "image": "/Maskottchen/Maskottchen-Start.png"
         },
         {
           "step": "4",
-          "title": "You stay in control",
-          "description": "The monitoring dashboard shows you in real time which pupils are active, where they are and how they're progressing.",
+          "title": "Tax return & app companion",
+          "description": "Understand the basics of tax returns. Then Bea continues to guide each participant individually.",
+          "image": "/Maskottchen/Maskottchen-Begleitung.png"
+        }
+      ]
+    },
+    "price": {
+      "headingPre": "Request your",
+      "headingHighlight": "workshop now",
+      "ctaCardTitle": "Custom workshop offer",
+      "ctaCardBodyLine1": "We adapt the workshop to your group size and requirements.",
+      "ctaCardBodyLine2": "Contact us for a non-binding offer!",
+      "requestQuoteCta": "Request a quote",
+      "bookCta": "Book a call"
+    }
+  },
+  "bildungshaus": {
+    "meta": {
+      "title": "BeAFox × Bildungshaus Wolfsburg – Finances for every life situation",
+      "description": "The workshop series from BeAFox and Bildungshaus Wolfsburg. Practical, interactive, and right when it matters.",
+      "ogImageAlt": "BeAFox × Bildungshaus Wolfsburg"
+    },
+    "structuredData": {
+      "courseName": "Finances for every life situation",
+      "courseDescription": "Workshop series from BeAFox and Bildungshaus Wolfsburg on financial life situations",
+      "providerBildungshausName": "Bildungshaus Wolfsburg",
+      "providerBildungshausUrl": "https://www.bildungshaus-wolfsburg.de",
+      "providerBeafoxName": "BeAFox UG (haftungsbeschränkt)",
+      "providerBeafoxUrl": "https://beafox.app"
+    },
+    "hero": {
+      "badge": "BeAFox × Bildungshaus Wolfsburg",
+      "titlePre": "Finances for",
+      "titleHighlight": "every life situation",
+      "description": "The workshop series from BeAFox and Bildungshaus Wolfsburg. Practical, interactive, and right when it matters.",
+      "cardText": "I help you prepare for the moments when money decisions really count.",
+      "mascotAlt": "BeAFox × Bildungshaus Wolfsburg",
+      "ctaPrimary": "Request a workshop",
+      "ctaSecondary": "Book a consultation"
+    },
+    "trust": {
+      "preTitle": "Official partnership",
+      "highlight": "with Bildungshaus Wolfsburg"
+    },
+    "intro": {
+      "heading": "Real situations.",
+      "headingHighlight": "Real answers.",
+      "subtitle": "Workshops that meet young people exactly where they face their first big money decision.",
+      "statValue": "6",
+      "statHeading": "Workshops on the most important life situations",
+      "p1": "Together with Bildungshaus Wolfsburg we developed a workshop series that anchors financial education in real life moments — not textbook theory, but answers to the questions young people actually have.",
+      "bullets": [
+        "Each workshop covers one concrete life situation",
+        "Interactive with Bea as a digital companion",
+        "Open to everyone — no prior knowledge required"
+      ]
+    },
+    "topics": {
+      "title": "Workshop topics",
+      "titleHighlight": "at a glance",
+      "subtitle": "Six life situations. Six workshops. Each bookable on its own.",
+      "items": [
+        {
+          "icon": "💰",
+          "title": "The first paycheck",
+          "description": "What to do with your first own money? Set up a budget, choose an account structure, avoid typical mistakes."
+        },
+        {
+          "icon": "🏠",
+          "title": "Your first own place",
+          "description": "Deposit, utilities, lease — what does moving out really cost and how do you plan for it?"
+        },
+        {
+          "icon": "🛡️",
+          "title": "Understanding insurance",
+          "description": "Which insurance do you really need? Which can you skip? Neutral and with no sales pitch."
+        },
+        {
+          "icon": "📄",
+          "title": "The first tax return",
+          "description": "Step by step through your tax return. What goes in, what gets money back, which tools help."
+        },
+        {
+          "icon": "🚗",
+          "title": "Car, phone, instalment plans",
+          "description": "Financing vs. buying, spotting instalment traps, what is worth it and what is not."
+        },
+        {
+          "icon": "📈",
+          "title": "Starting to invest",
+          "description": "ETFs, savings accounts, retirement — the first step toward building wealth. Explained simply, no jargon."
+        }
+      ]
+    },
+    "why": {
+      "title": "Why education providers",
+      "titleHighlight": "book this series",
+      "subtitle": "For adult education centres, Bildungshäuser, and similar institutions — without building a full curriculum from scratch.",
+      "items": [
+        {
+          "number": "1",
+          "title": "Financial education without building your own curriculum",
+          "text": "You do not need to develop your own programme. The workshop series is fully designed, tested, and ready to run."
+        },
+        {
+          "number": "2",
+          "title": "Participants keep coming back",
+          "text": "Each workshop stands alone — and still makes people want the next one. The life situations build on each other."
+        },
+        {
+          "number": "3",
+          "title": "Bea stays on as a digital companion",
+          "text": "After the workshop, participants keep access to Bea. What they learn does not stay in the room — they can apply it in daily life."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bring this workshop series to your institution",
+      "description": "Do you run adult education, a Bildungshaus, or a similar institution? We adapt the series to your audience and your programme.",
+      "ctaPrimary": "Request a partnership",
+      "ctaSecondary": "Bildungshaus Wolfsburg"
+    },
+    "images": {
+      "mascotAlt": "BeAFox × Bildungshaus Wolfsburg",
+      "introIllustrationAlt": "Bea — illustration on financial life situations (BeAFox × Bildungshaus Wolfsburg)",
+      "ctaMascotAlt": "Bea waving — workshop series and partnership with Bildungshaus Wolfsburg"
+    }
+  },
+  "eduplaces": {
+    "meta": {
+      "title": "BeAFox × Eduplaces – Financial education in Germany’s largest school app store",
+      "description": "BeAFox is the first and only app for financial capability on Eduplaces. GDPR-compliant, with a teacher dashboard, and ready to use in about five minutes.",
+      "ogImageAlt": "BeAFox × Eduplaces"
+    },
+    "structuredData": {
+      "applicationName": "BeAFox",
+      "description": "The first and only app for financial capability on Eduplaces — GDPR-compliant, with a teacher dashboard.",
+      "authorName": "BeAFox UG (haftungsbeschränkt)",
+      "authorUrl": "https://beafox.app"
+    },
+    "breadcrumbLabel": "Eduplaces",
+    "hero": {
+      "badge": "BeAFox × Eduplaces",
+      "titlePre": "Financial education in",
+      "titleHighlight": "the largest school app store",
+      "description": "BeAFox is the first and only app for financial capability on Eduplaces. GDPR-compliant, with a teacher dashboard, and ready to use in about five minutes.",
+      "cardText": "I’m right where teachers find their tools — on Eduplaces.",
+      "mascotAlt": "BeAFox × Eduplaces",
+      "ctaPrimary": "View on Eduplaces",
+      "ctaSecondary": "Book a consultation"
+    },
+    "trust": {
+      "preTitle": "Listed on",
+      "highlight": "Germany’s largest school app store"
+    },
+    "intro": {
+      "heading": "The only finance app",
+      "headingHighlight": "schools can use right away",
+      "subtitle": "Through Eduplaces, schools license digital tools — quickly, GDPR-compliant, and without an IT project.",
+      "statValue": "#1",
+      "statHeading": "Only financial education app on Eduplaces",
+      "p1": "Eduplaces is the central app store for German schools. Hundreds of apps for maths, languages, computing — but until now, not a single one for financial education. BeAFox fills that gap as the first and only listed app for financial capability.",
+      "bullets": [
+        "Licensed directly via Eduplaces — no separate contract needed",
+        "Data processing agreement and GDPR compliance already in place",
+        "Servers in Germany, no ads, no product placements"
+      ]
+    },
+    "features": {
+      "title": "What your school",
+      "titleHighlight": "gets",
+      "subtitle": "Two parts, one goal: students who can make financial decisions independently.",
+      "items": [
+        {
+          "title": "The app students open by choice",
+          "description": "Short lessons, quizzes, missions, and leaderboards. Financial skills taught in a playful way — budgeting, debt prevention, saving, insurance. Students learn at their own pace, not from chalk-and-talk only."
+        },
+        {
+          "title": "The dashboard that supports teachers",
+          "description": "View progress, unlock modules, manage classes. Teachers keep oversight without extra workload — all in one interface."
+        },
+        {
+          "title": "The security school authorities need",
+          "description": "Fully GDPR-compliant with a data processing agreement on file. Servers in Germany. No advertising, no product recommendations, no sales agenda. Completely neutral and independent."
+        }
+      ]
+    },
+    "why": {
+      "title": "Why go through",
+      "titleHighlight": "Eduplaces",
+      "items": [
+        {
+          "number": "1",
+          "title": "Live in minutes — not months",
+          "text": "No tender process, no IT project, no paperwork marathon. You license BeAFox directly through Eduplaces and your students can start the same day."
+        },
+        {
+          "number": "2",
+          "title": "Data protection is already sorted",
+          "text": "The data processing agreement is available via Eduplaces, servers in Germany, GDPR compliance reviewed. No endless back-and-forth with your data protection officer."
+        },
+        {
+          "number": "3",
+          "title": "Financial education is missing — everywhere",
+          "text": "On Eduplaces there are apps for almost every subject. Until now, there was not a single one for financial education. BeAFox answers a need that is rarely in the curriculum but matters in your students’ lives every day."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Activate BeAFox for your school",
+      "description": "License BeAFox directly through Eduplaces or talk to us about a tailored offer for your school.",
+      "ctaPrimary": "License on Eduplaces",
+      "ctaSecondary": "Book a consultation"
+    },
+    "images": {
+      "mascotAlt": "BeAFox × Eduplaces",
+      "introIllustrationAlt": "Bea — BeAFox on the Eduplaces school app store",
+      "ctaMascotAlt": "Bea — BeAFox for schools via Eduplaces"
+    }
+  },
+  "schools": {
+    "meta": {
+      "title": "Schulen – Jeder Schüler verdient eine Bea",
+      "description": "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte — selbstständiges Lernen ohne Unterrichtsausfall. Jetzt Demo anfragen.",
+      "ogTitle": "Schulen – Jeder Schüler verdient eine Bea",
+      "ogDescription": "Bea begleitet Schüler durch jede Finanzsituation. Dashboard für Lehrkräfte, selbstständiges Lernen, null Aufwand."
+    },
+    "hero": {
+      "badge": "BeAFox für Schulen",
+      "beaName": "Bea",
+      "priceHighlight": "Jeder Schüler",
+      "pricePost": "verdient eine Bea",
+      "description": "Ich bereit Schüler auf das Leben danach vor.",
+      "ctaPartner": "Demo anfordern",
+      "ctaBook": "Termin buchen"
+    },
+    "trustSignal": {
+      "preTitle": "15+ schools",
+      "highlight": "already trust Bea"
+    },
+    "mockups": {
+      "pathAlt": "BeAFox Lernpfad Mockup",
+      "stufenAlt": "BeAFox Stufen Mockup",
+      "rankingAlt": "BeAFox Rangliste Mockup",
+      "mascotAlt": "BeAFox Maskottchen"
+    },
+    "images": {
+      "problemMascotAlt": "Lack of financial education in schools",
+      "solutionMascotAlt": "Bea — financial education for schools",
+      "fundingMascotAlt": "Bea — financial companion for schools",
+      "processStepMascotAlt": "Bea — {title}"
+    },
+    "structuredData": {
+      "serviceName": "BeAFox for schools",
+      "serviceDescription": "Bea helps students become financially capable. Playful app, live dashboard for teachers — no prep, no missed class time. Request a demo now.",
+      "providerName": "BeAFox UG (haftungsbeschränkt)"
+    },
+    "problemSolution": {
+      "problemHeaderPre": "Wissen allein",
+      "problemHeaderHighlight": "reicht nicht aus",
+      "problemShockStatValue": "Über 90%",
+      "problemShockStatHeadline": "der Schüler können nach der Schule keine einzige Finanzentscheidung selbstständig treffen",
+      "problemShockStatBody": "Sie wissen vielleicht was Zinsen sind. Aber wenn der erste Vertrag kommt und das erste Gehalt kommt, steht niemand daneben und sagt was zu tun ist.",
+      "problemBullets": [
+        "Finanzen existieren in der Schule kaum",
+        "Schüler werden nicht aktiv auf das Leben danach vorbereitet",
+        "Lehrkräfte wollen helfen, aber es fehlt an einfachen Lösungen",
+        "Jeder 4. junge Erwachsene ist innerhalb von 2 Jahren verschuldet"
+      ],
+      "solutionHeaderPre": "Die einzige App die Schüler",
+      "solutionHeaderHighlight": "freiwillig öffnen",
+      "solutionImpactStatValue": "98%",
+      "solutionImpactStatHeadline": "Zufriedenheit bei Lehrkräften und Schülern",
+      "solutionText": "Bea ist die Lösung, die gefehlt hat. Schüler lernen selbstständig und üben echte Entscheidungen. Im Unterricht, in Vertretungsstunden oder als Hausaufgabe.",
+      "solutionText2": "Ihr Dashboard zeigt wer lernt, wer pausiert und wer Unterstützung braucht. Sie greifen nur ein, wenn es nötig ist.",
+      "solutionBullets": [
+        "Bea trainiert Handlungsfähigkeit — nicht nur Wissen",
+        "Dashboard zeigt jeden Fortschritt — pro Schüler, pro Klasse",
+        "Null Vorbereitung: Schüler starten sofort, Sie lehnen sich zurück",
+        "Schüler bleiben freiwillig dran dank einem spielerischen System"
+      ],
+      "ctaButton": "Demo anfordern"
+    },
+    "benefits": {
+      "title": "Was Sie",
+      "titleHighlight": "konkret bekommen?",
+      "subtitle": "Alles aus einer Hand:\nKeine Vorbereitung, kein IT-Aufwand, kein zusätzliches Personal.",
+      "sdgsIntro": "Together we support the UN Sustainable Development Goals",
+      "sdgFallbackAlt": "Sustainable Development Goal {id}",
+      "items": [
+        {
+          "title": "Null Vorbereitungszeit",
+          "description": "Bea übernimmt. Schüler starten sofort — in Vertretungsstunden, Projektwochen oder als Hausaufgabe. Sie müssen nichts vorbereiten."
+        },
+        {
+          "title": "Live-Dashboard für Lehrkräfte",
+          "description": "Wer übt, wer hängt, wer Hilfe braucht — alles auf einen Blick. Pro Schüler, pro Klasse, als PDF-Export."
+        },
+        {
+          "title": "Schwächen erkennen, Stärken belohnen",
+          "description": "Bea zeigt wo einzelne Schüler nicht weiterkommen. Gute Leistungen werden automatisch mit Punkten und Badges belohnt."
+        },
+        {
+          "title": "100% DSGVO-konform",
+          "description": "Gehostet in Deutschland, keine Daten an Dritte, keine Werbung. Ihr Datenschutzbeauftragter sagt ja."
+        },
+        {
+          "title": "500+ Teilnehmer im Forschungsprojekt",
+          "description": "Die Methode ist wissenschaftlich getestet. Ergebnisse: höheres Selbstvertrauen bei Finanzentscheidungen, messbar bessere Handlungsfähigkeit."
+        },
+        {
+          "title": "Schüler, die freiwillig dranbleiben",
+          "description": "Punkte, Missionen, Ranglisten und Bea als persönliche Begleiterin. Kein Zwang — Schüler öffnen die App weil sie wollen, nicht weil sie müssen."
+        }
+      ]
+    },
+    "funding": {
+      "badge": "Gut zu wissen",
+      "titlePre": "Bea kann für Ihre Schule",
+      "titleHighlight": "kostenlos",
+      "titlePost": " sein!",
+      "description": "Viele unserer Partnerschulen nutzen Bea ohne einen Cent aus dem eigenen Budget. Wie? Über bestehende Fördertöpfe, die fast jede Schule abrufen kann, aber kaum jemand kennt.",
+      "bullets": [
+        "Wir prüfen gemeinsam welche Fördertöpfe für Ihre Schule passen",
+        "Wir helfen beim Antrag und Sie schicken ihn nur noch ab",
+        "Innerhalb von 48 Stunden wissen Sie ob Bea für Ihre Schule kostenlos ist"
+      ],
+      "ctaButton": "Jetzt kostenlos beraten lassen"
+    },
+    "schoolProcess": {
+      "title": "Startbereit in",
+      "titleHighlight": "48 Stunden",
+      "steps": [
+        {
+          "step": "1",
+          "title": "Kurzes Gespräch",
+          "description": "15 Minuten reichen. Wir klären Ihre Schülerzahl, Ihre Ziele und prüfen ob Fördermittel möglich sind.",
+          "image": "/Maskottchen/Maskottchen-Beratung.png"
+        },
+        {
+          "step": "2",
+          "title": "Wir richten alles ein",
+          "description": "Klassen anlegen, Accounts erstellen, Dashboard startklar machen. Null Aufwand für Sie oder Ihre IT.",
+          "image": "/Maskottchen/Maskottchen-Setup.png"
+        },
+        {
+          "step": "3",
+          "title": "Schüler öffnen Bea",
+          "description": "Keine Einführung nötig. Schüler starten sofort — im Unterricht, in der Vertretungsstunde oder zu Hause.",
+          "image": "/Maskottchen/Maskottchen-Start.png"
+        },
+        {
+          "step": "4",
+          "title": "Sie lehnen sich zurück",
+          "description": "Dashboard öffnen, Fortschritte sehen, fertig. Bea kümmert sich um den Rest.",
           "image": "/Maskottchen/Maskottchen-Begleitung.png"
         }
       ]
     },
     "pricing": {
-      "title": "Fair pricing for",
-      "titleHighlight": "schools",
-      "subtitle": "Flexible tiered pricing tailored to your school or institution.",
+      "title": "Faire Preise für",
+      "titleHighlight": "Schulen",
+      "subtitle": "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution.",
       "price": "€1",
-      "perPupil": "per pupil",
-      "perYear": "per year",
-      "tagline": "Transparent, fair and no hidden costs.",
-      "partnerCta": "Become a partner",
-      "includedTitle": "Included in the price:",
+      "perPupil": "pro Schüler",
+      "perYear": "pro Jahr",
+      "tagline": "Transparent, fair und ohne versteckte Kosten.",
+      "partnerCta": "Demo anfordern",
+      "includedTitle": "Im Preis enthalten:",
       "includedItems": [
-        "Full access for all pupils",
-        "Monitoring dashboard for teachers",
-        "Unlimited lessons & features",
-        "PDF export for reports",
-        "Support & updates"
+        "Vollständiger Zugang für alle Schüler",
+        "Monitoring-Dashboard für Lehrer",
+        "Unbegrenzte Lektionen & Features",
+        "PDF-Export für Reports",
+        "Support & Updates"
       ],
-      "extraTitle": "Additional benefits:",
+      "extraTitle": "Zusätzliche Vorteile:",
       "extraItems": [
-        "No hidden costs",
-        "Cancel monthly",
-        "GDPR-compliant",
-        "Simple setup",
-        "Personal contact"
+        "Keine versteckten Kosten",
+        "Monatlich kündbar",
+        "DSGVO-konform",
+        "Einfache Einrichtung",
+        "Persönlicher Ansprechpartner"
       ]
     },
     "individualOffer": {
-      "headingPre": "Financial education for",
-      "headingHighlight": "your school",
-      "ctaCardTitle": "A tailored offer for your school",
-      "ctaCardBodyLine1": "Every school has different needs. We create an offer that fits your pupil numbers and budget — fair tiered pricing, transparent and with no hidden costs.",
-      "requestQuoteCta": "Request a quote",
-      "bookCta": "Book a call"
+      "headingPre": "Finanzbildung für",
+      "headingHighlight": "Ihre Schule",
+      "ctaCardTitle": "Individuelles Angebot für Ihre Schule",
+      "ctaCardBodyLine1": "Jede Schule hat unterschiedliche Anforderungen. Wir erstellen ein Angebot, das zu Ihrer Schülerzahl und Ihrem Budget passt — faire Staffelpreise, transparent und ohne versteckte Kosten.",
+      "requestQuoteCta": "Angebot anfordern",
+      "bookCta": "Termin vereinbaren"
     },
     "dashboard": {
-      "title": "The",
-      "titleHighlight": "monitoring dashboard",
-      "subtitle": "Full control over your pupils' learning progress – everything at a glance.",
+      "title": "So setzen Schulen",
+      "titleHighlight": "Bea ein",
+      "mockupAltFallback": "Dashboard view",
       "items": [
         {
-          "id": "schueler",
-          "title": "Manage pupils",
-          "description": "Create pupil accounts, manage classes and keep track of all participants.",
-          "mockup": "/Mockup-Macbook/Schueler.png"
-        },
-        {
-          "id": "fortschritt",
-          "title": "Live progress",
-          "description": "See in real time what each pupil is learning and how they're progressing.",
+          "id": "vertretung",
+          "title": "Vertretungsstunden mit Inhalt füllen",
+          "description": "Lehrkraft krank? Schüler öffnen Bea und lernen selbstständig. Kein Lückenfüller, sondern echte Lebensskills. Sie sehen im Dashboard wer was gemacht hat.",
           "mockup": "/Mockup-Macbook/Live-Fortschritt.png"
         },
         {
-          "id": "stufen",
-          "title": "Level tracking",
-          "description": "Track your pupils' progress through all learning levels. See at a glance who has completed which topics.",
-          "mockup": "/Mockup-Macbook/Stufen-Tracking.png"
-        },
-        {
-          "id": "verwalten",
-          "title": "Manage class",
-          "description": "Organise your classes, assign lessons and manage access.",
+          "id": "unterricht",
+          "title": "Im Unterricht gezielt einsetzen",
+          "description": "Projektwoche, Wirtschaftskunde oder fächerübergreifend: Weisen Sie Themen pro Klasse zu und verfolgen Sie den Fortschritt live.",
           "mockup": "/Mockup-Macbook/Verwalten.png"
         },
         {
-          "id": "pdf",
-          "title": "Pupil PDF export",
-          "description": "Export detailed reports and progress summaries as PDF. Perfect for parent meetings, reports or documentation.",
-          "mockup": "/Mockup-Macbook/Schueler-PDF.png"
+          "id": "hausaufgabe",
+          "title": "Als Hausaufgabe aufgeben",
+          "description": "Schüler üben zu Hause in ihrem Tempo. Sie sehen am nächsten Tag wer geübt hat und wo es hakt — ohne etwas korrigieren zu müssen.",
+          "mockup": "/Mockup-Macbook/Stufen-Tracking.png"
         },
         {
           "id": "klasse",
-          "title": "Create class",
-          "description": "Create new classes in a few clicks. Invite pupils via CSV import or add them manually.",
+          "title": "Neue Klasse in 2 Minuten einrichten",
+          "description": "CSV hochladen oder Schüler manuell anlegen. Klasse zuweisen, fertig. Keine IT-Abteilung nötig.",
           "mockup": "/Mockup-Macbook/Klasse-erstellen.png"
+        },
+        {
+          "id": "pdf",
+          "title": "PDF-Reports für Elterngespräche",
+          "description": "Fortschrittsberichte per Klick exportieren. Perfekt für Zeugniskonferenzen, Elternabende und Dokumentation.",
+          "mockup": "/Mockup-Macbook/Schueler-PDF.png"
         }
       ],
-      "cta": "Become a partner"
+      "cta": "Demo anfordern"
     },
     "whyFinance": {
-      "badgeTitle": "Why financial education?",
+      "badgeTitle": "Warum Finanzbildung?",
       "points": [
         {
           "number": "1",
-          "title": "Financial education is general education",
-          "description": "Financial literacy is an important part of general education. Every young person should have the chance to learn financial skills – regardless of family background."
+          "title": "Finanzbildung ist Allgemeinbildung",
+          "description": "Finanzielle Bildung ist ein wichtiger Teil der Allgemeinbildung. Jeder junge Mensch sollte die Möglichkeit haben, finanzielle Kompetenzen zu erlernen – unabhängig vom familiären Hintergrund."
         },
         {
           "number": "2",
-          "title": "Debt prevention",
-          "description": "Statistically, at least one pupil per class will become over-indebted in their lifetime. High-quality financial education effectively helps prevent over-indebtedness."
+          "title": "Schulden-Prävention",
+          "description": "Statistisch gesehen wird sich mindestens ein:e Schüler:in pro Klasse im Laufe des Lebens überschulden. Hochwertige finanzielle Bildung beugt Überschuldung effektiv vor."
         },
         {
           "number": "3",
-          "title": "Equal opportunities",
-          "description": "Everyone should understand finances to form their own opinion; regardless of their own financial and family resources."
+          "title": "Chancengerechtigkeit",
+          "description": "Jede:r sollte über Finanzen Bescheid wissen, um sich eine eigene Meinung bilden zu können; unabhängig davon, welche eigenen finanziellen und familiären Ressourcen man mitbringt."
         }
       ]
     },
     "testimonials": {
-      "title": "Feedback from",
-      "titleHighlight": "teachers",
-      "subtitle": "What participating teachers say after introducing BeAFox.",
+      "title": "Feedback von",
+      "titleHighlight": "Lehrkräften",
+      "subtitle": "Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.",
       "items": [
         {
-          "quote": "The training was extremely enriching and is highly recommended. The presenter did an excellent job of bringing a complex topic to life in an accessible way. I'm already looking forward to using the materials in my teaching.",
-          "author": "Teacher, Grammar school"
+          "quote": "Die Fortbildung war äußerst bereichernd und ist absolut empfehlenswert. Der Referentin gelang es hervorragend, ein komplexes Thema lebendig und verständlich darzustellen. Ich freue mich bereits darauf, die Unterlagen in meinem Unterricht einzusetzen.",
+          "author": "Lehrkraft, Gymnasium"
         },
         {
-          "quote": "The training was really interesting and provided many practical methods that are easy to implement in the classroom. The materials are well prepared and ready to use.",
-          "author": "Teacher, Secondary school"
+          "quote": "Die Fortbildung war mega interessant und hat viele praktische und im Unterricht leicht umsetzbare Methoden vermittelt. Die Materialen sind toll aufbereitet und sofort einsetzbar.",
+          "author": "Lehrkraft, Realschule"
         },
         {
-          "quote": "Financial education is taught here in a very practical way with lots of good application tips. After this, there's really no reason not to cover this important and interesting topic in school.",
-          "author": "Teacher, Vocational school"
+          "quote": "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln.",
+          "author": "Lehrkraft, Berufsschule"
         }
       ]
     },
     "faq": {
-      "title": "Frequently asked questions",
-      "subtitle": "Everything you need to know about BeAFox for Schools.",
+      "title": "Häufige Fragen",
+      "subtitle": "Alles, was Sie über BeAFox für Schulen wissen müssen.",
       "items": [
         {
           "id": 1,
-          "question": "How long does setup take?",
-          "answer": "Setup is quick and straightforward. After the consultation we set up the app for your school and create accounts for all pupils. The whole process usually takes just a few days."
+          "question": "Wie lange dauert die Einrichtung?",
+          "answer": "Die Einrichtung geht schnell und unkompliziert. Nach der Beratung richten wir die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Der gesamte Prozess dauert in der Regel nur wenige Tage."
         },
         {
           "id": 2,
-          "question": "Do pupils need their own devices?",
-          "answer": "No, BeAFox works on all common devices – smartphones, tablets and computers. Pupils can use the app on their own devices or on school devices."
+          "question": "Benötigen die Schüler eigene Geräte?",
+          "answer": "Nein, BeAFox funktioniert auf allen gängigen Geräten – Smartphones, Tablets und Computern. Die Schüler können die App auf ihren eigenen Geräten nutzen oder auf schuleigenen Geräten."
         },
         {
           "id": 3,
-          "question": "How is data protected?",
-          "answer": "All data is stored securely and in line with GDPR. We take data protection and security seriously. Your pupils' data is in safe hands."
+          "question": "Wie werden die Daten geschützt?",
+          "answer": "Alle Daten werden sicher und DSGVO-konform gespeichert. Wir legen großen Wert auf Datenschutz und Sicherheit. Ihre Schülerdaten sind bei uns in besten Händen."
         },
         {
           "id": 4,
-          "question": "Can we try BeAFox before deciding?",
-          "answer": "Yes! We offer a free consultation and can arrange a trial period. Just get in touch for more information."
+          "question": "Können wir BeAFox testen, bevor wir uns entscheiden?",
+          "answer": "Ja, gerne! Wir bieten eine kostenlose Beratung und können Ihnen auch eine Testphase ermöglichen. Kontaktieren Sie uns einfach für weitere Informationen."
         },
         {
           "id": 5,
-          "question": "What if we no longer want to use BeAFox?",
-          "answer": "No problem! You can cancel BeAFox at any time on a monthly basis. There are no long-term contracts or hidden costs."
+          "question": "Was passiert, wenn wir BeAFox nicht mehr nutzen möchten?",
+          "answer": "Kein Problem! Sie können BeAFox jederzeit monatlich kündigen. Es gibt keine langfristigen Verträge oder versteckten Kosten."
         },
         {
           "id": 6,
-          "question": "Is there training for teachers?",
-          "answer": "Yes, we offer training for teachers where we explain the system, the dashboard and best practices for use in the classroom."
+          "question": "Gibt es Schulungen für Lehrkräfte?",
+          "answer": "Ja, wir bieten Fortbildungen für Lehrkräfte an, in denen wir das System, das Dashboard und die besten Praktiken für den Einsatz im Unterricht erklären."
         }
       ],
-      "viewAllCta": "View all FAQs"
+      "viewAllCta": "Alle FAQs ansehen"
     },
     "cta": {
-      "title": "Ready to bring financial education to your school?",
-      "subtitle": "Contact us for a no-obligation consultation and receive an individual offer for your school.",
-      "cta": "Become a partner"
+      "title": "Bereit, Finanzbildung in Ihre Schule zu bringen?",
+      "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihre Schule.",
+      "cta": "Demo anfordern"
     }
   },
   "contact": {
@@ -1596,7 +1903,8 @@
         "pre": "We look forward to",
         "highlight": "your message"
       },
-      "description": "Our support team is here for you and will answer your questions as quickly and helpfully as possible."
+      "description": "Our support team is here for you and will answer your questions as quickly and helpfully as possible.",
+      "cardText": "I look forward to hearing from you!"
     },
     "info": {
       "title": "Contact details",
@@ -1611,7 +1919,8 @@
       "responseTime": {
         "prefix": "Average response time:",
         "value": "under 24 hours"
-      }
+      },
+      "addressLine": "BeAFox UG (limited liability) — Neutraubling, Germany"
     },
     "form": {
       "title": "Send a message",
@@ -1621,6 +1930,23 @@
       "errorTitle": "Something went wrong",
       "sending": "Sending...",
       "submit": "Send message",
+      "successTitle": "Message sent!",
+      "sendAnother": "Send another message",
+      "honeypotLabel": "Website",
+      "messageLength": "{count} / 5,000",
+      "privacy": {
+        "prefix": "By submitting, you agree to our",
+        "linkLabel": "Privacy Policy",
+        "suffix": "."
+      },
+      "validation": {
+        "nameMissing": "Please enter your name.",
+        "emailMissing": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "subjectMissing": "Please enter a subject.",
+        "messageMissing": "Please enter a message.",
+        "messageTooShort": "Your message is too short. Please describe your request in more detail."
+      },
       "fields": {
         "name": {
           "label": "Name *",
@@ -1653,6 +1979,22 @@
         "message": {
           "label": "Message *",
           "placeholder": "Tell us how we can help..."
+        },
+        "schoolName": {
+          "label": "School name",
+          "placeholder": "e.g. Max Mustermann School"
+        },
+        "schoolLocation": {
+          "label": "School location",
+          "placeholder": "e.g. Neutraubling"
+        },
+        "companyName": {
+          "label": "Company name",
+          "placeholder": "e.g. Muster GmbH"
+        },
+        "companyLocation": {
+          "label": "Company location",
+          "placeholder": "e.g. Regensburg"
         }
       }
     },
@@ -1662,6 +2004,12 @@
       "email": "Send email",
       "call": "Call us"
     },
+    "structuredData": {
+      "pageName": "BeAFox Contact",
+      "description": "Contact form and appointment booking for BeAFox",
+      "organizationName": "BeAFox UG (limited liability)"
+    },
+    "quickLinksHeader": "Maybe you're looking for this?",
     "quickLinks": {
       "schools": {
         "title": "For schools",
@@ -1675,6 +2023,165 @@
         "title": "Individuals",
         "description": "BeAFox Unlimited for you"
       }
+    }
+  },
+  "ihkAkademie": {
+    "meta": {
+      "title": "IHK Academy – AzubiGo: Financial education for apprentices",
+      "description": "AzubiGo is the workshop series from BeAFox and IHK Academy Eastern Bavaria. 3.5 hours of practical financial education for apprentices — with an IHK certificate.",
+      "ogImageAlt": "BeAFox × IHK Academy — AzubiGo workshop"
+    },
+    "hero": {
+      "badge": "BeAFox × IHK Academy",
+      "mascotAlt": "BeAFox × IHK Academy",
+      "cardText": "Together with the IHK Academy, we help apprentices become financially capable.",
+      "titlePre": "AzubiGo:",
+      "titleHighlight": "Financial education for apprentices",
+      "description": "The official workshop series from BeAFox and IHK Academy Eastern Bavaria. Practical, playful, and with a certificate.",
+      "ctaWorkshop": "Book workshop",
+      "ctaConsultation": "Book a consultation"
+    },
+    "chips": {
+      "duration": "3.5-hour workshop",
+      "certificate": "IHK certificate",
+      "presenceOnline": "On-site & online"
+    },
+    "trust": {
+      "preTitle": "Official partnership",
+      "highlight": "with the IHK Academy"
+    },
+    "intro": {
+      "pill": "The workshop series",
+      "heading": "IHK quality meets",
+      "headingHighlight": "playful learning",
+      "p1": "AzubiGo is the joint workshop series from BeAFox and the IHK Academy in Eastern Bavaria. In 3.5 hours, apprentices learn the essential basics of money — interactively, practically, and with the BeAFox app as a companion.",
+      "p2": "What makes it special: the workshop combines IHK-approved content with Bea’s playful learning system. Apprentices use the app, complete missions together, and take what they learn straight into everyday life.",
+      "bullets": [
+        "Official IHK certificate for every participant",
+        "Combination of live workshop and app-based learning",
+        "Available on-site in Regensburg or online"
+      ],
+      "statValue": "100%",
+      "statHeading": "Satisfaction among participants and companies"
+    },
+    "images": {
+      "mascotAlt": "BeAFox × IHK Academy — AzubiGo workshop",
+      "certificateAlt": "IHK certificate — AzubiGo workshop with BeAFox",
+      "partnerAlt": "IHK Academy Eastern Bavaria"
+    },
+    "topics": {
+      "title": "What apprentices learn in the",
+      "titleHighlight": "workshop",
+      "subtitle": "3.5 hours of focused financial knowledge — interactive, not lecture-style.",
+      "items": [
+        {
+          "title": "Understanding money",
+          "description": "Budgeting, account models, income & expenses"
+        },
+        {
+          "title": "Payslip & taxes",
+          "description": "What stays from your salary — and why"
+        },
+        {
+          "title": "Insurance & contracts",
+          "description": "Which are mandatory, which you can skip"
+        },
+        {
+          "title": "Saving & provision",
+          "description": "Building reserves, understanding retirement planning"
+        },
+        {
+          "title": "Avoiding debt",
+          "description": "Overdraft, instalment plans, reminders — how to avoid them"
+        },
+        {
+          "title": "Team building & missions",
+          "description": "Learning together, challenging each other"
+        }
+      ]
+    },
+    "whyAzubiGo": {
+      "title": "Why companies send their apprentices",
+      "titleHighlight": "to AzubiGo",
+      "items": [
+        {
+          "number": "1",
+          "title": "Apprentices who manage their money are more likely to stay",
+          "text": "Financial stress is the most common reason people drop out of training. After AzubiGo, your apprentices know what to do with their pay — so they can focus on the apprenticeship."
+        },
+        {
+          "number": "2",
+          "title": "Your reputation as a training company grows",
+          "text": "Companies that invest in real life skills attract applicants. AzubiGo with an IHK certificate is a selling point for every careers page and every training flyer."
+        },
+        {
+          "number": "3",
+          "title": "Zero extra work for your team",
+          "text": "You register your apprentices; we handle the rest. Workshop in the morning, back on the job in the afternoon — no multi-day seminar, no internal programme someone has to run."
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Why companies book",
+      "titleHighlight": "AzubiGo",
+      "subtitle": "The workshop pays off — for apprentices and for you.",
+      "items": [
+        {
+          "title": "Just 3.5 hours — maximum impact",
+          "description": "Half a day is enough. Apprentices leave with concrete knowledge and a plan for their money."
+        },
+        {
+          "title": "IHK certificate included",
+          "description": "Every participant receives an official IHK certificate — ideal for training reports and reviews."
+        },
+        {
+          "title": "App access included",
+          "description": "After the workshop, apprentices keep learning with Bea — playfully, at their pace, with no extra effort for you."
+        },
+        {
+          "title": "On-site or online",
+          "description": "Flexible booking: in person in Regensburg or as a live online workshop in the virtual training room."
+        },
+        {
+          "title": "No frontal teaching",
+          "description": "Interactive exercises, team missions, and real scenarios. Apprentices learn by doing, not by listening."
+        },
+        {
+          "title": "In-house from 10 participants",
+          "description": "We come to you. Your date, your rooms, content tailored to your company."
+        }
+      ]
+    },
+    "dates": {
+      "title": "Upcoming",
+      "titleHighlight": "dates",
+      "subtitle": "€125 per apprentice — including IHK certificate and BeAFox app access.",
+      "securePlace": "Reserve a seat",
+      "allDatesLink": "All dates on ihk-wissen.de",
+      "items": [
+        {
+          "date": "4 May 2026",
+          "type": "Online",
+          "location": "Virtual training room",
+          "status": "Guaranteed start"
+        },
+        {
+          "date": "1 October 2026",
+          "type": "On-site",
+          "location": "Regensburg, Im Gewerbepark B27"
+        },
+        {
+          "date": "10 November 2026",
+          "type": "Online",
+          "location": "Virtual training room"
+        }
+      ]
+    },
+    "inhouseCta": {
+      "title": "AzubiGo for your company",
+      "description": "Want AzubiGo as an in-house workshop for your apprentices? We come to you — backed by the IHK Academy. From 10 participants, we prepare a tailored quote.",
+      "inhouseButton": "Request in-house quote",
+      "scheduleButton": "Book an appointment"
     }
   },
   "authLogin": {
@@ -2529,10 +3036,7 @@
     "hero": {
       "headlineKnow": "KNOWLEDGE.",
       "headlineMoney": "MONEY.",
-      "typingWords": [
-        "FREEDOM",
-        "SECURITY"
-      ]
+      "typingWords": ["FREEDOM", "SECURITY"]
     },
     "mockups": {
       "trainingAlt": "BeAFox Training mockup",
@@ -2568,6 +3072,25 @@
     "redirectNote": "You will be redirected to the appropriate app store automatically."
   },
   "shop": {
+    "meta": {
+      "title": "Shop – BeAFox Merch",
+      "description": "Discover exclusive BeAFox merchandise: T-shirts, hoodies, mugs, stickers, and more. Show your BeAFox passion!",
+      "ogImageAlt": "BeAFox Merch — Bea with merchandise",
+      "keywords": [
+        "BeAFox Merch",
+        "BeAFox Shop",
+        "BeAFox Merchandise",
+        "financial education merch",
+        "BeAFox T-shirt",
+        "BeAFox hoodie"
+      ]
+    },
+    "structuredData": {
+      "itemListName": "BeAFox Merch Shop"
+    },
+    "images": {
+      "mascotAlt": "Bea with BeAFox merch — official merch store"
+    },
     "hero": {
       "badge": "BeAFox Merch Shop",
       "title": "BeAFox Merch Shop",
@@ -3115,10 +3638,7 @@
         "title": "Contact",
         "content": [
           {
-            "details": [
-              "Phone: +49 178 2723 673",
-              "Email: info@beafox.app"
-            ]
+            "details": ["Phone: +49 178 2723 673", "Email: info@beafox.app"]
           }
         ]
       },
@@ -3127,9 +3647,7 @@
         "title": "Represented by",
         "content": [
           {
-            "details": [
-              "Managing director: Alexandru Tapelea"
-            ]
+            "details": ["Managing director: Alexandru Tapelea"]
           }
         ]
       },
@@ -3152,9 +3670,7 @@
         "content": [
           {
             "text": "VAT identification number pursuant to § 27a of the German VAT Act:",
-            "details": [
-              "DE455701438"
-            ]
+            "details": ["DE455701438"]
           }
         ]
       },
@@ -3430,11 +3946,7 @@
           {
             "subtitle": "Registration",
             "text": "When registering for a user account in the BeAFox app, we collect the following data:",
-            "list": [
-              "Username",
-              "Email address",
-              "Password (stored encrypted)"
-            ]
+            "list": ["Username", "Email address", "Password (stored encrypted)"]
           },
           {
             "subtitle": "Purpose of processing",

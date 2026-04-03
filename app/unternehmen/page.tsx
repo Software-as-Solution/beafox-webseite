@@ -6,7 +6,6 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Section from "@/components/Section";
 import LandingHero from "@/components/LandingHero";
-import DownloadModal from "@/components/DownloadModal";
 import SectionHeader from "@/components/SectionHeader";
 import TrustSignalBar from "@/components/TrustSignalBar";
 import IndividualOfferCtaSection from "@/components/IndividualOfferCtaSection";
@@ -37,23 +36,37 @@ const GRADIENT_CARD_STYLE = {
 const GLOW = (opacity: number) => ({
   background: `radial-gradient(circle, rgba(232,119,32,${opacity}) 0%, transparent 70%)`,
 });
+// TYPES
+type SDG = {
+  id: string;
+  name: string;
+};
 
 export default function ForBusinessPage() {
   // HOOKS
   const t = useTranslations("business");
+  const home = useTranslations("home");
   // STATES
   const [selectedFeature, setSelectedFeature] = useState(0);
-  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   // FUNCTIONS
-  const closeDownloadModal = useCallback(
-    () => setIsDownloadModalOpen(false),
-    [],
-  );
   const selectFeature = useCallback(
     (index: number) => setSelectedFeature(index),
     [],
   );
+  const getMockupClasses = (mockup?: string) => {
+    if (mockup?.includes("Macbook"))
+      return "w-[280px] md:w-[500px] lg:w-[600px]";
+    return `w-[200px] md:w-[260px] lg:w-[280px] ${mockup?.includes("/Maskottchen/") ? "scale-125" : ""}`;
+  };
+  const getMockupDimensions = (mockup?: string) =>
+    mockup?.includes("Macbook")
+      ? { width: 700, height: 450 }
+      : { width: 280, height: 600 };
   // CONSTANTS
+  const sdgs = useMemo(() => {
+    const raw = home.raw("whyFinance.sdgs") as SDG[] | undefined;
+    return Array.isArray(raw) ? raw : [];
+  }, [home]);
   const benefits = useMemo(() => {
     const raw =
       (t.raw("benefits.items") as { title: string; description: string }[]) ??
@@ -403,6 +416,29 @@ export default function ForBusinessPage() {
             );
           })}
         </div>
+        {/* ─── SDGs ─── */}
+        <div className="mt-10 max-w-4xl mx-auto">
+          <div className="text-center mb-5 md:mb-6">
+            <p className="text-xs md:text-sm font-medium uppercase tracking-widest text-lightGray">
+              Gemeinsam unterstützen wir die UN-Nachhaltigkeitsziele
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            {sdgs.map((sdg) => {
+              const sdgId = String(sdg.id).padStart(2, "0");
+              return (
+                <Image
+                  width={150}
+                  height={150}
+                  key={sdg.id}
+                  alt={sdg.name ?? `SDG ${sdg.id}`}
+                  src={`/Ziele/SDG-icon-DE-${sdgId}.jpg`}
+                  className="w-14 h-14 md:w-24 md:h-24 rounded-lg shadow-sm hover:shadow-md hover:scale-110 transition-all duration-200 scale-110"
+                />
+              );
+            })}
+          </div>
+        </div>
       </Section>
       {/* ─── 6. FEATURES + MOCKUPS ─── */}
       <Section className="bg-gray-50 py-8 md:py-12 lg:py-16">
@@ -469,23 +505,12 @@ export default function ForBusinessPage() {
               >
                 <Image
                   loading="lazy"
+                  {...getMockupDimensions(activeFeature?.mockup)}
                   alt={activeFeature?.title ?? t("features.mockupAltFallback")}
-                  width={activeFeature?.mockup?.includes("Macbook") ? 700 : 280}
+                  className={`relative z-10 object-contain h-auto ${getMockupClasses(activeFeature?.mockup)}`}
                   src={
                     activeFeature?.mockup ?? "/assets/Mockups/Mockup-Start.png"
                   }
-                  height={
-                    activeFeature?.mockup?.includes("Macbook") ? 450 : 600
-                  }
-                  className={`relative z-10 object-contain h-auto ${
-                    activeFeature?.mockup?.includes("Macbook")
-                      ? "w-[280px] md:w-[500px] lg:w-[600px]"
-                      : "w-[200px] md:w-[260px] lg:w-[280px]"
-                  } ${
-                    activeFeature?.mockup?.includes("/Maskottchen/")
-                      ? "scale-125"
-                      : ""
-                  }`}
                   style={{
                     filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))",
                   }}
@@ -593,11 +618,6 @@ export default function ForBusinessPage() {
             </span>
           </>
         }
-      />
-      {/* DOWNLOAD MODAL */}
-      <DownloadModal
-        isOpen={isDownloadModalOpen}
-        onClose={closeDownloadModal}
       />
       <StructuredData
         id="business-service"

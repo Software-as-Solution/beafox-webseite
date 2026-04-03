@@ -3,18 +3,12 @@
 // =====================================================
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { getStripe } from "@/lib/stripe-server";
 import {
   getProductById,
   getVariantPrice,
   type CartItem,
 } from "@/lib/shop-products";
-
-// Stripe initialisieren (server-side)
-function getStripe(): Stripe {
-  const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
-  return new Stripe(key);
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -79,9 +73,11 @@ export async function POST(request: NextRequest) {
       });
 
       // Gelato-Daten in Metadata speichern (für Webhook)
+      // WICHTIG: gelato_uid = die variant-spezifische UID (inkl. Größe/Farbe),
+      // NICHT die Produkt-Basis-UID — Gelato braucht die vollständige productUid.
       orderMetadata[`item_${i}_product_id`] = product.id;
       orderMetadata[`item_${i}_variant_id`] = variant.id;
-      orderMetadata[`item_${i}_gelato_uid`] = product.gelatoProductUid;
+      orderMetadata[`item_${i}_gelato_uid`] = variant.gelatoVariantId;
       orderMetadata[`item_${i}_gelato_variant`] = variant.gelatoVariantId;
       orderMetadata[`item_${i}_design_url`] = product.designUrl;
       orderMetadata[`item_${i}_quantity`] = String(item.quantity);

@@ -54,22 +54,28 @@ export interface GelatoOrderResponse {
 export interface GelatoWebhookEvent {
   id: string;
   event:
-    | "order:status:created"
-    | "order:status:passed"
-    | "order:status:in_production"
-    | "order:status:shipped"
-    | "order:status:delivered"
-    | "order:status:cancelled"
-    | "order:status:not_accepted";
+    | "order_status_updated"
+    | "order_item_status_updated"
+    | "order_item_tracking_code_updated"
+    | "order_delivery_estimate_updated";
   orderId: string;
   orderReferenceId: string;
   fulfillmentStatus: string;
-  shipments?: {
-    trackingCode: string;
-    trackingUrl: string;
-    carrier: string;
+  items?: {
+    itemReferenceId: string;
+    fulfillmentStatus: string;
+    fulfillments?: {
+      trackingCode?: string;
+      trackingUrl?: string;
+      carrier?: string;
+    }[];
   }[];
-  createdAt: string;
+  /** Top-level tracking (order_item_tracking_code_updated) */
+  trackingCode?: string;
+  trackingUrl?: string;
+  carrier?: string;
+  comment?: string;
+  createdAt?: string;
 }
 
 // CONSTANTS

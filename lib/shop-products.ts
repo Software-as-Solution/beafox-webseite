@@ -48,7 +48,18 @@ export interface CartState {
 }
 
 // CONSTANTS
-const PLACEHOLDER_IMG = "/assets/Blogs/Blog1.jpeg";
+const DESIGN_BASE = "https://beafox.app/assets/Shop";
+const IMG_BASE = "/assets/Shop";
+
+// Gelato UID Helpers — baut die vollständige productUid pro Variante
+const APPAREL_BASE_TSHIRT =
+  "apparel_product_gca_t-shirt_gsc_crewneck_gcu_unisex_gqa_classic";
+const APPAREL_BASE_HOODIE =
+  "apparel_product_gca_hoodie_gsc_pullover_gcu_unisex_gqa_classic";
+
+function apparelUid(base: string, size: string, color: string): string {
+  return `${base}_gsi_${size}_gco_${color}_gpr_4-4`;
+}
 
 // =====================================================
 // PRODUKTE
@@ -61,69 +72,69 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "tshirt",
     descriptionKey: "tshirt",
     price: 2999,
-    images: [PLACEHOLDER_IMG],
+    images: [`${IMG_BASE}/tshirt-design.png`],
     category: "clothing",
     featured: true,
     active: true,
-    gelatoCatalogId: "",
-    gelatoProductUid: "",
-    designUrl: "",
+    gelatoCatalogId: "apparel",
+    gelatoProductUid: APPAREL_BASE_TSHIRT,
+    designUrl: `${DESIGN_BASE}/tshirt-design.png`,
     variants: [
       {
         id: "s-black",
         size: "S",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "s", "black"),
       },
       {
         id: "m-black",
         size: "M",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "m", "black"),
       },
       {
         id: "l-black",
         size: "L",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "l", "black"),
       },
       {
         id: "xl-black",
         size: "XL",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "xl", "black"),
       },
       {
         id: "s-white",
         size: "S",
         color: "Weiß",
         colorHex: "#ffffff",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "s", "white"),
       },
       {
         id: "m-white",
         size: "M",
         color: "Weiß",
         colorHex: "#ffffff",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "m", "white"),
       },
       {
         id: "l-white",
         size: "L",
         color: "Weiß",
         colorHex: "#ffffff",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "l", "white"),
       },
       {
         id: "xl-white",
         size: "XL",
         color: "Weiß",
         colorHex: "#ffffff",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_TSHIRT, "xl", "white"),
       },
     ],
   },
@@ -133,41 +144,41 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "hoodie",
     descriptionKey: "hoodie",
     price: 4999,
-    images: [PLACEHOLDER_IMG],
+    images: [`${IMG_BASE}/hoodie-design.png`],
     category: "clothing",
     featured: true,
     active: true,
-    gelatoCatalogId: "",
-    gelatoProductUid: "",
-    designUrl: "",
+    gelatoCatalogId: "apparel",
+    gelatoProductUid: APPAREL_BASE_HOODIE,
+    designUrl: `${DESIGN_BASE}/hoodie-design.png`,
     variants: [
       {
         id: "s-black",
         size: "S",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_HOODIE, "s", "black"),
       },
       {
         id: "m-black",
         size: "M",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_HOODIE, "m", "black"),
       },
       {
         id: "l-black",
         size: "L",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_HOODIE, "l", "black"),
       },
       {
         id: "xl-black",
         size: "XL",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId: apparelUid(APPAREL_BASE_HOODIE, "xl", "black"),
       },
     ],
   },
@@ -178,19 +189,19 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "mug",
     descriptionKey: "mug",
     price: 1499,
-    images: [PLACEHOLDER_IMG],
+    images: [`${IMG_BASE}/mug-design.png`],
     category: "drinkware",
     featured: true,
     active: true,
-    gelatoCatalogId: "",
-    gelatoProductUid: "",
-    designUrl: "",
+    gelatoCatalogId: "mugs",
+    gelatoProductUid: "mug_product_msz_11-oz_mmat_ceramic-white_cl_4-0",
+    designUrl: `${DESIGN_BASE}/mug-design.png`,
     variants: [
       {
         id: "white-325ml",
         color: "Weiß",
         colorHex: "#ffffff",
-        gelatoVariantId: "",
+        gelatoVariantId: "mug_product_msz_11-oz_mmat_ceramic-white_cl_4-0",
       },
     ],
   },
@@ -201,15 +212,19 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "stickers",
     descriptionKey: "stickers",
     price: 699,
-    images: [PLACEHOLDER_IMG],
+    images: [`${IMG_BASE}/sticker-design.png`],
     category: "stickers",
     featured: false,
     active: true,
-    gelatoCatalogId: "",
-    gelatoProductUid: "",
-    designUrl: "",
+    gelatoCatalogId: "stickers",
+    gelatoProductUid: "sticker_product_ss_circle-2x2_smat_white-vinyl_cl_4-0",
+    designUrl: `${DESIGN_BASE}/sticker-design.png`,
     variants: [
-      { id: "default", gelatoVariantId: "" },
+      {
+        id: "default",
+        gelatoVariantId:
+          "sticker_product_ss_circle-2x2_smat_white-vinyl_cl_4-0",
+      },
     ],
   },
   // ----- ACCESSOIRES -----
@@ -219,25 +234,28 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "totebag",
     descriptionKey: "totebag",
     price: 1999,
-    images: [PLACEHOLDER_IMG],
+    images: [`${IMG_BASE}/totebag-design.png`],
     category: "accessories",
     featured: false,
     active: true,
-    gelatoCatalogId: "",
-    gelatoProductUid: "",
-    designUrl: "",
+    gelatoCatalogId: "apparel",
+    gelatoProductUid:
+      "apparel_product_gca_tote-bag_gsc_flat_gcu_unisex_gqa_classic",
+    designUrl: `${DESIGN_BASE}/totebag-design.png`,
     variants: [
       {
         id: "natural",
         color: "Natur",
         colorHex: "#f5f0e8",
-        gelatoVariantId: "",
+        gelatoVariantId:
+          "apparel_product_gca_tote-bag_gsc_flat_gcu_unisex_gqa_classic_gsi_one-size_gco_natural_gpr_4-0",
       },
       {
         id: "black",
         color: "Schwarz",
         colorHex: "#1a1a1a",
-        gelatoVariantId: "",
+        gelatoVariantId:
+          "apparel_product_gca_tote-bag_gsc_flat_gcu_unisex_gqa_classic_gsi_one-size_gco_black_gpr_4-0",
       },
     ],
   },
@@ -247,19 +265,44 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "phonecase",
     descriptionKey: "phonecase",
     price: 1999,
-    images: [PLACEHOLDER_IMG],
+    images: [`${IMG_BASE}/phonecase-design.png`],
     category: "accessories",
     featured: false,
     active: true,
-    gelatoCatalogId: "",
-    gelatoProductUid: "",
-    designUrl: "",
+    gelatoCatalogId: "phone-cases",
+    gelatoProductUid: "phonecase_apple",
+    designUrl: `${DESIGN_BASE}/phonecase-design.png`,
     variants: [
-      { id: "iphone-15", size: "iPhone 15", gelatoVariantId: "" },
-      { id: "iphone-15-pro", size: "iPhone 15 Pro", gelatoVariantId: "" },
-      { id: "iphone-16", size: "iPhone 16", gelatoVariantId: "" },
-      { id: "iphone-16-pro", size: "iPhone 16 Pro", gelatoVariantId: "" },
-      { id: "samsung-s24", size: "Samsung S24", gelatoVariantId: "" },
+      {
+        id: "iphone-15",
+        size: "iPhone 15",
+        gelatoVariantId:
+          "phonecase_apple_iphone-15_flexi_transparent_satin",
+      },
+      {
+        id: "iphone-15-pro",
+        size: "iPhone 15 Pro",
+        gelatoVariantId:
+          "phonecase_apple_iphone-15pro_flexi_transparent_satin",
+      },
+      {
+        id: "iphone-16",
+        size: "iPhone 16",
+        gelatoVariantId:
+          "phonecase_apple_iphone-16_flexi_transparent_satin",
+      },
+      {
+        id: "iphone-16-pro",
+        size: "iPhone 16 Pro",
+        gelatoVariantId:
+          "phonecase_apple_iphone-16pro_flexi_transparent_satin",
+      },
+      {
+        id: "samsung-s24",
+        size: "Samsung S24",
+        gelatoVariantId:
+          "phonecase_samsung_galaxy-s24_flexi_transparent_satin",
+      },
     ],
   },
   // ----- WANDKUNST -----
@@ -269,16 +312,27 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "poster",
     descriptionKey: "poster",
     price: 1499,
-    images: [PLACEHOLDER_IMG],
+    images: [`${IMG_BASE}/poster-design.png`],
     category: "art",
     featured: false,
     active: true,
-    gelatoCatalogId: "",
-    gelatoProductUid: "",
-    designUrl: "",
+    gelatoCatalogId: "posters",
+    gelatoProductUid: "flat_product",
+    designUrl: `${DESIGN_BASE}/poster-design.png`,
     variants: [
-      { id: "a3", size: "A3 (29,7 × 42 cm)", gelatoVariantId: "" },
-      { id: "a2", size: "A2 (42 × 59,4 cm)", gelatoVariantId: "", priceOverride: 1999 },
+      {
+        id: "a3",
+        size: "A3 (29,7 × 42 cm)",
+        gelatoVariantId:
+          "flat_297x420-mm-a3_170-gsm-65lb-uncoated_4-0_ver",
+      },
+      {
+        id: "a2",
+        size: "A2 (42 × 59,4 cm)",
+        gelatoVariantId:
+          "flat_420x594-mm-a2_170-gsm-65lb-uncoated_4-0_ver",
+        priceOverride: 1999,
+      },
     ],
   },
 ];

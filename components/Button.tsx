@@ -14,6 +14,8 @@ interface ButtonBaseProps {
   className?: string;
   disabled?: boolean;
   variant?: ButtonVariant;
+  target?: string;
+  rel?: string;
   children: React.ReactNode;
 }
 interface ButtonAsButton extends ButtonBaseProps {
@@ -52,6 +54,8 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       loading = false,
       disabled = false,
       variant = "primary",
+      target,
+      rel,
     },
     ref,
   ) {
@@ -86,6 +90,8 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           tabIndex={isDisabled ? -1 : undefined}
           aria-disabled={isDisabled || undefined}
           ref={ref as React.Ref<HTMLAnchorElement>}
+          target={target}
+          rel={rel}
         >
           {content}
         </Link>

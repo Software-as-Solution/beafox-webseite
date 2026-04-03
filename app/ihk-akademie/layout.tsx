@@ -4,15 +4,18 @@ import { getTranslations } from "next-intl/server";
 const BASE_URL = "https://beafox.app";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("contact");
+  const t = await getTranslations("ihkAkademie");
+  const url = `${BASE_URL}/ihk-akademie`;
   const title = t("meta.title");
-  const url = `${BASE_URL}/kontakt`;
   const description = t("meta.description");
+  const ogImageAlt = t("meta.ogImageAlt");
 
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+    },
     openGraph: {
       url,
       description,
@@ -24,22 +27,22 @@ export async function generateMetadata(): Promise<Metadata> {
         {
           width: 1200,
           height: 630,
-          alt: t("meta.ogImageAlt"),
           url: `${BASE_URL}/assets/og-image.jpg`,
+          alt: ogImageAlt,
         },
       ],
     },
     twitter: {
       description,
       creator: "@beafox_app",
-      title: `${title} | BeAFox`,
       card: "summary_large_image",
+      title: `${title} | BeAFox`,
       images: [`${BASE_URL}/assets/og-image.jpg`],
     },
   };
 }
 
-export default function ContactLayout({
+export default function IHKAkademieLayout({
   children,
 }: {
   children: React.ReactNode;

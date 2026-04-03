@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 // CUSTOM COMPONENTS
 import Section from "@/components/Section";
+import StructuredData from "@/components/StructuredData";
 import { useCart } from "@/components/ShopCartProvider";
 // IMPORTS
 import { useState, useMemo } from "react";
@@ -67,6 +68,16 @@ export default function ShopPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            <div className="flex justify-center mb-8">
+              <Image
+                src="/Maskottchen/Maskottchen-Merch.png"
+                alt={t("images.mascotAlt")}
+                width={280}
+                height={280}
+                className="w-44 h-44 md:w-56 md:h-56 object-contain drop-shadow-lg"
+                priority
+              />
+            </div>
             <div className="inline-flex items-center gap-2 bg-primaryOrange/10 px-4 py-2 rounded-full mb-6">
               <ShoppingBag
                 className="w-5 h-5 text-primaryOrange"
@@ -219,6 +230,39 @@ export default function ShopPage() {
           </div>
         </div>
       </Section>
+
+      {/* Structured Data — ItemList für Shop-Übersicht */}
+      <StructuredData
+        id="shop-item-list"
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: t("structuredData.itemListName"),
+          url: "https://beafox.app/shop",
+          numberOfItems: allProducts.length,
+          itemListElement: allProducts.map((product, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "Product",
+              name: t(`products.${product.nameKey}.name`),
+              description: t(`products.${product.nameKey}.description`),
+              url: `https://beafox.app/shop/${product.slug}`,
+              image: `https://beafox.app${product.images[0]}`,
+              offers: {
+                "@type": "Offer",
+                price: (product.price / 100).toFixed(2),
+                priceCurrency: "EUR",
+                availability: "https://schema.org/InStock",
+                seller: {
+                  "@type": "Organization",
+                  name: "BeAFox",
+                },
+              },
+            },
+          })),
+        }}
+      />
     </>
   );
 }

@@ -13,11 +13,18 @@ const STORES = [
 ] as const;
 const PARTNER_LOGOS = [
   { src: "/Partners/1.png", alt: "Dr. Robert Eckert Schulen" },
-  { src: "/Partners/3.png", alt: "IHK Akademie" },
-  { src: "/Partners/8.png", alt: "TechBase Regensburg" },
   { src: "/Partners/2.png", alt: "Partner" },
+  { src: "/Partners/3.png", alt: "IHK Akademie" },
   { src: "/Partners/4.png", alt: "Partner" },
   { src: "/Partners/5.png", alt: "Partner" },
+  { src: "/Partners/6.png", alt: "Partner" },
+  { src: "/Partners/8.png", alt: "TechBase Regensburg" },
+  { src: "/Partners/9.png", alt: "Partner" },
+  { src: "/Partners/10.png", alt: "Partner" },
+  { src: "/Partners/11.png", alt: "Partner" },
+  { src: "/Partners/12.png", alt: "Partner" },
+  { src: "/Partners/13.png", alt: "Partner" },
+  { src: "/Partners/14.png", alt: "Eduplaces" },
 ] as const;
 // CONSTANTS
 const USER_REVIEWS = [
@@ -69,15 +76,27 @@ interface TrustSignalBarProps {
   preTitle?: string;
   highlight?: string;
   showReviews?: boolean;
+  isEduplaces?: boolean;
   showPartners?: boolean;
 }
 
 export default function TrustSignalBar({
   showReviews = false,
+  isEduplaces = false,
   showPartners = false,
   preTitle = "5.000+ Menschen",
   highlight = "vertrauen auf Bea",
 }: TrustSignalBarProps) {
+  const stores = isEduplaces
+    ? [
+        ...STORES,
+        {
+          src: "/Partners/14.png",
+          alt: "Eduplaces",
+          label: "Eduplaces",
+        } as const,
+      ]
+    : STORES;
   return (
     <Section className="bg-gray-50 py-8 md:py-12">
       <div className="max-w-5xl mx-auto text-center">
@@ -88,7 +107,7 @@ export default function TrustSignalBar({
         />
         <div className="flex justify-center relative bottom-1">
           <div
-            className="relative grid grid-cols-2 items-center rounded-2xl px-6 md:px-10 py-4 md:py-5"
+            className={`relative grid ${isEduplaces ? "grid-cols-3" : "grid-cols-2"} items-center rounded-2xl px-6 md:px-10 py-4 md:py-5`}
             style={{
               border: "1px solid rgba(232,119,32,0.12)",
               background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
@@ -96,14 +115,14 @@ export default function TrustSignalBar({
                 "0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(232,119,32,0.04)",
             }}
           >
-            <div
-              aria-hidden="true"
-              className="absolute left-1/2 -translate-x-1/2 w-px h-12 bg-primaryOrange/10"
-            />
-            {STORES.map((store) => (
+            {stores.map((store, index) => (
               <div
                 key={store.label}
-                className="px-3 md:px-4 flex justify-center"
+                className={`px-3 md:px-4 flex justify-center ${
+                  index < stores.length - 1
+                    ? "border-r border-primaryOrange/10"
+                    : ""
+                }`}
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -119,7 +138,7 @@ export default function TrustSignalBar({
                     />
                   </div>
                   <div>
-                    <div className="text-xs md:text-sm font-semibold text-darkerGray leading-none text-start relative left-[1%]">
+                    <div className="text-xs md:text-sm font-semibold text-darkerGray leading-none text-start">
                       {store.label}
                     </div>
                     <div className="flex items-center gap-1.5 mt-1.5">
@@ -166,16 +185,19 @@ export default function TrustSignalBar({
               />
               {/* Scrolling track */}
               <div className="flex animate-scroll-left gap-10 md:gap-14 items-center w-max">
-                {[...PARTNER_LOGOS, ...PARTNER_LOGOS].map((logo, i) => (
-                  <Image
-                    width={120}
-                    height={48}
-                    src={logo.src}
-                    alt={logo.alt}
-                    key={`${logo.alt}-${i}`}
-                    className="object-contain h-8 md:h-10 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
-                  />
-                ))}
+                {[...PARTNER_LOGOS, ...PARTNER_LOGOS, ...PARTNER_LOGOS].map(
+                  (logo, i) => (
+                    <Image
+                      width={120}
+                      height={48}
+                      src={logo.src}
+                      alt={logo.alt}
+                      key={`${logo.alt}-${i}`}
+                      style={{ width: "auto", height: "auto" }}
+                      className="object-contain max-h-8 md:max-h-10 w-auto h-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300 flex-shrink-0"
+                    />
+                  ),
+                )}
               </div>
             </div>
           </div>
@@ -195,56 +217,58 @@ export default function TrustSignalBar({
               />
               {/* Scrolling track */}
               <div className="flex animate-scroll-left-slow gap-4 items-stretch w-max">
-                {[...USER_REVIEWS, ...USER_REVIEWS].map((review, i) => (
-                  <div
-                    key={`${review.name}-${i}`}
-                    className="w-[280px] md:w-[320px] flex-shrink-0 rounded-xl p-4 md:p-5 border border-primaryOrange/10 bg-white"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        <Image
-                          src={
-                            review.store === "apple"
-                              ? "/assets/Apple.png"
-                              : "/assets/Android.png"
-                          }
-                          alt={
-                            review.store === "apple"
-                              ? "App Store"
-                              : "Google Play"
-                          }
-                          width={16}
-                          height={16}
-                          className="object-contain w-4 h-4 flex-shrink-0"
-                        />
-                        <span className="text-xs md:text-sm font-semibold text-darkerGray">
-                          {review.name}
-                        </span>
+                {[...USER_REVIEWS, ...USER_REVIEWS, ...USER_REVIEWS].map(
+                  (review, i) => (
+                    <div
+                      key={`${review.name}-${i}`}
+                      className="w-[280px] md:w-[320px] flex-shrink-0 rounded-xl p-4 md:p-5 border border-primaryOrange/10 bg-white"
+                    >
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <Image
+                            src={
+                              review.store === "apple"
+                                ? "/assets/Apple.png"
+                                : "/assets/Android.png"
+                            }
+                            alt={
+                              review.store === "apple"
+                                ? "App Store"
+                                : "Google Play"
+                            }
+                            width={16}
+                            height={16}
+                            className="object-contain w-4 h-4 flex-shrink-0"
+                          />
+                          <span className="text-xs md:text-sm font-semibold text-darkerGray">
+                            {review.name}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-0.5">
+                          {[...Array(5)].map((_, j) => (
+                            <svg
+                              key={j}
+                              width="10"
+                              height="10"
+                              stroke="none"
+                              fill="#E87720"
+                              aria-hidden="true"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d={STAR_PATH} />
+                            </svg>
+                          ))}
+                        </div>
                       </div>
-                      <div className="flex items-center gap-0.5">
-                        {[...Array(5)].map((_, j) => (
-                          <svg
-                            key={j}
-                            width="10"
-                            height="10"
-                            stroke="none"
-                            fill="#E87720"
-                            aria-hidden="true"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d={STAR_PATH} />
-                          </svg>
-                        ))}
-                      </div>
+                      <p className="text-xs md:text-sm text-lightGray leading-relaxed line-clamp-4">
+                        &ldquo;{review.text}&rdquo;
+                      </p>
+                      <p className="text-[10px] text-lightGray/50 mt-2">
+                        {review.date}
+                      </p>
                     </div>
-                    <p className="text-xs md:text-sm text-lightGray leading-relaxed line-clamp-4">
-                      &ldquo;{review.text}&rdquo;
-                    </p>
-                    <p className="text-[10px] text-lightGray/50 mt-2">
-                      {review.date}
-                    </p>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
             </div>
           </div>

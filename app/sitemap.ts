@@ -41,6 +41,11 @@ const ROUTE_CONFIG: Record<string, RouteConfig> = {
     changefreq: "monthly",
     images: ["/Maskottchen/Maskottchen-School.png"],
   },
+  "/bildungshaus": {
+    priority: 0.95,
+    changefreq: "monthly",
+    images: ["/Maskottchen/Maskottchen-VHS.png"],
+  },
   "/ueber-uns": {
     priority: 0.9,
     changefreq: "monthly",

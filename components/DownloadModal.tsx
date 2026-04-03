@@ -143,13 +143,13 @@ export default function DownloadModal({
               {/* Mascot + Sparkle */}
               <div className="flex justify-center mb-4">
                 <div className="relative">
-                  <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-primaryOrange/30">
+                  <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-primaryOrange/30 flex items-center justify-center">
                     <Image
-                      width={80}
-                      height={80}
+                      width={70}
+                      height={70}
                       alt="BeAFox"
-                      src="/Logo.png"
-                      className="object-cover w-full h-full"
+                      className="object-contain"
+                      src="/assets/Logos/Logo.png"
                     />
                   </div>
                   <motion.div
@@ -172,7 +172,7 @@ export default function DownloadModal({
                 id="download-modal-title"
                 className="text-2xl md:text-3xl font-bold text-center mb-3 text-darkerGray"
               >
-                Dein KI-Begleiter
+                Dein Begleiter
                 <br />
                 <span className="text-primaryOrange">wartet auf dich.</span>
               </h2>

@@ -34,36 +34,10 @@ import {
   Briefcase,
   TrendingUp,
   GraduationCap,
-  type LucideIcon,
 } from "lucide-react";
 
-// TYPES
-interface Plan {
-  id: string;
-  title: string;
-  price: string;
-  period: string;
-  monthly?: boolean;
-  popular?: boolean;
-  features: string[];
-  excluded?: string[];
-}
-type IconId =
-  | "school"
-  | "graduationCap"
-  | "briefcase"
-  | "user"
-  | "users"
-  | "award"
-  | "clock"
-  | "trendingUp"
-  | "bookOpen"
-  | "target"
-  | "zap"
-  | "shield";
-
 // CONSTANTS
-const ICON_MAP: Record<IconId, LucideIcon> = {
+const ICON_MAP = {
   zap: Zap,
   user: User,
   users: Users,
@@ -76,7 +50,7 @@ const ICON_MAP: Record<IconId, LucideIcon> = {
   briefcase: Briefcase,
   trendingUp: TrendingUp,
   graduationCap: GraduationCap,
-};
+} as const;
 const GRADIENT_CARD_STYLE = {
   background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
 } as const;
@@ -90,6 +64,18 @@ const PRO_CARD_STYLE = {
 const GLOW = (opacity: number) => ({
   background: `radial-gradient(circle, rgba(232,119,32,${opacity}) 0%, transparent 70%)`,
 });
+// TYPES
+interface Plan {
+  id: string;
+  title: string;
+  price: string;
+  period: string;
+  monthly?: boolean;
+  popular?: boolean;
+  features: string[];
+  excluded?: string[];
+}
+type IconId = keyof typeof ICON_MAP;
 
 export default function BeAFoxUnlimitedPage() {
   // HOOKS
@@ -105,6 +91,45 @@ export default function BeAFoxUnlimitedPage() {
   );
   const selectFeature = useCallback(
     (index: number) => setSelectedFeature(index),
+    [],
+  );
+  // Vor dem return, nach den useMemo blocks:
+  const renderFeatureCard = useCallback(
+    (
+      feature: { iconId: IconId; title: string; description: string },
+      index: number,
+    ) => {
+      const Icon = ICON_MAP[feature.iconId] ?? BookOpen;
+      return (
+        <motion.div
+          key={feature.title}
+          viewport={{ once: true }}
+          style={GRADIENT_CARD_STYLE}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.08 }}
+          className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-primaryOrange/15 hover:border-primaryOrange/30 transition-all hover:shadow-lg group"
+        >
+          <div className="relative z-10">
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+              style={{
+                background: "rgba(232,119,32,0.1)",
+                border: "1px solid rgba(232,119,32,0.15)",
+              }}
+            >
+              <Icon aria-hidden="true" className="w-5 h-5 text-primaryOrange" />
+            </div>
+            <h3 className="text-base md:text-lg font-bold text-darkerGray mb-1 group-hover:text-primaryOrange transition-colors">
+              {feature.title}
+            </h3>
+            <p className="text-sm text-lightGray leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+        </motion.div>
+      );
+    },
     [],
   );
   // CONSTANTS
@@ -378,79 +403,13 @@ export default function BeAFoxUnlimitedPage() {
         <div className="max-w-6xl mx-auto">
           {/* Top row: 3 cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-4 md:mb-5">
-            {whyUnlimitedFeatures.slice(0, 3).map((feature, index) => {
-              const Icon = ICON_MAP[feature.iconId] ?? BookOpen;
-              return (
-                <motion.div
-                  key={feature.title}
-                  viewport={{ once: true }}
-                  style={GRADIENT_CARD_STYLE}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-primaryOrange/15 hover:border-primaryOrange/30 transition-all hover:shadow-lg group"
-                >
-                  <div className="relative z-10">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
-                      style={{
-                        background: "rgba(232,119,32,0.1)",
-                        border: "1px solid rgba(232,119,32,0.15)",
-                      }}
-                    >
-                      <Icon
-                        aria-hidden="true"
-                        className="w-5 h-5 text-primaryOrange"
-                      />
-                    </div>
-                    <h3 className="text-base md:text-lg font-bold text-darkerGray mb-1 group-hover:text-primaryOrange transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-lightGray leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {whyUnlimitedFeatures.slice(0, 3).map(renderFeatureCard)}
           </div>
           {/* Bottom row: 2 cards + Bea mascot card */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-            {whyUnlimitedFeatures.slice(3, 5).map((feature, index) => {
-              const Icon = ICON_MAP[feature.iconId] ?? BookOpen;
-              return (
-                <motion.div
-                  key={feature.title}
-                  viewport={{ once: true }}
-                  style={GRADIENT_CARD_STYLE}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: (index + 3) * 0.08 }}
-                  className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-primaryOrange/15 hover:border-primaryOrange/30 transition-all hover:shadow-lg group"
-                >
-                  <div className="relative z-10">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
-                      style={{
-                        background: "rgba(232,119,32,0.1)",
-                        border: "1px solid rgba(232,119,32,0.15)",
-                      }}
-                    >
-                      <Icon
-                        className="w-5 h-5 text-primaryOrange"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <h3 className="text-base md:text-lg font-bold text-darkerGray mb-1 group-hover:text-primaryOrange transition-colors">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-lightGray leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {whyUnlimitedFeatures
+              .slice(3, 5)
+              .map((f, i) => renderFeatureCard(f, i + 3))}
             {/* Bea mascot card */}
             <motion.div
               viewport={{ once: true }}
@@ -541,15 +500,20 @@ export default function BeAFoxUnlimitedPage() {
                   />
                 )}
                 <div className="relative z-10 flex flex-col h-full">
-                  {isPro && (
-                    <div className="inline-flex items-center gap-1.5 bg-primaryOrange text-white text-[11px] font-bold uppercase tracking-wide rounded-full px-3 py-1 w-fit mb-3">
-                      <Sparkles className="w-3 h-3" aria-hidden="true" />
-                      {t("pricing.badges.popular")}
-                    </div>
-                  )}
-                  {plan.monthly && (
-                    <div className="inline-flex items-center gap-1.5 bg-primaryOrange/10 text-primaryOrange text-[11px] font-bold uppercase tracking-wide rounded-full px-3 py-1 w-fit mb-3">
-                      {t("pricing.badges.monthlyCancelable")}
+                  {(isPro || plan.monthly) && (
+                    <div
+                      className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide rounded-full px-3 py-1 w-fit mb-3 ${
+                        isPro
+                          ? "bg-primaryOrange text-white"
+                          : "bg-primaryOrange/10 text-primaryOrange"
+                      }`}
+                    >
+                      {isPro && (
+                        <Sparkles className="w-3 h-3" aria-hidden="true" />
+                      )}
+                      {isPro
+                        ? t("pricing.badges.popular")
+                        : t("pricing.badges.monthlyCancelable")}
                     </div>
                   )}
                   <h3

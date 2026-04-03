@@ -6,83 +6,67 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import Section from "@/components/Section";
 import LandingHero from "@/components/LandingHero";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
-import TrustSignalBar from "@/components/TrustSignalBar";
-import IndividualOfferCtaSection from "@/components/IndividualOfferCtaSection";
 import SectionHeader from "@/components/SectionHeader";
+import TrustSignalBar from "@/components/TrustSignalBar";
 import StructuredData from "@/components/StructuredData";
+import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
 // IMPORTS
-import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useState, useCallback, useMemo } from "react";
 // ICONS
 import {
+  Zap,
   Check,
-  ArrowRight,
-  Users,
-  School,
-  BarChart,
+  Award,
   Clock,
   Shield,
-  Award,
   Target,
-  Zap,
-  TrendingUp,
   Calendar,
-  Presentation,
+  BarChart,
   Sparkles,
-  type LucideIcon,
+  Presentation,
 } from "lucide-react";
 
 // CONSTANTS
-const CAL_URL = "https://app.cal.eu/beafox";
-
-const STAT_ICONS = [Users, School, TrendingUp, Clock] as const;
-const BENEFIT_ICONS = [Clock, BarChart, Target, Shield, Award, Zap] as const;
-
 const GRADIENT_CARD_STYLE = {
   background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
 } as const;
-
+const CAL_URL = "https://app.cal.eu/beafox";
+const BENEFIT_ICONS = [Clock, BarChart, Target, Shield, Award, Zap] as const;
+// HELPERS FUNCTIONS
 const GLOW = (opacity: number) => ({
   background: `radial-gradient(circle, rgba(232,119,32,${opacity}) 0%, transparent 70%)`,
 });
-
+// TYPES
 type SchoolProcessStep = {
   step: string;
   title: string;
-  description: string;
   image: string;
+  description: string;
+};
+type SDG = {
+  id: string;
+  name: string;
 };
 
-// COMPONENT
 export default function ForSchoolsPage() {
   // HOOKS
   const t = useTranslations("schools");
-
+  const home = useTranslations("home");
   // STATES
   const [selectedDashboard, setSelectedDashboard] = useState(0);
-
-  // CALLBACKS
-  const selectDashboard = useCallback(
-    (index: number) => setSelectedDashboard(index),
-    [],
-  );
-
-  // MEMOIZED DATA
-  const stats = useMemo(() => {
-    const raw = (t.raw("stats") as { value: string; label: string }[]) ?? [];
-    return raw.map((s, i) => ({ ...s, icon: STAT_ICONS[i] }));
-  }, [t]);
-
+  // CONSTANTS
   const benefits = useMemo(() => {
     const raw =
       (t.raw("benefits.items") as { title: string; description: string }[]) ??
       [];
     return raw.map((b, i) => ({ ...b, icon: BENEFIT_ICONS[i] }));
   }, [t]);
-
+  const sdgs = useMemo(() => {
+    const raw = home.raw("whyFinance.sdgs") as SDG[] | undefined;
+    return Array.isArray(raw) ? raw : [];
+  }, [home]);
   const dashboardFeatures = useMemo(
     () =>
       (t.raw("dashboard.items") as {
@@ -93,35 +77,47 @@ export default function ForSchoolsPage() {
       }[]) ?? [],
     [t],
   );
-
-  const testimonials = useMemo(
-    () =>
-      (t.raw("testimonials.items") as { quote: string; author: string }[]) ??
-      [],
-    [t],
-  );
-
-  const processSteps = useMemo((): SchoolProcessStep[] => { 
+  const processSteps = useMemo((): SchoolProcessStep[] => {
     const block = t.raw("schoolProcess") as
       | { steps?: SchoolProcessStep[] }
       | undefined;
     const steps = block?.steps;
     return Array.isArray(steps) ? steps : [];
   }, [t]);
-
   const activeDashboard = dashboardFeatures[selectedDashboard];
+  // FUNCTIONS
+  const selectDashboard = useCallback(
+    (index: number) => setSelectedDashboard(index),
+    [],
+  );
 
   return (
     <>
       {/* ─── 1. HERO ─── */}
       <LandingHero
         badge={t("hero.badge")}
+        mascotAlt={t("hero.badge")}
+        cardText={t("hero.description")}
+        mascotSrc="/Maskottchen/Maskottchen-School.png"
         title={
           <>
             <span className="text-primaryOrange">
               {t("hero.priceHighlight")}
             </span>{" "}
-            {t("hero.pricePost")}
+            {(() => {
+              const post = t("hero.pricePost");
+              const token = t("hero.beaName");
+              const idx = post.indexOf(token);
+              if (idx === -1) return post;
+
+              return (
+                <>
+                  {post.slice(0, idx)}
+                  <span className="text-primaryOrange">{token}</span>
+                  {post.slice(idx + token.length)}
+                </>
+              );
+            })()}
           </>
         }
         actions={
@@ -143,104 +139,96 @@ export default function ForSchoolsPage() {
               className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               <Calendar
-                className="w-3.5 h-3.5 md:w-4 md:h-4"
                 aria-hidden="true"
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
               />
               {t("hero.ctaBook")}
             </Button>
           </>
         }
-        mascotSrc="/Maskottchen/Maskottchen-School.png"
-        mascotAlt={t("hero.badge")}
-        cardText="Ich begleite Ihre Schüler durch jede Finanzsituation — spielerisch, verständlich und lehrplanergänzend."
       />
-
       {/* ─── 2. TRUST SIGNAL ─── */}
       <TrustSignalBar
         showPartners
         preTitle="15+ Schulen"
         highlight="vertrauen bereits auf Bea"
       />
-
       {/* ─── 3. PROBLEM ─── */}
       <Section className="bg-primaryWhite py-10 md:py-16 lg:py-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-8 md:mb-12"
           >
             <SectionHeader
               titleClassName="!text-xl md:!text-2xl lg:!text-3xl"
               title={
                 <>
-                  Finanzbildung fehlt im Lehrplan —{" "}
-                  <span className="text-red-500">Ihre Schüler spüren es</span>
+                  {t("problemSolution.problemHeaderPre")}{" "}
+                  <span className="text-red-500">
+                    {t("problemSolution.problemHeaderHighlight")}
+                  </span>
                 </>
               }
             />
           </motion.div>
-
           <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
             {/* Left: Mascot */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               className="relative flex items-center justify-center"
             >
               <div
+                aria-hidden="true"
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none"
                 style={{
                   background:
                     "radial-gradient(circle, rgba(220,38,38,0.04) 0%, transparent 70%)",
                 }}
-                aria-hidden="true"
               />
               <Image
-                src="/Maskottchen/Maskottchen-Verwirrt.png"
-                alt="Fehlende Finanzbildung an Schulen"
                 width={500}
                 height={500}
-                className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
+                alt={t("images.problemMascotAlt")}
+                src="/Maskottchen/Maskottchen-Langweilig.png"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
+                className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
               />
             </motion.div>
-
             {/* Right: Pain points */}
             <motion.div
+              viewport={{ once: true }}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <div className="mb-6 pb-6 border-b border-gray-100">
                 <motion.span
-                  className="text-4xl md:text-5xl font-bold text-red-500 inline-block"
+                  viewport={{ once: true }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
                   transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+                  className="text-4xl md:text-6xl font-bold text-red-500 inline-block"
                   style={{
                     textShadow:
                       "0 0 20px rgba(239,68,68,0.3), 0 0 40px rgba(239,68,68,0.15)",
                   }}
                 >
-                  93%
+                  {t("problemSolution.problemShockStatValue")}
                 </motion.span>
                 <h3 className="text-lg md:text-xl font-bold text-darkerGray mt-2 mb-2">
-                  der Schüler wünschen sich Finanzbildung in der Schule
+                  {t("problemSolution.problemShockStatHeadline")}
                 </h3>
                 <p className="text-sm md:text-base text-lightGray leading-relaxed">
-                  Doch Lehrkräfte haben weder Zeit noch Material für ein Thema,
-                  das in keinem Lehrplan steht. Das Ergebnis: Schüler verlassen
-                  die Schule ohne Finanzkompetenz.
+                  {t("problemSolution.problemShockStatBody")}
                 </p>
               </div>
-
               <div className="space-y-2.5">
                 {(t.raw("problemSolution.problemBullets") as string[]).map(
                   (item) => (
@@ -249,8 +237,8 @@ export default function ForSchoolsPage() {
                       className="flex items-start gap-3 rounded-xl p-3 md:p-3.5 border border-red-100 bg-red-50/30"
                     >
                       <div
-                        className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2.5 flex-shrink-0"
                         aria-hidden="true"
+                        className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2.5 flex-shrink-0"
                       />
                       <span className="text-sm md:text-base text-darkerGray leading-relaxed">
                         {item}
@@ -263,73 +251,70 @@ export default function ForSchoolsPage() {
           </div>
         </div>
       </Section>
-
       {/* ─── 4. SOLUTION ─── */}
       <Section className="bg-gray-50 py-8 md:py-12 lg:py-16">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             className="text-center mb-8 md:mb-12"
           >
             <SectionHeader
               titleClassName="!text-xl md:!text-2xl lg:!text-3xl"
               title={
                 <>
-                  Schüler lernen selbstständig —{" "}
+                  {t("problemSolution.solutionHeaderPre")}{" "}
                   <span className="text-primaryOrange">
-                    Sie behalten den Überblick
+                    {t("problemSolution.solutionHeaderHighlight")}
                   </span>
                 </>
               }
             />
           </motion.div>
-
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left: Content */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="order-2 md:order-1"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
             >
               <div className="mb-6 pb-6 border-b border-primaryOrange/10">
                 <motion.span
-                  className="text-4xl md:text-5xl font-bold text-primaryOrange inline-block"
+                  viewport={{ once: true }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
                   transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+                  className="text-4xl md:text-6xl font-bold text-primaryOrange inline-block"
                   style={{
                     textShadow:
                       "0 0 20px rgba(232,119,32,0.3), 0 0 40px rgba(232,119,32,0.15)",
                   }}
                 >
-                  98%
+                  {t("problemSolution.solutionImpactStatValue")}
                 </motion.span>
                 <h3 className="text-lg md:text-xl font-bold text-darkerGray mt-2 mb-2">
-                  Zufriedenheit bei Lehrkräften und Schülern
+                  {t("problemSolution.solutionImpactStatHeadline")}
                 </h3>
                 <p className="text-sm md:text-base text-lightGray leading-relaxed">
                   {t("problemSolution.solutionText")}{" "}
                   {t("problemSolution.solutionText2")}
                 </p>
               </div>
-
               <div className="space-y-2.5 mb-6">
                 {(t.raw("problemSolution.solutionBullets") as string[]).map(
                   (item) => (
                     <div
                       key={item}
-                      className="flex items-start gap-3 rounded-xl p-3 md:p-3.5 border border-primaryOrange/15"
                       style={GRADIENT_CARD_STYLE}
+                      className="flex items-start gap-3 rounded-xl p-3 md:p-3.5 border border-primaryOrange/15"
                     >
                       <div
-                        className="w-1.5 h-1.5 rounded-full bg-primaryOrange mt-2.5 flex-shrink-0"
                         aria-hidden="true"
+                        className="w-1.5 h-1.5 rounded-full bg-primaryOrange mt-2.5 flex-shrink-0"
                       />
                       <span className="text-sm md:text-base text-darkerGray leading-relaxed">
                         {item}
@@ -338,50 +323,47 @@ export default function ForSchoolsPage() {
                   ),
                 )}
               </div>
-
               <Button
                 href="/kontakt"
                 variant="primary"
                 className="flex items-center justify-center gap-2 !px-6 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base w-full sm:w-auto"
               >
                 <Presentation className="w-4 h-4" aria-hidden="true" />
-                Demo anfordern
+                {t("problemSolution.ctaButton")}
               </Button>
             </motion.div>
-
             {/* Right: Mascot */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               className="relative flex items-center justify-center order-1 md:order-2"
             >
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none"
                 style={GLOW(0.06)}
                 aria-hidden="true"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none"
               />
               <Image
-                src="/Maskottchen/Maskottchen-School.png"
-                alt="Bea — Finanzbildung für Schulen"
                 width={500}
                 height={500}
-                className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
+                alt={t("images.solutionMascotAlt")}
+                src="/Maskottchen/Maskottchen-Freude.png"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
+                className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
               />
             </motion.div>
           </div>
         </div>
       </Section>
-
       {/* ─── 5. BENEFITS ─── */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-8 md:mb-12"
         >
           <SectionHeader
@@ -392,25 +374,23 @@ export default function ForSchoolsPage() {
                 <span className="text-primaryOrange">
                   {t("benefits.titleHighlight")}
                 </span>
-                ?
               </>
             }
             subtitle={t("benefits.subtitle")}
           />
         </motion.div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto relative bottom-2">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
               <motion.div
                 key={benefit.title}
+                viewport={{ once: true }}
+                style={GRADIENT_CARD_STYLE}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="relative overflow-hidden rounded-2xl p-5 md:p-6 border border-primaryOrange/15 hover:border-primaryOrange/30 transition-all hover:shadow-lg group"
-                style={GRADIENT_CARD_STYLE}
               >
                 <div className="relative z-10">
                   <div
@@ -421,8 +401,8 @@ export default function ForSchoolsPage() {
                     }}
                   >
                     <Icon
-                      className="w-5 h-5 text-primaryOrange"
                       aria-hidden="true"
+                      className="w-5 h-5 text-primaryOrange"
                     />
                   </div>
                   <h3 className="text-base md:text-lg font-bold text-darkerGray mb-1 group-hover:text-primaryOrange transition-colors">
@@ -436,15 +416,37 @@ export default function ForSchoolsPage() {
             );
           })}
         </div>
+        {/* ─── SDGs ─── */}
+        <div className="mt-10 max-w-4xl mx-auto">
+          <div className="text-center mb-5 md:mb-6">
+            <p className="text-xs md:text-sm font-medium uppercase tracking-widest text-lightGray">
+              {t("benefits.sdgsIntro")}
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            {sdgs.map((sdg) => {
+              const sdgId = String(sdg.id).padStart(2, "0");
+              return (
+                <Image
+                  width={150}
+                  height={150}
+                  key={sdg.id}
+                  alt={sdg.name ?? t("benefits.sdgFallbackAlt", { id: sdgId })}
+                  src={`/Ziele/SDG-icon-DE-${sdgId}.jpg`}
+                  className="w-14 h-14 md:w-24 md:h-24 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 scale-110"
+                />
+              );
+            })}
+          </div>
+        </div>
       </Section>
-
       {/* ─── 6. DASHBOARD + MOCKUPS ─── */}
       <Section className="bg-gray-50 py-8 md:py-12 lg:py-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           className="text-center mb-8 md:mb-12"
         >
           <SectionHeader
@@ -457,21 +459,19 @@ export default function ForSchoolsPage() {
                 </span>
               </>
             }
-            subtitle={t("dashboard.subtitle")}
           />
         </motion.div>
-
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center max-w-6xl mx-auto">
           <div className="space-y-3">
             {dashboardFeatures.map((feature, index) => (
               <motion.button
                 key={feature.id}
                 type="button"
+                viewport={{ once: true }}
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
                 onClick={() => selectDashboard(index)}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
                 className={`w-full text-left rounded-xl p-4 md:p-5 border transition-all ${
                   selectedDashboard === index
                     ? "border-primaryOrange/30 shadow-md"
@@ -496,30 +496,31 @@ export default function ForSchoolsPage() {
               </motion.button>
             ))}
           </div>
-
           <div className="flex items-center justify-center lg:sticky lg:top-24">
             <div className="relative w-full">
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none"
                 style={GLOW(0.08)}
                 aria-hidden="true"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none"
               />
               <motion.div
                 key={selectedDashboard}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3 }}
+                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.95 }}
               >
                 <Image
+                  width={1200}
+                  height={800}
+                  loading="lazy"
+                  alt={
+                    activeDashboard?.title ?? t("dashboard.mockupAltFallback")
+                  }
+                  className="relative z-10 object-contain w-full h-auto rounded-lg"
                   src={
                     activeDashboard?.mockup ??
                     "/Mockup-Macbook/Live-Fortschritt.png"
                   }
-                  alt={activeDashboard?.title ?? "Dashboard"}
-                  width={1200}
-                  height={800}
-                  loading="lazy"
-                  className="relative z-10 object-contain w-full h-auto rounded-lg"
                   style={{
                     filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.15))",
                   }}
@@ -529,9 +530,8 @@ export default function ForSchoolsPage() {
           </div>
         </div>
       </Section>
-
-      {/* ─── 9. FÖRDERUNG ─── */}
-      <Section className="bg-gray-50 py-8 md:py-12 lg:py-16">
+      {/* ─── 7. FÖRDERUNG ─── */}
+      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -566,7 +566,7 @@ export default function ForSchoolsPage() {
                   aria-hidden="true"
                 />
                 <span className="text-[11px] font-bold text-primaryOrange uppercase tracking-wide">
-                  Gut zu wissen
+                  {t("funding.badge")}
                 </span>
               </div>
 
@@ -574,21 +574,20 @@ export default function ForSchoolsPage() {
                 {/* Content */}
                 <div className="flex-1">
                   <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-3">
-                    BeAFox ist für Ihre Schule{" "}
-                    <span className="text-primaryOrange">kostenlos</span>
+                    {t("funding.titlePre")}{" "}
+                    <span className="text-primaryOrange">
+                      {t("funding.titleHighlight")}
+                    </span>
+                    {t("funding.titlePost")}
                   </h3>
                   <p className="text-sm md:text-base text-lightGray leading-relaxed mb-4">
-                    Viele Schulen nutzen BeAFox bereits vollständig über
-                    bestehende Fördertöpfe und Budgets. Es gibt mehrere Wege,
-                    Finanzbildung ohne eigenes Budget in Ihre Schule zu bringen.
+                    {t("funding.description")}
                   </p>
 
                   <div className="space-y-2.5 mb-6">
-                    {[
-                      "Wir zeigen Ihnen welche Fördermöglichkeiten für Ihre Schule in Frage kommen",
-                      "Wir unterstützen Sie bei der Antragstellung — Schritt für Schritt",
-                      "Viele unserer Partnerschulen zahlen keinen Cent aus dem eigenen Budget",
-                    ].map((item) => (
+                    {(
+                      (t.raw("funding.bullets") as string[] | undefined) ?? []
+                    ).map((item) => (
                       <div
                         key={item}
                         className="flex items-start gap-3 rounded-xl p-3 md:p-3.5 border border-primaryOrange/15 bg-white"
@@ -610,17 +609,16 @@ export default function ForSchoolsPage() {
                     className="flex items-center justify-center gap-2 !px-6 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base w-full sm:w-auto"
                   >
                     <Presentation className="w-4 h-4" aria-hidden="true" />
-                    Kostenlose Beratung anfragen
+                    {t("funding.ctaButton")}
                   </Button>
                 </div>
 
                 {/* Mascot */}
                 <Image
                   src="/Maskottchen/Maskottchen-Hero.png"
-                  alt=""
+                  alt={t("images.fundingMascotAlt")}
                   width={200}
                   height={200}
-                  aria-hidden="true"
                   className="object-contain w-28 h-28 md:w-36 md:h-36 flex-shrink-0"
                   style={{ filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))" }}
                 />
@@ -629,9 +627,8 @@ export default function ForSchoolsPage() {
           </motion.div>
         </div>
       </Section>
-
-      {/* ─── 7. PROCESS ─── */}
-      <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
+      {/* ─── 8. PROCESS ─── */}
+      <Section className="bg-gray-50 py-8 md:py-12 lg:py-16">
         <motion.div
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -685,11 +682,12 @@ export default function ForSchoolsPage() {
                   className="flex-1 rounded-2xl p-4 md:p-5 border border-primaryOrange/10 hover:border-primaryOrange/25 transition-all hover:shadow-md flex items-center gap-4 md:gap-5"
                 >
                   <Image
-                    alt=""
+                    alt={t("images.processStepMascotAlt", {
+                      title: step.title,
+                    })}
                     width={200}
                     height={200}
                     src={step.image}
-                    aria-hidden="true"
                     className="object-contain w-16 h-16 md:w-24 md:h-24 flex-shrink-0 scale-150"
                     style={{
                       filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.08))",
@@ -709,48 +707,20 @@ export default function ForSchoolsPage() {
           </div>
         </div>
       </Section>
-
-      {/* ─── 7. PRICING ─── */}
-      <IndividualOfferCtaSection
-        sectionClassName="bg-primaryWhite py-8 md:py-12 lg:py-16"
-        headerTitle={
-          <>
-            {t("individualOffer.headingPre")}{" "}
-            <span className="text-primaryOrange">
-              {t("individualOffer.headingHighlight")}
-            </span>
-          </>
-        }
-        mascotSrc="/Maskottchen/Maskottchen-School.png"
-        cardTitle={t("individualOffer.ctaCardTitle")}
-        cardBodyLine1={t("individualOffer.ctaCardBodyLine1")}
-        requestQuoteLabel={t("individualOffer.requestQuoteCta")}
-        bookCallLabel={t("individualOffer.bookCta")}
-        calUrl={CAL_URL}
-      />
-
-      {/* ─── 10. CTA ─── */}
+      {/* ─── 9. CTA ─── */}
       <DemoBookingCtaSection />
-
       {/* STRUCTURED DATA */}
       <StructuredData
         id="schools-service"
         data={{
-          "@context": "https://schema.org",
           "@type": "Service",
-          name: "BeAFox für Schulen",
-          description:
-            "Digitale Finanzbildung für Schulen — 1€ pro Schüler pro Jahr",
+          name: t("structuredData.serviceName"),
+          "@context": "https://schema.org",
+          description: t("structuredData.serviceDescription"),
           provider: {
             "@type": "Organization",
-            name: "BeAFox UG (haftungsbeschränkt)",
             url: "https://beafox.app",
-          },
-          offers: {
-            "@type": "Offer",
-            price: "1.00",
-            priceCurrency: "EUR",
-            unitText: "pro Schüler / Jahr",
+            name: t("structuredData.providerName"),
           },
         }}
       />

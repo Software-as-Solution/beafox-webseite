@@ -4,20 +4,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createGelatoOrder } from "@/lib/gelato-client";
-
-function getStripe(): Stripe {
-  const key = process.env.STRIPE_SECRET_KEY;
-  if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
-  return new Stripe(key);
-}
+import {
+  sendOrderConfirmationEmail,
+  type OrderConfirmationData,
+} from "@/lib/shop-emails";
+import { getProductById, formatPrice } from "@/lib/shop-products";
+import { getStripe, getStripeWebhookSecret } from "@/lib/stripe-server";
 
 // Stripe Webhook Body muss als raw Buffer gelesen werden
 export async function POST(request: NextRequest) {
   const stripe = getStripe();
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-
-  if (!webhookSecret) {
-    console.error("STRIPE_WEBHOOK_SECRET is not set");
+  let webhookSecret: string;
+  try {
+    webhookSecret = getStripeWebhookSecret();
+  } catch {
+    console.error("STRIPE_WEBHOOK_SECRET is not configured");
     return NextResponse.json({ error: "Server config error" }, { status: 500 });
   }
 
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      await fulfillOrder(session);
+      await fulfillOrder(stripe, session);
     } catch (error) {
       console.error("Fulfillment error:", error);
       // Trotzdem 200 zurückgeben, damit Stripe nicht erneut sendet
@@ -58,7 +59,7 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ received: true });
 }
 
-async function fulfillOrder(session: Stripe.Checkout.Session) {
+async function fulfillOrder(stripe: Stripe, session: Stripe.Checkout.Session) {
   const metadata = session.metadata || {};
   const itemCount = parseInt(metadata.item_count || "0", 10);
 
@@ -74,12 +75,30 @@ async function fulfillOrder(session: Stripe.Checkout.Session) {
     return;
   }
 
-  // Gelato Order Items zusammenbauen
+  // Gelato Order Items zusammenbauen + Artikelinfos für E-Mail
   const gelatoItems = [];
+  const emailItems: OrderConfirmationData["items"] = [];
+
   for (let i = 0; i < itemCount; i++) {
     const gelatoUid = metadata[`item_${i}_gelato_uid`];
     const designUrl = metadata[`item_${i}_design_url`];
     const quantity = parseInt(metadata[`item_${i}_quantity`] || "1", 10);
+    const productId = metadata[`item_${i}_product_id`];
+    const variantId = metadata[`item_${i}_variant_id`];
+
+    // Artikelinfo für E-Mail sammeln
+    const product = productId ? getProductById(productId) : undefined;
+    const variant = product?.variants.find((v) => v.id === variantId);
+    const price = variant?.priceOverride ?? product?.price ?? 0;
+
+    emailItems.push({
+      name: product?.nameKey || `Artikel ${i + 1}`,
+      variant: variant
+        ? [variant.size, variant.color].filter(Boolean).join(" / ") || variant.id
+        : variantId || "Standard",
+      quantity,
+      price: formatPrice(price),
+    });
 
     if (!gelatoUid || !designUrl) {
       console.warn(`Skipping item ${i}: missing Gelato UID or design URL`);
@@ -94,35 +113,60 @@ async function fulfillOrder(session: Stripe.Checkout.Session) {
     });
   }
 
-  if (gelatoItems.length === 0) {
-    console.warn("No valid Gelato items for order:", session.id);
-    return;
+  // Gelato-Bestellung erstellen (nur wenn UIDs vorhanden)
+  let gelatoOrderId = "pending";
+  if (gelatoItems.length > 0) {
+    const order = await createGelatoOrder({
+      orderType: "order",
+      orderReferenceId: session.id,
+      customerReferenceId: session.customer_email || "unknown",
+      currency: "EUR",
+      items: gelatoItems,
+      shippingAddress: {
+        firstName: shipping.name?.split(" ")[0] || "",
+        lastName: shipping.name?.split(" ").slice(1).join(" ") || "",
+        addressLine1: shipping.address.line1 || "",
+        addressLine2: shipping.address.line2 || undefined,
+        city: shipping.address.city || "",
+        postCode: shipping.address.postal_code || "",
+        state: shipping.address.state || undefined,
+        country: shipping.address.country || "DE",
+        email: session.customer_email || "",
+      },
+    });
+    gelatoOrderId = order.id;
+    console.log(
+      `Gelato order created: ${order.id} for Stripe session: ${session.id}`,
+    );
+  } else {
+    console.warn(
+      `No valid Gelato items for order ${session.id} — email will still be sent`,
+    );
   }
 
-  // Bestellung bei Gelato erstellen
-  const order = await createGelatoOrder({
-    orderType: "order",
-    orderReferenceId: session.id,
-    customerReferenceId: session.customer_email || "unknown",
-    currency: "EUR",
-    items: gelatoItems,
+  // Gesamtbetrag berechnen
+  const totalAmount = session.amount_total
+    ? formatPrice(session.amount_total)
+    : emailItems.reduce(
+        (sum, item) => sum + item.quantity * parseFloat(item.price.replace(/[^\d,]/g, "").replace(",", ".")),
+        0,
+      ).toLocaleString("de-DE", { style: "currency", currency: "EUR" });
+
+  // Bestätigungs-E-Mail senden
+  await sendOrderConfirmationEmail({
+    customerEmail: session.customer_email || "",
+    customerName: shipping.name || "Kunde",
+    stripeSessionId: session.id,
+    gelatoOrderId,
+    items: emailItems,
     shippingAddress: {
-      firstName: shipping.name?.split(" ")[0] || "",
-      lastName: shipping.name?.split(" ").slice(1).join(" ") || "",
-      addressLine1: shipping.address.line1 || "",
-      addressLine2: shipping.address.line2 || undefined,
+      name: shipping.name || "",
+      line1: shipping.address.line1 || "",
+      line2: shipping.address.line2 || undefined,
       city: shipping.address.city || "",
-      postCode: shipping.address.postal_code || "",
-      state: shipping.address.state || undefined,
+      postalCode: shipping.address.postal_code || "",
       country: shipping.address.country || "DE",
-      email: session.customer_email || "",
     },
+    totalAmount: typeof totalAmount === "string" ? totalAmount : formatPrice(session.amount_total || 0),
   });
-
-  console.log(
-    `Gelato order created: ${order.id} for Stripe session: ${session.id}`,
-  );
-
-  // TODO: Bestätigungs-E-Mail über SendGrid senden
-  // await sendOrderConfirmationEmail(session.customer_email, order.id);
 }

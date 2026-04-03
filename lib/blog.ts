@@ -1,16 +1,5 @@
 export const BLOG_CATEGORIES = [
   {
-    slug: "finanzen-fuer-schueler",
-    navLabel: "Schüler",
-    title: "Finanzen fuer Schueler",
-    description:
-      "Taschengeld, erstes Konto, Nebenjob - so wirst du als Schueler finanziell fit.",
-    metaTitle: "Finanzen fuer Schueler - Tipps & Ratgeber | BeAFox",
-    metaDescription:
-      "Finanzbildung fuer Schueler: Taschengeld einteilen, erstes Girokonto, Nebenjob und Steuern. Praktische Ratgeber von BeAFox.",
-    emoji: "🎒",
-  },
-  {
     slug: "finanzen-fuer-azubis",
     navLabel: "Azubis",
     title: "Finanzen fuer Azubis",
@@ -20,6 +9,17 @@ export const BLOG_CATEGORIES = [
     metaDescription:
       "Finanztipps fuer Azubis: Gehaltsabrechnung verstehen, VWL nutzen, richtig sparen. Schritt-fuer-Schritt Ratgeber von BeAFox.",
     emoji: "🔧",
+  },
+  {
+    slug: "finanzen-fuer-schueler",
+    navLabel: "Schüler",
+    title: "Finanzen fuer Schueler",
+    description:
+      "Taschengeld, erstes Konto, Nebenjob - so wirst du als Schueler finanziell fit.",
+    metaTitle: "Finanzen fuer Schueler - Tipps & Ratgeber | BeAFox",
+    metaDescription:
+      "Finanzbildung fuer Schueler: Taschengeld einteilen, erstes Girokonto, Nebenjob und Steuern. Praktische Ratgeber von BeAFox.",
+    emoji: "🎒",
   },
   {
     slug: "finanzen-fuer-studenten",

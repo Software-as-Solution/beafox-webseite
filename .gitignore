@@ -16,6 +16,7 @@
 /build
 
 CLAUDE.md
+.env
 
 # misc
 .DS_Store

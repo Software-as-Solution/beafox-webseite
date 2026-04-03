@@ -40,6 +40,20 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
+      animation: {
+        'scroll-left': 'scroll-left 25s linear infinite',
+        'scroll-left-slow': 'scroll-left-slow 45s linear infinite',
+      },
+      keyframes: {
+        'scroll-left': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-33.3333%)' },
+        },
+        'scroll-left-slow': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-33.3333%)' },
+        },
+      },
     },
   },
   plugins: [],

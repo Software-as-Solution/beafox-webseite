@@ -1,511 +1,602 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import Section from "@/components/Section";
+// CUSTOM COMPONENTS
 import Button from "@/components/Button";
+import Section from "@/components/Section";
 import LandingHero from "@/components/LandingHero";
-import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
+import RatgeberSection from "@/components/RatGeber";
+import SectionHeader from "@/components/SectionHeader";
+import StructuredData from "@/components/StructuredData";
+// IMPORTS
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useState, useCallback } from "react";
+// ICONS
 import {
-  Mail,
-  Phone,
-  MapPin,
   Send,
-  MessageCircle,
-  Sparkles,
-  Clock,
-  CheckCircle,
-  ArrowRight,
-  HelpCircle,
-  FileText,
   Users,
-  Building2,
-  GraduationCap,
   Calendar,
+  Building2,
+  CheckCircle,
+  GraduationCap,
 } from "lucide-react";
 
-export default function ContactPage() {
-  const t = useTranslations("contact");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-    type: "general",
-  });
+// TYPES
+type LeadType = "general" | "schools" | "business";
+// CONSTANTS
+const CAL_URL = "https://app.cal.eu/beafox";
+const GRADIENT_CARD_STYLE = {
+  background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
+} as const;
+const INITIAL_FORM = {
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+  website: "",
+  schoolName: "",
+  companyName: "",
+  schoolLocation: "",
+  companyLocation: "",
+  type: "general" as LeadType,
+};
+const TYPE_OPTIONS = [
+  { value: "schools", icon: GraduationCap },
+  { value: "business", icon: Building2 },
+  { value: "general", icon: Users },
+] as const;
+const INPUT_CLASS =
+  "w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-xl focus:ring-2 focus:ring-primaryOrange/20 focus:border-primaryOrange transition-all bg-white";
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export default function ContactPage() {
+  // HOOKS
+  const t = useTranslations("contact");
+  // STATES
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ ...INITIAL_FORM });
+  // FUNCTIONS
+  const handleChange = useCallback(
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) => {
+      setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    },
+    [],
+  );
+  const setType = useCallback((value: LeadType) => {
+    setFormData((prev) => ({
+      ...prev,
+      type: value,
+      // Clear conditional fields when switching type
+      schoolName: value === "schools" ? prev.schoolName : "",
+      schoolLocation: value === "schools" ? prev.schoolLocation : "",
+      companyName: value === "business" ? prev.companyName : "",
+      companyLocation: value === "business" ? prev.companyLocation : "",
+    }));
+  }, []);
+  const validate = useCallback((): string | null => {
+    if (!formData.name.trim()) return t("form.validation.nameMissing");
+    if (!formData.email.trim()) return t("form.validation.emailMissing");
+    if (!EMAIL_REGEX.test(formData.email.trim()))
+      return t("form.validation.emailInvalid");
+    if (!formData.subject.trim()) return t("form.validation.subjectMissing");
+    if (!formData.message.trim()) return t("form.validation.messageMissing");
+    if (formData.message.trim().length < 10)
+      return t("form.validation.messageTooShort");
+    return null;
+  }, [formData, t]);
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
+      // Prevent double submit
+      if (isSubmitting) return;
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setErrorMessage(data.error || t("form.errorSendFallback"));
+      // Client-side validation
+      const validationError = validate();
+      if (validationError) {
+        setErrorMessage(validationError);
         setSubmitStatus("error");
         return;
       }
 
-      // Success
-      setSubmitStatus("success");
+      setIsSubmitting(true);
+      setSubmitStatus("idle");
       setErrorMessage("");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-        type: "general",
-      });
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setErrorMessage(
-        t("form.errorUnexpected")
-      );
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+      try {
+        const crmLeadType =
+          formData.type === "schools"
+            ? "school"
+            : formData.type === "business"
+              ? "business"
+              : "general";
 
-  const quickLinks = [
-    {
-      icon: GraduationCap,
-      title: t("quickLinks.schools.title"),
-      description: t("quickLinks.schools.description"),
-      href: "/fuer-schulen",
-      color: "bg-white border-primaryOrange/20",
-      iconColor: "text-primaryOrange",
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            crmLeadType,
+            crmSource: "website_contact_form",
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          setErrorMessage(data.error || t("form.errorSendFallback"));
+          setSubmitStatus("error");
+          return;
+        }
+
+        setSubmitStatus("success");
+        setFormData({ ...INITIAL_FORM });
+      } catch {
+        setErrorMessage(t("form.errorUnexpected"));
+        setSubmitStatus("error");
+      } finally {
+        setIsSubmitting(false);
+      }
     },
-    {
-      icon: Building2,
-      title: t("quickLinks.business.title"),
-      description: t("quickLinks.business.description"),
-      href: "/fuer-unternehmen",
-      color: "bg-white border-primaryOrange/20",
-      iconColor: "text-primaryOrange",
-    },
-    {
-      icon: Users,
-      title: t("quickLinks.private.title"),
-      description: t("quickLinks.private.description"),
-      href: "/beafox-unlimited",
-      color: "bg-white border-primaryOrange/20",
-      iconColor: "text-primaryOrange",
-    },
-  ];
+    [formData, isSubmitting, validate, t],
+  );
+  const scrollToForm = useCallback(() => {
+    document
+      .getElementById("contact-form")
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, []);
+  const resetForm = useCallback(() => {
+    setSubmitStatus("idle");
+    setFormData({ ...INITIAL_FORM });
+    setErrorMessage("");
+  }, []);
 
   return (
     <>
-      {/* Hero Section */}
+      {/* ─── 1. HERO ─── */}
       <LandingHero
         badge={t("hero.tag")}
+        mascotAlt={t("hero.tag")}
+        cardText={t("hero.cardText")}
+        description={t("hero.description")}
+        mascotSrc="/Maskottchen/Maskottchen-Hero.png"
         title={
           <>
             {t("hero.title.pre")}{" "}
-            <span className="text-primaryOrange">{t("hero.title.highlight")}</span>
+            <span className="text-primaryOrange">
+              {t("hero.title.highlight")}
+            </span>
           </>
         }
-        description={t("hero.description")}
         actions={
           <>
             <button
               type="button"
-              onClick={() =>
-                document
-                  .getElementById("contact-form")
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
-              }
-              className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-primaryWhite rounded-full font-semibold !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base hover:bg-primaryOrange/90 transition-colors w-full sm:w-auto"
+              onClick={scrollToForm}
+              className="inline-flex items-center justify-center gap-2 bg-primaryOrange text-white rounded-full font-semibold !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base hover:bg-primaryOrange/90 transition-colors w-full sm:w-auto"
             >
-              <Send className="w-4 h-4 md:w-5 md:h-5" />
+              <Send className="w-3.5 h-3.5 md:w-4 md:h-4" aria-hidden="true" />
               {t("form.submit")}
             </button>
-            <a
-              href="https://app.cal.eu/beafox"
+            <Button
+              href={CAL_URL}
+              variant="outline"
               target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 border-2 border-primaryOrange text-primaryOrange hover:bg-primaryOrange/5 rounded-full font-semibold !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base transition-colors w-full sm:w-auto"
+              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
             >
-              <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+              <Calendar
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
+                aria-hidden="true"
+              />
               {t("info.booking.button")}
-            </a>
+            </Button>
           </>
         }
-        chips={
-          <>
-            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-              <Phone className="w-4 h-4 md:w-5 md:h-5 text-primaryOrange" />
-              <span className="text-xs md:text-sm text-darkerGray">
-                +49 178 2723 673
-              </span>
-            </div>
-            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-              <Mail className="w-4 h-4 md:w-5 md:h-5 text-primaryOrange" />
-              <span className="text-xs md:text-sm text-darkerGray">
-                info@beafox.app
-              </span>
-            </div>
-            <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-3 py-1.5 shadow-sm">
-              <Clock className="w-4 h-4 md:w-5 md:h-5 text-primaryOrange" />
-              <span className="text-xs md:text-sm text-darkerGray">
-                {t("info.responseTime.value")}
-              </span>
-            </div>
-          </>
-        }
-        mascotSrc="/Maskottchen/Maskottchen-Hero.png"
-        mascotAlt={t("hero.tag")}
-        cardIcon={MessageCircle}
-        cardTitle={t("info.title")}
-        cardText={t("info.booking.text")}
       />
-
-      {/* Contact Section */}
-      <Section id="contact-form" className="bg-primaryWhite py-8 md:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+      {/* ─── 2. FORM — Centered ─── */}
+      <Section id="contact-form" className="bg-gray-50 py-8 md:py-12 lg:py-16">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+          >
+            <div className="text-center mb-6 md:mb-8">
+              <SectionHeader
+                pillClassName="mb-4 md:mb-6"
+                title={t("form.title")}
+                subtitle={`${t("info.responseTime.prefix")} ${t(
+                  "info.responseTime.value",
+                )}`}
+              />
+            </div>
+            <div
+              style={GRADIENT_CARD_STYLE}
+              className="rounded-2xl p-6 md:p-8 lg:p-10 border border-primaryOrange/15"
             >
-              <h2 className="text-3xl md:text-4xl text-center sm:text-left font-bold text-darkerGray mb-4 sm:mb-8">
-                {t("info.title")}
-              </h2>
-
-              {/* Cal.com Booking */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="bg-gradient-to-br from-primaryOrange/10 to-primaryOrange/5 rounded-xl p-6 border-2 border-primaryOrange/20 mb-6"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="bg-primaryOrange/20 rounded-lg p-3 flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-primaryOrange" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-darkerGray mb-2 text-lg">
-                      {t("info.booking.title")}
-                    </h3>
-                    <p className="text-lightGray text-sm mb-4">
-                      {t("info.booking.text")}
-                    </p>
-                    <a
-                      href="https://app.cal.eu/beafox"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-primaryOrange hover:bg-primaryOrange/90 text-primaryWhite px-6 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
-                    >
-                      <Calendar className="w-5 h-5" />
-                      {t("info.booking.button")}
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-
-              <div className="space-y-6 mb-12">
+              {submitStatus === "success" ? (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                  className="flex items-start gap-4 bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
+                  className="text-center py-10"
+                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                 >
-                  <div className="bg-primaryOrange/10 rounded-lg p-3 flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primaryOrange" />
+                  <div
+                    style={{ background: "rgba(34,197,94,0.1)" }}
+                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <CheckCircle className="w-8 h-8 text-green-500" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-darkerGray mb-1 text-lg">
-                      {t("info.phone")}
-                    </h3>
-                    <a
-                      href="tel:+491782723673"
-                      className="text-lightGray hover:text-primaryOrange transition-colors text-base md:text-lg"
-                    >
-                      +49 178 2723 673
-                    </a>
-                  </div>
+                  <h3 className="text-xl font-bold text-darkerGray mb-2">
+                    {t("form.successTitle")}
+                  </h3>
+                  <p className="text-sm text-lightGray max-w-sm mx-auto mb-6">
+                    {t("form.success")}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={resetForm}
+                    className="text-sm text-primaryOrange font-medium hover:underline"
+                  >
+                    {t("form.sendAnother")}
+                  </button>
                 </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 }}
-                  className="flex items-start gap-4 bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
-                >
-                  <div className="bg-primaryOrange/10 rounded-lg p-3 flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primaryOrange" />
+              ) : (
+                <form noValidate className="space-y-4" onSubmit={handleSubmit}>
+                  {/* Honeypot — hidden from humans, visible to bots */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <label htmlFor="website">{t("form.honeypotLabel")}</label>
+                    <input
+                      type="text"
+                      id="website"
+                      tabIndex={-1}
+                      name="website"
+                      autoComplete="off"
+                      onChange={handleChange}
+                      value={formData.website}
+                    />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-darkerGray mb-1 text-lg">
-                      {t("info.email")}
-                    </h3>
-                    <a
-                      href="mailto:info@beafox.app"
-                      className="text-lightGray hover:text-primaryOrange transition-colors text-base md:text-lg break-all"
-                    >
-                      info@beafox.app
-                    </a>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.4 }}
-                  className="flex items-start gap-4 bg-white rounded-xl p-6 border-2 border-primaryOrange/20 hover:border-primaryOrange/40 transition-all"
-                >
-                  <div className="bg-primaryOrange/10 rounded-lg p-3 flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primaryOrange" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-darkerGray mb-1 text-lg">
-                      {t("info.address")}
-                    </h3>
-                    <p className="text-lightGray text-base md:text-lg">
-                      BeAFox UG (haftungsbeschränkt)
-                      <br />
-                      93073 Neutraubling
-                      <br />
-                      Deutschland
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Response Time Info */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-                className="mt-4 sm:mt-6 flex items-center gap-3 text-lightGray mb-6"
-              >
-                <Clock className="w-5 h-5 text-primaryOrange" />
-                <span className="text-sm">
-                  {t("info.responseTime.prefix")}{" "}
-                  <strong>{t("info.responseTime.value")}</strong>
-                </span>
-              </motion.div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl text-center sm:text-left font-bold text-darkerGray mb-4 sm:mb-8">
-                {t("form.title")}
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-darkerGray mb-2"
-                  >
-                    {t("form.fields.name.label")}
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder={t("form.fields.name.placeholder")}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-darkerGray mb-2"
-                  >
-                    {t("form.fields.email.label")}
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder={t("form.fields.email.placeholder")}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-darkerGray mb-2"
-                  >
-                    {t("form.fields.phone.label")}{" "}
-                    <span className="text-lightGray">({t("form.fields.phone.optional")})</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder={t("form.fields.phone.placeholder")}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="type"
-                    className="block text-sm font-medium text-darkerGray mb-2"
-                  >
-                    {t("form.fields.type.label")}
-                  </label>
-                  <select
-                    id="type"
-                    name="type"
-                    value={formData.type}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                  >
-                    <option value="general">{t("form.fields.type.options.general")}</option>
-                    <option value="schools">{t("form.fields.type.options.schools")}</option>
-                    <option value="business">{t("form.fields.type.options.business")}</option>
-                    <option value="private">{t("form.fields.type.options.private")}</option>
-                    <option value="pilot">{t("form.fields.type.options.pilot")}</option>
-                    <option value="support">{t("form.fields.type.options.support")}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-darkerGray mb-2"
-                  >
-                    {t("form.fields.subject.label")}
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white"
-                    placeholder={t("form.fields.subject.placeholder")}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-darkerGray mb-2"
-                  >
-                    {t("form.fields.message.label")}
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-primaryOrange/20 rounded-lg focus:ring-2 focus:ring-primaryOrange focus:border-primaryOrange transition-all bg-white resize-none"
-                    placeholder={t("form.fields.message.placeholder")}
-                  />
-                </div>
-
-                {submitStatus === "success" && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-green-50 border-2 border-green-300 text-green-700 px-4 py-4 rounded-lg flex items-start gap-3"
-                  >
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-semibold mb-1">Nachricht gesendet!</p>
-                      <p className="text-sm">
-                        {t("form.success")}
-                      </p>
+                  {/* Type selector */}
+                  <fieldset>
+                    <legend className="sr-only">
+                      {t("form.fields.type.label")}
+                    </legend>
+                    <div className="grid grid-cols-3 gap-2 relative bottom-2">
+                      {TYPE_OPTIONS.map((option) => {
+                        const Icon = option.icon;
+                        const isActive = formData.type === option.value;
+                        return (
+                          <button
+                            type="button"
+                            key={option.value}
+                            aria-pressed={isActive}
+                            onClick={() => setType(option.value)}
+                            className={`flex flex-col items-center gap-1.5 rounded-xl p-3 md:p-4 border transition-all text-xs md:text-sm font-medium ${
+                              isActive
+                                ? "border-primaryOrange/30 bg-primaryOrange/5 text-primaryOrange"
+                                : "border-gray-200 bg-white text-lightGray hover:border-primaryOrange/20"
+                            }`}
+                          >
+                            <Icon
+                              aria-hidden="true"
+                              className={`w-5 h-5 ${isActive ? "text-primaryOrange" : "text-lightGray"}`}
+                            />
+                            {t(`form.fields.type.options.${option.value}`)}
+                          </button>
+                        );
+                      })}
                     </div>
-                  </motion.div>
-                )}
+                  </fieldset>
 
-                {submitStatus === "error" && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-red-50 border-2 border-red-300 text-red-700 px-4 py-4 rounded-lg"
-                  >
-                    <p className="font-semibold mb-1">{t("form.errorTitle")}</p>
-                    <p className="text-sm">{errorMessage}</p>
-                  </motion.div>
-                )}
+                  {/* Name + Email */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-xs font-medium text-darkerGray mb-1.5"
+                      >
+                        {t("form.fields.name.label")}
+                      </label>
+                      <input
+                        id="name"
+                        required
+                        type="text"
+                        name="name"
+                        maxLength={200}
+                        autoComplete="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className={INPUT_CLASS}
+                        placeholder={t("form.fields.name.placeholder")}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-xs font-medium text-darkerGray mb-1.5"
+                      >
+                        {t("form.fields.email.label")}
+                      </label>
+                      <input
+                        required
+                        id="email"
+                        type="email"
+                        name="email"
+                        maxLength={200}
+                        autoComplete="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={INPUT_CLASS}
+                        placeholder={t("form.fields.email.placeholder")}
+                      />
+                    </div>
+                  </div>
+                  {/* Phone + Subject */}
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-xs font-medium text-darkerGray mb-1.5"
+                      >
+                        {t("form.fields.phone.label")}{" "}
+                        <span className="text-lightGray">
+                          ({t("form.fields.phone.optional")})
+                        </span>
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        maxLength={30}
+                        autoComplete="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={INPUT_CLASS}
+                        placeholder={t("form.fields.phone.placeholder")}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="subject"
+                        className="block text-xs font-medium text-darkerGray mb-1.5"
+                      >
+                        {t("form.fields.subject.label")}
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        maxLength={200}
+                        className={INPUT_CLASS}
+                        onChange={handleChange}
+                        value={formData.subject}
+                        placeholder={t("form.fields.subject.placeholder")}
+                      />
+                    </div>
+                  </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primaryOrange text-primaryWhite px-8 py-4 rounded-lg font-semibold hover:bg-primaryOrange/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-primaryWhite border-t-transparent rounded-full animate-spin" />
-                      <span>{t("form.sending")}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      <span>{t("form.submit")}</span>
-                    </>
+                  {/* Conditional: School fields */}
+                  {formData.type === "schools" && (
+                    <motion.div
+                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="grid sm:grid-cols-2 gap-4 overflow-hidden"
+                    >
+                      <div>
+                        <label
+                          htmlFor="schoolName"
+                          className="block text-xs font-medium text-darkerGray mb-1.5"
+                        >
+                          {t("form.fields.schoolName.label")}
+                        </label>
+                        <input
+                          type="text"
+                          id="schoolName"
+                          maxLength={200}
+                          name="schoolName"
+                          onChange={handleChange}
+                          className={INPUT_CLASS}
+                          autoComplete="organization"
+                          value={formData.schoolName}
+                          placeholder={t("form.fields.schoolName.placeholder")}
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="schoolLocation"
+                          className="block text-xs font-medium text-darkerGray mb-1.5"
+                        >
+                          {t("form.fields.schoolLocation.label")}
+                        </label>
+                        <input
+                          type="text"
+                          maxLength={200}
+                          id="schoolLocation"
+                          name="schoolLocation"
+                          onChange={handleChange}
+                          className={INPUT_CLASS}
+                          autoComplete="address-level2"
+                          value={formData.schoolLocation}
+                          placeholder={t(
+                            "form.fields.schoolLocation.placeholder",
+                          )}
+                        />
+                      </div>
+                    </motion.div>
                   )}
-                </button>
-              </form>
-            </motion.div>
-          </div>
+                  {/* Conditional: Business fields */}
+                  {formData.type === "business" && (
+                    <motion.div
+                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      className="grid sm:grid-cols-2 gap-4 overflow-hidden"
+                    >
+                      <div>
+                        <label
+                          htmlFor="companyName"
+                          className="block text-xs font-medium text-darkerGray mb-1.5"
+                        >
+                          {t("form.fields.companyName.label")}
+                        </label>
+                        <input
+                          type="text"
+                          maxLength={200}
+                          id="companyName"
+                          name="companyName"
+                          className={INPUT_CLASS}
+                          onChange={handleChange}
+                          autoComplete="organization"
+                          value={formData.companyName}
+                          placeholder={t("form.fields.companyName.placeholder")}
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="companyLocation"
+                          className="block text-xs font-medium text-darkerGray mb-1.5"
+                        >
+                          {t("form.fields.companyLocation.label")}
+                        </label>
+                        <input
+                          type="text"
+                          maxLength={200}
+                          id="companyLocation"
+                          name="companyLocation"
+                          className={INPUT_CLASS}
+                          onChange={handleChange}
+                          autoComplete="address-level2"
+                          value={formData.companyLocation}
+                          placeholder={t(
+                            "form.fields.companyLocation.placeholder",
+                          )}
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+                  {/* Message */}
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-xs font-medium text-darkerGray mb-1.5"
+                    >
+                      {t("form.fields.message.label")}
+                    </label>
+                    <textarea
+                      required
+                      rows={4}
+                      id="message"
+                      name="message"
+                      maxLength={5000}
+                      onChange={handleChange}
+                      value={formData.message}
+                      className={`${INPUT_CLASS} resize-none`}
+                      placeholder={t("form.fields.message.placeholder")}
+                    />
+                    <p className="text-[10px] text-lightGray text-right mt-1">
+                      {formData.message.length} / 5.000
+                    </p>
+                  </div>
+                  {/* Error */}
+                  {submitStatus === "error" && (
+                    <motion.div
+                      role="alert"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm"
+                    >
+                      {errorMessage}
+                    </motion.div>
+                  )}
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting}
+                    className="w-full bg-primaryOrange text-white px-6 py-3.5 rounded-xl font-semibold hover:bg-primaryOrange/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm md:text-base"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div
+                          aria-hidden="true"
+                          className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+                        />
+                        {t("form.sending")}
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" aria-hidden="true" />
+                        {t("form.submit")}
+                      </>
+                    )}
+                  </button>
+                  {/* Privacy */}
+                  <p className="text-[10px] md:text-xs text-lightGray text-center leading-relaxed">
+                    {t("form.privacy.prefix")}{" "}
+                    <a
+                      href="/datenschutz"
+                      className="text-primaryOrange hover:underline"
+                    >
+                      {t("form.privacy.linkLabel")}
+                    </a>
+                    {t("form.privacy.suffix")}
+                  </p>
+                </form>
+              )}
+            </div>
+          </motion.div>
         </div>
       </Section>
-
-      <DemoBookingCtaSection />
+      {/* ─── 3. QUICK LINKS ─── */}
+      <Section className="bg-primaryWhite py-8 md:py-12">
+        <motion.div
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center mb-6 md:mb-8"
+        >
+          <SectionHeader
+            title={t("quickLinksHeader")}
+            titleClassName="!text-lg md:!text-xl"
+          />
+        </motion.div>
+        <RatgeberSection variant="faqProducts" />
+      </Section>
+      <StructuredData
+        id="contact-page"
+        data={{
+          "@type": "ContactPage",
+          name: t("structuredData.pageName"),
+          "@context": "https://schema.org",
+          url: "https://beafox.app/kontakt",
+          description: t("structuredData.description"),
+          mainEntity: {
+            "@type": "Organization",
+            email: "info@beafox.app",
+            url: "https://beafox.app",
+            telephone: "+491782723673",
+            name: t("structuredData.organizationName"),
+            address: {
+              postalCode: "93073",
+              addressCountry: "DE",
+              "@type": "PostalAddress",
+              addressLocality: "Neutraubling",
+            },
+          },
+        }}
+      />
     </>
   );
 }

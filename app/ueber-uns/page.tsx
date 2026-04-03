@@ -17,7 +17,6 @@ import { useState, useCallback, useMemo } from "react";
 import {
   Users,
   Award,
-  Heart,
   Quote,
   Target,
   PawPrint,
@@ -42,11 +41,6 @@ interface TimelineItem {
   title: string;
   description: string;
 }
-interface Value {
-  title: string;
-  description: string;
-  icon: typeof Target;
-}
 // CONSTANTS
 const TEAM_MEMBER_META = [
   {
@@ -63,17 +57,10 @@ const TEAM_MEMBER_META = [
   },
 ] as const;
 const VALUE_ICONS = [Target, Lightbulb, Building2] as const;
-const STORY_CARD_STYLE = {
-  background: "rgba(232,119,32,0.04)",
-} as const;
 const GRADIENT_CARD_STYLE = {
   background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
 } as const;
-const QUOTE_BOX_STYLE = {
-  boxShadow: "0 8px 24px rgba(0,0,0,0.04)",
-  border: "1px solid rgba(232,119,32,0.15)",
-  background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
-} as const;
+const STORY_BG = { background: "rgba(232,119,32,0.04)" } as const;
 const ACHIEVEMENT_CARD_STYLE = {
   border: "1px solid rgba(232,119,32,0.2)",
   boxShadow: "0 16px 48px rgba(0,0,0,0.06)",
@@ -84,7 +71,12 @@ const AWARD_PILLS = [
   { label: "Startup Summit Deutschland", icon: TrendingUp },
   { label: "Startchancen-Programm", icon: Sparkles },
 ] as const;
-// HELPER FUNCTIONS
+const PIVOT_ITEM: TimelineItem = {
+  year: "2026",
+  title: "Dein Lernbegleiter",
+  description:
+    "Statt Wissen vermitteln, begleitet Bea junge Menschen durch echte Finanzsituationen — personalisiert, neutral und in ihrem Tempo.",
+};
 const GLOW = (opacity: number) => ({
   background: `radial-gradient(circle, rgba(232,119,32,${opacity}) 0%, transparent 70%)`,
 });
@@ -95,12 +87,11 @@ export default function AboutPage() {
   const tHome = useTranslations("home");
   // STATES
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
-  // CALLBACKS
+  const openDownloadModal = useCallback(() => setIsDownloadModalOpen(true), []);
   const closeDownloadModal = useCallback(
     () => setIsDownloadModalOpen(false),
     [],
   );
-  const openDownloadModal = useCallback(() => setIsDownloadModalOpen(true), []);
   // CONSTANTS
   const stats = useMemo(
     () => [
@@ -109,34 +100,26 @@ export default function AboutPage() {
     ],
     [t],
   );
-  const values: Value[] = useMemo(() => {
-    const raw = t.raw("values") as { title: string; description: string }[];
+  const values = useMemo(() => {
+    const raw =
+      (t.raw("values") as { title: string; description: string }[]) ?? [];
     return raw.map((v, i) => ({ ...v, icon: VALUE_ICONS[i] }));
   }, [t]);
   const teamMembers: TeamMember[] = useMemo(() => {
-    const raw = t.raw("team.members") as { name: string; role: string }[];
-    return raw.map((member, i) => ({ ...member, ...TEAM_MEMBER_META[i] }));
+    const raw =
+      (t.raw("team.members") as { name: string; role: string }[]) ?? [];
+    return raw.map((m, i) => ({ ...m, ...TEAM_MEMBER_META[i] }));
   }, [t]);
-  const timelineData: TimelineItem[] = useMemo(() => {
-    const raw = t.raw("timeline.items") as TimelineItem[];
-    return [
-      ...raw,
-      {
-        year: "2026",
-        title: "Dein Lernbegleiter",
-        description:
-          "Statt Wissen vermitteln, begleitet Bea junge Menschen durch echte Finanzsituationen — personalisiert, neutral und in ihrem Tempo.",
-      },
-    ];
-  }, [t]);
+  const timelineData: TimelineItem[] = useMemo(
+    () => [...((t.raw("timeline.items") as TimelineItem[]) ?? []), PIVOT_ITEM],
+    [t],
+  );
 
   return (
     <>
       {/* ─── 1. HERO ─── */}
       <LandingHero
-        cardIcon={Heart}
         badge={t("hero.badge")}
-        cardTitle={t("story.tag")}
         mascotAlt={t("hero.badge")}
         cardText={t("hero.subtitle")}
         mascotSrc="/Maskottchen/Maskottchen-Friends.png"
@@ -152,13 +135,13 @@ export default function AboutPage() {
         actions={
           <>
             <Button
-              onClick={openDownloadModal}
               variant="primary"
+              onClick={openDownloadModal}
               className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               <Download
-                className="w-3.5 h-3.5 md:w-4 md:h-4"
                 aria-hidden="true"
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
               />
               {t("cta.downloadCta")}
             </Button>
@@ -168,15 +151,15 @@ export default function AboutPage() {
               className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               <Presentation
-                className="w-3.5 h-3.5 md:w-4 md:h-4"
                 aria-hidden="true"
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
               />
               {t("cta.partnerCta")}
             </Button>
           </>
         }
       />
-      {/* ─── 2. STORY — Problem + Lösung mit Bea ─── */}
+      {/* ─── 2. STORY ─── */}
       <Section className="bg-white py-8 md:py-12 lg:py-16">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -192,9 +175,8 @@ export default function AboutPage() {
             />
           </motion.div>
           <div className="space-y-6 md:space-y-8">
-            {/* Problem */}
             <motion.div
-              style={STORY_CARD_STYLE}
+              style={STORY_BG}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               initial={{ opacity: 0, x: -20 }}
@@ -216,9 +198,8 @@ export default function AboutPage() {
                 </div>
               </div>
             </motion.div>
-            {/* Lösung — mit Bea */}
             <motion.div
-              style={STORY_CARD_STYLE}
+              style={STORY_BG}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               initial={{ opacity: 0, x: 20 }}
@@ -240,19 +221,17 @@ export default function AboutPage() {
                         {t("story.solutionText")}
                       </p>
                     </div>
-                    <div className="flex-shrink-0 hidden sm:block">
-                      <Image
-                        width={300}
-                        height={300}
-                        loading="lazy"
-                        alt="Bea — Dein KI-Finanzbegleiter"
-                        src="/Maskottchen/Maskottchen-Hero.png"
-                        className="object-contain w-20 h-20 md:w-28 md:h-28 scale-150"
-                        style={{
-                          filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))",
-                        }}
-                      />
-                    </div>
+                    <Image
+                      width={300}
+                      height={300}
+                      loading="lazy"
+                      alt={t("images.beaMascotAlt")}
+                      src="/Maskottchen/Maskottchen-Hero.png"
+                      className="object-contain w-20 h-20 md:w-28 md:h-28 scale-150 flex-shrink-0 hidden sm:block"
+                      style={{
+                        filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))",
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -260,7 +239,8 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
-      {/* ─── 3. ANTRIEB — Mission/Vision/Prinzip + Team-Foto + Quote ─── */}
+
+      {/* ─── 3. ANTRIEB ─── */}
       <Section className="bg-gray-50 py-10 md:py-16 lg:py-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -274,7 +254,7 @@ export default function AboutPage() {
               pillClassName="mb-4 md:mb-6"
               title={
                 <>
-                  <span className="text-darkerGray">{t("drive.title")}</span>{" "}
+                  {t("drive.title")}{" "}
                   <span className="text-primaryOrange">
                     {t("drive.subtitle")}
                   </span>
@@ -282,7 +262,6 @@ export default function AboutPage() {
               }
             />
           </motion.div>
-          {/* Mission / Vision / Prinzip */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-12 md:mb-16">
             {values.map((value, index) => {
               const Icon = value.icon;
@@ -325,7 +304,6 @@ export default function AboutPage() {
               );
             })}
           </div>
-          {/* Team-Foto + Experience Quote */}
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
               viewport={{ once: true }}
@@ -339,7 +317,7 @@ export default function AboutPage() {
                   height={450}
                   loading="lazy"
                   src="/Team/Team.png"
-                  alt="Das BeAFox Team"
+                  alt={t("images.teamPhotoAlt")}
                   className="object-cover w-full h-auto aspect-[4/3]"
                 />
                 <div
@@ -357,10 +335,9 @@ export default function AboutPage() {
               viewport={{ once: true }}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="text-center md:text-left"
               transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-center md:text-left"
             >
-
               <div className="bg-white rounded-xl p-4 md:p-5 border-l-4 border-r-4 border-primaryOrange shadow-sm mb-6">
                 <p className="text-sm md:text-base text-primaryOrange font-semibold leading-relaxed">
                   {tHome("experienceSection.paragraph3")}
@@ -394,6 +371,7 @@ export default function AboutPage() {
           </div>
         </div>
       </Section>
+
       {/* ─── 4. TEAM ─── */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <motion.div
@@ -436,8 +414,8 @@ export default function AboutPage() {
                 <Image
                   fill
                   loading="lazy"
-                  src={member.image}
                   alt={member.name}
+                  src={member.image}
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -465,6 +443,7 @@ export default function AboutPage() {
           ))}
         </div>
       </Section>
+
       {/* ─── 5. TIMELINE + ACHIEVEMENTS ─── */}
       <Section className="bg-gray-50 py-10 md:py-16 lg:py-20">
         <div className="max-w-5xl mx-auto">
@@ -480,11 +459,10 @@ export default function AboutPage() {
               highlight={t("timeline.titleHighlight")}
             />
           </motion.div>
-          {/* Timeline */}
           <div className="relative px-4 md:px-0 mb-12 md:mb-16">
             <div
               aria-hidden="true"
-              className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-0.5 bg-primaryOrange/15 transform -translate-x-1/2"
+              className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-0.5 bg-primaryOrange/15 -translate-x-1/2"
             />
             <div className="space-y-3 md:space-y-4">
               {timelineData.map((item, index) => {
@@ -497,15 +475,11 @@ export default function AboutPage() {
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.06 }}
-                    className={`relative flex items-start gap-4 md:gap-8 flex-row ${isEven ? "" : "md:flex-row-reverse"}`}
+                    className={`relative flex items-start gap-4 md:gap-8 ${isEven ? "" : "md:flex-row-reverse"}`}
                   >
                     <motion.div
-                      className={`absolute left-[8px] md:left-1/2 top-6 transform -translate-x-1/2 z-10 rounded-full border-4 border-white shadow-lg ${
-                        isLast
-                          ? "w-6 h-6 md:w-7 md:h-7 bg-primaryOrange"
-                          : "w-4 h-4 md:w-5 md:h-5 bg-primaryOrange"
-                      }`}
                       aria-hidden="true"
+                      className={`absolute left-[8px] md:left-1/2 top-6 -translate-x-1/2 z-10 rounded-full border-4 border-white shadow-lg ${isLast ? "w-6 h-6 md:w-7 md:h-7 bg-primaryOrange" : "w-4 h-4 md:w-5 md:h-5 bg-primaryOrange"}`}
                       {...(isLast
                         ? {
                             animate: {
@@ -516,8 +490,8 @@ export default function AboutPage() {
                             },
                             transition: {
                               duration: 1.5,
-                              repeat: Infinity,
                               ease: "easeOut",
+                              repeat: Infinity,
                             },
                           }
                         : {})}
@@ -526,11 +500,7 @@ export default function AboutPage() {
                       className={`w-full md:w-5/12 ml-8 md:ml-0 ${isEven ? "md:pr-8 md:text-right" : "md:pl-8 md:text-left"}`}
                     >
                       <div
-                        className={`rounded-xl p-4 md:p-5 transition-all ${
-                          isLast
-                            ? "border-2 border-primaryOrange shadow-md"
-                            : "bg-white border border-gray-200 shadow-sm hover:border-primaryOrange/30 hover:shadow-md"
-                        }`}
+                        className={`rounded-xl p-4 md:p-5 transition-all ${isLast ? "border-2 border-primaryOrange shadow-md" : "bg-white border border-gray-200 shadow-sm hover:border-primaryOrange/30 hover:shadow-md"}`}
                         style={
                           isLast
                             ? {
@@ -541,11 +511,7 @@ export default function AboutPage() {
                         }
                       >
                         <div
-                          className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 mb-2 text-xs font-bold ${
-                            isLast
-                              ? "bg-primaryOrange text-white"
-                              : "bg-primaryOrange/10 text-primaryOrange"
-                          }`}
+                          className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 mb-2 text-xs font-bold ${isLast ? "bg-primaryOrange text-white" : "bg-primaryOrange/10 text-primaryOrange"}`}
                         >
                           {isLast && (
                             <Sparkles className="w-3 h-3" aria-hidden="true" />
@@ -567,14 +533,15 @@ export default function AboutPage() {
               })}
             </div>
           </div>
+
           {/* Achievements */}
           <motion.div
             viewport={{ once: true }}
-            style={ACHIEVEMENT_CARD_STYLE}
             transition={{ duration: 0.5 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="relative overflow-hidden rounded-2xl p-6 md:p-10"
+            style={ACHIEVEMENT_CARD_STYLE}
           >
             <div
               style={GLOW(0.08)}
@@ -586,7 +553,6 @@ export default function AboutPage() {
               aria-hidden="true"
               className="absolute -bottom-16 -left-16 w-[200px] h-[200px] rounded-full pointer-events-none"
             />
-
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
               <div className="flex-1 min-w-0 text-center md:text-left">
                 <div
@@ -611,11 +577,8 @@ export default function AboutPage() {
                   </span>
                 </h3>
                 <p className="text-sm md:text-base text-lightGray leading-relaxed mb-5">
-                  BeAFox wurde bereits mehrfach für seinen innovativen Ansatz in
-                  der Finanzwelt ausgezeichnet. Ein Zeichen
-                  dafür, dass unsere Mission ankommt und wirkt.
+                  {t("achievements.description")}
                 </p>
-                {/* Award pills */}
                 <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-6">
                   {AWARD_PILLS.map(({ label, icon: Icon }) => (
                     <div
@@ -627,13 +590,12 @@ export default function AboutPage() {
                     </div>
                   ))}
                 </div>
-                {/* Stats — reuse same data from hero */}
                 <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                  {stats.slice(0, 3).map((stat) => {
+                  {stats.map((stat) => {
                     const Icon = stat.icon;
                     return (
                       <div
-                        key={`ach-${stat.value}`}
+                        key={stat.value}
                         className="flex items-center gap-2 bg-white rounded-full px-3.5 py-2 border border-gray-200 shadow-sm"
                       >
                         <div className="w-7 h-7 rounded-full bg-primaryOrange/10 flex items-center justify-center flex-shrink-0">
@@ -653,37 +615,33 @@ export default function AboutPage() {
                   })}
                 </div>
               </div>
-              {/* Mascot */}
-              <div className="flex-shrink-0 relative">
+              <motion.div
+                className="flex-shrink-0 relative"
+                viewport={{ once: true }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
                 <div
                   style={GLOW(0.1)}
                   aria-hidden="true"
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] md:w-[200px] md:h-[200px] rounded-full pointer-events-none"
                 />
-                <motion.div
-                  viewport={{ once: true }}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                  <Image
-                    alt=""
-                    width={200}
-                    height={200}
-                    loading="lazy"
-                    aria-hidden="true"
-                    src="/Maskottchen/Maskottchen-Hero.png"
-                    className="relative z-10 object-contain w-32 h-32 md:w-44 md:h-44"
-                    style={{
-                      filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.1))",
-                    }}
-                  />
-                </motion.div>
-              </div>
+                <Image
+                  alt={t("images.beaMascotAlt")}
+                  width={200}
+                  height={200}
+                  loading="lazy"
+                  src="/Maskottchen/Maskottchen-Hero.png"
+                  className="relative z-10 object-contain w-32 h-32 md:w-44 md:h-44"
+                  style={{ filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.1))" }}
+                />
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </Section>
+
       {/* ─── 6. QUOTE ─── */}
       <Section className="bg-primaryWhite py-8 md:py-12 lg:py-16">
         <div className="max-w-3xl mx-auto">
@@ -722,9 +680,9 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </Section>
+
       {/* ─── 7. CTA ─── */}
       <DemoBookingCtaSection />
-      {/* DOWNLOAD MODAL */}
       <DownloadModal
         isOpen={isDownloadModalOpen}
         onClose={closeDownloadModal}

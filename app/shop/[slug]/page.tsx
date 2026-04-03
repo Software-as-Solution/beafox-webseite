@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 // CUSTOM COMPONENTS
 import Section from "@/components/Section";
+import StructuredData from "@/components/StructuredData";
 import { useCart } from "@/components/ShopCartProvider";
 // IMPORTS
 import { useState, useMemo } from "react";
@@ -380,6 +381,36 @@ export default function ProductDetailPage() {
           </div>
         </Section>
       )}
+
+      {/* Structured Data — Product */}
+      <StructuredData
+        id={`product-${product.id}`}
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: t(`products.${product.nameKey}.name`),
+          description: t(`products.${product.nameKey}.description`),
+          image: `https://beafox.app${product.images[0]}`,
+          url: `https://beafox.app/shop/${product.slug}`,
+          brand: {
+            "@type": "Brand",
+            name: "BeAFox",
+          },
+          offers: {
+            "@type": "AggregateOffer",
+            lowPrice: (Math.min(product.price, ...product.variants.map((v) => v.priceOverride ?? product.price)) / 100).toFixed(2),
+            highPrice: (Math.max(product.price, ...product.variants.map((v) => v.priceOverride ?? product.price)) / 100).toFixed(2),
+            priceCurrency: "EUR",
+            availability: "https://schema.org/InStock",
+            offerCount: product.variants.length,
+            seller: {
+              "@type": "Organization",
+              name: "BeAFox",
+            },
+          },
+          category: product.category,
+        }}
+      />
     </>
   );
 }

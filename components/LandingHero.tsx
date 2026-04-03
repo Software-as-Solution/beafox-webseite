@@ -4,6 +4,7 @@
 import Image from "next/image";
 // IMPORTS
 import { motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 // ICONS
 import { Sparkles } from "lucide-react";
 
@@ -99,12 +100,10 @@ export default function LandingHero({
                   height={450}
                   src={mascotSrc}
                   alt={mascotAlt}
-                  className={[
+                  className={twMerge(
                     "object-contain drop-shadow-[0_28px_60px_rgba(0,0,0,0.16)] scale-125 relative right-[10%] md:top-8",
                     mascotClassName,
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
+                  )}
                 />
               </div>
               <motion.div
@@ -123,13 +122,13 @@ export default function LandingHero({
                   className="relative rounded-2xl px-4 py-3 backdrop-blur-sm"
                 >
                   <div className="flex items-center gap-2 mb-1.5">
-                    <div className="w-7 h-7 rounded-lg overflow-hidden flex-shrink-0">
+                    <div className="w-8 h-8 overflow-hidden flex-shrink-0">
                       <Image
                         alt="Bea"
                         width={40}
                         height={40}
-                        src="/Logo.png"
-                        className="object-cover w-full h-full"
+                        className="object-contain"
+                        src="/assets/Logos/Logo.png"
                       />
                     </div>
                     <span className="text-sm font-bold text-darkerGray">
@@ -143,7 +142,7 @@ export default function LandingHero({
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                     </span>
                   </div>
-                  <p className="text-xs md:text-sm leading-relaxed pl-9">
+                  <p className="text-xs md:text-sm leading-relaxed pl-10">
                     {cardText}
                   </p>
                 </div>

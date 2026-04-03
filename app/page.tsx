@@ -1,7 +1,6 @@
 "use client";
 
 // STANDARD COMPONENTS
-import Link from "next/link";
 import Image from "next/image";
 // CUSTOM COMPONENTS
 import Button from "@/components/Button";
@@ -25,7 +24,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   Users,
   Download,
-  Sparkles,
   Building2,
   ArrowRight,
   Presentation,
@@ -40,71 +38,48 @@ interface Stat {
 interface UseCase {
   id: string;
   href: string;
-  delay: number;
   mascot: string;
+  mascotAlt: string;
 }
 interface AppFeature {
   id: string;
   mockup: string;
-  highlights: string[];
 }
+
 // CONSTANTS
 const USE_CASES: UseCase[] = [
   {
     id: "business",
-    href: "/fuer-unternehmen",
+    href: "/unternehmen",
+    mascotAlt: "BeAFox für Unternehmen",
     mascot: "/Maskottchen/Maskottchen-Business.png",
-    delay: 0.1,
   },
   {
     id: "schools",
-    href: "/fuer-schulen",
+    href: "/schulen",
+    mascotAlt: "BeAFox für Schulen",
     mascot: "/Maskottchen/Maskottchen-School.png",
-    delay: 0.2,
   },
 ];
 const APP_FEATURES: AppFeature[] = [
-  {
-    id: "stufen",
-    mockup: "/assets/Mockups/Mockup-Stufen.png",
-    highlights: ["Flexibel lernen", "Für jedes Level", "Eigenes Tempo"],
-  },
-  {
-    id: "lernpfad",
-    mockup: "/assets/Mockups/Mockup-Lernpfad.png",
-    highlights: ["Strukturiert", "Schritt für Schritt", "Personalisiert"],
-  },
-  {
-    id: "lektion",
-    mockup: "/assets/Mockups/Mockup-Lektion.png",
-    highlights: ["5 Min. Lektionen", "Praxisnah", "Sofort anwendbar"],
-  },
-  {
-    id: "quiz",
-    mockup: "/assets/Mockups/Mockup-Quiz.png",
-    highlights: ["Wissen testen", "Sofort Feedback", "XP sammeln"],
-  },
-  {
-    id: "rangliste",
-    mockup: "/assets/Mockups/Mockup-Rangliste.png",
-    highlights: ["Gamification", "Wettbewerb", "Motivation"],
-  },
-  {
-    id: "missionen",
-    mockup: "/assets/Mockups/Mockup-Missionen.png",
-    highlights: ["Tägliche Ziele", "Belohnungen", "Gewohnheiten"],
-  },
-  {
-    id: "profil",
-    mockup: "/assets/Mockups/Mockup-Profil.png",
-    highlights: ["Fortschritt sehen", "Statistiken", "Erfolge feiern"],
-  },
+  { id: "stufen", mockup: "/assets/Mockups/Mockup-Stufen.png" },
+  { id: "lernpfad", mockup: "/assets/Mockups/Mockup-Lernpfad.png" },
+  { id: "lektion", mockup: "/assets/Mockups/Mockup-Lektion.png" },
+  { id: "quiz", mockup: "/assets/Mockups/Mockup-Quiz.png" },
+  { id: "rangliste", mockup: "/assets/Mockups/Mockup-Rangliste.png" },
+  { id: "missionen", mockup: "/assets/Mockups/Mockup-Missionen.png" },
+  { id: "profil", mockup: "/assets/Mockups/Mockup-Profil.png" },
 ];
 const FEATURE_CARD_STYLE = {
   border: "1px solid rgba(232,119,32,0.15)",
   boxShadow: "0 16px 48px rgba(0,0,0,0.06), 0 0 0 1px rgba(232,119,32,0.04)",
   background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 60%, #FFF2E8 100%)",
 } as const;
+const PARTNER_COUNT = 14;
+const PARTNER_IDS = Array.from({ length: PARTNER_COUNT }, (_, i) => i + 1);
+const GLOW = (opacity: number) => ({
+  background: `radial-gradient(circle, rgba(232,119,32,${opacity}) 0%, transparent 70%)`,
+});
 const FAQ_STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -122,7 +97,7 @@ const FAQ_STRUCTURED_DATA = {
       name: "Was macht Bea anders als andere Finanz-Apps?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Bea ist kein Chatbot der Wikipedia zitiert. Bea kennt deine Lebenssituation — ob Azubi, Student oder Berufseinsteiger — und empfiehlt dir genau die Schritte, die jetzt für dich relevant sind. Personalisiert, neutral und ohne Produktverkauf.",
+        text: "Bea ist kein Chatbot der Wikipedia zitiert. Bea kennt deine Lebenssituation — ob Azubi, Student oder Berufseinsteiger — und empfiehlt dir genau die Schritte, die jetzt für dich relevant sind.",
       },
     },
     {
@@ -138,17 +113,11 @@ const FAQ_STRUCTURED_DATA = {
       name: "Für wen ist BeAFox geeignet?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Für alle zwischen 16 und 30, die ihre Finanzen selbst in die Hand nehmen wollen — besonders Azubis, Studierende und Berufseinsteiger. Auch Schulen und Ausbildungsbetriebe nutzen BeAFox als Plattform für ihre Zielgruppen.",
+        text: "Für alle zwischen 16 und 30, die ihre Finanzen selbst in die Hand nehmen wollen — besonders Azubis, Studierende und Berufseinsteiger.",
       },
     },
   ],
 } as const;
-const PARTNER_COUNT = 14;
-const PARTNER_IDS = Array.from({ length: PARTNER_COUNT }, (_, i) => i + 1);
-// HELPER FUNCTIONS
-const GLOW = (opacity: number) => ({
-  background: `radial-gradient(circle, rgba(232,119,32,${opacity}) 0%, transparent 70%)`,
-});
 
 export default function HomePage() {
   // HOOKS
@@ -165,11 +134,19 @@ export default function HomePage() {
     ],
     [t],
   );
-  const activeFeature = APP_FEATURES[selectedFeature];
   const availableLanguage = useMemo(
     () => (locale === "en" ? ["English"] : ["German"]),
     [locale],
   );
+  const featureHighlights = useMemo(
+    () =>
+      APP_FEATURES.map(
+        (f) => (t.raw(`appFeatures.${f.id}.highlights`) as string[]) ?? [],
+      ),
+    [t],
+  );
+  const activeFeature = APP_FEATURES[selectedFeature];
+  const activeHighlights = featureHighlights[selectedFeature] ?? [];
   // FUNCTIONS
   const openDownloadModal = useCallback(() => setIsDownloadModalOpen(true), []);
   const closeDownloadModal = useCallback(
@@ -185,11 +162,9 @@ export default function HomePage() {
     <>
       {/* ─── 1. HERO ─── */}
       <LandingHero
-        cardIcon={Sparkles}
         badge={t("hero.badge")}
         mascotAlt={t("hero.mascotAlt")}
         cardText={t("hero.aiIntroText")}
-        cardTitle={t("hero.aiIntroTitle")}
         mascotSrc="/Maskottchen/Maskottchen-Hero.png"
         title={
           <>
@@ -208,22 +183,22 @@ export default function HomePage() {
             <Button
               variant="primary"
               onClick={openDownloadModal}
-              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               <Download
-                className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5"
                 aria-hidden="true"
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
               />
               {t("hero.cta.download")}
             </Button>
             <Button
               href="/kontakt"
               variant="outline"
-              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-4 !py-2 md:!px-8 md:!py-3 text-sm md:text-base"
+              className="flex items-center justify-center gap-1.5 md:gap-2 w-full sm:w-auto !px-5 !py-2.5 md:!px-8 md:!py-3 text-sm md:text-base"
             >
               <Presentation
-                className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5"
                 aria-hidden="true"
+                className="w-3.5 h-3.5 md:w-4 md:h-4"
               />
               {t("hero.cta.partner")}
             </Button>
@@ -256,6 +231,7 @@ export default function HomePage() {
           </>
         }
       />
+
       {/* ─── 2. PARTNER LOGOS ─── */}
       <Section className="bg-primaryWhiteLight overflow-hidden py-4 md:py-0">
         <div className="relative">
@@ -268,33 +244,32 @@ export default function HomePage() {
             className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-primaryWhiteLight to-transparent z-10 pointer-events-none"
           />
           <div className="overflow-hidden">
-            <motion.div
-              className="flex gap-0"
-              animate={{ x: ["0%", "-50%", "0%"] }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            >
-              {[...PARTNER_IDS, ...PARTNER_IDS].map((i, idx) => (
-                <div
-                  key={`partner-${idx}`}
-                  className="flex-shrink-0 w-20 h-12 md:w-40 md:h-24 lg:w-48 lg:h-28 flex items-center justify-center px-2 md:px-4 opacity-60 hover:opacity-100 transition-opacity"
-                >
-                  <Image
-                    width={100}
-                    height={120}
-                    loading="lazy"
-                    src={`/Partners/${i}.png`}
-                    style={{ width: "auto", height: "auto" }}
-                    alt={t("partnersCarousel.alt", { index: i })}
-                    className="object-contain max-w-full max-h-full"
-                  />
-                </div>
-              ))}
-            </motion.div>
+            <div className="flex animate-scroll-left gap-0 items-center w-max">
+              {[...PARTNER_IDS, ...PARTNER_IDS, ...PARTNER_IDS].map(
+                (i, idx) => (
+                  <div
+                    key={`partner-${idx}`}
+                    className="flex-shrink-0 w-20 h-12 md:w-40 md:h-24 lg:w-48 lg:h-28 flex items-center justify-center px-2 md:px-4 opacity-60 hover:opacity-100 transition-opacity"
+                  >
+                    <Image
+                      width={100}
+                      height={120}
+                      loading="lazy"
+                      src={`/Partners/${i}.png`}
+                      style={{ width: "auto", height: "auto" }}
+                      alt={t("partnersCarousel.alt", { index: i })}
+                      className="object-contain max-w-full max-h-full w-auto h-auto"
+                    />
+                  </div>
+                ),
+              )}
+            </div>
           </div>
         </div>
       </Section>
+
       {/* ─── 3. EINE APP FÜR JEDEN EINSATZ ─── */}
-      <Section className="bg-gray-50 pb-12 pt-12">
+      <Section className="bg-gray-50 py-10 md:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             viewport={{ once: true }}
@@ -326,23 +301,21 @@ export default function HomePage() {
             />
           </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
-            {USE_CASES.map((useCase) => (
-              <div
+            {USE_CASES.map((useCase, index) => (
+              <motion.div
                 key={useCase.id}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primaryOrange/20 flex flex-col h-full"
+                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-5 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primaryOrange/20 flex flex-col h-full"
               >
-                <motion.div
-                  viewport={{ once: true }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: useCase.delay }}
-                  className="flex flex-col md:flex-row flex-1 gap-4 md:gap-6 items-center md:items-stretch"
-                >
+                <div className="flex flex-col md:flex-row flex-1 gap-4 md:gap-6 items-center md:items-stretch">
                   <div className="flex-1 min-w-0 flex flex-col text-center md:text-left">
-                    <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-2 md:mb-3 flex-shrink-0">
+                    <h3 className="text-xl md:text-2xl font-bold text-primaryOrange mb-2 md:mb-3">
                       {t(`useCases.${useCase.id}.title`)}
                     </h3>
-                    <p className="text-sm md:text-base text-lightGray mb-4 md:mb-5 font-medium flex-shrink-0">
+                    <p className="text-sm md:text-base text-lightGray mb-4 md:mb-5 font-medium">
                       {t(`useCases.${useCase.id}.description`)}
                     </p>
                     <Button
@@ -359,21 +332,22 @@ export default function HomePage() {
                   </div>
                   <div className="flex-shrink-0 flex items-center justify-center">
                     <Image
-                      alt=""
                       width={200}
                       height={200}
                       loading="lazy"
                       aria-hidden="true"
                       src={useCase.mascot}
+                      alt={useCase.mascotAlt}
                       className="object-contain w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 scale-150"
                     />
                   </div>
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </Section>
+
       {/* ─── 4. TESTIMONIALS ─── */}
       <Section className="bg-primaryWhite py-10 md:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -392,6 +366,7 @@ export default function HomePage() {
           <TestimonialsCarousel />
         </div>
       </Section>
+
       {/* ─── 5. APP FEATURES ─── */}
       <Section className="bg-primaryWhite pb-8 md:pb-12 pt-8 sm:mt-8">
         <div className="text-center mb-8 md:mb-12">
@@ -411,13 +386,20 @@ export default function HomePage() {
           <div className="relative mb-8 md:mb-12 w-full mx-auto">
             <div
               aria-hidden="true"
-              className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-primaryWhite to-transparent z-10 pointer-events-none"
+              className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-primaryWhite to-transparent z-10 pointer-events-none md:hidden"
             />
-            <div className="overflow-x-auto scrollbar-hide pb-2 md:pb-0 scroll-smooth px-4 md:px-0">
+            <div
+              aria-hidden="true"
+              className="absolute right-0 top-0 bottom-0 w-8 md:w-32 bg-gradient-to-l from-primaryWhite to-transparent z-10 pointer-events-none"
+            />
+            <div
+              style={{ WebkitOverflowScrolling: "touch" }}
+              className="overflow-x-auto scrollbar-hide pb-2 md:pb-0 scroll-smooth px-4 md:px-0"
+            >
               <div
                 role="tablist"
                 aria-label="App Features"
-                className="flex gap-2 md:gap-3 justify-center min-w-max md:min-w-0"
+                className="flex gap-2 md:gap-3 justify-start md:justify-center min-w-max md:min-w-0"
               >
                 {APP_FEATURES.map((feature, index) => (
                   <button
@@ -426,30 +408,15 @@ export default function HomePage() {
                     aria-controls="feature-panel"
                     onClick={() => selectFeature(index)}
                     aria-selected={selectedFeature === index}
-                    className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                    className={`px-4 md:px-6 py-2.5 md:py-3 rounded-full font-semibold text-sm md:text-base transition-all whitespace-nowrap flex-shrink-0 active:scale-95 ${
                       selectedFeature === index
-                        ? "bg-primaryOrange text-primaryWhite shadow-lg"
+                        ? "bg-primaryOrange text-white shadow-lg shadow-primaryOrange/20"
                         : "bg-gray-100 text-darkerGray hover:bg-gray-200"
                     }`}
                   >
                     {t(`appFeatures.${feature.id}.title`)}
                   </button>
                 ))}
-              </div>
-            </div>
-            <div className="flex justify-center mt-2 md:hidden">
-              <div className="flex items-center gap-2 text-primaryOrange">
-                <ArrowRight
-                  aria-hidden="true"
-                  className="w-3 h-3 rotate-180 animate-pulse"
-                />
-                <span className="text-xs font-medium">
-                  {t("howItWorks.scrollMore")}
-                </span>
-                <ArrowRight
-                  aria-hidden="true"
-                  className="w-3 h-3 animate-pulse"
-                />
               </div>
             </div>
           </div>
@@ -467,14 +434,15 @@ export default function HomePage() {
           >
             <div
               style={FEATURE_CARD_STYLE}
-              className="relative rounded-3xl overflow-hidden px-6 py-8 md:px-12 md:py-12 lg:px-16 lg:py-14"
+              className="relative rounded-3xl overflow-hidden px-5 py-6 md:px-12 md:py-12 lg:px-16 lg:py-14"
             >
               <div
                 style={GLOW(0.08)}
                 aria-hidden="true"
                 className="absolute -top-20 -left-20 w-[300px] h-[300px] rounded-full pointer-events-none"
               />
-              <div className="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="relative z-10 grid md:grid-cols-2 gap-6 md:gap-12 items-center">
+                {/* Mockup */}
                 <motion.div
                   animate={{ opacity: 1, x: 0 }}
                   initial={{ opacity: 0, x: -20 }}
@@ -485,14 +453,14 @@ export default function HomePage() {
                     <div
                       style={GLOW(0.1)}
                       aria-hidden="true"
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] md:w-[320px] md:h-[320px] rounded-full pointer-events-none"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] md:w-[320px] md:h-[320px] rounded-full pointer-events-none"
                     />
                     <Image
                       width={280}
                       height={600}
                       loading="lazy"
                       src={activeFeature.mockup}
-                      className="relative z-10 object-contain w-[220px] h-auto md:w-[260px] lg:w-[280px]"
+                      className="relative z-10 object-contain w-[180px] h-auto md:w-[260px] lg:w-[280px]"
                       alt={t("howItWorks.mockupAlt", {
                         feature: t(`appFeatures.${activeFeature.id}.title`),
                       })}
@@ -502,28 +470,31 @@ export default function HomePage() {
                     />
                   </div>
                 </motion.div>
+                {/* Content */}
                 <motion.div
                   animate={{ opacity: 1, x: 0 }}
                   className="order-1 md:order-2"
                   initial={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-3 md:mb-4">
+                  <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-2 md:mb-4">
                     {t(`appFeatures.${activeFeature.id}.title`)}
                   </h3>
-                  <p className="text-sm md:text-base text-lightGray leading-relaxed mb-5">
+                  <p className="text-sm md:text-base text-lightGray leading-relaxed mb-4 md:mb-5">
                     {t(`appFeatures.${activeFeature.id}.description`)}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {activeFeature.highlights.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-gray-100 text-darkerGray"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {activeHighlights.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-5 md:mb-6">
+                      {activeHighlights.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] md:text-[11px] font-semibold px-2.5 md:px-3 py-1 md:py-1.5 rounded-full bg-gray-100 text-darkerGray"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button
                       variant="primary"
@@ -532,7 +503,7 @@ export default function HomePage() {
                     >
                       <Download
                         aria-hidden="true"
-                        className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5"
+                        className="w-3.5 h-3.5 md:w-4 md:h-4"
                       />
                       {t("howItWorks.ctaDownload")}
                     </Button>
@@ -543,7 +514,7 @@ export default function HomePage() {
                     >
                       <Presentation
                         aria-hidden="true"
-                        className="w-3.5 h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5"
+                        className="w-3.5 h-3.5 md:w-4 md:h-4"
                       />
                       {t("howItWorks.ctaPartner")}
                     </Button>
@@ -554,8 +525,10 @@ export default function HomePage() {
           </motion.div>
         </AnimatePresence>
       </Section>
+
       {/* ─── 6. DOWNLOAD BANNER ─── */}
       <DownloadBannerSection />
+
       {/* ─── 7. RATGEBER ─── */}
       <ContentShowcaseSection
         headerMotionDuration={0.5}
@@ -581,6 +554,7 @@ export default function HomePage() {
       >
         <RatgeberSection />
       </ContentShowcaseSection>
+
       {/* ─── 8. MINI FAQ ─── */}
       <Section className="bg-primaryWhite py-10 md:py-14">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -600,7 +574,6 @@ export default function HomePage() {
             listLabel={t("faqAccordionLabel")}
             items={t.raw("faqSection.items") as FaqAccordionItem[]}
           />
-
           <motion.div
             viewport={{ once: true }}
             className="text-center mt-6"
@@ -619,17 +592,21 @@ export default function HomePage() {
           </motion.div>
         </div>
       </Section>
+
       {/* ─── 9. CTA ─── */}
       <DemoBookingCtaSection />
-      {/* DOWNLOAD MODAL */}
+
+      {/* MODALS + STICKY */}
       <DownloadModal
         isOpen={isDownloadModalOpen}
         onClose={closeDownloadModal}
       />
       <StickyMobileCTA />
+
       {/* STRUCTURED DATA */}
       <StructuredData id="faq" data={FAQ_STRUCTURED_DATA} />
       <StructuredData
+        id="organization"
         data={{
           "@type": "Organization",
           url: "https://beafox.app",
@@ -638,28 +615,29 @@ export default function HomePage() {
           logo: "https://beafox.app/assets/logo.png",
           description: t("seo.organization.description"),
           address: {
+            postalCode: "93073",
+            addressCountry: "DE",
             "@type": "PostalAddress",
             streetAddress: "Siemensweg 2",
             addressLocality: "Neutraubling",
-            postalCode: "93073",
-            addressCountry: "DE",
           },
           contactPoint: {
+            availableLanguage,
             "@type": "ContactPoint",
+            email: "info@beafox.app",
             telephone: "+49-178-2723-673",
             contactType: "customer service",
-            email: "info@beafox.app",
-            availableLanguage,
           },
           sameAs: [
-            "https://www.instagram.com/beafox_app",
-            "https://www.linkedin.com/company/beafox",
             "https://twitter.com/beafox_app",
             "https://www.youtube.com/@beafox",
+            "https://www.instagram.com/beafox_app",
+            "https://www.linkedin.com/company/beafox",
           ],
         }}
       />
       <StructuredData
+        id="website"
         data={{
           name: "BeAFox",
           "@type": "WebSite",
@@ -681,6 +659,7 @@ export default function HomePage() {
         }}
       />
       <StructuredData
+        id="app"
         data={{
           name: "BeAFox",
           "@type": "SoftwareApplication",
@@ -690,9 +669,11 @@ export default function HomePage() {
           description: t("seo.softwareApplication.description"),
           offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
           aggregateRating: {
+            bestRating: "5",
+            worstRating: "1",
+            ratingCount: "71",
+            ratingValue: "5.0",
             "@type": "AggregateRating",
-            ratingValue: "4.8",
-            ratingCount: "150",
           },
         }}
       />
