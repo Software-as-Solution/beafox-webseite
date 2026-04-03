@@ -47,14 +47,16 @@ export default function StickyMobileCTA() {
   // REFS
   const rafRef = useRef<number | null>(null);
   const hasTrackedImpression = useRef(false);
+  const isDismissedRef = useRef(isDismissed);
+  isDismissedRef.current = isDismissed;
   // CONSTANTS
   const prefersReducedMotion = useMemo(() => {
     if (typeof window === "undefined") return false;
     return window.matchMedia(REDUCED_MOTION_QUERY).matches;
   }, []);
-  // FUNCTIONS
+  // FUNCTIONS — stable reference via ref, avoids scroll listener re-registration
   const handleScroll = useCallback(() => {
-    if (isDismissed) return;
+    if (isDismissedRef.current) return;
 
     // rAF throttle — skip if a frame is already queued
     if (rafRef.current !== null) return;
@@ -68,7 +70,7 @@ export default function StickyMobileCTA() {
       const next = scrollY > SCROLL_THRESHOLD && !nearBottom;
       setIsVisible((prev) => (prev === next ? prev : next));
     });
-  }, [isDismissed]);
+  }, []);
   const handleDismiss = useCallback(() => {
     setIsDismissed(true);
     try {

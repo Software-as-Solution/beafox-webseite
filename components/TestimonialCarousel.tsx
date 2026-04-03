@@ -58,17 +58,20 @@ export default function TestimonialsCarousel() {
   );
   const active = testimonials[current];
   // FUNCTIONS
+  const testimonialCountRef = useRef(testimonials.length);
+  testimonialCountRef.current = testimonials.length;
   const paginate = useCallback(
     (dir: number) => {
       setDirection(dir);
       setCurrent((prev) => {
+        const len = testimonialCountRef.current;
         const next = prev + dir;
-        if (next < 0) return testimonials.length - 1;
-        if (next >= testimonials.length) return 0;
+        if (next < 0) return len - 1;
+        if (next >= len) return 0;
         return next;
       });
     },
-    [testimonials.length],
+    [], // stable reference — length read from ref
   );
   const goToSlide = useCallback(
     (idx: number) => {

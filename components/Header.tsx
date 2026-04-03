@@ -185,7 +185,6 @@ export default function Header() {
   useEffect(() => {
     if (!isDropdownOpen && !isRatgeberOpen) return;
 
-    let registered = false;
     const handler = (e: MouseEvent) => {
       const t = e.target as Node;
       if (
@@ -202,14 +201,14 @@ export default function Header() {
         setIsRatgeberOpen(false);
     };
 
-    const raf = requestAnimationFrame(() => {
+    // Delay listener to avoid catching the same click that opened the dropdown
+    const timer = setTimeout(() => {
       document.addEventListener("mousedown", handler);
-      registered = true;
-    });
+    }, 0);
 
     return () => {
-      cancelAnimationFrame(raf);
-      if (registered) document.removeEventListener("mousedown", handler);
+      clearTimeout(timer);
+      document.removeEventListener("mousedown", handler);
     };
   }, [isDropdownOpen, isRatgeberOpen]);
   useEffect(() => {
@@ -219,7 +218,9 @@ export default function Header() {
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [isDropdownOpen, isMenuOpen, isRatgeberOpen, closeAll]);
+    // closeAll is stable (empty deps useCallback), safe to omit from deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDropdownOpen, isMenuOpen, isRatgeberOpen]);
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
     return () => {
