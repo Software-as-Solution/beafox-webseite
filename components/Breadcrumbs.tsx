@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -16,7 +16,11 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   const t = useTranslations("breadcrumbs");
-  const breadcrumbItems = [{ label: t("home"), href: "/" }, ...items];
+  const breadcrumbItems = useMemo(
+    () => [{ label: t("home"), href: "/" }, ...items],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [t, items.length, items.map((i) => i.href).join(",")],
+  );
   const baseUrl = "https://beafox.app";
 
   // JSON-LD BreadcrumbList Schema
@@ -51,7 +55,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
         scriptToRemove.remove();
       }
     };
-  }, [items, breadcrumbItems, baseUrl]);
+  }, [breadcrumbItems, baseUrl]);
 
   return (
     <nav

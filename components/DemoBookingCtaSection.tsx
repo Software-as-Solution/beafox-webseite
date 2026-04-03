@@ -5,14 +5,15 @@ import Button from "@/components/Button";
 import Section from "@/components/Section";
 import DownloadModal from "@/components/DownloadModal";
 // IMPORTS
-import Lottie from "lottie-react";
-import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 // ICONS
 import { PawPrint, Presentation, Download } from "lucide-react";
-// ASSETS
-import kontaktAnimation from "@/public/assets/Lottie/Kontakt.json";
+
+// Lazy-load Lottie (3 300+ SVG nodes) — only mount when section is visible
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 // CONSTANTS
 const BADGE_CLASS =
@@ -23,6 +24,9 @@ export default function DemoBookingCtaSection() {
   const t = useTranslations("home");
   // STATES
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // REFS — track section visibility to lazy-mount Lottie (3 300+ SVG nodes)
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "200px" });
   // FUNCTIONS
   const openModal = useCallback(() => setIsModalOpen(true), []);
   const closeModal = useCallback(() => setIsModalOpen(false), []);
@@ -84,6 +88,7 @@ export default function DemoBookingCtaSection() {
             </div>
           </motion.div>
           <motion.div
+            ref={sectionRef}
             aria-hidden="true"
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -92,11 +97,13 @@ export default function DemoBookingCtaSection() {
             className="flex items-center justify-center order-1 md:order-2 mb-0"
           >
             <div className="w-full max-w-[280px] md:max-w-md">
-              <Lottie
-                loop
-                className="w-full h-auto"
-                animationData={kontaktAnimation}
-              />
+              {isInView && (
+                <Lottie
+                  loop
+                  className="w-full h-auto"
+                  animationData={require("@/public/assets/Lottie/Kontakt.json")}
+                />
+              )}
             </div>
           </motion.div>
         </div>

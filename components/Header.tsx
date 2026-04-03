@@ -139,9 +139,14 @@ export default function Header() {
       topics: getNavTopicsForCategory(cat.slug),
     }));
   }, []);
-  const prefersReducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
   const activeCategory =
     ratgeberCategories.find((c) => c.id === activeRatgeberCategory) ??
     ratgeberCategories[0];
