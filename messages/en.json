@@ -38,12 +38,21 @@
     "nav": {
       "home": "Home",
       "about": "About us",
-      "faq": "FAQ"
+      "faq": "FAQ",
+      "guide": "Guides",
+      "calculators": "Calculators",
+      "allGuidesFor": "All {category} guides →",
+      "allCalculators": "View all calculators →"
     },
     "products": {
       "label": "Products",
       "sidebarTitle": "Overview",
       "cta": "Go to page",
+      "calculatorHub": {
+        "title": "Financial calculators & tools",
+        "subtitle": "Gross-net, savings plan, budget & more"
+      },
+      "partnerships": "Partnerships",
       "unlimited": "BeAFox Unlimited",
       "business": "BeAFox for Business",
       "schools": "BeAFox for Schools",
@@ -82,6 +91,27 @@
       "download": "Download app",
       "login": "Login",
       "loginRegister": "Login / Sign up"
+    },
+    "common": {
+      "categories": "Categories",
+      "showAll": "Show all →"
+    },
+    "appPromo": {
+      "title": "BeAFox: Financials played through",
+      "cta": "Load"
+    },
+    "rechnerPanel": {
+      "guidePromo": {
+        "title": "Read matching guides",
+        "subtitle": "Detailed explanations for every finance topic"
+      }
+    },
+    "aria": {
+      "home": "BeAFox home page",
+      "scrollProgress": "Scroll progress",
+      "navigation": "Navigation",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu"
     },
     "images": {
       "logoAlt": "BeAFox logo",
@@ -138,12 +168,30 @@
     "quickLinksTitle": "Quick links",
     "mascotAlt": "Bea with a guidebook — BeAFox helps you move on",
     "quickLinks": [
-      { "href": "/", "label": "Home" },
-      { "href": "/unlimited", "label": "BeAFox Unlimited" },
-      { "href": "/schulen", "label": "For schools" },
-      { "href": "/unternehmen", "label": "For businesses" },
-      { "href": "/faq", "label": "FAQ" },
-      { "href": "/kontakt", "label": "Contact" }
+      {
+        "href": "/",
+        "label": "Home"
+      },
+      {
+        "href": "/unlimited",
+        "label": "BeAFox Unlimited"
+      },
+      {
+        "href": "/schulen",
+        "label": "For schools"
+      },
+      {
+        "href": "/unternehmen",
+        "label": "For businesses"
+      },
+      {
+        "href": "/faq",
+        "label": "FAQ"
+      },
+      {
+        "href": "/kontakt",
+        "label": "Contact"
+      }
     ]
   },
   "footer": {
@@ -186,7 +234,9 @@
       "faq": "FAQ",
       "imprint": "Imprint",
       "privacy": "Privacy",
-      "guidelines": "Community guidelines"
+      "withdrawal": "Right of Withdrawal",
+      "guidelines": "Community guidelines",
+      "accessibility": "Accessibility"
     },
     "contact": {
       "title": "Contact"
@@ -436,37 +486,65 @@
       "stufen": {
         "title": "Levels",
         "description": "Choose freely what you want to learn. Our level structure gives you the flexibility to explore topics based on your interests and needs. Whether you're a beginner or advanced, you'll find the right level and can learn at your own pace.",
-        "highlights": ["Learn flexibly", "For every level", "Your own pace"]
+        "highlights": [
+          "Learn flexibly",
+          "For every level",
+          "Your own pace"
+        ]
       },
       "lernpfad": {
         "title": "Learning path",
         "description": "Follow a structured learning path that guides you step by step through the most important financial topics. You always know where you stand and what comes next. The learning path visualizes your progress and helps you stay on track.",
-        "highlights": ["Structured", "Step by step", "Personalized"]
+        "highlights": [
+          "Structured",
+          "Step by step",
+          "Personalized"
+        ]
       },
       "lektion": {
         "title": "Lessons",
         "description": "Learn step by step everything you need to know about finance. Our interactive lessons make complex topics easy to understand—from budgeting and saving to investing. We cover all the essentials and combine videos, text, and interactive elements.",
-        "highlights": ["5-minute lessons", "Practical", "Apply right away"]
+        "highlights": [
+          "5-minute lessons",
+          "Practical",
+          "Apply right away"
+        ]
       },
       "quiz": {
         "title": "Quiz",
         "description": "After theory comes practice. Test your knowledge with interactive quizzes and deepen what you've learned. With instant feedback, you learn from mistakes and can review targeted topics. Every successful quiz earns points and boosts your ranking.",
-        "highlights": ["Test your knowledge", "Instant feedback", "Earn XP"]
+        "highlights": [
+          "Test your knowledge",
+          "Instant feedback",
+          "Earn XP"
+        ]
       },
       "rangliste": {
         "title": "Leaderboard",
         "description": "Compare yourself with other learners and stay motivated through friendly competition. Collect points, reach new levels, and become a finance expert. Different categories and timeframes ensure everyone has a fair shot at the top.",
-        "highlights": ["Gamification", "Competition", "Motivation"]
+        "highlights": [
+          "Gamification",
+          "Competition",
+          "Motivation"
+        ]
       },
       "missionen": {
         "title": "Missions & goals",
         "description": "Complete exciting missions and reach your personal goals. Missions range from daily challenges to long-term goals. Each completed mission is rewarded and brings you closer to your bigger goals. Set your own goals or follow predefined missions.",
-        "highlights": ["Daily goals", "Rewards", "Habits"]
+        "highlights": [
+          "Daily goals",
+          "Rewards",
+          "Habits"
+        ]
       },
       "profil": {
         "title": "Profile",
         "description": "Track your learning progress and get your personal Fox Score. Your profile shows all achievements: completed lessons, points earned, and passed quizzes. The Fox Score is your personal indicator of financial knowledge and grows with every step.",
-        "highlights": ["See your progress", "Statistics", "Celebrate wins"]
+        "highlights": [
+          "See your progress",
+          "Statistics",
+          "Celebrate wins"
+        ]
       }
     },
     "whyFinance": {
@@ -2515,223 +2593,305 @@
   },
   "agb": {
     "meta": {
-      "title": "Terms - General terms and conditions",
-      "description": "General terms and conditions of BeAFox UG (limited liability) – terms of use, pricing, payment, and legal provisions."
+      "title": "Terms and Conditions",
+      "description": "General Terms and Conditions of BeAFox UG (haftungsbeschränkt) - Terms of use, prices, payment and legal provisions."
     },
     "hero": {
-      "badge": "Terms",
-      "title": "General terms and conditions",
-      "subtitle": "The legal basis for using our services and products."
+      "badge": "TERMS",
+      "title": "Terms and Conditions",
+      "subtitle": "The legal foundation for the use of our services and products."
     },
     "sections": [
       {
         "id": 1,
-        "title": "Scope",
+        "title": "Scope of Application",
         "iconId": "scale",
         "content": [
           {
-            "text": "These General Terms and Conditions (GTC) apply to all contracts between BeAFox UG (limited liability), Siemensweg 2, 93073 Neutraubling (hereinafter \"BeAFox\") and its customers regarding the use of the BeAFox app and related services."
+            "text": "These General Terms and Conditions (Terms) apply to all contracts between BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, HR Regensburg, Registration Number HRB 21689 (hereinafter \"BeAFox\") and its customers regarding the use of the BeAFox App and associated services. BeAFox is a company operating in the field of financial education targeting private consumers (age group 16-30 years), educational institutions, and businesses."
+          },
+          {
+            "subtitle": "Contact and Data Protection",
+            "text": "Information regarding data protection, including the processing of personal data under the GDPR and the Telecommunications Digital Services Data Protection Act (TDDDG), can be found in our Privacy Policy at https://beafox.app/datenschutz. Further information about BeAFox can be found at https://beafox.app."
           }
         ]
       },
       {
         "id": 2,
-        "title": "Subject matter of the contract",
+        "title": "Subject Matter of the Contract",
         "iconId": "fileText",
         "content": [
           {
-            "text": "BeAFox provides a mobile learning app for financial education. The app enables users to gain and deepen financial knowledge in a playful way. Additional services such as workshops, monitoring dashboards, and certificates are offered for educational institutions and companies."
+            "text": "BeAFox offers a mobile learning app for financial education. The app enables users to acquire and deepen financial knowledge in a gamified manner. The app is supported by \"Bea\", an AI-powered assistant (see Section 17 on Artificial Intelligence)."
+          },
+          {
+            "subtitle": "Services",
+            "text": "For private consumers, individualized subscriptions are offered with access to lessons, practice exercises, and premium features. For educational institutions and businesses, additional services such as workshops, monitoring dashboards, teaching materials, and certificates are offered."
+          },
+          {
+            "subtitle": "Scope of Services",
+            "text": "The exact scope of services is determined by the respective contract offer and the description displayed in the checkout. Additional services are agreed upon separately."
           }
         ]
       },
       {
         "id": 3,
-        "title": "Conclusion of contract",
+        "title": "Contract Conclusion",
         "iconId": "handshake",
         "content": [
           {
-            "text": "The contract is concluded by BeAFox accepting the offer. Acceptance may be in writing, by email, or by using the app. For in-app purchases via app stores (Apple App Store, Google Play Store), the payment contract is concluded exclusively with the respective app store operator. BeAFox only provides the content."
+            "subtitle": "Contract Forms as Offers",
+            "text": "The product descriptions and prices displayed on the website www.beafox.app are invitations to make offers (§ 145 German Civil Code), not binding offers."
+          },
+          {
+            "subtitle": "Contract Conclusion via Website Checkout (Stripe)",
+            "text": "Contracts for subscriptions are concluded through: (1) selection of a plan in the checkout, (2) confirmation by \"Pay Now\" button (customer's offer), (3) confirmation by BeAFox after successful payment processing by Stripe. Payment processing is handled by Stripe, Inc. (www.stripe.com). BeAFox receives confirmation of successful payments but does not store payment data."
+          },
+          {
+            "subtitle": "Contract Conclusion via App Stores",
+            "text": "For in-app purchases via Apple App Store or Google Play Store, the payment contract is concluded exclusively between the user and the respective app store operator. BeAFox merely provides the content and is not a party to the payment contract. The terms and conditions of the app store operator apply supplementary."
+          },
+          {
+            "subtitle": "Contract Conclusion by Email or in Writing",
+            "text": "The contract can also be concluded in writing by mail or email. Acceptance of an offer is made by written confirmation from BeAFox."
+          },
+          {
+            "subtitle": "Contract Language",
+            "text": "Contracts are concluded in the German language. This is also the binding contract language."
           }
         ]
       },
       {
         "id": 4,
-        "title": "Right of withdrawal for consumers",
+        "title": "Right of Withdrawal for Consumers",
         "iconId": "rotate",
         "content": [
           {
-            "subtitle": "Right of withdrawal",
-            "text": "Consumers have the right to withdraw from this contract within 14 days without giving any reason. The withdrawal period is 14 days from the day the contract is concluded."
+            "subtitle": "Right of Withdrawal",
+            "text": "Consumers (natural persons who do not act for professional or commercial purposes) have the right to withdraw from the contract within 14 days of contract conclusion (§ 312g German Civil Code). For contracts for the purchase of digital content, the withdrawal period is 14 days from the date of contract conclusion (§ 312g para. 2 German Civil Code)."
           },
           {
-            "subtitle": "Expiry of the right of withdrawal",
-            "text": "The right of withdrawal expires early if BeAFox has begun to perform the service and the consumer has expressly agreed that BeAFox may begin performance before the end of the withdrawal period and has acknowledged that the right of withdrawal is lost once BeAFox has fully performed the service."
+            "subtitle": "Loss of Right of Withdrawal",
+            "text": "The right of withdrawal expires early if BeAFox has begun performing the service and the consumer (a) has explicitly agreed that BeAFox begins performance before the withdrawal period expires, and (b) has acknowledged awareness of the loss of the right of withdrawal (§ 312g para. 2 sentence 2 German Civil Code). In the event of withdrawal, only the service provided is charged."
           },
           {
-            "subtitle": "Withdrawal instructions",
-            "text": "To exercise the right of withdrawal, you must inform us (BeAFox UG (limited liability), Siemensweg 2, 93073 Neutraubling, email: info@beafox.app) of your decision to withdraw from this contract by means of a clear statement (e.g., a letter sent by post, fax, or email)."
+            "subtitle": "Exercise of Right of Withdrawal",
+            "text": "To exercise the right of withdrawal, you must inform BeAFox using an unambiguous statement (e.g., a letter by mail, fax, or email). The statement can be made using our model withdrawal form. You can also use the app settings to cancel your subscription (available in account settings).\n\nAddress:\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nGermany\n\nEmail: info@beafox.app\nFax: +49 (0) 941 XXXXXXX"
           },
           {
-            "subtitle": "Consequences of withdrawal",
-            "text": "If you withdraw from this contract, we shall reimburse all payments received from you without undue delay and at the latest within 14 days from the day on which we receive notice of your withdrawal from this contract."
+            "subtitle": "Model Withdrawal Form",
+            "text": "— Notice: If you wish to withdraw from the contract, please fill out this form and send it back. —\n\nTo:\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nEmail: info@beafox.app\n\nHereby I/we(*) withdraw from the contract concluded by me/us(*) for the purchase of the following goods(*)/service(*)\n\nOrder date: .....................\nOrder number or contract ID: .....................\nName of consumer(s): .....................\nAddress of consumer(s): .....................\nSignature of consumer(s) (only for communication on paper): .....................\nDate: .....................\n\n(*) Delete as applicable."
+          },
+          {
+            "subtitle": "Consequences of Withdrawal",
+            "text": "If you withdraw from this contract, we will refund all payments received from you immediately and no later than 14 days from the day we receive notification of your withdrawal (§ 312g para. 3 German Civil Code). This refund will be made using the same payment method you used for the original transaction, unless you have provided different instructions."
           }
         ]
       },
       {
         "id": 5,
-        "title": "Services and availability",
+        "title": "Services and Availability",
         "iconId": "check",
         "content": [
           {
-            "text": "BeAFox undertakes to provide the agreed services carefully and to the best of its knowledge and belief. The exact scope of services results from the respective contractual offer."
-          },
-          {
-            "subtitle": "Changes to functions",
-            "text": "BeAFox reserves the right to change, extend, or remove app functions. Users will be informed about material changes. There is no entitlement to specific functions."
+            "text": "BeAFox undertakes to provide the agreed-upon services carefully and to the best of its knowledge and ability."
           },
           {
             "subtitle": "Availability",
-            "text": "BeAFox strives to ensure high availability. Maintenance work, further development, or technical issues may temporarily restrict access. There is no entitlement to uninterrupted availability at all times. Maintenance windows will be announced in advance where possible."
+            "text": "BeAFox endeavors to ensure high availability of the app and aims for an average annual availability of at least 98%. Maintenance work, further development, or technical issues may temporarily restrict access. Planned maintenance windows will be announced at least 48 hours in advance, where possible, via the app or website. There is no claim for continuous uninterrupted availability at all times."
+          },
+          {
+            "subtitle": "Changes to Features",
+            "text": "BeAFox reserves the right to change, expand, or remove features of the app. Essential features will not be removed without prior notice. Users will be informed of material feature changes at least two weeks in advance. There is no claim to specific features unless these are expressly defined as essential in the contract."
           },
           {
             "subtitle": "Updates",
-            "text": "Users are obliged to install available app updates to ensure functionality and security. Older versions of the app may no longer be supported."
+            "text": "Users are obligated to install available security and feature updates to the app within a reasonable timeframe (typically within 30 days). Older versions of the app may no longer be supported after notification. Critical security updates should be installed immediately."
           }
         ]
       },
       {
         "id": 6,
-        "title": "Prices and payment",
+        "title": "Prices and Payment",
         "iconId": "creditCard",
         "content": [
           {
-            "text": "Prices are stated in euros plus statutory VAT. Payment is made as agreed in the contract. In the event of late payment, default interest of 9 percentage points above the base interest rate will be charged."
+            "subtitle": "Prices for Consumers (B2C)",
+            "text": "The prices displayed on the website and in the app for private consumers are total prices including applicable value-added tax (VAT) in accordance with the German Price Indication Ordinance (PAngV § 1). The total price is the price the consumer pays.\n\nCurrently offered plans (gross prices incl. 19% VAT):\n- Monthly subscription: EUR 4.99 per month\n- Annual subscription: EUR 44.99 per year\n- Lifetime access: EUR 49.99 (one-time)"
           },
           {
-            "subtitle": "App store payments",
-            "text": "For in-app purchases, payment processing is handled via the respective app store (Apple App Store or Google Play Store). The purchase contract for payment is concluded exclusively with the app store operator. BeAFox only receives confirmations of successful payments and no payment data."
+            "subtitle": "Prices for Businesses and Educational Institutions (B2B)",
+            "text": "For businesses and educational institutions, prices are provided upon request. These may be stated as net prices plus applicable VAT. The applicable tax rate will be shown on the invoice."
           },
           {
-            "subtitle": "Terms and renewal",
-            "text": "Subscriptions renew automatically for the agreed term unless cancelled in due time. The notice period is one month to the end of the term."
+            "subtitle": "Website Payments (Stripe)",
+            "text": "Payment processing for subscriptions via the website is handled by the payment service provider Stripe, Inc. Stripe processes the payment data. BeAFox only receives confirmation of successful payments and does not store payment data. Payment information can be found in the Privacy Policy."
+          },
+          {
+            "subtitle": "Payment Terms",
+            "text": "Payment is due immediately (payment method: card payment via Stripe). For automatic subscriptions, the deduction occurs on the first day of the billing period (monthly or annually as chosen)."
+          },
+          {
+            "subtitle": "Default Interest for Consumers (B2C)",
+            "text": "For payment default by consumers, the provisions of § 288 para. 1 German Civil Code apply: default interest is 5 percentage points above the base interest rate per year. The base interest rate is set by the German Federal Bank."
+          },
+          {
+            "subtitle": "Default Interest for Businesses and Educational Institutions (B2B)",
+            "text": "For payment default by businesses (including educational institutions), the provisions of § 288 para. 2 German Civil Code apply: default interest is 9 percentage points above the base interest rate per year."
+          },
+          {
+            "subtitle": "Terms and Automatic Renewal",
+            "text": "Subscriptions automatically renew for the agreed-upon term (monthly, annually, or no renewal for lifetime access) unless canceled on time. The cancellation notice period is one month to the end of the term. Cancellation can be made in the app settings."
+          },
+          {
+            "subtitle": "Price Changes",
+            "text": "BeAFox reserves the right to change prices. Changes will be communicated at least four weeks before taking effect for new contracts. For existing subscriptions, price changes apply from the next renewal. Consumers can cancel the contract if they do not agree with a price change."
           }
         ]
       },
       {
         "id": 7,
-        "title": "Rights of use",
+        "title": "Usage Rights",
         "iconId": "shield",
         "content": [
           {
-            "text": "The customer is granted a simple, non-transferable, non-exclusive right to use the app for the agreed purpose. Passing on access credentials to third parties is not permitted."
+            "text": "The customer is granted a simple, non-transferable, and non-exclusive right to use the app and its content for the purpose agreed upon in this contract. Sharing access credentials with third parties is not permitted. Access is strictly personal and may not be shared or transferred."
           },
           {
-            "subtitle": "Restrictions",
-            "text": "Use of the app is permitted only for the agreed purpose. Commercial use of the content, copying, reproducing, or distributing content is not permitted without BeAFox’s written consent."
+            "subtitle": "Restrictions on Use",
+            "text": "The app may only be used for the agreed-upon private or business purpose. Commercial use of content, copying, reproducing, or distributing content without written consent from BeAFox is not permitted. Reverse engineering, decompiling, or disassembling the app is prohibited."
+          },
+          {
+            "subtitle": "Prohibited Actions",
+            "text": "It is particularly prohibited to: use screenshots or content for commercial purposes; copy, reverse engineer, or manipulate the app; use automated systems (bots, scrapers) to use the app; introduce malware; rent, pledge, or give away the app or parts of it; overload the system or conduct denial-of-service attacks."
+          },
+          {
+            "subtitle": "Right to Object",
+            "text": "Violations of these provisions may lead to immediate account suspension. BeAFox reserves the right to take legal action, including pursuing damage claims."
           }
         ]
       },
       {
         "id": 8,
-        "title": "Data protection and processing",
+        "title": "Data Protection and Data Processing",
         "iconId": "database",
         "content": [
           {
-            "text": "Personal data is processed in accordance with the General Data Protection Regulation (GDPR) and the German Telecommunications and Telemedia Data Protection Act (TTDSG)."
+            "text": "The processing of personal data is carried out in accordance with the General Data Protection Regulation (GDPR) and the Telecommunications Digital Services Data Protection Act (TDDDG). BeAFox takes data protection seriously and maintains a data protection management system."
           },
           {
-            "subtitle": "Privacy policy",
-            "text": "The privacy policy applies at: https://beafox.app/datenschutz"
+            "subtitle": "Privacy Policy",
+            "text": "The complete Privacy Policy with information about data collection, processing, storage, your rights, and objection options can be found at: https://beafox.app/datenschutz"
           },
           {
-            "subtitle": "Data processing agreement",
-            "text": "For educational institutions and companies, a data processing agreement (DPA) in accordance with Art. 28 GDPR may be required. This will be concluded separately if needed."
+            "subtitle": "Data Processing Agreement for Schools and Businesses",
+            "text": "For educational institutions and businesses, a Data Processing Agreement (DPA) in accordance with Article 28 GDPR may be required, particularly when processing student or employee data. A DPA will be concluded if needed before contract conclusion."
           },
           {
-            "subtitle": "Data deletion",
-            "text": "After termination of the contractual relationship, personal data will be deleted unless statutory retention obligations prevent this."
+            "subtitle": "Data Deletion and Retention",
+            "text": "After termination of the contractual relationship or upon request, personal data will be deleted unless legal retention obligations prevent this (e.g., accounting record retention requirements under § 257 German Commercial Code). The retention period will be specified in the Privacy Policy."
           }
         ]
       },
       {
         "id": 9,
-        "title": "Warranty for digital products",
+        "title": "Warranty for Digital Products",
         "iconId": "wrench",
         "content": [
           {
-            "subtitle": "Update obligation",
-            "text": "BeAFox is obliged to keep digital content up to date in accordance with § 327f German Civil Code (BGB) and to provide necessary updates. Users must install available updates to ensure functionality."
+            "subtitle": "Warranty Obligations",
+            "text": "BeAFox is obligated to provide digital content and services in accordance with § 327f et seq. German Civil Code of a certain quality and functionality and to maintain this quality throughout the agreed contract period."
           },
           {
-            "subtitle": "Defect rights",
-            "text": "In the event of defects in digital content, statutory provisions apply. BeAFox endeavors to remedy defects without undue delay. There is no entitlement to specific functions or content unless expressly agreed."
+            "subtitle": "Update Obligation",
+            "text": "BeAFox is obligated to keep digital content current and to provide required, security-critical updates. Users must install available security updates and other critical updates as per these Terms."
           },
           {
-            "subtitle": "No guarantee",
-            "text": "BeAFox does not guarantee completeness, accuracy, or timeliness of the information provided. The content serves general education and does not constitute individual advice."
+            "subtitle": "Rights for Defects",
+            "text": "For defects in digital content (functional problems, missing promised features), statutory provisions apply. Users can initially report defective content to support for remedy. BeAFox will endeavor to remedy defects promptly. A claim for specific features or content exists only insofar as these have been expressly agreed upon."
+          },
+          {
+            "subtitle": "No Warranty for Completeness and Currency",
+            "text": "BeAFox makes no warranty regarding the completeness, accuracy, or currency of the information provided in the app. The content serves general educational purposes and does not constitute individual personal financial advice (see Section 12)."
+          },
+          {
+            "subtitle": "AI Content and Liability",
+            "text": "Content generated by \"Bea\" (AI assistant) may occasionally contain errors or inaccuracies. BeAFox endeavors to correct such errors but makes no guarantee regarding the error-free nature of AI-generated content."
           }
         ]
       },
       {
         "id": 10,
-        "title": "Copyright and prohibited use",
+        "title": "Copyright and Prohibited Uses",
         "iconId": "copyright",
         "content": [
           {
-            "text": "All app content (texts, illustrations, graphics, design, logic, software) is protected by copyright and is the property of BeAFox or its licensors. Reproduction, publication, distribution, or commercial use is not permitted without written consent."
+            "text": "All content of the app (texts, illustrations, graphics, design, logic, software, videos, animations, Lottie animations) is protected by copyright and is the property of BeAFox or its licensors. The content is subject to German copyright law (UrhG) and international copyright agreements."
           },
           {
-            "subtitle": "Prohibited actions",
-            "text": "In particular, it is prohibited to: use screenshots or content for commercial purposes, copy or reverse engineer the app, share access credentials, use automated systems to use the app, or manipulate the app."
+            "subtitle": "Prohibition on Reproduction and Distribution",
+            "text": "Reproduction, publication, distribution, or commercial use of the content is not permitted without written consent. This applies to parts of the content as well. The right to make private copies under § 53 UrhG is compatible with non-commercial use but not with further distribution."
           },
           {
-            "subtitle": "Legal consequences",
-            "text": "In case of violations, BeAFox reserves the right to block access and take legal action."
+            "subtitle": "Specific Prohibitions",
+            "text": "It is particularly prohibited to:\n- Use screenshots, graphics, or text excerpts for commercial purposes or publication\n- Copy, decompile, or reverse engineer the app or parts of it\n- Share access credentials or share with others\n- Use automated systems (bots, scrapers) to collect or distribute content\n- Manipulate or modify the app\n- Re-publish content on other platforms"
+          },
+          {
+            "subtitle": "Consequences of Violations",
+            "text": "In the event of violations of these provisions, BeAFox reserves the right to: (1) immediately suspend access to the app, (2) take legal action, including issuing cease and desist notices and pursuing damage claims under §§ 97 et seq. German Copyright Law, (3) assert injunctive relief."
           }
         ]
       },
       {
         "id": 11,
-        "title": "Obligations of educational institutions and companies",
+        "title": "Obligations of Educational Institutions and Businesses",
         "iconId": "building",
         "content": [
           {
-            "subtitle": "Permitted user group",
-            "text": "Use of the app is permitted only for the organization’s own employees, pupils/students, or apprentices. Transfer to third parties is not permitted."
+            "subtitle": "Scope of Use and Purpose Limitation",
+            "text": "The app may only be used for the institution's own employees, students, trainees, or university students. Transfer to third parties or use by third parties is not permitted. The use must be for the purpose of financial education or vocational training."
           },
           {
-            "subtitle": "Minimum user counts",
-            "text": "Agreed minimum user counts or license scopes must be adhered to. Exceeding them requires an adjustment of the contract."
+            "subtitle": "Minimum User Numbers and License Scope",
+            "text": "Agreed-upon minimum user numbers or license scope must be maintained. Exceeding these requires contract adjustment and may result in additional costs. BeAFox reserves the right to monitor user numbers."
           },
           {
-            "subtitle": "Youth protection",
-            "text": "When used by minors, compliance with legal requirements must be ensured. For users under 16 years of age, consent of a parent/guardian is required."
+            "subtitle": "Youth Protection and Consent",
+            "text": "When used by minors, it must be ensured that use complies with legal requirements. For users under 16 years, parental consent is required (Art. 8 GDPR). The institution bears responsibility for compliance with this requirement."
           },
           {
-            "subtitle": "Responsibility for access data",
-            "text": "The contractual partner is responsible for secure administration and distribution of access data. In case of loss or misuse, BeAFox must be informed without delay."
+            "subtitle": "Responsibility for Access Credentials and Security",
+            "text": "The institution is responsible for secure management and control of access credentials. The administrator must ensure that access credentials are not shared with unauthorized persons. In case of loss or misuse of access credentials, BeAFox must be informed immediately. The institution is liable for misuse by its users."
           },
           {
-            "subtitle": "Compliance with terms",
-            "text": "The contractual partner ensures that all users comply with these terms and conditions."
+            "subtitle": "Compliance with Terms of Use",
+            "text": "The institution undertakes to inform all users about the Terms and conditions of use and to ensure compliance. Violations by users may lead to account suspension."
+          },
+          {
+            "subtitle": "Regular Review",
+            "text": "BeAFox reserves the right to verify compliance with these provisions and to suspend access in the event of violations."
           }
         ]
       },
       {
         "id": 12,
-        "title": "No financial or tax advice",
+        "title": "No Financial or Tax Advice",
         "iconId": "ban",
         "content": [
           {
-            "text": "The content provided by BeAFox does not constitute investment advice, tax advice, financial advice, or legal advice. It serves solely general education and knowledge transfer."
+            "text": "The content, calculators, and information provided by BeAFox do NOT constitute investment advice, financial advice, wealth management advice, tax advice, or legal advice. They serve exclusively for general education and knowledge transfer. The content is based on publicly available information and makes no claim to completeness or currency."
           },
           {
-            "subtitle": "Personal responsibility",
-            "text": "Decisions about investments, insurance, tax topics, or other financial decisions are made by the user at their own responsibility. BeAFox assumes no liability for economic decisions users make based on the content provided."
+            "subtitle": "User Responsibility",
+            "text": "Decisions regarding financial investments, insurance, retirement planning, tax strategies, or other financial decisions are made by the user independently and at their own risk. BeAFox assumes no liability for economic or tax decisions made by users based on the provided content."
           },
           {
-            "subtitle": "No recommendations",
-            "text": "The content contains no recommendations for specific financial products or investment strategies. BeAFox is independent and neutral."
+            "subtitle": "No Personal Recommendations",
+            "text": "The content contains no recommendations for specific financial products, securities, real estate, or investment strategies for the user's personal situation. BeAFox is independent and neutral."
+          },
+          {
+            "subtitle": "Disclaimer",
+            "text": "Liability for economic consequences, tax consequences, or financial losses arising from the use of the BeAFox app is excluded. Users should consult professional advice (tax advisor, financial advisor, attorney) before making important financial decisions."
           }
         ]
       },
@@ -2741,148 +2901,266 @@
         "iconId": "alert",
         "content": [
           {
-            "subtitle": "Liability for intent and gross negligence",
-            "text": "BeAFox is liable without limitation for intent and gross negligence."
+            "subtitle": "Liability for Intent and Gross Negligence",
+            "text": "BeAFox is liable without limitation for damages resulting from intent or gross negligence of BeAFox, its representatives, or agents."
           },
           {
-            "subtitle": "Liability for slight negligence",
-            "text": "In cases of slight negligence, BeAFox is liable only for breach of an essential contractual obligation whose fulfillment is necessary for proper performance of the contract. Liability is limited to the foreseeable damage typical for the contract at the time of conclusion."
+            "subtitle": "NO Exclusion of Liability for Personal Injury",
+            "text": "IMPORTANT: A limitation or exclusion of liability for injury to life, body, or health is expressly NOT permitted and NOT subject to these Terms. This is prohibited by § 309 No. 7a German Civil Code for terms and conditions between businesses and consumers. Liability for damages from injury to life, body, or health remains fully in effect."
           },
           {
-            "subtitle": "Exclusion of liability",
-            "text": "BeAFox is not liable for data loss unless caused by intent or gross negligence. Liability for economic decisions users make based on the app content is excluded. Liability for slight negligence is excluded in cases of injury to life, body, or health."
+            "subtitle": "Liability for Ordinary Negligence",
+            "text": "In case of negligence (not gross negligence), BeAFox is only liable for breach of a material contractual obligation whose proper performance is necessary to enable contract performance at all (cardinal obligation). Liability is limited to damages foreseeable at contract conclusion and typical for the contract (e.g., direct financial losses from defective content)."
           },
           {
-            "subtitle": "Liability for third parties",
-            "text": "BeAFox is not liable for actions of third parties, in particular app store operators or other service providers."
+            "subtitle": "Liability Limits",
+            "text": "Excluded from liability limits are: (1) injury to life, body, or health; (2) intent or gross negligence; (3) guarantees within the meaning of § 443 German Civil Code; (4) liability under Product Liability Act (ProdHaftG); (5) statutory liability for data protection breaches under GDPR."
+          },
+          {
+            "subtitle": "Liability Exclusions",
+            "text": "To the extent permitted, BeAFox is not liable for: (a) data loss or data corruption unless caused by intent or gross negligence; (b) economic decisions or financial losses that users make based on app content; (c) business interruption or lost profits; (d) indirect or consequential damages; (e) damages from misuse or deviation from this contract; (f) actions by third parties, in particular app store operators, payment service providers, or other service providers, insofar as BeAFox is not at fault."
+          },
+          {
+            "subtitle": "Product Liability",
+            "text": "Liability under Product Liability Act (ProdHaftG) remains unaffected by liability limitations. BeAFox is liable without limitation for damages resulting from defective products (§ 1 ProdHaftG)."
+          },
+          {
+            "subtitle": "Application of Liability Limitations",
+            "text": "The foregoing liability limitations do NOT apply to injury to life, body, or health caused by BeAFox or its representatives."
           }
         ]
       },
       {
         "id": 14,
-        "title": "Termination",
+        "title": "Cancellation",
         "iconId": "xCircle",
         "content": [
           {
-            "subtitle": "Termination by consumers",
-            "text": "Consumers may terminate subscriptions at any time with one month’s notice to the end of the term. Termination must be in writing or by email to info@beafox.app."
+            "subtitle": "Cancellation by Consumers",
+            "text": "Consumers can cancel subscriptions at any time with one month's notice to the end of the billing period (month or year). Cancellation can be made through: (1) cancellation button in the app (account settings); (2) in writing by mail or email to info@beafox.app; (3) by phone upon request. Cancellation must be confirmed in writing."
           },
           {
-            "subtitle": "Termination by companies and educational institutions",
-            "text": "For companies and educational institutions, the terms and notice periods agreed in the contract apply. Typically, the notice period is three months to the end of the term unless agreed otherwise."
+            "subtitle": "Cancellation Button pursuant to § 312k German Civil Code",
+            "text": "Consumers can cancel their subscription via a cancellation button in the app settings. This is a simple and free procedure without additional obstacles (§ 312k para. 2 German Civil Code). The cancellation button is clearly visible and easily accessible."
           },
           {
-            "subtitle": "Extraordinary termination",
-            "text": "The right to extraordinary termination for good cause remains unaffected. Good cause exists in particular in the event of serious breaches of these terms or payment default of more than two months."
+            "subtitle": "Cancellation by Businesses and Educational Institutions",
+            "text": "For businesses and educational institutions, the terms and cancellation periods agreed upon in the respective contract apply. Generally, the cancellation notice period is three months to the end of the term unless otherwise agreed. Billing contracts can be canceled with 30 days' notice."
           },
           {
-            "subtitle": "Consequences of termination",
-            "text": "After termination, access to the app ends at the end of the term. Services already provided will not be refunded proportionally unless there is a good cause for termination."
+            "subtitle": "Extraordinary Cancellation",
+            "text": "The right to extraordinary cancellation (termination without notice) for good cause remains unaffected (§ 314 German Civil Code). Good cause exists in particular for: (a) serious violations of these Terms; (b) payment default for more than two months; (c) technical app failure lasting longer than 30 days; (d) violation of data protection law; (e) non-performance of essential services."
+          },
+          {
+            "subtitle": "Consequences of Cancellation",
+            "text": "Upon cancellation, access to the app ends at the end of the billing period or at the time of extraordinary cancellation. Fees already paid for future services are refunded proportionally if the service is no longer provided. For lifetime access, there is no refund after cancellation. User data will be deleted after 90 days following cancellation, unless legal retention obligations prevent this."
           }
         ]
       },
       {
         "id": 15,
-        "title": "Support rules",
+        "title": "Support Provisions",
         "iconId": "messageSquare",
         "content": [
           {
-            "subtitle": "Support channels",
-            "text": "BeAFox provides support via email (info@beafox.app) and within the app. Support hours are weekdays from 9:00 to 17:00."
+            "subtitle": "Support Channels",
+            "text": "BeAFox offers support through the following channels: (1) Email: info@beafox.app; (2) In-app support/chat (available in settings); (3) Contact form on the website: www.beafox.app/kontakt"
           },
           {
-            "subtitle": "Response time",
-            "text": "BeAFox strives to process inquiries quickly but does not guarantee a specific response time. There is no entitlement to an immediate reply."
+            "subtitle": "Support Hours",
+            "text": "Support is provided on business days (Monday to Friday) from 9:00 AM to 5:00 PM CET. Inquiries outside these hours will be processed on the next business day. Support is closed on German public holidays."
           },
           {
-            "subtitle": "Scope of support",
-            "text": "Support covers technical questions regarding use of the app and general inquiries. Individual consulting or trainings are not included in standard support and may be booked separately."
+            "subtitle": "Response Time",
+            "text": "BeAFox endeavors to respond to inquiries quickly. A typical response time is 24-48 hours. However, BeAFox makes no guarantee for a specific response time. There is no claim for immediate or real-time feedback."
+          },
+          {
+            "subtitle": "Scope of Support",
+            "text": "Standard support includes: (a) technical questions about app use; (b) assistance with login and access issues; (c) general questions about subscriptions and cancellation; (d) reporting bugs and technical errors. Not included are: (a) individual financial advice; (b) training; (c) custom development; (d) consulting. These services can be booked separately."
+          },
+          {
+            "subtitle": "Ticketing System",
+            "text": "Support requests are managed in a ticketing system. Customers receive a confirmation email with a ticket number."
           }
         ]
       },
       {
         "id": 16,
-        "title": "Workshops and additional services",
+        "title": "Workshops and Additional Services",
         "iconId": "graduationCap",
         "content": [
           {
-            "subtitle": "Workshops",
-            "text": "Workshops are carried out by agreement. Travel costs, material costs, and, if applicable, accommodation costs are charged separately unless agreed otherwise."
+            "subtitle": "Workshop Agreements",
+            "text": "Workshops are conducted based on individual arrangements. The details (date, time, duration, content, number of participants, format: online or on-site) are specified in a separate offer or contract."
           },
           {
-            "subtitle": "Cancellation rules",
-            "text": "If a workshop is cancelled by BeAFox, an alternative date will be offered or the fee already paid will be refunded. If cancelled by the customer, the agreed cancellation terms apply."
+            "subtitle": "Additional Costs",
+            "text": "Travel costs, material costs, accommodation costs, catering, and other expenses are charged separately unless otherwise agreed in the offer. These costs will be communicated transparently in advance."
           },
           {
-            "subtitle": "Cancellation policy",
-            "text": "Workshop cancellations must be made at least 14 days before the scheduled date to receive a full refund. Later cancellations may incur cancellation fees."
+            "subtitle": "Cancellation Provisions",
+            "text": "If a workshop is canceled by BeAFox, an alternative date will be offered or the fee already paid will be refunded. If canceled by the customer (e.g., failure to register participants), agreed cancellation terms apply."
           },
           {
-            "subtitle": "Certificates and materials",
-            "text": "Certificates and physical materials are provided by agreement. Costs are stated in the respective offer."
+            "subtitle": "Workshop Cancellation Terms",
+            "text": "Cancellations of workshops must be made in writing. Cancellation periods: (1) Cancellation at least 14 days before the date: full refund minus processing fee (10%); (2) Cancellation 7-14 days before the date: 50% refund; (3) Cancellation less than 7 days before the date or non-attendance: no refund."
+          },
+          {
+            "subtitle": "Certificates and Materials",
+            "text": "Certificates and printed teaching materials are provided after workshop completion. Printing and shipping costs are included in the fee unless otherwise agreed. Digital materials are sent by email."
+          },
+          {
+            "subtitle": "Monitoring Dashboards",
+            "text": "For educational institutions and businesses, monitoring dashboards with usage and performance data are provided. The scope and update frequency will be agreed upon in the respective contract."
           }
         ]
       },
       {
         "id": 17,
-        "title": "Changes to the terms",
-        "iconId": "refresh",
+        "title": "Use of Artificial Intelligence",
+        "iconId": "bot",
         "content": [
           {
-            "subtitle": "Right to amend",
-            "text": "BeAFox reserves the right to adapt these terms so they always comply with current legal requirements or reflect changes to services."
+            "subtitle": "Bea - AI-Powered Assistant",
+            "text": "\"Bea\" is an AI-powered assistant that helps users with questions about financial education. Bea is NOT a real person and is powered by Artificial Intelligence (Large Language Models). Users should be aware that they are communicating with an automated system."
           },
           {
-            "subtitle": "Notification",
-            "text": "Users will be informed about material changes to these terms at least two months before they take effect. Notification is provided by email or via the app."
+            "subtitle": "Transparency Labeling",
+            "text": "BeAFox clearly identifies Bea as an AI system. Interactions with Bea take place with full understanding that these are automated contents, not human advice or personal recommendations."
           },
           {
-            "subtitle": "Consent",
-            "text": "Silence does not constitute consent. If the user does not agree to the amended terms, they may terminate the contract before the changes take effect. Continued use of the app after the changes take effect is deemed consent."
+            "subtitle": "AI-Generated Content",
+            "text": "Content generated by Bea may occasionally contain errors, inaccuracies, or outdated information. BeAFox reviews AI content but cannot guarantee error-free content. Users should verify important information through other sources."
           },
           {
-            "subtitle": "Objection",
-            "text": "If the user does not object to the changes within six weeks after notification, the changes are deemed approved. BeAFox will point out this legal consequence in the notification."
+            "subtitle": "No Personal Advice",
+            "text": "Bea does NOT provide personal financial advice, tax advice, or legal advice. Bea provides general information and learning materials. For personal advice, users should consult a qualified professional (tax advisor, financial advisor, etc.)."
+          },
+          {
+            "subtitle": "Data Protection in AI Use",
+            "text": "Conversations with Bea are recorded and used to improve the AI system (in accordance with the Privacy Policy). Users should not enter sensitive personal data (account numbers, SSN, etc.) in conversations with Bea. BeAFox processes this data in accordance with the GDPR and TDDDG."
+          },
+          {
+            "subtitle": "EU AI Act",
+            "text": "BeAFox aligns with the requirements of the EU AI Act (Regulation 2024/1689, when in effect) regarding transparency, risk mitigation, and documentation of AI systems."
+          },
+          {
+            "subtitle": "Right to Explanation",
+            "text": "Users have the right to request explanations for decisions made by AI systems (Article 22 GDPR). BeAFox will provide explanations in response to reasonable requests."
           }
         ]
       },
       {
         "id": 18,
-        "title": "Transfer of contract",
+        "title": "Online Dispute Resolution and Consumer Dispute Resolution",
         "iconId": "handshake",
         "content": [
           {
-            "text": "BeAFox is entitled to transfer rights and obligations from this contract in whole or in part to a legal successor or third parties, provided this is reasonable for the customer. The customer will be informed about such transfer."
+            "subtitle": "EU Online Dispute Resolution Platform",
+            "text": "The European Commission has established a platform for out-of-court online dispute resolution (ODR platform). Consumers can use these free platforms to resolve disputes:\n\nURL: https://ec.europa.eu/consumers/odr/\n\nBeAFox is willing to participate in proceedings on this platform."
+          },
+          {
+            "subtitle": "Consumer Arbitration Centers",
+            "text": "In Germany, there are consumer arbitration centers (e.g., Arbitration Center of the Retail Trade Association). These can be called upon to resolve disputes. BeAFox will consider appropriate arbitration requests but is not required to participate under the German Consumer Dispute Resolution Act (VSBG)."
+          },
+          {
+            "subtitle": "Notice pursuant to VSBG",
+            "text": "Pursuant to § 36 VSBG, we notify: BeAFox UG (haftungsbeschränkt) is not obligated and not willing to participate in dispute resolution proceedings before a consumer arbitration center. However, out-of-court dispute resolution is possible if both parties agree."
+          },
+          {
+            "subtitle": "Court Proceedings",
+            "text": "Should a dispute not be resolved out-of-court, consumers can contact the appropriate courts. For consumers, the statutory court jurisdiction rules apply. For businesses, the place of jurisdiction is the District Court (Amtsgericht) or Regional Court (Landgericht) Regensburg, where BeAFox is located."
           }
         ]
       },
       {
         "id": 19,
-        "title": "Final provisions",
+        "title": "Changes to Terms",
+        "iconId": "refresh",
+        "content": [
+          {
+            "subtitle": "Right to Change",
+            "text": "BeAFox reserves the right to amend these Terms so that they always comply with current legal requirements, reflect changes in services, or implement technical innovations. Changes may also be required to comply with German and European law requirements (e.g., new consumer protection laws)."
+          },
+          {
+            "subtitle": "Notification of Changes",
+            "text": "Users will be informed of material changes to the Terms at least two weeks before they take effect. Notification is made via email, in-app notification, or on the website. Non-material changes (e.g., contact information) can be made without prior notice."
+          },
+          {
+            "subtitle": "Explicit Consent Required for Material Changes",
+            "text": "Explicit user consent is required for material changes (price increases, service restrictions, liability exclusions). Material changes require: (1) written notification at least two weeks in advance; (2) option to object or cancel; (3) silence does NOT constitute consent."
+          },
+          {
+            "subtitle": "Right to Cancel for Non-Acceptance",
+            "text": "If a user does not agree to amended Terms, they can cancel the contract in writing by the effective date of the changes. After cancellation, the old contract remains valid until the end of the current billing period. No further renewal will occur."
+          },
+          {
+            "subtitle": "Consent to Non-Material Changes",
+            "text": "For non-material changes (editorial adjustments, clarifications, technical improvements), consent is obtained through continued use of the app after notice on the website."
+          },
+          {
+            "subtitle": "No Tacit Consent",
+            "text": "Silence or failure to object does NOT constitute consent to amended Terms. BeAFox will explicitly request consent for each change."
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "title": "Contract Assignment",
+        "iconId": "handshake",
+        "content": [
+          {
+            "text": "BeAFox is entitled to assign rights and obligations under this contract in whole or in part to a successor (e.g., in the event of merger, acquisition, or restructuring) or other third parties, provided this is reasonable for the customer and the customer has the opportunity to cancel the contract."
+          },
+          {
+            "subtitle": "Notification and Right to Object",
+            "text": "The customer will be notified in writing of an intended assignment at least three weeks in advance. The customer has the right to cancel the contract by the time of assignment if the assignment is unreasonable for the customer or would result in significant disadvantages."
+          },
+          {
+            "subtitle": "Qualification of Successor",
+            "text": "A successor must be able to perform the services under the same or better terms. The customer's rights (including warranty and damage claims) remain unaffected."
+          },
+          {
+            "subtitle": "Prohibition of Assignment by Customers",
+            "text": "Customers are not permitted to assign their rights or obligations under this contract to third parties without prior written consent from BeAFox. This applies in particular to the sharing of access credentials."
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "title": "Final Provisions",
         "iconId": "gavel",
         "content": [
           {
-            "subtitle": "Applicable law",
-            "text": "German law applies, excluding the UN Convention on Contracts for the International Sale of Goods (CISG) and conflict-of-law rules."
+            "subtitle": "Applicable Law",
+            "text": "German law (Federal Republic of Germany) applies to the exclusion of the UN Convention on Contracts for the International Sale of Goods (CISG) and International Private Law (IPR), insofar as these laws are not mandatory (e.g., consumer protection laws)."
           },
           {
-            "subtitle": "Place of jurisdiction",
-            "text": "The place of jurisdiction for all disputes arising from this contract is BeAFox’s registered office (Regensburg), provided the customer is a merchant, a legal entity under public law, or a special fund under public law. For consumers, statutory rules on jurisdiction apply."
+            "subtitle": "Jurisdiction",
+            "text": "The place of jurisdiction for all disputes arising from this contract is the District Court (Amtsgericht) or Regional Court (Landgericht) Regensburg if the customer is a merchant (within the meaning of the German Commercial Code), a legal entity of public law, or a publicly-owned special fund. For consumers, the statutory court jurisdiction rules apply under §§ 32 et seq. German Code of Civil Procedure (consumers can also sue BeAFox, and BeAFox can sue the consumer)."
           },
           {
-            "subtitle": "Severability clause",
-            "text": "Should individual provisions of these terms be or become invalid, the validity of the remaining provisions remains unaffected. The invalid provision will be replaced by a valid one that comes closest to the economic purpose."
+            "subtitle": "Severability Clause",
+            "text": "Should any provision of these Terms be wholly or partly invalid or become invalid, the validity of the remaining provisions remains unaffected. The invalid provision does not apply. For the invalid provision, the statutory regulations of the Federal Republic of Germany apply. This does not apply if the severability clause itself would be invalid."
           },
           {
-            "subtitle": "Language",
-            "text": "These terms are written in German. Translations are provided for information only. The German version is authoritative."
+            "subtitle": "Entire Agreement",
+            "text": "These Terms, together with the offer and Privacy Policy, constitute the entire agreement between BeAFox and the customer. Earlier statements, agreements, or contracts are superseded by these Terms unless expressly otherwise agreed."
+          },
+          {
+            "subtitle": "Changes Require Written Form",
+            "text": "Amendments or supplements to these Terms require written form (in writing by mail, fax, or email). This also applies to a waiver of this provision (§ 127 German Civil Code)."
+          },
+          {
+            "subtitle": "Contract Language",
+            "text": "These Terms are drafted in the German language and constitute the binding version. Translations into other languages serve for information purposes only and are not binding. In case of discrepancies between the German and a translated version, the German version shall prevail."
           }
         ]
       }
     ],
     "contact": {
-      "title": "Questions about our terms?",
-      "text": "If you have any questions about our general terms and conditions, feel free to contact us:",
+      "title": "Questions about our Terms?",
+      "text": "If you have questions about our General Terms and Conditions or need further information, please feel free to contact us at:",
       "labels": {
         "email": "Email:",
         "phone": "Phone:"
@@ -2890,8 +3168,8 @@
       "cta": "Contact us"
     },
     "lastUpdated": {
-      "stand": "Version of these terms: December 2025",
-      "notice": "We reserve the right to adjust these terms so they always comply with current legal requirements or reflect changes to our services. You will be informed about changes in due time."
+      "stand": "Status of these General Terms and Conditions: April 2026",
+      "notice": "We reserve the right to amend these Terms so that they always comply with current legal requirements or reflect changes in our services. In the event of material changes, you will be informed promptly and will have the right to object."
     }
   },
   "checkout": {
@@ -3036,7 +3314,10 @@
     "hero": {
       "headlineKnow": "KNOWLEDGE.",
       "headlineMoney": "MONEY.",
-      "typingWords": ["FREEDOM", "SECURITY"]
+      "typingWords": [
+        "FREEDOM",
+        "SECURITY"
+      ]
     },
     "mockups": {
       "trainingAlt": "BeAFox Training mockup",
@@ -3277,7 +3558,7 @@
         },
         {
           "q": "Where are the products made?",
-          "a": "Our products are made by local print partners in Germany — short routes, less CO\u2082."
+          "a": "Our products are made by local print partners in Germany — short routes, less CO₂."
         }
       ]
     }
@@ -3576,108 +3857,222 @@
   "guidelines": {
     "meta": {
       "title": "Community Guidelines | BeAFox",
-      "description": "Our guidelines for respectful behavior, constructive communication, and a positive learning environment."
+      "description": "Comprehensive community guidelines for a safe, legal, and respectful learning environment. DSA-compliant with youth protection and transparent moderation."
+    },
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Home"
+    },
+    "tableOfContents": {
+      "title": "Table of contents"
+    },
+    "company": {
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "legalLinks": {
+      "title": "Further legal information",
+      "terms": "Terms and Conditions",
+      "privacy": "Privacy Policy",
+      "imprint": "Imprint"
     },
     "hero": {
-      "badge": "Community guidelines",
+      "badge": "Community Guidelines",
       "title": {
         "pre": "Our",
-        "highlight": "community guidelines"
+        "highlight": "Community Guidelines"
       },
-      "description": "BeAFox is a community where young people learn about finance together. These guidelines help us create a safe, respectful, and supportive learning environment."
+      "description": "BeAFox is a community for young people aged 16 to 30 who together acquire financial capability. These guidelines create a safe, respectful space that protects all users, ensures compliance with European and German laws, and maintains the quality of our learning environment. They are based on the EU Digital Services Act (DSA), the Youth Protection Act (JuSchG), the General Data Protection Regulation (GDPR), and other applicable legal standards."
     },
     "items": [
       {
         "id": 1,
-        "title": "Respectful behavior",
-        "description": "Treat all members of the BeAFox community with respect and kindness.",
+        "title": "Respectful Behavior",
+        "description": "Treat all members of the BeAFox community with respect and kindness. A positive culture of mutual trust is the foundation of our learning community.",
         "rules": [
-          "Be respectful and polite in all interactions",
-          "Avoid insulting, discriminatory, or demeaning language",
-          "Respect different opinions and experiences",
-          "Help others learn instead of criticizing them",
-          "Celebrate others' successes and encourage their progress"
+          "Be respectful and courteous in all interactions – online and offline",
+          "Avoid insulting, discriminatory, racist, sexist, or demeaning language or behavior",
+          "Respect different opinions, religions, identities, and experiences",
+          "Help others learn instead of criticizing or shaming them",
+          "Celebrate others' successes and encourage them constructively in their learning journey"
         ]
       },
       {
         "id": 2,
-        "title": "Constructive communication",
-        "description": "Share knowledge constructively and help others learn.",
+        "title": "Constructive Communication",
+        "description": "Share your knowledge constructively and help others learn. Open, factual discussions promote understanding for everyone.",
         "rules": [
-          "Ask questions when you don't understand something",
-          "Share your experiences and tips with the community",
-          "Give constructive feedback that helps others",
-          "Avoid spam, advertising, or unwanted content",
-          "Keep discussions factual and on topic"
+          "Ask questions when you don't understand something, and make an effort to understand answers",
+          "Share your experiences and tips factually and evidence-based with the community",
+          "Provide constructive feedback that concretely helps others improve",
+          "Avoid spam, advertising, unsolicited promotions, or unwanted commercialized content",
+          "Keep discussions factual, on-topic, and free of personal attacks"
         ]
       },
       {
         "id": 3,
-        "title": "Safety and privacy",
-        "description": "Protect your personal data and the data of other users.",
+        "title": "Prohibited Content (DSA Art. 14, NetzDG)",
+        "description": "The following content is absolutely not permitted in the BeAFox community. These restrictions comply with the EU Digital Services Act and the German Network Enforcement Act.",
         "rules": [
-          "Do not share personal financial data or account information",
-          "Do not share passwords or login details",
-          "Respect other users' privacy",
-          "Report suspicious activities or content",
-          "Use strong passwords for your account"
+          "Hate content and incitement: Content that incites violence, discrimination, or hatred against persons based on race, ethnicity, religion, gender, sexual orientation, disability, or other protected characteristics (§ 130, § 131 StGB)",
+          "Violence and threats: Threats or glorification of violence, suicide, or self-harm; content that intimidates or threatens others",
+          "Harassment and doxxing: Sustained or repeated harassment of persons; disclosure of private personal data (addresses, phone numbers, etc.) without consent",
+          "Sexual and child safety content: Child sexual abuse material (CSAM) or any form of sexual abuse or exploitation of children; content offering sexual services or sexualized content involving minors (§§ 176, 182, 184 StGB)",
+          "Terrorism and extremism: Content that glorifies, spreads, or incites terrorism; propaganda material of extremist organizations",
+          "Fraud and illegal activities: Content inciting or instructing fraud, document forgery, theft, or other crimes; distribution of malware or phishing links",
+          "Copyright and intellectual property: Distribution of content that violates third-party copyrights, trademarks, or other intellectual property rights without legal basis",
+          "Impersonation and deception: Impersonating another person's identity, especially BeAFox staff, moderators, or public figures; spreading deliberately false or misleading information about financial topics",
+          "Illegally offered goods or services: Distribution or promotion of unlawfully manufactured, imported, or distributed goods"
         ]
       },
       {
         "id": 4,
-        "title": "Honesty and integrity",
-        "description": "Be honest in your interactions and while learning.",
+        "title": "Security and Privacy",
+        "description": "Protect your personal data and that of other users. Trust and data security are essential for our community. BeAFox is GDPR-compliant and protects all user data strictly.",
         "rules": [
-          "Do not use cheating methods or exploits",
-          "Do not share false information",
-          "Respect others' learning progress",
-          "Only share information you understand yourself",
-          "Cite sources when sharing information"
+          "Do not share personal financial data such as account numbers, PINs, TAN numbers, credit card data, or other sensitive information in public areas",
+          "Never share passwords, access credentials, or authentication codes – BeAFox staff will never ask you for these",
+          "Respect other users' privacy: Do not share their personal data, images, or private information without explicit consent",
+          "Report suspicious activities, phishing attempts, unusual account access, or security vulnerabilities immediately to support@beafox.app",
+          "Use a strong, unique password for your BeAFox account and enable two-factor authentication if available",
+          "Understand that BeAFox processes your data in accordance with GDPR and our privacy policy – find privacy information at beafox.app/privacy"
         ]
       },
       {
         "id": 5,
-        "title": "Age-appropriate content",
-        "description": "BeAFox is for young people — keep content age-appropriate.",
+        "title": "Youth Protection and Protection of Minors (JuSchG, JMStV)",
+        "description": "BeAFox especially protects users under 18 years of age. We strictly follow the German Youth Protection Act (JuSchG) and Interstate Treaty on the Protection of Minors in the Media (JMStV).",
         "rules": [
-          "Use appropriate language for all age groups",
-          "Avoid inappropriate or offensive content",
-          "Remember that many users are minors",
-          "Keep discussions educational and constructive",
-          "Report inappropriate content immediately"
+          "Minor users (under 18): Their safety is the highest priority. Content is always curated to be age-appropriate and educational",
+          "No contact by adults for private purposes: Adults must not build relationships with minors outside of open learning contexts. Any suspicious or inappropriate contact will be reported and may result in criminal consequences",
+          "Protection mechanisms for minors: BeAFox uses content filtering, age verification, and moderation to protect minors from harmful content",
+          "Use of appropriate language and content: All public content must be appropriate for users aged 16 and above. Alcohol, drugs, smoking, and explicitly sexual content are not permitted",
+          "Reporting: Any suspicious activity regarding child welfare risks will be reported to police and/or competent authorities (in accordance with § 8a SGB VIII and § 14 Para. 2 JMStV)"
         ]
       },
       {
         "id": 6,
-        "title": "No financial advice",
-        "description": "BeAFox provides education, not individual financial advice.",
+        "title": "No Financial Advice",
+        "description": "BeAFox is a platform for financial education, not financial advice or investment advice. Bea is an AI-powered learning companion, not a licensed financial advisor.",
         "rules": [
-          "BeAFox is a learning platform, not a financial advisor",
-          "Do not give specific investment recommendations",
-          "Refer to professional advice for complex questions",
-          "Share knowledge, not personal financial decisions",
-          "Remind others that individual advice can be important"
+          "BeAFox conveys financial knowledge and capability but not personal or legally binding financial advice",
+          "Do not give specific investment recommendations, tips, or financial forecasts – that is financial advice, which requires a license",
+          "Refer to professional, licensed financial advisors or authorities (such as BaFin) for complex or personal financial questions",
+          "Share general financial knowledge and concepts, but not your personal financial decisions or strategies that could be misunderstood as advice",
+          "Remind others that individual professional advice is important and recommended for major financial decisions (loans, investments, insurance)"
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Artificial Intelligence and Bea – Transparency and Limitations",
+        "description": "Bea is our AI-powered learning companion. It is important that you understand how Bea works, what Bea can do, and what Bea cannot do.",
+        "rules": [
+          "Bea is an AI: Bea is powered by artificial intelligence and can make mistakes. Bea is not human and has no personal feelings or intentions",
+          "Transparency about AI-generated content: Content generated by Bea or other AI systems will be labeled as such. BeAFox does not secretly mix AI content with human content",
+          "Bea's limitations: Bea does not provide professional financial advice, cannot support during crisis situations, and does not replace human experts. For serious problems, contact a trusted person, therapist, or authorities",
+          "Data privacy with AI: Your conversations with Bea are used to train and improve Bea (anonymously and pseudonymously in accordance with GDPR). Detailed information can be found at beafox.app/privacy",
+          "Complaints about Bea behavior: If Bea content seems inappropriate or misrepresents you, you can report this. BeAFox will review the case"
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Reporting Illegal Content (DSA Art. 16 – Notice and Action)",
+        "description": "The EU Digital Services Act requires us to have a structured process for reporting illegal content. You can report content that violates laws or these guidelines.",
+        "rules": [
+          "Reporting channel: Use the report form in the app under Settings > Report Content or write directly to compliance@beafox.app. Provide the content URL or screenshot plus description",
+          "Required information for a report: Concrete description of the content, why it is illegal or violates guidelines, link or screenshot, your contact details (optional but helpful for follow-up). Factual and detailed formulation helps us act quickly",
+          "Processing of illegal content: Content that violates applicable German or EU law (e.g., CSAM, terrorism, incitement to violence) will be reviewed within 72 hours and removed if confirmed illegal. Guideline violations will be processed within 7 days",
+          "Report status tracking: You receive confirmation of your report and can track its status (in the app under Reports or by email)",
+          "Appeal against incorrect report: If a report is handled incorrectly, the user can appeal (see Point 10: Complaint Management)"
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Content Moderation and Decision Transparency (DSA Art. 14, 17)",
+        "description": "BeAFox moderates content to enforce these guidelines. We are transparent about how, why, and by whom decisions are made.",
+        "rules": [
+          "Moderation methods: BeAFox uses a combination of automated detection (artificial intelligence) and human review. Flagged content is reviewed by trained moderators before action is taken",
+          "Duty to provide reasons (DSA Art. 17): If your account is suspended, a post is deleted, or other action is taken, you receive notification with: (1) the exact guideline section or reason, (2) the specific justification for why the action was taken, (3) information about your right to complain. This information will be provided within reasonable time",
+          "Transparency report: BeAFox publishes regular reports on content moderation: number of reports received, content processed, reasons for deletions, and complaints",
+          "Human review for complaints: If you appeal a moderation decision, your case is reviewed again by a different trained moderator (not the same person, not just automated systems)",
+          "Emergency exceptions: In case of imminent danger (e.g., suicide announcement, bomb threat), BeAFox can remove content without warning and contact authorities"
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Complaint Management and Remedies (DSA Art. 20)",
+        "description": "You have the right to lodge complaints against moderation decisions, suspensions, or deletions. BeAFox offers an internal review process and external options.",
+        "rules": [
+          "Internal complaint: If you wish to contest a moderation decision, you can submit a complaint to appeals@beafox.app within 14 days of notification. Specify: (1) which decision you are contesting, (2) your reasons why the decision is wrong, (3) if applicable, new information. Format factually and specifically",
+          "Internal review period: BeAFox reviews your complaint within 14 days and informs you of the result: decision upheld, partially reversed, or fully overturned. The reasoning will be provided",
+          "Out-of-court dispute resolution: If you disagree with the internal decision, you can initiate proceedings with an independent ombudsman or arbitration. BeAFox is a member of the Digital Services Act complaint procedure (details at beafox.app/complaints)",
+          "Judicial review: You have the right to contest any moderation decision before a German or EU court (administrative law or private law depending on the situation)",
+          "No retaliation: BeAFox will not suspend your account, delete your content, or otherwise harm you for filing a complaint. That is retaliation and is prohibited"
         ]
       }
     ],
     "violations": {
-      "title": "Violations of the guidelines",
-      "description": "If these community guidelines are violated, we may take the following actions:",
+      "title": "Violations of Guidelines",
+      "description": "BeAFox enforces these guidelines to protect all users. Depending on severity and frequency, the following measures may be taken. All measures will be communicated transparently with justification and right to complain.",
       "actions": [
-        "Warning and request to change behavior",
-        "Temporary account suspension",
-        "Permanent suspension for severe violations",
-        "Removal of inappropriate content",
-        "Reporting illegal activities to the authorities"
+        "Level 1 – Warning: The user is informed that a violation may have occurred and is asked to change their behavior. The content may be hidden but not deleted",
+        "Level 2 – Content Removal: The violating content is removed. The user is notified with justification and can file a complaint",
+        "Level 3 – Temporary Suspension (7–90 days): The user account is suspended for a defined period. The user cannot access the platform during this time. All other functions (lessons, quizzes, rankings) are suspended. Conversations are possible after suspension is lifted",
+        "Level 4 – Permanent Suspension: The user account is permanently and irrevocably deleted for repeated serious violations, legal violations (CSAM, terrorism), or violations endangering others' safety. The user can no longer access the platform. BeAFox may retain data for prosecution or civil claims",
+        "Level 5 – Report to Authorities: If there is suspicion of criminal activity (child abuse, terrorism, fraud, harassment), BeAFox will notify the competent German or European authorities (police, BKA, NCMEC, Europol) and may provide evidence",
+        "Special considerations for minors: For violations by or against minors, BeAFox is guided by JuSchG and JMStV. In case of welfare risks, the youth welfare office may be contacted",
+        "Repetition and escalation: First violations result in warnings. Repeated violations result in harsher measures (suspension, deletion). Serious violations (e.g., hate, violence, CSAM, fraud) result directly in suspension and/or authority reporting, regardless of whether there was an initial warning"
       ]
     },
     "contact": {
-      "title": "Questions about our guidelines?",
-      "text": "If you have questions about our community guidelines or want to report a violation, feel free to contact us.",
-      "cta": "Contact us"
+      "title": "Contact Point for Authorities and Users (DSA Art. 11)",
+      "text": "If you have questions about our Community Guidelines, wish to report a violation, or want to file a complaint, please contact our DSA contact point. BeAFox is obligated to respond to all requests from users and authorities.",
+      "cta": "Get in touch",
+      "details": {
+        "email": "info@beafox.app",
+        "compliance": "compliance@beafox.app",
+        "appeals": "appeals@beafox.app",
+        "emergencyReport": "Emergency report (CSAM, violence, terrorism): emergency@beafox.app",
+        "phone": "+49 178 2723 673",
+        "address": "BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Germany"
+      }
+    },
+    "lastUpdated": {
+      "stand": "April 7, 2026",
+      "notice": "These Community Guidelines were last updated on April 7, 2026 and take effect immediately. BeAFox reserves the right to update these guidelines at any time. Users will be notified of material changes. Continued use of the platform following a change constitutes acceptance of the new guidelines. Previous versions of these guidelines are available upon request at info@beafox.app."
     }
   },
   "imprint": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Home"
+    },
+    "company": {
+      "name": "BeAFox UG (limited liability)",
+      "street": "Siemensweg 2",
+      "city": "93073 Neutraubling",
+      "country": "Germany",
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "contact": {
+      "addressLabel": "Address",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone"
+    },
+    "legalLinks": {
+      "title": "Further legal information",
+      "privacy": "Privacy Policy",
+      "terms": "Terms and Conditions",
+      "withdrawal": "Cancellation Policy",
+      "communityGuidelines": "Community Guidelines",
+      "accessibility": "Accessibility"
+    },
+    "footer": {
+      "copyright": "{year} {company}. All rights reserved. All content is subject to German copyright law."
+    },
     "meta": {
       "title": "Imprint | BeAFox",
       "description": "Imprint of BeAFox UG (limited liability) – Legal information, contact details and company registration."
@@ -3685,12 +4080,12 @@
     "hero": {
       "badge": "Imprint",
       "title": "Imprint",
-      "subtitle": "Information pursuant to § 5 TMG and responsibility for content pursuant to § 55(2) RStV"
+      "subtitle": "Information pursuant to § 5 DDG and responsibility for content pursuant to § 18(2) MStV"
     },
     "sections": [
       {
         "id": 1,
-        "title": "Information pursuant to § 5 TMG",
+        "title": "Information pursuant to § 5 DDG",
         "content": [
           {
             "details": [
@@ -3707,7 +4102,10 @@
         "title": "Contact",
         "content": [
           {
-            "details": ["Phone: +49 178 2723 673", "Email: info@beafox.app"]
+            "details": [
+              "Phone: +49 178 2723 673",
+              "Email: info@beafox.app"
+            ]
           }
         ]
       },
@@ -3716,7 +4114,9 @@
         "title": "Represented by",
         "content": [
           {
-            "details": ["Managing director: Alexandru Tapelea"]
+            "details": [
+              "Managing director: Alexandru Tapelea"
+            ]
           }
         ]
       },
@@ -3739,16 +4139,19 @@
         "content": [
           {
             "text": "VAT identification number pursuant to § 27a of the German VAT Act:",
-            "details": ["DE455701438"]
+            "details": [
+              "DE455701438"
+            ]
           }
         ]
       },
       {
         "id": 6,
-        "title": "Responsible for content pursuant to § 55(2) RStV",
+        "title": "Responsible for content pursuant to § 18(2) MStV",
         "content": [
           {
             "details": [
+              "Alexandru Tapelea",
               "BeAFox UG (limited liability)",
               "Siemensweg 2",
               "93073 Neutraubling",
@@ -3763,11 +4166,11 @@
         "content": [
           {
             "subtitle": "Liability for content",
-            "text": "The contents of our pages were created with great care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7(1) TMG and the general laws."
+            "text": "The contents of our pages were created with great care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. As a service provider, we are responsible for our own content on these pages in accordance with § 7(1) DDG and the general laws."
           },
           {
             "subtitle": "Liability for links",
-            "text": "Our offer contains links to external third-party websites over which we have no control. Therefore, we cannot accept any liability for these external contents. The respective provider or operator of the linked pages is always responsible for the content. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not identifiable at the time of linking."
+            "text": "Our offer contains links to external third-party websites over which we have no control. Therefore, we cannot accept any liability for these external contents. The respective provider or operator of the linked pages is always responsible for the content. The linked pages were checked for possible legal violations at the time of linking. Illegal content was not identifiable at the time of linking. However, permanent monitoring of linked pages is unreasonable without concrete evidence of a legal violation. Upon becoming aware of any legal violations, we will remove such links immediately (§ 7(2) DDG)."
           },
           {
             "subtitle": "Copyright",
@@ -3782,45 +4185,108 @@
             }
           }
         ]
+      },
+      {
+        "id": 8,
+        "title": "Consumer Dispute Resolution / Universal Arbitration Board",
+        "content": [
+          {
+            "text": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."
+          },
+          {
+            "subtitle": "Online Dispute Resolution (ODR)",
+            "text": "The European Commission provides a platform for online dispute resolution (ODR):",
+            "link": {
+              "text": "https://ec.europa.eu/consumers/odr/",
+              "href": "https://ec.europa.eu/consumers/odr/"
+            }
+          },
+          {
+            "text": "Our email address is: info@beafox.app"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "No Financial, Investment or Tax Advice",
+        "content": [
+          {
+            "text": "The content provided by BeAFox, including the AI-powered learning companion \"Bea\", is intended solely for general financial education and knowledge transfer. It does not constitute investment advice within the meaning of § 2(8) No. 10 WpHG (German Securities Trading Act), tax advice, or legal advice."
+          },
+          {
+            "text": "For individual financial decisions, you should consult qualified professionals (financial advisors, tax advisors, lawyers). BeAFox assumes no liability for financial decisions made on the basis of the content provided."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "AI Disclosure",
+        "content": [
+          {
+            "text": "The learning companion \"Bea\" is an AI-based assistant and not a real person. Bea uses artificial intelligence to deliver learning content and answer questions. Responses generated by Bea may contain errors and do not replace professional advice."
+          },
+          {
+            "subtitle": "Transparency notice pursuant to EU AI Act",
+            "text": "In accordance with Art. 50 of the EU Artificial Intelligence Act (AI Act / EU 2024/1689), we inform you that the AI feature \"Bea\" is based on Large Language Models (LLMs) from third-party providers. Your inputs are processed via the API of OpenAI (OpenAI, Inc., San Francisco, USA). Further information on data processing by the AI provider can be found in our Privacy Policy. BeAFox assumes no warranty for the accuracy, completeness, or timeliness of AI-generated content."
+          }
+        ]
       }
     ]
   },
   "privacy": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Home"
+    },
+    "tableOfContents": {
+      "title": "Table of contents"
+    },
+    "company": {
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "legalLinks": {
+      "title": "Further legal information",
+      "imprint": "Imprint",
+      "terms": "Terms and Conditions",
+      "communityGuidelines": "Community Guidelines"
+    },
     "meta": {
       "title": "Privacy Policy",
-      "description": "Privacy policy of BeAFox UG (limited liability) - Information on data processing, cookies and your rights under GDPR."
+      "description": "Privacy Policy of BeAFox UG (haftungsbeschränkt) - Information about data processing, cookies and your rights under GDPR, TDDDG and DDG."
     },
     "hero": {
       "badge": "Privacy",
       "title": "Privacy Policy",
-      "description": "We take the protection of your personal data very seriously. This privacy policy informs you about the type, scope and purpose of the processing of personal data."
+      "description": "We take the protection of your personal data very seriously. This privacy policy informs you about the type, scope and purpose of processing personal data in accordance with GDPR, TDDDG (Telecommunications Digital Services Data Protection Act) and DDG (Digital Services Act)."
     },
     "sections": [
       {
         "id": 1,
-        "title": "Information on the collection of personal data",
+        "title": "Information about the collection of personal data",
         "content": [
           {
             "subtitle": "General",
-            "text": "Below we inform you about the collection of personal data when using this website and our app. Personal data is all data that can be related to you personally, e.g. name, address, email addresses, user behaviour."
+            "text": "Below we inform you about the collection of personal data when using this website and our app. Personal data is all data that can be related to you personally, such as name, address, email addresses, user behavior."
           },
           {
-            "subtitle": "Controller",
-            "text": "The controller within the meaning of the GDPR and also the service provider within the meaning of the TTDSG is:",
+            "subtitle": "Responsible party",
+            "text": "The responsible party within the meaning of GDPR, service provider within the meaning of TDDDG and telecommunications service provider within the meaning of DDG is:",
             "details": [
               "BeAFox UG (haftungsbeschränkt)",
               "Siemensweg 2",
               "93073 Neutraubling",
               "Germany",
-              "Represented by: Management",
-              "Commercial register: HRB 21689, Regensburg District Court",
+              "Represented by: Alexandru Tapelea (Managing Director)",
+              "Trade Register: HRB 21689, Registration Court Regensburg",
               "Phone: +49 178 2723 673",
               "Email: info@beafox.app"
             ]
           },
           {
             "subtitle": "Data Protection Officer",
-            "text": "We have not currently appointed a data protection officer, as this is not required under the statutory provisions."
+            "text": "We currently have not appointed a data protection officer, as this is not required under the applicable legal provisions."
           }
         ]
       },
@@ -3829,46 +4295,46 @@
         "title": "Your rights as a data subject",
         "content": [
           {
-            "subtitle": "Right of access (Art. 15 GDPR)",
+            "subtitle": "Right to information (Art. 15 GDPR)",
             "text": "You have the right to request information about your personal data processed by us. In particular, you can request information about:",
             "list": [
-              "the data stored about you by us",
+              "the data stored about you with us",
               "its origin",
-              "recipients or categories of recipients to whom this data is disclosed",
+              "recipients or categories of recipients to whom this data is passed on",
               "the purpose of storage",
               "the duration of storage"
             ]
           },
           {
             "subtitle": "Right to rectification (Art. 16 GDPR)",
-            "text": "You have the right to request the rectification of inaccurate or the completion of your personal data stored by us."
+            "text": "You have the right to request correction of inaccurate or completion of incomplete personal data stored with us."
           },
           {
             "subtitle": "Right to erasure (Art. 17 GDPR)",
-            "text": "You have the right to request the erasure of your personal data, unless statutory retention obligations or other legal reasons prevent erasure."
+            "text": "You have the right to request deletion of your personal data, unless statutory retention obligations or other legal grounds prevent deletion."
           },
           {
-            "subtitle": "Right to restriction of processing (Art. 18 GDPR)",
-            "text": "You have the right to request the restriction of the processing of your personal data."
+            "subtitle": "Right to restrict processing (Art. 18 GDPR)",
+            "text": "You have the right to request restriction of processing of your personal data."
           },
           {
             "subtitle": "Right to data portability (Art. 20 GDPR)",
-            "text": "You have the right to receive your personal data that you have provided to us in a structured, commonly used and machine-readable format."
+            "text": "You have the right to receive the personal data you have provided to us in a structured, commonly used and machine-readable format."
           },
           {
             "subtitle": "Right to object (Art. 21 GDPR)",
-            "text": "You have the right to object at any time to the processing of your personal data on grounds relating to your particular situation, where processing is based on Art. 6(1)(e) or (f) GDPR."
+            "text": "You have the right to object at any time to the processing of personal data concerning you on grounds relating to your particular situation, provided such processing is carried out on the basis of Art. 6 para. 1 point e or f GDPR."
           },
           {
             "subtitle": "Withdrawal of consent",
-            "text": "If you have given your consent to the processing of your personal data, you can withdraw it at any time. The lawfulness of processing carried out until the withdrawal is not affected. Please direct any requests for information, access or objections regarding data processing to info@beafox.app or to the address stated above."
+            "text": "If you have given consent to the processing of your personal data, you can withdraw this consent at any time. The lawfulness of processing carried out until withdrawal is not affected. Please direct all information requests, data access requests or objections regarding data processing to info@beafox.app or to the address stated above."
           },
           {
             "subtitle": "Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)",
-            "text": "You also have the right to lodge a complaint with a data protection supervisory authority regarding the processing of your personal data. The supervisory authority responsible is usually that of your place of residence, workplace or the place of the alleged infringement.",
+            "text": "You also have the right to lodge a complaint with a data protection supervisory authority regarding the processing of your personal data. The competent authority is generally the supervisory authority of your usual place of residence, your place of work or the place of the alleged infringement.",
             "details": [
-              "The authority responsible for us is:",
-              "Bavarian Data Protection Authority (BayLDA)",
+              "The competent authority for us is:",
+              "Bavarian State Office for Data Protection Supervision (BayLDA)",
               "Promenade 18",
               "91522 Ansbach",
               "Germany",
@@ -3884,11 +4350,11 @@
         "title": "Data security",
         "content": [
           {
-            "text": "We maintain current technical measures to ensure data security, in particular to protect your personal data from risks during data transmission and from unauthorised access by third parties. These are adapted in line with the current state of the art."
+            "text": "We maintain current technical measures to ensure data security, in particular to protect your personal data against dangers during data transmission and against access by third parties. These are continuously adapted to the current state of technology."
           },
           {
             "subtitle": "TLS encryption",
-            "text": "We use TLS encryption for the transmission of content (recognisable by \"https://\" and the padlock symbol in the browser). This protects your data from unauthorised access."
+            "text": "We use TLS encryption for the transmission of content (recognizable by \"https://\" and the padlock symbol in the browser). This protects your data against unauthorized interception."
           }
         ]
       },
@@ -3902,20 +4368,24 @@
           },
           {
             "subtitle": "Server log files",
-            "text": "When you access our website, our host automatically collects data and information in so-called server log files. This includes in particular:",
+            "text": "When you access our website, our host automatically records data and information in so-called server log files. This includes in particular:",
             "list": [
               "IP address",
               "Date and time of access",
               "Time zone difference to Greenwich Mean Time (GMT)",
-              "URL of the page accessed",
+              "URL of the accessed page",
               "Referrer URL (website from which the request originates)",
               "Browser and operating system used",
-              "Language and version of the browser software"
+              "Language and version of browser software"
             ]
           },
           {
             "subtitle": "Legal basis",
-            "text": "Processing is based on Art. 6(1)(f) GDPR. Our legitimate interest lies in the technical provision of the website, ensuring stability and security, and investigating abuse or fraud."
+            "text": "Processing is carried out on the basis of Art. 6 para. 1 point f GDPR. Our legitimate interest lies in the technical provision of the website, ensuring stability and security, and investigating and preventing misuse or fraudulent activity."
+          },
+          {
+            "subtitle": "Storage duration",
+            "text": "Server log files are stored for 7 days and then deleted."
           }
         ]
       },
@@ -3925,30 +4395,30 @@
         "content": [
           {
             "subtitle": "What are cookies?",
-            "text": "Cookies are small text files that are stored on your hard drive and assigned to the browser you use. They provide certain information to the party that sets the cookie (in this case, us). Cookies cannot execute programs or transmit viruses to your computer. They serve to make our website more user-friendly and effective."
+            "text": "Cookies are small text files that are stored on your hard drive and associated with the browser you use, through which the party setting the cookie (in this case us) receives certain information. Cookies cannot execute programs or transmit viruses to your computer. They are used to make the internet offer more user-friendly and effective overall."
           },
           {
             "subtitle": "Use of cookies",
-            "text": "We use cookies to identify you on subsequent visits if you have an account with us. Otherwise you would have to log in again for each visit."
+            "text": "We use cookies to identify you on subsequent visits if you have an account with us. Otherwise, you would have to log in again for each visit."
           },
           {
-            "subtitle": "Types of cookies",
-            "text": "This website uses cookies to the following extent:",
+            "subtitle": "Cookie types",
+            "text": "This website uses cookies as follows:",
             "list": [
-              "Transient cookies (temporary use): Transient cookies are automatically deleted when you close your browser. These include in particular session cookies. These store a so-called session ID that allows various requests from your browser to be assigned to the same session. This allows your computer to be recognised when you return to the website. Session cookies are deleted when you log out or close your browser."
+              "Transient cookies (temporary use): Transient cookies are automatically deleted when you close the browser. These include in particular session cookies. These store a so-called session ID, which allows different requests from your browser to be assigned to the shared session. This allows your computer to be recognized when you return to the website. Session cookies are deleted when you log out or close the browser."
             ]
           },
           {
             "subtitle": "Consent via consent tool",
-            "text": "Where we use cookies that are not technically necessary (e.g. for statistics or marketing purposes), we obtain your prior consent via a consent management tool. We currently do not use cookies for analysis or marketing purposes."
+            "text": "Where we use non-technically necessary cookies (e.g. for statistics or marketing purposes), we first obtain your consent through a consent management tool. We currently do not use cookies for analysis or marketing purposes on this website."
           },
           {
             "subtitle": "Legal basis",
-            "text": "The storage of information on your device or access to it takes place, where not strictly necessary, on the basis of your consent (§ 25(1) TTDSG in conjunction with Art. 6(1)(a) GDPR). We use technically necessary cookies on the basis of § 25(2) TTDSG and Art. 6(1)(f) GDPR."
+            "text": "The storage of information on your device or access to it is, unless absolutely necessary, based on your consent (§ 25 para. 1 TDDDG in conjunction with Art. 6 para. 1 point a GDPR). We use technically necessary cookies on the basis of § 25 para. 2 TDDDG and Art. 6 para. 1 point f GDPR."
           },
           {
             "subtitle": "Data separation",
-            "text": "This stored information is kept separate from any other data you may provide to us. In particular, cookie data is not linked to your other data."
+            "text": "This stored information is stored separately from any additional data you provide to us. In particular, cookie data is not linked with your other data."
           }
         ]
       },
@@ -3958,23 +4428,23 @@
         "content": [
           {
             "subtitle": "Contact form",
-            "text": "When you send us enquiries via the contact form, the information you provide from the enquiry form, including the contact details you provide there, is stored for the purpose of processing the enquiry and in case of follow-up questions. We do not pass on this data without your consent."
+            "text": "If you send us inquiries via the contact form, your information from the inquiry form including the contact details you provide will be stored by us for the purpose of processing your inquiry and in case of follow-up questions. We do not share this data without your consent."
           },
           {
             "subtitle": "Email communication",
-            "text": "When you contact us by email, we store your email address and the information you provide in order to answer your enquiry."
+            "text": "If you contact us by email, we store your email address and the information you provide in order to respond to your inquiry."
           },
           {
             "subtitle": "Sending via SendGrid",
-            "text": "For sending emails we use the SendGrid service (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). We have concluded a data processing agreement with the provider in accordance with Art. 28 GDPR. SendGrid processes data in the USA. We have agreed standard contractual clauses (SCC) with SendGrid to ensure an adequate level of data protection."
+            "text": "We use the SendGrid service (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA) for sending emails. We have concluded a data processing agreement with the provider in accordance with Art. 28 GDPR. SendGrid processes the data in the USA. We have agreed Standard Contractual Clauses (SCC) with SendGrid to ensure an adequate standard of data protection."
           },
           {
             "subtitle": "Legal basis",
-            "text": "The legal basis for processing data from the contact form and emails is Art. 6(1)(b) GDPR if your enquiry relates to the conclusion or performance of a contract, and Art. 6(1)(f) GDPR otherwise. Our legitimate interest lies in processing enquiries."
+            "text": "The legal basis for processing data from contact forms and emails is Art. 6 para. 1 point b GDPR, insofar as your inquiry is directed toward the conclusion or performance of a contract, and Art. 6 para. 1 point f GDPR otherwise. Our legitimate interest lies in processing inquiries."
           },
           {
-            "subtitle": "Storage period",
-            "text": "The data is deleted once your enquiry has been fully processed and there are no statutory retention obligations."
+            "subtitle": "Storage duration",
+            "text": "The data will be deleted 6 months after we have finished processing your inquiry, unless statutory retention obligations prevent deletion."
           }
         ]
       },
@@ -3983,28 +4453,32 @@
         "title": "Newsletter",
         "content": [
           {
-            "subtitle": "Newsletter registration",
-            "text": "When you register for our newsletter, we use the email address you provide to send you regular information about BeAFox, updates and tips on financial education."
+            "subtitle": "Newsletter subscription",
+            "text": "If you subscribe to our newsletter, we will use the email address you provide to send you regular information about BeAFox, updates and financial education tips."
           },
           {
             "subtitle": "Sending via SendGrid",
-            "text": "We use the SendGrid service to send our newsletter (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). We have concluded a data processing agreement with the provider in accordance with Art. 28 GDPR. SendGrid processes data in the USA. We have agreed standard contractual clauses (SCC) with SendGrid."
+            "text": "We use the SendGrid service (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA) for sending our newsletter. We have concluded a data processing agreement with the provider in accordance with Art. 28 GDPR. SendGrid processes the data in the USA. We have agreed Standard Contractual Clauses (SCC) with SendGrid."
           },
           {
             "subtitle": "Registration procedure",
-            "text": "Registration takes place using the double opt-in procedure. After registration you will receive an email asking you to confirm your registration. Your email address will only be activated for the newsletter after this confirmation."
+            "text": "Registration takes place using the double opt-in procedure. After registration, you will receive an email asking you to confirm your subscription. Only after this confirmation will your email address be activated for newsletter delivery."
           },
           {
             "subtitle": "Logging of opt-in",
-            "text": "Your consent and the time of registration are logged so that we can provide legal proof."
+            "text": "Your consent and the date and time of registration are logged in order to be able to provide legal evidence for this."
           },
           {
             "subtitle": "Legal basis",
-            "text": "The legal basis for sending the newsletter is your consent (Art. 6(1)(a) GDPR)."
+            "text": "The legal basis for sending the newsletter is your consent (Art. 6 para. 1 point a GDPR)."
           },
           {
             "subtitle": "Withdrawal",
-            "text": "You can withdraw your consent to receive the newsletter at any time. Each newsletter email contains a link for this purpose. You can also send an email to info@beafox.app at any time."
+            "text": "You can withdraw your consent to receive the newsletter at any time. Each newsletter email contains a corresponding link. You can also send an email to info@beafox.app at any time."
+          },
+          {
+            "subtitle": "Storage duration",
+            "text": "Your newsletter data will be stored until you withdraw your consent."
           }
         ]
       },
@@ -4015,19 +4489,23 @@
           {
             "subtitle": "Registration",
             "text": "When registering for a user account in the BeAFox app, we collect the following data:",
-            "list": ["Username", "Email address", "Password (stored encrypted)"]
+            "list": [
+              "Username",
+              "Email address",
+              "Password (stored encrypted)"
+            ]
           },
           {
             "subtitle": "Purpose of processing",
-            "text": "This data is required to give you access to the app, manage your user account and offer you personalised learning content."
+            "text": "This data is needed to provide you with access to the app, manage your user account and offer you personalized learning content."
           },
           {
             "subtitle": "Legal basis",
-            "text": "Processing is based on Art. 6(1)(b) GDPR for the performance of the user agreement."
+            "text": "Processing is carried out on the basis of Art. 6 para. 1 point b GDPR to fulfill the terms of use."
           },
           {
-            "subtitle": "Storage period",
-            "text": "Your account data is stored for as long as your user account exists. After deletion of your account, the data is deleted unless statutory retention obligations apply."
+            "subtitle": "Storage duration",
+            "text": "Your account data will be stored as long as your user account exists. After deletion of your account, the data will be deleted unless statutory retention obligations prevent deletion. Individual data (e.g. for billing purposes) may be retained for an additional 30 days."
           }
         ]
       },
@@ -4036,8 +4514,8 @@
         "title": "Processing of learning and usage data",
         "content": [
           {
-            "subtitle": "Data collected",
-            "text": "When using the BeAFox app we process the following data:",
+            "subtitle": "Collected data",
+            "text": "When using the BeAFox app, we process the following data:",
             "list": [
               "Learning progress (completed lessons, missions, XP points)",
               "Statistics (correct/incorrect answers, learning time)",
@@ -4051,29 +4529,33 @@
             "text": "This data is used to:",
             "list": [
               "Save and display your learning progress",
-              "Provide personalised learning recommendations",
+              "Provide personalized learning recommendations",
               "Create leaderboards",
-              "Improve and optimise the app",
+              "Improve and optimize the app",
               "Identify and fix technical problems"
             ]
           },
           {
             "subtitle": "Legal basis",
-            "text": "Processing is based on Art. 6(1)(b) GDPR for the performance of the user agreement and Art. 6(1)(f) GDPR to improve our services."
+            "text": "Processing is carried out on the basis of Art. 6 para. 1 point b GDPR to fulfill the terms of use as well as Art. 6 para. 1 point f GDPR to improve our services."
           },
           {
             "subtitle": "Cloud storage",
-            "text": "Your learning and usage data is stored on our servers to enable synchronisation across different devices. You can access your learning progress on any device."
+            "text": "Your learning and usage data is stored on our servers to enable synchronization between different devices. This allows you to access your learning progress on any device."
+          },
+          {
+            "subtitle": "Storage duration",
+            "text": "The data will be stored until deletion of your user account."
           }
         ]
       },
       {
         "id": 10,
-        "title": "In-app purchases and payments",
+        "title": "In-app purchases and payments via app stores",
         "content": [
           {
             "subtitle": "Payment processing",
-            "text": "When you make in-app purchases in the BeAFox app (e.g. premium subscription), payment processing is handled by the respective app store (Apple App Store or Google Play Store)."
+            "text": "If you make in-app purchases in the BeAFox app (e.g. premium subscription), payment processing is handled by the respective app store (Apple App Store or Google Play Store)."
           },
           {
             "subtitle": "Processing by app stores",
@@ -4081,21 +4563,52 @@
             "list": [
               "Payment information (credit card, PayPal, etc.)",
               "Purchase history",
-              "App store account information"
+              "App Store account information"
             ]
           },
           {
             "subtitle": "Legal basis",
-            "text": "Payment data is processed by the app stores in accordance with their respective privacy policies. We only receive confirmations of successful payments, not payment data."
+            "text": "The processing of payment data is carried out by the app stores on the basis of their respective privacy policies. We only receive confirmations of successful payments, not payment data."
           },
           {
-            "subtitle": "Note",
-            "text": "Please refer to the privacy policies of Apple (https://www.apple.com/privacy/) and Google (https://policies.google.com/privacy) for further information on the processing of your payment data."
+            "subtitle": "Notice",
+            "text": "Please note the privacy policies of Apple (https://www.apple.com/privacy/) and Google (https://policies.google.com/privacy) for further information on how your payment data is processed."
           }
         ]
       },
       {
         "id": 11,
+        "title": "Payment processing via Stripe (website checkout)",
+        "content": [
+          {
+            "subtitle": "Payment processing",
+            "text": "On our website we offer paid subscriptions through a checkout. Payment processing is handled by Stripe Inc., 354 Oyster Point Blvd, South San Francisco, CA 94080, USA. We offer the following plans:",
+            "list": [
+              "Monthly subscription: EUR 4.99/month",
+              "Annual subscription: EUR 44.99/year",
+              "Lifetime subscription: EUR 49.99 (one-time payment)"
+            ]
+          },
+          {
+            "subtitle": "Data processing by Stripe",
+            "text": "During payment processing, Stripe processes the following data: payment method information (credit card, SEPA direct debit, etc.), billing address, email address, transaction details. We have concluded a data processing agreement with Stripe in accordance with Art. 28 GDPR and have agreed to Standard Contractual Clauses (SCC)."
+          },
+          {
+            "subtitle": "BeAFox only receives confirmations",
+            "text": "BeAFox does not process complete payment data. We only receive confirmation of successful payments and billing information for billing purposes."
+          },
+          {
+            "subtitle": "Legal basis",
+            "text": "Processing is carried out on the basis of Art. 6 para. 1 point b GDPR to fulfill the contract (provision of paid services)."
+          },
+          {
+            "subtitle": "Data protection at Stripe",
+            "text": "For further information on data processing by Stripe, please see Stripe's privacy policy: https://stripe.com/privacy"
+          }
+        ]
+      },
+      {
+        "id": 12,
         "title": "Push notifications",
         "content": [
           {
@@ -4104,113 +4617,674 @@
           },
           {
             "subtitle": "Consent",
-            "text": "Push notifications are only sent with your express consent. You can deactivate them at any time in the app settings."
+            "text": "Push notifications are only sent with your explicit consent. You can disable these at any time in your app settings."
           },
           {
             "subtitle": "Technical implementation",
-            "text": "We use the services of the respective platform operators (Apple Push Notification Service or Firebase Cloud Messaging from Google) for sending push notifications."
+            "text": "To send push notifications, we use the services of the respective platform operators (Apple Push Notification Service or Firebase Cloud Messaging from Google)."
           },
           {
             "subtitle": "Legal basis",
-            "text": "Processing is based on your consent (Art. 6(1)(a) GDPR)."
-          }
-        ]
-      },
-      {
-        "id": 12,
-        "title": "External links and embedded content",
-        "content": [
-          {
-            "subtitle": "Links to other websites",
-            "text": "Our website contains links to third-party websites. When you follow a link to one of these websites (which are outside our responsibility), we would like to point out that these websites have their own privacy policies and that we do not accept any responsibility or liability for these policies. Please check these privacy policies before voluntarily providing personal data to these websites."
-          },
-          {
-            "subtitle": "Technical necessity",
-            "text": "Data is only transmitted to the link destination when you click on an external link. This is technically necessary due to the protocol underlying the internet (TCP/IP). The transmitted data includes in particular: your IP address, the time you clicked the link, the page on which you clicked the link, and the aforementioned information."
-          },
-          {
-            "subtitle": "Social media links",
-            "text": "Our website contains links to our social media profiles (Instagram, LinkedIn, TikTok). When you click these links, you are redirected to the respective platforms. Your data is then processed in accordance with the privacy policy of the respective platform."
+            "text": "Processing is carried out on the basis of your consent (Art. 6 para. 1 point a GDPR)."
           }
         ]
       },
       {
         "id": 13,
-        "title": "Legal basis of processing",
+        "title": "Web analytics and statistics",
         "content": [
           {
-            "subtitle": "Consent (Art. 6(1)(a) GDPR)",
-            "text": "If you have consented to the processing of your personal data, processing is based on Art. 6(1)(a) GDPR."
+            "subtitle": "Google Analytics (GA4)",
+            "text": "We use Google Analytics, a web analytics tool from Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google Analytics processes data about your user behavior on our website using cookies. The collected data is used to analyze the use of our website, create reports and to help us improve our website. The ID of our Google Analytics property is: G-J0GWX92CNH."
           },
           {
-            "subtitle": "Contract performance (Art. 6(1)(b) GDPR)",
-            "text": "If processing is necessary for the performance of a contract to which you are a party, processing is based on Art. 6(1)(b) GDPR."
+            "subtitle": "Consent for Google Analytics",
+            "text": "Google Analytics is only used with your consent. You can grant or withdraw this consent through our consent management tool (cookie banner)."
           },
           {
-            "subtitle": "Legal obligation (Art. 6(1)(c) GDPR)",
-            "text": "If processing is necessary for compliance with a legal obligation, processing is based on Art. 6(1)(c) GDPR."
+            "subtitle": "IP address anonymization",
+            "text": "We have configured Google Analytics to anonymize IP addresses before they are transmitted to Google."
           },
           {
-            "subtitle": "Legitimate interest (Art. 6(1)(f) GDPR)",
-            "text": "Processing may also be based on Art. 6(1)(f) GDPR if processing is necessary to safeguard a legitimate interest of our company or a third party and the interests, fundamental rights and freedoms of the data subject do not override."
+            "subtitle": "Standard Contractual Clauses",
+            "text": "For data transmission to the USA, we have agreed Standard Contractual Clauses (SCC) with Google."
+          },
+          {
+            "subtitle": "Legal basis",
+            "text": "Processing is carried out on the basis of your consent (Art. 6 para. 1 point a GDPR in conjunction with § 25 para. 1 TDDDG)."
+          },
+          {
+            "subtitle": "Data protection at Google Analytics",
+            "text": "For further information on data processing by Google Analytics, please visit: https://policies.google.com/privacy"
+          },
+          {
+            "subtitle": "Ahrefs Analytics",
+            "text": "We use Ahrefs Analytics (Ahrefs Pte. Ltd., 11 Changi Business Park, Singapore 486048), a web analytics tool for analyzing website traffic and search engine performance. Ahrefs processes pseudonymous data about your user behavior using cookies."
+          },
+          {
+            "subtitle": "Consent for Ahrefs",
+            "text": "Ahrefs is only used with your consent. You can grant or withdraw this consent through our cookie consent tool."
+          },
+          {
+            "subtitle": "Legal basis for Ahrefs",
+            "text": "Processing is carried out on the basis of your consent (Art. 6 para. 1 point a GDPR in conjunction with § 25 para. 1 TDDDG)."
+          },
+          {
+            "subtitle": "Vercel Analytics (Web Vitals)",
+            "text": "Additionally, we use Vercel Analytics from Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, USA). Vercel Analytics is a privacy-friendly analytics tool that does not set cookies and does not collect personal data. It only measures technical metrics such as page load times and Core Web Vitals."
+          },
+          {
+            "subtitle": "No consent required for Vercel Analytics",
+            "text": "Since Vercel Analytics does not process personal data and does not set cookies, no separate consent is required."
+          },
+          {
+            "subtitle": "Vercel Speed Insights",
+            "text": "We also use Vercel Speed Insights from Vercel Inc. to measure website performance. This tool is also privacy-friendly, does not set cookies and does not collect personal data."
           }
         ]
       },
       {
         "id": 14,
-        "title": "Storage period",
+        "title": "Fonts (Google Fonts)",
         "content": [
           {
-            "text": "The criterion for the duration of storage of personal data is the respective statutory retention period. After expiry of the period, the data is routinely deleted unless it is still required for contract performance or contract initiation."
+            "subtitle": "Self-hosting without external connection",
+            "text": "Our website uses fonts that are self-hosted via Next.js Font Optimization. The fonts are delivered directly from our servers and NOT loaded from Google servers. There is no connection to Google or external servers when the fonts are loaded."
           },
           {
-            "subtitle": "Storage period in detail",
-            "text": "Unless a more specific storage period is stated in this privacy policy, your personal data remains with us until the purpose for data processing ceases to apply. If you assert a legitimate request for erasure or withdraw your consent to data processing, your data will be deleted unless we have other legally permissible reasons for storing your personal data."
+            "subtitle": "No IP transmission",
+            "text": "Since the fonts are hosted locally, your IP address is not transmitted to Google or other third parties. This means increased data protection for you."
+          },
+          {
+            "subtitle": "No consent required",
+            "text": "Since there is no connection to external servers, no special consent is required for the use of fonts."
           }
         ]
       },
       {
         "id": 15,
-        "title": "Automated decision-making",
+        "title": "Use of Artificial Intelligence (AI)",
         "content": [
           {
-            "text": "As a responsible company, we refrain from automated decision-making or profiling. Your personal data is not used for automated decision-making processes."
+            "subtitle": "Bea - Your AI-based learning assistant",
+            "text": "The BeAFox app offers an AI-powered learning assistant called \"Bea\". Bea uses artificial intelligence to provide you with personalized learning tips, answer questions and support your learning process."
+          },
+          {
+            "subtitle": "Data relationships in AI use",
+            "text": "To improve response quality, Bea may analyze your learning and usage data (e.g. previous answers, learning progress). All data is processed within our systems."
+          },
+          {
+            "subtitle": "No profiling under Art. 22 GDPR",
+            "text": "We refrain from automated decision-making through Bea. This means: Bea does NOT make legally binding decisions about you. Bea provides recommendations; the final decision is always yours."
+          },
+          {
+            "subtitle": "Transparency and human contact",
+            "text": "If you are unsure about an AI-generated response or would like human review, please contact us at any time at info@beafox.app. Our team will review your request and provide you with a definitive answer."
+          },
+          {
+            "subtitle": "Legal basis",
+            "text": "Processing by Bea is carried out on the basis of Art. 6 para. 1 point b GDPR (contract performance - provision of the AI assistant) and Art. 6 para. 1 point f GDPR (legitimate interest in improving services)."
+          },
+          {
+            "subtitle": "EU AI Act (Regulation 2024/1689)",
+            "text": "Our use of Bea complies with the EU Regulation on Artificial Intelligence (EU AI Act, Regulation 2024/1689). Bea is operated as a system of low to medium risk level. We are committed to transparency regarding the use of this technology."
           }
         ]
       },
       {
         "id": 16,
-        "title": "Privacy for minors",
+        "title": "External links and embedded content",
+        "content": [
+          {
+            "subtitle": "Links to other websites",
+            "text": "Our website contains links to third-party websites. If you follow a link to one of these websites (which are outside our control), we would like to point out that these websites have their own privacy policies and that we are not responsible for and assume no liability for these policies. Please review these privacy policies before voluntarily providing personal data to these websites."
+          },
+          {
+            "subtitle": "Technical necessity",
+            "text": "Only when you click on an external link will data be transmitted to the link destination. This is technically necessary due to the protocol underlying the Internet (TCP/IP). The data transmitted includes in particular: your IP address, the time you clicked the link, the page on which you clicked the link and the information mentioned above."
+          },
+          {
+            "subtitle": "Social media links",
+            "text": "On our website you will find links to our social media profiles (Instagram, LinkedIn, TikTok). If you click on these links, you will be directed to the respective platforms. Processing of your data will then take place in accordance with the privacy provisions of the respective platform."
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "title": "Legal basis for processing",
+        "content": [
+          {
+            "subtitle": "Consent (Art. 6 para. 1 point a GDPR)",
+            "text": "If you have consented to the processing of your personal data, processing is carried out on the basis of Art. 6 para. 1 point a GDPR."
+          },
+          {
+            "subtitle": "Contract performance (Art. 6 para. 1 point b GDPR)",
+            "text": "If processing is necessary to perform a contract to which you are a party, processing is carried out on the basis of Art. 6 para. 1 point b GDPR."
+          },
+          {
+            "subtitle": "Legal obligation (Art. 6 para. 1 point c GDPR)",
+            "text": "If processing is necessary to comply with a legal obligation, processing is carried out on the basis of Art. 6 para. 1 point c GDPR."
+          },
+          {
+            "subtitle": "Legitimate interest (Art. 6 para. 1 point f GDPR)",
+            "text": "Processing may also be carried out on the basis of Art. 6 para. 1 point f GDPR if processing is necessary to protect a legitimate interest of our business or a third party and does not outweigh the interests, fundamental rights and fundamental freedoms of the data subject."
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "title": "Duration of storage",
+        "content": [
+          {
+            "text": "The criterion for the duration of storage of personal data is the respective statutory retention period. After the period expires, the corresponding data is routinely deleted unless it is still required for contract performance or contract initiation."
+          },
+          {
+            "subtitle": "Storage duration in detail",
+            "text": "Below is an overview of the storage duration for individual data categories:",
+            "list": [
+              "Server log files: 7 days",
+              "Contact inquiries: 6 months after completion of processing",
+              "Newsletter data: until withdrawal of consent",
+              "Account data: until deletion of account + 30 days (for billing)",
+              "Learning and usage data: until deletion of account",
+              "Payment data and receipts (Stripe): 10 years (in accordance with § 147 para. 3 AO and § 257 para. 4 HGB)",
+              "Cookie consent: 12 months"
+            ]
+          },
+          {
+            "text": "To the extent that no more specific storage period is mentioned in this privacy policy, your personal data will remain with us until the purpose for data processing ceases. If you assert a justified request for deletion or withdraw consent to data processing, your data will be deleted unless we have other legally valid reasons for storing your personal data."
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "title": "Automated decision-making",
+        "content": [
+          {
+            "text": "As a responsible company, we refrain from automated decision-making or profiling. Your personal data will not be used for automated decision-making processes that could disadvantage you."
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "title": "Data protection for minors",
         "content": [
           {
             "subtitle": "Protection of minors",
-            "text": "Our services are also aimed at minors. We take the protection of minors' privacy very seriously. If you are under 16 years of age, we need the consent of your parents or guardians before we can process your personal data."
+            "text": "Our services are also directed at minors. We take the protection of the privacy of minors very seriously. According to Art. 8 GDPR, users under 16 years of age need the consent of their parents or guardians before we can process their personal data."
           },
           {
             "subtitle": "Ensuring parental consent",
-            "text": "We ensure that consent from minors under 16 only takes place with parental consent. During registration in the app, this is ensured by a corresponding checkbox and confirmation by guardians."
+            "text": "We ensure that consents from minors under 16 years of age only take place with documented parental consent. During registration in the app, this is ensured by the following mechanisms:"
           },
           {
-            "subtitle": "Parental control",
-            "text": "Parents and guardians can request information about the data we store about their children at any time and request its deletion."
+            "list": [
+              "Age indication during registration",
+              "For users under 16 years of age: display of a checkbox with the confirmation \"I am over 16 years old or a parent/guardian has consented to this\"",
+              "Sending a confirmation email to the parent's/guardian's email address",
+              "Access is only activated after confirmation of this email"
+            ]
+          },
+          {
+            "subtitle": "Parental control and data protection",
+            "text": "Parents and guardians can request information about the data we store about their children and request deletion at any time. Please contact us at info@beafox.app for this purpose."
           },
           {
             "subtitle": "No sensitive data",
-            "text": "We consciously do not process sensitive data within the meaning of Art. 9 GDPR (health data, religious data, etc.). Our app focuses exclusively on imparting financial knowledge."
+            "text": "We intentionally do not process sensitive data according to Art. 9 GDPR (health data, religious data, data on criminal proceedings, etc.). Our app focuses exclusively on imparting financial knowledge to minors and adults."
+          },
+          {
+            "subtitle": "Compliance with Art. 8 GDPR",
+            "text": "Our processes ensure full compliance with Art. 8 GDPR, in particular with regard to the consent of minors and the prevention of unauthorized data processing."
           }
         ]
       }
     ],
     "contact": {
-      "title": "Questions about privacy?",
-      "description": "If you have questions about this privacy policy or wish to assert your rights, please contact us:",
+      "title": "Questions about data protection?",
+      "description": "If you have questions about this privacy policy or would like to exercise your rights, please feel free to contact us:",
       "emailLabel": "Email:",
       "phoneLabel": "Phone:",
       "cta": "Contact us"
     },
     "lastUpdated": {
-      "date": "Last updated: December 2025",
-      "note": "We reserve the right to adapt this privacy policy so that it always meets current legal requirements or reflects changes to our services."
+      "date": "Status of this privacy policy: April 2026",
+      "note": "We reserve the right to update this privacy policy so that it always complies with current legal requirements or reflects changes to our services."
+    }
+  },
+  "widerruf": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Home"
+    },
+    "tableOfContents": {
+      "title": "Table of contents"
+    },
+    "company": {
+      "name": "BeAFox UG (limited liability)",
+      "street": "Siemensweg 2",
+      "city": "93073 Neutraubling",
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "form": {
+      "title": "Model withdrawal form",
+      "description": "If you wish to withdraw from the contract, you can complete this form and send it back to us. Use is not mandatory — you can also withdraw informally by email.",
+      "toLabel": "To:",
+      "emailLabel": "Email:",
+      "withdrawalText": "I/we (*) hereby give notice that I/we (*) withdraw from my/our (*) contract for the purchase of the following goods (*) / the provision of the following service (*):",
+      "lines": {
+        "orderedAt": "Ordered on",
+        "receivedAt": "Received on",
+        "consumerName": "Name of consumer(s)",
+        "consumerAddress": "Address of consumer(s)",
+        "date": "Date",
+        "signature": "Signature (only if notified on paper)"
+      },
+      "footnote": "(*) Delete as appropriate."
+    },
+    "legalLinks": {
+      "title": "Further legal information",
+      "terms": "Terms and Conditions",
+      "privacy": "Privacy Policy",
+      "imprint": "Imprint"
+    },
+    "meta": {
+      "title": "Right of Withdrawal",
+      "description": "Right of withdrawal information for BeAFox UG (limited liability) – Your withdrawal rights under § 355 BGB (German Civil Code) and model withdrawal form."
+    },
+    "hero": {
+      "badge": "Consumer Rights",
+      "title": "Right of Withdrawal",
+      "subtitle": "Information about your statutory right of withdrawal under §§ 355 ff. BGB (German Civil Code) for distance contracts for digital content."
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Right of withdrawal",
+        "iconId": "rotate",
+        "content": [
+          {
+            "subtitle": "Your right of withdrawal",
+            "text": "You have the right to withdraw from this contract within fourteen days without giving any reason. The withdrawal period is fourteen days from the day of the conclusion of the contract."
+          },
+          {
+            "subtitle": "Exercising the right of withdrawal",
+            "text": "To exercise your right of withdrawal, you must inform us (BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Germany, email: info@beafox.app, phone: +49 178 2723 673) of your decision to withdraw from this contract by means of a clear statement (e.g. a letter sent by post or an email). You may use the attached model withdrawal form, but this is not mandatory."
+          },
+          {
+            "subtitle": "Meeting the deadline",
+            "text": "To meet the withdrawal deadline, it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Effects of withdrawal",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "subtitle": "Reimbursement",
+            "text": "If you withdraw from this contract, we shall reimburse to you all payments received from you, including the costs of delivery (with the exception of the supplementary costs resulting from your choice of a type of delivery other than the least expensive type of standard delivery offered by us), without undue delay and in any event not later than fourteen days from the day on which we are informed of your decision to withdraw from this contract."
+          },
+          {
+            "subtitle": "Means of reimbursement",
+            "text": "We will carry out such reimbursement using the same means of payment as you used for the initial transaction, unless you have expressly agreed otherwise; in any event, you will not incur any fees as a result of such reimbursement."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Special notes",
+        "iconId": "alert",
+        "content": [
+          {
+            "subtitle": "Early expiry for digital content",
+            "text": "The right of withdrawal expires prematurely if BeAFox has begun the execution of the contract after you (1) have expressly agreed that BeAFox may begin execution of the contract before expiry of the withdrawal period, and (2) have confirmed your knowledge that by giving your consent you lose your right of withdrawal upon commencement of execution of the contract (§ 356 para. 5 BGB)."
+          },
+          {
+            "subtitle": "Compensation for early commencement",
+            "text": "If you have requested that the services should begin during the withdrawal period, you shall pay us a reasonable amount corresponding to the proportion of the services already provided up to the time at which you inform us of your exercise of the right of withdrawal, in comparison to the total scope of services provided for in the contract."
+          },
+          {
+            "subtitle": "In-app purchases via app stores",
+            "text": "For purchases made through the Apple App Store or Google Play Store, the withdrawal conditions of the respective app store operator apply. The payment contract in these cases is concluded with the app store operator. Please contact the respective app store directly for withdrawal."
+          },
+          {
+            "subtitle": "Website purchases via Stripe",
+            "text": "For subscriptions concluded through our website (payment processing via Stripe), please direct your withdrawal directly to BeAFox using the contact details above. The reimbursement will be processed via Stripe to the original payment method."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Model withdrawal form",
+        "iconId": "fileText",
+        "content": [
+          {
+            "subtitle": "Note",
+            "text": "If you wish to withdraw from the contract, please complete this form and send it back. The form is designed in accordance with Annex 2 to Article 246a § 1 para. 2 sentence 1 no. 1 and § 2 para. 2 no. 2 EGBGB."
+          },
+          {
+            "subtitle": "Model withdrawal form",
+            "text": "To: BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Germany, email: info@beafox.app"
+          },
+          {
+            "text": "I/we (*) hereby give notice that I/we (*) withdraw from my/our (*) contract for the provision of the following service (*) / the purchase of the following digital content (*)"
+          },
+          {
+            "text": "– Ordered on (*) / received on (*)"
+          },
+          {
+            "text": "– Name of consumer(s)"
+          },
+          {
+            "text": "– Address of consumer(s)"
+          },
+          {
+            "text": "– Signature of consumer(s) (only if this form is notified on paper)"
+          },
+          {
+            "text": "– Date"
+          },
+          {
+            "subtitle": "",
+            "text": "(*) Delete as appropriate."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Exclusion or early expiry of the right of withdrawal",
+        "iconId": "xCircle",
+        "content": [
+          {
+            "subtitle": "No right of withdrawal for the following contracts",
+            "text": "The right of withdrawal does not exist or expires prematurely for contracts for the supply of digital content which is not supplied on a tangible medium if the execution has been commenced with the consumer's express consent and the consumer has confirmed their knowledge that they lose their right of withdrawal by consenting to the commencement of execution (§ 356 para. 5 BGB)."
+          },
+          {
+            "subtitle": "Practical implementation at BeAFox",
+            "text": "When concluding a subscription on the BeAFox website or in the app, you will be expressly informed of this before conclusion of the contract and asked for your consent. You confirm this by ticking a corresponding checkbox before purchase."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Contact for withdrawal",
+        "iconId": "mail",
+        "content": [
+          {
+            "text": "BeAFox UG (haftungsbeschränkt)"
+          },
+          {
+            "text": "Siemensweg 2, 93073 Neutraubling, Germany"
+          },
+          {
+            "text": "Managing Director: Alexandru Tapelea"
+          },
+          {
+            "text": "Email: info@beafox.app"
+          },
+          {
+            "text": "Phone: +49 178 2723 673"
+          },
+          {
+            "subtitle": "Recommended procedure",
+            "text": "Ideally, send your withdrawal by email to info@beafox.app. You will receive a confirmation within 48 hours (business days). Please include your name, the email address associated with your account and the date of the contract in your withdrawal."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Questions about withdrawal?",
+      "text": "If you have questions about your right of withdrawal or need help with the withdrawal process, please contact us:",
+      "labels": {
+        "email": "Email:",
+        "phone": "Phone:"
+      },
+      "cta": "Contact us"
+    },
+    "lastUpdated": {
+      "stand": "Status of this withdrawal information: April 2026",
+      "notice": "This withdrawal information complies with the statutory requirements under §§ 355 ff. BGB and Art. 246a EGBGB."
+    }
+  },
+  "barrierefreiheit": {
+    "meta": {
+      "title": "Accessibility Statement",
+      "description": "Accessibility statement of BeAFox UG (haftungsbeschränkt) in accordance with the German Accessibility Strengthening Act (BFSG) and EU Directive 2019/882 (European Accessibility Act)."
+    },
+    "hero": {
+      "badge": "Accessibility",
+      "title": "Accessibility Statement",
+      "subtitle": "Information on the digital accessibility of our website and app in accordance with the German Accessibility Strengthening Act (BFSG) and EU Directive 2019/882."
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Commitment to Accessibility",
+        "iconId": "heart",
+        "content": [
+          {
+            "subtitle": "Our Commitment",
+            "text": "BeAFox UG (haftungsbeschränkt) is committed to making its website (beafox.app) and the BeAFox app accessible in accordance with the German Accessibility Strengthening Act (BFSG) and EU Directive 2019/882 (European Accessibility Act, EAA). We work continuously to improve the user experience for everyone – regardless of their abilities or the technologies they use."
+          },
+          {
+            "subtitle": "Scope",
+            "text": "This statement applies to the website https://beafox.app as well as the BeAFox app for iOS and Android."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Conformance Status",
+        "iconId": "check",
+        "content": [
+          {
+            "subtitle": "Conformance Status",
+            "text": "This website and app are partially conformant with the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA and the requirements of the harmonized European standard EN 301 549. We are actively working to achieve full conformance."
+          },
+          {
+            "subtitle": "Reference Standards",
+            "text": "We align our efforts with the following standards and norms:",
+            "list": [
+              "Web Content Accessibility Guidelines (WCAG) 2.1 Level AA",
+              "Harmonized European Standard EN 301 549 V3.2.1",
+              "German Accessibility Strengthening Act (BFSG) – Implementation of EU Directive 2019/882",
+              "WAI-ARIA 1.2 (Accessible Rich Internet Applications)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Accessibility Features",
+        "iconId": "sparkles",
+        "content": [
+          {
+            "subtitle": "Implemented Measures",
+            "text": "We have already implemented the following accessibility measures:",
+            "list": [
+              "Semantic HTML5 with correct heading hierarchy (h1–h6)",
+              "ARIA labels and roles for interactive elements and navigation",
+              "Keyboard navigation for all essential website functions",
+              "Responsive design for various screen sizes and devices",
+              "Text-based alternative descriptions (alt attributes) for informative images",
+              "Sufficient color contrast in accordance with WCAG 2.1 AA (contrast ratio of at least 4.5:1 for normal text)",
+              "No exclusively color-based information conveyance",
+              "Self-hosting of fonts (Google Fonts via next/font) – no external dependencies",
+              "Focus indicators for interactive elements",
+              "Structured form fields with labels and error messages"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Known Limitations",
+        "iconId": "alert",
+        "content": [
+          {
+            "subtitle": "Currently Known Limitations",
+            "text": "Despite our efforts, we are aware of the following limitations, which we are actively working to resolve:",
+            "list": [
+              "Some Lottie animations (JSON-based) may not yet have complete text descriptions",
+              "Certain interactive calculator components (financial calculators) may not be fully keyboard operable",
+              "Some PDF documents may not yet be fully accessible",
+              "Third-party content (e.g., embedded videos, Stripe checkout) is subject to the accessibility standards of the respective providers",
+              "The mobile app is being progressively optimized for VoiceOver (iOS) and TalkBack (Android)"
+            ]
+          },
+          {
+            "subtitle": "Remediation Timeline",
+            "text": "We have established a timeline for remedying the known limitations. Our goal is to achieve full WCAG 2.1 Level AA conformance by the end of 2026. Priority is given to the core learning platform features."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Technologies",
+        "iconId": "code",
+        "content": [
+          {
+            "subtitle": "Technologies Used",
+            "text": "The accessibility of this website is based on the following technologies:",
+            "list": [
+              "HTML5",
+              "CSS3 / Tailwind CSS",
+              "JavaScript / TypeScript",
+              "WAI-ARIA 1.2",
+              "Next.js 14 (React 18) with server and client components",
+              "next/font for self-hosted fonts"
+            ]
+          },
+          {
+            "subtitle": "Supported Browsers and Assistive Technologies",
+            "text": "We regularly test with the following combinations:",
+            "list": [
+              "Google Chrome + NVDA (Windows)",
+              "Mozilla Firefox + NVDA (Windows)",
+              "Safari + VoiceOver (macOS / iOS)",
+              "Google Chrome + TalkBack (Android)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Feedback and Contact",
+        "iconId": "mail",
+        "content": [
+          {
+            "subtitle": "Feedback Mechanism (BFSG § 3a)",
+            "text": "If you encounter barriers or have suggestions for improvement, please contact us. We take all feedback seriously and make every effort to address reported issues promptly."
+          },
+          {
+            "subtitle": "Contact Options",
+            "text": "You can reach us through the following channels:",
+            "list": [
+              "Email: info@beafox.app (Subject: Accessibility)",
+              "Phone: +49 178 2723 673",
+              "Mail: BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Germany"
+            ]
+          },
+          {
+            "subtitle": "Response Time",
+            "text": "We make every effort to review your feedback within 14 days and provide you with a response. For more complex inquiries, we will inform you about the expected timeline."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Enforcement Procedure",
+        "iconId": "scale",
+        "content": [
+          {
+            "subtitle": "Dispute Resolution",
+            "text": "If you do not receive a satisfactory solution after providing feedback to us, you can contact the competent market surveillance authority. In Bavaria, this is:"
+          },
+          {
+            "subtitle": "Competent Authority",
+            "text": "Bayerisches Staatsministerium für Digitales",
+            "list": [
+              "Oskar-von-Miller-Ring 35",
+              "80333 Munich",
+              "Website: https://www.stmd.bayern.de",
+              "Email: poststelle@stmd.bayern.de"
+            ]
+          },
+          {
+            "subtitle": "Legal Basis",
+            "text": "The enforcement procedure is governed by the provisions of the BFSG and EU Directive 2019/882. The market surveillance authority may take measures in case of violations of accessibility requirements."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Testing and Updates",
+        "iconId": "refresh",
+        "content": [
+          {
+            "subtitle": "Testing Methodology",
+            "text": "The assessment of accessibility is based on a self-assessment conducted by BeAFox UG. We use automated tools (Lighthouse, axe DevTools) as well as manual testing with assistive technologies."
+          },
+          {
+            "subtitle": "Next Planned Review",
+            "text": "The next comprehensive accessibility review is scheduled for the third quarter of 2026. In the meantime, continuous improvements are being made."
+          }
+        ]
+      }
+    ],
+    "company": {
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "compliance": {
+      "badges": {
+        "wcag": {
+          "label": "Standard",
+          "value": "WCAG 2.1 AA",
+          "description": "Level AA of the Web Content Accessibility Guidelines"
+        },
+        "status": {
+          "label": "Status",
+          "value": "Partially conformant",
+          "description": "We are actively working toward full conformance with WCAG 2.1 Level AA."
+        },
+        "lastReview": {
+          "label": "Last review",
+          "value": "April 2026",
+          "description": "Regular reviews"
+        }
+      }
+    },
+    "contact": {
+      "title": "Report a Barrier",
+      "text": "Have you discovered a barrier on our website or in our app? We want to know so we can improve it.",
+      "labels": {
+        "email": "Email:",
+        "phone": "Phone:"
+      },
+      "cta": "Report a Barrier"
+    },
+    "lastUpdated": {
+      "stand": "Last updated: April 2026",
+      "notice": "This accessibility statement is reviewed regularly and updated when changes occur, last updated on April 7, 2026."
+    },
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb navigation",
+      "homeAria": "Back to homepage"
+    },
+    "tableOfContents": {
+      "title": "Table of Contents"
+    },
+    "legalLinks": {
+      "title": "Related Legal Pages",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions",
+      "imprint": "Imprint"
     }
   }
 }

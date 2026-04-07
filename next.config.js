@@ -16,6 +16,34 @@ const ratgeberShortToFull = [
 const RATGEBER_CATEGORY_SOURCE =
   "finanzen-fuer-schueler|finanzen-fuer-azubis|finanzen-fuer-studenten|finanzen-fuer-berufseinsteiger|finanzen-bei-lebensereignissen|investieren-fuer-anfaenger";
 
+// ─── Security Headers ───
+const securityHeaders = [
+  {
+    key: "X-DNS-Prefetch-Control",
+    value: "on",
+  },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
+  {
+    key: "X-Frame-Options",
+    value: "SAMEORIGIN",
+  },
+  {
+    key: "X-Content-Type-Options",
+    value: "nosniff",
+  },
+  {
+    key: "Referrer-Policy",
+    value: "strict-origin-when-cross-origin",
+  },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+  },
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -29,6 +57,14 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
+    ];
   },
   async redirects() {
     // Ratgeber short → full slug redirects (direkt auf Root-Level)
@@ -89,6 +125,10 @@ const nextConfig = {
         destination: "/:kategorie/:slug",
         permanent: true,
       },
+
+      // ── Community-Richtlinien: alte /guidelines → kanonisch ──
+      { source: "/guidelines", destination: "/community-richtlinien", permanent: true },
+      { source: "/guideline", destination: "/community-richtlinien", permanent: true },
 
       // ── Ratgeber updates → /updates ──
       { source: "/ratgeber/updates", destination: "/updates", permanent: true },

@@ -57,10 +57,12 @@ const ROUTE_CONFIG: Record<string, RouteConfig> = {
   "/news": { priority: 0.8, changefreq: "weekly" },
   "/shop": { priority: 0.7, changefreq: "weekly" },
   "/updates": { priority: 0.7, changefreq: "weekly" },
-  "/guidelines": { priority: 0.6, changefreq: "yearly" },
+  "/community-richtlinien": { priority: 0.6, changefreq: "yearly" },
   "/impressum": { priority: 0.3, changefreq: "yearly" },
   "/datenschutz": { priority: 0.3, changefreq: "yearly" },
   "/agb": { priority: 0.3, changefreq: "yearly" },
+  "/widerrufsbelehrung": { priority: 0.3, changefreq: "yearly" },
+  "/barrierefreiheit": { priority: 0.3, changefreq: "yearly" },
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

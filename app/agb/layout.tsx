@@ -7,12 +7,16 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("meta.title"),
     description: t("meta.description"),
-    robots: {
-      index: false,
-      follow: true,
-    },
     alternates: {
       canonical: "https://beafox.app/agb",
+    },
+    openGraph: {
+      type: "website",
+      locale: "de_DE",
+      siteName: "BeAFox",
+      title: t("meta.title"),
+      url: "https://beafox.app/agb",
+      description: t("meta.description"),
     },
   };
 }

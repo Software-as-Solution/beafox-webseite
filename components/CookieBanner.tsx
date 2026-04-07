@@ -1,17 +1,20 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Cookie, Settings, CheckCircle } from "lucide-react";
+// IMPORTS
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
+// ICONS
+import { X, Cookie, Settings, CheckCircle } from "lucide-react";
 
 // CONSTANTS
-const BANNER_DELAY_MS = 1000;
+const BANNER_DELAY_MS = 300;
 const CONSENT_VERSION = "1.0";
 const CONSENT_EXPIRY_DAYS = 365;
 const STORAGE_KEY = "cookieConsent";
-const STORAGE_DATE_KEY = "cookieConsentDate";
+const REOPEN_EVENT = "openCookieSettings";
+
 // TYPES
 interface CookiePreferences {
   necessary: boolean;
@@ -23,6 +26,51 @@ interface StoredConsent {
   version: string;
   preferences: CookiePreferences;
 }
+interface CookieDetail {
+  name: string;
+  purpose: string;
+  provider: string;
+  duration: string;
+}
+// CONSTANTS
+const COOKIE_DETAILS: Record<keyof CookiePreferences, CookieDetail[]> = {
+  necessary: [
+    {
+      name: "cookieConsent",
+      provider: "BeAFox",
+      purpose: "Speichert deine Cookie-Einwilligung",
+      duration: "365 Tage",
+    },
+    {
+      name: "NEXT_LOCALE",
+      provider: "BeAFox",
+      purpose: "Speichert deine Spracheinstellung",
+      duration: "1 Jahr",
+    },
+  ],
+  analytics: [
+    {
+      name: "_ga",
+      provider: "Google LLC",
+      purpose: "Eindeutige Nutzer-ID für Statistiken",
+      duration: "2 Jahre",
+    },
+    {
+      name: "_ga_*",
+      provider: "Google LLC",
+      purpose: "Speichert Sitzungsstatus für GA4",
+      duration: "2 Jahre",
+    },
+  ],
+  marketing: [
+    {
+      name: "_fbp",
+      provider: "Meta Platforms Ireland Ltd.",
+      purpose: "Conversion-Tracking und Retargeting",
+      duration: "90 Tage",
+    },
+  ],
+};
 // HELPER FUNCTIONS
 function loadConsent(): StoredConsent | null {
   try {
@@ -36,10 +84,8 @@ function loadConsent(): StoredConsent | null {
   }
 }
 function isConsentValid(stored: StoredConsent): boolean {
-  // Check version match
   if (stored.version !== CONSENT_VERSION) return false;
 
-  // Check expiry
   const consentDate = new Date(stored.date);
   const now = new Date();
   const diffDays =
@@ -54,7 +100,6 @@ function persistConsent(preferences: CookiePreferences): void {
   };
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
-    localStorage.setItem(STORAGE_DATE_KEY, consent.date);
   } catch {
     // localStorage unavailable
   }
@@ -68,6 +113,12 @@ function updateGtagConsent(preferences: CookiePreferences): void {
     ad_user_data: preferences.marketing ? "granted" : "denied",
     ad_personalization: preferences.marketing ? "granted" : "denied",
   });
+}
+
+// PUBLIC API — used by Footer to reopen the settings modal
+export function openCookieSettings(): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(REOPEN_EVENT));
 }
 
 export default function CookieBanner() {
@@ -147,6 +198,18 @@ export default function CookieBanner() {
       if (bannerTimerRef.current) clearTimeout(bannerTimerRef.current);
     };
   }, []);
+  // Listen for global "openCookieSettings" event (triggered from Footer)
+  useEffect(() => {
+    const handler = () => {
+      const stored = loadConsent();
+      if (stored?.preferences) {
+        setPreferences(stored.preferences);
+      }
+      setShowSettings(true);
+    };
+    window.addEventListener(REOPEN_EVENT, handler);
+    return () => window.removeEventListener(REOPEN_EVENT, handler);
+  }, []);
   useEffect(() => {
     if (showSettings) {
       document.body.style.overflow = "hidden";
@@ -180,10 +243,9 @@ export default function CookieBanner() {
           <motion.div
             {...slideVariants}
             exit="exit"
-            role="dialog"
+            role="region"
             initial="initial"
             animate="animate"
-            aria-modal="false"
             aria-label={t("banner.title")}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="fixed bottom-0 left-0 right-0 z-[9998] bg-white border-t border-gray-200 shadow-[0_-4px_24px_rgba(0,0,0,0.08)]"
@@ -213,37 +275,38 @@ export default function CookieBanner() {
                     </p>
                   </div>
                 </div>
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-2.5 w-full md:w-auto">
+                {/* Buttons — visually equivalent (DSGVO compliant) */}
+                <div className="flex flex-col gap-2.5 w-full md:w-auto md:flex-row md:items-center">
+                  {/* Settings — separate group, less visual weight by design */}
                   <button
                     onClick={() => setShowSettings(true)}
-                    className="px-5 py-2 border border-primaryOrange/30 text-primaryOrange rounded-full font-semibold hover:bg-primaryOrange/5 transition-colors text-sm whitespace-nowrap inline-flex items-center justify-center gap-1.5"
+                    className="px-5 py-2.5 text-darkerGray rounded-full font-semibold hover:bg-gray-100 transition-colors text-sm whitespace-nowrap inline-flex items-center justify-center gap-1.5 underline-offset-4 hover:underline"
                   >
                     <Settings className="w-3.5 h-3.5" aria-hidden="true" />
                     {t("banner.settings")}
                   </button>
-                  <button
-                    onClick={handleRejectAll}
-                    className="px-5 py-2 border border-gray-200 text-darkerGray rounded-full font-semibold hover:bg-gray-50 transition-colors text-sm whitespace-nowrap"
-                  >
-                    {t("banner.reject")}
-                  </button>
-                  <button
-                    onClick={handleAcceptAll}
-                    className="px-5 py-2 bg-primaryOrange text-white rounded-full font-semibold hover:bg-primaryOrange/90 transition-colors text-sm whitespace-nowrap"
-                    style={{
-                      boxShadow: "0 2px 8px rgba(232,119,32,0.25)",
-                    }}
-                  >
-                    {t("banner.acceptAll")}
-                  </button>
+                  {/* Reject + Accept — ALWAYS together, ALWAYS equivalent */}
+                  <div className="flex gap-2.5 w-full md:w-auto">
+                    <button
+                      onClick={handleRejectAll}
+                      className="flex-1 md:flex-none px-5 py-2.5 border-2 border-darkerGray/25 text-darkerGray rounded-full font-semibold hover:border-darkerGray/50 hover:bg-gray-50 transition-colors text-sm whitespace-nowrap"
+                    >
+                      {t("banner.reject")}
+                    </button>
+                    <button
+                      onClick={handleAcceptAll}
+                      className="flex-1 md:flex-none px-5 py-2.5 border-2 border-primaryOrange text-primaryOrange rounded-full font-semibold hover:bg-primaryOrange/5 transition-colors text-sm whitespace-nowrap"
+                    >
+                      {t("banner.acceptAll")}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      {/* ═══ Cookie Settings Modal ═══ */}
+      {/* ═══ COOKIE SETTINGS MODAL ═══ */}
       <AnimatePresence>
         {showSettings && (
           <motion.div
@@ -256,10 +319,10 @@ export default function CookieBanner() {
             className="fixed inset-0 z-[9999] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4"
           >
             <motion.div
-              ref={modalRef}
               {...scaleVariants}
               exit="exit"
               role="dialog"
+              ref={modalRef}
               initial="initial"
               animate="animate"
               aria-modal="true"
@@ -273,8 +336,8 @@ export default function CookieBanner() {
                 <div className="flex items-center gap-3">
                   <div className="bg-primaryOrange/10 rounded-full p-2">
                     <Settings
-                      className="w-4 h-4 text-primaryOrange"
                       aria-hidden="true"
+                      className="w-4 h-4 text-primaryOrange"
                     />
                   </div>
                   <h2 className="text-xl font-bold text-darkerGray">
@@ -302,53 +365,32 @@ export default function CookieBanner() {
                   .
                 </p>
                 {/* ── Cookie Categories ── */}
-                {[
-                  {
-                    locked: true,
-                    key: "necessary" as const,
-                    icon: (
-                      <CheckCircle
-                        className="w-4 h-4 text-primaryOrange"
-                        aria-hidden="true"
+                {(["necessary", "analytics", "marketing"] as const).map(
+                  (key) => {
+                    const locked = key === "necessary";
+                    const cookies = COOKIE_DETAILS[key];
+                    return (
+                      <CookieCategory
+                        key={key}
+                        locked={locked}
+                        categoryKey={key}
+                        cookies={cookies}
+                        enabled={preferences[key]}
+                        title={t(`modal.${key}.title`)}
+                        description={t(`modal.${key}.text`)}
+                        lockedLabel={t("modal.necessary.alwaysOn")}
+                        cookieListLabel={t("modal.cookieList")}
+                        tableHeaders={{
+                          name: t("modal.table.name"),
+                          purpose: t("modal.table.purpose"),
+                          provider: t("modal.table.provider"),
+                          duration: t("modal.table.duration"),
+                        }}
+                        onToggle={() => togglePreference(key)}
                       />
-                    ),
+                    );
                   },
-                  { key: "analytics" as const, locked: false, icon: null },
-                  { key: "marketing" as const, locked: false, icon: null },
-                ].map((category) => (
-                  <div
-                    key={category.key}
-                    className="border border-gray-200 rounded-xl p-4"
-                  >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <div className="flex items-center gap-2">
-                        {category.icon}
-                        <h3 className="font-bold text-darkerGray text-sm">
-                          {t(`modal.${category.key}.title`)}
-                        </h3>
-                      </div>
-                      {category.locked ? (
-                        <span className="bg-primaryOrange/10 text-primaryOrange px-3 py-0.5 rounded-full text-[11px] font-semibold">
-                          {t("modal.necessary.alwaysOn")}
-                        </span>
-                      ) : (
-                        <label className="relative inline-flex items-center cursor-pointer">
-                          <input
-                            type="checkbox"
-                            className="sr-only peer"
-                            checked={preferences[category.key]}
-                            aria-label={t(`modal.${category.key}.title`)}
-                            onChange={() => togglePreference(category.key)}
-                          />
-                          <div className="w-10 h-[22px] bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primaryOrange/30 rounded-full peer peer-checked:after:translate-x-[18px] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[18px] after:w-[18px] after:transition-all peer-checked:bg-primaryOrange" />
-                        </label>
-                      )}
-                    </div>
-                    <p className="text-lightGray text-xs leading-relaxed">
-                      {t(`modal.${category.key}.text`)}
-                    </p>
-                  </div>
-                ))}
+                )}
                 {/* Save Buttons */}
                 <div className="flex justify-end gap-2.5 pt-4 border-t border-gray-200">
                   <button
@@ -359,10 +401,7 @@ export default function CookieBanner() {
                   </button>
                   <button
                     onClick={handleSavePreferences}
-                    className="px-5 py-2 bg-primaryOrange text-white rounded-full font-semibold hover:bg-primaryOrange/90 transition-colors text-sm"
-                    style={{
-                      boxShadow: "0 2px 8px rgba(232,119,32,0.25)",
-                    }}
+                    className="px-5 py-2 border-2 border-primaryOrange text-primaryOrange rounded-full font-semibold hover:bg-primaryOrange/5 transition-colors text-sm"
                   >
                     {t("modal.save")}
                   </button>
@@ -373,6 +412,124 @@ export default function CookieBanner() {
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+// SUBCOMPONENTS
+interface CookieCategoryProps {
+  title: string;
+  locked: boolean;
+  enabled: boolean;
+  description: string;
+  lockedLabel: string;
+  cookies: CookieDetail[];
+  cookieListLabel: string;
+  categoryKey: keyof CookiePreferences;
+  tableHeaders: {
+    name: string;
+    purpose: string;
+    provider: string;
+    duration: string;
+  };
+  onToggle: () => void;
+}
+function CookieCategory({
+  title,
+  locked,
+  enabled,
+  cookies,
+  categoryKey,
+  description,
+  lockedLabel,
+  tableHeaders,
+  cookieListLabel,
+  onToggle,
+}: CookieCategoryProps) {
+  // STATES
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="border border-gray-200 rounded-xl p-4">
+      <div className="flex items-center justify-between mb-1.5">
+        <div className="flex items-center gap-2">
+          {locked && (
+            <CheckCircle
+              aria-hidden="true"
+              className="w-4 h-4 text-primaryOrange"
+            />
+          )}
+          <h3 className="font-bold text-darkerGray text-sm">{title}</h3>
+        </div>
+        {locked ? (
+          <span className="bg-primaryOrange/10 text-primaryOrange px-3 py-0.5 rounded-full text-[11px] font-semibold">
+            {lockedLabel}
+          </span>
+        ) : (
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              checked={enabled}
+              aria-label={title}
+              onChange={onToggle}
+              className="sr-only peer"
+            />
+            <div className="w-10 h-[22px] bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primaryOrange/30 rounded-full peer peer-checked:after:translate-x-[18px] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[18px] after:w-[18px] after:transition-all peer-checked:bg-primaryOrange" />
+          </label>
+        )}
+      </div>
+      <p className="text-lightGray text-xs leading-relaxed mb-2">
+        {description}
+      </p>
+      {/* Cookie list expandable details */}
+      {cookies.length > 0 && (
+        <details
+          open={expanded}
+          className="mt-2"
+          onToggle={(e) => setExpanded((e.target as HTMLDetailsElement).open)}
+        >
+          <summary className="text-[11px] font-semibold text-primaryOrange cursor-pointer hover:underline list-none flex items-center gap-1">
+            <span>
+              {expanded ? "▾" : "▸"} {cookieListLabel} ({cookies.length})
+            </span>
+          </summary>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full text-[11px]">
+              <thead>
+                <tr className="border-b border-gray-200 text-left text-darkerGray">
+                  <th className="pb-2 pr-3 font-semibold">
+                    {tableHeaders.name}
+                  </th>
+                  <th className="pb-2 pr-3 font-semibold">
+                    {tableHeaders.provider}
+                  </th>
+                  <th className="pb-2 pr-3 font-semibold">
+                    {tableHeaders.purpose}
+                  </th>
+                  <th className="pb-2 font-semibold">
+                    {tableHeaders.duration}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {cookies.map((cookie) => (
+                  <tr
+                    key={`${categoryKey}-${cookie.name}`}
+                    className="border-b border-gray-100 last:border-b-0 text-lightGray"
+                  >
+                    <td className="py-2 pr-3 font-mono text-darkerGray">
+                      {cookie.name}
+                    </td>
+                    <td className="py-2 pr-3">{cookie.provider}</td>
+                    <td className="py-2 pr-3">{cookie.purpose}</td>
+                    <td className="py-2">{cookie.duration}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      )}
+    </div>
   );
 }
 

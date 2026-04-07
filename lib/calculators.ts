@@ -21,19 +21,20 @@ export interface CalculatorResult {
 export interface Calculator {
   slug: string;
   title: string;
-  metaTitle: string;
-  metaDescription: string;
   excerpt: string;
-  category: "Gehalt & Arbeit" | "Sparen & Budget" | "Investieren" | "Alltag & Lifestyle" | "Studium & Ausbildung" | "Rente & Vorsorge";
+  category:
+    | "Gehalt & Arbeit"
+    | "Sparen & Budget"
+    | "Investieren"
+    | "Alltag & Lifestyle"
+    | "Studium & Ausbildung"
+    | "Rente & Vorsorge";
   categoryEmoji: string;
   fields: CalculatorField[];
   results: CalculatorResult[];
-  tips: string[];
-  computeAll?: (values: Record<string, number>) => Record<string, number | string>;
-  intro?: string[];
-  howItWorks?: { title: string; description: string }[];
-  useCases?: string[];
-  faqs?: { question: string; answer: string }[];
+  computeAll?: (
+    values: Record<string, number>,
+  ) => Record<string, number | string>;
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -160,8 +161,7 @@ function computeBruttoNetto(
 
   // Kirchensteuer: 8% (BaWü/Bayern) oder 9% (Rest)
   const kistSatz = bl === 1 || bl === 2 ? 0.08 : 0.09;
-  const kistJahr =
-    kirchensteuerpflichtig === 1 ? lohnsteuerJahr * kistSatz : 0;
+  const kistJahr = kirchensteuerpflichtig === 1 ? lohnsteuerJahr * kistSatz : 0;
 
   // ── 3. Monatswerte ───────────────────────────────────────────
   const rd = (x: number) => Math.round(x * 100) / 100;
@@ -221,8 +221,7 @@ function computeSparplan(
 
     // FV of periodic payments (annuity due — payment at start of period)
     // Effective rate per payment period = (1 + r_m)^k - 1
-    const rPeriod =
-      Math.pow(1 + rMonthly, sparintervallMonate) - 1;
+    const rPeriod = Math.pow(1 + rMonthly, sparintervallMonate) - 1;
     const nPayments = Math.floor(nMonths / sparintervallMonate);
     const fvPayments =
       sparrate *
@@ -334,7 +333,12 @@ function computeBudget(
   const abosStreaming = v.abosStreaming ?? 30;
 
   const fixkosten =
-    miete + nebenkosten + lebensmittel + handyInternet + versicherungen + mobilitaet;
+    miete +
+    nebenkosten +
+    lebensmittel +
+    handyInternet +
+    versicherungen +
+    mobilitaet;
   const lifestyle =
     hobbys + freizeitAusgehen + shoppingKleidung + urlaubReisen + abosStreaming;
   const ausgabenGesamt = fixkosten + lifestyle;
@@ -356,12 +360,14 @@ function computeBudget(
   // Bewertung
   let bewertungFix: string;
   if (fixPct <= 50) bewertungFix = "Im gruenen Bereich (max. 50%)";
-  else if (fixPct <= 60) bewertungFix = "Etwas ueber Budget – pruefe Sparpotenzial";
+  else if (fixPct <= 60)
+    bewertungFix = "Etwas ueber Budget – pruefe Sparpotenzial";
   else bewertungFix = "Deutlich ueber 50% – Handlungsbedarf!";
 
   let bewertungLife: string;
   if (lifePct <= 30) bewertungLife = "Im gruenen Bereich (max. 30%)";
-  else if (lifePct <= 40) bewertungLife = "Etwas ueber Budget – bewusster ausgeben";
+  else if (lifePct <= 40)
+    bewertungLife = "Etwas ueber Budget – bewusster ausgeben";
   else bewertungLife = "Deutlich ueber 30% – reduzieren empfohlen";
 
   let bewertungSpar: string;
@@ -409,8 +415,7 @@ function computeMietkosten(
   const qm = v.qm ?? 40;
 
   const warmmiete = kaltmiete + nebenkosten;
-  const wohnkostenGesamt =
-    warmmiete + strom + internet + gez + hausrat;
+  const wohnkostenGesamt = warmmiete + strom + internet + gez + hausrat;
   const preisProQm = qm > 0 ? kaltmiete / qm : 0;
   const kautionGesamt = kaltmiete * 3;
 
@@ -481,24 +486,30 @@ function computeMietkosten(
 // ── Taschengeld-Rechner Engine ──────────────────────────────────────────
 // DJI Taschengeldtabelle 2025/2026 – monatliche Empfehlungen
 // (unter 10: Wochenbeträge × 4,33 umgerechnet auf Monatsbasis)
-function getTaschengeldEmpfehlung(alter: number): { min: number; max: number; woche: boolean } {
-  if (alter <= 5)  return { min: 2.17, max: 2.17, woche: true };   // 0,50€/Woche
-  if (alter === 6) return { min: 4.33, max: 6.50, woche: true };   // 1,00-1,50€/W
-  if (alter === 7) return { min: 6.50, max: 8.66, woche: true };   // 1,50-2,00€/W
-  if (alter === 8) return { min: 8.66, max: 10.83, woche: true };  // 2,00-2,50€/W
-  if (alter === 9) return { min: 10.83, max: 13.00, woche: true }; // 2,50-3,00€/W
-  if (alter === 10) return { min: 15.00, max: 17.50, woche: false };
-  if (alter === 11) return { min: 17.50, max: 20.00, woche: false };
-  if (alter === 12) return { min: 20.00, max: 22.50, woche: false };
-  if (alter === 13) return { min: 22.50, max: 25.00, woche: false };
-  if (alter === 14) return { min: 25.50, max: 30.50, woche: false };
-  if (alter === 15) return { min: 30.50, max: 38.00, woche: false };
-  if (alter === 16) return { min: 38.00, max: 45.50, woche: false };
-  if (alter === 17) return { min: 45.50, max: 61.00, woche: false };
-  return { min: 61.00, max: 76.00, woche: false }; // 18+
+function getTaschengeldEmpfehlung(alter: number): {
+  min: number;
+  max: number;
+  woche: boolean;
+} {
+  if (alter <= 5) return { min: 2.17, max: 2.17, woche: true }; // 0,50€/Woche
+  if (alter === 6) return { min: 4.33, max: 6.5, woche: true }; // 1,00-1,50€/W
+  if (alter === 7) return { min: 6.5, max: 8.66, woche: true }; // 1,50-2,00€/W
+  if (alter === 8) return { min: 8.66, max: 10.83, woche: true }; // 2,00-2,50€/W
+  if (alter === 9) return { min: 10.83, max: 13.0, woche: true }; // 2,50-3,00€/W
+  if (alter === 10) return { min: 15.0, max: 17.5, woche: false };
+  if (alter === 11) return { min: 17.5, max: 20.0, woche: false };
+  if (alter === 12) return { min: 20.0, max: 22.5, woche: false };
+  if (alter === 13) return { min: 22.5, max: 25.0, woche: false };
+  if (alter === 14) return { min: 25.5, max: 30.5, woche: false };
+  if (alter === 15) return { min: 30.5, max: 38.0, woche: false };
+  if (alter === 16) return { min: 38.0, max: 45.5, woche: false };
+  if (alter === 17) return { min: 45.5, max: 61.0, woche: false };
+  return { min: 61.0, max: 76.0, woche: false }; // 18+
 }
 
-function computeTaschengeld(v: Record<string, number>): Record<string, number | string> {
+function computeTaschengeld(
+  v: Record<string, number>,
+): Record<string, number | string> {
   const alter = v.alter ?? 14;
   const status = v.status ?? 0; // 0=Schüler, 1=Azubi, 2=Student, 3=Berufstätig
   const taschengeld = v.taschengeld ?? 30;
@@ -512,7 +523,7 @@ function computeTaschengeld(v: Record<string, number>): Record<string, number | 
 
   // ── Empfehlung nach Alter ──
   const empf = getTaschengeldEmpfehlung(alter);
-  const empfMitte = Math.round((empf.min + empf.max) / 2 * 100) / 100;
+  const empfMitte = Math.round(((empf.min + empf.max) / 2) * 100) / 100;
 
   // ── Gesamtbudget ──
   const gesamtbudget = taschengeld + nebenjob;
@@ -527,14 +538,17 @@ function computeTaschengeld(v: Record<string, number>): Record<string, number | 
   } else if (taschengeld <= empf.max) {
     bewertungTG = "Im empfohlenen Bereich – passt!";
   } else if (taschengeld <= empf.max * 1.3) {
-    bewertungTG = "Leicht ueber der Empfehlung – gut, wenn du es sinnvoll aufteilst";
+    bewertungTG =
+      "Leicht ueber der Empfehlung – gut, wenn du es sinnvoll aufteilst";
   } else {
-    bewertungTG = "Deutlich ueber der Empfehlung – umso wichtiger, smart zu sparen!";
+    bewertungTG =
+      "Deutlich ueber der Empfehlung – umso wichtiger, smart zu sparen!";
   }
 
   // ── Fixkosten ──
   const fixkosten = handykosten + streaming + mobilitaet + schulmaterial;
-  const fixkostenPct = gesamtbudget > 0 ? Math.round(fixkosten / gesamtbudget * 1000) / 10 : 0;
+  const fixkostenPct =
+    gesamtbudget > 0 ? Math.round((fixkosten / gesamtbudget) * 1000) / 10 : 0;
 
   // ── Restbudget ──
   const restNachFix = gesamtbudget - fixkosten;
@@ -543,54 +557,69 @@ function computeTaschengeld(v: Record<string, number>): Record<string, number | 
   // Bedarf (50%): Handy, Fahrkarte, Schulmaterial
   // Freizeit (30%): Ausgehen, Hobbys, Snacks, Kino
   // Sparen (20%): ETF, Sparziel, Notgroschen
-  const budgetBedarf = Math.round(gesamtbudget * 0.50 * 100) / 100;
-  const budgetFreizeit = Math.round(gesamtbudget * 0.30 * 100) / 100;
-  const budgetSparen = Math.round(gesamtbudget * 0.20 * 100) / 100;
+  const budgetBedarf = Math.round(gesamtbudget * 0.5 * 100) / 100;
+  const budgetFreizeit = Math.round(gesamtbudget * 0.3 * 100) / 100;
+  const budgetSparen = Math.round(gesamtbudget * 0.2 * 100) / 100;
 
   // ── Bewertung Fixkosten ──
   let bewertungFix: string;
   if (fixkostenPct <= 50) {
     bewertungFix = "Deine Fixkosten sind im Rahmen – gut!";
   } else if (fixkostenPct <= 70) {
-    bewertungFix = "Fixkosten sind hoch – pruefe, ob du Streaming oder Handy guenstiger bekommst";
+    bewertungFix =
+      "Fixkosten sind hoch – pruefe, ob du Streaming oder Handy guenstiger bekommst";
   } else {
-    bewertungFix = "Fixkosten fressen fast alles auf – dringend Einsparpotenzial suchen!";
+    bewertungFix =
+      "Fixkosten fressen fast alles auf – dringend Einsparpotenzial suchen!";
   }
 
   // ── Freizeit-Budget nach Fixkosten ──
-  const freizeitReal = Math.max(0, Math.round((restNachFix * 0.6) * 100) / 100);
-  const sparenReal = Math.max(0, Math.round((restNachFix * 0.4) * 100) / 100);
+  const freizeitReal = Math.max(0, Math.round(restNachFix * 0.6 * 100) / 100);
+  const sparenReal = Math.max(0, Math.round(restNachFix * 0.4 * 100) / 100);
 
   // ── Sparziel-Analyse ──
-  const sparrateNoetig = sparzeit > 0 ? Math.round(sparziel / sparzeit * 100) / 100 : 0;
+  const sparrateNoetig =
+    sparzeit > 0 ? Math.round((sparziel / sparzeit) * 100) / 100 : 0;
   const monateReal = sparenReal > 0 ? Math.ceil(sparziel / sparenReal) : 0;
 
   let bewertungSparziel: string;
   if (sparziel === 0) {
-    bewertungSparziel = "Kein Sparziel angegeben – setz dir eins, es motiviert!";
+    bewertungSparziel =
+      "Kein Sparziel angegeben – setz dir eins, es motiviert!";
   } else if (sparenReal >= sparrateNoetig) {
-    bewertungSparziel = "Sparziel erreichbar in " + sparzeit + " Monaten – top!";
+    bewertungSparziel =
+      "Sparziel erreichbar in " + sparzeit + " Monaten – top!";
   } else if (monateReal <= sparzeit * 1.5) {
-    bewertungSparziel = "Dauert etwas laenger (" + monateReal + " Monate) – aber machbar!";
+    bewertungSparziel =
+      "Dauert etwas laenger (" + monateReal + " Monate) – aber machbar!";
   } else {
-    bewertungSparziel = "Sparziel ambitioniert – Nebenjob oder laengeren Zeitraum ueberlegen";
+    bewertungSparziel =
+      "Sparziel ambitioniert – Nebenjob oder laengeren Zeitraum ueberlegen";
   }
 
   // ── Nebenjob-Potenzial ──
   // Mindestlohn 2025: 12,82€/h, unter 18: ca. 8-10€/h typisch
   const stundenlohn = alter < 18 ? 9 : 12.82;
-  const maxStundenWoche = alter < 16 ? 0 : (alter < 18 ? 10 : 20);
+  const maxStundenWoche = alter < 16 ? 0 : alter < 18 ? 10 : 20;
   const nebenjobPotenzial = Math.round(stundenlohn * maxStundenWoche * 4.33);
 
   let nebenjobTipp: string;
   if (alter < 16) {
-    nebenjobTipp = "Unter 16: Minijobs eingeschraenkt – Nachbarschaftshilfe, Babysitten moeglich";
+    nebenjobTipp =
+      "Unter 16: Minijobs eingeschraenkt – Nachbarschaftshilfe, Babysitten moeglich";
   } else if (alter < 18) {
-    nebenjobTipp = "16-17 J.: Max. 10h/Woche moeglich (Jugendarbeitsschutz) – ca. " + nebenjobPotenzial + " EUR/Monat";
+    nebenjobTipp =
+      "16-17 J.: Max. 10h/Woche moeglich (Jugendarbeitsschutz) – ca. " +
+      nebenjobPotenzial +
+      " EUR/Monat";
   } else if (status === 2) {
-    nebenjobTipp = "Als Student: Bis 20h/Woche als Werkstudent – ca. " + nebenjobPotenzial + " EUR/Monat moeglich";
+    nebenjobTipp =
+      "Als Student: Bis 20h/Woche als Werkstudent – ca. " +
+      nebenjobPotenzial +
+      " EUR/Monat moeglich";
   } else {
-    nebenjobTipp = "Als Erwachsener: Minijob bis 556 EUR/Monat steuerfrei (2025)";
+    nebenjobTipp =
+      "Als Erwachsener: Minijob bis 556 EUR/Monat steuerfrei (2025)";
   }
 
   // ── Spar-Ideen Text ──
@@ -598,9 +627,11 @@ function computeTaschengeld(v: Record<string, number>): Record<string, number | 
   if (alter <= 14) {
     sparIdeen = "Spardose, Tagesgeldkonto, Wunschliste fuehren";
   } else if (alter <= 17) {
-    sparIdeen = "Juniordepot/ETF-Sparplan (mit Eltern), Tagesgeld, 50€-Challenge";
+    sparIdeen =
+      "Juniordepot/ETF-Sparplan (mit Eltern), Tagesgeld, 50€-Challenge";
   } else {
-    sparIdeen = "ETF-Sparplan (ab 1 EUR/Monat), Tagesgeld, automatischer Dauerauftrag";
+    sparIdeen =
+      "ETF-Sparplan (ab 1 EUR/Monat), Tagesgeld, automatischer Dauerauftrag";
   }
 
   return {
@@ -629,7 +660,9 @@ function computeTaschengeld(v: Record<string, number>): Record<string, number | 
 }
 
 // ── Notgroschen-Rechner Engine ──────────────────────────────────────────
-function computeNotgroschen(v: Record<string, number>): Record<string, number | string> {
+function computeNotgroschen(
+  v: Record<string, number>,
+): Record<string, number | string> {
   const netto = v.netto ?? 2000;
   const miete = v.miete ?? 600;
   const nebenkosten = v.nebenkosten ?? 150;
@@ -644,7 +677,13 @@ function computeNotgroschen(v: Record<string, number>): Record<string, number | 
   const vorhanden = v.vorhanden ?? 0;
 
   // ── Monatliche Fixkosten berechnen ──
-  const fixkosten = miete + nebenkosten + versicherungen + mobilitaet + lebensmittel + sonstiges;
+  const fixkosten =
+    miete +
+    nebenkosten +
+    versicherungen +
+    mobilitaet +
+    lebensmittel +
+    sonstiges;
 
   // ── Empfohlene Monate je nach Status ──
   // Angestellt: 3-6 Monate, Selbststaendig: 6-12, Student: 2-3, Azubi: 2-3
@@ -652,16 +691,20 @@ function computeNotgroschen(v: Record<string, number>): Record<string, number | 
   let empfMonateMax: number;
   let statusText: string;
   if (status === 1) {
-    empfMonateMin = 6; empfMonateMax = 12;
+    empfMonateMin = 6;
+    empfMonateMax = 12;
     statusText = "Selbststaendig – hoehere Absicherung empfohlen (6-12 Monate)";
   } else if (status === 2) {
-    empfMonateMin = 2; empfMonateMax = 3;
+    empfMonateMin = 2;
+    empfMonateMax = 3;
     statusText = "Student/in – 2-3 Monate reichen meist aus";
   } else if (status === 3) {
-    empfMonateMin = 2; empfMonateMax = 3;
+    empfMonateMin = 2;
+    empfMonateMax = 3;
     statusText = "Azubi – 2-3 Monate als Grundabsicherung";
   } else {
-    empfMonateMin = 3; empfMonateMax = 6;
+    empfMonateMin = 3;
+    empfMonateMax = 6;
     statusText = "Angestellt – 3-6 Monate sind der Goldstandard";
   }
 
@@ -672,15 +715,18 @@ function computeNotgroschen(v: Record<string, number>): Record<string, number | 
   if (haustier === 1) zuschlagHaustier = 500; // Tierarzt-Puffer
 
   // ── Notgroschen berechnen ──
-  const notgroschenMin = fixkosten * empfMonateMin + zuschlagAuto + zuschlagHaustier;
-  const notgroschenMax = fixkosten * empfMonateMax + zuschlagAuto + zuschlagHaustier;
+  const notgroschenMin =
+    fixkosten * empfMonateMin + zuschlagAuto + zuschlagHaustier;
+  const notgroschenMax =
+    fixkosten * empfMonateMax + zuschlagAuto + zuschlagHaustier;
   const notgroschenEmpf = Math.round((notgroschenMin + notgroschenMax) / 2);
 
   // ── Aktueller Stand ──
   const differenz = vorhanden - notgroschenEmpf;
-  const fortschrittPct = notgroschenEmpf > 0
-    ? Math.min(100, Math.round(vorhanden / notgroschenEmpf * 1000) / 10)
-    : 0;
+  const fortschrittPct =
+    notgroschenEmpf > 0
+      ? Math.min(100, Math.round((vorhanden / notgroschenEmpf) * 1000) / 10)
+      : 0;
 
   // ── Bewertung ──
   let bewertung: string;
@@ -693,7 +739,8 @@ function computeNotgroschen(v: Record<string, number>): Record<string, number | 
   } else if (vorhanden > 0) {
     bewertung = "Guter Anfang, aber noch nicht ausreichend – dranbleiben!";
   } else {
-    bewertung = "Noch kein Notgroschen – starte heute, auch mit kleinen Betraegen!";
+    bewertung =
+      "Noch kein Notgroschen – starte heute, auch mit kleinen Betraegen!";
   }
 
   // ── Aufbauplan ──
@@ -710,19 +757,25 @@ function computeNotgroschen(v: Record<string, number>): Record<string, number | 
   const tagesgeldErtrag = Math.round(notgroschenEmpf * tagesgeldZins);
 
   // ── Fixkosten-Quote ──
-  const fixkostenQuote = netto > 0 ? Math.round(fixkosten / netto * 1000) / 10 : 0;
+  const fixkostenQuote =
+    netto > 0 ? Math.round((fixkosten / netto) * 1000) / 10 : 0;
 
   // ── Sparquote ──
-  const sparquote = netto > 0 ? Math.round(sparrate / netto * 1000) / 10 : 0;
+  const sparquote = netto > 0 ? Math.round((sparrate / netto) * 1000) / 10 : 0;
 
   // ── Empfehlung Tagesgeld ──
   let tagesgeldTipp: string;
   if (notgroschenEmpf < 3000) {
-    tagesgeldTipp = "Tagesgeld reicht – z.B. Trade Republic, ING, DKB (3-3,5% Zinsen)";
+    tagesgeldTipp =
+      "Tagesgeld reicht – z.B. Trade Republic, ING, DKB (3-3,5% Zinsen)";
   } else if (notgroschenEmpf < 10000) {
-    tagesgeldTipp = "Tagesgeld ideal – Zinsen von ca. " + tagesgeldErtrag + " EUR/Jahr mitnehmen";
+    tagesgeldTipp =
+      "Tagesgeld ideal – Zinsen von ca. " +
+      tagesgeldErtrag +
+      " EUR/Jahr mitnehmen";
   } else {
-    tagesgeldTipp = "Ggf. auf 2 Tagesgeldkonten aufteilen (Einlagensicherung beachten)";
+    tagesgeldTipp =
+      "Ggf. auf 2 Tagesgeldkonten aufteilen (Einlagensicherung beachten)";
   }
 
   return {
@@ -753,13 +806,13 @@ function computeNotgroschen(v: Record<string, number>): Record<string, number | 
 
 // ── Nebenjob / Minijob / Midijob Rechner Engine ─────────────────────────
 // Abgaben-Saetze 2025 (Minijob-Zentrale)
-const MJ_KV_AG = 0.13;       // Pauschale KV Arbeitgeber
-const MJ_RV_AG = 0.15;       // Pauschale RV Arbeitgeber
-const MJ_STEUER_AG = 0.02;   // Pauschsteuer
-const MJ_U1 = 0.011;         // Umlage U1
-const MJ_U2 = 0.0022;        // Umlage U2
+const MJ_KV_AG = 0.13; // Pauschale KV Arbeitgeber
+const MJ_RV_AG = 0.15; // Pauschale RV Arbeitgeber
+const MJ_STEUER_AG = 0.02; // Pauschsteuer
+const MJ_U1 = 0.011; // Umlage U1
+const MJ_U2 = 0.0022; // Umlage U2
 const MJ_INSOLVENZ = 0.0006; // Insolvenzgeldumlage
-const MJ_RV_AN = 0.036;      // RV-Eigenanteil AN (bei RV-Pflicht)
+const MJ_RV_AN = 0.036; // RV-Eigenanteil AN (bei RV-Pflicht)
 
 // Minijob-Grenze 2025
 const MINIJOB_GRENZE = 556;
@@ -772,13 +825,15 @@ const MINDESTLOHN_2025 = 12.82;
 const GLEIT_F = 0.6847;
 
 // Volle SV-Saetze 2025 (AN-Anteil)
-const SV_KV_AN = 0.073;  // + Zusatzbeitrag ~0.85%
+const SV_KV_AN = 0.073; // + Zusatzbeitrag ~0.85%
 const SV_KV_ZUSATZ_AN = 0.0085;
 const SV_PV_AN = 0.0175; // ohne Kinder: +0.6% Zuschlag
 const SV_RV_AN = 0.093;
 const SV_ALV_AN = 0.013;
 
-function computeNebenjob(v: Record<string, number>): Record<string, number | string> {
+function computeNebenjob(
+  v: Record<string, number>,
+): Record<string, number | string> {
   const stundenlohn = v.stundenlohn ?? MINDESTLOHN_2025;
   const stundenWoche = v.stunden ?? 10;
   const jobtyp = v.jobtyp ?? 0; // 0=gewerblich, 1=Privathaushalt, 2=Werkstudent
@@ -801,19 +856,39 @@ function computeNebenjob(v: Record<string, number>): Record<string, number | str
     kategorieDetail = "Werkstudentenprivileg: nur RV-Pflicht, keine KV/PV/ALV";
   } else if (bruttoMonat <= MINIJOB_GRENZE) {
     kategorie = "Minijob";
-    kategorieDetail = "Bis " + MINIJOB_GRENZE + " EUR/Monat – fuer dich steuerfrei!";
+    kategorieDetail =
+      "Bis " + MINIJOB_GRENZE + " EUR/Monat – fuer dich steuerfrei!";
   } else if (bruttoMonat <= MIDIJOB_GRENZE) {
     kategorie = "Midijob (Uebergangsbereich)";
-    kategorieDetail = bruttoMonat.toFixed(0) + " EUR liegt zwischen " + MINIJOB_GRENZE + " und " + MIDIJOB_GRENZE + " EUR – reduzierte SV-Beitraege";
+    kategorieDetail =
+      bruttoMonat.toFixed(0) +
+      " EUR liegt zwischen " +
+      MINIJOB_GRENZE +
+      " und " +
+      MIDIJOB_GRENZE +
+      " EUR – reduzierte SV-Beitraege";
   } else {
     kategorie = "Regulaere Beschaeftigung";
-    kategorieDetail = "Ueber " + MIDIJOB_GRENZE + " EUR – volle Sozialabgaben und Steuerpflicht";
+    kategorieDetail =
+      "Ueber " +
+      MIDIJOB_GRENZE +
+      " EUR – volle Sozialabgaben und Steuerpflicht";
   }
 
   // ── Abgaben berechnen ──
-  let anRV = 0, anKV = 0, anPV = 0, anALV = 0, anSteuer = 0;
-  let agRV = 0, agKV = 0, agSteuer = 0, agU1 = 0, agU2 = 0, agInsolvenz = 0;
-  let agGesamt = 0, anGesamt = 0;
+  let anRV = 0,
+    anKV = 0,
+    anPV = 0,
+    anALV = 0,
+    anSteuer = 0;
+  let agRV = 0,
+    agKV = 0,
+    agSteuer = 0,
+    agU1 = 0,
+    agU2 = 0,
+    agInsolvenz = 0;
+  let agGesamt = 0,
+    anGesamt = 0;
   let nettoMonat = bruttoMonat;
 
   if (jobtyp === 2) {
@@ -826,11 +901,10 @@ function computeNebenjob(v: Record<string, number>): Record<string, number | str
     // Vereinfacht: bei Hauptjob -> Steuerklasse VI (~25% pauschal)
     if (hatHauptjob === 1 && bruttoMonat > 0) {
       // Steuerklasse VI: vereinfacht ~20-25% Lohnsteuer
-      anSteuer = Math.round(bruttoMonat * 0.20 * 100) / 100;
+      anSteuer = Math.round(bruttoMonat * 0.2 * 100) / 100;
       anGesamt += anSteuer;
     }
     nettoMonat = Math.round((bruttoMonat - anGesamt) * 100) / 100;
-
   } else if (bruttoMonat <= MINIJOB_GRENZE) {
     // ── Minijob ──
     if (jobtyp === 1) {
@@ -857,18 +931,18 @@ function computeNebenjob(v: Record<string, number>): Record<string, number | str
     anGesamt = anRV;
     agGesamt = agKV + agRV + agSteuer + agU1 + agU2 + agInsolvenz;
     nettoMonat = Math.round((bruttoMonat - anGesamt) * 100) / 100;
-
   } else if (bruttoMonat <= MIDIJOB_GRENZE) {
     // ── Midijob (Uebergangsbereich) ──
     // Im Uebergangsbereich steigt der AN-Anteil linear von ~0% bei 556€ auf den
     // vollen Satz bei 2000€. Der AG zahlt immer den vollen Satz auf das volle Brutto.
     // Faktor: 0 an der Untergrenze, 1 an der Obergrenze
-    const gleitFaktor = (bruttoMonat - MINIJOB_GRENZE) / (MIDIJOB_GRENZE - MINIJOB_GRENZE);
+    const gleitFaktor =
+      (bruttoMonat - MINIJOB_GRENZE) / (MIDIJOB_GRENZE - MINIJOB_GRENZE);
 
     // Volle AN-Saetze
     const kvAnSatz = SV_KV_AN + SV_KV_ZUSATZ_AN; // ~8,15%
     const pvAnSatz = SV_PV_AN + (kinderlos === 1 ? 0.006 : 0); // 1,75% (+0,6%)
-    const rvAnSatz = SV_RV_AN;  // 9,3%
+    const rvAnSatz = SV_RV_AN; // 9,3%
     const alvAnSatz = SV_ALV_AN; // 1,3%
 
     // AN-Beitraege: reduziert durch Gleitfaktor
@@ -890,16 +964,18 @@ function computeNebenjob(v: Record<string, number>): Record<string, number | str
 
     // Lohnsteuer bei Hauptjob (Steuerklasse VI)
     if (hatHauptjob === 1) {
-      anSteuer = Math.round(bruttoMonat * 0.20 * 100) / 100;
+      anSteuer = Math.round(bruttoMonat * 0.2 * 100) / 100;
       anGesamt += anSteuer;
     }
 
     nettoMonat = Math.round((bruttoMonat - anGesamt) * 100) / 100;
-
   } else {
     // ── Regulaer (> 2000€) ──
     anKV = Math.round(bruttoMonat * (SV_KV_AN + SV_KV_ZUSATZ_AN) * 100) / 100;
-    anPV = Math.round(bruttoMonat * (SV_PV_AN + (kinderlos === 1 ? 0.006 : 0)) * 100) / 100;
+    anPV =
+      Math.round(
+        bruttoMonat * (SV_PV_AN + (kinderlos === 1 ? 0.006 : 0)) * 100,
+      ) / 100;
     anRV = Math.round(bruttoMonat * SV_RV_AN * 100) / 100;
     anALV = Math.round(bruttoMonat * SV_ALV_AN * 100) / 100;
     anGesamt = anKV + anPV + anRV + anALV;
@@ -911,48 +987,70 @@ function computeNebenjob(v: Record<string, number>): Record<string, number | str
 
     agKV = Math.round(bruttoMonat * (SV_KV_AN + SV_KV_ZUSATZ_AN) * 100) / 100;
     agRV = Math.round(bruttoMonat * SV_RV_AN * 100) / 100;
-    agGesamt = agKV + agRV + Math.round(bruttoMonat * SV_ALV_AN * 100) / 100
-      + Math.round(bruttoMonat * SV_PV_AN * 100) / 100
-      + Math.round(bruttoMonat * MJ_U1 * 100) / 100
-      + Math.round(bruttoMonat * MJ_U2 * 100) / 100;
+    agGesamt =
+      agKV +
+      agRV +
+      Math.round(bruttoMonat * SV_ALV_AN * 100) / 100 +
+      Math.round(bruttoMonat * SV_PV_AN * 100) / 100 +
+      Math.round(bruttoMonat * MJ_U1 * 100) / 100 +
+      Math.round(bruttoMonat * MJ_U2 * 100) / 100;
 
     nettoMonat = Math.round((bruttoMonat - anGesamt) * 100) / 100;
   }
 
   const nettoJahr = Math.round(nettoMonat * 12 * 100) / 100;
-  const nettoStunde = stundenMonat > 0 ? Math.round(nettoMonat / stundenMonat * 100) / 100 : 0;
-  const abgabenQuote = bruttoMonat > 0 ? Math.round(anGesamt / bruttoMonat * 1000) / 10 : 0;
+  const nettoStunde =
+    stundenMonat > 0 ? Math.round((nettoMonat / stundenMonat) * 100) / 100 : 0;
+  const abgabenQuote =
+    bruttoMonat > 0 ? Math.round((anGesamt / bruttoMonat) * 1000) / 10 : 0;
 
   // ── Maximal moegliche Stunden bei Minijob-Grenze ──
-  const maxStundenMinijob = stundenlohn > 0 ? Math.floor(MINIJOB_GRENZE / stundenlohn / 4.33 * 10) / 10 : 0;
+  const maxStundenMinijob =
+    stundenlohn > 0
+      ? Math.floor((MINIJOB_GRENZE / stundenlohn / 4.33) * 10) / 10
+      : 0;
 
   // ── Bewertung / Tipp ──
   let bewertung: string;
   if (kategorie === "Minijob") {
     if (rvBefreiung === 1) {
-      bewertung = "Steuerfrei & abgabenfrei – du bekommst 100% netto ausgezahlt!";
+      bewertung =
+        "Steuerfrei & abgabenfrei – du bekommst 100% netto ausgezahlt!";
     } else {
-      bewertung = "Steuerfrei, aber " + (jobtyp === 1 ? "13,6%" : "3,6%") + " RV-Eigenanteil – dafuer Rentenansprueche!";
+      bewertung =
+        "Steuerfrei, aber " +
+        (jobtyp === 1 ? "13,6%" : "3,6%") +
+        " RV-Eigenanteil – dafuer Rentenansprueche!";
     }
   } else if (kategorie === "Werkstudent") {
-    bewertung = hatHauptjob === 1
-      ? "Werkstudent mit Hauptjob: RV + Lohnsteuer (StKl. VI) – pruefe ob Minijob guenstiger waere"
-      : "Werkstudent: Nur 9,3% RV – sehr guenstig! Achte auf die 20h-Grenze.";
+    bewertung =
+      hatHauptjob === 1
+        ? "Werkstudent mit Hauptjob: RV + Lohnsteuer (StKl. VI) – pruefe ob Minijob guenstiger waere"
+        : "Werkstudent: Nur 9,3% RV – sehr guenstig! Achte auf die 20h-Grenze.";
   } else if (kategorie.includes("Midijob")) {
-    bewertung = "Reduzierte SV-Beitraege in der Gleitzone – ab " + (MINIJOB_GRENZE + 1) + " EUR lohnt sich mehr arbeiten";
+    bewertung =
+      "Reduzierte SV-Beitraege in der Gleitzone – ab " +
+      (MINIJOB_GRENZE + 1) +
+      " EUR lohnt sich mehr arbeiten";
   } else {
-    bewertung = "Volle Abgaben – pruefe ob ein 2. Minijob beim gleichen AG guenstiger waere";
+    bewertung =
+      "Volle Abgaben – pruefe ob ein 2. Minijob beim gleichen AG guenstiger waere";
   }
 
   // ── Jahres-Steuerfreibetrag Check ──
   const grundfreibetrag = 12096; // 2025
   let steuerHinweis: string;
   if (bruttoJahr <= grundfreibetrag && hatHauptjob === 0) {
-    steuerHinweis = "Unter dem Grundfreibetrag (" + grundfreibetrag + " EUR) – keine Einkommensteuer!";
+    steuerHinweis =
+      "Unter dem Grundfreibetrag (" +
+      grundfreibetrag +
+      " EUR) – keine Einkommensteuer!";
   } else if (hatHauptjob === 1) {
-    steuerHinweis = "Bei Hauptjob: Nebenjob wird ueber Steuerklasse VI versteuert – Steuererklaerung machen!";
+    steuerHinweis =
+      "Bei Hauptjob: Nebenjob wird ueber Steuerklasse VI versteuert – Steuererklaerung machen!";
   } else {
-    steuerHinweis = "Ueber Grundfreibetrag – Lohnsteuer faellt an (ggf. per Steuererklaerung zurueckholen)";
+    steuerHinweis =
+      "Ueber Grundfreibetrag – Lohnsteuer faellt an (ggf. per Steuererklaerung zurueckholen)";
   }
 
   return {
@@ -988,10 +1086,10 @@ function computeNebenjob(v: Record<string, number>): Record<string, number | str
 // ── BAföG-Rechner Engine (WS 2024/2025) ────────────────────────────────
 // Bedarfssaetze
 const BAFOEG_GRUNDBEDARF = 475;
-const BAFOEG_WOHN_EIGEN = 380;  // eigene Wohnung
-const BAFOEG_WOHN_ELTERN = 59;  // bei Eltern
+const BAFOEG_WOHN_EIGEN = 380; // eigene Wohnung
+const BAFOEG_WOHN_ELTERN = 59; // bei Eltern
 const BAFOEG_KV_ZUSCHLAG = 102; // eigene KV (ab 25)
-const BAFOEG_PV_ZUSCHLAG = 35;  // eigene PV (ab 25)
+const BAFOEG_PV_ZUSCHLAG = 35; // eigene PV (ab 25)
 
 // Freibetraege Elterneinkommen (monatlich)
 const BAFOEG_FREI_VERHEIRATET = 2540; // beide Eltern zusammen
@@ -1004,12 +1102,14 @@ const BAFOEG_WERBUNGSKOSTEN = 1230; // jaehrlich
 const BAFOEG_SOZIALPAUSCHALE = 0.223; // 22,3%
 const BAFOEG_VERMOEGEN_FREI = 15000;
 
-function computeBafoeg(v: Record<string, number>): Record<string, number | string> {
+function computeBafoeg(
+  v: Record<string, number>,
+): Record<string, number | string> {
   const ausbildungsart = v.ausbildungsart ?? 0; // 0=Studium, 1=Schule (auswärts), 2=Schule (Eltern)
-  const wohnsituation = v.wohnsituation ?? 0;   // 0=eigene Wohnung, 1=bei Eltern
-  const eigenKV = v.eigen_kv ?? 0;              // 0=familienversichert, 1=eigene KV
+  const wohnsituation = v.wohnsituation ?? 0; // 0=eigene Wohnung, 1=bei Eltern
+  const eigenKV = v.eigen_kv ?? 0; // 0=familienversichert, 1=eigene KV
   const elternBrutto = v.eltern_brutto ?? 40000; // Jahresbrutto Eltern
-  const elternStatus = v.eltern_status ?? 0;     // 0=verheiratet, 1=alleinerziehend/getrennt
+  const elternStatus = v.eltern_status ?? 0; // 0=verheiratet, 1=alleinerziehend/getrennt
   const geschwisterFrei = v.geschwister_frei ?? 0; // Geschwister OHNE foerderfaehige Ausbildung (erhoehen Freibetrag)
   const geschwisterAusb = v.geschwister_ausb ?? 0; // Geschwister IN foerderfaehiger Ausbildung (teilen anrechnung)
   const eigenEinkommen = v.eigen_einkommen ?? 0; // monatliches Bruttoeinkommen
@@ -1017,15 +1117,19 @@ function computeBafoeg(v: Record<string, number>): Record<string, number | strin
   const partnerEinkommen = v.partner_einkommen ?? 0; // Ehepartner/eingetragener LP
 
   // ── 1. Bedarf berechnen ──
-  const wohnpauschale = wohnsituation === 0 ? BAFOEG_WOHN_EIGEN : BAFOEG_WOHN_ELTERN;
+  const wohnpauschale =
+    wohnsituation === 0 ? BAFOEG_WOHN_EIGEN : BAFOEG_WOHN_ELTERN;
   const kvZuschlag = eigenKV === 1 ? BAFOEG_KV_ZUSCHLAG : 0;
   const pvZuschlag = eigenKV === 1 ? BAFOEG_PV_ZUSCHLAG : 0;
-  const gesamtBedarf = BAFOEG_GRUNDBEDARF + wohnpauschale + kvZuschlag + pvZuschlag;
+  const gesamtBedarf =
+    BAFOEG_GRUNDBEDARF + wohnpauschale + kvZuschlag + pvZuschlag;
 
   // ── 2. Elterneinkommen anrechnen ──
   // Schritt 1: Brutto -> bereinigtes Netto (jaehrlich)
   const elternNachWK = Math.max(0, elternBrutto - BAFOEG_WERBUNGSKOSTEN);
-  const elternNachSozi = Math.round(elternNachWK * (1 - BAFOEG_SOZIALPAUSCHALE));
+  const elternNachSozi = Math.round(
+    elternNachWK * (1 - BAFOEG_SOZIALPAUSCHALE),
+  );
   const elternNettoMonat = Math.round(elternNachSozi / 12);
 
   // Schritt 2: Freibetraege
@@ -1045,16 +1149,17 @@ function computeBafoeg(v: Record<string, number>): Record<string, number | strin
   // Schritt 4: Anrechnungssatz: 50% + 5% pro Kind mit Freibetrag
   // Kinder mit Freibetrag = Antragsteller + Geschwister in foerderfaehiger Ausbildung
   const kinderMitAnspruch = 1 + geschwisterAusb;
-  const anrechnungsSatz = 0.50 + 0.05 * Math.max(0, kinderMitAnspruch - 1);
+  const anrechnungsSatz = 0.5 + 0.05 * Math.max(0, kinderMitAnspruch - 1);
   // Nicht ueber 1.0 (theoretisch bei >10 Kindern, aber cap)
   const effAnrechnungsSatz = Math.min(1, anrechnungsSatz);
 
   const elternAnrechnung = Math.round(elternUeberhang * effAnrechnungsSatz);
 
   // Bei Geschwistern in Ausbildung: anrechenbarer Betrag wird geteilt
-  const elternAnrechnungProKind = kinderMitAnspruch > 1
-    ? Math.round(elternAnrechnung / kinderMitAnspruch)
-    : elternAnrechnung;
+  const elternAnrechnungProKind =
+    kinderMitAnspruch > 1
+      ? Math.round(elternAnrechnung / kinderMitAnspruch)
+      : elternAnrechnung;
 
   // ── 3. Eigenes Einkommen anrechnen ──
   // Monatlich: Brutto - WK anteilig - Sozialpauschale - Freibetrag
@@ -1064,18 +1169,28 @@ function computeBafoeg(v: Record<string, number>): Record<string, number | strin
   const eigenAnrechnung = Math.max(0, eigenNachSozi - BAFOEG_FREI_EIGEN);
 
   // ── 4. Vermoegen anrechnen ──
-  const vermoegenAnrechnung = vermoegen > BAFOEG_VERMOEGEN_FREI
-    ? Math.round((vermoegen - BAFOEG_VERMOEGEN_FREI) / 12) // auf 12 Monate verteilt
-    : 0;
+  const vermoegenAnrechnung =
+    vermoegen > BAFOEG_VERMOEGEN_FREI
+      ? Math.round((vermoegen - BAFOEG_VERMOEGEN_FREI) / 12) // auf 12 Monate verteilt
+      : 0;
 
   // ── 5. Partner-Einkommen anrechnen ──
-  const partnerNachWK = Math.max(0, partnerEinkommen * 12 - BAFOEG_WERBUNGSKOSTEN);
-  const partnerNachSozi = Math.round(partnerNachWK * (1 - BAFOEG_SOZIALPAUSCHALE) / 12);
+  const partnerNachWK = Math.max(
+    0,
+    partnerEinkommen * 12 - BAFOEG_WERBUNGSKOSTEN,
+  );
+  const partnerNachSozi = Math.round(
+    (partnerNachWK * (1 - BAFOEG_SOZIALPAUSCHALE)) / 12,
+  );
   const partnerFreibetrag = 850; // Ehepartner-Freibetrag
   const partnerAnrechnung = Math.max(0, partnerNachSozi - partnerFreibetrag);
 
   // ── 6. BAföG berechnen ──
-  const gesamtAnrechnung = elternAnrechnungProKind + eigenAnrechnung + vermoegenAnrechnung + partnerAnrechnung;
+  const gesamtAnrechnung =
+    elternAnrechnungProKind +
+    eigenAnrechnung +
+    vermoegenAnrechnung +
+    partnerAnrechnung;
   const bafoegMonat = Math.max(0, gesamtBedarf - gesamtAnrechnung);
   // BAföG-Mindestbetrag: unter 10€ wird nicht gezahlt
   const bafoegEffektiv = bafoegMonat >= 10 ? bafoegMonat : 0;
@@ -1083,7 +1198,7 @@ function computeBafoeg(v: Record<string, number>): Record<string, number | strin
 
   // ── 7. Zusammensetzung ──
   const zuschussAnteil = Math.round(bafoegEffektiv * 0.5); // 50% Zuschuss
-  const darlehenAnteil = bafoegEffektiv - zuschussAnteil;    // 50% Darlehen
+  const darlehenAnteil = bafoegEffektiv - zuschussAnteil; // 50% Darlehen
   // Max. Rueckzahlung: 10.010€ (gedeckelt)
   const maxRueckzahlung = Math.min(darlehenAnteil * 12 * 5, 10010); // 5 Jahre Regelstudienzeit
 
@@ -1094,22 +1209,31 @@ function computeBafoeg(v: Record<string, number>): Record<string, number | strin
   } else if (bafoegEffektiv >= gesamtBedarf * 0.5) {
     bewertung = "Gute Foerderung – deckt einen Grossteil deiner Kosten.";
   } else if (bafoegEffektiv > 0) {
-    bewertung = "Teilfoerderung – ergaenze mit Minijob (bis 556 EUR ohne Kuerzung).";
+    bewertung =
+      "Teilfoerderung – ergaenze mit Minijob (bis 556 EUR ohne Kuerzung).";
   } else if (elternNettoMonat <= elternFreibetrag * 1.1) {
-    bewertung = "Knapp ueber der Grenze – Antrag trotzdem stellen, es kann sich aendern!";
+    bewertung =
+      "Knapp ueber der Grenze – Antrag trotzdem stellen, es kann sich aendern!";
   } else {
-    bewertung = "Kein Anspruch bei diesem Elterneinkommen. Alternativen: Stipendium, KfW-Studienkredit.";
+    bewertung =
+      "Kein Anspruch bei diesem Elterneinkommen. Alternativen: Stipendium, KfW-Studienkredit.";
   }
 
   // ── Minijob-kompatibel? ──
-  const minijobOK = eigenEinkommen <= 556
-    ? "Ja – Minijob bis 556 EUR/Monat ohne BAfoeg-Kuerzung moeglich"
-    : "Achtung: Einkommen ueber 556 EUR wird teilweise angerechnet!";
+  const minijobOK =
+    eigenEinkommen <= 556
+      ? "Ja – Minijob bis 556 EUR/Monat ohne BAfoeg-Kuerzung moeglich"
+      : "Achtung: Einkommen ueber 556 EUR wird teilweise angerechnet!";
 
   // ── Vermoegens-Check ──
-  const vermoegenOK = vermoegen <= BAFOEG_VERMOEGEN_FREI
-    ? "Im Freibetrag (" + BAFOEG_VERMOEGEN_FREI.toLocaleString("de-DE") + " EUR) – kein Abzug"
-    : "Ueber Freibetrag: " + Math.round((vermoegen - BAFOEG_VERMOEGEN_FREI)).toLocaleString("de-DE") + " EUR werden angerechnet";
+  const vermoegenOK =
+    vermoegen <= BAFOEG_VERMOEGEN_FREI
+      ? "Im Freibetrag (" +
+        BAFOEG_VERMOEGEN_FREI.toLocaleString("de-DE") +
+        " EUR) – kein Abzug"
+      : "Ueber Freibetrag: " +
+        Math.round(vermoegen - BAFOEG_VERMOEGEN_FREI).toLocaleString("de-DE") +
+        " EUR werden angerechnet";
 
   return {
     grundbedarf: BAFOEG_GRUNDBEDARF,
@@ -1141,16 +1265,16 @@ function computeBafoeg(v: Record<string, number>): Record<string, number | strin
 // Gesetzliche Feiertage 2025 (bundesweit): 9 Tage
 // Bundeslaender mit mehr: Bayern 13, BW 12, Saarland 12, NRW/RLP etc. 11
 const FEIERTAGE_BUND: Record<number, number> = {
-  0: 9,   // bundesweit (Minimum)
-  1: 13,  // Bayern
-  2: 12,  // Baden-Wuerttemberg
-  3: 11,  // NRW
-  4: 11,  // Niedersachsen
-  5: 10,  // Berlin
-  6: 11,  // Hessen
-  7: 12,  // Saarland
-  8: 11,  // Sachsen
-  9: 11,  // Thueringen
+  0: 9, // bundesweit (Minimum)
+  1: 13, // Bayern
+  2: 12, // Baden-Wuerttemberg
+  3: 11, // NRW
+  4: 11, // Niedersachsen
+  5: 10, // Berlin
+  6: 11, // Hessen
+  7: 12, // Saarland
+  8: 11, // Sachsen
+  9: 11, // Thueringen
   10: 10, // Hamburg
   11: 10, // Bremen
   12: 10, // Schleswig-Holstein
@@ -1160,15 +1284,17 @@ const FEIERTAGE_BUND: Record<number, number> = {
   16: 12, // Brandenburg
 };
 
-function computeStundenlohn(v: Record<string, number>): Record<string, number | string> {
+function computeStundenlohn(
+  v: Record<string, number>,
+): Record<string, number | string> {
   const monatsgehalt = v.monatsgehalt ?? 3000;
   const wochenstunden = v.wochenstunden ?? 40;
   const urlaubstage = v.urlaubstage ?? 28;
   const bundesland = v.bundesland ?? 0;
   const weihnachtsgeld = v.weihnachtsgeld ?? 0; // in % vom Monatsgehalt (0=kein, 50=halbes, 100=volles)
-  const urlaubsgeld = v.urlaubsgeld ?? 0;        // absolute EUR
-  const bonus = v.bonus ?? 0;                     // jaehrlich EUR
-  const arbeitstageWoche = v.arbeitstage ?? 5;    // 5 oder 6 Tage
+  const urlaubsgeld = v.urlaubsgeld ?? 0; // absolute EUR
+  const bonus = v.bonus ?? 0; // jaehrlich EUR
+  const arbeitstageWoche = v.arbeitstage ?? 5; // 5 oder 6 Tage
 
   const feiertage = FEIERTAGE_BUND[bundesland] ?? 9;
 
@@ -1183,50 +1309,64 @@ function computeStundenlohn(v: Record<string, number>): Record<string, number | 
   const arbeitstageJahrBrutto = Math.round(52.14 * arbeitstageWoche);
   // Davon abziehen: Urlaubstage + Feiertage (die auf Arbeitstage fallen, ca. 70% bei 5-Tage-Woche)
   const feiertagArbeitstage = Math.round(feiertage * (arbeitstageWoche / 7));
-  const arbeitstageJahrNetto = arbeitstageJahrBrutto - urlaubstage - feiertagArbeitstage;
+  const arbeitstageJahrNetto =
+    arbeitstageJahrBrutto - urlaubstage - feiertagArbeitstage;
   const stundenProTag = wochenstunden / arbeitstageWoche;
   const arbeitsstundenJahr = Math.round(arbeitstageJahrNetto * stundenProTag);
-  const arbeitsstundenJahrBrutto = Math.round(arbeitstageJahrBrutto * stundenProTag);
+  const arbeitsstundenJahrBrutto = Math.round(
+    arbeitstageJahrBrutto * stundenProTag,
+  );
 
   // ── Stundenlohn-Varianten ──
   // Formaler Stundenlohn (ohne Urlaub/Feiertage)
-  const stundenlohnFormal = wochenstunden > 0
-    ? Math.round(monatsgehalt / (wochenstunden * 4.33) * 100) / 100
-    : 0;
+  const stundenlohnFormal =
+    wochenstunden > 0
+      ? Math.round((monatsgehalt / (wochenstunden * 4.33)) * 100) / 100
+      : 0;
 
   // Effektiver Stundenlohn (Jahresgehalt OHNE Sonderzahlungen / tatsächliche Arbeitsstunden)
-  const stundenlohnEffektiv = arbeitsstundenJahr > 0
-    ? Math.round(jahresgehaltOhne / arbeitsstundenJahr * 100) / 100
-    : 0;
+  const stundenlohnEffektiv =
+    arbeitsstundenJahr > 0
+      ? Math.round((jahresgehaltOhne / arbeitsstundenJahr) * 100) / 100
+      : 0;
 
   // Effektiver Stundenlohn MIT Sonderzahlungen
-  const stundenlohnMitSonder = arbeitsstundenJahr > 0
-    ? Math.round(jahresgehaltMit / arbeitsstundenJahr * 100) / 100
-    : 0;
+  const stundenlohnMitSonder =
+    arbeitsstundenJahr > 0
+      ? Math.round((jahresgehaltMit / arbeitsstundenJahr) * 100) / 100
+      : 0;
 
   // ── Tages- und Wochenverdienst ──
-  const tagesverdienst = stundenProTag > 0
-    ? Math.round(stundenlohnFormal * stundenProTag * 100) / 100
-    : 0;
-  const wochenverdienst = Math.round(stundenlohnFormal * wochenstunden * 100) / 100;
+  const tagesverdienst =
+    stundenProTag > 0
+      ? Math.round(stundenlohnFormal * stundenProTag * 100) / 100
+      : 0;
+  const wochenverdienst =
+    Math.round(stundenlohnFormal * wochenstunden * 100) / 100;
 
   // ── Mindestlohn-Check (2025: 12,82€) ──
   const mindestlohn = 12.82;
   let mindestlohnCheck: string;
   if (stundenlohnFormal >= mindestlohn * 1.5) {
-    mindestlohnCheck = "Deutlich ueber Mindestlohn (" + mindestlohn + " EUR) – gut!";
+    mindestlohnCheck =
+      "Deutlich ueber Mindestlohn (" + mindestlohn + " EUR) – gut!";
   } else if (stundenlohnFormal >= mindestlohn) {
-    mindestlohnCheck = "Ueber Mindestlohn (" + mindestlohn + " EUR) – aber wenig Puffer";
+    mindestlohnCheck =
+      "Ueber Mindestlohn (" + mindestlohn + " EUR) – aber wenig Puffer";
   } else if (stundenlohnFormal > 0) {
-    mindestlohnCheck = "ACHTUNG: Unter dem gesetzlichen Mindestlohn von " + mindestlohn + " EUR!";
+    mindestlohnCheck =
+      "ACHTUNG: Unter dem gesetzlichen Mindestlohn von " +
+      mindestlohn +
+      " EUR!";
   } else {
     mindestlohnCheck = "Kein Gehalt angegeben";
   }
 
   // ── Vergleich: Was bringen Sonderzahlungen pro Stunde? ──
-  const sonderProStunde = arbeitsstundenJahr > 0
-    ? Math.round(sonderzahlungen / arbeitsstundenJahr * 100) / 100
-    : 0;
+  const sonderProStunde =
+    arbeitsstundenJahr > 0
+      ? Math.round((sonderzahlungen / arbeitsstundenJahr) * 100) / 100
+      : 0;
 
   // ── Arbeitszeitanalyse ──
   const jahresarbeitszeitStd = arbeitsstundenJahrBrutto;
@@ -1236,11 +1376,18 @@ function computeStundenlohn(v: Record<string, number>): Record<string, number | 
   let bewertung: string;
   const differenz = stundenlohnMitSonder - stundenlohnFormal;
   if (differenz > 5) {
-    bewertung = "Sonderzahlungen & Freizeit erhoehen deinen echten Stundenlohn um " + differenz.toFixed(2) + " EUR!";
+    bewertung =
+      "Sonderzahlungen & Freizeit erhoehen deinen echten Stundenlohn um " +
+      differenz.toFixed(2) +
+      " EUR!";
   } else if (differenz > 1) {
-    bewertung = "Dein effektiver Stundenlohn ist " + differenz.toFixed(2) + " EUR hoeher als der formale.";
+    bewertung =
+      "Dein effektiver Stundenlohn ist " +
+      differenz.toFixed(2) +
+      " EUR hoeher als der formale.";
   } else {
-    bewertung = "Kaum Unterschied – keine/wenige Sonderzahlungen oder wenig Urlaub/Feiertage.";
+    bewertung =
+      "Kaum Unterschied – keine/wenige Sonderzahlungen oder wenig Urlaub/Feiertage.";
   }
 
   return {
@@ -1270,38 +1417,41 @@ function computeStundenlohn(v: Record<string, number>): Record<string, number | 
 
 // ── Spritrechner Engine ─────────────────────────────────────────────────
 // CO2-Emissionen pro Liter (kg CO2)
-const CO2_BENZIN = 2.37;  // kg CO2 pro Liter Benzin
-const CO2_DIESEL = 2.65;  // kg CO2 pro Liter Diesel
-const CO2_STROM = 0.380;  // kg CO2 pro kWh (DE-Strommix 2025)
+const CO2_BENZIN = 2.37; // kg CO2 pro Liter Benzin
+const CO2_DIESEL = 2.65; // kg CO2 pro Liter Diesel
+const CO2_STROM = 0.38; // kg CO2 pro kWh (DE-Strommix 2025)
 
 // Pendlerpauschale 2025
-const PENDLER_BIS20 = 0.30; // €/km bis 20km
-const PENDLER_AB21 = 0.38;  // €/km ab 21km
+const PENDLER_BIS20 = 0.3; // €/km bis 20km
+const PENDLER_AB21 = 0.38; // €/km ab 21km
 
 // Deutschlandticket 2025
 const DTICKET_PREIS = 58; // €/Monat (2025)
 
-function computeSprit(v: Record<string, number>): Record<string, number | string> {
-  const strecke = v.strecke ?? 25;           // km einfach
-  const kraftstoff = v.kraftstoff ?? 0;       // 0=Benzin, 1=Diesel, 2=E-Auto, 3=Hybrid
-  const verbrauch = v.verbrauch ?? 7;         // l/100km oder kWh/100km bei E-Auto
-  const spritpreis = v.spritpreis ?? 1.75;    // €/Liter oder €/kWh
-  const fahrtenWoche = v.fahrten ?? 10;       // Hin+Rueck-Fahrten pro Woche
-  const mitfahrer = v.mitfahrer ?? 0;         // Anzahl Mitfahrer (Kosten teilen)
-  const istPendler = v.ist_pendler ?? 1;      // 0=Nein, 1=Ja (Pendlerpauschale berechnen)
-  const steuersatz = v.steuersatz ?? 30;      // Grenzsteuersatz in %
+function computeSprit(
+  v: Record<string, number>,
+): Record<string, number | string> {
+  const strecke = v.strecke ?? 25; // km einfach
+  const kraftstoff = v.kraftstoff ?? 0; // 0=Benzin, 1=Diesel, 2=E-Auto, 3=Hybrid
+  const verbrauch = v.verbrauch ?? 7; // l/100km oder kWh/100km bei E-Auto
+  const spritpreis = v.spritpreis ?? 1.75; // €/Liter oder €/kWh
+  const fahrtenWoche = v.fahrten ?? 10; // Hin+Rueck-Fahrten pro Woche
+  const mitfahrer = v.mitfahrer ?? 0; // Anzahl Mitfahrer (Kosten teilen)
+  const istPendler = v.ist_pendler ?? 1; // 0=Nein, 1=Ja (Pendlerpauschale berechnen)
+  const steuersatz = v.steuersatz ?? 30; // Grenzsteuersatz in %
 
   // ── Kraftstoff-Label ──
-  const kraftstoffLabel = ["Benzin", "Diesel", "E-Auto (Strom)", "Hybrid"][kraftstoff] ?? "Benzin";
+  const kraftstoffLabel =
+    ["Benzin", "Diesel", "E-Auto (Strom)", "Hybrid"][kraftstoff] ?? "Benzin";
   const einheit = kraftstoff === 2 ? "kWh/100km" : "l/100km";
   const preisEinheit = kraftstoff === 2 ? "EUR/kWh" : "EUR/Liter";
 
   // ── Kosten pro Fahrt ──
-  const verbrauchProFahrt = strecke * verbrauch / 100;
+  const verbrauchProFahrt = (strecke * verbrauch) / 100;
   const kostenProFahrt = Math.round(verbrauchProFahrt * spritpreis * 100) / 100;
 
   // ── Kosten pro km ──
-  const kostenProKm = Math.round(verbrauch / 100 * spritpreis * 100) / 100;
+  const kostenProKm = Math.round((verbrauch / 100) * spritpreis * 100) / 100;
 
   // ── Zeitraeume ──
   const kostenWoche = Math.round(kostenProFahrt * fahrtenWoche * 100) / 100;
@@ -1310,18 +1460,20 @@ function computeSprit(v: Record<string, number>): Record<string, number | string
 
   // ── Mitfahrer-Aufteilung ──
   const personenGesamt = 1 + mitfahrer;
-  const kostenProPerson = Math.round(kostenMonat / personenGesamt * 100) / 100;
-  const ersparnisMitfahrer = Math.round((kostenMonat - kostenProPerson) * 100) / 100;
+  const kostenProPerson =
+    Math.round((kostenMonat / personenGesamt) * 100) / 100;
+  const ersparnisMitfahrer =
+    Math.round((kostenMonat - kostenProPerson) * 100) / 100;
 
   // ── Verbrauch pro Fahrt ──
   const verbrauchEinheit = kraftstoff === 2 ? "kWh" : "Liter";
 
   // ── CO2-Emissionen ──
   let co2ProKm: number;
-  if (kraftstoff === 0) co2ProKm = verbrauch / 100 * CO2_BENZIN;
-  else if (kraftstoff === 1) co2ProKm = verbrauch / 100 * CO2_DIESEL;
-  else if (kraftstoff === 2) co2ProKm = verbrauch / 100 * CO2_STROM;
-  else co2ProKm = verbrauch / 100 * CO2_BENZIN * 0.7; // Hybrid ~30% weniger
+  if (kraftstoff === 0) co2ProKm = (verbrauch / 100) * CO2_BENZIN;
+  else if (kraftstoff === 1) co2ProKm = (verbrauch / 100) * CO2_DIESEL;
+  else if (kraftstoff === 2) co2ProKm = (verbrauch / 100) * CO2_STROM;
+  else co2ProKm = (verbrauch / 100) * CO2_BENZIN * 0.7; // Hybrid ~30% weniger
   const co2ProFahrt = Math.round(co2ProKm * strecke * 100) / 100;
   const co2ProJahr = Math.round(co2ProKm * strecke * fahrtenWoche * 52);
 
@@ -1335,11 +1487,17 @@ function computeSprit(v: Record<string, number>): Record<string, number | string
     if (strecke <= 20) {
       pendlerJahr = Math.round(strecke * PENDLER_BIS20 * arbeitstage);
     } else {
-      pendlerJahr = Math.round((20 * PENDLER_BIS20 + (strecke - 20) * PENDLER_AB21) * arbeitstage);
+      pendlerJahr = Math.round(
+        (20 * PENDLER_BIS20 + (strecke - 20) * PENDLER_AB21) * arbeitstage,
+      );
     }
     // Steuerersparnis = Pendlerpauschale × Grenzsteuersatz
     pendlerErsparnis = Math.round(pendlerJahr * (steuersatz / 100));
-    pendlerText = pendlerErsparnis + " EUR Steuerersparnis pro Jahr (bei " + steuersatz + "% Grenzsteuersatz)";
+    pendlerText =
+      pendlerErsparnis +
+      " EUR Steuerersparnis pro Jahr (bei " +
+      steuersatz +
+      "% Grenzsteuersatz)";
   }
 
   // ── Vergleich mit Deutschlandticket ──
@@ -1347,11 +1505,20 @@ function computeSprit(v: Record<string, number>): Record<string, number | string
   const diffDticket = kostenJahr - dticketJahr;
   let dticketVergleich: string;
   if (diffDticket > 500) {
-    dticketVergleich = "Deutschlandticket spart " + Math.round(diffDticket) + " EUR/Jahr – deutlich guenstiger!";
+    dticketVergleich =
+      "Deutschlandticket spart " +
+      Math.round(diffDticket) +
+      " EUR/Jahr – deutlich guenstiger!";
   } else if (diffDticket > 0) {
-    dticketVergleich = "Deutschlandticket spart " + Math.round(diffDticket) + " EUR/Jahr – lohnt sich, wenn OEPNV moeglich";
+    dticketVergleich =
+      "Deutschlandticket spart " +
+      Math.round(diffDticket) +
+      " EUR/Jahr – lohnt sich, wenn OEPNV moeglich";
   } else {
-    dticketVergleich = "Auto ist guenstiger als Deutschlandticket (" + dticketJahr + " EUR/Jahr)";
+    dticketVergleich =
+      "Auto ist guenstiger als Deutschlandticket (" +
+      dticketJahr +
+      " EUR/Jahr)";
   }
 
   // ── Kosten ohne vs. mit Pendlerpauschale ──
@@ -1360,13 +1527,16 @@ function computeSprit(v: Record<string, number>): Record<string, number | string
   // ── Bewertung ──
   let bewertung: string;
   if (kostenProKm <= 0.05) {
-    bewertung = "Sehr guenstig! E-Auto oder sparsamer Verbrauch zahlt sich aus.";
-  } else if (kostenProKm <= 0.10) {
+    bewertung =
+      "Sehr guenstig! E-Auto oder sparsamer Verbrauch zahlt sich aus.";
+  } else if (kostenProKm <= 0.1) {
     bewertung = "Guter Verbrauch – moderate Kosten pro Kilometer.";
   } else if (kostenProKm <= 0.15) {
-    bewertung = "Durchschnittliche Kosten – Einsparpotenzial durch Fahrweise und Reifendruck.";
+    bewertung =
+      "Durchschnittliche Kosten – Einsparpotenzial durch Fahrweise und Reifendruck.";
   } else {
-    bewertung = "Hohe Kosten pro km – pruefe Verbrauch, Fahrgemeinschaft oder Alternative.";
+    bewertung =
+      "Hohe Kosten pro km – pruefe Verbrauch, Fahrgemeinschaft oder Alternative.";
   }
 
   return {
@@ -1397,11 +1567,20 @@ function computeSprit(v: Record<string, number>): Record<string, number | string
 // ── Inflationsrechner ───────────────────────────────────────────────
 // Historische Durchschnittsinflation Deutschland (Statistisches Bundesamt)
 const INFLATION_HISTORISCH: Record<string, number> = {
-  "2015": 0.3, "2016": 0.5, "2017": 1.5, "2018": 1.8, "2019": 1.4,
-  "2020": 0.5, "2021": 3.1, "2022": 6.9, "2023": 5.9, "2024": 2.2, "2025": 2.3,
+  "2015": 0.3,
+  "2016": 0.5,
+  "2017": 1.5,
+  "2018": 1.8,
+  "2019": 1.4,
+  "2020": 0.5,
+  "2021": 3.1,
+  "2022": 6.9,
+  "2023": 5.9,
+  "2024": 2.2,
+  "2025": 2.3,
 };
 const INFLATION_SCHNITT_10J = 2.5; // Ø 2015–2024
-const INFLATION_SCHNITT_5J = 3.7;  // Ø 2020–2024 (inkl. Krisenjahre)
+const INFLATION_SCHNITT_5J = 3.7; // Ø 2020–2024 (inkl. Krisenjahre)
 const EZB_ZIEL = 2.0;
 
 // Warenkorb-Beispiele: typische Kosten für junge Menschen (2025)
@@ -1498,9 +1677,7 @@ function computeWaehrung(
 
   const betragFremdwaehrungOhneGebuehr = rd(betrag * kurs);
   const wechselgebuehr = rd((betrag * gebuehr) / 100);
-  const betragNachGebuehr = rd(
-    (betrag - wechselgebuehr) * kurs,
-  );
+  const betragNachGebuehr = rd((betrag - wechselgebuehr) * kurs);
 
   return {
     betrag_fremdwaehrung_ohne_gebuehr: betragFremdwaehrungOhneGebuehr,
@@ -1574,8 +1751,7 @@ function computeRentenluecke(
   const nSpar = jahreBisRente * 12;
   let sparrateMonat: number;
   if (rSpar > 0.0001 && nSpar > 0) {
-    sparrateMonat =
-      nochAufzubauen / ((Math.pow(1 + rSpar, nSpar) - 1) / rSpar);
+    sparrateMonat = nochAufzubauen / ((Math.pow(1 + rSpar, nSpar) - 1) / rSpar);
   } else {
     sparrateMonat = nSpar > 0 ? nochAufzubauen / nSpar : 0;
   }
@@ -1604,7 +1780,9 @@ function computeRentenluecke(
   };
 }
 
-function computeInflation(values: Record<string, number>): Record<string, number | string> {
+function computeInflation(
+  values: Record<string, number>,
+): Record<string, number | string> {
   const betrag = values.betrag ?? 10000;
   const inflationsrate = values.inflationsrate ?? 2.5;
   const jahre = values.jahre ?? 10;
@@ -1616,7 +1794,7 @@ function computeInflation(values: Record<string, number>): Record<string, number
 
   const r = inflationsrate / 100;
   const z = zinssatz / 100;
-  const realzins = ((1 + z) / (1 + r) - 1);
+  const realzins = (1 + z) / (1 + r) - 1;
 
   // ── Kaufkraft-Berechnung ──────────────────────────────────────
   const kaufkraftFaktor = 1 / Math.pow(1 + r, jahre);
@@ -1671,22 +1849,27 @@ function computeInflation(values: Record<string, number>): Record<string, number
   }
 
   // ── Warenkorb-Projektion ──────────────────────────────────────
-  const warenkorbZukunft = WARENKORB_POSTEN.map(p => ({
+  const warenkorbZukunft = WARENKORB_POSTEN.map((p) => ({
     name: p.name,
     heute: p.preis,
     zukunft: p.preis * Math.pow(1 + r, jahre),
   }));
   // Zeige die Top-5 mit dem höchsten absoluten Preisanstieg
   const topWaren = [...warenkorbZukunft]
-    .sort((a, b) => (b.zukunft - b.heute) - (a.zukunft - a.heute))
+    .sort((a, b) => b.zukunft - b.heute - (a.zukunft - a.heute))
     .slice(0, 5);
   const warenkorbText = topWaren
-    .map(w => `${w.name}: ${w.heute.toFixed(2)}€ → ${w.zukunft.toFixed(2)}€ (+${(w.zukunft - w.heute).toFixed(2)}€)`)
+    .map(
+      (w) =>
+        `${w.name}: ${w.heute.toFixed(2)}€ → ${w.zukunft.toFixed(2)}€ (+${(w.zukunft - w.heute).toFixed(2)}€)`,
+    )
     .join(" | ");
 
   // ── Historische Inflation ─────────────────────────────────────
   const histJahre = Object.keys(INFLATION_HISTORISCH).sort();
-  const histText = histJahre.map(j => `${j}: ${INFLATION_HISTORISCH[j]}%`).join(" | ");
+  const histText = histJahre
+    .map((j) => `${j}: ${INFLATION_HISTORISCH[j]}%`)
+    .join(" | ");
 
   // ── Verdopplungszeit (Rule of 72) ─────────────────────────────
   const verdopplungInflation = inflationsrate > 0 ? 72 / inflationsrate : 999;
@@ -1698,8 +1881,10 @@ function computeInflation(values: Record<string, number>): Record<string, number
   for (const j of schritte) {
     if (j > jahre) break;
     const kk = betrag / Math.pow(1 + r, j);
-    const verlust = ((1 - 1 / Math.pow(1 + r, j)) * 100);
-    zeitachseArr.push(`${j}J: ${Math.round(kk).toLocaleString("de-DE")}€ (−${verlust.toFixed(1)}%)`);
+    const verlust = (1 - 1 / Math.pow(1 + r, j)) * 100;
+    zeitachseArr.push(
+      `${j}J: ${Math.round(kk).toLocaleString("de-DE")}€ (−${verlust.toFixed(1)}%)`,
+    );
   }
   const zeitachseText = zeitachseArr.join(" | ");
 
@@ -1718,7 +1903,11 @@ function computeInflation(values: Record<string, number>): Record<string, number
   // Extra-Tipp für junge Zielgruppe
   const tippJung = `💡 Als junger Mensch ist Zeit dein größter Vorteil: Wer mit 18 anfängt, 50€/Monat in einen ETF zu investieren, hat mit 60 bei 7% Rendite ca. ${Math.round(50 * 12 * ((Math.pow(1.07, 42) - 1) / 0.07)).toLocaleString("de-DE")}€ – trotz Inflation real deutlich mehr als auf dem Sparbuch.`;
 
-  const fmt = (n: number) => n.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fmt = (n: number) =>
+    n.toLocaleString("de-DE", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
 
   return {
     // Kaufkraft
@@ -1743,14 +1932,20 @@ function computeInflation(values: Record<string, number>): Record<string, number
     sparplan_eingezahlt: sparrate > 0 ? `${fmt(sparplanEingezahlt)} €` : "–",
     sparplan_nominal: sparrate > 0 ? `${fmt(sparplanNominal)} €` : "–",
     sparplan_real: sparrate > 0 ? `${fmt(sparplanReal)} €` : "–",
-    sparplan_verlust: sparrate > 0 ? `${fmt(sparplanEingezahlt - sparplanReal)} €` : "–",
+    sparplan_verlust:
+      sparrate > 0 ? `${fmt(sparplanEingezahlt - sparplanReal)} €` : "–",
 
     // Gehalt
     gehalt_zukunft_nominal: gehalt > 0 ? `${fmt(gehaltZukunftNominal)} €` : "–",
     gehalt_zukunft_real: gehalt > 0 ? `${fmt(gehaltZukunftReal)} €` : "–",
-    gehalt_kaufkraft_verlust_monat: gehalt > 0 ? `${fmt(Math.abs(gehaltKaufkraftVerlustMonat))} €` : "–",
-    gehalt_kaufkraft_verlust_jahr: gehalt > 0 ? `${fmt(Math.abs(gehaltKaufkraftVerlustJahr))} €` : "–",
-    gehalt_text: gehalt > 0 ? gehaltText : "Gib dein Brutto-Monatsgehalt ein, um die Gehalts-Analyse zu sehen.",
+    gehalt_kaufkraft_verlust_monat:
+      gehalt > 0 ? `${fmt(Math.abs(gehaltKaufkraftVerlustMonat))} €` : "–",
+    gehalt_kaufkraft_verlust_jahr:
+      gehalt > 0 ? `${fmt(Math.abs(gehaltKaufkraftVerlustJahr))} €` : "–",
+    gehalt_text:
+      gehalt > 0
+        ? gehaltText
+        : "Gib dein Brutto-Monatsgehalt ein, um die Gehalts-Analyse zu sehen.",
 
     // Warenkorb
     warenkorb_text: warenkorbText,
@@ -1771,9 +1966,6 @@ export const CALCULATORS: Calculator[] = [
   {
     slug: "brutto-netto-rechner",
     title: "Brutto-Netto-Rechner",
-    metaTitle: "Brutto-Netto-Rechner 2025: Gehalt berechnen | BeAFox",
-    metaDescription:
-      "Wie viel bleibt netto vom Brutto? Berechne dein Gehalt 2025 mit Steuerklasse, Sozialabgaben und KV-Zusatzbeitrag — kostenlos und ohne Anmeldung.",
     excerpt:
       "Wie viel bleibt dir nach Steuern und Abgaben wirklich vom Gehalt? Mit Steuerklasse, Bundesland und allen Abzuegen.",
     category: "Gehalt & Arbeit",
@@ -1900,88 +2092,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Sozialabgaben gesamt", key: "sv_gesamt" },
       { label: "Abzuege gesamt", key: "abzuege_gesamt" },
     ],
-    tips: [
-      "Der Grundfreibetrag 2025 liegt bei 12.096 € pro Jahr — auf diesen Betrag zahlst du null Einkommensteuer. Bei einem Monatsbrutto unter ca. 1.008 € faellt so gut wie keine Lohnsteuer an.",
-      "Beas Tipp: Vergleiche den KV-Zusatzbeitrag deiner Krankenkasse mit dem Durchschnitt von ca. 2,5 %. Ein Wechsel zu einer guenstigeren Kasse kann dir 50 bis 150 € im Jahr sparen — bei gleichem Leistungsumfang.",
-      "Kirchensteuer laesst sich einfach berechnen: 8 % deiner Lohnsteuer in Baden-Wuerttemberg und Bayern, 9 % in allen anderen Bundeslaendern. Bei 200 € Lohnsteuer sind das 16 bis 18 € pro Monat.",
-      "Dein erster Gehaltszettel zeigt etwa 20 verschiedene Positionen. Die groessten Brocken: Rentenversicherung (9,3 % deines Bruttos), Krankenversicherung (ca. 8,5 %) und Lohnsteuer. Zusammen machen sie rund 80 % aller Abzuege aus.",
-      "Ab 520,01 € im Nebenjob wird er steuer- und sozialversicherungspflichtig. Nutze unseren Nebenjob-Steuer-Rechner um zu pruefen, wie sich ein Zweitjob auf dein Gesamtnetto auswirkt.",
-      "Beas Tipp: Wenn du 200 € mehr brutto verhandelst, landen davon je nach Steuerklasse nur 100 bis 130 € netto auf deinem Konto. Rechne vor der Gehaltsverhandlung durch, was die Erhoehung wirklich bringt.",
-      "Der Solidaritaetszuschlag faellt 2025 erst ab ca. 70.000 € Jahresbrutto an. Bei einem typischen Einstiegsgehalt von 35.000 bis 45.000 € zahlst du keinen Cent Soli.",
-    ],
-    intro: [
-      "Von 2.500 € brutto bleiben in Steuerklasse I nur ca. 1.700 € netto — fast ein Drittel deines Gehalts geht an Steuern und Sozialabgaben. Wie viel genau, haengt von deiner Steuerklasse, deinem Bundesland, dem KV-Zusatzbeitrag und deinem Alter ab.",
-      "Gerade beim ersten Job oder einem neuen Jobangebot ist das entscheidend: Dein Netto bestimmt, wie viel du fuer Miete, Sparen und Leben uebrig hast. Mit dem Rechner findest du in 30 Sekunden heraus, was von deinem Brutto wirklich auf dem Konto landet — aufgeschluesselt nach Lohnsteuer, Rentenversicherung, Krankenversicherung und allen weiteren Abzuegen.",
-      "Der Rechner bildet die Lohnsteuertabelle 2025 nach §32a EStG ab, inklusive Solidaritaetszuschlag, Kirchensteuer und allen vier Sozialversicherungszweigen. Was er nicht beruecksichtigt: Freibetraege aus der Steuererklaerung, geldwerte Vorteile und betriebliche Altersvorsorge.",
-    ],
-    howItWorks: [
-      {
-        title: "Brutto-Gehalt eingeben",
-        description: "Trag dein monatliches Bruttoegehalt ein — das ist der Betrag aus deinem Arbeitsvertrag, vor allen Abzuegen.",
-      },
-      {
-        title: "Steuerklasse waehlen",
-        description: "Ledige und Berufseinsteiger nehmen Klasse I. Deine Steuerklasse bestimmt, wie viel Lohnsteuer dein Arbeitgeber jeden Monat einbehaelt.",
-      },
-      {
-        title: "Bundesland und Kirchensteuer einstellen",
-        description: "Dein Bundesland beeinflusst den Kirchensteuersatz (8 % oder 9 %). Wenn du nicht in der Kirche bist, waehle einfach 'Nein'.",
-      },
-      {
-        title: "KV-Zusatzbeitrag pruefen",
-        description: "Der Durchschnitt liegt 2025 bei ca. 2,5 %. Deine Kasse kann mehr oder weniger verlangen — den genauen Satz findest du auf deiner Versichertenkarte oder der Kassen-Website.",
-      },
-      {
-        title: "Ergebnis auswerten",
-        description: "Du siehst dein Netto plus jede einzelne Abzugsposition. So erkennst du sofort, wo das meiste Geld hinfiesst — und wo du optimieren kannst.",
-      },
-    ],
-    useCases: [
-      "Bevor du dein erstes Jobangebot unterschreibst — damit du weisst, was netto uebrig bleibt.",
-      "Du willst vor einer Gehaltsverhandlung berechnen, was 200 € mehr brutto wirklich bringen.",
-      "Wenn du als Azubi dein Ausbildungsgehalt checkst und wissen willst, wie viel Steuern schon anfallen.",
-      "Du vergleichst zwei Jobangebote in verschiedenen Bundeslaendern und willst das Netto nebeneinander sehen.",
-      "Bevor du aus der Kirche austreten willst, rechnest du aus, wie viel Kirchensteuer du aktuell zahlst.",
-      "Du planst deinen Nebenjob neben dem Studium und willst wissen, ab wann Steuern faellig werden.",
-      "Wenn du wissen willst, ob sich ein Krankenkassenwechsel finanziell lohnt.",
-    ],
-    faqs: [
-      {
-        question: "Wie berechne ich mein Netto-Gehalt 2025?",
-        answer: "Gib dein Monatsbrutto, deine Steuerklasse und dein Bundesland ein. Der Rechner zieht automatisch Lohnsteuer, Soli, Kirchensteuer und alle vier Sozialversicherungen ab. Das Ergebnis ist dein monatliches Netto nach allen Abzuegen.",
-      },
-      {
-        question: "Wie viel Prozent wird vom Brutto abgezogen?",
-        answer: "Bei einem typischen Einstiegsgehalt von 2.500 € brutto in Steuerklasse I gehen ca. 30 bis 35 % an Steuern und Sozialabgaben ab. Davon sind rund 20 % Sozialabgaben (Rente, Kranken-, Pflege-, Arbeitslosenversicherung) und 10 bis 15 % Lohnsteuer.",
-      },
-      {
-        question: "Bis zu welchem Gehalt zahle ich keine Lohnsteuer?",
-        answer: "Der Grundfreibetrag 2025 liegt bei 12.096 € im Jahr, also ca. 1.008 € im Monat. Unterhalb dieser Grenze faellt in Steuerklasse I keine Lohnsteuer an. Sozialversicherungsbeitraege werden aber trotzdem abgezogen.",
-      },
-      {
-        question: "Was aendert sich am Netto wenn ich die Krankenkasse wechsle?",
-        answer: "Nur der KV-Zusatzbeitrag aendert sich — der allgemeine Satz von 14,6 % bleibt gleich. Bei 3.000 € brutto und 1 Prozentpunkt weniger Zusatzbeitrag sparst du ca. 15 € netto im Monat, also 180 € im Jahr. Nutze den Rechner, um den Effekt fuer dein Gehalt durchzuspielen.",
-      },
-      {
-        question: "Lohnt es sich fuer Azubis diesen Rechner zu nutzen?",
-        answer: "Auf jeden Fall. Auch auf ein Azubi-Gehalt von z.B. 1.000 € brutto fallen Sozialversicherungsbeitraege von ca. 200 € an. Der Rechner zeigt dir genau, wo dein Geld hinfiesst — und ab welchem Betrag Lohnsteuer dazukommt.",
-      },
-      {
-        question: "Was ist der Unterschied zwischen Steuerklasse I und IV?",
-        answer: "Fuer Ledige und Singles sind I und IV identisch in der Berechnung. Klasse IV wird automatisch vergeben, wenn beide Ehepartner etwa gleich viel verdienen. Der Unterschied zeigt sich erst bei III/V: Dort zahlt ein Partner weniger, der andere mehr Lohnsteuer.",
-      },
-      {
-        question: "Wie berechne ich das Netto bei einem Nebenjob?",
-        answer: "Ein Minijob bis 520 € bleibt steuer- und sozialversicherungsfrei fuer dich. Verdienst du mehr, wird der Nebenjob in Steuerklasse VI versteuert — das ist die teuerste Klasse. Nutz unseren Nebenjob-Steuer-Rechner fuer die genaue Berechnung.",
-      },
-    ],
   },
   {
     slug: "sparplan-rechner",
     title: "Sparplan-Rechner",
-    metaTitle: "ETF Sparplan Rechner 2025 | BeAFox",
-    metaDescription:
-      "Berechne die Wertentwicklung deines ETF Sparplans mit Zinseszins, Anfangskapital, Steuern und Teilfreistellung – praezise wie bei Finanzfluss.",
     excerpt:
       "Wie viel Vermoegen baust du mit deinem Sparplan auf? Mit Anfangskapital, Zinseszins und optionaler Steuerberechnung.",
     category: "Sparen & Budget",
@@ -2079,75 +2193,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Steuerpflichtiger Gewinn", key: "steuerpflichtiger_gewinn" },
       { label: "Kapitalertragsteuer (26,375%)", key: "kapitalertragsteuer" },
     ],
-    tips: [
-      "Eine durchschnittliche Rendite von 7% p.a. ist beim Weltmarkt-ETF (MSCI World) ueber 15+ Jahre realistisch.",
-      "Der Zinseszins-Effekt wird mit der Zeit immer staerker – frueh anfangen lohnt sich!",
-      "Teilfreistellung: Bei Aktienfonds (mind. 51% Aktien) sind 30% der Gewinne steuerfrei.",
-      "Der Sparerpauschbetrag betraegt 1.000 € (Einzelperson) bzw. 2.000 € (Ehepaar) pro Jahr.",
-      "Auch 25 € im Monat machen langfristig einen grossen Unterschied – Hauptsache anfangen!",
-    ],
-    intro: [
-      "50 € pro Monat bei 7% Rendite werden in 30 Jahren zu ueber 56.000 € – ohne dass du aktiv am Markt tradest. Das ist der Magie des Zinseszins-Effekts: dein Geld arbeitet fuer dich.",
-      "Mit diesem Sparplan-Rechner siehst du, wie viel Vermoegen du aufbaust. Gib deine monatliche Sparrate, eine realistische Rendite und deine Laufzeit ein – der Rechner zeigt dir die Entwicklung mit und ohne Steuern.",
-    ],
-    howItWorks: [
-      {
-        title: "Anfangskapital eingeben (optional)",
-        description: "Hast du Startkapital auf der hohen Kante? Gib es ein – es wird mitverzinst. Wenn nicht, kannst du bei 0 € anfangen.",
-      },
-      {
-        title: "Sparrate festlegen",
-        description: "Wie viel kannst du monatlich, vierteljaehrlich oder jaehrlich sparen? Je hoeher, desto schneller waechst dein Vermoegen – aber auch 50 € im Monat macht einen Unterschied.",
-      },
-      {
-        title: "Rendite realistisch waehlen",
-        description: "Bei Aktienfonds (ETF) sind 7% p.a. ueber lange Zeit realistisch. Bei Obligationen/Mischfonds 3-4%. Konservativ rechnen ist besser als zu optimistisch.",
-      },
-      {
-        title: "Laufzeit einstellen",
-        description: "Je laenger du sparst, desto mehr profitierst du vom Zinseszins. 10 Jahre, 30 Jahre – der Rechner zeigt die komplette Entwicklung.",
-      },
-      {
-        title: "Steuern optional anpassen",
-        description: "Mit Teilfreistellung sparst du Steuern. Nach Abzug deines Sparerpauschbetrages (1.000 €) zahlst du KET auf Gewinne – der Rechner berechnet das optional.",
-      },
-    ],
-    useCases: [
-      "Du willst endlich mit ETF-Sparen anfangen und sehen, wie viel dabei herauskommt.",
-      "Bevor du Ausbildung oder Studium anfaengst, willst du einen ETF-Sparplan fuer eine Rückenlage aufbauen.",
-      "Du planst Altersvorsorge und brauchst realistische Zahlen fuer 40+ Jahre.",
-      "Du erhaeltst ein Erbe oder Bonus und willst berechnen, wie viel es bis zur Rente wert sein koennte.",
-      "Dein Freund hat einen Sparplan – du willst nachrechnen, ob sich das fuer dich lohnt.",
-    ],
-    faqs: [
-      {
-        question: "Was ist Teilfreistellung?",
-        answer: "Bei Aktienfonds (mind. 51% Aktien) sind 30% deiner Gewinne steuerfrei – das ist das Gesetz. Das bedeutet: du zahlst nur auf 70% der Gewinne Steuern. Das spart dir echtes Geld.",
-      },
-      {
-        question: "Was ist der Sparerpauschbetrag?",
-        answer: "2025 kannst du 1.000 € Kapitalertraege steuerfrei einstreichen (Ehepaar: 2.000 €). Das heisst: wenn dein ETF 800 € Gewinn macht, zahlst du darauf 0 € Steuern.",
-      },
-      {
-        question: "Welche Rendite ist realistisch?",
-        answer: "Bei Weltmarkt-ETFs (MSCI World) sind 7% p.a. ueber 15+ Jahre historisch realistisch. Kurzfristig kann es stark schwanken, aber langfristig glaettet sich das aus. Konservativ: 5-6%.",
-      },
-      {
-        question: "Wann sollte ich anfangen zu sparen?",
-        answer: "Je fruher, desto besser – auch mit kleinen Betraegen. Wenn du mit 20 bei 7% Rendite 50 € monatlich sparst, hast du mit 50 Jahren ueber 100.000 € angehaeufelt. Starten lohnt sich immer.",
-      },
-      {
-        question: "Brauche ich ein Depot bei der Bank?",
-        answer: "Ja, zum Sparen in ETF brauchst du ein Wertpapierdepot. Das eroeffnest du bei deiner Bank oder bei Online-Brokern wie Trade Republic, Scalable Capital, etc. Das ist kostenlos.",
-      },
-    ],
   },
   {
     slug: "zinsrechner",
     title: "Zinsrechner",
-    metaTitle: "Zinsrechner 2025 – Zinsen & Zinseszins berechnen | BeAFox",
-    metaDescription:
-      "Berechne Zinsen und Zinseszins fuer Einmalanlagen – mit Zinsintervall, Laufzeit in Monaten und optionaler Steuerberechnung.",
     excerpt:
       "Wie viel wird aus deiner Einmalanlage? Berechne Endkapital, Zinsertraege und Effektivzins – mit Zinseszins-Effekt.",
     category: "Investieren",
@@ -2232,75 +2281,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Steuerpflichtiger Gewinn", key: "steuerpflichtiger_gewinn" },
       { label: "Kapitalertragsteuer (26,375%)", key: "kapitalertragsteuer" },
     ],
-    tips: [
-      "Zinseszins ist der staerkste Verbuendete beim Vermoegensaufbau – dein Geld verdient Geld.",
-      "Der Unterschied zwischen jaehrlicher und monatlicher Verzinsung wird bei langen Laufzeiten deutlich.",
-      "Effektivzins zeigt die tatsaechliche Rendite inklusive Zinseszins-Effekt.",
-      "Der Sparerpauschbetrag (1.000 € Einzel / 2.000 € Ehepaar) macht Zinsertraege bis dahin steuerfrei.",
-      "Bei Schulden wirkt Zinseszins gegen dich – tilge hochverzinste Kredite zuerst.",
-    ],
-    intro: [
-      "10.000 € bei 3% Zins ueber 10 Jahre ergeben nicht 13.000 €, sondern 13.439 €. Das ist Zinseszins – die 8. Wundertat der Welt, wie Einstein sagte. Deine Zinsen verdienen selbst wieder Zinsen.",
-      "Mit diesem Zinsrechner siehst du die genaue Entwicklung deiner Geldanlage. Gib dein Kapital, den Zinssatz, die Laufzeit und das Zinsintervall ein – und beobachte, wie dein Geld waechst.",
-    ],
-    howItWorks: [
-      {
-        title: "Kapital eingeben",
-        description: "Das ist deine Einmalanlage – z.B. 10.000 € auf ein Festgeldkonto oder Tagesgeldkonto.",
-      },
-      {
-        title: "Zinssatz eintragen",
-        description: "Der Jahreszinssatz ist die Rendite – z.B. 2,5% bei Tagesgeld oder 3,5% bei Festgeld. Check immer die Bank mit den besten Konditionen.",
-      },
-      {
-        title: "Laufzeit in Monaten einstellen",
-        description: "Wie lange laeuft die Anlage? 12 Monate, 24 Monate, 60 Monate – je laenger, desto mehr Zinseszins profitierst du.",
-      },
-      {
-        title: "Zinsintervall waehlen",
-        description: "Monatliche oder jaehrliche Verzinsung? Monatliche ist besser fuer dich – deine Zinsen werden schneller wieder verzinst.",
-      },
-      {
-        title: "Steuern kalkulieren",
-        description: "Kapitalertragsteuer (26,375%) faellt auf Gewinne an – aber nur ueber deinem Sparerpauschbetrag (1.000 €). Der Rechner zeigt dir Brutto und Netto.",
-      },
-    ],
-    useCases: [
-      "Du hast 5.000 € und willst Tagesgeld vergleichen – welche Bank bringt dich zum besten Ergebnis?",
-      "Du ueberlegst, ein Festgeldkonto fuer 12 oder 24 Monate zu eroeffnen – wie viel bringt das?",
-      "Du willst verstehen, wie Nominalzins und Effektivzins sich unterscheiden.",
-      "Du sparst fuer einen Motorrad-Fuehrerschein in 18 Monaten und willst die Zinsen einrechnen.",
-      "Du hast eine Erbschaft und moechtest berechnen, wie viel das auf Tagesgeld bringt.",
-    ],
-    faqs: [
-      {
-        question: "Was ist der Unterschied zwischen Nominal- und Effektivzins?",
-        answer: "Nominalzins ist der Basiszinssatz, den die Bank angibt (z.B. 3%). Effektivzins (auch APR) beruecksichtigt Zinseszins und alle zusaetzlichen Kosten. Der Effektivzins ist die wahre Rendite.",
-      },
-      {
-        question: "Wie stark ist der Zinseszins-Effekt wirklich?",
-        answer: "Dramatisch! 10.000 € bei 3% Zins ueber 10 Jahre: ohne Zinseszins = 13.000 €, mit Zinseszins = 13.439 €. Je laenger, desto deutlicher wird der Unterschied.",
-      },
-      {
-        question: "Muss ich Steuern auf Zinsen zahlen?",
-        answer: "Ja, ab ca. 550 € Gewinn im Jahr (ueber deinem Sparerpauschbetrag von 1.000 €). Dann zahlst du 26,375% Kapitalertragsteuer. Unter 1.000 € Gewinn: 0 € Steuern.",
-      },
-      {
-        question: "Welches Zinsintervall waehle ich?",
-        answer: "Monatliche Verzinsung ist besser als jaehrlich – deine Zinsen werden schneller wieder verzinst. Der Unterschied wird bei langen Laufzeiten deutlich.",
-      },
-      {
-        question: "Wie finde ich die besten Zinsen?",
-        answer: "Vergleiche Tagesgeld und Festgeld auf Portalen wie Finanzfluss oder Finanztest. 2025 gibt es noch 2-3,5% bei guten Banken. Die beste Anlage ist nur wenige Klicks entfernt.",
-      },
-    ],
   },
   {
     slug: "budget-rechner",
     title: "Budget-Rechner (50-30-20)",
-    metaTitle: "Budget-Rechner nach 50-30-20 Best Practice | BeAFox",
-    metaDescription:
-      "Plane dein monatliches Budget nach dem 50-30-20 Best-Practice-Prinzip: Fixkosten, Lifestyle und Sparen – mit Bewertung und Empfehlung.",
     excerpt:
       "Gib dein Einkommen und deine Ausgaben ein – der Rechner zeigt dir, ob dein Budget nach dem 50-30-20 Best-Practice-Prinzip aufgeht.",
     category: "Sparen & Budget",
@@ -2447,76 +2431,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Empfehlung (mind. 20%)", key: "sparen_empf" },
       { label: "Bewertung", key: "sparen_bewertung" },
     ],
-    tips: [
-      "Die 50-30-20 Regel ist ein bewaehrtes Best-Practice-Prinzip: 50% Grundbedarf, 30% Wuensche, 20% Sparen.",
-      "Miete sollte idealerweise nicht mehr als 30% deines Nettoeinkommens betragen.",
-      "Versicherungen pruefen: Haftpflicht ist Pflicht, BU-Versicherung sehr empfehlenswert.",
-      "Urlaub monatlich zuruecklegen: 80 €/Monat = fast 1.000 € Urlaubsbudget pro Jahr.",
-      "Abos regelmaessig checken – viele zahlen fuer Dienste, die sie kaum nutzen.",
-      "Auch 50 € monatlich in einen ETF-Sparplan investiert machen langfristig einen Unterschied.",
-    ],
-    intro: [
-      "Die meisten jungen Menschen geben ueber 40% ihres Nettoeinkommens fuer Miete aus – zu viel. Die 50-30-20 Regel besagt: max. 50% fuer Fixkosten (Miete, Lebensmittel, Versicherungen), 30% fuer Lifestyle (Freizeit, Restaurant), 20% fuer Sparen.",
-      "Mit diesem Budget-Rechner planst du deinen Monat. Gib dein Nettoeinkommen ein, trag deine Fixkosten und Lifestyle-Ausgaben ein – der Rechner zeigt dir, ob dein Budget aufgeht und wie viel du sparst.",
-    ],
-    howItWorks: [
-      {
-        title: "Netto-Einkommen eingeben",
-        description: "Das ist dein monatliches Netto nach Steuern und Abgaben – die Summe, die auf dein Konto kommt.",
-      },
-      {
-        title: "Fixkosten eintragen",
-        description: "Miete, Nebenkosten, Versicherungen, Lebensmittel, Mobilitaet – alles, was du monatlich zahlen musst. Diese sollten max. 50% sein.",
-      },
-      {
-        title: "Lifestyle-Ausgaben addieren",
-        description: "Restaurant, Kino, Fitness, Hobby, Shopping – die Dinge, die dir Spass machen. Ideal: 30% deines Nettos. Wichtig fuer Work-Life-Balance!",
-      },
-      {
-        title: "Ergebnis pruefen",
-        description: "Der Rechner zeigt dir die Aufteilung und gibt Feedback: passt alles ins Budget? Sparst du genug?",
-      },
-      {
-        title: "Optimieren und anpassen",
-        description: "Zu viel Fixkosten? Vielleicht billigere Wohnung? Zu viel Lifestyle? Abos checken? Der Rechner hilft dir, Potenziale zu sehen.",
-      },
-    ],
-    useCases: [
-      "Du bekommst deine erste eigene Wohnung und brauchst einen realistischen Budgetplan.",
-      "Du merkst, dass du am Ende des Monats pleite bist – Zeit fuer einen Budget-Check!",
-      "Du willst herausfinden, wie viel du realistische sparen kannst – mit diesem Rechner siehst du es.",
-      "Du planst einen Umzug und willst berechnen, wie viel Miete dein Budget vertraegt.",
-      "Du verdienst mehr und wunderst dich, wohin das Geld geht – Transparenz schafft der Budgetrechner.",
-    ],
-    faqs: [
-      {
-        question: "Was ist die 50-30-20 Regel?",
-        answer: "Eine bewiesene Formel: 50% deines Nettos fuer Grundbedarf (Miete, Essen, Versicherung), 30% fuer Lifestyle (Freizeit, Spass), 20% fuer Sparen. Das ist die ideale Balance zwischen Leben und Vorsorge.",
-      },
-      {
-        question: "Meine Fixkosten sind ueber 50% – was kann ich tun?",
-        answer: "Das ist ein echtes Problem, besonders in teuren Staedten. Optionen: billigere Wohnung, WG statt allein, Nebenkosten senken (Strom sparen, Anbieter wechseln), Versicherungen pruefen. Auch 100 € sparst du schnell.",
-      },
-      {
-        question: "Wie viel sollte ich als Student sparen?",
-        answer: "Die 50-30-20 Regel ist auch fuer Studis das Ideal. Realitaet: oft reicht es nur fuer 10-15% sparen, wenn du BAfoeg oder wenig verdienst. Hauptsache, du fangst an – auch 30 € im Monat ist besser als 0 €.",
-      },
-      {
-        question: "Darf die Miete wirklich nicht ueber 30% sein?",
-        answer: "Das ist die Faustregel. Aber: In Grossstaedten (Muenchen, Berlin, Hamburg) sind 35-40% realistisch. Wenn du uber 40% ausgibst, sparst du zu wenig – suche nach Moeglichkeiten zum Sparen.",
-      },
-      {
-        question: "Was zaehlt alles zu den Fixkosten?",
-        answer: "Miete (kalt + warm), Lebensmittel, Versicherungen (Haftpflicht, Hausrat), Telefon/Internet, Mobilitaet (Bahncard, Auto), Schulden/Raten. Lifestyle-Ausgaben wie Restaurant oder Kino gehoeren nicht dazu.",
-      },
-    ],
   },
   {
     slug: "mietkosten-rechner",
     title: "Mietkosten-Rechner",
-    metaTitle: "Mietkosten-Rechner 2025 – Passt die Wohnung ins Budget? | BeAFox",
-    metaDescription:
-      "Pruefe ob deine Wohnung ins Budget passt: mit Warmmiete, Strom, Internet, GEZ, Versicherung, Preis/m² und personalisierter Empfehlung nach Stadtgroesse.",
     excerpt:
       "Gib alle Wohnkosten ein und finde heraus, ob die Wohnung wirklich in dein Budget passt – personalisiert nach Stadtgroesse und Wohnform.",
     category: "Alltag & Lifestyle",
@@ -2653,76 +2571,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Kaution (3 Kaltmieten)", key: "kaution_3m" },
       { label: "Restbudget nach Wohnkosten", key: "rest_budget" },
     ],
-    tips: [
-      "Faustregel: Warmmiete + Nebenkosten sollten je nach Stadt 25-35% deines Nettoeinkommens nicht ueberschreiten.",
-      "In Grossstaedten (Berlin, Muenchen, Hamburg) ist bis zu 35% realistisch – dafuer an anderen Stellen sparen.",
-      "WG-Tipp: GEZ (18,36 €) und Internet koennt ihr euch teilen – spart schnell 20-30 € pro Person.",
-      "Nebenkosten-Abrechnung immer pruefen: Nachzahlungen koennen ueberraschend hoch ausfallen.",
-      "Kaution: Vermieter duerfen max. 3 Kaltmieten verlangen – als Ruecklage einplanen.",
-      "Strom: Anbieter vergleichen lohnt sich! Wechsel spart oft 100-200 € im Jahr.",
-    ],
-    intro: [
-      "Miete ist der groesste Posten im Budget – in Muenchen zahlen junge Menschen durchschnittlich ueber 800 € warm monatlich. Das ist oft 40-50% des Nettoeinkommens. Aber: nicht nur die Miete zaehlt, sondern auch Nebenkosten, Strom, Internet, GEZ und Versicherung.",
-      "Mit diesem Mietkosten-Rechner siehst du, ob eine Wohnung wirklich in dein Budget passt. Gib dein Nettoeinkommen ein, waehle deine Wohnform (allein, WG, zuhause) und trag alle Kosten ein – der Rechner zeigt dir, ob es passt.",
-    ],
-    howItWorks: [
-      {
-        title: "Netto-Einkommen eingeben",
-        description: "Das ist die Basis – dein monatliches Netto nach Steuern und Abgaben. Nur von diesem Betrag kannst du realistisch rechnen.",
-      },
-      {
-        title: "Wohnform waehlen",
-        description: "Allein, WG, noch zuhause? Je nach Wohnform unterscheiden sich Kosten dramatisch. Eine WG kann bis zu 50% der Mietkosten sparen.",
-      },
-      {
-        title: "Alle Kosten eintragen",
-        description: "Nicht nur Miete! Nebenkosten, Strom, Internet, GEZ, Versicherung – jeder Posten zaehlt. Das ist die Warmmiete im echten Leben.",
-      },
-      {
-        title: "Stadtgroesse auswaehlen",
-        description: "Muenchen? Berlin? Kleinstadt? Das beeinflusst realistische Vergleichswerte. Der Rechner zeigt, wie deine Kosten im Vergleich stehen.",
-      },
-      {
-        title: "Bewertung lesen und Tipps nutzen",
-        description: "Der Rechner gibt dir Feedback: Ist die Wohnung ueberteuert? Brauchst du eine billigere? Solltest du eine WG suchen?",
-      },
-    ],
-    useCases: [
-      "Du suchst deine erste Wohnung und weisst nicht, wie viel Miete dein Budget vertraegt.",
-      "Du vergleichst: WG vs. allein – welche Option ist guenstiger und macht mehr Sinn fuer dein Budget?",
-      "Du ueberlegt, von zuhause auszuziehen – wie hoch faellt der Kostensprung aus?",
-      "Du planst einen Umzug und willst vorher durchkalkulieren, ob du dir die neue Stadt/Wohnung leisten kannst.",
-      "Du erhaeltst ein Jobangebot in einer anderen Stadt – nutze den Rechner, um zu sehen, wie es finanziell aussieht.",
-    ],
-    faqs: [
-      {
-        question: "Wie viel Miete bei welchem Gehalt?",
-        answer: "Faustregel: max. 30% deines Nettos fuer Miete (kalt). Bei 1.500 € Netto also ca. 450 €. Mit Nebenkosten/Strom/Internet bist du schnell bei 25-35% des Nettos. In Grossstaedten bis 40% realistisch.",
-      },
-      {
-        question: "Was kostet eine Kaution und wie laeuft sie ab?",
-        answer: "Vermieter duerfen max. 3 Monatskaltmieten als Kaution verlangen. Diese gibt es nach Umzug zurück – aber erst nach Nebenkostenabrechnung und Mängelprüfung (3-6 Monate). Einplanen!",
-      },
-      {
-        question: "Wie hoch fallen Nebenkosten typisch aus?",
-        answer: "Durchschnitt 200-300 € monatlich (Wasser, Heizung, Abfall, Hausmeister). Im Winter mehr (Heizung!), im Sommer weniger. Immer im Mietvertrag nachfragen und Nebenkosten-Abrechnungen pruefen.",
-      },
-      {
-        question: "Wie funktioniert GEZ in einer WG?",
-        answer: "Pro Wohnung 18,36 € (2025), nicht pro Person. In einer WG teilt ihr euch das – also z.B. in 3er WG nur 6 € pro Person. Das ist ein grosser Vorteil der WG!",
-      },
-      {
-        question: "Wie sparen wir Kosten in der WG?",
-        answer: "GEZ teilen (spart 12 € pro Person), Internet teilen (spart 20 €), grossere Einkaufsmengen, gemeinsam kochen. In einer 3er WG spart jeder 50-100 € monatlich vs. allein wohnen. Aber: weniger Privatsphäre.",
-      },
-    ],
   },
   {
     slug: "taschengeld-rechner",
     title: "Taschengeld-Rechner",
-    metaTitle: "Taschengeld Rechner 2025 – Empfehlung nach Alter | BeAFox",
-    metaDescription:
-      "Wie viel Taschengeld ist fair? Vergleiche dein Taschengeld mit der DJI-Empfehlung, teile es smart auf und erreiche dein Sparziel.",
     excerpt:
       "Vergleiche dein Taschengeld mit der offiziellen Empfehlung, plane Fixkosten, Freizeit & Sparziel – personalisiert nach Alter und Status.",
     category: "Alltag & Lifestyle",
@@ -2835,7 +2687,11 @@ export const CALCULATORS: Calculator[] = [
     computeAll: computeTaschengeld,
     results: [
       // ── Empfehlung ──
-      { label: "Empfehlung (DJI-Taschengeldtabelle)", isSectionHeader: true, key: "_sec1" },
+      {
+        label: "Empfehlung (DJI-Taschengeldtabelle)",
+        isSectionHeader: true,
+        key: "_sec1",
+      },
       { label: "DJI-Empfehlung: Minimum", key: "empf_min" },
       { label: "DJI-Empfehlung: Maximum", key: "empf_max" },
       { label: "Differenz zu Empfehlung (Mitte)", key: "diff_empf" },
@@ -2845,17 +2701,36 @@ export const CALCULATORS: Calculator[] = [
       { label: "Taschengeld + Nebenjob", key: "gesamtbudget", highlight: true },
       { label: "Davon Fixkosten gesamt", key: "fixkosten" },
       { label: "Fixkosten-Anteil", key: "fixkosten_pct" },
-      { label: "Restbudget nach Fixkosten", key: "rest_nach_fix", highlight: true },
+      {
+        label: "Restbudget nach Fixkosten",
+        key: "rest_nach_fix",
+        highlight: true,
+      },
       { label: "Fixkosten-Check", key: "bewertung_fix" },
       // ── Empfohlene Aufteilung (50-30-20) ──
-      { label: "Empfohlene Aufteilung (50-30-20)", isSectionHeader: true, key: "_sec3" },
+      {
+        label: "Empfohlene Aufteilung (50-30-20)",
+        isSectionHeader: true,
+        key: "_sec3",
+      },
       { label: "Bedarf (Handy, Fahrt, Schule) – 50%", key: "budget_bedarf" },
-      { label: "Freizeit (Kino, Hobbys, Snacks) – 30%", key: "budget_freizeit" },
+      {
+        label: "Freizeit (Kino, Hobbys, Snacks) – 30%",
+        key: "budget_freizeit",
+      },
       { label: "Sparen (ETF, Sparziel) – 20%", key: "budget_sparen" },
       // ── Reale Aufteilung nach Fixkosten ──
-      { label: "Reale Aufteilung (nach Fixkosten)", isSectionHeader: true, key: "_sec4" },
+      {
+        label: "Reale Aufteilung (nach Fixkosten)",
+        isSectionHeader: true,
+        key: "_sec4",
+      },
       { label: "Fuer Freizeit verfuegbar (60%)", key: "freizeit_real" },
-      { label: "Zum Sparen moeglich (40%)", key: "sparen_real", highlight: true },
+      {
+        label: "Zum Sparen moeglich (40%)",
+        key: "sparen_real",
+        highlight: true,
+      },
       // ── Sparziel-Analyse ──
       { label: "Dein Sparziel", isSectionHeader: true, key: "_sec5" },
       { label: "Noetige Sparrate pro Monat", key: "sparrate_noetig" },
@@ -2868,67 +2743,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Max. Nebenjob-Potenzial", key: "nebenjob_potenzial" },
       { label: "Spar-Ideen fuer dein Alter", key: "spar_ideen" },
     ],
-    tips: [
-      "50-30-20 Regel: 50% Bedarf, 30% Freizeit, 20% Sparen – auch beim Taschengeld!",
-      "Fuehre ein Haushaltsbuch oder nutze eine App – so siehst du, wohin dein Geld fliesst.",
-      "Streaming-Tipp: Familien-Abo teilen spart bis zu 50%. Spotify Duo, Netflix Standard etc.",
-      "Handy-Tipp: Prepaid oder guenstige Tarife (z.B. fraenk, Aldi Talk) ab 5-8 EUR/Monat.",
-      "Deutschlandticket (58 EUR) lohnt sich ab 2-3 Fahrten pro Woche – rechne nach!",
-      "Nebenjob ab 16: Supermarkt, Nachhilfe, Babysitten – oft 8-12 EUR/Stunde moeglich.",
-      "Spar-Challenge: Jede Woche 1 EUR mehr sparen (Woche 1: 1 EUR, Woche 2: 2 EUR, …) = 1.378 EUR/Jahr!",
-      "Ab 18: Eigenes Girokonto + ETF-Sparplan eroeffnen – auch kleine Betraege lohnen sich langfristig!",
-      "Kaufe gebraucht (Vinted, eBay Kleinanzeigen) statt neu – spart oft 50-70% bei Kleidung und Technik.",
-      "Wunschliste statt Impulskauf: 48h warten bevor du etwas kaufst – 70% der Kaeufe fallen weg!",
-    ],
-    intro: [
-      "Taschengeld ist deine erste finanzielle Lektion. Die Taschengeldtabelle der Deutschen Jugendinstituts (DJI) zeigt, wie viel Geld in deinem Alter fair ist – und wie du es klug aufteilst zwischen Fixkosten, Freizeit und Sparen.",
-      "Egal ob du 12 oder 18 bist, mit dem Taschengeld-Rechner erkennst du schnell, ob dein Budget realistisch ist und wie viel überhaupt zum Sparen bleibt.",
-    ],
-    howItWorks: [
-      { title: "Alter & Status eingeben", description: "Gib dein Alter und deinen Status ein (Schüler, Azubi, Student, Berufstätig). Das bestimmt die DJI-Empfehlung und deine durchschnittlichen Ausgaben." },
-      { title: "Fixkosten hinzufügen", description: "Trage deine regelmäßigen Ausgaben ein: Handy, Streaming, Fahrtkosten, Schulmaterial. Der Rechner zeigt automatisch, wie viel Prozent deines Budgets hierfür weggeht." },
-      { title: "Sparziel definieren", description: "Setze dir ein konkretes Ziel (Konsole, Führerschein, Reise) und entscheide, wie lange du sparen möchtest. Der Rechner berechnet, wie viel du monatlich beiseitelegen musst." },
-      { title: "50-30-20-Regel anwenden", description: "Der Rechner zeigt dir die ideale Aufteilung: 50% für Bedarf, 30% für Freizeit, 20% zum Sparen. So behältst du die Balance zwischen Genuss und Vermögensaufbau." },
-      { title: "Empfehlung & Tipps lesen", description: "Lade dein Ergebnis herunter oder teile es mit deinen Eltern. Der Rechner gibt dir konkrete Nebenjob- und Spar-Ideen für dein Alter." },
-    ],
-    useCases: [
-      "Taschengeld mit Eltern verhandeln – mit der DJI-Empfehlung hast du ein starkes Argument",
-      "Wöchentliches Budget planen als Teenager – damit das Geld vom Montag bis Freitag reicht",
-      "Sparziel konkretisieren: Wie viel muss ich monatlich beiseitelegen für eine neue Konsole?",
-      "Nebenjob Check: Lohnt sich der Supermarktjob neben der Schule?",
-      "Streaming-Abo überprüfen: Passt Netflix noch in mein Budget oder sollte ich es teilen?",
-      "Führerschein-Planung: Wie viel muss ich jeden Monat sparen, um den Führerschein mit 18 zu machen?",
-      "Budgetgeld vs. Taschengeld verstehen: Was ist der Unterschied und was passt zu mir?",
-    ],
-    faqs: [
-      {
-        question: "Wie viel Taschengeld ist normal für mein Alter?",
-        answer: "Die DJI-Empfehlung 2025 liegt zwischen 10-12 EUR/Woche mit 10 Jahren und 75-100 EUR/Woche mit 18+ Jahren. Der Rechner zeigt die exakte Spanne für dein Alter.",
-      },
-      {
-        question: "Ab wann sollte ich Taschengeld bekommen?",
-        answer: "Experten empfehlen ab 6-7 Jahren mit kleinen Beträgen zu starten (1-2 EUR/Woche). So lernst du früh, Geld einzuteilen. Mit 10 Jahren kann es regelmäßiger werden.",
-      },
-      {
-        question: "Was ist der Unterschied zwischen Taschengeld und Budgetgeld?",
-        answer: "Taschengeld ist zur freien Verfügung – du entscheidest komplett. Budgetgeld ist für deine Ausgaben reserviert (Handy, Klamotten) und du verwaltest es selbst. Viele nutzen eine Mischung.",
-      },
-      {
-        question: "Wie teile ich mein Taschengeld sinnvoll auf?",
-        answer: "Die 50-30-20-Regel ist ein guter Start: 50% für Notwendiges (Handy, Fahrt), 30% für Freizeit (Kino, Snacks), 20% zum Sparen. Der Rechner zeigt deine persönliche Aufteilung.",
-      },
-      {
-        question: "Sollte ich für Hausarbeit Taschengeld bekommen?",
-        answer: "Experten sagen: Ja, Taschengeld ist bedingungslos (gehört zur Familie). Zusätzlich kannst du für Besonderes (Rasenmähen, Fensterputzen) etwas verdienen – das ist dann ein Mini-Job.",
-      },
-    ],
   },
   {
     slug: "notgroschen-rechner",
     title: "Notgroschen-Rechner",
-    metaTitle: "Notgroschen Rechner 2025 – Wie viel Ruecklagen brauchst du? | BeAFox",
-    metaDescription:
-      "Berechne deinen idealen Notgroschen: personalisiert nach Einkommen, Fixkosten, Lebenssituation und Risikofaktoren. Mit Aufbauplan und Tagesgeld-Tipp.",
     excerpt:
       "Wie viel Notgroschen brauchst du wirklich? Personalisiert nach Status, Fixkosten, Auto & Haustier – mit konkretem Aufbauplan.",
     category: "Sparen & Budget",
@@ -3054,7 +2872,11 @@ export const CALCULATORS: Calculator[] = [
     computeAll: computeNotgroschen,
     results: [
       // ── Deine Fixkosten ──
-      { label: "Deine monatlichen Fixkosten", isSectionHeader: true, key: "_sec1" },
+      {
+        label: "Deine monatlichen Fixkosten",
+        isSectionHeader: true,
+        key: "_sec1",
+      },
       { label: "Fixkosten gesamt", key: "fixkosten" },
       { label: "Fixkosten-Quote (vom Netto)", key: "fixkosten_quote" },
       // ── Empfehlung ──
@@ -3063,10 +2885,17 @@ export const CALCULATORS: Calculator[] = [
       { label: "Empfohlene Monate (Min.)", key: "empf_monate_min" },
       { label: "Empfohlene Monate (Max.)", key: "empf_monate_max" },
       { label: "Zuschlag Auto (Reparatur-Puffer)", key: "zuschlag_auto" },
-      { label: "Zuschlag Haustier (Tierarzt-Puffer)", key: "zuschlag_haustier" },
+      {
+        label: "Zuschlag Haustier (Tierarzt-Puffer)",
+        key: "zuschlag_haustier",
+      },
       { label: "Notgroschen Minimum", key: "notgroschen_min" },
       { label: "Notgroschen Maximum", key: "notgroschen_max" },
-      { label: "Notgroschen Empfehlung (Mitte)", key: "notgroschen_empf", highlight: true },
+      {
+        label: "Notgroschen Empfehlung (Mitte)",
+        key: "notgroschen_empf",
+        highlight: true,
+      },
       // ── Dein Status ──
       { label: "Dein aktueller Stand", isSectionHeader: true, key: "_sec3" },
       { label: "Bereits vorhanden", key: "vorhanden" },
@@ -3076,7 +2905,11 @@ export const CALCULATORS: Calculator[] = [
       // ── Aufbauplan ──
       { label: "Aufbauplan", isSectionHeader: true, key: "_sec4" },
       { label: "Fehlbetrag", key: "fehlbetrag" },
-      { label: "Monate bis Ziel (bei deiner Sparrate)", key: "monate_aufbau", highlight: true },
+      {
+        label: "Monate bis Ziel (bei deiner Sparrate)",
+        key: "monate_aufbau",
+        highlight: true,
+      },
       { label: "Noetige Sparrate fuer 6 Monate", key: "sparrate6m" },
       { label: "Noetige Sparrate fuer 12 Monate", key: "sparrate12m" },
       { label: "Noetige Sparrate fuer 24 Monate", key: "sparrate24m" },
@@ -3086,67 +2919,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Tagesgeld-Zinsen pro Jahr (ca. 3%)", key: "tagesgeld_ertrag" },
       { label: "Empfehlung", key: "tagesgeld_tipp" },
     ],
-    tips: [
-      "Goldene Regel: 3-6 Netto-Monatsausgaben als Notgroschen – Selbststaendige besser 6-12 Monate.",
-      "Notgroschen gehoert aufs Tagesgeldkonto – jederzeit verfuegbar, nicht auf dem Girokonto 'vergessen'.",
-      "Automatischer Dauerauftrag am Gehaltstag einrichten: 'Pay yourself first' – Sparen bevor du ausgibst.",
-      "Auto-Besitzer: Rechne mit 1.000-2.000 EUR extra Puffer fuer unerwartete Reparaturen (Bremsen, TUeV, Reifen).",
-      "Haustier: Eine Tierarzt-Rechnung kann schnell 500-1.000 EUR kosten – extra Puffer einplanen oder Tier-OP-Versicherung pruefen.",
-      "Tagesgeld-Vergleich lohnt sich: 3% auf 5.000 EUR = 150 EUR Zinsen/Jahr geschenkt!",
-      "Starter-Tipp: Starte mit 1.000 EUR als Sofort-Ziel – das deckt die haeufigsten Notfaelle ab.",
-      "Nicht anfassen! Der Notgroschen ist NUR fuer echte Notfaelle (Jobverlust, Autoreparatur, Krankheit) – nicht fuer Urlaub oder Sales.",
-      "Notgroschen voll? Dann jeden weiteren Euro in ETF-Sparplan stecken – langfristig deutlich mehr Rendite als Tagesgeld.",
-      "3-Konten-Modell: Girokonto (Alltag) + Tagesgeld (Notgroschen) + Depot (Vermoegenaufbau) – so behaehlst du den Ueberblick.",
-    ],
-    intro: [
-      "40% der Deutschen haben keine 1.000 EUR für Notfälle auf dem Konto – keine gute Situation. Ein Notgroschen ist dein finanzielles Airbag für unerwartete Ausgaben: Autoreparatur, Jobverlust, Zahnarzt.",
-      "Mit diesem Rechner erfährst du, wie viel Notgroschen zu deiner Situation passt und wie lange es dauert, ihn aufzubauen – mit einer realistischen Sparrate.",
-    ],
-    howItWorks: [
-      { title: "Einkommen eingeben", description: "Gib dein monatliches Nettoeinkommen ein und wähle deinen Status (Angestellt, Selbstständig, Student, Azubi). Das bestimmt, wie viel Monate als Sicherheitspuffer sinnvoll sind." },
-      { title: "Fixkosten aufschlüsseln", description: "Trage Miete, Nebenkosten, Versicherungen, Auto, Haustier ein. Der Rechner zeigt, wie viel Prozent deines Einkommens für feste Ausgaben weggeht." },
-      { title: "Vorhandenes eintragen", description: "Wie viel hast du bereits auf die Seite gelegt? Der Rechner zeigt deinen aktuellen Fortschritt zum Ziel." },
-      { title: "Sparrate festlegen", description: "Wie viel möchtest du monatlich sparen? Der Rechner berechnet, wie lange du brauchst, bis dein Notgroschen voll ist." },
-      { title: "Aufbauplan lesen & umsetzen", description: "Der Rechner zeigt dir konkrete Meilensteine (1.000 EUR, 3 Monate Fixkosten, etc.) und Zinsgewinne beim Tagesgeld." },
-    ],
-    useCases: [
-      "Notgroschen-Ziel berechnen nach Jobstart oder Lehrausbildung",
-      "Aufbauplan erstellen: Wie viel EUR/Monat muss ich sparen, um in 12 Monaten fertig zu sein?",
-      "Sparrate optimieren: Kann ich mit 150 EUR/Monat auskommen oder brauche ich 250 EUR?",
-      "Tagesgeld-Strategie planen: Wo lagere ich den Notgroschen an, damit er Zinsen bringt?",
-      "Auto- oder Haustier-Puffer berechnen: Was kostet ein großer Reparaturfall wirklich?",
-      "Selbstständig werden: Wie viel Notgroschen brauche ich, bevor ich einen Job kündige?",
-      "Jobverlust vorbeugen: Reichen meine 5.000 EUR oder brauche ich 10.000 EUR?",
-    ],
-    faqs: [
-      {
-        question: "Wie viel Notgroschen ist genug?",
-        answer: "Faustregel: 3-6 Netto-Monatsausgaben. Bei 2.000 EUR Fixkosten also 6.000-12.000 EUR. Selbstständige sollten 6-12 Monate einplanen, Angestellte 3-6 Monate.",
-      },
-      {
-        question: "Wo soll ich meinen Notgroschen anlegen?",
-        answer: "Tagesgeld ist ideal: Jederzeit verfügbar, sichere Anlage, 3%+ Zinsen (2025). Nicht auf dem Girokonto – da vergisst du leicht, dass das Geld reserviert ist.",
-      },
-      {
-        question: "Notgroschen vs. Investieren – was kommt zuerst?",
-        answer: "Der Notgroschen zuerst! Erst 3-6 Monate Fixkosten auf dem Tagesgeld, dann kannst du Überschüsse in ETF-Sparpläne investieren.",
-      },
-      {
-        question: "Wie schnell sollte ich meinen Notgroschen aufbauen?",
-        answer: "Mit 200-300 EUR/Monat dauert es bei 6.000 EUR etwa 20-30 Monate. Wenn möglich: schneller aufbauen (500 EUR/Monat), dann in 12-15 Monaten fertig.",
-      },
-      {
-        question: "Zählt mein Ersparte als Notgroschen?",
-        answer: "Nur, wenn es wirklich unberührt bleibt! Ein echtes Notgroschen-Konto (separates Tagesgeld) macht es leichter, nicht in Versuchung zu geraten.",
-      },
-    ],
   },
   {
     slug: "nebenjob-steuer-rechner",
     title: "Nebenjob- & Minijob-Rechner",
-    metaTitle: "Minijob & Nebenjob Rechner 2025 – Netto, Abgaben, Steuern | BeAFox",
-    metaDescription:
-      "Berechne dein Netto aus Minijob, Midijob oder Werkstudentenjob: alle Abgaben fuer Arbeitnehmer und Arbeitgeber auf einen Blick (2025).",
     excerpt:
       "Minijob, Midijob oder Werkstudent? Berechne Brutto, Netto, Abgaben und Arbeitgeberkosten – mit aktuellen Saetzen 2025.",
     category: "Gehalt & Arbeit",
@@ -3226,7 +3002,11 @@ export const CALCULATORS: Calculator[] = [
       { label: "Einstufung", key: "kategorie", highlight: true },
       { label: "Details", key: "kategorie_detail" },
       // ── Deine Abzuege (Arbeitnehmer) ──
-      { label: "Deine Abzuege (Arbeitnehmer)", isSectionHeader: true, key: "_sec2" },
+      {
+        label: "Deine Abzuege (Arbeitnehmer)",
+        isSectionHeader: true,
+        key: "_sec2",
+      },
       { label: "Rentenversicherung (AN)", key: "an_rv" },
       { label: "Krankenversicherung (AN)", key: "an_kv" },
       { label: "Pflegeversicherung (AN)", key: "an_pv" },
@@ -3240,7 +3020,11 @@ export const CALCULATORS: Calculator[] = [
       { label: "Netto pro Jahr", key: "netto_jahr" },
       { label: "Effektiver Netto-Stundenlohn", key: "netto_stunde" },
       // ── Kosten fuer den Arbeitgeber ──
-      { label: "Kosten fuer den Arbeitgeber", isSectionHeader: true, key: "_sec4" },
+      {
+        label: "Kosten fuer den Arbeitgeber",
+        isSectionHeader: true,
+        key: "_sec4",
+      },
       { label: "AG: Krankenversicherung", key: "ag_kv" },
       { label: "AG: Rentenversicherung", key: "ag_rv" },
       { label: "AG: Pauschsteuer", key: "ag_steuer" },
@@ -3248,74 +3032,24 @@ export const CALCULATORS: Calculator[] = [
       { label: "AG: Umlage U2 (Mutterschaft)", key: "ag_u2" },
       { label: "AG: Insolvenzgeldumlage", key: "ag_insolvenz" },
       { label: "AG Abgaben gesamt", key: "ag_gesamt" },
-      { label: "AG Gesamtkosten (Brutto + Abgaben)", key: "ag_total_kosten", highlight: true },
+      {
+        label: "AG Gesamtkosten (Brutto + Abgaben)",
+        key: "ag_total_kosten",
+        highlight: true,
+      },
       // ── Bewertung & Tipps ──
       { label: "Bewertung & Hinweise", isSectionHeader: true, key: "_sec5" },
-      { label: "Max. Stunden fuer Minijob (bei deinem Lohn)", key: "max_stunden_minijob" },
+      {
+        label: "Max. Stunden fuer Minijob (bei deinem Lohn)",
+        key: "max_stunden_minijob",
+      },
       { label: "Bewertung", key: "bewertung" },
       { label: "Steuer-Hinweis", key: "steuer_hinweis" },
-    ],
-    tips: [
-      "Minijob-Grenze 2025: bis 556 EUR/Monat (6.672 EUR/Jahr) – fuer dich komplett steuerfrei!",
-      "Mindestlohn 2025: 12,82 EUR/Stunde – dein Arbeitgeber darf nicht weniger zahlen.",
-      "RV-Befreiung: Standard beim Minijob. Ohne Befreiung zahlst du 3,6% selbst, sammelst aber Rentenpunkte.",
-      "Midijob (556-2.000 EUR): Reduzierte SV-Beitraege in der Gleitzone – oft lohnender als knapp unter 556 EUR zu bleiben.",
-      "Werkstudent: Max. 20h/Woche in der Vorlesungszeit. Nur RV-Pflicht (9,3%) – keine KV, PV oder ALV!",
-      "Zwei Minijobs? Geht, solange die Summe unter 556 EUR bleibt. Beim 2. Minijob neben Hauptjob: volle SV-Pflicht!",
-      "Steuererklaerung lohnt sich: Auch als Minijobber kannst du Werbungskosten (Fahrt, Arbeitskleidung) absetzen.",
-      "BAföG + Minijob: Bis 556 EUR/Monat kein Einfluss auf BAföG. Darueber wird angerechnet!",
-      "Kurzfristige Beschaeftigung: Alternative zum Minijob – max. 70 Tage/Jahr, keine Verdienstgrenze, abgabenfrei.",
-      "Tipp fuer Schueler: Ab 15 Jahren darfst du in den Ferien bis zu 4 Wochen am Stueck Vollzeit arbeiten.",
-    ],
-    intro: [
-      "Über 7 Millionen Menschen in Deutschland arbeiten als Minijobber. Ein Minijob (bis 556 EUR/Monat) ist steuerfrei, aber es gibt auch den Midijob (556-2.000 EUR) und die Werkstudent-Position mit jeweils anderen Regeln.",
-      "Mit diesem Rechner siehst du sofort, wie viel Netto du verdienst, welche Abgaben dein Arbeitgeber zahlt und ob du besser bei 550 EUR bleibst oder in die Gleitzone des Midijobs ausweichst.",
-    ],
-    howItWorks: [
-      { title: "Stundenlohn eingeben", description: "Gib deinen Bruttolohn ein (Mindestlohn 2025: 12,82 EUR). Der Rechner multipliziert das mit deinen Stunden pro Woche." },
-      { title: "Jobtyp wählen", description: "Minijob (Gewerbe), Privathaushalt, oder Werkstudent? Jeder hat andere Abgaben und Freibeträge." },
-      { title: "Stunden pro Woche festlegen", description: "Der Rechner zeigt, ab wann die 556-EUR-Grenze überschritten wird und wie die Gleitzone des Midijobs funktioniert." },
-      { title: "Abgaben sehen", description: "Du siehst exakt: RV, KV, PV, ALV und Steuern – sowohl dein Anteil als auch was der Arbeitgeber zahlt." },
-      { title: "Netto ablesen und vergleichen", description: "Dein echtes Take-Home pro Monat und Jahr. Vergleich: Lohnt sich eine Stunde mehr? Passt der Job neben BAföG?" },
-    ],
-    useCases: [
-      "Minijob-Grenze 556 EUR beachten: Verdiene ich noch steuerfrei oder übersteige ich die Grenze?",
-      "Werkstudent Vorteile prüfen: Nur Rentenversicherung, aber volle BAföG-Kompatibilität?",
-      "Midijob-Gleitzone nutzen: Zwischen 556-2.000 EUR gibt es reduzierte Sozialversicherung – rechne nach!",
-      "Zwei Minijobs kombinieren: Geht es, solange die Summe unter 556 EUR bleibt?",
-      "BAföG + Nebenjob: Bis 556 EUR/Monat kein BAföG-Impact, danach wird es angerechnet.",
-      "Steuererklärung-Lohnstoff: Kann ich als Minijobber überhaupt Werbungskosten absetzen?",
-      "Schüler-Ferienjob: Verdiene ich in den 4 Sommerwochen mehr, bleibt es steuerfrei?",
-    ],
-    faqs: [
-      {
-        question: "Was ist die Minijob-Grenze 2025?",
-        answer: "556 EUR pro Monat oder 6.672 EUR pro Jahr. Solange du darunter bleibst, zahlst du keine Einkommen-, Lohnsteuer oder Sozialversicherung – komplett steuerfrei!",
-      },
-      {
-        question: "Werkstudent: Was sind die Vorteile?",
-        answer: "Nur Rentenversicherung (9,3%), keine KV, PV oder ALV. Perfekt für BAföG-Studis. Aber: Max. 20h/Woche in der Vorlesungszeit, sonst kein Werkstudent-Status.",
-      },
-      {
-        question: "Midijob-Gleitzone: Lohnt sich 700 EUR statt 556 EUR?",
-        answer: "Oft ja! Die Gleitzone (556-2.000 EUR) hat reduzierte Beiträge. Ein 700-EUR-Midijob bringt netto oft mehr als unter 556 EUR zu bleiben, obwohl du SV-Beiträge zahlst.",
-      },
-      {
-        question: "Kann ich zwei Minijobs gleichzeitig haben?",
-        answer: "Ja, solange die Summe aller Minijobs unter 556 EUR bleibt. Beim 2. Minijob neben deinem Hauptjob musst du aufpassen: Das kann zu voller SV-Pflicht führen!",
-      },
-      {
-        question: "Abgaben als Schüler oder Student – gibt es Vergünstigungen?",
-        answer: "Der Mindestlohn von 12,82 EUR gilt auch für dich! Rabatte gibt es nicht. Dafür: Werkstudent-Status gibt dir massive Einsparungen bei den Abgaben.",
-      },
     ],
   },
   {
     slug: "bafog-rechner",
     title: "BAföG-Rechner",
-    metaTitle: "BAföG Rechner 2025 – Anspruch & Hoehe berechnen | BeAFox",
-    metaDescription:
-      "Berechne deinen BAföG-Anspruch: personalisiert nach Wohnsituation, Elterneinkommen, eigenem Verdienst und Vermoegen. Mit Zuschuss/Darlehen-Aufschluesselung.",
     excerpt:
       "Wie viel BAföG steht dir zu? Berechne deinen Anspruch personalisiert nach Wohnung, Elterneinkommen, Nebenjob und Vermoegen.",
     category: "Studium & Ausbildung",
@@ -3417,10 +3151,21 @@ export const CALCULATORS: Calculator[] = [
       { label: "Wohnpauschale", key: "wohnpauschale" },
       { label: "KV-Zuschlag", key: "kv_zuschlag" },
       { label: "PV-Zuschlag", key: "pv_zuschlag" },
-      { label: "Gesamtbedarf (max. BAfoeg)", key: "gesamt_bedarf", highlight: true },
+      {
+        label: "Gesamtbedarf (max. BAfoeg)",
+        key: "gesamt_bedarf",
+        highlight: true,
+      },
       // ── Elterneinkommen ──
-      { label: "Anrechnung Elterneinkommen", isSectionHeader: true, key: "_sec2" },
-      { label: "Eltern: bereinigtes Netto (monatlich)", key: "eltern_netto_monat" },
+      {
+        label: "Anrechnung Elterneinkommen",
+        isSectionHeader: true,
+        key: "_sec2",
+      },
+      {
+        label: "Eltern: bereinigtes Netto (monatlich)",
+        key: "eltern_netto_monat",
+      },
       { label: "Eltern: Freibetrag", key: "eltern_freibetrag" },
       { label: "Eltern: Ueberhang", key: "eltern_ueberhang" },
       { label: "Anrechnungssatz", key: "anrechnungs_satz" },
@@ -3428,7 +3173,10 @@ export const CALCULATORS: Calculator[] = [
       // ── Weitere Anrechnungen ──
       { label: "Weitere Anrechnungen", isSectionHeader: true, key: "_sec3" },
       { label: "Anrechnung eigenes Einkommen", key: "eigen_anrechnung" },
-      { label: "Anrechnung Vermoegen (monatlich)", key: "vermoegen_anrechnung" },
+      {
+        label: "Anrechnung Vermoegen (monatlich)",
+        key: "vermoegen_anrechnung",
+      },
       { label: "Anrechnung Ehepartner", key: "partner_anrechnung" },
       { label: "Gesamtanrechnung", key: "gesamt_anrechnung" },
       // ── Dein BAfoeg ──
@@ -3444,67 +3192,10 @@ export const CALCULATORS: Calculator[] = [
       { label: "Minijob-Kompatibilitaet", key: "minijob_check" },
       { label: "Vermoegens-Check", key: "vermoegen_check" },
     ],
-    tips: [
-      "BAfoeg ist halb geschenkt! 50% Zuschuss + 50% zinsloses Darlehen – Rueckzahlung erst 5 Jahre nach Studienende.",
-      "Rueckzahlung gedeckelt auf max. 10.010 EUR – egal wie viel du insgesamt bekommen hast.",
-      "Minijob bis 556 EUR/Monat ist BAfoeg-kompatibel – kein Abzug! Perfekte Ergaenzung.",
-      "Vermoegen: 15.000 EUR Freibetrag. Tipp: Depot & Tagesgeld VOR dem Antrag pruefen.",
-      "Immer Antrag stellen! Selbst bei Teilfoerderung lohnt sich BAfoeg (zinsloses Darlehen).",
-      "Frist beachten: BAfoeg wird NICHT rueckwirkend gezahlt – ab dem Monat der Antragstellung.",
-      "Eltern getrennt? Dann wird jeder Elternteil einzeln betrachtet – oft guenstiger!",
-      "Geschwister in Ausbildung senken deine Anrechnung – unbedingt angeben.",
-      "Auslands-BAfoeg: Hoehere Saetze moeglich (Studiengebuehren, Reisekosten). Anderes Amt zustaendig!",
-      "Vorzeitige Rueckzahlung: Bis zu 50% Rabatt auf den Darlehenanteil bei Einmalzahlung.",
-    ],
-    intro: [
-      "Der BAföG-Höchstsatz 2025 beträgt 992 EUR pro Monat für Studierende. BAföG ist eine Mischung aus Zuschuss (50%) und zinsloses Darlehen (50%) – du zahlst später zurück, aber zinslos.",
-      "Dein BAföG-Anspruch hängt von deiner Wohnsituation, dem Einkommen deiner Eltern, deinen Geschwistern und deinem eigenen Verdienst ab. Mit diesem Rechner siehst du, wie viel dir realistisch zusteht.",
-    ],
-    howItWorks: [
-      { title: "Wohnsituation wählen", description: "Wohnst du bei Eltern (Pauschalbudget: 280 EUR)? Im Wohnheim (340 EUR)? In der eigenen Wohnung (934 EUR)? Das bestimmt deinen Freibetrag stark." },
-      { title: "Elterneinkommen eingeben", description: "Gib das Bruttoeinkommen deiner Eltern des Vorjahres ein. Das ist die Hauptbremse – über 2.000 EUR wird es knifflig." },
-      { title: "Geschwister berücksichtigen", description: "Jedes Geschwister mit eigenem Einkommen or Studium reduziert den Elternfreibetrag. Der Rechner passt das automatisch an." },
-      { title: "Eigenes Einkommen eintragen", description: "Ein Minijob (556 EUR), Nebenjob oder BaFöG-Freibetrag (290 EUR Monatsfreibetrag, 20 EUR Stundenlohn). Was ist erlaubt?" },
-      { title: "BAföG-Anspruch ablesen", description: "Du siehst: Gesamtbetrag, wie viel Zuschuss vs. Darlehen, Rückzahlungsplan und Tipps für mehr BAföG." },
-    ],
-    useCases: [
-      "BAföG-Antrag vorbereiten: Welche Unterlagen brauchst ich und wie ist meine Chancen?",
-      "Eltern überzeugen: Mit welchem Einkommen gibt es weniger BAföG?",
-      "Nebenjob-Freibetrag nutzen: Wann wird mein Minijob-Verdienst auf BAföG angerechnet?",
-      "BAföG + Minijob kombinieren: Darf ich 556 EUR verdienen, ohne BAföG zu verlieren?",
-      "Elternunabhängiges BAföG prüfen: Ab wann kriegst du BAföG, auch wenn deine Eltern reich sind?",
-      "Stundenlohn optimieren: 20 EUR Stundenlohn-Freibetrag – wann greift der?",
-      "Wohnung vs. Eltern: Rechnet sich Ausziehen zum Studium, wenn BAföG steigt?",
-    ],
-    faqs: [
-      {
-        question: "Wie hoch ist der BAföG-Höchstsatz 2025?",
-        answer: "992 EUR pro Monat für Studierende, die auswärts wohnen. Davon sind 496 EUR Zuschuss, 496 EUR Darlehen (zinslos).",
-      },
-      {
-        question: "Wie viel muss ich zurückzahlen?",
-        answer: "Maximum ca. 10.010 EUR (das BAföG-Darlehen). Du zahlst zinslos ab deinem 6. Semester nach Studienende, monatlich mindestens 102 EUR.",
-      },
-      {
-        question: "Was ist der Vermögensfreibetrag?",
-        answer: "Du darfst 15.000 EUR sparen haben, ohne dass BAföG gestrichen wird. Zum 31.12. des Jahres, in dem du BAföG beantragst, wird geprüft.",
-      },
-      {
-        question: "Wann bekommst du elternunabhängiges BAföG?",
-        answer: "Mit 30 Jahren brauchst du auch mit reichen Eltern kein BAföG. Oder: 5 Jahre Berufstätigkeit + 3 Jahre Einkommen über 15.000 EUR/Jahr.",
-      },
-      {
-        question: "BAföG mit Minijob – wie viel darf ich verdienen?",
-        answer: "Bis 556 EUR/Monat kein Problem. Danach wird es auf BAföG angerechnet. Werkstudent-Job (20h/Woche) ist besser – nur RV-Abgaben, aber BAföG-neutral.",
-      },
-    ],
   },
   {
     slug: "stundenlohn-rechner",
     title: "Stundenlohnrechner",
-    metaTitle: "Stundenlohn Rechner 2025 – Echten Stundenlohn berechnen | BeAFox",
-    metaDescription:
-      "Berechne deinen echten Stundenlohn: mit Urlaub, Feiertagen, Weihnachtsgeld und Sonderzahlungen. Vergleiche formalen und effektiven Stundenlohn.",
     excerpt:
       "Was verdienst du wirklich pro Stunde? Berechne formalen, effektiven und Sonderzahlungs-Stundenlohn – mit Feiertagen je Bundesland.",
     category: "Gehalt & Arbeit",
@@ -3606,9 +3297,20 @@ export const CALCULATORS: Calculator[] = [
     results: [
       // ── Dein Stundenlohn ──
       { label: "Dein Stundenlohn", isSectionHeader: true, key: "_sec1" },
-      { label: "Formaler Stundenlohn (Brutto)", key: "stundenlohn_formal", highlight: true },
-      { label: "Effektiver Stundenlohn (mit Urlaub & Feiertagen)", key: "stundenlohn_effektiv" },
-      { label: "Effektiver Stundenlohn (inkl. Sonderzahlungen)", key: "stundenlohn_mit_sonder", highlight: true },
+      {
+        label: "Formaler Stundenlohn (Brutto)",
+        key: "stundenlohn_formal",
+        highlight: true,
+      },
+      {
+        label: "Effektiver Stundenlohn (mit Urlaub & Feiertagen)",
+        key: "stundenlohn_effektiv",
+      },
+      {
+        label: "Effektiver Stundenlohn (inkl. Sonderzahlungen)",
+        key: "stundenlohn_mit_sonder",
+        highlight: true,
+      },
       { label: "Sonderzahlungen pro Arbeitsstunde", key: "sonder_pro_stunde" },
       { label: "Mindestlohn-Check", key: "mindestlohn_check" },
       // ── Verdienst-Uebersicht ──
@@ -3616,8 +3318,15 @@ export const CALCULATORS: Calculator[] = [
       { label: "Tagesverdienst", key: "tagesverdienst" },
       { label: "Wochenverdienst", key: "wochenverdienst" },
       { label: "Monatsgehalt", key: "monatsgehalt_out" },
-      { label: "Jahresgehalt (ohne Sonderzahlungen)", key: "jahresgehalt_ohne" },
-      { label: "Jahresgehalt (inkl. Sonderzahlungen)", key: "jahresgehalt_mit", highlight: true },
+      {
+        label: "Jahresgehalt (ohne Sonderzahlungen)",
+        key: "jahresgehalt_ohne",
+      },
+      {
+        label: "Jahresgehalt (inkl. Sonderzahlungen)",
+        key: "jahresgehalt_mit",
+        highlight: true,
+      },
       { label: "Davon Sonderzahlungen", key: "sonderzahlungen" },
       { label: "Davon Weihnachtsgeld", key: "weihnachtsgeld_betrag" },
       // ── Arbeitszeit-Analyse ──
@@ -3628,71 +3337,22 @@ export const CALCULATORS: Calculator[] = [
       { label: "Feiertage auf Arbeitstage", key: "feiertage_arbeitstage" },
       { label: "Tatsaechliche Arbeitstage/Jahr", key: "arbeitstage_netto" },
       { label: "Stunden pro Arbeitstag", key: "stunden_pro_tag" },
-      { label: "Tatsaechliche Arbeitsstunden/Jahr", key: "arbeitsstunden_jahr" },
-      { label: "Bezahlte Freistunden (Urlaub+Feiertage)", key: "freizeit_stunden" },
+      {
+        label: "Tatsaechliche Arbeitsstunden/Jahr",
+        key: "arbeitsstunden_jahr",
+      },
+      {
+        label: "Bezahlte Freistunden (Urlaub+Feiertage)",
+        key: "freizeit_stunden",
+      },
       // ── Bewertung ──
       { label: "Bewertung", isSectionHeader: true, key: "_sec4" },
       { label: "Fazit", key: "bewertung" },
-    ],
-    tips: [
-      "Mindestlohn 2025: 12,82 EUR/Stunde – pruefe dein Gehalt, besonders als Azubi oder Werkstudent!",
-      "Formaler vs. effektiver Stundenlohn: Der effektive ist IMMER hoeher, weil du fuer Urlaub & Feiertage bezahlt wirst, ohne zu arbeiten.",
-      "Jobangebote vergleichen: Immer den effektiven Stundenlohn berechnen – 3.000€ bei 40h vs. 2.600€ bei 35h kann ueberraschen!",
-      "Weihnachtsgeld: Ein volles 13. Gehalt erhoeht deinen effektiven Stundenlohn um ca. 8%.",
-      "Bayern hat 13 Feiertage, Hamburg/Bremen nur 10 – das sind 3 bezahlte Urlaubstage Unterschied!",
-      "Ueberstunden druecken den Stundenlohn! 5 unbezahlte Ueberstunden/Woche senken ihn um ~12%.",
-      "Gehaltsverhandlung: 100€ mehr Monatsgehalt = ca. 0,58€ mehr Stundenlohn bei 40h-Woche.",
-      "Teilzeit pruefen: Weniger Stunden bei gleichem Stundenlohn = mehr Freizeit ohne Verlust pro Stunde.",
-    ],
-    intro: [
-      "Dein Stundenlohn verrät mehr über dein reales Einkommen als dein Monatsgehalt. Ein Minijobber mit 12,82 EUR/Stunde verdient bei 10 Stunden/Woche anders als jemand mit 3.000 EUR/Monat bei 160 Stunden.",
-      "Dieser Rechner zeigt dir deinen echten Stundenlohn, berücksichtigt Überstunden, Urlaub, Sonderzahlungen und Bundesland-Feiertage – so kannst du Jobangebote wirklich vergleichen.",
-    ],
-    howItWorks: [
-      { title: "Monatsgehalt eingeben", description: "Brutto oder Netto? Der Rechner akzeptiert beides. Gib auch Sonderzahlungen (13. Monat, Bonusprogramme) ein." },
-      { title: "Arbeitszeit definieren", description: "40h/Woche Standard? Oder 35h/Woche? Der Rechner rechnet hochmathematisch korrekt: 52 Wochen minus Urlaub/Feiertage." },
-      { title: "Bundesland wählen", description: "In manchen Bundesländern gibt es mehr gesetzliche Feiertage (z.B. Bayern: 13, Bremen: 11). Das beeinflusst deine reale Arbeitszeit." },
-      { title: "Überstunden berücksichtigen", description: "Machst du regelmäßig Überstunden? Der Rechner zeigt, wie viel das unterm Strich kostet (Burnout-Faktor!)." },
-      { title: "Vergleich ablesen", description: "Dein echter Stundenlohn unterm Strich. Ist der Job mit 50 EUR/Woche Pendler-Kosten noch attraktiv?" },
-    ],
-    useCases: [
-      "Mindestlohn-Check: Zahlt mein Arbeitgeber die vollen 12,82 EUR/Stunde (2025)?",
-      "Jobangebote vergleichen: 2.500 EUR als Angestellter vs. 30 EUR/Stunde als Freelancer – was ist besser?",
-      "Gehaltsverhandlung vorbereiten: Mit Stundenlohn-Rechnung argumentierst du stärker als mit Monatszahl.",
-      "Überstunden bewerten: Lohnt sich die zusätzliche Stunde für 1,5x Lohn?",
-      "Bundesland-Unterschiede: Bayern vs. Bremen – welcher Job ist fairer?",
-      "Pendler-Kosten einrechnen: Wie viel bleibt netto nach Fahrtkosten/Bahncard?",
-      "Werkstudent vs. Vollzeitstelle: 20h/Woche bei hohem Stundenlohn vs. 40h/Woche bei niedrigerem – Netto-Vergleich!",
-    ],
-    faqs: [
-      {
-        question: "Was ist der Mindestlohn 2025?",
-        answer: "12,82 EUR pro Stunde. Das ist die Untergrenze – dein Arbeitgeber darf weniger nicht zahlen. Wenn ja, ist das illegal.",
-      },
-      {
-        question: "Wie berechne ich meinen echten Stundenlohn?",
-        answer: "Monatsgehalt ÷ (40h × 52 Wochen – Urlaub – Feiertage) = echter Stundelohn. Beispiel: 2.500 EUR ÷ 1.560h (40h × 39 Wochen) = 1,60 EUR/h. Warte – stimmt nicht! Rechner nutzen.",
-      },
-      {
-        question: "Sind Urlaubstage in meiner Stundenlohn-Berechnung enthalten?",
-        answer: "Ja! 30 Tage Urlaub = 6 Wochen weniger Arbeitszeit. Das sollte in die Rechnung rein, sonst wirkt dein Stundenlohn künstlich hoch.",
-      },
-      {
-        question: "Wie viele Feiertage pro Bundesland? Macht das einen Unterschied?",
-        answer: "Bayern hat 13, Bremen 11, Baden-Württemberg 12. Das sind bis zu 2 Tage pro Jahr Unterschied = etwa 16 EUR/Monat auf Vollzeitstellen.",
-      },
-      {
-        question: "Überstundenausgleich: 1,5x Stundenlohn – ist das fair?",
-        answer: "Branchenstandard. Das sollte der Arbeitsvertrag klar regeln. Unbezahlte Überstunden? Das ist illegal.",
-      },
     ],
   },
   {
     slug: "spritrechner",
     title: "Spritrechner",
-    metaTitle: "Spritrechner 2025 – Fahrtkosten, Pendlerpauschale & OEPNV-Vergleich | BeAFox",
-    metaDescription:
-      "Berechne Spritkosten fuer Benzin, Diesel, E-Auto oder Hybrid. Mit Fahrgemeinschaft, Pendlerpauschale, CO2-Bilanz und Deutschlandticket-Vergleich.",
     excerpt:
       "Was kostet deine Fahrt wirklich? Spritkosten, Pendlerpauschale, Mitfahrer-Aufteilung, CO2-Bilanz und Deutschlandticket-Vergleich.",
     category: "Alltag & Lifestyle",
@@ -3802,7 +3462,11 @@ export const CALCULATORS: Calculator[] = [
       { label: "Steuerersparnis", key: "pendler_ersparnis", highlight: true },
       { label: "Details", key: "pendler_text" },
       // ── OEPNV-Vergleich ──
-      { label: "Vergleich: Deutschlandticket", isSectionHeader: true, key: "_sec5" },
+      {
+        label: "Vergleich: Deutschlandticket",
+        isSectionHeader: true,
+        key: "_sec5",
+      },
       { label: "Deutschlandticket pro Jahr", key: "dticket_jahr" },
       { label: "Differenz (Auto vs. Ticket)", key: "diff_dticket" },
       { label: "Empfehlung", key: "dticket_vergleich" },
@@ -3812,86 +3476,12 @@ export const CALCULATORS: Calculator[] = [
       { label: "CO2 pro Jahr", key: "co2_pro_jahr" },
       { label: "Bewertung", key: "bewertung" },
     ],
-    tips: [
-      "Durchschnittsverbrauch: Kleinwagen 5-7 l, Mittelklasse 7-9 l, SUV 8-12 l, E-Auto 15-20 kWh/100km.",
-      "E-Auto: Bei 0,30 EUR/kWh und 18 kWh/100km kosten 100km nur ca. 5,40 EUR – weniger als die Haelfte von Benzin!",
-      "Deutschlandticket (58 EUR/Monat): Ab ca. 15-20km einfacher Pendelstrecke oft guenstiger als Auto.",
-      "Pendlerpauschale 2025: 0,30 EUR/km (bis 20km) + 0,38 EUR/km (ab 21km) – gilt nur fuer einfache Strecke!",
-      "Fahrgemeinschaft: 1 Mitfahrer halbiert die Kosten. Bei 25km Pendeln spart das ca. 80 EUR/Monat.",
-      "Reifendruck pruefen! 0,5 bar zu wenig erhoehen den Verbrauch um ca. 5% – kostenlos optimierbar.",
-      "Tempolimit: 120 statt 160 km/h auf der Autobahn spart bis zu 30% Sprit.",
-      "Sprit-Apps (ADAC, clever-tanken) zeigen die guenstigste Tankstelle – spart 3-5 Cent/Liter.",
-      "Hybrid-Tipp: Im Stadtverkehr moeglichst elektrisch fahren – dort ist der Verbrauchsvorteil am groessten.",
-      "CO2-Kompensation: 1 Tonne CO2 kompensieren kostet ca. 25 EUR – fuer Vielfahrer eine Ueberlegung wert.",
-    ],
-    intro: [
-      "Autofahren kostet schnell 300-500 EUR im Monat – wenn du das nicht kennst. Mit diesem Rechner siehst du genau, wie viel deine Fahrten kosten und wo du sparen kannst.",
-      "Egal ob Pendler mit Fahrgemeinschaft, Urlaubsfahrten oder taeglich zum Nebenjob: Dieser Rechner zeigt dir die echten Kosten, Steuersparen durch Pendlerpauschale und ob der OEPNV guenstiger waere.",
-    ],
-    howItWorks: [
-      {
-        title: "Strecke & Fahrzeug eingeben",
-        description: "Gib deine taegliche Strecke und dein Fahrzeug ein – ob Benzin, Diesel, E-Auto oder Hybrid.",
-      },
-      {
-        title: "Verbrauch & Spritpreis",
-        description: "Der Durchschnittsverbrauch ist voreingestellt (z.B. Benziner 7l/100km). Passe ihn an deine Realitaet an, ebenso die aktuellen Spritpreise.",
-      },
-      {
-        title: "Fahrten pro Woche & Mitfahrer",
-        description: "Wie oft faehrst du die Strecke pro Woche? Teilst du die Kosten mit Mitfahrern? Der Rechner rechnet es automatisch.",
-      },
-      {
-        title: "Pendler-Optionen",
-        description: "Wenn du fuer Arbeit pendelst: Gib deinen Steuersatz an, und der Rechner zeigt deine Steuerersparnis durch die Pendlerpauschale.",
-      },
-      {
-        title: "Kosten sehen",
-        description: "Du siehst sofort: Kosten pro Fahrt, pro Monat, pro Jahr, Einsparungen durch Mitfahrer, OEPNV-Vergleich und deine CO2-Bilanz.",
-      },
-    ],
-    useCases: [
-      "Pendlerkosten monatlich berechnen und budgetieren",
-      "Auto vs. Deutschlandticket (58 EUR/Monat) vergleichen",
-      "Mitfahren-Aufteilung mit Freunden berechnen",
-      "CO2-Fussabdruck der Fahrten checken",
-      "Gehaltsverhandlung: Zeig dem Chef deine Pendlerkosten",
-      "Spritpreis-Aenderungen simulieren (Was kostet Sprit bei 2,50 EUR?)",
-      "E-Auto vs. Benziner Wirtschaftlichkeit vergleichen",
-    ],
-    faqs: [
-      {
-        question: "Was ist die Pendlerpauschale?",
-        answer: "2025: 0,30 EUR pro km (bis 20km Entfernung) + 0,38 EUR pro km (ab 21km). Das zaehlt nur die einfache Strecke. Du kannst sie als Werbungskosten von deiner Steuer abziehen.",
-      },
-      {
-        question: "Deutschlandticket 58 EUR/Monat – ab wann lohnt sich das?",
-        answer: "Ab ca. 15-20km einfacher Pendelstrecke wird der OEPNV oft guenstiger. Mit dem Ticket kannst du deutschlandweit alle Nahverkehrsmittel nutzen – das lohnt sich auch fuer Freizeits.",
-      },
-      {
-        question: "Wie viel CO2 stoesst Autofahren aus?",
-        answer: "Benziner: ca. 2,3 kg CO2 pro Liter. Diesel: ca. 2,7 kg CO2 pro Liter. E-Autos mit Oekostrom: ca. 0,1 kg CO2 pro kWh. Mit Normalmix: ca. 0,35 kg CO2 pro kWh.",
-      },
-      {
-        question: "E-Auto Verbrauch – wie viel kWh kostet?",
-        answer: "E-Autos verbrauchen 15-25 kWh pro 100km. Bei durchschnittlich 0,35 EUR/kWh (Heimladung) kostet eine Fahrt viel weniger als Benzin – etwa 5-9 EUR pro 100km statt 14-20 EUR.",
-      },
-      {
-        question: "Kann ich mit Fahrgemeinschaft wirklich so viel sparen?",
-        answer: "Ja! 1 Mitfahrer halbiert deine Kosten. Bei 25km Pendelstrecke (10 Fahrten/Woche) sparst du ca. 80-120 EUR pro Monat.",
-      },
-      {
-        question: "Was ist Reifendruck-Optimierung?",
-        answer: "Ein zu niedriger Reifendruck erhoet den Verbrauch um 5-10%. Wenn du ihn monatlich kontrollierst und auf Herstellerangaben haeltst, spart das ca. 1-2% Sprit – kostenlos!",
-      },
-    ],
   },
   {
     slug: "inflationsrechner",
     title: "Inflationsrechner",
-    metaTitle: "Inflationsrechner – Kaufkraft, Realzins & Warenkorb | BeAFox",
-    metaDescription: "Berechne Kaufkraftverlust, Realzins, Warenkorb-Projektion und Gehalts-Analyse. Mit historischen Daten und personalisierten Tipps fuer junge Menschen.",
-    excerpt: "Wie viel ist dein Geld in 10 Jahren noch wert? Kaufkraft, Realzins & Warenkorb auf einen Blick.",
+    excerpt:
+      "Wie viel ist dein Geld in 10 Jahren noch wert? Kaufkraft, Realzins & Warenkorb auf einen Blick.",
     category: "Sparen & Budget",
     categoryEmoji: "📉",
     computeAll: computeInflation,
@@ -3963,10 +3553,20 @@ export const CALCULATORS: Calculator[] = [
     results: [
       // Kaufkraft-Analyse
       { label: "Kaufkraft-Analyse", isSectionHeader: true },
-      { label: "Kaufkraft in heutigen Euro", key: "kaufkraft_zukunft", highlight: true },
+      {
+        label: "Kaufkraft in heutigen Euro",
+        key: "kaufkraft_zukunft",
+        highlight: true,
+      },
       { label: "Kaufkraftverlust", key: "kaufkraft_verlust_euro" },
-      { label: "Kaufkraftverlust in Prozent", key: "kaufkraft_verlust_prozent" },
-      { label: "Benoetigter Betrag fuer gleiche Kaufkraft", key: "noetiger_betrag" },
+      {
+        label: "Kaufkraftverlust in Prozent",
+        key: "kaufkraft_verlust_prozent",
+      },
+      {
+        label: "Benoetigter Betrag fuer gleiche Kaufkraft",
+        key: "noetiger_betrag",
+      },
       { label: "Kaufkraft-Halbierung nach ca.", key: "halbierung_kaufkraft" },
       { label: "Kaufkraft-Zeitachse", key: "zeitachse" },
 
@@ -3987,9 +3587,18 @@ export const CALCULATORS: Calculator[] = [
       // Gehalts-Analyse
       { label: "Gehalts-Analyse", isSectionHeader: true },
       { label: "Gehalt in X Jahren (nominal)", key: "gehalt_zukunft_nominal" },
-      { label: "Gehalt in X Jahren (reale Kaufkraft)", key: "gehalt_zukunft_real" },
-      { label: "Kaufkraftverlust pro Monat", key: "gehalt_kaufkraft_verlust_monat" },
-      { label: "Kaufkraftverlust pro Jahr", key: "gehalt_kaufkraft_verlust_jahr" },
+      {
+        label: "Gehalt in X Jahren (reale Kaufkraft)",
+        key: "gehalt_zukunft_real",
+      },
+      {
+        label: "Kaufkraftverlust pro Monat",
+        key: "gehalt_kaufkraft_verlust_monat",
+      },
+      {
+        label: "Kaufkraftverlust pro Jahr",
+        key: "gehalt_kaufkraft_verlust_jahr",
+      },
       { label: "Gehalts-Bewertung", key: "gehalt_text" },
 
       // Warenkorb & Historie
@@ -4007,83 +3616,11 @@ export const CALCULATORS: Calculator[] = [
       { label: "Analyse", key: "bewertung" },
       { label: "Tipp fuer junge Menschen", key: "tipp_jung" },
     ],
-    tips: [
-      "Die EZB strebt 2% Inflation an – in der Realitaet lag sie 2022 bei fast 7% in Deutschland.",
-      "Die 72er-Regel: Teile 72 durch die Inflationsrate und du weisst, nach wie vielen Jahren sich die Preise verdoppeln.",
-      "Geld auf dem Sparkonto mit 0% Zinsen verliert bei 2,5% Inflation in 10 Jahren ca. 22% seiner Kaufkraft.",
-      "Breit gestreute ETFs (z.B. MSCI World) erzielen historisch ca. 7% p.a. – das schlaegt die Inflation deutlich.",
-      "Gehaltsverhandlungen sollten MINDESTENS die Inflation ausgleichen – sonst bekommst du real weniger.",
-    ],
-    intro: [
-      "Inflation frisst dein Erspartes – 10.000 EUR sind bei 2,5% Inflation in 10 Jahren nur noch 7.800 EUR wert. Mit diesem Rechner siehst du, wie schnell dein Geld seine Kaufkraft verliert.",
-      "Ob Sparbuch, Tagesgeld oder ETF: Dieser Rechner zeigt dir, ob deine Zinsen und Sparplaene die Inflation schlagen – und wie du richtig vorsorgen musst.",
-    ],
-    howItWorks: [
-      {
-        title: "Betrag eingeben",
-        description: "Gib den Geldbetrag ein, den du sparen moechtest oder den du bereits besitzt.",
-      },
-      {
-        title: "Inflationsrate waehlen",
-        description: "Die aktuelle deutsche Inflationsrate liegt bei ca. 2,5%. Du kannst sie anpassen, um verschiedene Szenarien zu rechnen.",
-      },
-      {
-        title: "Zeitraum festlegen",
-        description: "In wie vielen Jahren moechtest du wissen, wie viel dein Geld noch wert ist? 10, 20 oder 30 Jahre?",
-      },
-      {
-        title: "Optional: Zinsen, Sparplan, Gehalt",
-        description: "Wenn du regelmäßig sparest oder ein Sparbuch mit Zinsen hast, trag das ein – der Rechner berechnet dann, ob du mit Zinsen besser dasteht.",
-      },
-      {
-        title: "Ergebnis ablesen",
-        description: "Du siehst sofort: Kaufkraftverlust in EUR und Prozent, Realzins, deine Sparplan-Bilanz und wie dein Gehalt real aussieht.",
-      },
-    ],
-    useCases: [
-      "Kaufkraft deiner Ersparnisse berechnen",
-      "Sparbuch vs. Inflation: Welche Zinsen brauchst du?",
-      "Gehaltsverhandlung argumentieren: 'Keine Erhoehung = Gehaltssenkning bei Inflation'",
-      "Warenkorb-Projektion: Wie viel kostet dein Einkaufen in 10 Jahren?",
-      "Sparplandauer abschaetzen: Wie lange musst du sparen, um mit Inflation mithalten zu koennen?",
-      "ETF-Rendite bewerten: Schlaegt 7% p.a. wirklich die Inflation?",
-      "Taschengeld/BAfoeg real bewerten: Was ist es mit Inflation noch wert?",
-    ],
-    faqs: [
-      {
-        question: "Was ist Inflation?",
-        answer: "Inflation ist die Teuerungsrate – Preise steigen durchschnittlich um ein paar Prozent pro Jahr. Das bedeutet: Dein Geld wird weniger wert, weil du dir immer weniger dafuer kaufen kannst.",
-      },
-      {
-        question: "Wie hoch ist die aktuelle Inflationsrate in Deutschland?",
-        answer: "2025 liegt die Inflationsrate bei ca. 2,5%. 2022-2023 war sie deutlich hoeher (6-7%). Die EZB strebt 2% an.",
-      },
-      {
-        question: "Was ist Realzins?",
-        answer: "Realzins = Nominalzins minus Inflation. Wenn dein Sparbuch 1% Zinsen gibt, aber Inflation 2,5% ist, dann verlierst du real 1,5% Kaufkraft pro Jahr!",
-      },
-      {
-        question: "Wie schuetze ich mich vor Inflation?",
-        answer: "1. Geld nicht auf dem Sparkonto lassen. 2. ETFs erzielen historisch ca. 7% p.a. – das schlaegt Inflation deutlich. 3. Nominal-Anleihen nutzen (z.B. TIPS). 4. Immobilien oder Sachwerte kaufen.",
-      },
-      {
-        question: "Ist die 72er-Regel wirklich so nuetzlich?",
-        answer: "Ja! Teile 72 durch die Inflationsrate, dann weisst du, nach wie vielen Jahren sich die Preise verdoppeln. Bei 2,5%: 72÷2,5 = 29 Jahre. Bei 3,6%: 20 Jahre.",
-      },
-      {
-        question: "Warum erhoehe ich nicht mein Gehalt bei Gehaltsverhandlung um min. Inflation?",
-        answer: "Weil du sonst real weniger verdienst! Wenn du 1.500 EUR verdienst und bekommst keine Erhoehung, aber Inflation ist 2,5%, dann kannst du dir real fuer 1.462,50 EUR so viel kaufen wie vorher.",
-      },
-    ],
   },
   {
     slug: "rentenluecken-rechner",
     title: "Rentenluecken-Rechner",
-    metaTitle: "Rentenluecken-Rechner | BeAFox",
-    metaDescription:
-      "Berechne deine Rentenluecke, den Vermoegensbedarf und die noetige Sparrate – mit Inflation und Rendite.",
-    excerpt:
-      "Wie viel Geld fehlt dir im Alter – und was musst du jetzt tun?",
+    excerpt: "Wie viel Geld fehlt dir im Alter – und was musst du jetzt tun?",
     category: "Rente & Vorsorge",
     categoryEmoji: "🏖️",
     computeAll: computeRentenluecke,
@@ -4256,92 +3793,10 @@ export const CALCULATORS: Calculator[] = [
         key: "sparrate_jahr",
       },
     ],
-    tips: [
-      "Das aktuelle Rentenniveau in Deutschland liegt bei ca. 48% – Tendenz sinkend bis 2035.",
-      "Faustregel: Du brauchst im Alter ca. 80% deines aktuellen Einkommens, weil Kosten wie Pendeln und Arbeitskleidung wegfallen.",
-      "Die 25er-Regel: Du brauchst das 25-Fache deiner jaehrlichen Rentenluecke als Vermoegen – dann kannst du 4% pro Jahr entnehmen.",
-      "Je frueher du anfaengst privat vorzusorgen, desto weniger musst du monatlich zuruecklegen – der Zinseszins arbeitet fuer dich.",
-      "Breit gestreute ETFs (z.B. MSCI World) erzielen historisch ca. 7% p.a. – das schlaegt die Inflation deutlich und eignet sich gut fuer langfristige Altersvorsorge.",
-    ],
-    intro: [
-      "Die durchschnittliche gesetzliche Rente liegt bei ca. 1.100 EUR netto – und damit weit unter dem, was die meisten im Alter brauchen. Dieser Rechner zeigt dir deine persoenliche Rentenluecke und was du jetzt tun musst.",
-      "Gib dein Alter, Gehalt und erwartete Rente ein – der Rechner berechnet die Luecke, beruecksichtigt Inflation und zeigt dir, wie viel du monatlich sparen musst, um deinen Lebensstandard im Alter zu halten.",
-    ],
-    howItWorks: [
-      {
-        title: "Alter & Renteneintritt eingeben",
-        description:
-          "Gib dein aktuelles Alter und dein gewuenschtes Renteneintrittsalter ein. Das Regelalter liegt bei 67, aber du kannst auch frueher oder spaeter planen.",
-      },
-      {
-        title: "Einkommen & Wunschrente festlegen",
-        description:
-          "Dein Netto-Einkommen bestimmt, wie viel du im Alter brauchst. 80% ist die Faustregel – im Alter fallen Pendeln, Arbeitskleidung und Sparen weg.",
-      },
-      {
-        title: "Gesetzliche Rente eintragen",
-        description:
-          "Deine erwartete Netto-Rente findest du auf deiner Renteninformation (kommt jaehrlich per Post). Durchschnitt 2025: ca. 1.200 EUR netto.",
-      },
-      {
-        title: "Inflation & Rendite einstellen",
-        description:
-          "2% Inflation ist der EZB-Zielwert. 6% Rendite ist konservativ fuer breit gestreute ETFs. Der Rechner beruecksichtigt beides, um dir realistische Zahlen zu liefern.",
-      },
-      {
-        title: "Sparplan ablesen",
-        description:
-          "Du siehst sofort: Deine Rentenluecke heute und inflationsbereinigt, das benoetigte Vermoegen und die monatliche Sparrate, um die Luecke zu schliessen.",
-      },
-    ],
-    useCases: [
-      "Rentenluecke monatlich & jaehrlich berechnen – heute und inflationsbereinigt",
-      "Sparrate berechnen: Wie viel musst du monatlich in einen ETF-Sparplan stecken?",
-      "Vermoegensbedarf fuer die Rente berechnen: Wie viel brauchst du auf dem Konto?",
-      "Inflation einrechnen: Was ist deine Rente in 30 Jahren wirklich wert?",
-      "Private Vorsorge (Riester, bAV, Ruerup) einordnen: Schliesst sie die Luecke?",
-      "Fruehen Ruhestand planen: Wie viel mehr musst du sparen, wenn du mit 60 aufhoerst?",
-      "Vorhandenes Vermoegen einrechnen: Wie viel deiner Luecke ist schon gedeckt?",
-    ],
-    faqs: [
-      {
-        question: "Was ist die Rentenluecke?",
-        answer:
-          "Die Rentenluecke ist die Differenz zwischen dem Einkommen, das du im Alter brauchst, und dem, was du tatsaechlich bekommst (gesetzliche Rente + private Vorsorge). Liegt deine Wunschrente bei 2.000 EUR, du bekommst aber nur 1.200 EUR Rente, fehlen dir 800 EUR/Monat.",
-      },
-      {
-        question: "Wo finde ich meine erwartete gesetzliche Rente?",
-        answer:
-          "Ab 27 Jahren bekommst du jaehrlich eine Renteninformation per Post von der Deutschen Rentenversicherung. Dort steht dein voraussichtlicher Rentenanspruch. Du kannst sie auch online abrufen unter www.deutsche-rentenversicherung.de.",
-      },
-      {
-        question: "Warum ist 80% des Nettogehalts eine gute Faustregel?",
-        answer:
-          "Im Alter fallen Kosten weg: Pendeln zur Arbeit, Berufskleidung, die Sparrate selbst. Gleichzeitig steigen Gesundheitskosten. Unter dem Strich reichen den meisten Menschen 70-80% ihres letzten Nettoeinkommens fuer denselben Lebensstandard.",
-      },
-      {
-        question: "Warum beruecksichtigt der Rechner Inflation?",
-        answer:
-          "100 EUR heute sind nicht 100 EUR in 30 Jahren. Bei 2% Inflation brauchst du in 30 Jahren 181 EUR, um dir dasselbe kaufen zu koennen. Ohne Inflation-Beruecksichtigung unterschaetzt du deine Rentenluecke massiv.",
-      },
-      {
-        question: "Was ist die 4%-Regel / 25er-Regel?",
-        answer:
-          "Die 4%-Regel besagt: Du kannst jaehrlich 4% deines Vermoegens entnehmen, ohne es aufzubrauchen (bei breit gestreutem Portfolio). Umgekehrt: Du brauchst das 25-Fache deiner jaehrlichen Luecke als Vermoegen. Bei 800 EUR/Monat Luecke = 9.600 EUR/Jahr × 25 = 240.000 EUR.",
-      },
-      {
-        question: "Reichen 6% Rendite als Annahme?",
-        answer:
-          "Breit gestreute Aktien-ETFs (MSCI World, FTSE All-World) erzielen historisch ca. 7-8% p.a. vor Inflation. 6% ist eine konservative Annahme, die einen Puffer einbaut. Fuer risikoaermere Anlagen (Anleihen, Festgeld) solltest du 2-4% ansetzen.",
-      },
-    ],
   },
   {
     slug: "etf-kosten-rechner",
     title: "ETF-Kostenrechner",
-    metaTitle: "ETF Kostenrechner | BeAFox",
-    metaDescription:
-      "Vergleiche, wie sich ETF-Gebuehren (TER) auf dein Vermoegen auswirken. Guenstiger ETF vs. teurer Fonds – mit Anfangskapital und Kostenaufstellung.",
     excerpt: "Was kosten dich ETF-Gebuehren ueber die Jahre wirklich?",
     category: "Investieren",
     categoryEmoji: "💸",
@@ -4460,91 +3915,10 @@ export const CALCULATORS: Calculator[] = [
         key: "fv_ohne",
       },
     ],
-    tips: [
-      "Ein MSCI World ETF hat typischerweise eine TER von 0,12-0,22%. Der guenstigste (Amundi Prime Global) liegt bei 0,05%.",
-      "Bei 100 EUR/Monat ueber 30 Jahre kostet dich 1,3% hoehere TER ueber 30.000 EUR an Vermoegen – das ist mehr als ein Kleinwagen.",
-      "Achte beim ETF-Kauf auch auf den Tracking Difference (TD) – die TER allein sagt nicht alles. Ein ETF mit 0,2% TER aber negativer TD kann guenstiger sein als einer mit 0,1% TER.",
-      "Thesaurierende ETFs reinvestieren Dividenden automatisch – das spart dir die Ordergebuehren und den Aufwand.",
-      "Neobroker wie Trade Republic oder Scalable bieten kostenlose ETF-Sparplaene an – damit sparst du auch die Ordergebuehren.",
-    ],
-    intro: [
-      "0,2% vs. 1,5% TER klingt nach fast nichts – aber bei 100 EUR Sparrate ueber 30 Jahre sind das ueber 30.000 EUR Unterschied. Dieser Rechner zeigt dir genau, wie viel dich teure Fonds wirklich kosten.",
-      "Vergleiche guenstigen ETF vs. teuren Fonds: Endvermoegen, entgangene Rendite und die jaehrlichen Kosten auf einen Blick – damit du die richtige Entscheidung fuer dein Depot triffst.",
-    ],
-    howItWorks: [
-      {
-        title: "Anfangskapital & Sparrate eingeben",
-        description:
-          "Hast du schon Geld investiert? Gib es als Anfangskapital ein. Dazu deine monatliche Sparrate – beides wird verzinst und verglichen.",
-      },
-      {
-        title: "Rendite und Zeitraum festlegen",
-        description:
-          "7% p.a. brutto ist fuer breit gestreute Aktien-ETFs (MSCI World) historisch realistisch. Je laenger der Zeitraum, desto groesser der Kosteneffekt.",
-      },
-      {
-        title: "TER fuer beide Szenarien eintragen",
-        description:
-          "Links der guenstige ETF (z.B. 0,2% fuer MSCI World), rechts der teure Vergleich (z.B. 1,5% fuer einen aktiv gemanagten Fonds).",
-      },
-      {
-        title: "Kostenvergleich ablesen",
-        description:
-          "Du siehst fuer jedes Szenario: Endvermoegen, Renditegewinn und die entgangene Rendite durch die TER. Plus den direkten Vorteil des guenstigen ETFs in EUR und Prozent.",
-      },
-      {
-        title: "Entscheidung treffen",
-        description:
-          "Die Zahlen sprechen fuer sich: Selbst 0,3% TER-Unterschied summieren sich ueber Jahrzehnte zu Tausenden Euro. Weniger Kosten = mehr Vermoegen.",
-      },
-    ],
-    useCases: [
-      "ETF-Kosten vergleichen: Wie viel spart dir 0,05% vs. 0,2% vs. 1,5% TER?",
-      "Aktiv vs. passiv: Lohnt sich der teure Fondsmanager wirklich?",
-      "Depot-Check: Wie viel kosten dich deine aktuellen Fonds?",
-      "Wechsel-Entscheidung: Rechnet sich der Umstieg auf einen guenstigeren ETF?",
-      "Anfangskapital-Effekt: Wie stark wirkt die TER auf groessere Betraege?",
-      "Langzeiteffekt visualisieren: 0,3% TER ueber 30 Jahre = ein Kleinwagen Unterschied",
-      "Sparplan-Optimierung: Mit welchem ETF erreichst du dein Ziel schneller?",
-    ],
-    faqs: [
-      {
-        question: "Was ist die TER?",
-        answer:
-          "TER steht fuer Total Expense Ratio – die Gesamtkostenquote eines ETFs pro Jahr. Ein ETF mit 0,2% TER kostet dich 20 EUR pro Jahr bei 10.000 EUR Vermoegen. Die TER wird automatisch aus dem Fondspreis abgezogen, du zahlst sie also indirekt.",
-      },
-      {
-        question: "Was sind typische ETF-Kosten?",
-        answer:
-          "MSCI World: 0,05-0,22%. S&P 500: 0,03-0,09%. FTSE All-World: 0,22%. Schwellenlaender: 0,18-0,5%. Themen-ETFs (KI, Clean Energy): 0,35-0,65%. Aktiv gemanagte Fonds: 1,5-2,5%.",
-      },
-      {
-        question: "Schlagen aktive Fonds den Markt?",
-        answer:
-          "Fast nie. Laut SPIVA-Studie schlagen ueber 15 Jahre weniger als 10% der aktiven Fonds ihren Vergleichsindex. Und die wenigen, die es schaffen, rechtfertigen selten die 1-2% hoehere TER. Deshalb empfehlen Finanzexperten breit gestreute ETFs.",
-      },
-      {
-        question: "Was ist der Unterschied zwischen TER und Tracking Difference?",
-        answer:
-          "Die TER zeigt die offiziellen Verwaltungskosten. Die Tracking Difference (TD) zeigt den tatsaechlichen Renditeunterschied zum Index – inklusive versteckter Kosten und Ertraege (z.B. Wertpapierleihe). Ein ETF mit 0,2% TER kann eine TD von nur 0,1% haben.",
-      },
-      {
-        question: "Lohnt sich ein Wechsel zu guenstigeren ETFs?",
-        answer:
-          "Meistens ja! Aber rechne vorher: Beim Verkauf zahlst du Steuern auf Gewinne (26,375% KapESt). Wenn dein neuer ETF 0,5% guenstiger ist und du 10.000 EUR wechselst, hast du die Steuern nach 2-3 Jahren wieder drin. Tipp: Neues Geld sofort in den guenstigen ETF stecken.",
-      },
-      {
-        question: "Gibt es versteckte Kosten bei ETFs?",
-        answer:
-          "Ja, neben der TER gibt es: Ordergebuehren beim Kauf/Verkauf (bei Neobrokern oft 0 EUR), den Spread (Differenz zwischen Kauf- und Verkaufskurs, ca. 0,01-0,1%), und die Tracking Difference. Insgesamt sind ETFs trotzdem deutlich guenstiger als aktive Fonds.",
-      },
-    ],
   },
   {
     slug: "waehrungsrechner",
     title: "Waehrungsrechner",
-    metaTitle: "Waehrungsrechner | BeAFox",
-    metaDescription: "Rechne Euro in andere Waehrungen um. Ideal fuer Reisen, Online-Shopping und Auslandssemester.",
     excerpt: "Wie viel ist dein Geld im Ausland wert?",
     category: "Alltag & Lifestyle",
     categoryEmoji: "🌍",
@@ -4593,82 +3967,16 @@ export const CALCULATORS: Calculator[] = [
         highlight: true,
       },
     ],
-    tips: [
-      "Gaengige Kurse: 1 EUR ≈ 1,08 USD | 0,86 GBP | 162 JPY | 0,94 CHF | 11,8 SEK (Stand 2025).",
-      "Am Flughafen wechseln ist teuer – nutze lieber Reisekreditkarten ohne Auslandsgebuehren.",
-      "Beim Online-Shopping: Immer in der Lokalwaehrung bezahlen – die Umrechnung des Shops ist meist schlechter.",
-    ],
-    intro: [
-      "Ob Urlaub, Online-Shopping oder Auslandssemester – Wechselkurse aendern sich taeglich. Mit diesem Rechner rechnest du schnell aus, wie viel dein Geld im Ausland wert ist.",
-      "Wichtig: Zaehle auch die Bankgebuehren ein – sie sind oft versteckt und fressen deine Ersparnisse auf.",
-    ],
-    howItWorks: [
-      {
-        title: "Betrag in Euro eingeben",
-        description: "Wie viel Geld moechtest du in eine andere Waehrung umrechnen? (z.B. 100 EUR fuer einen Kurzurlaub)",
-      },
-      {
-        title: "Wechselkurs eingeben",
-        description: "Der aktuelle Kurs wird normalerweise im Rechner voreingestellt. Du kannst ihn anpassen – Kurse aendern sich taeglich!",
-      },
-      {
-        title: "Bankgebuehr angeben",
-        description: "Wie viel Prozent Gebuehr verlangt deine Bank? Typisch: 1-3%. Ein Fehler: Am Flughafen zaehlen bis zu 8%!",
-      },
-      {
-        title: "Umrechnung sehen",
-        description: "Der Rechner zeigt: Betrag ohne Gebuehr, Gebuehr selbst, Endschlusslich bekoomener Betrag.",
-      },
-      {
-        title: "Vergleichen",
-        description: "Jetzt siehst du, wie viel die Gebuehren dir kosten – oft 15-30 EUR bei 100 EUR Umtausch!",
-      },
-    ],
-    useCases: [
-      "Urlaub planen: 500 EUR in USD/GBP/CHF umrechnen",
-      "Online-Shopping: Amazon USA – wie teuer mit Versand?",
-      "Auslandssemester budgetieren: Jahresbudget in andere Waehrung rechnen",
-      "Gehalt im Ausland: Wie viel EUR sind 2.000 USD/CHF/GBP?",
-      "Wechselkurs-Aenderungen testen: Was passiert bei Kurs-Aenderung um 2%?",
-      "Bankgebuehren vergleichen: Online-Bank vs. Filialbanka – wie viel kostet das?",
-      "Kreditkarte vs. Bargeld: Was ist guenstiger im Ausland?",
-    ],
-    faqs: [
-      {
-        question: "Wo bekomme ich den besten Wechselkurs?",
-        answer: "Online-Dienste wie Wise oder Revolut haben die besten Kurse. Banken berechnen 1-3% Zuschlag. Am Flughafen: 4-8% Zuschlag. Niemals dort wechseln!",
-      },
-      {
-        question: "Bargeld tauschen vs. Kreditkarte – was ist guenstiger?",
-        answer: "Kreditkarte ohne Auslandsgebuehr (Wise, DKB) ist guenstiger. Bargeld tauschen im Land ist oft besser als am Flughafen. Geldautomaten sind oft in Ordnung.",
-      },
-      {
-        question: "Was sind versteckte Gebuehren beim Wechsel?",
-        answer: "1. Wechselgebuehrer (1-3%). 2. Makler-Marge (bis 2%). 3. Bargeld-Auszahlungsgebuehr (1-5%). 4. Mindestgebuehr (oft 5-10 EUR).",
-      },
-      {
-        question: "Wechselkurs – Geld- oder Briefkurs?",
-        answer: "Geldkurs: So viel die Bank dir gibt (schlechter). Briefkurs: So viel sie dir abkauft (besser fuer dich). Der Unterschied ist oft 1-3%.",
-      },
-      {
-        question: "Sollte ich Fremdwaehrung vorher tauschen oder erst im Land?",
-        answer: "Im Land tauschen ist meist besser – Laeden/Automaten bieten oft bessere Kurse als am Flughafen. Ausnahme: Zeitung, Kanada, USA – dort am Flughafen.",
-      },
-      {
-        question: "Ist die Kreditkarte im Ausland sicherer als Bargeld?",
-        answer: "Ja, meist sicherer. Aber: Immer PIN nehmen, nur serioeese Automaten (Bank/Flughafen), offline-Zahlungen vermeiden. Notfall-Kontakt der Bank mitschreiben.",
-      },
-    ],
   },
 ];
 
 export const CALCULATOR_CATEGORIES = [
+  { label: "Investieren", emoji: "📈" },
   { label: "Gehalt & Arbeit", emoji: "💼" },
   { label: "Sparen & Budget", emoji: "🎯" },
-  { label: "Investieren", emoji: "📈" },
+  { label: "Rente & Vorsorge", emoji: "🏖️" },
   { label: "Alltag & Lifestyle", emoji: "🏠" },
   { label: "Studium & Ausbildung", emoji: "🎓" },
-  { label: "Rente & Vorsorge", emoji: "🏖️" },
 ];
 
 export function getCalculatorBySlug(slug: string): Calculator | undefined {

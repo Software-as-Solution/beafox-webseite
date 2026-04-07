@@ -32,7 +32,9 @@ const LEGAL_LINKS = [
   { href: "/agb", key: "agb" },
   { href: "/impressum", key: "imprint" },
   { href: "/datenschutz", key: "privacy" },
-  { href: "/guidelines", key: "guidelines" },
+  { href: "/barrierefreiheit", key: "accessibility" },
+  { href: "/widerrufsbelehrung", key: "withdrawal" },
+  { href: "/community-richtlinien", key: "guidelines" },
 ] as const;
 const SOCIAL_LINKS = [
   { href: "https://x.com/beafox_app", label: "X" },

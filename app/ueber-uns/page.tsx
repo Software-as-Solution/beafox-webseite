@@ -122,6 +122,7 @@ export default function AboutPage() {
         badge={t("hero.badge")}
         mascotAlt={t("hero.badge")}
         cardText={t("hero.subtitle")}
+        contentClassName="md:left-[0%]"
         mascotSrc="/Maskottchen/Maskottchen-Friends.png"
         title={
           <>

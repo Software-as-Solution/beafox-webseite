@@ -54,11 +54,8 @@ export async function generateMetadata({
     return { title: "Rechner nicht gefunden | BeAFox" };
   }
   const metaTitle =
-    sanityContent?.metaTitle ||
-    calculator?.metaTitle ||
-    "Finanzrechner | BeAFox";
-  const metaDescription =
-    sanityContent?.metaDescription || calculator?.metaDescription || "";
+    sanityContent?.metaTitle || "Finanzrechner | BeAFox";
+  const metaDescription = sanityContent?.metaDescription || "";
   const url = `${SITE_URL}/finanzrechner/${slug}`;
 
   return {
@@ -88,18 +85,18 @@ export default async function CalculatorPage({ params }: PageProps) {
   const calculator = getCalculatorBySlug(slug);
   const t = await getTranslations("finanzrechner");
   if (!calculator) notFound();
-  // SANITY CONTENT
+  // SANITY CONTENT (all editorial content lives in Sanity CMS)
   const sanityContent = await getCalculatorContent(slug);
   const title = sanityContent?.title || calculator.title;
   const excerpt = sanityContent?.excerpt || calculator.excerpt;
   const category = sanityContent?.category || calculator.category;
   const categoryEmoji =
     sanityContent?.categoryEmoji || calculator.categoryEmoji;
-  const intro = sanityContent?.intro || calculator.intro || [];
-  const howItWorks = sanityContent?.howItWorks || calculator.howItWorks || [];
-  const tips = sanityContent?.tips || calculator.tips;
-  const useCases = sanityContent?.useCases || calculator.useCases || [];
-  const faqs = sanityContent?.faqs || calculator.faqs || [];
+  const intro = sanityContent?.intro || [];
+  const howItWorks = sanityContent?.howItWorks || [];
+  const tips = sanityContent?.tips || [];
+  const useCases = sanityContent?.useCases || [];
+  const faqs = sanityContent?.faqs || [];
   // BANNER SLOTS
   const bannerAfterTips = getBannerForCalculator(slug, "after-tips");
   const bannerAfterUseCases = getBannerForCalculator(slug, "after-useCases");

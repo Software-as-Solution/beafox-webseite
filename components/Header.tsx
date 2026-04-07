@@ -22,6 +22,7 @@ import {
   type BlogCategorySlug,
   getNavTopicsForCategory,
 } from "@/lib/blog";
+import { CALCULATORS, CALCULATOR_CATEGORIES } from "@/lib/calculators";
 
 // TYPES
 type ProductNavId =
@@ -89,17 +90,25 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHydrated, setIsHydrated] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeRatgeberCategory, setActiveRatgeberCategory] =
-    useState<BlogCategorySlug>(BLOG_CATEGORIES[0].slug);
+  const [isRechnerOpen, setIsRechnerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isRatgeberOpen, setIsRatgeberOpen] = useState(false);
+  const [mobileRechnerOpen, setMobileRechnerOpen] = useState(false);
   const [mobileRatgeberOpen, setMobileRatgeberOpen] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [activeRatgeberCategory, setActiveRatgeberCategory] =
+    useState<BlogCategorySlug>(BLOG_CATEGORIES[0].slug);
   const [mobileRatgeberCategoryOpen, setMobileRatgeberCategoryOpen] = useState<
+    string | null
+  >(null);
+  const [mobileRechnerCategoryOpen, setMobileRechnerCategoryOpen] = useState<
     string | null
   >(null);
   // REFS
   const rafRef = useRef<number | null>(null);
+  const rechnerRef = useRef<HTMLDivElement>(null);
   const ratgeberRef = useRef<HTMLDivElement>(null);
+  const rechnerPanelRef = useRef<HTMLDivElement>(null);
   const productsPanelRef = useRef<HTMLDivElement>(null);
   const ratgeberPanelRef = useRef<HTMLDivElement>(null);
   const productsTriggerRef = useRef<HTMLDivElement>(null);
@@ -139,17 +148,53 @@ export default function Header() {
       topics: getNavTopicsForCategory(cat.slug),
     }));
   }, []);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
+  const rechnerCategories = useMemo(
+    () =>
+      CALCULATOR_CATEGORIES.map((cat) => ({
+        id: cat.label,
+        label: cat.label,
+        emoji: cat.emoji,
+        href: "/finanzrechner",
+        calculators: CALCULATORS.filter((calc) => calc.category === cat.label).sort(
+          (a, b) => {
+            const preferredOrderByCategory: Record<string, string[]> = {
+              "Gehalt & Arbeit": ["stundenlohn-rechner"],
+              "Sparen & Budget": [
+                "inflationsrechner",
+                "sparplan-rechner",
+                "notgroschen-rechner",
+                "budget-rechner",
+              ],
+              "Alltag & Lifestyle": [
+                "spritrechner",
+                "waehrungsrechner",
+                "mietkosten-rechner",
+                "taschengeld-rechner",
+              ],
+            };
+            const order = preferredOrderByCategory[cat.label];
+            if (!order) return 0;
+
+            const ai = order.indexOf(a.slug);
+            const bi = order.indexOf(b.slug);
+            if (ai === -1 && bi === -1) return 0;
+            if (ai === -1) return 1;
+            if (bi === -1) return -1;
+            return ai - bi;
+          },
+        ),
+      })),
+    [],
+  );
+  const [activeRechnerCategory, setActiveRechnerCategory] = useState(
+    rechnerCategories[0]?.id ?? "",
+  );
   const activeCategory =
     ratgeberCategories.find((c) => c.id === activeRatgeberCategory) ??
     ratgeberCategories[0];
+  const activeRechnerCategoryData =
+    rechnerCategories.find((c) => c.id === activeRechnerCategory) ??
+    rechnerCategories[0];
   // FUNCTIONS
   const handleScroll = useCallback(() => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -164,16 +209,26 @@ export default function Header() {
     setIsMenuOpen(false);
     setIsDropdownOpen(false);
     setIsRatgeberOpen(false);
+    setIsRechnerOpen(false);
     setMobileRatgeberOpen(false);
+    setMobileRechnerOpen(false);
     setMobileRatgeberCategoryOpen(null);
+    setMobileRechnerCategoryOpen(null);
   }, []);
   const toggleRatgeber = useCallback(() => {
     setIsRatgeberOpen((p) => !p);
+    setIsDropdownOpen(false);
+    setIsRechnerOpen(false);
+  }, []);
+  const toggleRechner = useCallback(() => {
+    setIsRechnerOpen((p) => !p);
+    setIsRatgeberOpen(false);
     setIsDropdownOpen(false);
   }, []);
   const toggleProducts = useCallback(() => {
     setIsDropdownOpen((p) => !p);
     setIsRatgeberOpen(false);
+    setIsRechnerOpen(false);
   }, []);
   // EFFECTS
   useEffect(() => {
@@ -188,7 +243,7 @@ export default function Header() {
     setIsHydrated(true);
   }, []);
   useEffect(() => {
-    if (!isDropdownOpen && !isRatgeberOpen) return;
+    if (!isDropdownOpen && !isRatgeberOpen && !isRechnerOpen) return;
 
     const handler = (e: MouseEvent) => {
       const t = e.target as Node;
@@ -204,6 +259,12 @@ export default function Header() {
         !ratgeberPanelRef.current?.contains(t)
       )
         setIsRatgeberOpen(false);
+      if (
+        isRechnerOpen &&
+        !rechnerRef.current?.contains(t) &&
+        !rechnerPanelRef.current?.contains(t)
+      )
+        setIsRechnerOpen(false);
     };
 
     // Delay listener to avoid catching the same click that opened the dropdown
@@ -215,9 +276,10 @@ export default function Header() {
       clearTimeout(timer);
       document.removeEventListener("mousedown", handler);
     };
-  }, [isDropdownOpen, isRatgeberOpen]);
+  }, [isDropdownOpen, isRatgeberOpen, isRechnerOpen]);
   useEffect(() => {
-    if (!isDropdownOpen && !isMenuOpen && !isRatgeberOpen) return;
+    if (!isDropdownOpen && !isMenuOpen && !isRatgeberOpen && !isRechnerOpen)
+      return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeAll();
     };
@@ -225,7 +287,7 @@ export default function Header() {
     return () => document.removeEventListener("keydown", handler);
     // closeAll is stable (empty deps useCallback), safe to omit from deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDropdownOpen, isMenuOpen, isRatgeberOpen]);
+  }, [isDropdownOpen, isMenuOpen, isRatgeberOpen, isRechnerOpen]);
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
     return () => {
@@ -237,6 +299,14 @@ export default function Header() {
       closeAll();
     });
   }, [pathname, closeAll]);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) =>
+      setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -245,7 +315,7 @@ export default function Header() {
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="Scroll-Fortschritt"
+        aria-label={t("aria.scrollProgress")}
         aria-valuenow={Math.round(scrollProgress)}
         style={{
           zIndex: 60,
@@ -275,7 +345,7 @@ export default function Header() {
               {/* LOGO */}
               <Link
                 href="/"
-                aria-label="BeAFox Startseite"
+                aria-label={t("aria.home")}
                 className="flex-shrink-0 relative z-10"
               >
                 <Image
@@ -313,13 +383,33 @@ export default function Header() {
                     aria-haspopup="true"
                     className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${isRatgeberOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
                   >
-                    Ratgeber
+                    {t("nav.guide")}
                     <ChevronDown
                       size={16}
                       aria-hidden="true"
                       className="transition-transform duration-200"
                       style={{
                         transform: isRatgeberOpen
+                          ? "rotate(-180deg)"
+                          : "rotate(0deg)",
+                      }}
+                    />
+                  </button>
+                </div>
+                <div ref={rechnerRef}>
+                  <button
+                    onClick={toggleRechner}
+                    aria-expanded={isRechnerOpen}
+                    aria-haspopup="true"
+                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${isRechnerOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                  >
+                    {t("nav.calculators")}
+                    <ChevronDown
+                      size={16}
+                      aria-hidden="true"
+                      className="transition-transform duration-200"
+                      style={{
+                        transform: isRechnerOpen
                           ? "rotate(-180deg)"
                           : "rotate(0deg)",
                       }}
@@ -371,7 +461,9 @@ export default function Header() {
                   aria-expanded={isMenuOpen}
                   aria-controls="mobile-menu"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  aria-label={isMenuOpen ? "Menü schließen" : "Menü öffnen"}
+                  aria-label={
+                    isMenuOpen ? t("aria.closeMenu") : t("aria.openMenu")
+                  }
                   className="p-2 rounded-xl text-darkerGray hover:bg-gray-100 transition-colors"
                 >
                   {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -384,7 +476,7 @@ export default function Header() {
             {isRatgeberOpen && (
               <motion.div
                 role="menu"
-                aria-label="Ratgeber"
+                aria-label={t("nav.guide")}
                 exit={{ opacity: 0 }}
                 ref={ratgeberPanelRef}
                 initial={{ opacity: 0 }}
@@ -394,14 +486,14 @@ export default function Header() {
                 style={{ top: `${PROGRESS_BAR_HEIGHT + 8 + 68 + 12}px` }}
               >
                 <div
-                  style={{ width: "min(820px, calc(100vw - 48px))" }}
+                  style={{ width: "min(850px, calc(100vw - 48px))" }}
                   className="mx-auto bg-primaryWhite rounded-2xl shadow-2xl shadow-black/[0.1] border border-gray-200/60 overflow-hidden"
                 >
                   <div className="flex">
                     <div className="w-[300px] border-r border-gray-100 py-3 px-2 flex-shrink-0 bg-gray-50/50">
                       <div className="px-3 pb-2 mb-1">
                         <span className="text-xs font-bold text-lightGray uppercase tracking-widest">
-                          Kategorien
+                          {t("common.categories")}
                         </span>
                       </div>
                       {ratgeberCategories.map((cat) => {
@@ -435,7 +527,7 @@ export default function Header() {
                         );
                       })}
                     </div>
-                    <div className="flex-1 p-6">
+                    <div className="flex-1 py-8 px-6">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-bold text-darkerGray">
                           {activeCategory.label}
@@ -445,10 +537,10 @@ export default function Header() {
                           href={activeCategory.href}
                           className="text-xs font-semibold text-primaryOrange hover:underline"
                         >
-                          Alle anzeigen →
+                          {t("common.showAll")}
                         </Link>
                       </div>
-                      <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                      <div className="grid grid-cols-1 gap-y-1">
                         {activeCategory.topics.map((topic) => (
                           <Link
                             key={topic.href}
@@ -464,21 +556,29 @@ export default function Header() {
                       <Link
                         href="/finanzrechner"
                         onClick={closeAll}
-                        className="mt-4 flex items-center gap-2.5 rounded-xl px-3 py-2.5 transition-all hover:shadow-md"
+                        className="mt-4 flex items-center gap-2.5 rounded-xl px-3 py-4 transition-all hover:shadow-md"
                         style={{
                           background: "rgba(232,119,32,0.06)",
                           border: "1px solid rgba(232,119,32,0.15)",
                         }}
                       >
-                        <div className="w-9 h-9 rounded-lg bg-primaryOrange/15 flex items-center justify-center flex-shrink-0">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#eb8a26" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="16" y1="18" x2="16" y2="18"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/></svg>
+                        <div className="w-10 h-10 overflow-hidden flex-shrink-0 rounded-lg">
+                          <Image
+                            width={50}
+                            height={50}
+                            src="/Maskottchen/Maskottchen-Rechner.png"
+                            className="object-contain w-full h-full scale-125"
+                            alt={t("images.productNavAlt", {
+                              product: t("products.calculatorHub.title"),
+                            })}
+                          />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-xs font-bold text-darkerGray leading-tight">
-                            Finanzrechner & Tools
+                          <div className="text-sm font-bold text-darkerGray leading-tight">
+                            {t("products.calculatorHub.title")}
                           </div>
-                          <div className="text-[10px] text-lightGray mt-0.5">
-                            Brutto-Netto, Sparplan, Budget & mehr
+                          <div className="text-[11px] text-lightGray mt-0.5">
+                            {t("products.calculatorHub.subtitle")}
                           </div>
                         </div>
                         <div className="text-[11px] font-bold text-primaryOrange flex-shrink-0">
@@ -489,31 +589,31 @@ export default function Header() {
                         target="_blank"
                         href={APP_DOWNLOAD_URL}
                         rel="noopener noreferrer"
-                        className="mt-2 flex items-center gap-2.5 rounded-xl px-3 py-2.5 transition-all hover:shadow-md"
+                        className="mt-2 flex items-center gap-2.5 rounded-xl px-3 py-4 transition-all hover:shadow-md"
                         style={{
                           background: "rgba(232,119,32,0.06)",
                           border: "1px solid rgba(232,119,32,0.15)",
                         }}
                       >
-                        <div className="w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 border border-primaryOrange/20">
+                        <div className="w-10 h-10 overflow-hidden flex-shrink-0">
                           <Image
-                            width={36}
-                            height={36}
-                            src="/Logo.png"
+                            width={50}
+                            height={50}
+                            src="/assets/Logos/Logo.png"
                             alt={t("images.appIconAlt")}
-                            className="object-cover w-full h-full"
+                            className="object-contain w-full h-full"
                           />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-xs font-bold text-darkerGray leading-tight">
-                            BeAFox: Finanzen durchgespielt
+                          <div className="text-sm font-bold text-darkerGray leading-tight">
+                            {t("appPromo.title")}
                           </div>
                           <div className="flex items-center gap-0.5 mt-0.5">
                             {[...Array(5)].map((_, i) => (
                               <svg
                                 key={i}
-                                width="10"
-                                height="10"
+                                width="12"
+                                height="12"
                                 stroke="none"
                                 fill="#F97316"
                                 aria-hidden="true"
@@ -522,7 +622,7 @@ export default function Header() {
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                               </svg>
                             ))}
-                            <span className="text-[9px] text-lightGray ml-0.5">
+                            <span className="text-[11px] text-lightGray ml-0.5">
                               5.0
                             </span>
                           </div>
@@ -533,7 +633,189 @@ export default function Header() {
                             boxShadow: "0 2px 6px rgba(232,119,32,0.25)",
                           }}
                         >
-                          Laden
+                          {t("appPromo.cta")}
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          {/* ─── RECHNER PANEL ─── */}
+          <AnimatePresence>
+            {isRechnerOpen && (
+              <motion.div
+                role="menu"
+                aria-label={t("nav.calculators")}
+                exit={{ opacity: 0 }}
+                ref={rechnerPanelRef}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.15 }}
+                className="hidden lg:block fixed left-0 right-0 z-50"
+                style={{ top: `${PROGRESS_BAR_HEIGHT + 8 + 68 + 12}px` }}
+              >
+                <div
+                  style={{ width: "min(850px, calc(100vw - 48px))" }}
+                  className="mx-auto bg-primaryWhite rounded-2xl shadow-2xl shadow-black/[0.1] border border-gray-200/60 overflow-hidden"
+                >
+                  <div className="flex">
+                    {/* SIDEBAR */}
+                    <div className="w-[300px] border-r border-gray-100 py-3 px-2 flex-shrink-0 bg-gray-50/50">
+                      <div className="px-3 pb-2 mb-1">
+                        <span className="text-xs font-bold text-lightGray uppercase tracking-widest">
+                          {t("common.categories")}
+                        </span>
+                      </div>
+                      {rechnerCategories.map((cat) => {
+                        const active = activeRechnerCategory === cat.id;
+                        return (
+                          <button
+                            key={cat.id}
+                            onClick={() => setActiveRechnerCategory(cat.id)}
+                            onMouseEnter={() =>
+                              setActiveRechnerCategory(cat.id)
+                            }
+                            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 text-left ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                          >
+                            <div
+                              className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
+                              style={{
+                                background: active
+                                  ? "rgba(232,119,32,0.12)"
+                                  : "rgba(232,119,32,0.06)",
+                                border: "1px solid rgba(232,119,32,0.15)",
+                              }}
+                            >
+                              <span aria-hidden="true">{cat.emoji}</span>
+                            </div>
+                            <span className="text-base font-semibold">
+                              {cat.label}
+                            </span>
+                            <ChevronRight
+                              aria-hidden="true"
+                              className={`w-3.5 h-3.5 ml-auto transition-opacity duration-150 ${active ? "opacity-100" : "opacity-0"}`}
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* CONTENT */}
+                    <div className="flex-1 p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-lg font-bold text-darkerGray">
+                          {activeRechnerCategoryData?.label}
+                        </h3>
+                        <Link
+                          onClick={closeAll}
+                          href="/finanzrechner"
+                          className="text-xs font-semibold text-primaryOrange hover:underline"
+                        >
+                          {t("common.showAll")}
+                        </Link>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-y-1">
+                        {(activeRechnerCategoryData?.calculators ?? []).map(
+                          (calc) => (
+                            <Link
+                              key={calc.slug}
+                              href={`/finanzrechner/${calc.slug}`}
+                              onClick={closeAll}
+                              className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5 transition-all duration-150"
+                            >
+                              <div className="w-1.5 h-1.5 rounded-full bg-primaryOrange/40 flex-shrink-0" />
+                              {calc.title}
+                            </Link>
+                          ),
+                        )}
+                      </div>
+
+                      {/* Ratgeber Cross-Promotion */}
+                      <Link
+                        href="/ratgeber"
+                        onClick={closeAll}
+                        className="mt-4 flex items-center gap-2.5 rounded-xl px-3 py-4 transition-all hover:shadow-md"
+                        style={{
+                          background: "rgba(232,119,32,0.06)",
+                          border: "1px solid rgba(232,119,32,0.15)",
+                        }}
+                      >
+                        <div className="w-10 h-10 overflow-hidden flex-shrink-0 rounded-lg">
+                          <Image
+                            width={50}
+                            height={50}
+                            src="/Maskottchen/Maskottchen-Ratgeber.png"
+                            alt=""
+                            className="object-contain w-full h-full scale-125"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-bold text-darkerGray leading-tight">
+                            {t("rechnerPanel.guidePromo.title")}
+                          </div>
+                          <div className="text-[11px] text-lightGray mt-0.5">
+                            {t("rechnerPanel.guidePromo.subtitle")}
+                          </div>
+                        </div>
+                        <div className="text-[11px] font-bold text-primaryOrange flex-shrink-0">
+                          →
+                        </div>
+                      </Link>
+
+                      {/* App Download */}
+
+                      <a
+                        target="_blank"
+                        href={APP_DOWNLOAD_URL}
+                        rel="noopener noreferrer"
+                        className="mt-2 flex items-center gap-2.5 rounded-xl px-3 py-4 transition-all hover:shadow-md"
+                        style={{
+                          background: "rgba(232,119,32,0.06)",
+                          border: "1px solid rgba(232,119,32,0.15)",
+                        }}
+                      >
+                        <div className="w-10 h-10 overflow-hidden flex-shrink-0">
+                          <Image
+                            width={50}
+                            height={50}
+                            src="/assets/Logos/Logo.png"
+                            alt={t("images.appIconAlt")}
+                            className="object-contain w-full h-full"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-bold text-darkerGray leading-tight">
+                            {t("appPromo.title")}
+                          </div>
+                          <div className="flex items-center gap-0.5 mt-0.5">
+                            {[...Array(5)].map((_, i) => (
+                              <svg
+                                key={i}
+                                width="12"
+                                height="12"
+                                stroke="none"
+                                fill="#F97316"
+                                aria-hidden="true"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                              </svg>
+                            ))}
+                            <span className="text-[11px] text-lightGray ml-0.5">
+                              5.0
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          className="text-[11px] font-bold text-white bg-primaryOrange px-3.5 py-1.5 rounded-lg flex-shrink-0"
+                          style={{
+                            boxShadow: "0 2px 6px rgba(232,119,32,0.25)",
+                          }}
+                        >
+                          {t("appPromo.cta")}
                         </div>
                       </a>
                     </div>
@@ -564,7 +846,7 @@ export default function Header() {
                     <div className="p-4 border-r border-gray-100">
                       <div className="px-2 pb-2 mb-1">
                         <span className="text-xs font-bold text-lightGray uppercase tracking-widest">
-                          Produkte
+                          {t("products.label")}
                         </span>
                       </div>
                       {PRODUCT_NAV.slice(0, PRODUCT_NAV_SPLIT).map((p) => {
@@ -602,7 +884,7 @@ export default function Header() {
                     <div className="p-4">
                       <div className="px-2 pb-2 mb-1">
                         <span className="text-xs font-bold text-lightGray uppercase tracking-widest">
-                          Partnerschaften
+                          {t("products.partnerships")}
                         </span>
                       </div>
                       {PRODUCT_NAV.slice(PRODUCT_NAV_SPLIT).map((p) => {
@@ -649,7 +931,7 @@ export default function Header() {
                 role="dialog"
                 id="mobile-menu"
                 aria-modal="true"
-                aria-label="Navigation"
+                aria-label={t("aria.navigation")}
                 transition={{ duration: 0.25, ease: "easeInOut" }}
                 className="lg:hidden border-t border-gray-200/60 overflow-hidden max-h-[calc(100vh-100px)] overflow-y-auto"
                 initial={
@@ -691,7 +973,7 @@ export default function Header() {
                       aria-expanded={mobileRatgeberOpen}
                       className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${mobileRatgeberOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
                     >
-                      Ratgeber
+                      {t("nav.guide")}
                       <ChevronDown
                         size={14}
                         aria-hidden="true"
@@ -770,7 +1052,9 @@ export default function Header() {
                                         onClick={closeAll}
                                         className="block px-3 py-2 rounded-lg text-xs font-semibold text-primaryOrange"
                                       >
-                                        Alle {cat.label}-Ratgeber →
+                                        {t("nav.allGuidesFor", {
+                                          category: cat.label,
+                                        })}
                                       </Link>
                                     </motion.div>
                                   )}
@@ -782,14 +1066,92 @@ export default function Header() {
                       )}
                     </AnimatePresence>
                     {/* Mobile Finanzrechner Link */}
-                    <Link
-                      href="/finanzrechner"
-                      onClick={closeAll}
-                      className="flex items-center gap-2 mx-4 mt-1 px-3 py-2.5 rounded-xl text-xs font-semibold text-primaryOrange bg-primaryOrange/5 hover:bg-primaryOrange/10 transition-all"
+                    <button
+                      onClick={() => setMobileRechnerOpen(!mobileRechnerOpen)}
+                      aria-expanded={mobileRechnerOpen}
+                      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${mobileRechnerOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
                     >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
-                      Finanzrechner & Tools →
-                    </Link>
+                      {t("nav.calculators")}
+                      <ChevronDown
+                        size={14}
+                        aria-hidden="true"
+                        className="transition-transform duration-200"
+                        style={{
+                          transform: mobileRechnerOpen
+                            ? "rotate(-180deg)"
+                            : "rotate(0deg)",
+                        }}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {mobileRechnerOpen && (
+                        <motion.div
+                          transition={{ duration: 0.2 }}
+                          exit={{ opacity: 0, height: 0 }}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          className="ml-2 mt-1 space-y-0.5 overflow-hidden"
+                        >
+                          {rechnerCategories.map((cat) => {
+                            const isOpen = mobileRechnerCategoryOpen === cat.id;
+                            return (
+                              <div key={cat.id}>
+                                <button
+                                  onClick={() =>
+                                    setMobileRechnerCategoryOpen(
+                                      isOpen ? null : cat.id,
+                                    )
+                                  }
+                                  className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${isOpen ? "text-primaryOrange bg-primaryOrange/5" : "text-darkerGray"}`}
+                                >
+                                  <span aria-hidden="true">{cat.emoji}</span>
+                                  {cat.label}
+                                  <ChevronDown
+                                    size={12}
+                                    aria-hidden="true"
+                                    className="ml-auto transition-transform duration-200"
+                                    style={{
+                                      transform: isOpen
+                                        ? "rotate(-180deg)"
+                                        : "rotate(0deg)",
+                                    }}
+                                  />
+                                </button>
+                                <AnimatePresence>
+                                  {isOpen && (
+                                    <motion.div
+                                      transition={{ duration: 0.15 }}
+                                      exit={{ opacity: 0, height: 0 }}
+                                      initial={{ opacity: 0, height: 0 }}
+                                      animate={{ opacity: 1, height: "auto" }}
+                                      className="ml-6 space-y-0.5 overflow-hidden"
+                                    >
+                                      {cat.calculators.map((calc) => (
+                                        <Link
+                                          key={calc.slug}
+                                          href={`/finanzrechner/${calc.slug}`}
+                                          onClick={closeAll}
+                                          className="block px-3 py-2 rounded-lg text-xs text-darkerGray hover:text-primaryOrange transition-colors"
+                                        >
+                                          {calc.title}
+                                        </Link>
+                                      ))}
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </div>
+                            );
+                          })}
+                          <Link
+                            href="/finanzrechner"
+                            onClick={closeAll}
+                            className="block px-3 py-2 rounded-lg text-xs font-semibold text-primaryOrange"
+                          >
+                            {t("nav.allCalculators")}
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                   {/* Mobile Produkte */}
                   <div>

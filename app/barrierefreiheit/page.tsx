@@ -5,97 +5,75 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 // ICONS
 import {
-  Ban,
-  Bot,
   Mail,
   Home,
-  Scale,
+  Code,
   Bell,
+  Heart,
   Clock,
-  Wrench,
-  Shield,
-  Gavel,
-  XCircle,
-  Database,
-  FileText,
-  RotateCcw,
+  Scale,
+  Sparkles,
   RefreshCw,
-  Building2,
-  Copyright,
-  Handshake,
   ArrowRight,
-  CreditCard,
   AlertCircle,
-  CheckCircle2,
   ChevronRight,
-  MessageSquare,
-  GraduationCap,
+  CheckCircle2,
+  Accessibility,
 } from "lucide-react";
 // TYPES
 import type { LucideIcon } from "lucide-react";
 
 // TYPES
-type AgbIconId =
-  | "ban"
-  | "bot"
+type BarrierefreiheitIconId =
+  | "code"
+  | "mail"
+  | "alert"
+  | "heart"
   | "scale"
   | "check"
-  | "alert"
-  | "gavel"
-  | "shield"
   | "refresh"
-  | "rotate"
-  | "wrench"
-  | "xCircle"
-  | "fileText"
-  | "database"
-  | "building"
-  | "copyright"
-  | "handshake"
-  | "creditCard"
-  | "messageSquare"
-  | "graduationCap";
-type AgbContentItem = {
+  | "sparkles";
+type ContentItem = {
   text?: string;
+  list?: string[];
   subtitle?: string;
 };
-type AgbSection = {
+type BarrierefreiheitSection = {
   id: number;
   title: string;
-  iconId: AgbIconId;
-  content: AgbContentItem[];
+  content: ContentItem[];
+  iconId: BarrierefreiheitIconId;
+};
+type ContactBlock = {
+  cta: string;
+  text: string;
+  title: string;
+  labels: {
+    email: string;
+    phone: string;
+  };
 };
 // CONSTANTS
-const ICON_MAP: Record<AgbIconId, LucideIcon> = {
-  ban: Ban,
-  bot: Bot,
+const ICON_MAP: Record<BarrierefreiheitIconId, LucideIcon> = {
+  code: Code,
+  mail: Mail,
+  heart: Heart,
   scale: Scale,
-  gavel: Gavel,
-  shield: Shield,
-  wrench: Wrench,
-  xCircle: XCircle,
-  rotate: RotateCcw,
-  fileText: FileText,
-  refresh: RefreshCw,
-  database: Database,
   alert: AlertCircle,
-  building: Building2,
+  sparkles: Sparkles,
+  refresh: RefreshCw,
   check: CheckCircle2,
-  copyright: Copyright,
-  handshake: Handshake,
-  creditCard: CreditCard,
-  messageSquare: MessageSquare,
-  graduationCap: GraduationCap,
 };
-const COMPANY = {
-  email: "info@beafox.app",
-  phone: "+49 178 2723 673",
-  phoneHref: "tel:+491782723673",
-} as const;
 
-export default function AGBPage() {
-  const t = useTranslations("agb");
-  const sections = (t.raw("sections") as AgbSection[]) ?? [];
+export default function BarrierefreiheitPage() {
+  const t = useTranslations("barrierefreiheit");
+  const sections = (t.raw("sections") as BarrierefreiheitSection[]) ?? [];
+  const contact = t.raw("contact") as ContactBlock;
+  const company = t.raw("company") as {
+    email: string;
+    phone: string;
+    phoneHref: string;
+  };
 
   return (
     <>
@@ -103,12 +81,12 @@ export default function AGBPage() {
       <div className="bg-white border-b border-gray-100 pt-24 md:pt-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <nav
-            aria-label="Breadcrumb"
+            aria-label={t("breadcrumb.ariaLabel")}
             className="flex items-center gap-1.5 text-xs md:text-sm text-lightGray"
           >
             <Link
               href="/"
-              aria-label="Startseite"
+              aria-label={t("breadcrumb.homeAria")}
               className="hover:text-primaryOrange transition-colors flex items-center"
             >
               <Home className="w-3.5 h-3.5" aria-hidden="true" />
@@ -123,6 +101,7 @@ export default function AGBPage() {
           </nav>
         </div>
       </div>
+
       {/* ─── 2. HERO ─── */}
       <Section className="bg-primaryWhite py-10 md:py-16 lg:py-20 relative overflow-hidden">
         <div
@@ -141,14 +120,15 @@ export default function AGBPage() {
               border: "1px solid rgba(232,119,32,0.15)",
             }}
           >
-            <Scale
-              aria-hidden="true"
+            <Accessibility
               className="w-3.5 h-3.5 text-primaryOrange"
+              aria-hidden="true"
             />
             <span className="text-[11px] font-bold text-primaryOrange uppercase tracking-widest">
               {t("hero.badge")}
             </span>
           </div>
+
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-5 leading-[1.1]">
             {t("hero.title")}
           </h1>
@@ -157,12 +137,13 @@ export default function AGBPage() {
           </p>
         </div>
       </Section>
-      {/* ─── 3. TABLE OF CONTENTS ─── */}
+
+      {/* ─── 4. TABLE OF CONTENTS ─── */}
       {sections.length > 0 && (
-        <Section className="bg-gray-50 py-8 md:py-10">
+        <Section className="bg-gray-50 pt-0 pb-8 md:pb-10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-sm font-bold text-lightGray uppercase tracking-widest mb-4">
-              Inhaltsverzeichnis
+              {t("tableOfContents.title")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {sections.map((section) => (
@@ -183,12 +164,13 @@ export default function AGBPage() {
           </div>
         </Section>
       )}
-      {/* ─── 4. EDITORIAL CONTENT ─── */}
+
+      {/* ─── 5. EDITORIAL CONTENT ─── */}
       <Section className="bg-primaryWhite py-12 md:py-16 lg:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <article className="space-y-12 md:space-y-16">
             {sections.map((section) => {
-              const Icon = ICON_MAP[section.iconId] ?? FileText;
+              const Icon = ICON_MAP[section.iconId] ?? Code;
               return (
                 <section
                   key={section.id}
@@ -217,10 +199,9 @@ export default function AGBPage() {
                       {section.title}
                     </h2>
                   </div>
-
                   <div className="space-y-5 max-w-4xl">
                     {section.content.map((item, idx) => (
-                      <ContentItem key={idx} item={item} />
+                      <ContentItemBlock key={idx} item={item} />
                     ))}
                   </div>
                 </section>
@@ -229,7 +210,8 @@ export default function AGBPage() {
           </article>
         </div>
       </Section>
-      {/* ─── 5. CONTACT BLOCK ─── */}
+
+      {/* ─── 6. FEEDBACK CONTACT BLOCK (BFSG-Pflicht) ─── */}
       <Section className="bg-gray-50 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
@@ -249,7 +231,7 @@ export default function AGBPage() {
                   "radial-gradient(circle, rgba(232,119,32,0.06) 0%, transparent 70%)",
               }}
             />
-            <div className="relative z-10 grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-center">
+            <div className="relative z-10 grid md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-start">
               <div
                 className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{
@@ -257,45 +239,45 @@ export default function AGBPage() {
                   border: "1px solid rgba(232,119,32,0.15)",
                 }}
               >
-                <FileText
+                <Accessibility
                   aria-hidden="true"
                   className="w-7 h-7 md:w-9 md:h-9 text-primaryOrange"
                 />
               </div>
               <div>
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-darkerGray mb-3">
-                  {t("contact.title")}
+                  {contact.title}
                 </h2>
                 <p className="text-base md:text-lg text-lightGray leading-relaxed mb-5 max-w-2xl">
-                  {t("contact.text")}
+                  {contact.text}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 mb-5">
                   <a
-                    href={`mailto:${COMPANY.email}`}
+                    href={`mailto:${company.email}`}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-primaryOrange/20 hover:border-primaryOrange/40 transition-colors text-sm font-medium text-darkerGray"
                   >
                     <Mail
-                      className="w-4 h-4 text-primaryOrange"
                       aria-hidden="true"
+                      className="w-4 h-4 text-primaryOrange"
                     />
-                    {COMPANY.email}
+                    {company.email}
                   </a>
                   <a
-                    href={COMPANY.phoneHref}
+                    href={company.phoneHref}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-primaryOrange/20 hover:border-primaryOrange/40 transition-colors text-sm font-medium text-darkerGray"
                   >
                     <Bell
-                      className="w-4 h-4 text-primaryOrange"
                       aria-hidden="true"
+                      className="w-4 h-4 text-primaryOrange"
                     />
-                    {COMPANY.phone}
+                    {company.phone}
                   </a>
                 </div>
                 <Link
                   href="/kontakt"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-primaryOrange text-white rounded-xl font-semibold text-sm md:text-base hover:bg-primaryOrange/90 transition-all shadow-sm shadow-primaryOrange/25"
                 >
-                  {t("contact.cta")}
+                  {contact.cta}
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
               </div>
@@ -303,24 +285,25 @@ export default function AGBPage() {
           </div>
         </div>
       </Section>
-      {/* ─── 6. RELATED LEGAL PAGES ─── */}
+
+      {/* ─── 7. RELATED LEGAL PAGES ─── */}
       <Section className="bg-primaryWhite py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
-            Weitere rechtliche Informationen
+            {t("legalLinks.title")}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <LegalLinkCard href="/impressum" title="Impressum" />
-            <LegalLinkCard href="/datenschutz" title="Datenschutzerklärung" />
-            <LegalLinkCard href="/widerrufsbelehrung" title="Widerrufsbelehrung" />
             <LegalLinkCard
-              href="/community-richtlinien"
-              title="Community-Richtlinien"
+              href="/datenschutz"
+              title={t("legalLinks.privacy")}
             />
+            <LegalLinkCard href="/agb" title={t("legalLinks.terms")} />
+            <LegalLinkCard href="/impressum" title={t("legalLinks.imprint")} />
           </div>
         </div>
       </Section>
-      {/* ─── 7. LAST UPDATED FOOTER ─── */}
+
+      {/* ─── 8. LAST UPDATED FOOTER ─── */}
       <Section className="bg-gray-50 py-6 md:py-8 border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-1 text-lightGray text-center">
@@ -339,10 +322,10 @@ export default function AGBPage() {
 }
 
 // SUBCOMPONENTS
-interface ContentItemProps {
-  item: AgbContentItem;
+interface ContentItemBlockProps {
+  item: ContentItem;
 }
-function ContentItem({ item }: ContentItemProps) {
+function ContentItemBlock({ item }: ContentItemBlockProps) {
   return (
     <div>
       {item.subtitle && (
@@ -354,6 +337,22 @@ function ContentItem({ item }: ContentItemProps) {
         <p className="text-base md:text-lg text-lightGray leading-relaxed">
           {item.text}
         </p>
+      )}
+      {item.list && item.list.length > 0 && (
+        <ul className="mt-3 space-y-2.5">
+          {item.list.map((listItem, idx) => (
+            <li
+              key={idx}
+              className="flex items-start gap-3 text-base md:text-lg text-darkerGray leading-relaxed"
+            >
+              <CheckCircle2
+                className="w-5 h-5 text-primaryOrange flex-shrink-0 mt-0.5"
+                aria-hidden="true"
+              />
+              <span>{listItem}</span>
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

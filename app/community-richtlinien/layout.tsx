@@ -8,7 +8,15 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("meta.title"),
     description: t("meta.description"),
     alternates: {
-      canonical: "https://beafox.app/guidelines",
+      canonical: "https://beafox.app/community-richtlinien",
+    },
+    openGraph: {
+      type: "website",
+      locale: "de_DE",
+      siteName: "BeAFox",
+      title: t("meta.title"),
+      description: t("meta.description"),
+      url: "https://beafox.app/community-richtlinien",
     },
   };
 }

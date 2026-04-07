@@ -1,230 +1,294 @@
 "use client";
 
-import { motion } from "framer-motion";
+// CUSTOM COMPONENTS
 import Section from "@/components/Section";
+// IMPORTS
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+// ICONS
 import {
-  FileText,
-  Building2,
+  Bot,
+  Ban,
   Mail,
-  Phone,
-  MapPin,
+  Home,
   Scale,
   Shield,
-  AlertCircle,
+  FileText,
+  Building2,
+  Handshake,
   Copyright,
+  ArrowRight,
+  AlertCircle,
+  ChevronRight,
   ExternalLink,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+// TYPES
+import type { LucideIcon } from "lucide-react";
+
+// TYPES
+type ImprintContentItem = {
+  text?: string;
+  subtitle?: string;
+  details?: string[];
+  link?: { text: string; href: string };
+};
+type ImprintSection = {
+  id: number;
+  title: string;
+  content: ImprintContentItem[];
+};
+// CONSTANTS
+const SECTION_ICONS: Record<number, LucideIcon> = {
+  1: Building2,
+  2: Mail,
+  3: Scale,
+  4: FileText,
+  5: FileText,
+  6: Shield,
+  7: AlertCircle,
+  8: Handshake,
+  9: Ban,
+  10: Bot,
+};
 
 export default function ImpressumPage() {
   const t = useTranslations("imprint");
-
-  const iconById: Record<number, any> = {
-    1: Building2,
-    2: Mail,
-    3: Scale,
-    4: FileText,
-    5: FileText,
-    6: Shield,
-    7: AlertCircle,
+  const sections = t.raw("sections") as ImprintSection[];
+  const currentYear = new Date().getFullYear();
+  const company = t.raw("company") as {
+    name: string;
+    street: string;
+    city: string;
+    country: string;
+    email: string;
+    phone: string;
+    phoneHref: string;
   };
-
-  const sections = t.raw("sections") as {
-    id: number;
-    title: string;
-    content: Array<
-      | { subtitle?: string; text?: string; details?: string[]; link?: { text: string; href: string } }
-    >;
-  }[];
 
   return (
     <>
-      {/* Hero Section */}
-      <Section className="bg-primaryWhite pt-20 md:pt-32 pb-8 md:pb-16 mt-10">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-4 md:mb-6"
+      {/* ─── 1. BREADCRUMB ─── */}
+      <div className="bg-white border-b border-gray-100 pt-24 md:pt-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <nav
+            aria-label={t("breadcrumb.ariaLabel")}
+            className="flex items-center gap-1.5 text-xs md:text-sm text-lightGray"
           >
-            <div className="flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto mb-4 md:mb-6">
-              <FileText className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-              <span className="font-bold">{t("hero.badge")}</span>
-              <FileText className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange" />
-            </div>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-bold text-darkerGray mb-4 md:mb-6"
+            <Link
+              href="/"
+              aria-label={t("breadcrumb.homeAria")}
+              className="hover:text-primaryOrange transition-colors flex items-center"
+            >
+              <Home className="w-3.5 h-3.5" aria-hidden="true" />
+            </Link>
+            <ChevronRight
+              className="w-3 h-3 text-gray-300"
+              aria-hidden="true"
+            />
+            <span className="text-darkerGray font-medium">
+              {t("hero.title")}
+            </span>
+          </nav>
+        </div>
+      </div>
+
+      {/* ─── 2. HERO ─── */}
+      <Section className="bg-primaryWhite py-10 md:py-16 lg:py-20 relative overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none -translate-y-1/3 translate-x-1/3"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(232,119,32,0.05) 0%, transparent 70%)",
+          }}
+        />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-6"
+            style={{
+              background: "rgba(232,119,32,0.08)",
+              border: "1px solid rgba(232,119,32,0.15)",
+            }}
           >
+            <FileText
+              className="w-3.5 h-3.5 text-primaryOrange"
+              aria-hidden="true"
+            />
+            <span className="text-[11px] font-bold text-primaryOrange uppercase tracking-widest">
+              {t("hero.badge")}
+            </span>
+          </div>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-5 leading-[1.1]">
             {t("hero.title")}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base md:text-xl text-lightGray max-w-2xl mx-auto"
-          >
+          </h1>
+          <p className="text-base md:text-lg lg:text-xl text-lightGray leading-relaxed max-w-3xl">
             {t("hero.subtitle")}
-          </motion.p>
+          </p>
         </div>
       </Section>
 
-      {/* Content Sections */}
-      <Section className="bg-white py-6 md:py-16 lg:py-20 pt-0 md:pt-0 lg:pt-0">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="space-y-6 md:space-y-12">
-            {sections.map((section, index) => {
-              const IconComponent = iconById[section.id] ?? FileText;
+      {/* ─── 3. EDITORIAL CONTENT ─── */}
+      <Section className="bg-primaryWhite py-8 md:py-10 lg:py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <article className="space-y-12 md:space-y-16">
+            {sections.map((section) => {
+              const Icon = SECTION_ICONS[section.id] ?? FileText;
               return (
-                <motion.div
+                <section
                   key={section.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                  className="bg-primaryWhite rounded-2xl p-4 md:p-8 border-2 border-primaryOrange/20"
+                  aria-labelledby={`section-${section.id}-heading`}
+                  className="scroll-mt-32"
+                  id={`section-${section.id}`}
                 >
-                  <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
-                    <div className="w-10 h-10 md:w-16 md:h-16 bg-primaryOrange/10 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-primaryOrange/20">
-                      <IconComponent className="w-5 h-5 md:w-8 md:h-8 text-primaryOrange" />
+                  <div className="flex items-center gap-3 mb-6">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: "rgba(232,119,32,0.1)",
+                        border: "1px solid rgba(232,119,32,0.15)",
+                      }}
+                    >
+                      <Icon
+                        className="w-5 h-5 text-primaryOrange"
+                        aria-hidden="true"
+                      />
                     </div>
-                    <h2 className="text-xl md:text-3xl font-bold text-darkerGray flex-1 leading-tight">
+                    <h2
+                      id={`section-${section.id}-heading`}
+                      className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray leading-tight"
+                    >
                       {section.title}
                     </h2>
                   </div>
-
-                  <div className="space-y-4 md:space-y-6 ml-0 md:ml-20">
-                    {section.content.map((item, itemIndex) => (
-                      <div key={itemIndex} className="space-y-2 md:space-y-3">
-                        {"subtitle" in item && item.subtitle && (
-                          <h3 className="text-lg md:text-xl font-semibold text-darkerGray">
-                            {item.subtitle}
-                          </h3>
-                        )}
-                        {"text" in item && item.text && (
-                          <p className="text-sm md:text-base text-lightGray leading-relaxed">
-                            {item.text}
-                          </p>
-                        )}
-                        {"details" in item && item.details && (
-                          <div className="bg-white rounded-lg p-3 md:p-4 border border-primaryOrange/20">
-                            {item.details.map(
-                              (detail: string, detailIndex: number) => (
-                                <p
-                                  key={detailIndex}
-                                  className="text-sm md:text-base text-lightGray mb-1 last:mb-0"
-                                >
-                                  {detail}
-                                </p>
-                              )
-                            )}
-                          </div>
-                        )}
-                        {"link" in item && item.link && (
-                          <p className="text-sm md:text-base text-lightGray leading-relaxed">
-                            <a
-                              href={item.link.href}
-                              className="text-primaryOrange hover:underline inline-flex items-center gap-1"
-                            >
-                              {item.link.text}
-                              <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
-                            </a>
-                          </p>
-                        )}
-                      </div>
+                  <div className="space-y-5 max-w-4xl">
+                    {section.content.map((item, idx) => (
+                      <ContentItem key={idx} item={item} />
                     ))}
                   </div>
-                </motion.div>
+                </section>
               );
             })}
+          </article>
+        </div>
+      </Section>
+
+      {/* ─── 4. RELATED LEGAL PAGES ─── */}
+      <Section className="bg-gray-50 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
+            {t("legalLinks.title")}
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <LegalLinkCard
+              href="/datenschutz"
+              title={t("legalLinks.privacy")}
+            />
+            <LegalLinkCard href="/agb" title={t("legalLinks.terms")} />
+            <LegalLinkCard
+              href="/widerrufsbelehrung"
+              title={t("legalLinks.withdrawal")}
+            />
+            <LegalLinkCard
+              href="/community-richtlinien"
+              title={t("legalLinks.communityGuidelines")}
+            />
+            <LegalLinkCard
+              href="/barrierefreiheit"
+              title={t("legalLinks.accessibility")}
+            />
           </div>
         </div>
       </Section>
 
-      {/* Contact Section */}
-      <Section className="bg-primaryWhite py-4 md:py-8 lg:py-12 pt-0 md:pt-0 lg:pt-0">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-4 md:p-8 border-2 border-primaryOrange/20"
-          >
-            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-              <div className="flex items-start gap-3 md:gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-primaryOrange/10 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-primaryOrange/20">
-                  <Phone className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange" />
-                </div>
-                <div>
-                  <h3 className="text-sm md:text-base font-semibold text-darkerGray mb-1 md:mb-2">
-                    Telefon
-                  </h3>
-                  <a
-                    href="tel:+491782723673"
-                    className="text-sm md:text-base text-lightGray hover:text-primaryOrange transition-colors break-all"
-                  >
-                    +49 178 2723 673
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 md:gap-4">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-primaryOrange/10 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-primaryOrange/20">
-                  <Mail className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange" />
-                </div>
-                <div>
-                  <h3 className="text-sm md:text-base font-semibold text-darkerGray mb-1 md:mb-2">
-                    E-Mail
-                  </h3>
-                  <a
-                    href="mailto:info@beafox.app"
-                    className="text-sm md:text-base text-lightGray hover:text-primaryOrange transition-colors break-all"
-                  >
-                    info@beafox.app
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 md:gap-4 md:col-span-2">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-primaryOrange/10 rounded-full flex items-center justify-center flex-shrink-0 border-2 border-primaryOrange/20">
-                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-primaryOrange" />
-                </div>
-                <div>
-                  <h3 className="text-sm md:text-base font-semibold text-darkerGray mb-1 md:mb-2">
-                    Adresse
-                  </h3>
-                  <p className="text-sm md:text-base text-lightGray">
-                    BeAFox UG (haftungsbeschränkt)
-                    <br />
-                    Siemensweg 2
-                    <br />
-                    93073 Neutraubling
-                    <br />
-                    Deutschland
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* Copyright Section */}
-      <Section className="bg-white py-6 md:py-12">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="flex justify-center gap-2 text-lightGray mb-2">
-            <Copyright className="w-10 h-10 md:w-5 md:h-5" />
+      {/* ─── 5. COPYRIGHT FOOTER ─── */}
+      <Section className="bg-primaryWhite py-6 md:py-8 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-2 text-lightGray">
+            <Copyright
+              aria-hidden="true"
+              className="w-3.5 h-3.5 flex-shrink-0"
+            />
             <p className="text-xs md:text-sm">
-              {new Date().getFullYear()} BeAFox UG (haftungsbeschränkt). Alle
-              Rechte vorbehalten. Alle Inhalte dieser Website unterliegen dem
-              deutschen Urheberrecht.
+              {t("footer.copyright", {
+                year: currentYear,
+                company: company.name,
+              })}
             </p>
           </div>
         </div>
       </Section>
     </>
+  );
+}
+
+// SUBCOMPONENTS
+interface ContentItemProps {
+  item: ImprintContentItem;
+}
+function ContentItem({ item }: ContentItemProps) {
+  return (
+    <div>
+      {item.subtitle && (
+        <h3 className="text-lg md:text-xl font-bold text-darkerGray mb-2">
+          {item.subtitle}
+        </h3>
+      )}
+      {item.text && (
+        <p className="text-base md:text-lg text-lightGray leading-relaxed">
+          {item.text}
+        </p>
+      )}
+      {item.details && item.details.length > 0 && (
+        <div
+          className="mt-3 rounded-xl p-4 md:p-5 border-l-2 border-primaryOrange/30"
+          style={{
+            background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
+          }}
+        >
+          {item.details.map((detail, idx) => (
+            <p
+              key={idx}
+              className="text-sm md:text-base text-darkerGray leading-relaxed mb-1 last:mb-0"
+            >
+              {detail}
+            </p>
+          ))}
+        </div>
+      )}
+      {item.link && (
+        <a
+          target="_blank"
+          href={item.link.href}
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 mt-2 text-sm md:text-base font-semibold text-primaryOrange hover:underline"
+        >
+          {item.link.text}
+          <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+        </a>
+      )}
+    </div>
+  );
+}
+
+interface LegalLinkCardProps {
+  href: string;
+  title: string;
+}
+function LegalLinkCard({ href, title }: LegalLinkCardProps) {
+  return (
+    <Link
+      href={href}
+      className="group flex items-center justify-between gap-3 rounded-2xl bg-white border border-gray-200 hover:border-primaryOrange/30 hover:shadow-md p-4 md:p-5 transition-all"
+    >
+      <span className="text-sm md:text-base font-semibold text-darkerGray group-hover:text-primaryOrange transition-colors">
+        {title}
+      </span>
+      <div className="w-8 h-8 rounded-full bg-primaryOrange/10 flex items-center justify-center group-hover:bg-primaryOrange transition-colors flex-shrink-0">
+        <ArrowRight
+          className="w-4 h-4 text-primaryOrange group-hover:text-white transition-colors"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
   );
 }

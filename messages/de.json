@@ -38,13 +38,22 @@
     "nav": {
       "faq": "FAQ's",
       "about": "Über uns",
-      "home": "Startseite"
+      "home": "Startseite",
+      "guide": "Ratgeber",
+      "calculators": "Rechner",
+      "allGuidesFor": "Alle {category}-Ratgeber →",
+      "allCalculators": "Alle Rechner ansehen →"
     },
     "products": {
       "cta": "Zur Seite",
       "label": "Produkte",
       "merch": "BeAFox Merch",
       "sidebarTitle": "Übersicht",
+      "calculatorHub": {
+        "title": "Finanzrechner & Tools",
+        "subtitle": "Brutto-Netto, Sparplan, Budget & mehr"
+      },
+      "partnerships": "Partnerschaften",
       "unlimited": "BeAFox Unlimited",
       "schools": "BeAFox für Schulen",
       "business": "BeAFox für Unternehmen",
@@ -62,6 +71,27 @@
       "download": "App herunterladen",
       "login": "Login",
       "loginRegister": "Login / Registrieren"
+    },
+    "common": {
+      "categories": "Kategorien",
+      "showAll": "Alle anzeigen →"
+    },
+    "appPromo": {
+      "title": "BeAFox: Finanzen durchgespielt",
+      "cta": "Laden"
+    },
+    "rechnerPanel": {
+      "guidePromo": {
+        "title": "Passende Ratgeber",
+        "subtitle": "Ausführliche Erklärungen zu allen Finanzthemen"
+      }
+    },
+    "aria": {
+      "home": "BeAFox Startseite",
+      "scrollProgress": "Scroll-Fortschritt",
+      "navigation": "Navigation",
+      "openMenu": "Menü öffnen",
+      "closeMenu": "Menü schließen"
     },
     "images": {
       "logoAlt": "BeAFox Logo",
@@ -118,9 +148,18 @@
     "quickLinksTitle": "Schnellzugriff",
     "mascotAlt": "Bea mit Ratgeber — BeAFox hilft dir weiter",
     "quickLinks": [
-      { "href": "/schulen", "label": "BeAFox für Schulen" },
-      { "href": "/unlimited", "label": "BeAFox Unlimited" },
-      { "href": "/unternehmen", "label": "BeAFox für Unternehmen" }
+      {
+        "href": "/schulen",
+        "label": "BeAFox für Schulen"
+      },
+      {
+        "href": "/unlimited",
+        "label": "BeAFox Unlimited"
+      },
+      {
+        "href": "/unternehmen",
+        "label": "BeAFox für Unternehmen"
+      }
     ]
   },
   "footer": {
@@ -158,7 +197,9 @@
       "faq": "FAQ",
       "imprint": "Impressum",
       "privacy": "Datenschutz",
-      "guidelines": "Community-Richtlinien"
+      "withdrawal": "Widerrufsbelehrung",
+      "guidelines": "Community-Richtlinien",
+      "accessibility": "Barrierefreiheit"
     },
     "contact": {
       "title": "Kontakt"
@@ -2426,7 +2467,11 @@
         "iconId": "scale",
         "content": [
           {
-            "text": "Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling (nachfolgend \"BeAFox\" genannt) und ihren Kunden über die Nutzung der BeAFox-App und der damit verbundenen Dienstleistungen."
+            "text": "Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, HR Regensburg, Registernummer HRB 21689 (nachfolgend „BeAFox“ genannt) und ihren Kunden über die Nutzung der BeAFox-App und der damit verbundenen Dienstleistungen. BeAFox ist ein Unternehmen, das in den Bereich der Finanzbildung tätig ist und sich an private Verbraucher (Altersgruppe 16-30 Jahre), Bildungseinrichtungen und Unternehmen richtet."
+          },
+          {
+            "subtitle": "Kontakt und Datenschutz",
+            "text": "Informationen zum Datenschutz, einschließlich der Verarbeitung personenbezogener Daten nach DSGVO und dem Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG), finden Sie in der Datenschutzerklärung unter https://beafox.app/datenschutz. Weitere Informationen zu BeAFox finden Sie unter https://beafox.app."
           }
         ]
       },
@@ -2436,7 +2481,15 @@
         "iconId": "fileText",
         "content": [
           {
-            "text": "BeAFox bietet eine mobile Lern-App für Finanzbildung an. Die App ermöglicht es Nutzern, spielerisch Finanzwissen zu erwerben und zu vertiefen. Für Bildungseinrichtungen und Unternehmen werden zusätzliche Services wie Workshops, Monitoring-Dashboards und Zertifikate angeboten."
+            "text": "BeAFox bietet eine mobile Lern-App für Finanzbildung an. Die App ermöglicht es Nutzern, spielerisch Finanzwissen zu erwerben und zu vertiefen. Die App wird von „Bea“, einem KI-gestützten Assistenten, unterstützt (siehe dazu Abschnitt 17 zu Künstlicher Intelligenz)."
+          },
+          {
+            "subtitle": "Leistungen",
+            "text": "Für private Verbraucher werden individualisierte Abonnements mit Zugang zu Lektionen, Übungsaufgaben und Premium-Funktionen angeboten. Für Bildungseinrichtungen und Unternehmen werden zusätzlich Services wie Workshops, Monitoring-Dashboards, Lehrmaterialien und Zertifikate angeboten."
+          },
+          {
+            "subtitle": "Leistungsumfang",
+            "text": "Der genaue Leistungsumfang ergibt sich aus dem jeweiligen Vertragsangebot und der im Checkout angezeigten Beschreibung. Ergänzende Leistungen werden gesondert vereinbart."
           }
         ]
       },
@@ -2446,7 +2499,24 @@
         "iconId": "handshake",
         "content": [
           {
-            "text": "Der Vertrag kommt durch die Annahme des Angebots von BeAFox zustande. Die Annahme kann schriftlich, per E-Mail oder durch Nutzung der App erfolgen. Bei In-App-Käufen über App-Stores (Apple App Store, Google Play Store) kommt der Zahlungsvertrag ausschließlich mit dem jeweiligen App-Store-Betreiber zustande. BeAFox stellt lediglich die Inhalte zur Verfügung."
+            "subtitle": "Vertragsformulare als Angebote",
+            "text": "Die auf der Website www.beafox.app angezeigten Produktbeschreibungen und Preise sind Aufforderungen zur Abgabe von Angeboten (§ 145 BGB), keine verbindlichen Angebote."
+          },
+          {
+            "subtitle": "Vertragsschluss über Website-Checkout (Stripe)",
+            "text": "Verträge über Abonnements kommen zustande durch: (1) Auswahl eines Plans im Checkout, (2) Bestätigung durch „Jetzt bezahlen“-Button (Angebot des Kunden), (3) Bestätigung durch BeAFox nach erfolgreicher Zahlungsverarbeitung durch Stripe. Die Zahlungsabwicklung erfolgt über Stripe, Inc. (www.stripe.com). BeAFox erhält eine Bestätigung über erfolgreiche Zahlungen, speichert aber keine Zahlungsdaten."
+          },
+          {
+            "subtitle": "Vertragsschluss über App-Stores",
+            "text": "Bei In-App-Käufen über Apple App Store oder Google Play Store kommt der Zahlungsvertrag ausschließlich zwischen dem Nutzer und dem jeweiligen App-Store-Betreiber zustande. BeAFox stellt lediglich die Inhalte zur Verfügung und ist nicht Partei des Zahlungsvertrages. Die Nutzungsbedingungen des App-Store-Betreibers gelten ergänzend."
+          },
+          {
+            "subtitle": "Vertragsschluss per E-Mail oder schriftlich",
+            "text": "Der Vertrag kann auch schriftlich per Post oder E-Mail geschlossen werden. Die Annahme eines Angebots erfolgt durch schriftliche Bestätigung durch BeAFox."
+          },
+          {
+            "subtitle": "Vertragssprache",
+            "text": "Verträge werden in deutscher Sprache geschlossen. Dies ist auch die verbindliche Vertragssprache."
           }
         ]
       },
@@ -2457,19 +2527,23 @@
         "content": [
           {
             "subtitle": "Widerrufsrecht",
-            "text": "Verbraucher haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag des Vertragsschlusses."
+            "text": "Verbraucher (natürliche Personen, die nicht für berufliche oder gewerbliche Zwecke handeln) haben das Recht, den Vertrag innerhalb von 14 Tagen nach Vertragsschluss zu widerrufen (§ 312g BGB). Für Verträge über den Kauf digitaler Inhalte gilt eine Widerrufsfrist von 14 Tagen ab dem Tag des Vertragsschlusses (§ 312g Abs. 2 BGB)."
           },
           {
             "subtitle": "Entfallen des Widerrufsrechts",
-            "text": "Das Widerrufsrecht erlischt vorzeitig, wenn BeAFox mit der Ausführung der Dienstleistung begonnen hat und der Verbraucher ausdrücklich zugestimmt hat, dass BeAFox mit der Ausführung vor Ablauf der Widerrufsfrist beginnt und zur Kenntnis genommen hat, dass er sein Widerrufsrecht verliert, wenn BeAFox die Leistung vollständig erbracht hat."
+            "text": "Das Widerrufsrecht erlischt vorzeitig, wenn BeAFox mit der Ausführung der Dienstleistung begonnen hat und der Verbraucher (a) ausdrücklich zugestimmt hat, dass BeAFox die Leistung vor Ablauf der Widerrufsfrist beginnt, und (b) quittiert hat, dass er mit dem Entfall des Widerrufsrechts rechnet (§ 312g Abs. 2 Satz 2 BGB). Im Falle des Entzugs des Widerrufsrechts wird nur die erbrachte Leistung berechnet."
           },
           {
-            "subtitle": "Widerrufsbelehrung",
-            "text": "Zur Ausübung des Widerrufsrechts müssen Sie uns (BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, E-Mail: info@beafox.app) mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren."
+            "subtitle": "Ausübung des Widerrufsrechts",
+            "text": "Zur Ausübung des Widerrufsrechts müssen Sie BeAFox informieren mittels einer eindeutigen Erklärung (z.B. ein Brief per Post, Fax oder E-Mail). Die Erklärung kann über unseres Muster-Widerrufsformular erfolgen. Sie können auch die App-Einstellungen nutzen, um Ihr Abonnement zu kündigen (verfügbar in der Kontoeinstellung).\n\nAdresse:\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nDeutschland\n\nE-Mail: info@beafox.app\nFax: +49 (0) 941 XXXXXXX"
+          },
+          {
+            "subtitle": "Muster-Widerrufsformular",
+            "text": "— Hinweis: Wollen Sie den Vertrag widerrufen, so füllen Sie bitte dieses Formular aus und senden Sie es zurück. —\n\nAn\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nE-Mail: info@beafox.app\n\nHiermit widerrufe(n) ich(*) den von mir/uns(*) abgeschlossenen Vertrag über den Kauf der folgenden Ware(*)/Dienstleistung(*)\n\nBestelldatum: .....................\nBestellnummer oder Vertrags-ID: .....................\nName des/der Verbraucher(s): .....................\nAdresse des/der Verbraucher(s): .....................\nUnterschrift des/der Verbraucher(s)(nur bei Mitteilung auf Papier): .....................\nDatum: .....................\n\n(*) Zutreffendes streichen."
           },
           {
             "subtitle": "Folgen des Widerrufs",
-            "text": "Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen 14 Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist."
+            "text": "Wenn Sie diesen Vertrag widerrufen, haben wir alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen 14 Tagen ab dem Tag, an dem die Mitteilung über Ihren Widerruf bei uns eingegangen ist, zurückzuzahlen (§ 312g Abs. 3 BGB). Diese Rückzahlung erfolgt mit denselben Zahlungsmitteln, das Sie für die ursprüngliche Transaktion genutzt haben, sofern Sie keine abweichenden Anweisungen gegeben haben."
           }
         ]
       },
@@ -2479,19 +2553,19 @@
         "iconId": "check",
         "content": [
           {
-            "text": "BeAFox verpflichtet sich, die vereinbarten Leistungen sorgfältig und nach bestem Wissen und Gewissen zu erbringen. Die genauen Leistungen ergeben sich aus dem jeweiligen Vertragsangebot."
-          },
-          {
-            "subtitle": "Änderungen der Funktionen",
-            "text": "BeAFox behält sich vor, Funktionen der App zu ändern, zu erweitern oder zu entfernen. Nutzer werden über wesentliche Änderungen informiert. Ein Anspruch auf bestimmte Funktionen besteht nicht."
+            "text": "BeAFox verpflichtet sich, die vereinbarten Leistungen sorgfältig und nach bestem Wissen und Gewissen zu erbringen."
           },
           {
             "subtitle": "Verfügbarkeit",
-            "text": "BeAFox ist bemüht, eine hohe Verfügbarkeit sicherzustellen. Wartungsarbeiten, Weiterentwicklungen oder technische Störungen können den Zugang vorübergehend einschränken. Ein Anspruch auf eine jederzeit ununterbrochene Verfügbarkeit besteht nicht. Wartungsfenster werden nach Möglichkeit im Voraus angekündigt."
+            "text": "BeAFox ist bemüht, eine hohe Verfügbarkeit der App sicherzustellen und eine durchschnittliche jährliche Verfügbarkeit von mindestens 98% anzustreben. Wartungsarbeiten, Weiterentwicklungen oder technische Störungen können den Zugang vorübergehend einschränken. Geplante Wartungsfenster werden nach Möglichkeit mindestens 48 Stunden im Voraus über die App oder Website angekündigt. Ein Anspruch auf eine jederzeit ununterbrochene Verfügbarkeit besteht nicht."
+          },
+          {
+            "subtitle": "Änderungen der Funktionen",
+            "text": "BeAFox behält sich vor, Funktionen der App zu ändern, zu erweitern oder zu entfernen. Wesentliche Funktionen werden nicht ohne vorherige Ankündigung entfernt. Nutzer werden über wesentliche Funktionsveränderungen mindestens zwei Wochen im Voraus informiert. Ein Anspruch auf bestimmte Funktionen besteht nicht, sofern diese nicht ausdrücklich als wesentlich in der Vertragsvertrag festgehalten wurden."
           },
           {
             "subtitle": "Updates",
-            "text": "Nutzer sind verpflichtet, verfügbare Updates der App zu installieren, um die Funktionalität und Sicherheit sicherzustellen. Ältere Versionen der App werden möglicherweise nicht mehr unterstützt."
+            "text": "Nutzer sind verpflichtet, verfügbare Sicherheits- und Funktionsupdates der App innerhalb einer angemessenen Frist (in der Regel innerhalb von 30 Tagen) zu installieren. Ältere Versionen der App können nach Ankündigung nicht mehr unterstützt werden. Kritische Sicherheitsupdates sollten unverzüglich installiert werden."
           }
         ]
       },
@@ -2501,15 +2575,36 @@
         "iconId": "creditCard",
         "content": [
           {
-            "text": "Die Preise verstehen sich in Euro zuzüglich der gesetzlichen Mehrwertsteuer. Die Zahlung erfolgt nach Vereinbarung im Vertrag. Bei Zahlungsverzug werden Verzugszinsen in Höhe von 9 Prozentpunkten über dem Basiszinssatz berechnet."
+            "subtitle": "Preise für Verbraucher (B2C)",
+            "text": "Die auf der Website und in der App angezeigten Preise für private Verbraucher verstehen sich als Gesamtpreise inklusive der gesetzlich geltenden Umsatzsteuer (Mehrwertsteuer) gemäß Preisangabenverordnung (PAngV § 1). Der Gesamtpreis ist der Preis, den der Verbraucher zahlt.\n\nAktuell angebotene Pläne (Brutto-Preise inkl. 19% MwSt):\n- Monatsabo: EUR 4,99 pro Monat\n- Jahresabo: EUR 44,99 pro Jahr\n- Lifetime-Zugang: EUR 49,99 (einmalig)"
           },
           {
-            "subtitle": "App-Store-Zahlungen",
-            "text": "Bei In-App-Käufen erfolgt die Zahlungsabwicklung über den jeweiligen App-Store (Apple App Store oder Google Play Store). Der Kaufvertrag über die Zahlung kommt ausschließlich mit dem App-Store-Betreiber zustande. BeAFox erhält lediglich Bestätigungen über erfolgreiche Zahlungen, keine Zahlungsdaten."
+            "subtitle": "Preise für Unternehmen und Bildungseinrichtungen (B2B)",
+            "text": "Für Unternehmen und Bildungseinrichtungen werden Preise auf Anfrage gestellt. Diese können als Nettopreise zuzüglich der jeweils geltenden Umsatzsteuer (MwSt) angegeben werden. Der jeweils gültige Steuersatz wird in der Rechnung ausgewiesen."
           },
           {
-            "subtitle": "Laufzeiten und Verlängerung",
-            "text": "Abonnements verlängern sich automatisch um die vereinbarte Laufzeit, sofern nicht fristgerecht gekündigt wird. Die Kündigungsfrist beträgt einen Monat zum Ende der Laufzeit."
+            "subtitle": "Website-Zahlungen (Stripe)",
+            "text": "Die Zahlungsabwicklung für Abonnements über die Website erfolgt über den Zahlungsdienstleister Stripe, Inc. Stripe verarbeitet die Zahlungsdaten. BeAFox erhält lediglich eine Bestätigung über erfolgreiche Zahlungen und speichert die Zahlungsdaten nicht. Zahlungsinformationen finden Sie in der Datenschutzerklärung."
+          },
+          {
+            "subtitle": "Zahlungsbedingungen",
+            "text": "Die Zahlung ist sofort fällig (Zahlungsart: Kartenzahlung über Stripe). Bei automatischen Abonnements erfolgt die Abbuchung am ersten Tag der Abrechnungsperiode (monatlich oder jährlich nach Wahl)."
+          },
+          {
+            "subtitle": "Verzugszinsen für Verbraucher (B2C)",
+            "text": "Für Zahlungsverzug von Verbrauchern gelten die Regelungen des § 288 Abs. 1 BGB: Die Verzugszinsen betragen 5 Prozentpunkte über dem Basiszinssatz pro Jahr. Der Basiszinssatz wird von der Deutschen Bundesbank festgelegt."
+          },
+          {
+            "subtitle": "Verzugszinsen für Unternehmen und Bildungseinrichtungen (B2B)",
+            "text": "Für Zahlungsverzug von Unternehmern (einschließlich Bildungseinrichtungen) gelten die Regelungen des § 288 Abs. 2 BGB: Die Verzugszinsen betragen 9 Prozentpunkte über dem Basiszinssatz pro Jahr."
+          },
+          {
+            "subtitle": "Laufzeiten und automatische Verlängerung",
+            "text": "Abonnements verlängern sich automatisch um die vereinbarte Laufzeit (monatlich, jährlich oder keine Verlängerung bei Lifetime), sofern nicht fristgerecht gekündigt wird. Die Kündigungsfrist beträgt einen Monat zum Ende der Laufzeit. Die Kündigung kann in den App-Einstellungen erfolgen."
+          },
+          {
+            "subtitle": "Preisänderungen",
+            "text": "BeAFox behält sich vor, Preise zu ändern. Änderungen werden mindestens vier Wochen vor Inkrafttreten für neue Verträge kommuniziert. Für laufende Abonnements gelten Preisänderungen ab der nächsten Verlängerung. Verbraucher können den Vertrag kündigen, wenn sie mit einer Preisänderung nicht einverstanden sind."
           }
         ]
       },
@@ -2519,11 +2614,19 @@
         "iconId": "shield",
         "content": [
           {
-            "text": "Dem Kunden wird ein einfaches, nicht übertragbares, nicht exklusives Recht zur Nutzung der App für den vereinbarten Zweck eingeräumt. Eine Weitergabe der Zugangsdaten an Dritte ist nicht gestattet."
+            "text": "Dem Kunden wird ein einfaches, nicht übertragbares und nicht exklusives Recht zur Nutzung der App und deren Inhalte für den in diesem Vertrag vereinbarten Zweck eingeräumt. Eine Weitergabe der Zugangsdaten an Dritte ist nicht gestattet. Der Zugang ist streng persönlich und darf nicht weitergegeben oder geteilt werden."
           },
           {
-            "subtitle": "Einschränkungen",
-            "text": "Die Nutzung der App ist nur für den vereinbarten Zweck gestattet. Eine kommerzielle Nutzung der Inhalte, das Kopieren, Vervielfältigen oder Verbreiten von Inhalten ist ohne schriftliche Zustimmung von BeAFox nicht gestattet."
+            "subtitle": "Einschränkungen der Nutzung",
+            "text": "Die Nutzung der App ist nur für den vereinbarten privaten oder geschäftlichen Zweck gestattet. Eine kommerzielle Nutzung der Inhalte, das Kopieren, Vervielfältigen oder Verbreiten von Inhalten ohne schriftliche Zustimmung von BeAFox ist nicht gestattet. Das Reverse-Engineering, Dekompilieren oder Disassemblieren der App ist unzulässig."
+          },
+          {
+            "subtitle": "Verbotene Handlungen",
+            "text": "Es ist insbesondere untersagt: Screenshots oder Inhalte für kommerzielle Zwecke zu nutzen; die App zu kopieren, zu reverse-engineeren oder zu manipulieren; automatisierte Systeme (Bots, Scraper) zur Nutzung der App einzusetzen; Schadsoftware einzuschleusen; die App oder Teile davon zu vermieten, zu verpfänden oder zu verschenken; das System zu überlasten oder Denial-of-Service-Angriffe durchzuführen."
+          },
+          {
+            "subtitle": "Widerspruchsrecht",
+            "text": "Verstöße gegen diese Bestimmungen können zur sofortigen Sperrung des Zugangs führen. BeAFox behält sich das Recht vor, rechtliche Schritte einzuleiten, einschließlich der Geltendmachung von Schadensersatzansprüchen."
           }
         ]
       },
@@ -2533,19 +2636,19 @@
         "iconId": "database",
         "content": [
           {
-            "text": "Die Verarbeitung personenbezogener Daten erfolgt nach Maßgabe der Datenschutz-Grundverordnung (DSGVO) und des Telekommunikation-Telemedien-Datenschutz-Gesetzes (TTDSG)."
+            "text": "Die Verarbeitung personenbezogener Daten erfolgt nach Maßgabe der Datenschutz-Grundverordnung (DSGVO) sowie des Telekommunikation-Digitale-Dienste-Datenschutz-Gesetzes (TDDDG). BeAFox nimmt den Datenschutz ernst und verfügt über ein Datenschutzmanagementsystem."
           },
           {
             "subtitle": "Datenschutzerklärung",
-            "text": "Es gelten die Datenschutzbestimmungen unter: https://beafox.app/datenschutz"
+            "text": "Die vollständige Datenschutzerklärung mit Informationen zu Datenerfassung, Verarbeitung, Speicherung, Ihren Rechten und den Widerspruchsmöglichkeiten finden Sie unter: https://beafox.app/datenschutz"
           },
           {
-            "subtitle": "Auftragsverarbeitung",
-            "text": "Für Bildungseinrichtungen und Unternehmen kann eine Vereinbarung zur Auftragsverarbeitung (AVV) gemäß Art. 28 DS-GVO erforderlich sein. Diese wird bei Bedarf gesondert geschlossen."
+            "subtitle": "Auftragsverarbeitung für Schulen und Unternehmen",
+            "text": "Für Bildungseinrichtungen und Unternehmen kann eine Vereinbarung zur Auftragsverarbeitung (AVV) gemäß Art. 28 DSGVO erforderlich sein, insbesondere wenn Schülerdaten oder Mitarbeiterdaten verarbeitet werden. Eine AVV wird bei Bedarf vor Vertragsschluss geschlossen."
           },
           {
-            "subtitle": "Datenlöschung",
-            "text": "Nach Beendigung des Vertragsverhältnisses werden personenbezogene Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
+            "subtitle": "Datenlöschung und Aufbewahrung",
+            "text": "Nach Beendigung des Vertragsverhältnisses oder auf Anfrage werden personenbezogene Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen (z.B. Rechnungsaufbewahrungspflichten nach § 257 HGB). Die Aufbewahrungsdauer wird in der Datenschutzerklärung konkretisiert."
           }
         ]
       },
@@ -2555,16 +2658,24 @@
         "iconId": "wrench",
         "content": [
           {
+            "subtitle": "Gewährleistungspflichten",
+            "text": "BeAFox ist verpflichtet, digitale Inhalte und Dienstleistungen gemäß § 327f ff. BGB in bestimmter Qualität und Funktionsfähigkeit bereitzustellen und diese Qualität während der vereinbarten Vertragszeit aufrechtzuerhalten."
+          },
+          {
             "subtitle": "Aktualisierungspflicht",
-            "text": "BeAFox ist verpflichtet, digitale Inhalte gemäß § 327f BGB aktuell zu halten und erforderliche Updates bereitzustellen. Nutzer müssen verfügbare Updates installieren, um die Funktionalität sicherzustellen."
+            "text": "BeAFox ist verpflichtet, die digitalen Inhalte aktuell zu halten und erforderliche, sicherheitskritische Updates bereitzustellen. Nutzer müssen verfügbare Sicherheitsupdates sowie andere kritische Updates im Sinne dieser AGB installieren."
           },
           {
             "subtitle": "Mängelrechte",
-            "text": "Bei Mängeln der digitalen Inhalte gelten die gesetzlichen Bestimmungen. BeAFox ist bemüht, Mängel unverzüglich zu beheben. Ein Anspruch auf bestimmte Funktionen oder Inhalte besteht nicht, soweit diese nicht ausdrücklich vereinbart wurden."
+            "text": "Bei Mängeln der digitalen Inhalte (Funktionsstörungen, fehlende versprochene Funktionen) gelten die gesetzlichen Bestimmungen. Nutzer können fehlerhafte Inhalte zunächst zur Behebung dem Support melden. BeAFox ist bemüht, Mängel unverzüglich zu beheben. Ein Anspruch auf bestimmte Funktionen oder Inhalte besteht nur soweit diese ausdrücklich vereinbart wurden."
           },
           {
-            "subtitle": "Keine Garantie",
-            "text": "BeAFox übernimmt keine Garantie für die Vollständigkeit, Richtigkeit oder Aktualität der bereitgestellten Informationen. Die Inhalte dienen der allgemeinen Bildung und stellen keine individuelle Beratung dar."
+            "subtitle": "Keine Garantie für Vollständigkeit und Aktualität",
+            "text": "BeAFox übernimmt keine Garantie für die Vollständigkeit, Richtigkeit oder Aktualität der bereitgestellten Informationen in der App. Die Inhalte dienen der allgemeinen Bildung und stellen keine individuelle persönliche Finanzberatung dar (siehe Abschnitt 12)."
+          },
+          {
+            "subtitle": "KI-Inhalte und Haftung",
+            "text": "Inhalte, die von „Bea“ (KI-Assistent) generiert werden, können vereinzelt Fehler oder Ungenauigkeiten enthalten. BeAFox ist bemüht, solche Fehler zu korrigieren, übernimmt aber keine Garantie für die Fehlerfreiheit von KI-generierten Inhalten."
           }
         ]
       },
@@ -2574,15 +2685,19 @@
         "iconId": "copyright",
         "content": [
           {
-            "text": "Alle Inhalte der App (Texte, Illustrationen, Grafiken, Design, Logik, Software) sind urheberrechtlich geschützt und Eigentum von BeAFox oder deren Lizenzgebern. Eine Vervielfältigung, Veröffentlichung, Weitergabe oder kommerzielle Nutzung ist ohne schriftliche Zustimmung nicht gestattet."
+            "text": "Alle Inhalte der App (Texte, Illustrationen, Grafiken, Design, Logik, Software, Videos, Animationen, Lottie-Animationen) sind urheberrechtlich geschützt und sind Eigentum von BeAFox oder deren Lizenzgebern. Die Inhalte unterliegen dem deutschen Urheberrecht (UrhG) und internationalen Urheberrechtsabkommen."
           },
           {
-            "subtitle": "Verbotene Handlungen",
-            "text": "Es ist insbesondere untersagt: Screenshots oder Inhalte für kommerzielle Zwecke zu nutzen, die App zu kopieren oder zu reverse-engineeren, Zugangsdaten weiterzugeben, automatisierte Systeme zur Nutzung der App einzusetzen oder die App zu manipulieren."
+            "subtitle": "Verbot der Vervielfältigung und Verbreitung",
+            "text": "Eine Vervielfältigung, Veröffentlichung, Weitergabe oder kommerzielle Nutzung der Inhalte ist ohne schriftliche Zustimmung nicht gestattet. Dies gilt auch für Teile der Inhalte. Das Recht der Privatkopie nach § 53 UrhG ist mit der nicht-kommerziellen Nutzung vereinbar, nicht aber mit der weiteren Verbreitung."
           },
           {
-            "subtitle": "Rechtsfolgen",
-            "text": "Bei Verstößen gegen diese Bestimmungen behält sich BeAFox vor, den Zugang zu sperren und rechtliche Schritte einzuleiten."
+            "subtitle": "Konkrete Verbote",
+            "text": "Es ist insbesondere untersagt:\n- Screenshots, Grafiken oder Textauszüge für kommerzielle Zwecke oder zur Veröffentlichung zu nutzen\n- Die App oder Teile davon zu kopieren, zu dekompilieren oder zu reverse-engineeren\n- Zugangsdaten weiterzugeben oder mit anderen zu teilen\n- Automatisierte Systeme (Bots, Scraper) zur Erfassung oder Verbreitung von Inhalten einzusetzen\n- Die App zu manipulieren oder zu modifizieren\n- Inhalte auf anderen Plattformen zu republizieren"
+          },
+          {
+            "subtitle": "Rechtsfolgen von Verstößen",
+            "text": "Bei Verstößen gegen diese Bestimmungen behält sich BeAFox vor: (1) den Zugang zur App sofort zu sperren, (2) rechtliche Schritte einzuleiten, einschließlich Abmahnung und Schadensersatzforderung gemäß §§ 97 ff. UrhG, (3) Unterlassungsansprüche geltend zu machen."
           }
         ]
       },
@@ -2592,24 +2707,28 @@
         "iconId": "building",
         "content": [
           {
-            "subtitle": "Nutzungsbereich",
-            "text": "Die Nutzung der App ist nur für eigene Mitarbeitende, Schülerinnen und Schüler oder Auszubildende gestattet. Eine Weitergabe an Dritte ist nicht zulässig."
+            "subtitle": "Nutzungsbereich und Zweckbindung",
+            "text": "Die Nutzung der App ist nur für eigene Mitarbeitende, Schülerinnen und Schüler, Auszubildende oder Studierenden der Einrichtung gestattet. Eine Weitergabe an Dritte oder eine Nutzung für Fremde ist nicht zulässig. Die Nutzung muss dem Zweck der Finanzbildung oder beruflichen Schulung entsprechen."
           },
           {
-            "subtitle": "Mindestnutzerzahlen",
-            "text": "Vereinbarte Mindestnutzerzahlen oder Lizenzumfänge sind einzuhalten. Eine Überschreitung erfordert eine Anpassung des Vertrags."
+            "subtitle": "Mindestnutzerzahlen und Lizenzumfang",
+            "text": "Vereinbarte Mindestnutzerzahlen oder Lizenzumfänge müssen eingehalten werden. Eine Überschreitung erfordert eine Vertragsanpassung und kann zu Zusatzkosten führen. BeAFox behält sich vor, die Nutzerzahlen zu überwachen."
           },
           {
-            "subtitle": "Jugendschutz",
-            "text": "Bei Nutzung durch Minderjährige ist sicherzustellen, dass die Nutzung den gesetzlichen Bestimmungen entspricht. Bei Nutzern unter 16 Jahren ist die Zustimmung der Erziehungsberechtigten erforderlich."
+            "subtitle": "Jugendschutz und Einwilligungen",
+            "text": "Bei Nutzung durch Minderjährige ist sicherzustellen, dass die Nutzung den gesetzlichen Bestimmungen entspricht. Bei Nutzern unter 16 Jahren ist die Zustimmung der Erziehungsberechtigten erforderlich (Art. 8 DSGVO). Die Einrichtung trägt die Verantwortung für die Einhaltung dieser Anforderung."
           },
           {
-            "subtitle": "Verantwortung für Zugangsdaten",
-            "text": "Der Vertragspartner ist für die sichere Verwaltung und Weitergabe von Zugangsdaten verantwortlich. Bei Verlust oder Missbrauch von Zugangsdaten ist BeAFox unverzüglich zu informieren."
+            "subtitle": "Verantwortung für Zugangsdaten und Sicherheit",
+            "text": "Die Einrichtung ist für die sichere Verwaltung und Kontrolle von Zugangsdaten verantwortlich. Der Administrator muss sicherstellen, dass Zugangsdaten nicht an nicht-autorisierte Personen weitergegeben werden. Bei Verlust oder Missbrauch von Zugangsdaten muss BeAFox unverzüglich informiert werden. Die Einrichtung haftet für Missbräuche durch ihre Nutzer."
           },
           {
             "subtitle": "Einhaltung der Nutzungsbedingungen",
-            "text": "Der Vertragspartner stellt sicher, dass alle Nutzer die AGB und Nutzungsbedingungen einhalten."
+            "text": "Die Einrichtung verpflichtet sich, alle Nutzer über die AGB und Nutzungsbedingungen zu informieren und diese einhalten zu lassen. Verstöße durch Nutzer können zur Sperrung des Zugangs führen."
+          },
+          {
+            "subtitle": "Regelmäßige Überprüfung",
+            "text": "BeAFox behält sich vor, die Einhaltung der Bestimmungen zu überprüfen und bei Verstößen den Zugang zu sperren."
           }
         ]
       },
@@ -2619,15 +2738,19 @@
         "iconId": "ban",
         "content": [
           {
-            "text": "Die durch BeAFox bereitgestellten Inhalte stellen keine Anlageberatung, Steuerberatung, Finanzberatung oder Rechtsberatung dar. Sie dienen ausschließlich der allgemeinen Bildung und Wissensvermittlung."
+            "text": "Die durch BeAFox bereitgestellten Inhalte, Rechner und Informationen stellen KEINE Anlageberatung, Finanzberatung, Vermögensberatung, Steuerberatung oder Rechtsberatung dar. Sie dienen ausschließlich der allgemeinen Bildung und Wissensvermittlung. Die Inhalte basieren auf allgemein verfügbaren Informationen und erheben keinen Anspruch auf Vollständigkeit oder Aktualität."
           },
           {
-            "subtitle": "Eigenverantwortung",
-            "text": "Entscheidungen über finanzielle Anlagen, Versicherungen, steuerliche Themen oder andere finanzielle Entscheidungen trifft der Nutzer eigenverantwortlich. BeAFox übernimmt keine Haftung für wirtschaftliche Entscheidungen, die Nutzer auf Basis der bereitgestellten Inhalte treffen."
+            "subtitle": "Eigenverantwortung des Nutzers",
+            "text": "Entscheidungen über finanzielle Anlagen, Versicherungen, Altersvorsorge, steuerliche Strategien oder andere finanzielle Entscheidungen trifft der Nutzer eigenverantwortlich und auf eigenes Risiko. BeAFox übernimmt keine Haftung für wirtschaftliche oder steuerliche Entscheidungen, die Nutzer auf Basis der bereitgestellten Inhalte treffen."
           },
           {
-            "subtitle": "Keine Empfehlungen",
-            "text": "Die Inhalte enthalten keine Empfehlungen für konkrete Finanzprodukte oder Anlagestrategien. BeAFox ist unabhängig und neutral."
+            "subtitle": "Keine persönlichen Empfehlungen",
+            "text": "Die Inhalte enthalten keine Empfehlungen für konkrete Finanzprodukte, Wertpapiere, Immobilien oder Anlagestrategien für die persönliche Situation des Nutzers. BeAFox ist unabhängig und neutral."
+          },
+          {
+            "subtitle": "Haftungsausschluss",
+            "text": "Eine Haftung für wirtschaftliche Folgen, steuerliche Konsequenzen oder finanzielle Verluste, die aus der Nutzung der BeAFox-App entstehen, ist ausgeschlossen. Der Nutzer sollte vor wichtigen finanziellen Entscheidungen professionelle Beratung (Steuerberater, Finanzberater, Rechtsanwalt) in Anspruch nehmen."
           }
         ]
       },
@@ -2638,19 +2761,31 @@
         "content": [
           {
             "subtitle": "Haftung für Vorsatz und grobe Fahrlässigkeit",
-            "text": "BeAFox haftet unbeschränkt für Vorsatz und grobe Fahrlässigkeit."
+            "text": "BeAFox haftet ohne Beschränkung für Schäden, die durch Vorsatz oder grobe Fahrlässigkeit von BeAFox, seinen Vertretern oder Erfüllungsgehilfen entstehen."
+          },
+          {
+            "subtitle": "KEIN Ausschluss der Haftung für Körper- und Gesundheitsverletzungen",
+            "text": "WICHTIG: Eine Haftungsbeschränkung oder ein Haftungsausschluss für Verletzungen des Lebens, des Körpers oder der Gesundheit ist ausdrücklich NICHT zulässig und NICHT Gegenstand dieser AGB. Dies ist gemäß § 309 Nr. 7a BGB für AGB zwischen Unternehmern und Verbrauchern verboten. Die Haftung für Schäden aus Verletzung des Lebens, des Körpers oder der Gesundheit bleibt vollständig bestehen."
           },
           {
             "subtitle": "Haftung bei leichter Fahrlässigkeit",
-            "text": "Bei leichter Fahrlässigkeit haftet BeAFox nur bei Verletzung einer wesentlichen Vertragspflicht, deren Erfüllung die ordnungsgemäße Durchführung des Vertrages überhaupt erst ermöglicht. Die Haftung ist auf den bei Vertragsschluss vorhersehbaren, vertragstypischen Schaden begrenzt."
+            "text": "Bei Fahrlässigkeit (nicht grob fahrlässig) haftet BeAFox nur bei Verletzung einer wesentlichen Vertragspflicht, deren ordnungsgemäße Erfüllung die Durchführung des Vertrages überhaupt erst ermöglicht (Kardinalpflicht). Die Haftung ist begrenzt auf den bei Vertragsschluss vorhersehbaren, vertragstypischen Schaden (z.B. unmittelbare finanzielle Verluste aus fehlerhaften Inhalten)."
           },
           {
-            "subtitle": "Ausschluss der Haftung",
-            "text": "BeAFox haftet nicht für Datenverlust, soweit dieser nicht auf Vorsatz oder grober Fahrlässigkeit beruht. Eine Haftung für wirtschaftliche Entscheidungen, die Nutzer auf Basis der App-Inhalte treffen, ist ausgeschlossen. Die Haftung für leichte Fahrlässigkeit ist bei Verletzung des Lebens, des Körpers oder der Gesundheit ausgeschlossen."
+            "subtitle": "Haftungsgrenzen",
+            "text": "Ausgenommen von den Haftungsgrenzen sind: (1) Verletzungen des Lebens, Körpers oder der Gesundheit; (2) Vorsatz oder grobe Fahrlässigkeit; (3) Garantien im Sinne des § 443 BGB; (4) Haftung nach dem Produkthaftungsgesetz (ProdHaftG); (5) gesetzliche Haftung für Datenschutzverletzungen nach DSGVO."
           },
           {
-            "subtitle": "Haftung für Dritte",
-            "text": "BeAFox haftet nicht für Handlungen Dritter, insbesondere nicht für Handlungen von App-Store-Betreibern oder anderen Dienstleistern."
+            "subtitle": "Haftungsausschlüsse",
+            "text": "Soweit zulässig, haftet BeAFox nicht für: (a) Datenverlust oder Korruption von Daten, sofern dieser nicht auf Vorsatz oder grober Fahrlässigkeit beruht; (b) wirtschaftliche Entscheidungen oder finanzielle Verluste, die Nutzer auf Basis der App-Inhalte treffen; (c) Geschäftsunterbrechungen oder Gewinnverluste; (d) indirekte oder Folgeschäden; (e) Schäden durch Missbräuche oder Unstimmigkeiten mit diesem Vertrag; (f) Handlungen Dritter, insbesondere App-Store-Betreiber, Zahlungsdienstleister oder andere Dienstleister, soweit BeAFox nicht schuldhaft ist."
+          },
+          {
+            "subtitle": "Produkthaftung",
+            "text": "Die Haftung nach dem Produkthaftungsgesetz (ProdHaftG) bleibt von den Haftungsbeschränkungen unberührt. BeAFox haftet unbegrenzt für Schäden, die durch fehlerhafte Produkte entstehen (§ 1 ProdHaftG)."
+          },
+          {
+            "subtitle": "Geltung der Haftungsbeschränkungen",
+            "text": "Die vorstehenden Haftungsbeschränkungen gelten NICHT bei Verletzung des Lebens, des Körpers oder der Gesundheit durch BeAFox oder ihre Vertreter."
           }
         ]
       },
@@ -2661,19 +2796,23 @@
         "content": [
           {
             "subtitle": "Kündigung durch Verbraucher",
-            "text": "Verbraucher können Abonnements jederzeit mit einer Frist von einem Monat zum Ende der Laufzeit kündigen. Die Kündigung erfolgt schriftlich oder per E-Mail an info@beafox.app."
+            "text": "Verbraucher können Abonnements jederzeit mit einer Frist von einem Monat zum Ende der Abrechnungsperiode (Monat oder Jahr) kündigen. Die Kündigung kann erfolgen durch: (1) Kündigungsbutton in der App (Kontoeinstellungen); (2) schriftlich per Post oder E-Mail an info@beafox.app; (3) per Telefon auf Anfrage. Die Kündigung muss schriftlich bestätigt werden."
+          },
+          {
+            "subtitle": "Kündigungsbutton gemäß § 312k BGB",
+            "text": "Verbraucher können ihr Abonnement über einen Kündigungsbutton in den App-Einstellungen kündigen. Dies ist ein einfaches und kostenloses Verfahren ohne zusätzliche Hürden (§ 312k Abs. 2 BGB). Der Kündigungsbutton ist deutlich sichtbar und leicht erreichbar."
           },
           {
             "subtitle": "Kündigung durch Unternehmen und Bildungseinrichtungen",
-            "text": "Für Unternehmen und Bildungseinrichtungen gelten die im Vertrag vereinbarten Laufzeiten und Kündigungsfristen. In der Regel beträgt die Kündigungsfrist drei Monate zum Ende der Laufzeit, sofern nicht anders vereinbart."
+            "text": "Für Unternehmen und Bildungseinrichtungen gelten die im jeweiligen Vertrag vereinbarten Laufzeiten und Kündigungsfristen. In der Regel beträgt die Kündigungsfrist drei Monate zum Ende der Laufzeit, sofern nicht anders vereinbart. Abrechnungsverträge können mit einer Frist von 30 Tagen gekündigt werden."
           },
           {
             "subtitle": "Außerordentliche Kündigung",
-            "text": "Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt. Ein wichtiger Grund liegt insbesondere vor bei schwerwiegenden Verstößen gegen diese AGB oder bei Zahlungsverzug von mehr als zwei Monaten."
+            "text": "Das Recht zur außerordentlichen Kündigung (fristlosen Kündigung) aus wichtigem Grund bleibt unberührt (§ 314 BGB). Ein wichtiger Grund liegt insbesondere vor bei: (a) schwerwiegenden Verstößen gegen diese AGB; (b) Zahlungsverzug von mehr als zwei Monaten; (c) technischen Ausfällen der App länger als 30 Tage; (d) Verletzung von Datenschutzrecht; (e) Nichterbringung der wesentlichen Leistungen."
           },
           {
             "subtitle": "Folgen der Kündigung",
-            "text": "Nach Kündigung endet der Zugang zur App zum Ende der Laufzeit. Bereits erbrachte Leistungen werden nicht anteilig erstattet, es sei denn, es liegt ein wichtiger Kündigungsgrund vor."
+            "text": "Nach Kündigung endet der Zugang zur App zum Ende der Abrechnungsperiode oder zum Zeitpunkt der außerordentlichen Kündigung. Bereits bezahlte Gebühren für zukünftige Leistungen werden anteilig erstattet, insofern die Leistung nicht mehr erbracht wird. Für Lifetime-Zugang gibt es keine Rückerstattung nach Kündigung. Benutzerdaten werden nach Ablauf von 90 Tagen nach Kündigung gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
           }
         ]
       },
@@ -2684,15 +2823,23 @@
         "content": [
           {
             "subtitle": "Supportkanäle",
-            "text": "BeAFox bietet Support über E-Mail (info@beafox.app) und innerhalb der App an. Supportzeiten sind werktags von 9:00 bis 17:00 Uhr."
+            "text": "BeAFox bietet Support über folgende Kanäle an: (1) E-Mail: info@beafox.app; (2) In-App-Support/Chat (verfügbar in den Einstellungen); (3) Kontaktformular auf der Website: www.beafox.app/kontakt"
+          },
+          {
+            "subtitle": "Supportzeiten",
+            "text": "Support wird werktags (Montag bis Freitag) von 9:00 bis 17:00 Uhr MEZ bereitgestellt. Anfragen außerhalb dieser Zeiten werden am nächsten Werktag bearbeitet. An deutschen Feiertagen ist der Support geschlossen."
           },
           {
             "subtitle": "Reaktionszeit",
-            "text": "BeAFox bemüht sich um eine schnelle Bearbeitung von Anfragen, übernimmt jedoch keine Garantie für eine bestimmte Reaktionszeit. Kein Anspruch auf sofortige Rückmeldung besteht."
+            "text": "BeAFox bemüht sich um eine schnelle Bearbeitung von Anfragen. Eine typische Reaktionszeit liegt bei 24-48 Stunden. Jedoch übernimmt BeAFox keine Garantie für eine bestimmte Reaktionszeit. Es besteht kein Anspruch auf sofortige oder Echtzeit-Rückmeldung."
           },
           {
             "subtitle": "Umfang des Supports",
-            "text": "Der Support umfasst technische Fragen zur Nutzung der App und allgemeine Anfragen. Individuelle Beratung oder Schulungen sind nicht im Standard-Support enthalten und können gesondert gebucht werden."
+            "text": "Der Standard-Support umfasst: (a) technische Fragen zur Nutzung der App; (b) Unterstützung bei Login- und Zugriffsproblemen; (c) allgemeine Fragen zu Abonnements und Kündigung; (d) Meldung von Bugs und technischen Fehlern. Nicht enthalten sind: (a) individuelle Finanzberatung; (b) Schulungen; (c) Custom-Entwicklung; (d) Consulting. Diese Leistungen können gesondert gebucht werden."
+          },
+          {
+            "subtitle": "Ticketing-System",
+            "text": "Support-Anfragen werden in einem Ticketing-System verwaltet. Kunden erhalten eine Bestätigungs-E-Mail mit Ticket-Nummer."
           }
         ]
       },
@@ -2702,83 +2849,177 @@
         "iconId": "graduationCap",
         "content": [
           {
-            "subtitle": "Workshops",
-            "text": "Workshops werden nach Vereinbarung durchgeführt. Reisekosten, Materialkosten und ggf. Übernachtungskosten werden gesondert berechnet, sofern nicht anders vereinbart."
+            "subtitle": "Workshop-Vereinbarungen",
+            "text": "Workshops werden nach individueller Vereinbarung durchgeführt. Die Details (Datum, Uhrzeit, Dauer, Inhalte, Teilnehmerzahl, Format: online oder vor Ort) werden in einem separaten Angebot oder Vertrag festgelegt."
+          },
+          {
+            "subtitle": "Zusatzkosten",
+            "text": "Reisekosten, Materialkosten, Übernachtungskosten, Catering und sonstige Auslagen werden gesondert berechnet, sofern nicht anders im Angebot vereinbart. Diese Kosten werden im Voraus transparent kommuniziert."
           },
           {
             "subtitle": "Ausfallregelungen",
-            "text": "Bei Ausfall eines Workshops durch BeAFox wird ein Ersatztermin angeboten oder die bereits gezahlte Gebühr erstattet. Bei Ausfall durch den Kunden gelten die vereinbarten Stornobedingungen."
+            "text": "Bei Ausfall eines Workshops durch BeAFox wird ein Ersatztermin angeboten oder die bereits gezahlte Gebühr erstattet. Bei Ausfall durch den Kunden (z.B. keine Anmeldung der Teilnehmer) gelten die vereinbarten Stornobedingungen."
           },
           {
-            "subtitle": "Stornobedingungen",
-            "text": "Stornierungen von Workshops müssen mindestens 14 Tage vor dem Termin erfolgen, um eine vollständige Erstattung zu erhalten. Bei späteren Stornierungen können Stornogebühren anfallen."
+            "subtitle": "Stornobedingungen für Workshops",
+            "text": "Stornierungen von Workshops müssen schriftlich erfolgen. Kündigungsfristen: (1) Stornierung mindestens 14 Tage vor Termin: volle Rückerstattung minus Bearbeitungsgebühr (10%); (2) Stornierung 7-14 Tage vor Termin: 50% Rückerstattung; (3) Stornierung weniger als 7 Tage vor Termin oder Nichterscheinen: keine Rückerstattung."
           },
           {
             "subtitle": "Zertifikate und Materialien",
-            "text": "Zertifikate und analoge Materialien werden nach Vereinbarung bereitgestellt. Die Kosten sind im jeweiligen Angebot ausgewiesen."
+            "text": "Zertifikate und analoge Unterrichtsmaterialien werden nach Workshop-Abschluss bereitgestellt. Die Kosten für Druck und Versand sind in der Gebühr enthalten, sofern nicht anders vereinbart. Digitale Materialien werden per E-Mail versendet."
+          },
+          {
+            "subtitle": "Monitoring-Dashboards",
+            "text": "Für Bildungseinrichtungen und Unternehmen werden Monitoring-Dashboards mit Nutzungs- und Leistungsdaten bereitgestellt. Der Umfang und die Aktualisierungsfrequenz werden im jeweiligen Vertrag vereinbart."
           }
         ]
       },
       {
         "id": 17,
-        "title": "Änderungen der AGB",
-        "iconId": "refresh",
+        "title": "Einsatz von Künstlicher Intelligenz",
+        "iconId": "bot",
         "content": [
           {
-            "subtitle": "Recht zur Änderung",
-            "text": "BeAFox behält sich vor, diese AGB anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entsprechen oder Änderungen der Leistungen abbilden."
+            "subtitle": "Bea - KI-gestützter Assistent",
+            "text": "„Bea“ ist ein KI-gestützter Assistent, der Nutzern bei Fragen zur Finanzbildung hilft. Bea ist KEINE echte Person und wird durch Künstliche Intelligenz (Large Language Models) betrieben. Die Nutzer sollten sich bewusst sein, dass sie mit einem automatisierten System kommunizieren."
           },
           {
-            "subtitle": "Benachrichtigung",
-            "text": "Nutzer werden über wesentliche Änderungen der AGB mindestens zwei Monate vor Inkrafttreten informiert. Die Information erfolgt per E-Mail oder über die App."
+            "subtitle": "Transparenzkennzeichnung",
+            "text": "BeAFox kennzeichnet klar, dass Bea ein KI-System ist. Die Interaktionen mit Bea erfolgen mit vollem Verständnis, dass es sich um automatisierte Inhalte handelt, nicht um menschliche Beratung oder persönliche Empfehlungen."
           },
           {
-            "subtitle": "Zustimmung",
-            "text": "Schweigen zählt nicht als Zustimmung. Wenn der Nutzer den geänderten AGB nicht zustimmt, kann er den Vertrag bis zum Inkrafttreten der Änderungen kündigen. Die Weiterverwendung der App nach Inkrafttreten der Änderungen gilt als Zustimmung."
+            "subtitle": "KI-generierte Inhalte",
+            "text": "Inhalte, die von Bea generiert werden, können vereinzelt Fehler, Ungenauigkeiten oder veraltete Informationen enthalten. BeAFox überprüft KI-Inhalte, kann aber die Fehlerfreiheit nicht garantieren. Nutzer sollten wichtige Informationen durch andere Quellen überprüfen."
           },
           {
-            "subtitle": "Widerspruch",
-            "text": "Widerspricht der Nutzer den Änderungen nicht innerhalb von sechs Wochen nach Benachrichtigung, gelten die Änderungen als genehmigt. BeAFox weist in der Benachrichtigung auf diese Rechtsfolge hin."
+            "subtitle": "Keine persönliche Beratung",
+            "text": "Bea bietet KEINE persönliche Finanzberatung, Steuerberatung oder Rechtsberatung. Bea stellt allgemeine Informationen und Lernmaterialien zur Verfügung. Für persönliche Beratung sollten Nutzer einen qualifizierten Fachmann konsultieren (Steuerberater, Finanzberater, etc.)."
+          },
+          {
+            "subtitle": "Datenschutz bei KI-Nutzung",
+            "text": "Gespräche mit Bea werden erfasst und zur Verbesserung des KI-Systems verwendet (gemäß Datenschutzerklärung). Nutzer sollten keine sensiblen persönlichen Daten (Kontonummern, SSN, etc.) in Gesprächen mit Bea eingeben. BeAFox verarbeitet diese Daten nach DSGVO und TDDDG."
+          },
+          {
+            "subtitle": "EU-KI-Verordnung",
+            "text": "BeAFox orientiert sich an den Anforderungen der EU-KI-Verordnung (AI Act, wenn in Kraft) bezüglich Transparenz, Risikominderung und Dokumentation von KI-Systemen."
+          },
+          {
+            "subtitle": "Recht auf Erklärung",
+            "text": "Nutzer haben das Recht, Erklärungen zu Entscheidungen zu verlangen, die von KI-Systemen getroffen werden (Art. 22 DSGVO). BeAFox wird auf angemessene Anfragen hin Erklärungen zur Verfügung stellen."
           }
         ]
       },
       {
         "id": 18,
-        "title": "Vertragsübertragung",
+        "title": "Online-Streitbeilegung und Verbraucherstreitbeilegung",
         "iconId": "handshake",
         "content": [
           {
-            "text": "BeAFox ist berechtigt, Rechte und Pflichten aus diesem Vertrag ganz oder teilweise auf einen Rechtsnachfolger oder Dritte zu übertragen, sofern dies für den Kunden zumutbar ist. Der Kunde wird über eine Übertragung informiert."
+            "subtitle": "EU-Online-Streitbeilegungsplattform",
+            "text": "Die Europäische Kommission hat eine Plattform für außergerichtliche Online-Streitbeilegung (OS-Plattform) eingerichtet. Verbraucher können diese kostenlosen Plattformen nutzen, um ihre Streitigkeiten beizulegen:\n\nURL: https://ec.europa.eu/consumers/odr/\n\nBeAFox ist bereit, an Verfahren auf dieser Plattform teilzunehmen."
+          },
+          {
+            "subtitle": "Verbraucherschlichtstellen",
+            "text": "In Deutschland gibt es Verbraucherschlichtstellen (z.B. Schlichtungsstelle des Einzelhandelsverbandes). Diese können zur Beilegung von Streitigkeiten angerufen werden. BeAFox wird auf angemessene Schlichtumsanträge prüfen, ist aber nach dem Verbraucherstreitbeilegungsgesetz (VSBG) nicht verpflichtet, daran teilzunehmen."
+          },
+          {
+            "subtitle": "Hinweis nach VSBG",
+            "text": "Nach § 36 VSBG teilen wir mit: BeAFox UG (haftungsbeschränkt) ist nicht verpflichtet und nicht bereit, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Ein außergerichtliches Streitbeilegungsverfahren ist jedoch möglich, falls beide Parteien zustimmen."
+          },
+          {
+            "subtitle": "Gerichtsweg",
+            "text": "Sollte eine Streitigkeit nicht auf außergerichtlichem Weg gelöst werden, können Verbraucher sich an die zuständigen Gerichte wenden. Für Verbraucher gelten die gesetzlichen Gerichtsstandsregeln. Für Unternehmen ist der Gerichtsstand Regensburg (Sitz von BeAFox)."
           }
         ]
       },
       {
         "id": 19,
+        "title": "Änderungen der AGB",
+        "iconId": "refresh",
+        "content": [
+          {
+            "subtitle": "Recht zur Änderung",
+            "text": "BeAFox behält sich vor, diese AGB anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entsprechen, Änderungen der Leistungen abbilden oder technische Neuerungen implementieren. Änderungen können auch erforderlich sein, um den Anforderungen des deutschen und europäischen Rechts (z.B. neue Verbraucherschutzgesetze) zu entsprechen."
+          },
+          {
+            "subtitle": "Benachrichtigung über Änderungen",
+            "text": "Nutzer werden über wesentliche Änderungen der AGB mindestens zwei Wochen vor Inkrafttreten informiert. Die Information erfolgt per E-Mail, in-App-Benachrichtigung oder auf der Website. Unwesentliche Änderungen (z.B. Kontaktdaten) können ohne vorherige Ankündigung vorgenommen werden."
+          },
+          {
+            "subtitle": "Ausdrückliche Zustimmung erforderlich für materielle Änderungen",
+            "text": "Für materielle Änderungen (Preiserhöhungen, Leistungseinschränkungen, Haftungsausschlüsse) ist die ausdrückliche Zustimmung des Nutzers erforderlich. Materielle Änderungen erfordern: (1) schriftliche Ankündigung mindestens zwei Wochen im Voraus; (2) Option zum Widerspruch oder zur Kündigung; (3) Schweigen gilt NICHT als Zustimmung."
+          },
+          {
+            "subtitle": "Kündigungsrecht bei Nichtakzeptanz",
+            "text": "Wenn ein Nutzer den geänderten AGB nicht zustimmt, kann er den Vertrag schriftlich bis zum Inkrafttreten der Änderungen kündigen. Nach Kündigung bleibt der alte Vertrag bis zum Ende der laufenden Abrechnungsperiode gültig. Eine weitere Verlängerung findet nicht statt."
+          },
+          {
+            "subtitle": "Zustimmung zu unwesentlichen Änderungen",
+            "text": "Für unwesentliche Änderungen (redaktionelle Anpassungen, Klarstellungen, technische Verbesserungen) reicht die Zustimmung durch Weiterverwendung der App nach Ankündigung auf der Website."
+          },
+          {
+            "subtitle": "Kein Tacit Consent",
+            "text": "Schweigen oder Nichtwidersprechen gilt NICHT als Zustimmung zu den geänderten AGB. BeAFox wird bei jeder Änderung ausdrücklich um Zustimmung bitten."
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "title": "Vertragsübertragung",
+        "iconId": "handshake",
+        "content": [
+          {
+            "text": "BeAFox ist berechtigt, Rechte und Pflichten aus diesem Vertrag ganz oder teilweise auf einen Rechtsnachfolger (z.B. im Falle einer Fusion, Übernahme oder Umstrukturierung) oder andere Dritte zu übertragen, sofern dies für den Kunden zumutbar ist und der Kunde die Chance hat, den Vertrag zu kündigen."
+          },
+          {
+            "subtitle": "Benachrichtigung und Widerspruchsrecht",
+            "text": "Der Kunde wird über eine beabsichtigte Übertragung mindestens drei Wochen im Voraus schriftlich informiert. Der Kunde hat das Recht, den Vertrag bis zum Zeitpunkt der Übertragung zu kündigen, wenn die Übertragung für ihn unzumutbar ist oder erhebliche Nachteile mit sich bringt."
+          },
+          {
+            "subtitle": "Qualifikation des Rechtsnachfolgers",
+            "text": "Ein Rechtsnachfolger muss in der Lage sein, die Leistungen unter gleichen oder besseren Bedingungen zu erbringen. Die Rechte des Kunden (einschließlich Gewährleistung und Schadenersatz) bleiben unberührt."
+          },
+          {
+            "subtitle": "Verbot der Abtretung durch Kunden",
+            "text": "Kunden ist es nicht gestattet, ihre Rechte oder Pflichten aus diesem Vertrag auf Dritte abzutreten, ohne vorherige schriftliche Zustimmung von BeAFox. Dies gilt insbesondere für die Weitergabe von Zugangsdaten."
+          }
+        ]
+      },
+      {
+        "id": 21,
         "title": "Schlussbestimmungen",
         "iconId": "gavel",
         "content": [
           {
             "subtitle": "Anwendbares Recht",
-            "text": "Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts und des Internationalen Privatrechts."
+            "text": "Es gilt deutsches Recht (Bundesrepublik Deutschland) unter Ausschluss des UN-Kaufrechts (CISG - Convention on Contracts for the International Sale of Goods) und des Internationalen Privatrechts (IPR), soweit diese Gesetze nicht zwingend anwendbar sind (z.B. Verbraucherschutzgesetze)."
           },
           {
             "subtitle": "Gerichtsstand",
-            "text": "Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist der Sitz von BeAFox (Regensburg), sofern der Kunde Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist. Für Verbraucher gilt das gesetzliche Gerichtsstandsrecht."
+            "text": "Gerichtsstand für alle Streitigkeiten aus diesem Vertrag ist das Amtsgericht oder Landgericht Regensburg, sofern der Kunde Kaufmann (im Sinne des HGB), juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen ist. Für Verbraucher gilt das gesetzliche Gerichtsstandsrecht der §§ 32 ff. ZPO (Verbraucher können auch bei BeAFox verklagt werden, BeAFox kann aber auch bei dem Verbraucher klagen)."
           },
           {
             "subtitle": "Salvatorische Klausel",
-            "text": "Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Die unwirksame Bestimmung wird durch eine wirksame ersetzt, die dem wirtschaftlichen Zweck am nächsten kommt."
+            "text": "Sollten einzelne Bestimmungen dieser AGB ganz oder teilweise unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Die unwirksame Bestimmung gilt nicht. Für die unwirksame Bestimmung gelten die gesetzlichen Regelungen der Bundesrepublik Deutschland. Das gilt nicht, wenn die Salvatorische Klausel selbst unwirksam wäre."
           },
           {
-            "subtitle": "Sprache",
-            "text": "Diese AGB sind in deutscher Sprache verfasst. Übersetzungen dienen nur der Information. Maßgeblich ist die deutsche Fassung."
+            "subtitle": "Gesamter Vertrag",
+            "text": "Diese AGB stellen zusammen mit dem Angebot und der Datenschutzerklärung die gesamte Vereinbarung zwischen BeAFox und dem Kunden dar. Frühere Zusagen, Absprachen oder Verträge werden durch diese AGB ersetzt, sofern nicht ausdrücklich etwas anderes vereinbart wurde."
+          },
+          {
+            "subtitle": "Änderungen erfordern Schriftform",
+            "text": "Änderungen oder Ergänzungen dieser AGB bedürfen der Schriftform (schriftlich per Post, Fax oder E-Mail). Dies gilt auch für eine Aufhebung dieser Bestimmung (§ 127 BGB)."
+          },
+          {
+            "subtitle": "Vertragssprache",
+            "text": "Diese AGB sind in deutscher Sprache verfasst und sind die verbindliche Fassung. Übersetzungen in andere Sprachen dienen nur der Information und sind nicht verbindlich. Im Falle von Widersprüchen zwischen der deutschen und einer übersetzten Fassung ist die deutsche Fassung maßgeblich."
           }
         ]
       }
     ],
     "contact": {
       "title": "Fragen zu unseren AGB?",
-      "text": "Wenn Sie Fragen zu unseren Allgemeinen Geschäftsbedingungen haben, kontaktieren Sie uns gerne:",
+      "text": "Wenn Sie Fragen zu unseren Allgemeinen Geschäftsbedingungen haben oder weitere Informationen benötigen, kontaktieren Sie uns gerne unter:",
       "labels": {
         "email": "E-Mail:",
         "phone": "Telefon:"
@@ -2786,8 +3027,8 @@
       "cta": "Kontakt aufnehmen"
     },
     "lastUpdated": {
-      "stand": "Stand dieser Allgemeinen Geschäftsbedingungen: Dezember 2025",
-      "notice": "Wir behalten uns vor, diese AGB anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entsprechen oder Änderungen unserer Leistungen abbilden. Über Änderungen werden Sie rechtzeitig informiert."
+      "stand": "Stand dieser Allgemeinen Geschäftsbedingungen: April 2026",
+      "notice": "Wir behalten uns vor, diese AGB anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entsprechen oder Änderungen unserer Leistungen abbilden. Bei materiellen Änderungen werden Sie rechtzeitig informiert und haben das Recht zu widersprechen."
     }
   },
   "checkout": {
@@ -3019,8 +3260,8 @@
     },
     "hero": {
       "badge": "Finanzrechner",
-      "titlePre": "Unsere BeAFox",
-      "titleHighlight": "Rechner",
+      "titlePre": "Unsere",
+      "titleHighlight": "Finanzrechner",
       "description": "Du möchtest dein Gehalt, dein Budget oder deine Steuererklärung berechnen? Wir haben die passenden Rechner für dich.",
       "cardText": "Berechne dein Gehalt, plane dein Budget und behalte deine Finanzen im Blick.",
       "ctaPrimary": "App herunterladen",
@@ -3523,7 +3764,25 @@
   "guidelines": {
     "meta": {
       "title": "Community-Richtlinien | BeAFox",
-      "description": "Unsere Richtlinien für respektvolles Verhalten, konstruktive Kommunikation und eine positive Lernumgebung."
+      "description": "Umfassende Community-Richtlinien für eine sichere, legale und respektvolle Lernumgebung. DSA-konform, mit Jugendschutz und transparenter Moderation."
+    },
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Startseite"
+    },
+    "tableOfContents": {
+      "title": "Inhaltsverzeichnis"
+    },
+    "company": {
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "legalLinks": {
+      "title": "Weitere rechtliche Informationen",
+      "terms": "Allgemeine Geschäftsbedingungen",
+      "privacy": "Datenschutzerklärung",
+      "imprint": "Impressum"
     },
     "hero": {
       "badge": "Community-Richtlinien",
@@ -3531,100 +3790,196 @@
         "pre": "Unsere",
         "highlight": "Community-Richtlinien"
       },
-      "description": "BeAFox ist eine Community, in der junge Menschen gemeinsam Finanzwissen erwerben. Diese Richtlinien helfen uns, eine sichere, respektvolle und lernförderliche Umgebung zu schaffen."
+      "description": "BeAFox ist eine Community für junge Menschen zwischen 16 und 30 Jahren, die gemeinsam finanzielle Handlungsfähigkeit erwerben. Diese Richtlinien schaffen einen sicheren, respektvollen Raum, der den Schutz aller Nutzer, die Einhaltung europäischer und deutscher Gesetze und die Qualität unserer Lernumgebung gewährleistet. Sie basieren auf der EU Digital Services Act (DSA), dem Jugendschutzgesetz (JuSchG), der Datenschutz-Grundverordnung (DSGVO) und anderen maßgeblichen Rechtsnormen."
     },
     "items": [
       {
         "id": 1,
         "title": "Respektvolles Verhalten",
-        "description": "Behandle alle Mitglieder der BeAFox-Community mit Respekt und Freundlichkeit.",
+        "description": "Behandle alle Mitglieder der BeAFox-Community mit Respekt und Freundlichkeit. Eine positive Kultur des gegenseitigen Vertrauens ist das Fundament unserer Lerngemeinschaft.",
         "rules": [
-          "Sei respektvoll und höflich in allen Interaktionen",
-          "Vermeide beleidigende, diskriminierende oder herabsetzende Sprache",
-          "Respektiere unterschiedliche Meinungen und Erfahrungen",
-          "Hilf anderen beim Lernen, anstatt sie zu kritisieren",
-          "Feiere Erfolge anderer und ermutige sie in ihrem Lernprozess"
+          "Sei respektvoll und höflich in allen Interaktionen – online wie offline",
+          "Vermeide beleidigende, diskriminierende, rassistische, sexistische oder herabsetzende Sprache oder Verhalten",
+          "Respektiere unterschiedliche Meinungen, Religionen, Identitäten und Erfahrungen",
+          "Hilf anderen beim Lernen, anstatt sie zu kritisieren oder bloßzustellen",
+          "Feiere Erfolge anderer und ermutige sie konstruktiv in ihrem Lernprozess"
         ]
       },
       {
         "id": 2,
         "title": "Konstruktive Kommunikation",
-        "description": "Teile dein Wissen konstruktiv und hilf anderen beim Lernen.",
+        "description": "Teile dein Wissen konstruktiv und hilf anderen beim Lernen. Offene, sachliche Diskussionen fördern das Verständnis aller.",
         "rules": [
-          "Stelle Fragen, wenn du etwas nicht verstehst",
-          "Teile deine Erfahrungen und Tipps mit der Community",
-          "Gib konstruktives Feedback, das anderen hilft",
-          "Vermeide Spam, Werbung oder unerwünschte Inhalte",
-          "Halte Diskussionen sachlich und themenbezogen"
+          "Stelle Fragen, wenn du etwas nicht verstehst, und bemühe dich, Antworten nachzuvollziehen",
+          "Teile deine Erfahrungen und Tipps sachlich und faktengestützt mit der Community",
+          "Gib konstruktives Feedback, das anderen konkret hilft, besser zu werden",
+          "Vermeide Spam, Werbung, unsolicited promotions oder unerwünschte kommerzialisierte Inhalte",
+          "Halte Diskussionen sachlich, themenbezogen und frei von persönlichen Angriffen"
         ]
       },
       {
         "id": 3,
-        "title": "Sicherheit und Privatsphäre",
-        "description": "Schütze deine persönlichen Daten und die der anderen Nutzer.",
+        "title": "Verbotene Inhalte (DSA Art. 14, NetzDG)",
+        "description": "Folgende Inhalte sind in der BeAFox-Community absolut nicht zulässig. Diese Beschränkungen entsprechen der EU Digital Services Act und dem deutschen Netzwerkdurchsetzungsgesetz.",
         "rules": [
-          "Teile keine persönlichen Finanzdaten oder Kontoinformationen",
-          "Gib keine Passwörter oder Zugangsdaten weiter",
-          "Respektiere die Privatsphäre anderer Nutzer",
-          "Melde verdächtige Aktivitäten oder Inhalte",
-          "Verwende starke Passwörter für dein Konto"
+          "Hassinhalte und Aufstachelung: Inhalte, die zu Gewalt, Diskriminierung oder Hass gegen Personen aufgrund von Rasse, Ethnie, Religion, Geschlecht, sexueller Orientierung, Behinderung oder anderen geschützten Merkmalen aufstacheln (§ 130, § 131 StGB)",
+          "Gewalt und Bedrohungen: Androhung oder Verherrlichung von Gewalt, Selbstmord oder Selbstverletzung; Inhalte, die andere einschüchtern oder bedrohen",
+          "Belästigung und Doxing: Langfristige oder wiederholte Belästigung von Personen; Veröffentlichung privater persönlicher Daten (Adressen, Telefonnummern, etc.) ohne Zustimmung",
+          "Sexuelle und kinderschutzgerichtete Inhalte: Kindesmissbrauchsmaterial (CSAM) oder jede Form von sexuellem Missbrauch oder Ausbeutung von Kindern; Inhalte, die sexuelle Dienste oder sexualisierte Inhalte Minderjähriger anbieten (§§ 176, 182, 184 StGB)",
+          "Terrorismus und Extremismus: Inhalte, die Terrorismus verherrlichen, verbreiten oder aufstacheln; Propagandamaterial extremistischer Organisationen",
+          "Betrug und illegale Aktivitäten: Inhalte, die zu Betrug, Urkundenfälschung, Diebstahl oder anderen Straftaten auffordern oder anleiten; Verbreitung von Malware oder Phishing-Links",
+          "Urheberrecht und geistiges Eigentum: Verbreitung von Inhalten, die Urheberrechte, Markenrechte oder andere geistige Eigentumsrechte Dritter verletzen, ohne dass eine rechtliche Grundlage vorliegt",
+          "Impersonation und Täuschung: Vortäuschung einer anderen Person's Identität, besonders von BeAFox-Mitarbeitern, Moderatoren oder bekannten Personen; Verbreitung von bewusst falschen oder irreführenden Informationen zu Finanzthemen",
+          "Illegal angebotene Waren oder Dienstleistungen: Verbreitung oder Bewerbung von rechtswidrig hergestellten, importierten oder vertriebenen Waren"
         ]
       },
       {
         "id": 4,
-        "title": "Ehrlichkeit und Integrität",
-        "description": "Sei ehrlich in deinen Interaktionen und beim Lernen.",
+        "title": "Sicherheit und Privatsphäre",
+        "description": "Schütze deine persönlichen Daten und die der anderen Nutzer. Vertrauen und Datensicherheit sind essentiell für unsere Community. BeAFox ist DSGVO-konform und schützt alle Nutzerdaten streng.",
         "rules": [
-          "Nutze keine Betrugsmethoden oder Cheats",
-          "Gib keine falschen Informationen weiter",
-          "Respektiere die Lernfortschritte anderer",
-          "Teile nur Informationen, die du selbst verstehst",
-          "Gib Quellen an, wenn du Informationen teilst"
+          "Teile keine persönlichen Finanzdaten wie Kontonummern, PINs, TAN-Nummern, Kreditkartendaten oder andere sensible Informationen in öffentlichen Bereichen",
+          "Gib keine Passwörter, Zugangsdaten oder Authentifizierungscodes weiter – BeAFox-Mitarbeiter werden dich niemals danach fragen",
+          "Respektiere die Privatsphäre anderer Nutzer: Teile nicht ihre persönlichen Daten, Bilder oder private Informationen ohne explizite Zustimmung",
+          "Melde verdächtige Aktivitäten, Phishing-Versuche, ungewöhnliche Kontozugriffe oder Sicherheitslücken sofort an support@beafox.app",
+          "Verwende ein starkes, einzigartiges Passwort für dein BeAFox-Konto und aktiviere Zwei-Faktor-Authentifizierung, wenn verfügbar",
+          "Verstehe, dass BeAFox deine Daten gemäß DSGVO und unserer Datenschutzerklärung verarbeitet – Datenschutzhinweise findest du unter beafox.app/datenschutz"
         ]
       },
       {
         "id": 5,
-        "title": "Altersgerechte Inhalte",
-        "description": "BeAFox richtet sich an junge Menschen – halte Inhalte altersgerecht.",
+        "title": "Jugendschutz und Schutz von Minderjährigen (JuSchG, JMStV)",
+        "description": "BeAFox schützt besonders Nutzer unter 18 Jahren. Wir befolgen das deutsche Jugendschutzgesetz (JuSchG) und Jugendmedienschutz-Staatsvertrag (JMStV) streng.",
         "rules": [
-          "Verwende eine angemessene Sprache für alle Altersgruppen",
-          "Vermeide unangemessene oder anstößige Inhalte",
-          "Respektiere, dass viele Nutzer noch minderjährig sind",
-          "Halte Diskussionen bildungsorientiert und konstruktiv",
-          "Melde unangemessene Inhalte sofort"
+          "Minderjährige Nutzer (unter 18 Jahren): Ihre Sicherheit hat oberste Priorität. Inhalte sind immer altersgerecht und bildungsorientiert kuratiert",
+          "Keine Kontaktaufnahme durch Erwachsene zu privaten Zwecken: Erwachsene dürfen keine Beziehungen mit Minderjährigen außerhalb des offenen Lernkontexts aufbauen. Jede verdächtige oder unangemessene Kontaktaufnahme wird gemeldet und kann zu strafrechtlichen Konsequenzen führen",
+          "Schutzmechanismen für Minderjährige: BeAFox nutzt Inhaltsfilterung, Altersverifikation und Moderation, um Minderjährige vor schädlichen Inhalten zu schützen",
+          "Verwendung einer angemessenen Sprache und Inhalte: Alle öffentlichen Inhalte müssen für Nutzer ab 16 Jahren angemessen sein. Alkohol, Drogen, Rauchen und explizit sexuelle Inhalte sind nicht zulässig",
+          "Meldung: Jede verdächtige Aktivität bezüglich Kindeswohlgefährdung wird der Polizei und/oder zuständigen Behörden gemeldet (gemäß § 8a SGB VIII und § 14 Abs. 2 JMStV)"
         ]
       },
       {
         "id": 6,
         "title": "Keine Finanzberatung",
-        "description": "BeAFox vermittelt Wissen, aber keine individuelle Finanzberatung.",
+        "description": "BeAFox ist eine Lernplattform für finanzielle Bildung, keine Finanzberatung oder Anlageberatung. Bea ist ein KI-gestützter Lernbegleiter, kein lizenzierter Finanzberater.",
         "rules": [
-          "BeAFox ist eine Lernplattform, keine Finanzberatung",
-          "Gib keine konkreten Anlageempfehlungen",
-          "Verweise auf professionelle Beratung bei komplexen Fragen",
-          "Teile Wissen, aber keine persönlichen Finanzentscheidungen",
-          "Erinnere andere daran, dass individuelle Beratung wichtig ist"
+          "BeAFox vermittelt Finanzwissen und Handlungskompetenz, aber keine persönliche oder rechtsverbindliche Finanzberatung",
+          "Gib keine konkreten Anlageempfehlungen, kein Tipping oder Finanzprognosen – das ist Finanzberatung, für die eine Lizenz erforderlich ist",
+          "Verweise auf professionelle, lizenzierte Finanzberater oder Behörden (wie die BaFin) bei komplexen oder persönlichen Finanzfragen",
+          "Teile Allgemeinwissen über Finanzen und Konzepte, aber nicht deine persönlichen Finanzentscheidungen oder Strategien, die als Ratschlag missverstanden werden könnten",
+          "Erinnere andere darin, dass individuelle professionelle Beratung für größere finanzielle Entscheidungen (Kredite, Investitionen, Versicherungen) wichtig und empfohlen ist"
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Künstliche Intelligenz und Bea – Transparenz und Grenzen",
+        "description": "Bea ist unser KI-gestützter Lernbegleiter. Es ist wichtig, dass du verstehst, wie Bea funktioniert, was Bea kann und was nicht.",
+        "rules": [
+          "Bea ist eine KI: Bea wird von künstlicher Intelligenz angetrieben und kann Fehler machen. Bea ist kein Mensch und hat keine persönlichen Gefühle oder Intentionen",
+          "Transparenz über KI-generierte Inhalte: Inhalte, die von Bea oder anderen KI-Systemen generiert wurden, werden als solche gekennzeichnet. BeAFox mischt nicht verborgen KI-Inhalte unter menschliche Inhalte",
+          "Grenzen von Bea: Bea bietet keine professionelle Finanzberatung, kann in Krisensituationen nicht unterstützen und ersetzt keine menschliche Fachperson. Bei ernsten Problemen kontaktiere einen Vertrauensperson, Therapeuten oder Behörden",
+          "Datenschutz bei KI: Deine Gespräche mit Bea werden zum Trainieren und Verbessern von Bea verwendet (anonym und pseudonymisiert gemäß DSGVO). Detailangaben findest du unter beafox.app/datenschutz",
+          "Beschwerde über Bea-Verhalten: Wenn Bea-Inhalte unangemessen wirken oder dich falsch darstellen, kannst du dies melden. BeAFox wird den Fall reviewen"
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Meldung rechtswidriger Inhalte (DSA Art. 16 – Notice and Action)",
+        "description": "EU Digital Services Act verlangt von uns ein strukturiertes Verfahren für die Meldung rechtswidriger Inhalte. Du kannst Inhalte melden, die gegen Gesetze oder diese Richtlinien verstoßen.",
+        "rules": [
+          "Meldekanal: Nutze das Meldeformular in der App unter Einstellungen > Inhalt melden oder schreibe direkt an compliance@beafox.app. Gib die Inhalts-URL oder Screenshot + Beschreibung an",
+          "Erforderliche Angaben bei einer Meldung: Konkrete Beschreibung des Inhalts, warum er rechtswidrig oder regelverstoßend ist, Link oder Screenshot, deine Kontaktdaten (optional, aber hilfreich für Rückfragen). Sachlich und detailliert formuliert hilft uns, schnell zu handeln",
+          "Bearbeitung rechtswidriger Inhalte: Inhalte, die gegen geltendes deutsches oder EU-Recht verstoßen (z.B. CSAM, Terrorismus, Gewaltaufrufe), werden innerhalb von 72 Stunden geprüft und wenn bestätigt rechtswidrig, entfernt. Richtlinienverstöße werden innerhalb von 7 Tagen bearbeitet",
+          "Meldestatus-Verfolgung: Du erhältst eine Bestätigung deiner Meldung und kannst den Status verfolgen (in der App unter Meldungen oder per E-Mail)",
+          "Berufung gegen fehlerhafte Meldung: Wenn eine Meldung fälschlicherweise behandelt wird, kann der Nutzer Einspruch erheben (siehe Punkt 10: Beschwerdemanagement)"
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Inhaltsmoderation und Entscheidungstransparenz (DSA Art. 14, 17)",
+        "description": "BeAFox moderiert Inhalte, um die Richtlinien durchzusetzen. Wir sind transparent über wie, warum und von wem Entscheidungen getroffen werden.",
+        "rules": [
+          "Moderationsmethoden: BeAFox nutzt eine Kombination aus automatisierter Erkennung (Kunstliche Intelligenz) und menschlicher Überprüfung. Flagged Inhalte werden von geschulten Moderatoren geprüft, bevor Maßnahmen ergriffen werden",
+          "Begründungspflicht (DSA Art. 17): Wenn dein Konto gesperrt, ein Beitrag gelöscht oder eine andere Maßnahme ergriffen wird, erhältst du eine Mitteilung mit: (1) der genauen Regelabschnitt oder dem Grund, (2) der genauen Begründung warum die Maßnahme ergriffen wurde, (3) Information über dein Beschwerderecht. Diese Informationen werden innerhalb von angemessener Zeit bereitgestellt",
+          "Transparenzbericht: BeAFox veröffentlicht regelmäßig Berichte über Inhaltsmoderation: Anzahl der erhaltenen Meldungen, bearbeitete Inhalte, Gründe für Löschungen, und Beschwerden",
+          "Menschliche Überprüfung bei Beschwerden: Wenn du gegen eine Moderationsentscheidung Einspruch erhebst, wird dein Fall von einem anderen geschulten Moderator erneut überprüft (nicht dieselbe Person, nicht nur automatisierte Systeme)",
+          "Ausnahmefälle für Notfälle: Bei unmittelbar bevorstehender Gefahr (z.B. Selbstmord-Ankündigung, Bombendrohung) kann BeAFox ohne Vorwarnung Inhalte entfernen und die Behörden kontaktieren"
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Beschwerdemanagement und Rechtsmittel (DSA Art. 20)",
+        "description": "Du hast das Recht, gegen Moderationsentscheidungen, Sperren oder Löschungen Beschwerde einzureichen. BeAFox bietet ein internes Review-Verfahren und externe Optionen.",
+        "rules": [
+          "Interne Beschwerde: Wenn du eine Moderationsentscheidung anfechten möchtest, kannst du innerhalb von 14 Tagen nach Notification eine Beschwerde an appeals@beafox.app einreichen. Gib an: (1) welche Entscheidung du anfechtest, (2) deine Gründe, warum die Entscheidung falsch ist, (3) ggf. neue Informationen. Formatiere sachlich und konkret",
+          "Interne Review-Frist: BeAFox überprüft deine Beschwerde innerhalb von 14 Tagen und teilt dir das Ergebnis mit: Entscheidung bestätigt, teilweise rückgängig gemacht oder vollständig überrufen. Die Begründung wird mitgeteilt",
+          "Außergerichtliches Streitbeilegung: Falls du mit der internen Entscheidung nicht einverstanden bist, kannst du ein Verfahren bei einer unabhängigen Ombudsperson oder einem Schiedsverfahren einleiten. BeAFox ist Mitglied des Digital Services Act-Beschwerdeverfahrens (Details unter beafox.app/beschwerde)",
+          "Gerichtliche Überprüfung: Du hast das Recht, jede Moderationsentscheidung vor einem deutschen oder EU-Gericht anzufechten (Verwaltungsrecht oder Privatrecht je nach Situation)",
+          "Keine Repressalien: BeAFox wird nicht dein Konto sperren, deine Inhalte löschen oder dir sonstwie schaden, weil du Beschwerde einreicht. Das ist Repressalie und verboten"
         ]
       }
     ],
     "violations": {
       "title": "Verstöße gegen die Richtlinien",
-      "description": "Bei Verstößen gegen unsere Community-Richtlinien behalten wir uns vor, Maßnahmen zu ergreifen:",
+      "description": "BeAFox setzt diese Richtlinien durch, um alle Nutzer zu schützen. Je nach Schweregrad und Häufigkeit können folgende Maßnahmen ergriffen werden. Alle Maßnahmen werden transparent mitgeteilt mit Begründung und Beschwerderecht.",
       "actions": [
-        "Warnung und Aufforderung zur Änderung des Verhaltens",
-        "Temporäre Sperrung des Kontos",
-        "Permanente Sperrung bei schwerwiegenden Verstößen",
-        "Löschung unangemessener Inhalte",
-        "Meldung an die zuständigen Behörden bei illegalen Aktivitäten"
+        "Stufe 1 – Verwarnung: Der Nutzer wird informiert, dass ein Verstoß vorliegen könnte, und aufgefordert, sein Verhalten zu ändern. Der Inhalt wird möglicherweise verborgen, aber nicht gelöscht",
+        "Stufe 2 – Inhaltsentfernung: Der verstoßende Inhalte wird entfernt. Der Nutzer wird benachrichtigt mit Begründung und kann Beschwerde einreichen",
+        "Stufe 3 – Temporäre Sperrung (7–90 Tage): Das Benutzerkonto wird für einen definierten Zeitraum gesperrt. Der Nutzer kann während dieser Zeit nicht auf die Plattform zugreifen. Alle anderen Funktionen (Lektionen, Quiz, Rangliste) sind gesperrt. Konversationen sind möglich nach Aufhebung",
+        "Stufe 4 – Permanente Sperrung: Das Benutzerkonto wird unwiderruflich gelöscht für wiederholte schwere Verstöße, Rechtsverletzungen (CSAM, Terrorismus), oder bei Verstößen gegen die Sicherheit anderer. Der Nutzer kann nicht mehr auf die Plattform zugreifen. BeAFox kann Daten zu Strafverfolgung oder Zivilklagen bewahren",
+        "Stufe 5 – Meldung an Behörden: Bei Verdacht auf Straftaten (Kindesmissbrauch, Terrorismus, Betrug, Belästigung) wird BeAFox die zuständigen deutschen oder europäischen Behörden (Polizei, BKA, NCMECs, Europol) benachrichtigen und ggf. Beweise übermitteln",
+        "Besonderheiten bei Minderjährigen: Bei Verstößen durch oder gegen Minderjährige orientiert sich BeAFox zusätzlich an JuSchG und JMStV. Bei Gefährdung wird ggf. das Jugendamt kontaktiert",
+        "Wiederholung und Eskalation: Erste Verstöße führen zu Verwarnungen. Wiederholte Verstöße führen zu härteren Maßnahmen (Sperrung, Löschung). Schwere Verstöße (z.B. Hass, Gewalt, CSAM, Betrug) führen direkt zu Sperrung und/oder Behördenmeldung, unabhängig davon, ob es eine erste Warnung gab"
       ]
     },
     "contact": {
-      "title": "Fragen zu unseren Richtlinien?",
-      "text": "Wenn du Fragen zu unseren Community-Richtlinien hast oder einen Verstoß melden möchtest, kontaktiere uns gerne.",
-      "cta": "Kontakt aufnehmen"
+      "title": "Kontaktstelle für Behörden und Nutzer (DSA Art. 11)",
+      "text": "Wenn du Fragen zu unseren Community-Richtlinien hast, einen Verstoß melden möchtest oder Beschwerde einreichen willst, kontaktiere bitte unsere DSA-Kontaktstelle. BeAFox ist verpflichtet, auf alle Anfragen von Nutzern und Behörden zu antworten.",
+      "cta": "Kontakt aufnehmen",
+      "details": {
+        "email": "info@beafox.app",
+        "compliance": "compliance@beafox.app",
+        "appeals": "appeals@beafox.app",
+        "emergencyReport": "Notfallmeldung (CSAM, Gewalt, Terrorismus): emergency@beafox.app",
+        "phone": "+49 178 2723 673",
+        "address": "BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Deutschland"
+      }
+    },
+    "lastUpdated": {
+      "stand": "7. April 2026",
+      "notice": "Diese Community-Richtlinien wurden zuletzt am 7. April 2026 aktualisiert und treten sofort in Kraft. BeAFox behält sich das Recht vor, diese Richtlinien jederzeit zu aktualisieren. Bei wesentlichen Änderungen werden Nutzer benachrichtigt. Die fortgesetzte Nutzung der Plattform nach einer Änderung gilt als Annahme der neuen Richtlinien. Frühere Versionen dieser Richtlinien sind verfügbar auf Anfrage unter info@beafox.app."
     }
   },
   "imprint": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Startseite"
+    },
+    "company": {
+      "name": "BeAFox UG (haftungsbeschränkt)",
+      "street": "Siemensweg 2",
+      "city": "93073 Neutraubling",
+      "country": "Deutschland",
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "contact": {
+      "addressLabel": "Adresse",
+      "emailLabel": "E-Mail",
+      "phoneLabel": "Telefon"
+    },
+    "legalLinks": {
+      "title": "Weitere rechtliche Informationen",
+      "privacy": "Datenschutzerklärung",
+      "terms": "AGB",
+      "withdrawal": "Widerrufsbelehrung",
+      "communityGuidelines": "Community-Richtlinien",
+      "accessibility": "Barrierefreiheit"
+    },
+    "footer": {
+      "copyright": "{year} {company}. Alle Rechte vorbehalten. Alle Inhalte unterliegen dem deutschen Urheberrecht."
+    },
     "meta": {
       "title": "Impressum | BeAFox",
       "description": "Impressum der BeAFox UG (haftungsbeschränkt) – Rechtliche Angaben, Kontaktdaten und Registereintrag."
@@ -3632,12 +3987,12 @@
     "hero": {
       "badge": "Impressum",
       "title": "Impressum",
-      "subtitle": "Angaben gemäß § 5 TMG und verantwortlich für den Inhalt nach § 55 Abs. 2 RStV"
+      "subtitle": "Angaben gemäß § 5 DDG und verantwortlich für den Inhalt nach § 18 Abs. 2 MStV"
     },
     "sections": [
       {
         "id": 1,
-        "title": "Angaben gemäß § 5 TMG",
+        "title": "Angaben gemäß § 5 DDG",
         "content": [
           {
             "details": [
@@ -3663,7 +4018,7 @@
         "title": "Vertreten durch",
         "content": [
           {
-            "details": ["Die Geschäftsführung: Alexandru Tapelea"]
+            "details": ["Geschäftsführer: Alexandru Tapelea"]
           }
         ]
       },
@@ -3692,10 +4047,11 @@
       },
       {
         "id": 6,
-        "title": "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
+        "title": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
         "content": [
           {
             "details": [
+              "Alexandru Tapelea",
               "BeAFox UG (haftungsbeschränkt)",
               "Siemensweg 2",
               "93073 Neutraubling",
@@ -3710,11 +4066,11 @@
         "content": [
           {
             "subtitle": "Haftung für Inhalte",
-            "text": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich."
+            "text": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich."
           },
           {
             "subtitle": "Haftung für Links",
-            "text": "Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar."
+            "text": "Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen (§ 7 Abs. 2 DDG)."
           },
           {
             "subtitle": "Urheberrecht",
@@ -3729,18 +4085,81 @@
             }
           }
         ]
+      },
+      {
+        "id": 8,
+        "title": "Verbraucherstreitbeilegung / Universalschlichtungsstelle",
+        "content": [
+          {
+            "text": "Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
+          },
+          {
+            "subtitle": "Online-Streitbeilegung (OS)",
+            "text": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:",
+            "link": {
+              "text": "https://ec.europa.eu/consumers/odr/",
+              "href": "https://ec.europa.eu/consumers/odr/"
+            }
+          },
+          {
+            "text": "Unsere E-Mail-Adresse lautet: info@beafox.app"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Keine Finanz-, Anlage- oder Steuerberatung",
+        "content": [
+          {
+            "text": "Die durch BeAFox bereitgestellten Inhalte, einschließlich der KI-gestützten Lernbegleitung „Bea“, dienen ausschließlich der allgemeinen Finanzbildung und Wissensvermittlung. Sie stellen keine Anlageberatung im Sinne des § 2 Abs. 8 Nr. 10 WpHG, keine Steuerberatung und keine Rechtsberatung dar."
+          },
+          {
+            "text": "Für individuelle finanzielle Entscheidungen sollten Sie qualifizierte Fachleute (Finanzberater, Steuerberater, Rechtsanwälte) hinzuziehen. BeAFox übernimmt keine Haftung für wirtschaftliche Entscheidungen, die auf Basis der bereitgestellten Inhalte getroffen werden."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "KI-Hinweis",
+        "content": [
+          {
+            "text": "Die Lernbegleitung „Bea” ist eine KI-basierte Assistenz und keine echte Person. Bea nutzt künstliche Intelligenz, um Lerninhalte zu vermitteln und Fragen zu beantworten. Die von Bea generierten Antworten können Fehler enthalten und ersetzen keine professionelle Beratung."
+          },
+          {
+            "subtitle": "Transparenzhinweis gemäß EU AI Act",
+            "text": "Gemäß Art. 50 der EU-Verordnung über künstliche Intelligenz (KI-VO / EU 2024/1689) weisen wir darauf hin, dass die KI-Funktion „Bea” auf Large Language Models (LLMs) von Drittanbietern basiert. Die Verarbeitung Ihrer Eingaben erfolgt über die API von OpenAI (OpenAI, Inc., San Francisco, USA). Weitere Informationen zur Datenverarbeitung durch den KI-Anbieter finden Sie in unserer Datenschutzerklärung. BeAFox übernimmt keine Gewähr für die Richtigkeit, Vollständigkeit oder Aktualität der KI-generierten Inhalte."
+          }
+        ]
       }
     ]
   },
   "privacy": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Startseite"
+    },
+    "tableOfContents": {
+      "title": "Inhaltsverzeichnis"
+    },
+    "company": {
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "legalLinks": {
+      "title": "Weitere rechtliche Informationen",
+      "imprint": "Impressum",
+      "terms": "AGB",
+      "communityGuidelines": "Community-Richtlinien"
+    },
     "meta": {
       "title": "Datenschutzerklärung",
-      "description": "Datenschutzerklärung der BeAFox UG (haftungsbeschränkt) - Informationen zur Datenverarbeitung, Cookies und Ihren Rechten gemäß DSGVO."
+      "description": "Datenschutzerklärung der BeAFox UG (haftungsbeschränkt) - Informationen zur Datenverarbeitung, Cookies und Ihren Rechten gemäß DSGVO, TDDDG und DDG."
     },
     "hero": {
       "badge": "Datenschutz",
       "title": "Datenschutzerklärung",
-      "description": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten."
+      "description": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung informiert Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten gemäß DSGVO, TDDDG und DDG."
     },
     "sections": [
       {
@@ -3753,13 +4172,13 @@
           },
           {
             "subtitle": "Verantwortliche Stelle",
-            "text": "Verantwortliche Stelle im Sinne der DSGVO und zugleich Diensteanbieter im Sinne des TTDSG ist:",
+            "text": "Verantwortliche Stelle im Sinne der DSGVO, Diensteanbieter im Sinne des TDDDG und Telemediendiensteanbieter im Sinne des DDG ist:",
             "details": [
               "BeAFox UG (haftungsbeschränkt)",
               "Siemensweg 2",
               "93073 Neutraubling",
               "Deutschland",
-              "Vertreten durch: Die Geschäftsführung",
+              "Vertreten durch: Alexandru Tapelea (Geschäftsführer)",
               "Handelsregister: HRB 21689, Registergericht Regensburg",
               "Telefon: +49 178 2723 673",
               "E-Mail: info@beafox.app"
@@ -3776,7 +4195,7 @@
         "title": "Ihre Rechte als betroffene Person",
         "content": [
           {
-            "subtitle": "Recht auf Auskunft (Art. 15 DS-GVO)",
+            "subtitle": "Recht auf Auskunft (Art. 15 DSGVO)",
             "text": "Sie haben das Recht, Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen. Insbesondere können Sie Auskunft verlangen über:",
             "list": [
               "die zu Ihnen bei uns gespeicherten Daten",
@@ -3787,31 +4206,31 @@
             ]
           },
           {
-            "subtitle": "Recht auf Berichtigung (Art. 16 DS-GVO)",
+            "subtitle": "Recht auf Berichtigung (Art. 16 DSGVO)",
             "text": "Sie haben das Recht, die Berichtigung unrichtiger oder die Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen."
           },
           {
-            "subtitle": "Recht auf Löschung (Art. 17 DS-GVO)",
+            "subtitle": "Recht auf Löschung (Art. 17 DSGVO)",
             "text": "Sie haben das Recht, die Löschung Ihrer personenbezogenen Daten zu verlangen, soweit nicht gesetzliche Aufbewahrungspflichten oder andere rechtliche Gründe der Löschung entgegenstehen."
           },
           {
-            "subtitle": "Recht auf Einschränkung der Verarbeitung (Art. 18 DS-GVO)",
+            "subtitle": "Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)",
             "text": "Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen."
           },
           {
-            "subtitle": "Recht auf Datenübertragbarkeit (Art. 20 DS-GVO)",
+            "subtitle": "Recht auf Datenübertragbarkeit (Art. 20 DSGVO)",
             "text": "Sie haben das Recht, Ihre personenbezogenen Daten, die Sie uns bereitgestellt haben, in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten."
           },
           {
-            "subtitle": "Widerspruchsrecht (Art. 21 DS-GVO)",
-            "text": "Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DS-GVO erfolgt, Widerspruch einzulegen."
+            "subtitle": "Widerspruchsrecht (Art. 21 DSGVO)",
+            "text": "Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DSGVO erfolgt, Widerspruch einzulegen."
           },
           {
             "subtitle": "Widerruf von Einwilligungen",
             "text": "Wenn Sie eine Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten erteilt haben, können Sie diese jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung wird dadurch nicht berührt. Alle Informationswünsche, Auskunftsanfragen oder Widersprüche zur Datenverarbeitung richten Sie bitte per E-Mail an info@beafox.app oder an die oben genannte Adresse."
           },
           {
-            "subtitle": "Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DS-GVO)",
+            "subtitle": "Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)",
             "text": "Sie haben zudem das Recht, sich bei einer Datenschutzaufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten zu beschweren. Zuständig ist in der Regel die Aufsichtsbehörde Ihres üblichen Aufenthaltsortes, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.",
             "details": [
               "Für uns zuständig ist:",
@@ -3835,7 +4254,7 @@
           },
           {
             "subtitle": "TLS-Verschlüsselung",
-            "text": "Wir verwenden für die Übertragung von Inhalten eine TLS-Verschlüsselung (erkennbar an \"https://\" und dem Schloss-Symbol im Browser). So werden Ihre Daten vor unbefugter Mitlesung geschützt."
+            "text": "Wir verwenden für die Übertragung von Inhalten eine TLS-Verschlüsselung (erkennbar an „https://“ und dem Schloss-Symbol im Browser). So werden Ihre Daten vor unbefugter Mitlesung geschützt."
           }
         ]
       },
@@ -3845,7 +4264,7 @@
         "content": [
           {
             "subtitle": "Hosting",
-            "text": "Unsere Website wird bei Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA gehostet. Wir haben mit dem Hoster einen Vertrag zur Auftragsverarbeitung gem. Art. 28 DS-GVO geschlossen."
+            "text": "Unsere Website wird bei Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA gehostet. Wir haben mit dem Hoster einen Vertrag zur Auftragsverarbeitung gem. Art. 28 DSGVO geschlossen."
           },
           {
             "subtitle": "Server-Logfiles",
@@ -3862,7 +4281,11 @@
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DS-GVO. Unser berechtigtes Interesse liegt in der technischen Bereitstellung der Website, der Gewährleistung von Stabilität und Sicherheit sowie der Aufklärung von Missbrauchs- oder Betrugshandlungen."
+            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der technischen Bereitstellung der Website, der Gewährleistung von Stabilität und Sicherheit sowie der Aufklärung von Missbrauchs- oder Betrugshandlungen."
+          },
+          {
+            "subtitle": "Speicherdauer",
+            "text": "Server-Logfiles werden für 7 Tage gespeichert und anschließend gelöscht."
           }
         ]
       },
@@ -3887,11 +4310,11 @@
           },
           {
             "subtitle": "Einwilligung über Consent-Tool",
-            "text": "Soweit wir nicht technisch notwendige Cookies (z.B. zu Statistik- oder Marketingzwecken) einsetzen, holen wir hierfür zuvor Ihre Einwilligung über ein Einwilligungs-Management-Tool ein. Wir verwenden derzeit keine Cookies zu Analyse- oder Marketingzwecken."
+            "text": "Soweit wir nicht technisch notwendige Cookies (z.B. zu Statistik- oder Marketingzwecken) einsetzen, holen wir hierfür zuvor Ihre Einwilligung über ein Einwilligungs-Management-Tool ein. Wir verwenden derzeit keine Cookies zu Analyse- oder Marketingzwecken auf dieser Website."
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Die Speicherung von Informationen in Ihrem Endgerät oder der Zugriff hierauf erfolgt, soweit nicht unbedingt erforderlich, auf Grundlage Ihrer Einwilligung (§ 25 Abs. 1 TTDSG i.V.m. Art. 6 Abs. 1 lit. a DS-GVO). Technisch notwendige Cookies verwenden wir auf Grundlage von § 25 Abs. 2 TTDSG und Art. 6 Abs. 1 lit. f DS-GVO."
+            "text": "Die Speicherung von Informationen in Ihrem Endgerät oder der Zugriff hierauf erfolgt, soweit nicht unbedingt erforderlich, auf Grundlage Ihrer Einwilligung (§ 25 Abs. 1 TDDDG i.V.m. Art. 6 Abs. 1 lit. a DSGVO). Technisch notwendige Cookies verwenden wir auf Grundlage von § 25 Abs. 2 TDDDG und Art. 6 Abs. 1 lit. f DSGVO."
           },
           {
             "subtitle": "Datentrennung",
@@ -3913,15 +4336,15 @@
           },
           {
             "subtitle": "Versand über SendGrid",
-            "text": "Für den Versand von E-Mails nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DS-GVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart, um einen angemessenen Datenschutzstandard zu gewährleisten."
+            "text": "Für den Versand von E-Mails nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DSGVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart, um einen angemessenen Datenschutzstandard zu gewährleisten."
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Rechtsgrundlage für die Verarbeitung der Daten aus Kontaktformular und E-Mails ist Art. 6 Abs. 1 lit. b DS-GVO, soweit Ihre Anfrage auf den Abschluss oder die Erfüllung eines Vertrags gerichtet ist, sowie Art. 6 Abs. 1 lit. f DS-GVO im Übrigen. Unser berechtigtes Interesse liegt in der Bearbeitung von Anfragen."
+            "text": "Rechtsgrundlage für die Verarbeitung der Daten aus Kontaktformular und E-Mails ist Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf den Abschluss oder die Erfüllung eines Vertrags gerichtet ist, sowie Art. 6 Abs. 1 lit. f DSGVO im Übrigen. Unser berechtigtes Interesse liegt in der Bearbeitung von Anfragen."
           },
           {
             "subtitle": "Speicherdauer",
-            "text": "Die Daten werden gelöscht, sobald Ihre Anfrage abschließend bearbeitet ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
+            "text": "Die Daten werden 6 Monate nach Abschluss der Bearbeitung Ihrer Anfrage gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
           }
         ]
       },
@@ -3935,7 +4358,7 @@
           },
           {
             "subtitle": "Versand über SendGrid",
-            "text": "Für den Versand unseres Newsletters nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DS-GVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart."
+            "text": "Für den Versand unseres Newsletters nutzen wir den Dienst SendGrid (Twilio SendGrid, Inc., 1801 California Street, Suite 500, Denver, CO 80202, USA). Mit dem Anbieter haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DSGVO geschlossen. SendGrid verarbeitet die Daten in den USA. Wir haben Standardvertragsklauseln (SCC) mit SendGrid vereinbart."
           },
           {
             "subtitle": "Anmeldeverfahren",
@@ -3947,11 +4370,15 @@
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Rechtsgrundlage für den Versand des Newsletters ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)."
+            "text": "Rechtsgrundlage für den Versand des Newsletters ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)."
           },
           {
             "subtitle": "Widerruf",
             "text": "Sie können Ihre Einwilligung zum Erhalt des Newsletters jederzeit widerrufen. In jeder Newsletter-E-Mail finden Sie einen entsprechenden Link. Sie können auch jederzeit eine E-Mail an info@beafox.app senden."
+          },
+          {
+            "subtitle": "Speicherdauer",
+            "text": "Ihre Newsletter-Daten werden bis zum Widerruf Ihrer Einwilligung gespeichert."
           }
         ]
       },
@@ -3974,11 +4401,11 @@
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO zur Erfüllung des Nutzungsvertrags."
+            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO zur Erfüllung des Nutzungsvertrags."
           },
           {
             "subtitle": "Speicherdauer",
-            "text": "Ihre Account-Daten werden gespeichert, solange Ihr Nutzerkonto besteht. Nach Löschung Ihres Kontos werden die Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen."
+            "text": "Ihre Account-Daten werden gespeichert, solange Ihr Nutzerkonto besteht. Nach Löschung Ihres Kontos werden die Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Einzelne Daten (z.B. für Abrechnungszwecke) können bis zu 30 Tage länger aufbewahrt werden."
           }
         ]
       },
@@ -4010,17 +4437,21 @@
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO zur Erfüllung des Nutzungsvertrags sowie Art. 6 Abs. 1 lit. f DS-GVO zur Verbesserung unserer Dienste."
+            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO zur Erfüllung des Nutzungsvertrags sowie Art. 6 Abs. 1 lit. f DSGVO zur Verbesserung unserer Dienste."
           },
           {
             "subtitle": "Speicherung in der Cloud",
             "text": "Ihre Lern- und Nutzungsdaten werden auf unseren Servern gespeichert, um eine Synchronisation zwischen verschiedenen Geräten zu ermöglichen. So können Sie Ihre Lernfortschritte auf jedem Gerät abrufen."
+          },
+          {
+            "subtitle": "Speicherdauer",
+            "text": "Die Daten werden bis zur Löschung Ihres Nutzerkontos gespeichert."
           }
         ]
       },
       {
         "id": 10,
-        "title": "In-App-Käufe und Zahlungen",
+        "title": "In-App-Käufe und Zahlungen via App-Stores",
         "content": [
           {
             "subtitle": "Zahlungsabwicklung",
@@ -4047,6 +4478,37 @@
       },
       {
         "id": 11,
+        "title": "Zahlungsabwicklung über Stripe (Website-Checkout)",
+        "content": [
+          {
+            "subtitle": "Zahlungsabwicklung",
+            "text": "Auf unserer Website bieten wir kostenpflichtige Abos über einen Checkout an. Die Zahlungsabwicklung erfolgt durch Stripe Inc., 354 Oyster Point Blvd, South San Francisco, CA 94080, USA. Wir bieten folgende Pläne an:",
+            "list": [
+              "Monatliches Abo: EUR 4,99/Monat",
+              "Jährliches Abo: EUR 44,99/Jahr",
+              "Lifetime Abo: EUR 49,99 (einmalige Zahlung)"
+            ]
+          },
+          {
+            "subtitle": "Datenverarbeitung durch Stripe",
+            "text": "Bei der Zahlungsabwicklung verarbeitet Stripe folgende Daten: Zahlungsmittelinformationen (Kreditkarte, SEPA-Lastschrift, etc.), Rechnungsadresse, E-Mail-Adresse, Transaktionsdetails. Mit Stripe haben wir einen Auftragsverarbeitungsvertrag gem. Art. 28 DSGVO geschlossen und Standardvertragsklauseln (SCC) vereinbart."
+          },
+          {
+            "subtitle": "BeAFox erhält nur Bestätigungen",
+            "text": "BeAFox verarbeitet keine vollständigen Zahlungsdaten. Wir erhalten lediglich eine Bestätigung über erfolgreiche Zahlungen und Rechnungsinformationen zu Abrechnungszwecken."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO zur Vertragserfüllung (Bereitstellung der kostenpflichtigen Dienste)."
+          },
+          {
+            "subtitle": "Datenschutz bei Stripe",
+            "text": "Weitere Informationen zur Datenverarbeitung durch Stripe finden Sie in der Datenschutzerklärung von Stripe: https://stripe.com/privacy"
+          }
+        ]
+      },
+      {
+        "id": 12,
         "title": "Push-Benachrichtigungen",
         "content": [
           {
@@ -4063,12 +4525,114 @@
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)."
+            "text": "Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)."
           }
         ]
       },
       {
-        "id": 12,
+        "id": 13,
+        "title": "Webanalyse und Statistik",
+        "content": [
+          {
+            "subtitle": "Google Analytics (GA4)",
+            "text": "Wir nutzen Google Analytics, ein Webanalytik-Tool der Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google Analytics verarbeitet Daten über Ihr Nutzerverhalten auf unserer Website mittels Cookies. Die gesammelten Daten werden verwendet, um die Nutzung unserer Website zu analysieren, Reports zu erstellen und um uns bei der Verbesserung unserer Website zu helfen. Die ID unseres Google Analytics Properties lautet: G-J0GWX92CNH."
+          },
+          {
+            "subtitle": "Einwilligung für Google Analytics",
+            "text": "Google Analytics wird nur mit Ihrer Einwilligung eingesetzt. Diese Einwilligung können Sie über unser Einwilligungs-Management-Tool (Cookie-Banner) erteilen oder widerrufen."
+          },
+          {
+            "subtitle": "Anonymisierung von IP-Adressen",
+            "text": "Wir haben Google Analytics so konfiguriert, dass IP-Adressen anonymisiert werden, bevor sie an Google übermittelt werden."
+          },
+          {
+            "subtitle": "Standardvertragsklauseln",
+            "text": "Für die Datenübermittlung in die USA haben wir mit Google Standardvertragsklauseln (SCC) vereinbart."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO i.V.m. § 25 Abs. 1 TDDDG)."
+          },
+          {
+            "subtitle": "Datenschutz bei Google Analytics",
+            "text": "Weitere Informationen zur Datenverarbeitung durch Google Analytics finden Sie unter: https://policies.google.com/privacy"
+          },
+          {
+            "subtitle": "Ahrefs Analytics",
+            "text": "Wir nutzen Ahrefs Analytics (Ahrefs Pte. Ltd., 11 Changi Business Park, Singapore 486048), ein Webanalytik-Tool zur Analyse von Website-Traffic und Suchmaschinen-Performance. Ahrefs verarbeitet pseudonyme Daten über Ihr Nutzerverhalten mittels Cookies."
+          },
+          {
+            "subtitle": "Einwilligung für Ahrefs",
+            "text": "Ahrefs wird nur mit Ihrer Einwilligung eingesetzt. Diese können Sie über unser Cookie-Einwilligungs-Tool erteilen oder jederzeit widerrufen."
+          },
+          {
+            "subtitle": "Rechtsgrundlage Ahrefs",
+            "text": "Die Verarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO i.V.m. § 25 Abs. 1 TDDDG)."
+          },
+          {
+            "subtitle": "Vercel Analytics (Web Vitals)",
+            "text": "Zusätzlich nutzen wir Vercel Analytics von Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, USA). Vercel Analytics ist ein datenschutzfreundliches Analyse-Tool, das keine Cookies setzt und keine personenbezogenen Daten erfasst. Es misst nur technische Metriken wie Page Load Times und Core Web Vitals."
+          },
+          {
+            "subtitle": "Keine Einwilligung für Vercel Analytics erforderlich",
+            "text": "Da Vercel Analytics keine personenbezogenen Daten verarbeitet und keine Cookies setzt, ist keine separate Einwilligung erforderlich."
+          },
+          {
+            "subtitle": "Vercel Speed Insights",
+            "text": "Wir nutzen auch Vercel Speed Insights von Vercel Inc. zur Messung der Website-Performance. Auch dieses Tool ist datenschutzfreundlich, setzt keine Cookies und erfasst keine personenbezogenen Daten."
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "title": "Schriftarten (Google Fonts)",
+        "content": [
+          {
+            "subtitle": "Selbsthosting ohne externe Verbindung",
+            "text": "Unsere Website verwendet Schriftarten, die über Next.js Font Optimization selbst gehostet werden. Die Schriftarten werden direkt von unseren Servern ausgeliefert und NICHT von Google-Servern geladen. Es erfolgt keine Verbindung zu Google oder externe Servern beim Laden der Schriftarten."
+          },
+          {
+            "subtitle": "Keine IP-Übermittlung",
+            "text": "Da die Schriftarten lokal gehostet sind, wird Ihre IP-Adresse nicht an Google oder andere Dritte weitergegeben. Dies bedeutet erhöhten Datenschutz für Sie."
+          },
+          {
+            "subtitle": "Keine Einwilligung erforderlich",
+            "text": "Da keine Verbindung zu externen Servern erfolgt, ist für die Nutzung der Schriftarten keine spezielle Einwilligung erforderlich."
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "title": "Einsatz von Künstlicher Intelligenz (KI)",
+        "content": [
+          {
+            "subtitle": "Bea - Ihr KI-basierter Lernassistent",
+            "text": "Die BeAFox-App bietet einen KI-gestützten Lernassistenten namens „Bea“. Bea nutzt künstliche Intelligenz, um Ihnen personalisierte Lerntipps zu geben, Fragen zu beantworten und Ihren Lernprozess zu unterstützen."
+          },
+          {
+            "subtitle": "Datenverhältnisse bei KI-Nutzung",
+            "text": "Zur Verbesserung der Antwortqualität kann Bea Ihre Lern- und Nutzungsdaten analysieren (z.B. bisherige Antworten, Lernfortschritt). Alle Daten werden innerhalb unserer Systeme verarbeitet."
+          },
+          {
+            "subtitle": "Kein Profiling nach Art. 22 DSGVO",
+            "text": "Wir verzichten auf automatisierte Entscheidungsfindung durch Bea. Das bedeutet: Bea trifft KEINE rechtsverbindlichen Entscheidungen über Sie. Bea gibt Empfehlungen, die letzte Entscheidung liegt immer bei Ihnen."
+          },
+          {
+            "subtitle": "Transparenz und menschlicher Kontakt",
+            "text": "Wenn Sie sich bezüglich einer KI-generierten Antwort unsicher sind oder eine menschliche Überprüfung wünschen, kontaktieren Sie uns jederzeit unter info@beafox.app. Unser Team überprüft Ihre Anfrage und gibt Ihnen eine verbindliche Antwort."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Die Verarbeitung durch Bea erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung - Bereitstellung des KI-Assistenten) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Verbesserung der Dienste)."
+          },
+          {
+            "subtitle": "EU AI Act (EU-KI-Verordnung)",
+            "text": "Unser Einsatz von Bea richtet sich nach der EU-Verordnung über künstliche Intelligenz (EU-KI-Verordnung 2024/1689). Bea wird als System geringer bis mittlerer Risikostufe betrieben. Wir verpflichten uns zur Transparenz über den Einsatz dieser Technologie."
+          }
+        ]
+      },
+      {
+        "id": 16,
         "title": "Externe Links und eingebettete Inhalte",
         "content": [
           {
@@ -4086,29 +4650,29 @@
         ]
       },
       {
-        "id": 13,
+        "id": 17,
         "title": "Rechtsgrundlage der Verarbeitung",
         "content": [
           {
-            "subtitle": "Einwilligung (Art. 6 Abs. 1 lit. a DS-GVO)",
-            "text": "Wenn Sie in die Verarbeitung Ihrer personenbezogenen Daten eingewilligt haben, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DS-GVO."
+            "subtitle": "Einwilligung (Art. 6 Abs. 1 lit. a DSGVO)",
+            "text": "Wenn Sie in die Verarbeitung Ihrer personenbezogenen Daten eingewilligt haben, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO."
           },
           {
-            "subtitle": "Vertragserfüllung (Art. 6 Abs. 1 lit. b DS-GVO)",
-            "text": "Wenn die Verarbeitung zur Erfüllung eines Vertrags erforderlich ist, dessen Vertragspartei Sie sind, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. b DS-GVO."
+            "subtitle": "Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO)",
+            "text": "Wenn die Verarbeitung zur Erfüllung eines Vertrags erforderlich ist, dessen Vertragspartei Sie sind, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO."
           },
           {
-            "subtitle": "Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DS-GVO)",
-            "text": "Wenn die Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. c DS-GVO."
+            "subtitle": "Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO)",
+            "text": "Wenn die Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO."
           },
           {
-            "subtitle": "Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DS-GVO)",
-            "text": "Die Verarbeitung kann auch auf Grundlage von Art. 6 Abs. 1 lit. f DS-GVO erfolgen, wenn die Verarbeitung zur Wahrung eines berechtigten Interesses unseres Unternehmens oder eines Dritten erforderlich ist und die Interessen, Grundrechte und Grundfreiheiten des Betroffenen nicht überwiegen."
+            "subtitle": "Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO)",
+            "text": "Die Verarbeitung kann auch auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO erfolgen, wenn die Verarbeitung zur Wahrung eines berechtigten Interesses unseres Unternehmens oder eines Dritten erforderlich ist und die Interessen, Grundrechte und Grundfreiheiten des Betroffenen nicht überwiegen."
           }
         ]
       },
       {
-        "id": 14,
+        "id": 18,
         "title": "Dauer der Speicherung",
         "content": [
           {
@@ -4116,38 +4680,62 @@
           },
           {
             "subtitle": "Speicherdauer im Einzelnen",
+            "text": "Nachfolgend ein Überblick über die Speicherdauer einzelner Datenkategorien:",
+            "list": [
+              "Server-Logfiles: 7 Tage",
+              "Kontaktanfragen: 6 Monate nach Abschluss der Bearbeitung",
+              "Newsletter-Daten: bis zum Widerruf der Einwilligung",
+              "Account-Daten: bis zur Löschung des Kontos + 30 Tage (für Abrechnung)",
+              "Lern- und Nutzungsdaten: bis zur Löschung des Kontos",
+              "Zahlungsdaten und Belege (Stripe): 10 Jahre (gemäß § 147 Abs. 3 AO und § 257 Abs. 4 HGB)",
+              "Cookie-Einwilligung: 12 Monate"
+            ]
+          },
+          {
             "text": "Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben."
           }
         ]
       },
       {
-        "id": 15,
+        "id": 19,
         "title": "Automatisierte Entscheidungsfindung",
         "content": [
           {
-            "text": "Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein Profiling. Ihre personenbezogenen Daten werden nicht für automatisierte Entscheidungsprozesse verwendet."
+            "text": "Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein Profiling. Ihre personenbezogenen Daten werden nicht für automatisierte Entscheidungsprozesse verwendet, die zu Nachteilen für Sie führen könnten."
           }
         ]
       },
       {
-        "id": 16,
+        "id": 20,
         "title": "Datenschutz bei Minderjährigen",
         "content": [
           {
             "subtitle": "Schutz Minderjähriger",
-            "text": "Unsere Dienste richten sich auch an Minderjährige. Wir nehmen den Schutz der Privatsphäre von Minderjährigen sehr ernst. Wenn Sie unter 16 Jahren sind, benötigen wir die Einwilligung Ihrer Eltern oder Erziehungsberechtigten, bevor wir Ihre personenbezogenen Daten verarbeiten können."
+            "text": "Unsere Dienste richten sich auch an Minderjährige. Wir nehmen den Schutz der Privatsphäre von Minderjährigen sehr ernst. Nach Art. 8 DSGVO benötigen Nutzer unter 16 Jahren die Einwilligung ihrer Eltern oder Erziehungsberechtigten, bevor wir ihre personenbezogenen Daten verarbeiten können."
           },
           {
             "subtitle": "Sicherstellung der elterlichen Zustimmung",
-            "text": "Wir stellen sicher, dass Einwilligungen Minderjähriger unter 16 Jahren nur mit Zustimmung der Eltern erfolgen. Bei der Registrierung in der App wird dies durch eine entsprechende Checkbox und Bestätigung durch Erziehungsberechtigte sichergestellt."
+            "text": "Wir stellen sicher, dass Einwilligungen Minderjähriger unter 16 Jahren nur mit dokumentierter Zustimmung der Eltern erfolgen. Bei der Registrierung in der App wird dies durch folgende Mechanismen gewährleistet:"
           },
           {
-            "subtitle": "Elterliche Kontrolle",
-            "text": "Eltern und Erziehungsberechtigte können jederzeit Auskunft über die von uns gespeicherten Daten ihrer Kinder verlangen und deren Löschung beantragen."
+            "list": [
+              "Altersangabe bei der Registrierung",
+              "Für Nutzer unter 16 Jahren: Anzeige einer Checkbox mit der Bestätigung „Ich bin über 16 Jahre alt oder ein Elternteil/Erziehungsberechtigter hat dem zugestimmt“",
+              "Versand einer Bestätigungs-E-Mail an die E-Mail-Adresse des Elternteils/Erziehungsberechtigten",
+              "Der Zugang wird erst nach Bestätigung dieser E-Mail freigeschaltet"
+            ]
+          },
+          {
+            "subtitle": "Elterliche Kontrolle und Datenschutz",
+            "text": "Eltern und Erziehungsberechtigte können jederzeit Auskunft über die von uns gespeicherten Daten ihrer Kinder verlangen und deren Löschung beantragen. Kontaktieren Sie uns hierzu unter info@beafox.app."
           },
           {
             "subtitle": "Keine sensiblen Daten",
-            "text": "Wir verarbeiten bewusst keine sensiblen Daten nach Art. 9 DS-GVO (Gesundheitsdaten, Daten zur Religion, etc.). Unsere App fokussiert sich ausschließlich auf die Vermittlung von Finanzwissen."
+            "text": "Wir verarbeiten bewusst keine sensiblen Daten nach Art. 9 DSGVO (Gesundheitsdaten, Daten zur Religion, Daten über Strafverfahren, etc.). Unsere App fokussiert sich ausschließlich auf die Vermittlung von Finanzwissen für Minderjährige und Erwachsene."
+          },
+          {
+            "subtitle": "Compliance mit Art. 8 DSGVO",
+            "text": "Unsere Prozesse gewährleisten vollständige Compliance mit Art. 8 DSGVO, insbesondere hinsichtlich der Einwilligung von Minderjährigen und der Verhinderung unbefugter Datenverarbeitung."
           }
         ]
       }
@@ -4160,8 +4748,443 @@
       "cta": "Kontakt aufnehmen"
     },
     "lastUpdated": {
-      "date": "Stand dieser Datenschutzerklärung: Dezember 2025",
+      "date": "Stand dieser Datenschutzerklärung: April 2026",
       "note": "Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder Änderungen unserer Leistungen abzubilden."
+    }
+  },
+  "widerruf": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Startseite"
+    },
+    "tableOfContents": {
+      "title": "Inhaltsverzeichnis"
+    },
+    "company": {
+      "name": "BeAFox UG (haftungsbeschränkt)",
+      "street": "Siemensweg 2",
+      "city": "93073 Neutraubling",
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "form": {
+      "title": "Muster-Widerrufsformular",
+      "description": "Wenn du den Vertrag widerrufen möchtest, kannst du dieses Formular ausfüllen und an uns zurücksenden. Die Nutzung ist nicht verpflichtend — du kannst auch formlos per E-Mail widerrufen.",
+      "toLabel": "An:",
+      "emailLabel": "E-Mail:",
+      "withdrawalText": "Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*):",
+      "lines": {
+        "orderedAt": "Bestellt am",
+        "receivedAt": "Erhalten am",
+        "consumerName": "Name des/der Verbraucher(s)",
+        "consumerAddress": "Anschrift des/der Verbraucher(s)",
+        "date": "Datum",
+        "signature": "Unterschrift (nur bei Mitteilung auf Papier)"
+      },
+      "footnote": "(*) Unzutreffendes streichen."
+    },
+    "legalLinks": {
+      "title": "Weitere rechtliche Informationen",
+      "terms": "Allgemeine Geschäftsbedingungen",
+      "privacy": "Datenschutzerklärung",
+      "imprint": "Impressum"
+    },
+    "meta": {
+      "title": "Widerrufsbelehrung",
+      "description": "Widerrufsbelehrung der BeAFox UG (haftungsbeschränkt) – Informationen zu Ihrem Widerrufsrecht gemäß § 355 BGB und Muster-Widerrufsformular."
+    },
+    "hero": {
+      "badge": "Verbraucherrecht",
+      "title": "Widerrufsbelehrung",
+      "subtitle": "Informationen zu Ihrem gesetzlichen Widerrufsrecht gemäß §§ 355 ff. BGB bei Fernabsatzverträgen über digitale Inhalte."
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Widerrufsrecht",
+        "iconId": "rotate",
+        "content": [
+          {
+            "subtitle": "Ihr Widerrufsrecht",
+            "text": "Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsschlusses."
+          },
+          {
+            "subtitle": "Ausübung des Widerrufsrechts",
+            "text": "Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, E-Mail: info@beafox.app, Telefon: +49 178 2723 673) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist."
+          },
+          {
+            "subtitle": "Fristwahrung",
+            "text": "Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Folgen des Widerrufs",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "subtitle": "Rückerstattung",
+            "text": "Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist."
+          },
+          {
+            "subtitle": "Rückzahlungsmittel",
+            "text": "Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Besondere Hinweise",
+        "iconId": "alert",
+        "content": [
+          {
+            "subtitle": "Vorzeitiges Erlöschen bei digitalen Inhalten",
+            "text": "Das Widerrufsrecht erlischt vorzeitig, wenn BeAFox mit der Ausführung des Vertrags begonnen hat, nachdem Sie (1) ausdrücklich zugestimmt haben, dass BeAFox mit der Ausführung des Vertrags vor Ablauf der Widerrufsfrist beginnt, und (2) Ihre Kenntnis davon bestätigt haben, dass Sie durch Ihre Zustimmung mit Beginn der Ausführung des Vertrags Ihr Widerrufsrecht verlieren (§ 356 Abs. 5 BGB)."
+          },
+          {
+            "subtitle": "Wertersatz bei vorzeitigem Beginn",
+            "text": "Haben Sie verlangt, dass die Dienstleistung während der Widerrufsfrist beginnen soll, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht."
+          },
+          {
+            "subtitle": "In-App-Käufe über App-Stores",
+            "text": "Bei Käufen über den Apple App Store oder Google Play Store gelten die Widerrufsbedingungen des jeweiligen App-Store-Betreibers. Der Kaufvertrag über die Zahlung kommt in diesen Fällen mit dem App-Store-Betreiber zustande. Bitte wenden Sie sich für den Widerruf direkt an den jeweiligen App-Store."
+          },
+          {
+            "subtitle": "Website-Käufe über Stripe",
+            "text": "Bei Abonnements, die über unsere Website (Zahlungsabwicklung durch Stripe) abgeschlossen wurden, richten Sie Ihren Widerruf bitte direkt an BeAFox unter den oben angegebenen Kontaktdaten. Die Rückerstattung erfolgt über Stripe auf das ursprüngliche Zahlungsmittel."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Muster-Widerrufsformular",
+        "iconId": "fileText",
+        "content": [
+          {
+            "subtitle": "Hinweis",
+            "text": "Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück. Das Formular ist gemäß Anlage 2 zu Artikel 246a § 1 Abs. 2 S. 1 Nr. 1 und § 2 Abs. 2 Nr. 2 EGBGB gestaltet."
+          },
+          {
+            "subtitle": "Muster-Widerrufsformular",
+            "text": "An: BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, E-Mail: info@beafox.app"
+          },
+          {
+            "text": "Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung (*) / den Kauf der folgenden digitalen Inhalte (*)"
+          },
+          {
+            "text": "– Bestellt am (*) / erhalten am (*)"
+          },
+          {
+            "text": "– Name des/der Verbraucher(s)"
+          },
+          {
+            "text": "– Anschrift des/der Verbraucher(s)"
+          },
+          {
+            "text": "– Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)"
+          },
+          {
+            "text": "– Datum"
+          },
+          {
+            "subtitle": "",
+            "text": "(*) Unzutreffendes streichen."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Ausschluss bzw. vorzeitiges Erlöschen des Widerrufsrechts",
+        "iconId": "xCircle",
+        "content": [
+          {
+            "subtitle": "Kein Widerrufsrecht bei folgenden Verträgen",
+            "text": "Das Widerrufsrecht besteht nicht bzw. erlischt vorzeitig bei Verträgen zur Lieferung von digitalen Inhalten, die nicht auf einem körperlichen Datenträger geliefert werden, wenn die Ausführung mit der ausdrücklichen Zustimmung des Verbrauchers begonnen hat und der Verbraucher seine Kenntnis davon bestätigt hat, dass er sein Widerrufsrecht durch seine Zustimmung mit dem Beginn der Ausführung verliert (§ 356 Abs. 5 BGB)."
+          },
+          {
+            "subtitle": "Praktische Umsetzung bei BeAFox",
+            "text": "Beim Abschluss eines Abonnements auf der BeAFox-Website oder in der App werden Sie vor Vertragsschluss ausdrücklich darauf hingewiesen und um Ihre Zustimmung gebeten. Sie bestätigen dies durch Setzen eines entsprechenden Häkchens vor dem Kauf."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Kontakt für den Widerruf",
+        "iconId": "mail",
+        "content": [
+          {
+            "text": "BeAFox UG (haftungsbeschränkt)"
+          },
+          {
+            "text": "Siemensweg 2, 93073 Neutraubling, Deutschland"
+          },
+          {
+            "text": "Geschäftsführer: Alexandru Tapelea"
+          },
+          {
+            "text": "E-Mail: info@beafox.app"
+          },
+          {
+            "text": "Telefon: +49 178 2723 673"
+          },
+          {
+            "subtitle": "Empfohlenes Vorgehen",
+            "text": "Senden Sie Ihren Widerruf idealerweise per E-Mail an info@beafox.app. Sie erhalten innerhalb von 48 Stunden (werktags) eine Bestätigung. Bitte geben Sie in Ihrem Widerruf Ihren Namen, die mit dem Konto verknüpfte E-Mail-Adresse und das Datum des Vertragsschlusses an."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Fragen zum Widerruf?",
+      "text": "Wenn Sie Fragen zu Ihrem Widerrufsrecht haben oder Hilfe beim Widerruf benötigen, kontaktieren Sie uns gerne:",
+      "labels": {
+        "email": "E-Mail:",
+        "phone": "Telefon:"
+      },
+      "cta": "Kontakt aufnehmen"
+    },
+    "lastUpdated": {
+      "stand": "Stand dieser Widerrufsbelehrung: April 2026",
+      "notice": "Diese Widerrufsbelehrung entspricht den gesetzlichen Anforderungen gemäß §§ 355 ff. BGB und Art. 246a EGBGB."
+    }
+  },
+  "barrierefreiheit": {
+    "meta": {
+      "title": "Erklärung zur Barrierefreiheit",
+      "description": "Erklärung zur Barrierefreiheit der BeAFox UG (haftungsbeschränkt) gemäß BFSG und EU-Richtlinie 2019/882 (European Accessibility Act)."
+    },
+    "hero": {
+      "badge": "Barrierefreiheit",
+      "title": "Erklärung zur Barrierefreiheit",
+      "subtitle": "Informationen zur digitalen Barrierefreiheit unserer Website und App gemäß dem Barrierefreiheitsstärkungsgesetz (BFSG) und der EU-Richtlinie 2019/882."
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Verpflichtung zur Barrierefreiheit",
+        "iconId": "heart",
+        "content": [
+          {
+            "subtitle": "Unser Bekenntnis",
+            "text": "Die BeAFox UG (haftungsbeschränkt) ist bestrebt, ihre Website (beafox.app) und die BeAFox-App im Einklang mit dem Barrierefreiheitsstärkungsgesetz (BFSG) und der EU-Richtlinie 2019/882 (European Accessibility Act, EAA) barrierefrei zugänglich zu machen. Wir arbeiten kontinuierlich daran, die Nutzererfahrung für alle Menschen zu verbessern – unabhängig von ihren Fähigkeiten oder eingesetzten Technologien."
+          },
+          {
+            "subtitle": "Geltungsbereich",
+            "text": "Diese Erklärung gilt für die Website https://beafox.app sowie die BeAFox-App für iOS und Android."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Stand der Konformität",
+        "iconId": "check",
+        "content": [
+          {
+            "subtitle": "Konformitätsstatus",
+            "text": "Diese Website und App sind teilweise konform mit den Web Content Accessibility Guidelines (WCAG) 2.1 Level AA sowie den Anforderungen der harmonisierten europäischen Norm EN 301 549. Wir arbeiten aktiv daran, die vollständige Konformität zu erreichen."
+          },
+          {
+            "subtitle": "Referenzstandards",
+            "text": "Wir orientieren uns an folgenden Standards und Normen:",
+            "list": [
+              "Web Content Accessibility Guidelines (WCAG) 2.1 Level AA",
+              "Harmonisierte europäische Norm EN 301 549 V3.2.1",
+              "Barrierefreiheitsstärkungsgesetz (BFSG) – Umsetzung der EU-Richtlinie 2019/882",
+              "WAI-ARIA 1.2 (Accessible Rich Internet Applications)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Barrierefreie Funktionen",
+        "iconId": "sparkles",
+        "content": [
+          {
+            "subtitle": "Bereits umgesetzte Maßnahmen",
+            "text": "Folgende Maßnahmen zur Barrierefreiheit haben wir bereits umgesetzt:",
+            "list": [
+              "Semantisches HTML5 mit korrekter Überschriftenhierarchie (h1–h6)",
+              "ARIA-Labels und -Rollen für interaktive Elemente und Navigation",
+              "Tastaturnavigation für alle wesentlichen Funktionen der Website",
+              "Responsives Design für verschiedene Bildschirmgrößen und Geräte",
+              "Textbasierte Alternativbeschreibungen (alt-Attribute) für informative Bilder",
+              "Ausreichende Farbkontraste gemäß WCAG 2.1 AA (Kontrastverhältnis mindestens 4,5:1 für normalen Text)",
+              "Keine ausschließlich farbbasierte Informationsvermittlung",
+              "Self-Hosting von Schriftarten (Google Fonts via next/font) – keine externen Abhängigkeiten",
+              "Fokusindikatoren für interaktive Elemente",
+              "Strukturierte Formularfelder mit Labels und Fehlermeldungen"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Bekannte Einschränkungen",
+        "iconId": "alert",
+        "content": [
+          {
+            "subtitle": "Derzeit bekannte Einschränkungen",
+            "text": "Trotz unserer Bemühungen sind uns folgende Einschränkungen bekannt, an deren Behebung wir aktiv arbeiten:",
+            "list": [
+              "Einige Lottie-Animationen (JSON-basiert) verfügen möglicherweise noch nicht über vollständige Textbeschreibungen",
+              "Bestimmte interaktive Rechner-Komponenten (Finanzrechner) sind möglicherweise nicht vollständig per Tastatur bedienbar",
+              "Einzelne PDF-Dokumente können noch nicht vollständig barrierefrei sein",
+              "Drittanbieter-Inhalte (z. B. eingebettete Videos, Stripe-Checkout) unterliegen den Barrierefreiheitsstandards der jeweiligen Anbieter",
+              "Die mobile App wird schrittweise für VoiceOver (iOS) und TalkBack (Android) optimiert"
+            ]
+          },
+          {
+            "subtitle": "Zeitplan zur Behebung",
+            "text": "Wir haben einen Zeitplan zur Behebung der bekannten Einschränkungen erstellt. Ziel ist es, die vollständige WCAG 2.1 Level AA-Konformität bis Ende 2026 zu erreichen. Priorität haben dabei die Kernfunktionen der Lernplattform."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Technologien",
+        "iconId": "code",
+        "content": [
+          {
+            "subtitle": "Eingesetzte Technologien",
+            "text": "Die Barrierefreiheit dieser Website basiert auf folgenden Technologien:",
+            "list": [
+              "HTML5",
+              "CSS3 / Tailwind CSS",
+              "JavaScript / TypeScript",
+              "WAI-ARIA 1.2",
+              "Next.js 14 (React 18) mit Server- und Client-Komponenten",
+              "next/font für selbstgehostete Schriftarten"
+            ]
+          },
+          {
+            "subtitle": "Unterstützte Browser und Hilfstechnologien",
+            "text": "Wir testen regelmäßig mit folgenden Kombinationen:",
+            "list": [
+              "Google Chrome + NVDA (Windows)",
+              "Mozilla Firefox + NVDA (Windows)",
+              "Safari + VoiceOver (macOS / iOS)",
+              "Google Chrome + TalkBack (Android)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Feedback und Kontakt",
+        "iconId": "mail",
+        "content": [
+          {
+            "subtitle": "Feedback-Mechanismus (BFSG § 3a)",
+            "text": "Wenn Sie auf Barrieren stoßen oder Verbesserungsvorschläge haben, kontaktieren Sie uns bitte. Wir nehmen jede Rückmeldung ernst und bemühen uns, gemeldete Probleme zeitnah zu beheben."
+          },
+          {
+            "subtitle": "Kontaktmöglichkeiten",
+            "text": "Sie erreichen uns über folgende Kanäle:",
+            "list": [
+              "E-Mail: info@beafox.app (Betreff: Barrierefreiheit)",
+              "Telefon: +49 178 2723 673",
+              "Post: BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Deutschland"
+            ]
+          },
+          {
+            "subtitle": "Bearbeitungszeit",
+            "text": "Wir bemühen uns, Ihre Rückmeldung innerhalb von 14 Tagen zu prüfen und Ihnen eine Rückmeldung zu geben. Bei komplexeren Anliegen informieren wir Sie über den voraussichtlichen Zeitrahmen."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Durchsetzungsverfahren",
+        "iconId": "scale",
+        "content": [
+          {
+            "subtitle": "Schlichtungsverfahren",
+            "text": "Sollten Sie nach Ihrer Rückmeldung an uns keine zufriedenstellende Lösung erhalten, können Sie sich an die zuständige Marktüberwachungsbehörde wenden. In Bayern ist dies:"
+          },
+          {
+            "subtitle": "Zuständige Behörde",
+            "text": "Bayerisches Staatsministerium für Digitales",
+            "list": [
+              "Oskar-von-Miller-Ring 35",
+              "80333 München",
+              "Website: https://www.stmd.bayern.de",
+              "E-Mail: poststelle@stmd.bayern.de"
+            ]
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Das Durchsetzungsverfahren richtet sich nach den Bestimmungen des BFSG sowie der EU-Richtlinie 2019/882. Die Marktüberwachungsbehörde kann bei Verstößen gegen die Barrierefreiheitsanforderungen Maßnahmen ergreifen."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Prüfung und Aktualisierung",
+        "iconId": "refresh",
+        "content": [
+          {
+            "subtitle": "Methodik der Prüfung",
+            "text": "Die Bewertung der Barrierefreiheit basiert auf einer Selbstbewertung, die von der BeAFox UG durchgeführt wurde. Wir verwenden dabei automatisierte Tools (Lighthouse, axe DevTools) sowie manuelle Prüfungen mit Hilfstechnologien."
+          },
+          {
+            "subtitle": "Nächste geplante Überprüfung",
+            "text": "Die nächste umfassende Überprüfung der Barrierefreiheit ist für das dritte Quartal 2026 geplant. Zwischenzeitlich werden kontinuierlich Verbesserungen vorgenommen."
+          }
+        ]
+      }
+    ],
+    "company": {
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "compliance": {
+      "badges": {
+        "wcag": {
+          "label": "Standard",
+          "value": "WCAG 2.1 AA",
+          "description": "Level AA der Web Content Accessibility Guidelines"
+        },
+        "status": {
+          "label": "Status",
+          "value": "Teilweise konform",
+          "description": "Wir arbeiten aktiv an der vollständigen Konformität mit WCAG 2.1 Level AA."
+        },
+        "lastReview": {
+          "label": "Letzte Prüfung",
+          "value": "April 2026",
+          "description": "Regelmäßige Überprüfung"
+        }
+      }
+    },
+    "contact": {
+      "title": "Barriere melden",
+      "text": "Haben Sie eine Barriere auf unserer Website oder in unserer App entdeckt? Wir möchten es wissen, damit wir es verbessern können.",
+      "labels": {
+        "email": "E-Mail:",
+        "phone": "Telefon:"
+      },
+      "cta": "Barriere melden"
+    },
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb-Navigation",
+      "homeAria": "Zur Startseite"
+    },
+    "tableOfContents": {
+      "title": "Inhaltsverzeichnis"
+    },
+    "legalLinks": {
+      "title": "Weitere rechtliche Informationen",
+      "privacy": "Datenschutzerklärung",
+      "terms": "Allgemeine Geschäftsbedingungen",
+      "imprint": "Impressum"
+    },
+    "lastUpdated": {
+      "stand": "Stand dieser Erklärung zur Barrierefreiheit: April 2026",
+      "notice": "Diese Erklärung wird regelmäßig überprüft und bei Änderungen aktualisiert, zuletzt am 7. April 2026."
     }
   }
 }

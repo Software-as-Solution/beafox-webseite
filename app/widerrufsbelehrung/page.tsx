@@ -5,97 +5,59 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 // ICONS
 import {
-  Ban,
-  Bot,
   Mail,
   Home,
-  Scale,
   Bell,
   Clock,
-  Wrench,
-  Shield,
-  Gavel,
   XCircle,
-  Database,
   FileText,
   RotateCcw,
-  RefreshCw,
-  Building2,
-  Copyright,
-  Handshake,
   ArrowRight,
   CreditCard,
   AlertCircle,
-  CheckCircle2,
   ChevronRight,
-  MessageSquare,
-  GraduationCap,
 } from "lucide-react";
 // TYPES
 import type { LucideIcon } from "lucide-react";
 
 // TYPES
-type AgbIconId =
-  | "ban"
-  | "bot"
-  | "scale"
-  | "check"
+type WiderrufIconId =
+  | "mail"
   | "alert"
-  | "gavel"
-  | "shield"
-  | "refresh"
   | "rotate"
-  | "wrench"
   | "xCircle"
   | "fileText"
-  | "database"
-  | "building"
-  | "copyright"
-  | "handshake"
-  | "creditCard"
-  | "messageSquare"
-  | "graduationCap";
-type AgbContentItem = {
+  | "creditCard";
+type WiderrufContentItem = {
   text?: string;
   subtitle?: string;
 };
-type AgbSection = {
+type WiderrufSection = {
   id: number;
   title: string;
-  iconId: AgbIconId;
-  content: AgbContentItem[];
+  iconId: WiderrufIconId;
+  content: WiderrufContentItem[];
 };
 // CONSTANTS
-const ICON_MAP: Record<AgbIconId, LucideIcon> = {
-  ban: Ban,
-  bot: Bot,
-  scale: Scale,
-  gavel: Gavel,
-  shield: Shield,
-  wrench: Wrench,
+const ICON_MAP: Record<WiderrufIconId, LucideIcon> = {
+  mail: Mail,
   xCircle: XCircle,
   rotate: RotateCcw,
-  fileText: FileText,
-  refresh: RefreshCw,
-  database: Database,
   alert: AlertCircle,
-  building: Building2,
-  check: CheckCircle2,
-  copyright: Copyright,
-  handshake: Handshake,
+  fileText: FileText,
   creditCard: CreditCard,
-  messageSquare: MessageSquare,
-  graduationCap: GraduationCap,
 };
-const COMPANY = {
-  email: "info@beafox.app",
-  phone: "+49 178 2723 673",
-  phoneHref: "tel:+491782723673",
-} as const;
-
-export default function AGBPage() {
-  const t = useTranslations("agb");
-  const sections = (t.raw("sections") as AgbSection[]) ?? [];
+export default function WiderrufsbelehrungPage() {
+  const t = useTranslations("widerruf");
+  const sections = (t.raw("sections") as WiderrufSection[]) ?? [];
+  const company = t.raw("company") as {
+    name: string;
+    city: string;
+    email: string;
+    phone: string;
+    street: string;
+    phoneHref: string;
+  };
 
   return (
     <>
@@ -103,12 +65,12 @@ export default function AGBPage() {
       <div className="bg-white border-b border-gray-100 pt-24 md:pt-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <nav
-            aria-label="Breadcrumb"
+            aria-label={t("breadcrumb.ariaLabel")}
             className="flex items-center gap-1.5 text-xs md:text-sm text-lightGray"
           >
             <Link
               href="/"
-              aria-label="Startseite"
+              aria-label={t("breadcrumb.homeAria")}
               className="hover:text-primaryOrange transition-colors flex items-center"
             >
               <Home className="w-3.5 h-3.5" aria-hidden="true" />
@@ -123,6 +85,7 @@ export default function AGBPage() {
           </nav>
         </div>
       </div>
+
       {/* ─── 2. HERO ─── */}
       <Section className="bg-primaryWhite py-10 md:py-16 lg:py-20 relative overflow-hidden">
         <div
@@ -141,7 +104,7 @@ export default function AGBPage() {
               border: "1px solid rgba(232,119,32,0.15)",
             }}
           >
-            <Scale
+            <RotateCcw
               aria-hidden="true"
               className="w-3.5 h-3.5 text-primaryOrange"
             />
@@ -149,20 +112,23 @@ export default function AGBPage() {
               {t("hero.badge")}
             </span>
           </div>
+
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray mb-5 leading-[1.1]">
             {t("hero.title")}
           </h1>
+
           <p className="text-base md:text-lg lg:text-xl text-lightGray leading-relaxed max-w-3xl">
             {t("hero.subtitle")}
           </p>
         </div>
       </Section>
+
       {/* ─── 3. TABLE OF CONTENTS ─── */}
       {sections.length > 0 && (
-        <Section className="bg-gray-50 py-8 md:py-10">
+        <Section className="bg-gray-50 pt-0 pb-8 md:pb-10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-sm font-bold text-lightGray uppercase tracking-widest mb-4">
-              Inhaltsverzeichnis
+              {t("tableOfContents.title")}
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {sections.map((section) => (
@@ -183,6 +149,7 @@ export default function AGBPage() {
           </div>
         </Section>
       )}
+
       {/* ─── 4. EDITORIAL CONTENT ─── */}
       <Section className="bg-primaryWhite py-12 md:py-16 lg:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -217,7 +184,6 @@ export default function AGBPage() {
                       {section.title}
                     </h2>
                   </div>
-
                   <div className="space-y-5 max-w-4xl">
                     {section.content.map((item, idx) => (
                       <ContentItem key={idx} item={item} />
@@ -229,8 +195,56 @@ export default function AGBPage() {
           </article>
         </div>
       </Section>
-      {/* ─── 5. CONTACT BLOCK ─── */}
+
+      {/* ─── 5. MUSTER-WIDERRUFSFORMULAR ─── */}
       <Section className="bg-gray-50 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-3">
+              {t("form.title")}
+            </h2>
+            <p className="text-base md:text-lg text-lightGray leading-relaxed max-w-3xl">
+              {t("form.description")}
+            </p>
+          </div>
+          <div
+            className="rounded-2xl p-6 md:p-8 border-l-4 border-primaryOrange"
+            style={{
+              boxShadow: "0 4px 12px rgba(232,119,32,0.06)",
+              background: "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 100%)",
+            }}
+          >
+            <div className="font-mono text-sm md:text-base text-darkerGray leading-relaxed space-y-4">
+              <p className="font-bold">{t("form.toLabel")}</p>
+              <div className="pl-4 border-l-2 border-primaryOrange/30">
+                <p>{company.name}</p>
+                <p>{company.street}</p>
+                <p>{company.city}</p>
+                <p>
+                  {t("form.emailLabel")} {company.email}
+                </p>
+              </div>
+              <div className="pt-2">
+                <p>{t("form.withdrawalText")}</p>
+                <div className="mt-4 space-y-3">
+                  <FormLine label={t("form.lines.orderedAt")} />
+                  <FormLine label={t("form.lines.receivedAt")} />
+                  <FormLine label={t("form.lines.consumerName")} />
+                  <FormLine label={t("form.lines.consumerAddress")} />
+                  <FormLine label={t("form.lines.date")} />
+                  <FormLine label={t("form.lines.signature")} />
+                </div>
+              </div>
+              <p className="text-xs text-lightGray italic pt-4 border-t border-primaryOrange/15">
+                {t("form.footnote")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ─── 6. CONTACT BLOCK ─── */}
+      <Section className="bg-primaryWhite py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="relative overflow-hidden rounded-2xl p-6 md:p-10"
@@ -257,7 +271,7 @@ export default function AGBPage() {
                   border: "1px solid rgba(232,119,32,0.15)",
                 }}
               >
-                <FileText
+                <RotateCcw
                   aria-hidden="true"
                   className="w-7 h-7 md:w-9 md:h-9 text-primaryOrange"
                 />
@@ -271,24 +285,24 @@ export default function AGBPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 mb-5">
                   <a
-                    href={`mailto:${COMPANY.email}`}
+                    href={`mailto:${company.email}`}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-primaryOrange/20 hover:border-primaryOrange/40 transition-colors text-sm font-medium text-darkerGray"
                   >
                     <Mail
                       className="w-4 h-4 text-primaryOrange"
                       aria-hidden="true"
                     />
-                    {COMPANY.email}
+                    {company.email}
                   </a>
                   <a
-                    href={COMPANY.phoneHref}
+                    href={company.phoneHref}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-primaryOrange/20 hover:border-primaryOrange/40 transition-colors text-sm font-medium text-darkerGray"
                   >
                     <Bell
-                      className="w-4 h-4 text-primaryOrange"
                       aria-hidden="true"
+                      className="w-4 h-4 text-primaryOrange"
                     />
-                    {COMPANY.phone}
+                    {company.phone}
                   </a>
                 </div>
                 <Link
@@ -303,25 +317,26 @@ export default function AGBPage() {
           </div>
         </div>
       </Section>
-      {/* ─── 6. RELATED LEGAL PAGES ─── */}
-      <Section className="bg-primaryWhite py-12 md:py-16">
+
+      {/* ─── 7. RELATED LEGAL PAGES ─── */}
+      <Section className="bg-gray-50 py-12 md:py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
-            Weitere rechtliche Informationen
+            {t("legalLinks.title")}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <LegalLinkCard href="/impressum" title="Impressum" />
-            <LegalLinkCard href="/datenschutz" title="Datenschutzerklärung" />
-            <LegalLinkCard href="/widerrufsbelehrung" title="Widerrufsbelehrung" />
+            <LegalLinkCard href="/agb" title={t("legalLinks.terms")} />
             <LegalLinkCard
-              href="/community-richtlinien"
-              title="Community-Richtlinien"
+              href="/datenschutz"
+              title={t("legalLinks.privacy")}
             />
+            <LegalLinkCard href="/impressum" title={t("legalLinks.imprint")} />
           </div>
         </div>
       </Section>
-      {/* ─── 7. LAST UPDATED FOOTER ─── */}
-      <Section className="bg-gray-50 py-6 md:py-8 border-t border-gray-100">
+
+      {/* ─── 8. LAST UPDATED FOOTER ─── */}
+      <Section className="bg-primaryWhite py-6 md:py-8 border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-1 text-lightGray text-center">
             <div className="flex items-center gap-2">
@@ -339,8 +354,17 @@ export default function AGBPage() {
 }
 
 // SUBCOMPONENTS
+function FormLine({ label }: { label: string }) {
+  return (
+    <div>
+      <p className="text-xs text-lightGray mb-1">{label}:</p>
+      <div className="h-px bg-darkerGray/20 w-full" />
+    </div>
+  );
+}
+
 interface ContentItemProps {
-  item: AgbContentItem;
+  item: WiderrufContentItem;
 }
 function ContentItem({ item }: ContentItemProps) {
   return (

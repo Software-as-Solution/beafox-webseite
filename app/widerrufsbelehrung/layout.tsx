@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("imprint");
+  const t = await getTranslations("widerruf");
 
   return {
     title: t("meta.title"),
     description: t("meta.description"),
     alternates: {
-      canonical: "https://beafox.app/impressum",
+      canonical: "https://beafox.app/widerrufsbelehrung",
     },
     openGraph: {
       type: "website",
@@ -16,12 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "BeAFox",
       title: t("meta.title"),
       description: t("meta.description"),
-      url: "https://beafox.app/impressum",
+      url: "https://beafox.app/widerrufsbelehrung",
     },
   };
 }
 
-export default function ImpressumLayout({
+export default function WiderrufLayout({
   children,
 }: {
   children: React.ReactNode;

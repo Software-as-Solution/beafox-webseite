@@ -17,6 +17,7 @@ interface LandingHeroProps {
   title: React.ReactNode;
   chips?: React.ReactNode;
   mascotClassName?: string;
+  contentClassName?: string;
   actions: React.ReactNode;
   description?: React.ReactNode;
 }
@@ -40,6 +41,7 @@ export default function LandingHero({
   mascotAlt,
   description,
   mascotClassName,
+  contentClassName,
 }: LandingHeroProps) {
   return (
     <section className="pt-32 pb-4 md:pb-0 md:pt-36 bg-primaryWhite">
@@ -63,10 +65,13 @@ export default function LandingHero({
         <div className="grid lg:grid-cols-2 items-center">
           {/* Left — Content */}
           <motion.div
-            className="mt-4 lg:mt-0 relative md:left-[10%]"
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             initial={{ opacity: 0, x: -20 }}
+            className={twMerge(
+              "mt-4 lg:mt-0 relative md:left-[7.5%]",
+              contentClassName,
+            )}
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-darkerGray mb-3 md:mb-4 leading-tight">
               {title}
