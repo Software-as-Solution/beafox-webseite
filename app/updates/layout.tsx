@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
           width: 1200,
           height: 630,
           alt: "BeAFox App-Updates — Neue Features und Verbesserungen",
-          url: `${BASE_URL}/assets/og-image.jpg`,
+          url: `${BASE_URL}/assets/og-image.webp`,
         },
       ],
     },
@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@beafox_app",
       card: "summary_large_image",
       title: t("meta.ogTitle"),
-      images: [`${BASE_URL}/assets/og-image.jpg`],
+      images: [`${BASE_URL}/assets/og-image.webp`],
     },
     alternates: {
       canonical: url,

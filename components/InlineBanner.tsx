@@ -36,7 +36,7 @@ const VARIANT_STYLES = {
     boxShadow: "0 4px 12px rgba(0,0,0,0.04)",
   },
 } as const;
-const DEFAULT_MASCOT_SRC = "/Maskottchen/Maskottchen-Hero.png";
+const DEFAULT_MASCOT_SRC = "/Maskottchen/Maskottchen-Hero.webp";
 
 export default function InlineBanner({
   title,

@@ -169,7 +169,7 @@ export default function ContactPage() {
         cardText={t("hero.cardText")}
         description={t("hero.description")}
         mascotClassName="scale-75 md:top-0"
-        mascotSrc="/Maskottchen/Maskottchen-Hero.png"
+        mascotSrc="/Maskottchen/Maskottchen-Hero.webp"
         title={
           <>
             {t("hero.title.pre")}{" "}

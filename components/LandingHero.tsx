@@ -133,7 +133,7 @@ export default function LandingHero({
                         width={500}
                         height={500}
                         className="object-contain"
-                        src="/assets/Logos/Logo.png"
+                        src="/assets/Logos/Logo.webp"
                       />
                     </div>
                     <span className="text-sm font-bold text-darkerGray">

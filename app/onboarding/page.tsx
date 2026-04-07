@@ -78,7 +78,7 @@ export default function OnboardingPage() {
                   width={160}
                   height={360}
                   alt={t("mockups.trainingAlt")}
-                  src="/assets/Mockups/Mockup-Training.png"
+                  src="/assets/Mockups/Mockup-Training.webp"
                   className="object-contain drop-shadow-2xl w-[80px] sm:w-[120px] md:w-[160px] lg:w-[180px] xl:w-[190px] h-auto"
                 />
               </div>
@@ -87,7 +87,7 @@ export default function OnboardingPage() {
                   width={200}
                   height={420}
                   alt={t("mockups.learningPathAlt")}
-                  src="/assets/Mockups/Mockup-Lernpfad.png"
+                  src="/assets/Mockups/Mockup-Lernpfad.webp"
                   className="object-contain drop-shadow-2xl w-[100px] sm:w-[140px] md:w-[200px] lg:w-[240px] h-auto"
                 />
               </div>
@@ -96,7 +96,7 @@ export default function OnboardingPage() {
                   width={160}
                   height={360}
                   alt={t("mockups.leaderboardAlt")}
-                  src="/assets/Mockups/Mockup-Rangliste.png"
+                  src="/assets/Mockups/Mockup-Rangliste.webp"
                   className="object-contain drop-shadow-2xl w-[80px] sm:w-[120px] md:w-[160px] lg:w-[180px] xl:w-[190px] h-auto"
                 />
               </div>

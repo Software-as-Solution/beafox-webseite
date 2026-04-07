@@ -48,13 +48,13 @@ const PRODUCT_NAV: { id: ProductNavId; href: string }[] = [
   { id: "ihk", href: "/ihk-akademie" },
 ];
 const PRODUCT_MASCOTS: Record<ProductNavId, string> = {
-  merch: "/Maskottchen/Maskottchen-Merch.png",
-  ihk: "/Maskottchen/Maskottchen-Akademie.png",
-  schools: "/Maskottchen/Maskottchen-School.png",
-  business: "/Maskottchen/Maskottchen-Business.png",
-  unlimited: "/Maskottchen/Maskottchen-Unlimited.png",
-  eduplaces: "/Maskottchen/Maskottchen-Eduplaces.png",
-  bildungshaus: "/Maskottchen/Maskottchen-Bildungshaus.png",
+  merch: "/Maskottchen/Maskottchen-Merch.webp",
+  ihk: "/Maskottchen/Maskottchen-Akademie.webp",
+  schools: "/Maskottchen/Maskottchen-School.webp",
+  business: "/Maskottchen/Maskottchen-Business.webp",
+  unlimited: "/Maskottchen/Maskottchen-Unlimited.webp",
+  eduplaces: "/Maskottchen/Maskottchen-Eduplaces.webp",
+  bildungshaus: "/Maskottchen/Maskottchen-Bildungshaus.webp",
 } as const;
 const PRODUCT_LABEL_KEY: Record<ProductNavId, string> = {
   merch: "products.merch",
@@ -66,14 +66,14 @@ const PRODUCT_LABEL_KEY: Record<ProductNavId, string> = {
   eduplaces: "products.partnerEduplaces",
 };
 const RATGEBER_MASCOTS: Record<BlogCategorySlug, string> = {
-  "finanzen-fuer-schueler": "/Maskottchen/Maskottchen-Freude.png",
-  "finanzen-fuer-azubis": "/Maskottchen/Maskottchen-Azubi.png",
-  "finanzen-fuer-studenten": "/Maskottchen/Maskottchen-Studenten.png",
+  "finanzen-fuer-schueler": "/Maskottchen/Maskottchen-Freude.webp",
+  "finanzen-fuer-azubis": "/Maskottchen/Maskottchen-Azubi.webp",
+  "finanzen-fuer-studenten": "/Maskottchen/Maskottchen-Studenten.webp",
   "finanzen-fuer-berufseinsteiger":
-    "/Maskottchen/Maskottchen-Berufseinsteiger.png",
+    "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
   "finanzen-bei-lebensereignissen":
-    "/Maskottchen/Maskottchen-Lebenssituationen.png",
-  "investieren-fuer-anfaenger": "/Maskottchen/Maskottchen-Investieren.png",
+    "/Maskottchen/Maskottchen-Lebenssituationen.webp",
+  "investieren-fuer-anfaenger": "/Maskottchen/Maskottchen-Investieren.webp",
 } as const;
 const PRODUCT_PATHS = PRODUCT_NAV.map((p) => p.href);
 // HELPER FUNCTIONS
@@ -353,7 +353,7 @@ export default function Header() {
                   width={200}
                   height={200}
                   alt={t("images.logoAlt")}
-                  src="/assets/Logos/Logo-Name.png"
+                  src="/assets/Logos/Logo-Name.webp"
                   className="object-contain h-14 w-auto relative left-[2.5%]"
                 />
               </Link>
@@ -566,7 +566,7 @@ export default function Header() {
                           <Image
                             width={50}
                             height={50}
-                            src="/Maskottchen/Maskottchen-Rechner.png"
+                            src="/Maskottchen/Maskottchen-Rechner.webp"
                             className="object-contain w-full h-full scale-125"
                             alt={t("images.productNavAlt", {
                               product: t("products.calculatorHub.title"),
@@ -599,7 +599,7 @@ export default function Header() {
                           <Image
                             width={50}
                             height={50}
-                            src="/assets/Logos/Logo.png"
+                            src="/assets/Logos/Logo.webp"
                             alt={t("images.appIconAlt")}
                             className="object-contain w-full h-full"
                           />
@@ -747,7 +747,7 @@ export default function Header() {
                           <Image
                             width={50}
                             height={50}
-                            src="/Maskottchen/Maskottchen-Ratgeber.png"
+                            src="/Maskottchen/Maskottchen-Ratgeber.webp"
                             alt=""
                             className="object-contain w-full h-full scale-125"
                           />
@@ -781,7 +781,7 @@ export default function Header() {
                           <Image
                             width={50}
                             height={50}
-                            src="/assets/Logos/Logo.png"
+                            src="/assets/Logos/Logo.webp"
                             alt={t("images.appIconAlt")}
                             className="object-contain w-full h-full"
                           />

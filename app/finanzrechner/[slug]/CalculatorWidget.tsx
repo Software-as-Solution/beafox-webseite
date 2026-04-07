@@ -275,7 +275,7 @@ export default function CalculatorWidget({ slug }: CalculatorWidgetProps) {
                         height={56}
                         aria-hidden="true"
                         alt="BeAFox App Icon"
-                        src="/assets/Logos/Logo.png"
+                        src="/assets/Logos/Logo.webp"
                         className="object-contain w-10 h-10"
                       />
                     </div>

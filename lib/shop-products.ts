@@ -72,13 +72,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "tshirt",
     descriptionKey: "tshirt",
     price: 2999,
-    images: [`${IMG_BASE}/tshirt-design.png`],
+    images: [`${IMG_BASE}/tshirt-design.webp`],
     category: "clothing",
     featured: true,
     active: true,
     gelatoCatalogId: "apparel",
     gelatoProductUid: APPAREL_BASE_TSHIRT,
-    designUrl: `${DESIGN_BASE}/tshirt-design.png`,
+    designUrl: `${DESIGN_BASE}/tshirt-design.webp`,
     variants: [
       {
         id: "s-black",
@@ -144,13 +144,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "hoodie",
     descriptionKey: "hoodie",
     price: 4999,
-    images: [`${IMG_BASE}/hoodie-design.png`],
+    images: [`${IMG_BASE}/hoodie-design.webp`],
     category: "clothing",
     featured: true,
     active: true,
     gelatoCatalogId: "apparel",
     gelatoProductUid: APPAREL_BASE_HOODIE,
-    designUrl: `${DESIGN_BASE}/hoodie-design.png`,
+    designUrl: `${DESIGN_BASE}/hoodie-design.webp`,
     variants: [
       {
         id: "s-black",
@@ -189,13 +189,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "mug",
     descriptionKey: "mug",
     price: 1499,
-    images: [`${IMG_BASE}/mug-design.png`],
+    images: [`${IMG_BASE}/mug-design.webp`],
     category: "drinkware",
     featured: true,
     active: true,
     gelatoCatalogId: "mugs",
     gelatoProductUid: "mug_product_msz_11-oz_mmat_ceramic-white_cl_4-0",
-    designUrl: `${DESIGN_BASE}/mug-design.png`,
+    designUrl: `${DESIGN_BASE}/mug-design.webp`,
     variants: [
       {
         id: "white-325ml",
@@ -212,13 +212,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "stickers",
     descriptionKey: "stickers",
     price: 699,
-    images: [`${IMG_BASE}/sticker-design.png`],
+    images: [`${IMG_BASE}/sticker-design.webp`],
     category: "stickers",
     featured: false,
     active: true,
     gelatoCatalogId: "stickers",
     gelatoProductUid: "sticker_product_ss_circle-2x2_smat_white-vinyl_cl_4-0",
-    designUrl: `${DESIGN_BASE}/sticker-design.png`,
+    designUrl: `${DESIGN_BASE}/sticker-design.webp`,
     variants: [
       {
         id: "default",
@@ -234,14 +234,14 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "totebag",
     descriptionKey: "totebag",
     price: 1999,
-    images: [`${IMG_BASE}/totebag-design.png`],
+    images: [`${IMG_BASE}/totebag-design.webp`],
     category: "accessories",
     featured: false,
     active: true,
     gelatoCatalogId: "apparel",
     gelatoProductUid:
       "apparel_product_gca_tote-bag_gsc_flat_gcu_unisex_gqa_classic",
-    designUrl: `${DESIGN_BASE}/totebag-design.png`,
+    designUrl: `${DESIGN_BASE}/totebag-design.webp`,
     variants: [
       {
         id: "natural",
@@ -265,13 +265,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "phonecase",
     descriptionKey: "phonecase",
     price: 1999,
-    images: [`${IMG_BASE}/phonecase-design.png`],
+    images: [`${IMG_BASE}/phonecase-design.webp`],
     category: "accessories",
     featured: false,
     active: true,
     gelatoCatalogId: "phone-cases",
     gelatoProductUid: "phonecase_apple",
-    designUrl: `${DESIGN_BASE}/phonecase-design.png`,
+    designUrl: `${DESIGN_BASE}/phonecase-design.webp`,
     variants: [
       {
         id: "iphone-15",
@@ -312,13 +312,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     nameKey: "poster",
     descriptionKey: "poster",
     price: 1499,
-    images: [`${IMG_BASE}/poster-design.png`],
+    images: [`${IMG_BASE}/poster-design.webp`],
     category: "art",
     featured: false,
     active: true,
     gelatoCatalogId: "posters",
     gelatoProductUid: "flat_product",
-    designUrl: `${DESIGN_BASE}/poster-design.png`,
+    designUrl: `${DESIGN_BASE}/poster-design.webp`,
     variants: [
       {
         id: "a3",

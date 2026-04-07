@@ -18,6 +18,12 @@ export async function generateMetadata(): Promise<Metadata> {
       url: "https://beafox.app/agb",
       description: t("meta.description"),
     },
+    twitter: {
+      card: "summary",
+      title: t("meta.title"),
+      description: t("meta.description"),
+      creator: "@beafox_app",
+    },
   };
 }
 

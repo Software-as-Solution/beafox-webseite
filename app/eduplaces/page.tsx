@@ -62,7 +62,7 @@ export default function EduplacesPage() {
         mascotAlt={t("hero.badge")}
         cardText={t("hero.cardText")}
         mascotClassName="!scale-110 md:top-6"
-        mascotSrc="/Maskottchen/Maskottchen-Eduplaces.png"
+        mascotSrc="/Maskottchen/Maskottchen-Eduplaces.webp"
         title={
           <>
             {t("hero.titlePre")}{" "}
@@ -194,7 +194,7 @@ export default function EduplacesPage() {
                 width={500}
                 height={500}
                 alt={t("images.introIllustrationAlt")}
-                src="/Maskottchen/Maskottchen-Eduplaces.png"
+                src="/Maskottchen/Maskottchen-Eduplaces.webp"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
                 className="relative z-10 object-contain w-[280px] md:w-[340px] lg:w-[380px] h-auto"
               />
@@ -323,7 +323,7 @@ export default function EduplacesPage() {
       {/* ─── 6. CTA ─── */}
       <GradientMascotCtaSection
         sectionClassName="bg-gray-50 py-8 md:py-12 lg:py-16"
-        mascotSrc="/Maskottchen/Maskottchen-Eduplaces.png"
+        mascotSrc="/Maskottchen/Maskottchen-Eduplaces.webp"
         mascotAlt={t("images.ctaMascotAlt")}
         title={t("cta.title")}
         description={t("cta.description")}

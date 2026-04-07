@@ -305,21 +305,21 @@
           "name": "Robert Wiedemann",
           "role": "Managing Director",
           "org": "IHK-Akademie in Ostbayern GmbH",
-          "logo": "/Partners/3.png"
+          "logo": "/Partners/3.webp"
         },
         {
           "quote": "Our learners have been using BeAFox from day one, and for the first time they're voluntarily talking about finances. The app makes the topic tangible and the results speak for themselves: fewer questions about payslips, more personal responsibility.",
           "name": "Stephan Koller",
           "role": "Managing Director",
           "org": "Dr. Robert Eckert Schulen AG",
-          "logo": "/Partners/1.png"
+          "logo": "/Partners/1.webp"
         },
         {
           "quote": "As a hub for startups and technology in the region, we see how important financial capability is for teams and talent. BeAFox delivers exactly the modern, practical financial education that fits our ecosystem — clear, motivating, and measurable.",
           "name": "Alexander Rupprecht",
           "role": "Managing Director",
           "org": "TechBase Regensburg",
-          "logo": "/Partners/8.png"
+          "logo": "/Partners/8.webp"
         }
       ],
       "prevLabel": "Previous testimonial",
@@ -922,43 +922,43 @@
           "id": "stufen",
           "title": "Levels",
           "description": "Choose freely what you want to learn. Our level structure gives you the flexibility to explore topics based on your interests and needs.",
-          "mockup": "/assets/Mockups/Mockup-Stufen.png"
+          "mockup": "/assets/Mockups/Mockup-Stufen.webp"
         },
         {
           "id": "lernpfad",
           "title": "Learning path",
           "description": "Follow a structured learning path that guides you step by step through the most important topics. You always know where you stand.",
-          "mockup": "/assets/Mockups/Mockup-Lernpfad.png"
+          "mockup": "/assets/Mockups/Mockup-Lernpfad.webp"
         },
         {
           "id": "lektion",
           "title": "Lessons",
           "description": "Learn step by step everything you need to know about finance. Our interactive lessons make complex topics easy to understand.",
-          "mockup": "/assets/Mockups/Mockup-Lektion.png"
+          "mockup": "/assets/Mockups/Mockup-Lektion.webp"
         },
         {
           "id": "quiz",
           "title": "Quiz",
           "description": "Test your knowledge with interactive quizzes and deepen what you have learned. Every successful quiz earns you points.",
-          "mockup": "/assets/Mockups/Mockup-Quiz.png"
+          "mockup": "/assets/Mockups/Mockup-Quiz.webp"
         },
         {
           "id": "rangliste",
           "title": "Leaderboard",
           "description": "Compare yourself with other learners and stay motivated through friendly competition. Collect points and reach new levels.",
-          "mockup": "/assets/Mockups/Mockup-Rangliste.png"
+          "mockup": "/assets/Mockups/Mockup-Rangliste.webp"
         },
         {
           "id": "missionen",
           "title": "Missions & goals",
           "description": "Complete exciting missions and reach your personal goals. Every completed mission is rewarded.",
-          "mockup": "/assets/Mockups/Mockup-Missionen.png"
+          "mockup": "/assets/Mockups/Mockup-Missionen.webp"
         },
         {
           "id": "profil",
           "title": "Profile",
           "description": "Track your progress and get your personal Fox Score. Your profile shows all your achievements.",
-          "mockup": "/assets/Mockups/Mockup-Profil.png"
+          "mockup": "/assets/Mockups/Mockup-Profil.webp"
         }
       ]
     },
@@ -1294,25 +1294,25 @@
           "id": "app",
           "title": "Gamified learning app",
           "description": "Your apprentices learn with a modern, gamified app that feels relevant and motivating. Points, missions and leaderboards drive lasting engagement.",
-          "mockup": "/assets/Mockups/Mockup-Lernpfad.png"
+          "mockup": "/assets/Mockups/Mockup-Lernpfad.webp"
         },
         {
           "id": "workshops",
           "title": "Regular workshops",
           "description": "Complement app use with regular workshops. Every 6 months we run interactive workshops on changing financial topics for maximum impact.",
-          "mockup": "/assets/Mockups/Mockup-Quiz.png"
+          "mockup": "/assets/Mockups/Mockup-Quiz.webp"
         },
         {
           "id": "dashboard",
           "title": "Monitoring dashboard",
           "description": "Keep track of your apprentices' learning progress. See in real time who is active and where support is needed.",
-          "mockup": "/Mockup-Macbook/Live-Fortschritt.png"
+          "mockup": "/Mockup-Macbook/Live-Fortschritt.webp"
         },
         {
           "id": "zertifikate",
           "title": "Official certificates",
           "description": "Your apprentices receive official certificates upon successful completion—clear proof of commitment and growth.",
-          "mockup": "/assets/Mockups/Mockup-Profil.png"
+          "mockup": "/assets/Mockups/Mockup-Profil.webp"
         }
       ]
     },
@@ -1324,25 +1324,25 @@
           "step": "1",
           "title": "Free consultation",
           "description": "We get to know your situation, answer questions, and find the right approach together.",
-          "image": "/Maskottchen/Maskottchen-Beratung.png"
+          "image": "/Maskottchen/Maskottchen-Beratung.webp"
         },
         {
           "step": "2",
           "title": "Start a pilot",
           "description": "Try BeAFox with a group of apprentices with no obligation—so you see results before you commit.",
-          "image": "/Maskottchen/Maskottchen-Start.png"
+          "image": "/Maskottchen/Maskottchen-Start.webp"
         },
         {
           "step": "3",
           "title": "Onboarding & setup",
           "description": "We set up accounts, dashboard, and content. Your team does not have to lift a finger.",
-          "image": "/Maskottchen/Maskottchen-Setup.png"
+          "image": "/Maskottchen/Maskottchen-Setup.webp"
         },
         {
           "step": "4",
           "title": "Ongoing support",
           "description": "Your apprentices learn with Bea; you see progress live. We come in for a workshop every 6–12 months.",
-          "image": "/Maskottchen/Maskottchen-Begleitung.png"
+          "image": "/Maskottchen/Maskottchen-Begleitung.webp"
         }
       ]
     },
@@ -1445,25 +1445,25 @@
           "step": "1",
           "title": "Payslip & budget planning",
           "description": "Participants analyze a real payslip and create their personal budget.",
-          "image": "/Maskottchen/Maskottchen-Beratung.png"
+          "image": "/Maskottchen/Maskottchen-Beratung.webp"
         },
         {
           "step": "2",
           "title": "Insurance & retirement",
           "description": "Which insurances are mandatory, which are useful? Practical exercise with real scenarios.",
-          "image": "/Maskottchen/Maskottchen-Setup.png"
+          "image": "/Maskottchen/Maskottchen-Setup.webp"
         },
         {
           "step": "3",
           "title": "Investing & wealth building",
           "description": "From savings account to ETF savings plan — participants open a demo brokerage account together.",
-          "image": "/Maskottchen/Maskottchen-Start.png"
+          "image": "/Maskottchen/Maskottchen-Start.webp"
         },
         {
           "step": "4",
           "title": "Tax return & app companion",
           "description": "Understand the basics of tax returns. Then Bea continues to guide each participant individually.",
-          "image": "/Maskottchen/Maskottchen-Begleitung.png"
+          "image": "/Maskottchen/Maskottchen-Begleitung.webp"
         }
       ]
     },
@@ -1798,25 +1798,25 @@
           "step": "1",
           "title": "Kurzes Gespräch",
           "description": "15 Minuten reichen. Wir klären Ihre Schülerzahl, Ihre Ziele und prüfen ob Fördermittel möglich sind.",
-          "image": "/Maskottchen/Maskottchen-Beratung.png"
+          "image": "/Maskottchen/Maskottchen-Beratung.webp"
         },
         {
           "step": "2",
           "title": "Wir richten alles ein",
           "description": "Klassen anlegen, Accounts erstellen, Dashboard startklar machen. Null Aufwand für Sie oder Ihre IT.",
-          "image": "/Maskottchen/Maskottchen-Setup.png"
+          "image": "/Maskottchen/Maskottchen-Setup.webp"
         },
         {
           "step": "3",
           "title": "Schüler öffnen Bea",
           "description": "Keine Einführung nötig. Schüler starten sofort — im Unterricht, in der Vertretungsstunde oder zu Hause.",
-          "image": "/Maskottchen/Maskottchen-Start.png"
+          "image": "/Maskottchen/Maskottchen-Start.webp"
         },
         {
           "step": "4",
           "title": "Sie lehnen sich zurück",
           "description": "Dashboard öffnen, Fortschritte sehen, fertig. Bea kümmert sich um den Rest.",
-          "image": "/Maskottchen/Maskottchen-Begleitung.png"
+          "image": "/Maskottchen/Maskottchen-Begleitung.webp"
         }
       ]
     },
@@ -1863,31 +1863,31 @@
           "id": "vertretung",
           "title": "Vertretungsstunden mit Inhalt füllen",
           "description": "Lehrkraft krank? Schüler öffnen Bea und lernen selbstständig. Kein Lückenfüller, sondern echte Lebensskills. Sie sehen im Dashboard wer was gemacht hat.",
-          "mockup": "/Mockup-Macbook/Live-Fortschritt.png"
+          "mockup": "/Mockup-Macbook/Live-Fortschritt.webp"
         },
         {
           "id": "unterricht",
           "title": "Im Unterricht gezielt einsetzen",
           "description": "Projektwoche, Wirtschaftskunde oder fächerübergreifend: Weisen Sie Themen pro Klasse zu und verfolgen Sie den Fortschritt live.",
-          "mockup": "/Mockup-Macbook/Verwalten.png"
+          "mockup": "/Mockup-Macbook/Verwalten.webp"
         },
         {
           "id": "hausaufgabe",
           "title": "Als Hausaufgabe aufgeben",
           "description": "Schüler üben zu Hause in ihrem Tempo. Sie sehen am nächsten Tag wer geübt hat und wo es hakt — ohne etwas korrigieren zu müssen.",
-          "mockup": "/Mockup-Macbook/Stufen-Tracking.png"
+          "mockup": "/Mockup-Macbook/Stufen-Tracking.webp"
         },
         {
           "id": "klasse",
           "title": "Neue Klasse in 2 Minuten einrichten",
           "description": "CSV hochladen oder Schüler manuell anlegen. Klasse zuweisen, fertig. Keine IT-Abteilung nötig.",
-          "mockup": "/Mockup-Macbook/Klasse-erstellen.png"
+          "mockup": "/Mockup-Macbook/Klasse-erstellen.webp"
         },
         {
           "id": "pdf",
           "title": "PDF-Reports für Elterngespräche",
           "description": "Fortschrittsberichte per Klick exportieren. Perfekt für Zeugniskonferenzen, Elternabende und Dokumentation.",
-          "mockup": "/Mockup-Macbook/Schueler-PDF.png"
+          "mockup": "/Mockup-Macbook/Schueler-PDF.webp"
         }
       ],
       "cta": "Demo anfordern"
@@ -3599,7 +3599,7 @@
         "id": 1,
         "title": "We won!",
         "description": "We’re proud to have won the Deggendorfer Gründerpreis! Despite nerves and a last-minute pitch update, our work paid off—around 60% of the audience voted for us. Thanks to the whole team for the great organization and the €2,500 prize. We’re excited for the next steps with BeAFox!",
-        "image": "/assets/Blogs/Blog1.jpeg",
+        "image": "/assets/Blogs/Blog1.webp",
         "date": "Nov 20, 2025",
         "category": "Events"
       },
@@ -3607,7 +3607,7 @@
         "id": 2,
         "title": "BeAFox at Ed.One in Munich!",
         "description": "This is what financial education feels like in the classroom. At the Ed.One Summit in Munich, students, teachers, and trainers tested BeAFox live—from the dashboard to the learning app and worksheets. We received valuable feedback, made exciting connections, and presented our pitch. BeAFox shows how simple financial education can be. We’re looking for you!",
-        "image": "/assets/Blogs/Blog2.jpeg",
+        "image": "/assets/Blogs/Blog2.webp",
         "date": "Oct 9, 2025",
         "category": "Events"
       },
@@ -3615,7 +3615,7 @@
         "id": 3,
         "title": "BeAFox wins Startup Summit!",
         "description": "BeAFox achieved 2nd place at Startup Summit Germany—our first official award! For the first time, we pitched as a duo with a new pitch, deck, and an even clearer vision. After two years of hard work, it shows that perseverance, courage, and teamwork pay off. Thanks to Volksbank am Württemberg eG for this great event!",
-        "image": "/assets/Blogs/Blog3.jpg",
+        "image": "/assets/Blogs/Blog3.webp",
         "date": "Sep 29, 2025",
         "category": "Events"
       }
@@ -3623,133 +3623,133 @@
     "articles": [
       {
         "id": 19,
-        "image": "/assets/Blogs/19.jpeg",
+        "image": "/assets/Blogs/19.webp",
         "title": "Startchancen program",
         "description": "Big news: BeAFox is part of the Startchancen program! This allows schools to fully fund our learning app through subsidies. For us, it’s a strong signal that financial education belongs in everyday school life. Many of us would have loved an offer like this in school—practical, playful, and relevant. Now we can reach schools that previously had little access to such opportunities, bringing us closer to real equal opportunities.",
         "category": "News"
       },
       {
         "id": 18,
-        "image": "/assets/Blogs/18.jpeg",
+        "image": "/assets/Blogs/18.webp",
         "title": "Rütteltest with the Economic Junior Chamber Regensburg",
         "description": "At the Rütteltest of the Wirtschaftsjunioren Regensburg we pitched BeAFox for over 20 minutes and then received more than an hour of honest, in-depth feedback from six experts. Our entire business model was constructively challenged—exactly what we wanted. We’re taking away many impulses, set new priorities, and decided to join the organization right away. An experience we recommend to any startup.",
         "category": "Events"
       },
       {
         "id": 17,
-        "image": "/assets/Blogs/17.jpeg",
+        "image": "/assets/Blogs/17.webp",
         "title": "Our first workshop.",
         "description": "Our first financial education workshop for apprentices—combined with the BeAFox app—was a great success. Instead of one-off theory, we focus on practical exercises: building personal budgets, opening a brokerage account, planning first investments, understanding insurance, and using a tax return. The best part: with BeAFox, participants can keep learning after the workshop and deepen their knowledge. Companies get a sustainable education offering.",
         "category": "News"
       },
       {
         "id": 16,
-        "image": "/assets/Blogs/16.jpeg",
+        "image": "/assets/Blogs/16.webp",
         "title": "BeAFox at DemoNight in Nuremberg",
         "description": "BeAFox at BayStartup’s DemoNight in Nuremberg: right when we arrived, a founder approached us who knew us from social media—a small moment that motivated us a lot. The evening was full of exciting conversations, new contacts, and innovative ideas. Events like this remind us why we build BeAFox: to solve real problems and bring financial education to where it truly matters in young people’s everyday lives.",
         "category": "Events"
       },
       {
         "id": 15,
-        "image": "/assets/Blogs/15.jpeg",
+        "image": "/assets/Blogs/15.webp",
         "title": "What an experience: YFC",
         "description": "What an experience: we attended YFC in Munich with BeAFox, the first conference of the Young Founders Network. Between inspiring speakers, many startups, and great networking, we showcased our learning app at our own booth. The organization, atmosphere, and conversations impressed us. A special highlight: the announcement of the Young Founders Fund—a chance we definitely want to pursue.",
         "category": "Events"
       },
       {
         "id": 14,
-        "image": "/assets/Blogs/14.jpeg",
+        "image": "/assets/Blogs/14.webp",
         "title": "BeAFox at the Summit of the Entrepreneurship Foundation",
         "description": "BeAFox at the Summit of the Stiftung Entrepreneurship in Berlin—an inspiring weekend. Again and again we heard: “Financial education is important!” and felt how big the need for modern solutions is. We presented our app, received consistently positive feedback, and had intense conversations with people who take the topic as seriously as we do. This event strengthened our vision even more.",
         "category": "Events"
       },
       {
         "id": 13,
-        "image": "/assets/Blogs/13.jpeg",
+        "image": "/assets/Blogs/13.webp",
         "title": "BeAFox at the BÖB Congress",
         "description": "At the congress of Bündnis Ökonomische Bildung Deutschland, there was a lot of discussion about making financial education a standalone school subject—with new textbooks, courses, and training. I asked: is that really enough? With teacher shortages and a topic many people avoid talking about? I believe we also need new paths: digital tools, gamification, and project-based learning. That’s exactly where BeAFox comes in—as a complement, not a competitor to teaching.",
         "category": "News"
       },
       {
         "id": 12,
-        "image": "/assets/Blogs/12.jpeg",
+        "image": "/assets/Blogs/12.webp",
         "title": "We did it",
         "description": "With BeAFox we achieved 2nd place at Startup Summit Germany! Our first team pitch together, a new deck, a new concept—and an award including prize money. After two intense years of testing, discarding, and improving, this moment feels like a strong sign: our idea works. A huge thank you to everyone supporting us and to Volksbank am Württemberg eG.",
         "category": "News"
       },
       {
         "id": 11,
-        "image": "/assets/Blogs/11.jpeg",
+        "image": "/assets/Blogs/11.webp",
         "title": "I pitched BeAFox at Innovation Day",
         "description": "My first pitch in English—five minutes at Innovation Day in front of an international audience. Even though we didn’t win this time, it was an incredibly valuable experience. I presented BeAFox on a new stage, gained new perspectives on financial education, and made many exciting connections. Moments like these show how important it is to be brave, try new things, and continuously improve.",
         "category": "Events"
       },
       {
         "id": 10,
-        "image": "/assets/Blogs/10.jpeg",
+        "image": "/assets/Blogs/10.webp",
         "title": "BeAFox at ChamlandSchau",
         "description": "Left school at 18, no plan for life, and built up debt—that’s how my story began. Today I’ve learned how to handle money and built a startup with BeAFox that tackles exactly that. At ChamlandSchau, our small booth stood among big companies—and still we had nonstop conversations. It shows: young people feel that financial education is missing and are looking for answers.",
         "category": "Events"
       },
       {
         "id": 9,
-        "image": "/assets/Blogs/9.jpeg",
+        "image": "/assets/Blogs/9.webp",
         "title": "Release in App Store & Play Store",
         "description": "It’s happening: BeAFox is officially available in the App Store and Play Store! After more than 1.5 years of development, testing, and countless adjustments, we went live—three months earlier than planned. Our goal: make financial education as simple and accessible as possible, without ads or hidden sales interests. Now every download, every feedback, and every recommendation helps us reach more young people.",
         "category": "News"
       },
       {
         "id": 8,
-        "image": "/assets/Blogs/8.jpeg",
+        "image": "/assets/Blogs/8.webp",
         "title": "Donau-Post article",
         "description": "BeAFox in the newspaper—this time with a very special headline: “We need to talk about money!” Donau-Post published an in-depth article about us and how an idea became a real learning offer for schools. After 1.5 years of work, doubts, and many late nights, this moment is special. It shows that the time invested pays off—and our mission is reaching more and more people.",
         "category": "News"
       },
       {
         "id": 7,
-        "image": "/assets/Blogs/7.jpeg",
+        "image": "/assets/Blogs/7.webp",
         "title": "A new logo for BeAFox",
         "description": "Feedback is gold: our first logo felt improvised and not professional enough—so we acted. Together with a designer, we created a new BeAFox logo: more modern, clear, friendly, and perfectly aligned with our target group. For us this is more than a design update. It’s a symbol of how seriously we take our mission and how important a consistent brand presence is for schools, companies, and users.",
         "category": "News"
       },
       {
         "id": 6,
-        "image": "/assets/Blogs/6.jpeg",
+        "image": "/assets/Blogs/6.webp",
         "title": "Mittelbayerische Zeitung",
         "description": "“From smartphone to finance fox” — that was the headline of our first major article in Mittelbayerische Zeitung. A goosebump moment to see our vision in print. Focus: why financial education is so important for young people, how BeAFox supports teachers in class, and why we intentionally stay independent from ads and sales interests. A huge thank you to everyone involved!",
         "category": "News"
       },
       {
         "id": 5,
-        "image": "/assets/Blogs/5.jpeg",
+        "image": "/assets/Blogs/5.webp",
         "title": "BeAFox in the classroom for the first time",
         "description": "Today was special: BeAFox was used in real class for the first time—at the State Secondary School Neutraubling. Together with 25 students we tried financial education with the app. Result: 24 out of 25 want BeAFox to be a fixed part of their lessons. For us, a strong signal that young people want digital, interactive formats—and that our approach fits the classroom.",
         "category": "Events"
       },
       {
         "id": 4,
-        "image": "/assets/Blogs/4.jpeg",
+        "image": "/assets/Blogs/4.webp",
         "title": "Another successful pitch for BeAFox",
         "description": "At Ideenpitch Region Nürnberg we presented BeAFox outside Regensburg for the first time. The improved pitch was well received and helped make our idea clearer and more tangible. We especially enjoyed the many conversations with people from education and business. Our goal: bring BeAFox to schools in time for the Bavarian school start—so financial education finally arrives where it belongs.",
         "category": "Events"
       },
       {
         "id": 3,
-        "image": "/assets/Blogs/3.jpeg",
+        "image": "/assets/Blogs/3.webp",
         "title": "My first pitch — in front of 200+ people",
         "description": "My very first pitch—and straight away in front of more than 200 people at the “Tigers” of TechBase Regensburg! I presented our BeAFox vision, why financial education is so important for young people, and how our app addresses that gap. The conversations afterward were especially valuable: teachers, students, and companies recognized themselves in the story and showed interest in collaborating.",
         "category": "Events"
       },
       {
         "id": 2,
-        "image": "/assets/Blogs/2.jpeg",
+        "image": "/assets/Blogs/2.webp",
         "title": "It’s official. We went to the notary",
         "description": "BeAFox is officially founded: we went to the notary and signed the articles of association—a major milestone after months of ideas, feedback, and testing. Our goal remains clear: make financial education understandable, independent, and playful for young people. Next up: trademark registration, more pilot projects with schools and companies, and the next big step toward a breakthrough.",
         "category": "News"
       },
       {
         "id": 1,
-        "image": "/assets/Blogs/1.jpeg",
+        "image": "/assets/Blogs/1.webp",
         "title": "What a day: DENK.Summit",
         "description": "With BeAFox we presented our startup in the startup area of DENK.Summit—with overwhelmingly positive feedback: “insanely beautiful booth”, “cool branding, you really stand out”. In just two hours, 50+ pupils and students tested the app. Almost everyone confirmed: financial education barely happens in schools today. This experience once again showed us how important our mission is.",
         "category": "Events"

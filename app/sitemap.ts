@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { BLOG_CATEGORIES, BLOG_POSTS } from "@/lib/blog";
+import { CALCULATORS } from "@/lib/calculators";
 
 // CONSTANTS
 const BASE_URL = "https://beafox.app";
@@ -24,32 +25,32 @@ const ROUTE_CONFIG: Record<string, RouteConfig> = {
   "": {
     priority: 1.0,
     changefreq: "weekly",
-    images: ["/assets/og-image.jpg", "/Maskottchen/Maskottchen-Hero.png"],
+    images: ["/assets/og-image.webp", "/Maskottchen/Maskottchen-Hero.webp"],
   },
   "/unlimited": {
     priority: 0.95,
     changefreq: "monthly",
-    images: ["/Maskottchen/Maskottchen-Unlimited.png"],
+    images: ["/Maskottchen/Maskottchen-Unlimited.webp"],
   },
   "/unternehmen": {
     priority: 0.95,
     changefreq: "monthly",
-    images: ["/Maskottchen/Maskottchen-Business.png"],
+    images: ["/Maskottchen/Maskottchen-Business.webp"],
   },
   "/schulen": {
     priority: 0.95,
     changefreq: "monthly",
-    images: ["/Maskottchen/Maskottchen-School.png"],
+    images: ["/Maskottchen/Maskottchen-School.webp"],
   },
   "/bildungshaus": {
     priority: 0.95,
     changefreq: "monthly",
-    images: ["/Maskottchen/Maskottchen-VHS.png"],
+    images: ["/Maskottchen/Maskottchen-VHS.webp"],
   },
   "/ueber-uns": {
     priority: 0.9,
     changefreq: "monthly",
-    images: ["/Team/Team.png", "/Maskottchen/Maskottchen-Friends.png"],
+    images: ["/Team/Team.webp", "/Maskottchen/Maskottchen-Friends.webp"],
   },
   "/faq": { priority: 0.8, changefreq: "monthly" },
   "/kontakt": { priority: 0.8, changefreq: "monthly" },
@@ -97,5 +98,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...guideRoutes];
+  // Finanzrechner index + individual calculator pages
+  const calculatorRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/finanzrechner`,
+      lastModified: BUILD_TIME,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...CALCULATORS.map((calc) => ({
+      url: `${BASE_URL}/finanzrechner/${calc.slug}`,
+      lastModified: BUILD_TIME,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
+
+  return [...staticRoutes, ...categoryRoutes, ...guideRoutes, ...calculatorRoutes];
 }

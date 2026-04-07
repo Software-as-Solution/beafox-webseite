@@ -18,6 +18,12 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t("meta.description"),
       url: "https://beafox.app/community-richtlinien",
     },
+    twitter: {
+      card: "summary",
+      title: t("meta.title"),
+      description: t("meta.description"),
+      creator: "@beafox_app",
+    },
   };
 }
 

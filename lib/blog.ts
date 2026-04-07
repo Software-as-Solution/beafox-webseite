@@ -90,7 +90,7 @@ export interface BlogPost {
 
 const COMING_SOON_MESSAGE =
   "Unsere Ratgeber kommen bald wir arbeiten so schnell wie moeglich daran diese zu erstellen.";
-const BLOG_PLACEHOLDER_IMAGE = "/Maskottchen/Maskottchen-Hero.png";
+const BLOG_PLACEHOLDER_IMAGE = "/Maskottchen/Maskottchen-Hero.webp";
 
 const BLOG_POSTS_BASE: BlogPost[] = [
   {
@@ -105,7 +105,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Mit einer einfachen 50-30-20 Regel kannst du schon mit kleinem Budget smarter entscheiden.",
     content:
       "Taschengeld ist dein Trainingsfeld fuer spaetere Finanzentscheidungen. Mit festen Toepfen fuer Ausgaben, Spass und Sparen behaltest du die Kontrolle.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Schueler teilt Taschengeld in Budget-Toepfe ein",
     publishedAt: "2026-03-24",
     readingTime: 5,
@@ -124,7 +124,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Von Kontofuehrung bis Karte: Das sind die Punkte, die vor der Kontoeroeffnung wichtig sind.",
     content:
       "Ein gutes Jugendkonto ist kostenlos, transparent und passt zu deinem Alltag. Vergleiche Konditionen und checke Limits.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Erstes Girokonto fuer Schueler auf Smartphone",
     publishedAt: "2026-03-25",
     readingTime: 6,
@@ -143,7 +143,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Kurz erklaert: Wann du etwas abfuehren musst und wie du Belege sammelst.",
     content:
       "Unter 18 gelten oft dieselben Meldewege wie spaeter - mit klaren Grenzen. Halte Stunden und Einnahmen fest.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Schueler mit Nebenjob plant Steuern",
     publishedAt: "2026-03-27",
     readingTime: 6,
@@ -162,7 +162,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Dein erstes Gehalt muss nicht einfach nur ausgegeben werden. Lerne mit der 4-Toepfe-Methode, wie du dein Azubi-Gehalt sinnvoll aufteilst, Ruecklagen aufbaust und typische Anfaengerfehler vermeidest.",
     content:
       "In 8 Lektionen lernst du, warum dein Gehalt oft so schnell weg ist, wie die 4-Toepfe-Methode funktioniert, welche Fehler dich Hunderte Euro kosten und wie du deinen ersten echten Geldplan baust.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Azubi plant erstes Gehalt mit Budget-App",
     publishedAt: "2026-03-24",
     readingTime: 16,
@@ -181,7 +181,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "So liest du deine Abrechnung richtig und erkennst, was wirklich von deinem Gehalt uebrig bleibt.",
     content:
       "Wenn du die Abrechnung verstehst, triffst du bessere Entscheidungen bei Verträgen, Steuer und Sparzielen.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Azubi analysiert Gehaltsabrechnung",
     publishedAt: "2026-03-26",
     readingTime: 7,
@@ -200,7 +200,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "So pruefst du Angebote deines Arbeitgebers und startest mit kleinen Betraegen.",
     content:
       "VWL kann ein Baustein fuer langfristiges Sparen sein. Achte auf Kosten und Anlageoptionen.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Azubi informiert sich ueber VWL",
     publishedAt: "2026-03-29",
     readingTime: 5,
@@ -219,7 +219,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "So bereitest du Unterlagen sauber vor und vermeidest typische Fehler beim Antrag.",
     content:
       "Ein strukturierter Antrag spart Zeit und Nerven. Diese Checkliste hilft dir bei Fristen und Formularen.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Student bereitet BAfoeG-Unterlagen vor",
     publishedAt: "2026-03-24",
     readingTime: 8,
@@ -238,7 +238,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Eine Entscheidungshilfe mit typischen Fallstricken und Alternativen.",
     content:
       "Vergleiche Gesamtkosten, Sondertilgung und Foerderungen. Plane Rueckzahlung realistisch ein.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Student prueft Studienkredit Optionen",
     publishedAt: "2026-03-26",
     readingTime: 7,
@@ -257,7 +257,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Mit den richtigen Grundlagen vermeidest du Ueberraschungen auf der Abrechnung.",
     content:
       "Entscheidend sind Arbeitszeit, Einkommen und Status. So ordnest du deine Situation korrekt ein.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Werkstudent prueft Steuern und Abgaben",
     publishedAt: "2026-03-28",
     readingTime: 7,
@@ -276,7 +276,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Welche Belege du brauchst und wie du deine erste Erklaerung strukturiert aufsetzt.",
     content:
       "Mit einer klaren Vorbereitung holst du mehr raus und vermeidest typische Fehler beim Einreichen.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Berufseinsteiger erstellt erste Steuererklaerung",
     publishedAt: "2026-03-24",
     readingTime: 6,
@@ -295,7 +295,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Eine klare Reihenfolge fuer deine Versicherungen zum Berufsstart.",
     content:
       "Prioritaet hat Absicherung grosser Risiken. So vermeidest du ueberteuerte Pakete und unnoetige Doppelungen.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Checkliste fuer Versicherungen beim Berufseinstieg",
     publishedAt: "2026-03-30",
     readingTime: 5,
@@ -314,7 +314,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Von Branchenvergleichen bis zum Gespraechstermin: strukturiert vorgehen.",
     content:
       "Recherchiere realistische Spannen und bringe messbare Beitraege mit. Bleib sachlich und freundlich.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Berufseinsteiger bereitet Gehaltsverhandlung vor",
     publishedAt: "2026-04-02",
     readingTime: 6,
@@ -333,7 +333,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Diese Kosten werden oft unterschaetzt - und so planst du sie von Anfang an richtig ein.",
     content:
       "Mit einer sauberen Wohnungsbudget-Planung bleiben Umzug und laufende Kosten kontrollierbar.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Kostenplanung fuer die erste eigene Wohnung",
     publishedAt: "2026-03-24",
     readingTime: 7,
@@ -352,7 +352,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "So organisiert ihr Miete, Fixkosten und Ruecklagen ohne Streit.",
     content:
       "Mit klaren Regeln zu Konten und Rollen vermeidet ihr Konflikte und behaltet Transparenz.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Paar regelt gemeinsame Finanzen beim Zusammenziehen",
     publishedAt: "2026-03-31",
     readingTime: 6,
@@ -371,7 +371,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Die wichtigsten Schritte nach der Hochzeit im Ueberblick.",
     content:
       "Informiere Arbeitgeber und Versicherungen fruehzeitig und plant gemeinsame Budgets.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Paar plant Finanzen nach der Hochzeit",
     publishedAt: "2026-04-03",
     readingTime: 6,
@@ -390,7 +390,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "So planst du Ruecklagen und nutzt Angebote und Zuschuesse.",
     content:
       "Priorisiere Gesundheit und Absicherung, teilt Aufgaben und haltet Ausgaben transparent.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Werdende Eltern planen Budget",
     publishedAt: "2026-04-04",
     readingTime: 7,
@@ -409,7 +409,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Mit diesen Grundregeln startest du sicher in dein erstes ETF-Investment.",
     content:
       "Wichtig sind Ziel, Zeithorizont und Streuung. So vermeidest du typische Anfaengerfehler.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Anfaenger kauft ersten ETF",
     publishedAt: "2026-03-24",
     readingTime: 8,
@@ -428,7 +428,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "So findest du ein Depot, das zu deinem Start passt.",
     content:
       "Vergleiche Orderkosten, Sparplan-Optionen und Benutzerfuehrung der App.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Depot eroeffnen am Smartphone",
     publishedAt: "2026-03-30",
     readingTime: 6,
@@ -447,7 +447,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Vom monatlichen Betrag bis zur Ausfuehrung: so baust du langfristig Vermoegen auf.",
     content:
       "Ein Sparplan funktioniert am besten mit klarer Routine und realistischem Startbetrag.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "ETF-Sparplan im Depot einrichten",
     publishedAt: "2026-04-01",
     readingTime: 6,
@@ -470,7 +470,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "So erkennst du unsichere Zahlungsmethoden und schuetzt dich vor Abo-Fallen beim Online-Shopping.",
     content:
       "Nicht jede Zahlungsmethode ist gleich sicher. Lerne die Unterschiede und schuetze dein Geld.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Schueler bezahlt sicher online am Smartphone",
     publishedAt: "2026-04-05",
     readingTime: 5,
@@ -489,7 +489,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Du brauchst kein grosses Budget. Mit diesen Methoden baust du als Schueler echte Ruecklagen auf.",
     content:
       "Kleine Betraege summieren sich schneller als du denkst. Starte heute mit deinem Sparplan.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Schueler spart kleine Betraege mit Spardose und App",
     publishedAt: "2026-04-06",
     readingTime: 4,
@@ -508,7 +508,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Abo hier, Abo da - schnell sind 50 Euro weg. So behaltst du den Ueberblick.",
     content:
       "Pruefe regelmaessig deine Abos und kuendige was du nicht brauchst. Hier ist die Checkliste.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Jugendlicher prueft Abos auf dem Smartphone",
     publishedAt: "2026-04-07",
     readingTime: 4,
@@ -527,7 +527,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Du bist unter 18 und moechtest dein Geld fuer dich arbeiten lassen? Mit Zustimmung der Eltern ist das moeglich — und du hast einen riesigen Zeitvorteil.",
     content:
       "Mit Zustimmung der Eltern koennen auch Schueler ein Depot eroeffnen und per ETF-Sparplan investieren. Der Zinseszins-Vorteil ist enorm.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Schueler informiert sich ueber Geldanlage",
     publishedAt: "2026-04-04",
     readingTime: 5,
@@ -550,7 +550,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Die meisten Azubis verschenken Geld ans Finanzamt. Mit dieser Anleitung holst du es dir zurueck.",
     content:
       "Schritt fuer Schritt durch die Steuererklaerung: Werbungskosten, Fahrtkosten, Arbeitsmittel.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Azubi macht Steuererklaerung am Laptop",
     publishedAt: "2026-04-08",
     readingTime: 8,
@@ -569,7 +569,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Auch mit 1.000 Euro netto kannst du dir ein Sicherheitsnetz aufbauen. So gehts.",
     content:
       "Ein Notgroschen schuetzt dich vor unerwarteten Ausgaben. Starte mit kleinen Betraegen.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Azubi baut Notgroschen auf mit Sparplan",
     publishedAt: "2026-04-09",
     readingTime: 5,
@@ -588,7 +588,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Jung und gesund = guenstige Beitraege. Warum eine BU gerade als Azubi Sinn macht.",
     content:
       "Je frueher du abschliesst, desto guenstiger die Beitraege. Aber Achtung vor Fallstricken.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Azubi informiert sich ueber BU-Versicherung",
     publishedAt: "2026-04-10",
     readingTime: 6,
@@ -607,7 +607,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Wer eine Ausbildung macht und nicht mehr bei den Eltern wohnt, kann BAB beantragen.",
     content:
       "Pruefe ob du Anspruch hast und stelle den Antrag rechtzeitig. Hier ist der komplette Ablauf.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Azubi fuellt BAB-Antrag aus",
     publishedAt: "2026-04-11",
     readingTime: 7,
@@ -630,7 +630,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Es gibt tausende Stipendien - die meisten werden nie beantragt. So findest du deins.",
     content:
       "Von Begabtenfoerderung bis Fachstipendien: Schritt fuer Schritt zur erfolgreichen Bewerbung.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Student recherchiert Stipendien am Laptop",
     publishedAt: "2026-04-12",
     readingTime: 8,
@@ -649,7 +649,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Viele Studenten wissen nicht, dass sie Anspruch auf Wohngeld haben. Pruef es jetzt.",
     content:
       "Kein BAfoeG-Anspruch? Dann hast du moeglicherweise Recht auf Wohngeld. So beantragst du es.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Student beantragt Wohngeld online",
     publishedAt: "2026-04-13",
     readingTime: 6,
@@ -668,7 +668,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Krankenversicherung, Haftpflicht, BU? Was muss, was kann, was ist rausgeworfenes Geld.",
     content:
       "Als Student bist du oft noch familienversichert. Aber wann aendert sich das und was brauchst du dann?",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Student prueft Versicherungen auf Smartphone",
     publishedAt: "2026-04-14",
     readingTime: 6,
@@ -691,7 +691,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Zinseszins ist dein bester Freund. Je frueher du startest, desto mehr profitierst du.",
     content:
       "Mit ETF-Sparplan und automatisiertem Sparen baust du langfristig Vermoegen auf.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Berufseinsteiger plant Vermoegensaufbau am Laptop",
     publishedAt: "2026-04-15",
     readingTime: 7,
@@ -710,7 +710,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Schluss mit Chaos auf dem Girokonto. Mit 3 Konten hast du automatisch Ordnung.",
     content:
       "Konto 1 fuer Fixkosten, Konto 2 zum Sparen, Konto 3 fuer Freizeit. So richtest du es ein.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "3-Konten-Modell Uebersicht auf Smartphone",
     publishedAt: "2026-04-16",
     readingTime: 6,
@@ -729,7 +729,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Kaution, Makler, Moebel, Nebenkosten - die wahren Kosten der ersten Wohnung.",
     content:
       "Rechne realistisch: Die erste Wohnung kostet mehr als nur die Miete. Hier ist die komplette Liste.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Berufseinsteiger kalkuliert Wohnungskosten",
     publishedAt: "2026-04-17",
     readingTime: 7,
@@ -748,7 +748,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Eine zerbrochene Brille, ein kleiner Autounfall, ein Missgeschick beim Nachbarn — ohne Haftpflicht kann dich das ruinieren. Sie kostet 5-8 Euro/Monat.",
     content:
       "Die Haftpflichtversicherung schuetzt dich vor Schadenersatzanspruechen anderer. Fuer 5-8 Euro im Monat bist du gegen Personen-, Sach- und Vermoegensschaeden abgesichert.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Berufseinsteiger informiert sich ueber Haftpflichtversicherung",
     publishedAt: "2026-04-07",
     readingTime: 4,
@@ -771,7 +771,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Kuendigung, Nachsendeauftrag, Ummelding, Transport - alles was du beim Umzug beachten musst.",
     content:
       "Ein Umzug ist teurer als die meisten denken. Hier ist die ehrliche Kostenaufstellung plus Checkliste.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Umzugscheckliste mit Kostenaufstellung",
     publishedAt: "2026-04-18",
     readingTime: 8,
@@ -790,7 +790,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Dein erstes Auto ist eine grosse Entscheidung. So vergleichst du die Optionen richtig.",
     content:
       "Versicherung, Steuer, Wartung, Wertverlust - die versteckten Kosten eines Autos ehrlich aufgelistet.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Junger Mensch vergleicht Auto-Finanzierungsoptionen",
     publishedAt: "2026-04-19",
     readingTime: 8,
@@ -809,7 +809,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Viele junge Mieter unterschreiben ohne zu lesen. Diese Klauseln solltest du kennen.",
     content:
       "Schoenheitsreparaturen, Kuendigungsfristen, Nebenkostenabrechnung - die wichtigsten Punkte.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Junger Mieter liest Mietvertrag aufmerksam",
     publishedAt: "2026-04-20",
     readingTime: 7,
@@ -828,7 +828,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Du verdienst Geld, aber am Ende des Monats ist nichts uebrig? Ein Haushaltsbuch zeigt dir, wohin dein Geld wirklich fliesst.",
     content:
       "Ein Haushaltsbuch muss nicht kompliziert sein. Schon ein einfaches System hilft dir, deine Ausgaben zu verstehen und gezielt zu sparen.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Haushaltsbuch fuehren und Ausgaben tracken",
     publishedAt: "2026-04-15",
     readingTime: 5,
@@ -851,7 +851,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Es gibt tausende ETFs. Hier erfaehrst du, welcher zu deiner Situation passt.",
     content:
       "Breit gestreut statt spezialisiert: Warum ein Welt-ETF fuer die meisten Anfaenger die beste Wahl ist.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "ETF-Vergleich auf Bildschirm",
     publishedAt: "2026-04-21",
     readingTime: 8,
@@ -870,7 +870,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Du brauchst kein grosses Gehalt um zu investieren. 20 Euro reichen fuer den Anfang.",
     content:
       "In 30 Jahren werden aus 20 Euro monatlich ueber 20.000 Euro. Hier ist die Rechnung.",
-    image: "/assets/Blogs/Blog3.jpg",
+    image: "/assets/Blogs/Blog3.webp",
     imageAlt: "Zinseszins-Rechnung fuer kleine Investitionsbetraege",
     publishedAt: "2026-04-22",
     readingTime: 5,
@@ -889,7 +889,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Rente ist weit weg? Gerade deshalb ist jetzt der perfekte Zeitpunkt zu starten.",
     content:
       "10 Jahre frueher starten verdoppelt dein Ergebnis. ETF-Sparplan als Basis fuer die Altersvorsorge.",
-    image: "/assets/Blogs/Blog1.jpeg",
+    image: "/assets/Blogs/Blog1.webp",
     imageAlt: "Junger Mensch plant Altersvorsorge mit ETF-Sparplan",
     publishedAt: "2026-04-23",
     readingTime: 7,
@@ -908,7 +908,7 @@ const BLOG_POSTS_BASE: BlogPost[] = [
       "Kein Hype, keine FOMO. Hier ist die nuechterne Analyse ob Krypto zu dir passt.",
     content:
       "Krypto ist hochspekulativ. Wann es Sinn machen kann und wann du besser die Finger davon laesst.",
-    image: "/assets/Blogs/Blog2.jpeg",
+    image: "/assets/Blogs/Blog2.webp",
     imageAlt: "Krypto-Analyse auf Trading-App",
     publishedAt: "2026-04-24",
     readingTime: 8,

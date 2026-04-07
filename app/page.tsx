@@ -52,23 +52,23 @@ const USE_CASES: UseCase[] = [
     id: "business",
     href: "/unternehmen",
     mascotAlt: "BeAFox für Unternehmen",
-    mascot: "/Maskottchen/Maskottchen-Business.png",
+    mascot: "/Maskottchen/Maskottchen-Business.webp",
   },
   {
     id: "schools",
     href: "/schulen",
     mascotAlt: "BeAFox für Schulen",
-    mascot: "/Maskottchen/Maskottchen-School.png",
+    mascot: "/Maskottchen/Maskottchen-School.webp",
   },
 ];
 const APP_FEATURES: AppFeature[] = [
-  { id: "stufen", mockup: "/assets/Mockups/Mockup-Stufen.png" },
-  { id: "lernpfad", mockup: "/assets/Mockups/Mockup-Lernpfad.png" },
-  { id: "lektion", mockup: "/assets/Mockups/Mockup-Lektion.png" },
-  { id: "quiz", mockup: "/assets/Mockups/Mockup-Quiz.png" },
-  { id: "rangliste", mockup: "/assets/Mockups/Mockup-Rangliste.png" },
-  { id: "missionen", mockup: "/assets/Mockups/Mockup-Missionen.png" },
-  { id: "profil", mockup: "/assets/Mockups/Mockup-Profil.png" },
+  { id: "stufen", mockup: "/assets/Mockups/Mockup-Stufen.webp" },
+  { id: "lernpfad", mockup: "/assets/Mockups/Mockup-Lernpfad.webp" },
+  { id: "lektion", mockup: "/assets/Mockups/Mockup-Lektion.webp" },
+  { id: "quiz", mockup: "/assets/Mockups/Mockup-Quiz.webp" },
+  { id: "rangliste", mockup: "/assets/Mockups/Mockup-Rangliste.webp" },
+  { id: "missionen", mockup: "/assets/Mockups/Mockup-Missionen.webp" },
+  { id: "profil", mockup: "/assets/Mockups/Mockup-Profil.webp" },
 ];
 const FEATURE_CARD_STYLE = {
   border: "1px solid rgba(232,119,32,0.15)",
@@ -166,7 +166,7 @@ export default function HomePage() {
         mascotAlt={t("hero.mascotAlt")}
         cardText={t("hero.aiIntroText")}
         mascotClassName="scale-75 md:top-0"
-        mascotSrc="/Maskottchen/Maskottchen-Hero.png"
+        mascotSrc="/Maskottchen/Maskottchen-Hero.webp"
         title={
           <>
             <span className="sr-only">
@@ -256,7 +256,7 @@ export default function HomePage() {
                       width={100}
                       height={120}
                       loading="lazy"
-                      src={`/Partners/${i}.png`}
+                      src={`/Partners/${i}.webp`}
                       style={{ width: "auto", height: "auto" }}
                       alt={t("partnersCarousel.alt", { index: i })}
                       className="object-contain max-w-full max-h-full w-auto h-auto"
@@ -613,7 +613,7 @@ export default function HomePage() {
           url: "https://beafox.app",
           "@context": "https://schema.org",
           name: "BeAFox UG (haftungsbeschränkt)",
-          logo: "https://beafox.app/assets/logo.png",
+          logo: "https://beafox.app/assets/logo.webp",
           description: t("seo.organization.description"),
           address: {
             postalCode: "93073",

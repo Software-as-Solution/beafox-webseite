@@ -70,7 +70,7 @@ export default function ShopPage() {
           >
             <div className="flex justify-center mb-8">
               <Image
-                src="/Maskottchen/Maskottchen-Merch.png"
+                src="/Maskottchen/Maskottchen-Merch.webp"
                 alt={t("images.mascotAlt")}
                 width={280}
                 height={280}

@@ -117,7 +117,7 @@ export default async function FinanzrechnerPage() {
         cardText={t("hero.cardText")}
         description={t("hero.description")}
         mascotClassName="scale-80 md:top-0"
-        mascotSrc="/Maskottchen/Maskottchen-Rechner.png"
+        mascotSrc="/Maskottchen/Maskottchen-Rechner.webp"
         title={
           <>
             {t("hero.titlePre")}{" "}
@@ -238,7 +238,7 @@ export default async function FinanzrechnerPage() {
         containerClassName="max-w-3xl mx-auto"
         mascotAlt={t("downloadCta.description")}
         description={t("downloadCta.description")}
-        mascotSrc="/Maskottchen/Maskottchen-Hero.png"
+        mascotSrc="/Maskottchen/Maskottchen-Hero.webp"
         cardPaddingClassName="px-6 py-8 md:px-10 md:py-14"
         sectionClassName="bg-primaryWhite py-8 md:py-12 lg:py-16"
         actions={

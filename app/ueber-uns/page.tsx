@@ -44,15 +44,15 @@ interface TimelineItem {
 // CONSTANTS
 const TEAM_MEMBER_META = [
   {
-    image: "/Team/Alex.png",
+    image: "/Team/Alex.webp",
     linkedin: "https://www.linkedin.com/in/alexandru-tapelea-43a400245/",
   },
   {
-    image: "/Team/Selina.png",
+    image: "/Team/Selina.webp",
     linkedin: "https://www.linkedin.com/in/selina-fuchs-7b0873371/",
   },
   {
-    image: "/Team/Marcel.png",
+    image: "/Team/Marcel.webp",
     linkedin: "https://www.linkedin.com/in/marceldulgeridis/",
   },
 ] as const;
@@ -123,7 +123,7 @@ export default function AboutPage() {
         mascotAlt={t("hero.badge")}
         cardText={t("hero.subtitle")}
         contentClassName="md:left-[0%]"
-        mascotSrc="/Maskottchen/Maskottchen-Friends.png"
+        mascotSrc="/Maskottchen/Maskottchen-Friends.webp"
         title={
           <>
             {t("hero.titlePre")}
@@ -227,7 +227,7 @@ export default function AboutPage() {
                       height={300}
                       loading="lazy"
                       alt={t("images.beaMascotAlt")}
-                      src="/Maskottchen/Maskottchen-Hero.png"
+                      src="/Maskottchen/Maskottchen-Hero.webp"
                       className="object-contain w-20 h-20 md:w-28 md:h-28 scale-150 flex-shrink-0 hidden sm:block"
                       style={{
                         filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))",
@@ -317,7 +317,7 @@ export default function AboutPage() {
                   width={600}
                   height={450}
                   loading="lazy"
-                  src="/Team/Team.png"
+                  src="/Team/Team.webp"
                   alt={t("images.teamPhotoAlt")}
                   className="object-cover w-full h-auto aspect-[4/3]"
                 />
@@ -633,7 +633,7 @@ export default function AboutPage() {
                   width={200}
                   height={200}
                   loading="lazy"
-                  src="/Maskottchen/Maskottchen-Hero.png"
+                  src="/Maskottchen/Maskottchen-Hero.webp"
                   className="relative z-10 object-contain w-32 h-32 md:w-44 md:h-44"
                   style={{ filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.1))" }}
                 />

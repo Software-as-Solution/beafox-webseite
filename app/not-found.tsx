@@ -52,7 +52,7 @@ export default function NotFound() {
                 width={220}
                 height={220}
                 alt={t("mascotAlt")}
-                src="/Maskottchen/Maskottchen-Hero.png"
+                src="/Maskottchen/Maskottchen-Hero.webp"
                 style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.08))" }}
                 className="object-contain w-36 h-36 md:w-44 md:h-44 mx-auto scale-125"
               />

@@ -160,7 +160,7 @@ export default function StickyMobileCTA() {
                   width={40}
                   height={40}
                   loading="lazy"
-                  src="/Logo.png"
+                  src="/Logo.webp"
                   alt="BeAFox App Icon"
                   className="object-cover w-full h-full"
                 />

@@ -103,7 +103,7 @@ export default function ForBusinessPage() {
         mascotAlt={t("hero.badge")}
         mascotClassName="scale-110"
         cardText={t("hero.description")}
-        mascotSrc="/Maskottchen/Maskottchen-Business.png"
+        mascotSrc="/Maskottchen/Maskottchen-Business.webp"
         title={
           <>
             {t("hero.title")}{" "}
@@ -188,7 +188,7 @@ export default function ForBusinessPage() {
                 width={500}
                 height={500}
                 alt={t("images.problemMascotAlt")}
-                src="/Maskottchen/Maskottchen-Verwirrt.png"
+                src="/Maskottchen/Maskottchen-Verwirrt.webp"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
                 className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
               />
@@ -342,7 +342,7 @@ export default function ForBusinessPage() {
                 width={500}
                 height={500}
                 alt={t("images.solutionMascotAlt")}
-                src="/Maskottchen/Maskottchen-Loesung.png"
+                src="/Maskottchen/Maskottchen-Loesung.webp"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
                 className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
               />
@@ -432,7 +432,7 @@ export default function ForBusinessPage() {
                   height={150}
                   key={sdg.id}
                   alt={sdg.name ?? `SDG ${sdg.id}`}
-                  src={`/Ziele/SDG-icon-DE-${sdgId}.jpg`}
+                  src={`/Ziele/SDG-icon-DE-${sdgId}.webp`}
                   className="w-14 h-14 md:w-24 md:h-24 rounded-lg shadow-sm hover:shadow-md hover:scale-110 transition-all duration-200 scale-110"
                 />
               );
@@ -509,7 +509,7 @@ export default function ForBusinessPage() {
                   alt={activeFeature?.title ?? t("features.mockupAltFallback")}
                   className={`relative z-10 object-contain h-auto ${getMockupClasses(activeFeature?.mockup)}`}
                   src={
-                    activeFeature?.mockup ?? "/assets/Mockups/Mockup-Start.png"
+                    activeFeature?.mockup ?? "/assets/Mockups/Mockup-Start.webp"
                   }
                   style={{
                     filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))",
@@ -606,7 +606,7 @@ export default function ForBusinessPage() {
         cardBodyLine1={t("price.ctaCardBodyLine1")}
         cardBodyLine2={t("price.ctaCardBodyLine2")}
         requestQuoteLabel={t("price.requestQuoteCta")}
-        mascotSrc="/Maskottchen/Maskottchen-Welcome.png"
+        mascotSrc="/Maskottchen/Maskottchen-Welcome.webp"
         sectionClassName="bg-gray-50 py-8 md:py-12 lg:py-16"
         mascotClassName="object-contain w-24 h-24 md:w-32 md:h-32 flex-shrink-0 scale-150"
         headerTitle={

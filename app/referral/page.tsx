@@ -15,9 +15,9 @@ export default function ReferralPage() {
         <div className="min-h-[70vh] flex items-center justify-center px-6">
           <div className="text-center">
             <div className="mx-auto mb-6 w-12 h-12 rounded-full border-4 border-primaryOrange/20 border-t-primaryOrange animate-spin" />
-            <h1 className="text-2xl md:text-3xl font-bold text-darkerGray">
+            <p className="text-2xl md:text-3xl font-bold text-darkerGray" role="status">
               {t('opening.title')}
-            </h1>
+            </p>
             <p className="text-lightGray mt-2">{t('opening.subtitle')}</p>
           </div>
         </div>

@@ -20,13 +20,13 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
         purpose: "any",
         sizes: "192x192",
         type: "image/png",
-        src: "/assets/Logos/Logo.png",
+        src: "/assets/Logos/Logo.webp",
       },
       {
         sizes: "512x512",
         type: "image/png",
         purpose: "maskable",
-        src: "/assets/Logos/Logo.png",
+        src: "/assets/Logos/Logo.webp",
       },
     ],
   };

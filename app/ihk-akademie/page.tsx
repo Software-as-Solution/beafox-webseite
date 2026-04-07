@@ -68,7 +68,7 @@ export default function IHKAkademiePage() {
         mascotAlt={t("hero.mascotAlt")}
         description={t("hero.description")}
         mascotClassName="!scale-110 md:top-6"
-        mascotSrc="/Maskottchen/Maskottchen-Akademie.png"
+        mascotSrc="/Maskottchen/Maskottchen-Akademie.webp"
         title={
           <>
             {t("hero.titlePre")}{" "}
@@ -197,7 +197,7 @@ export default function IHKAkademiePage() {
                 width={500}
                 height={500}
                 alt={t("images.certificateAlt")}
-                src="/Maskottchen/Maskottchen-Zertifikat.png"
+                src="/Maskottchen/Maskottchen-Zertifikat.webp"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
                 className="relative z-10 object-contain w-[280px] md:w-[340px] lg:w-[380px] h-auto"
               />

@@ -171,7 +171,7 @@ export default function BeAFoxUnlimitedPage() {
         badge={t("hero.tag")}
         mascotAlt={t("hero.tag")}
         cardText={t("hero.description")}
-        mascotSrc="/Maskottchen/Maskottchen-Unlimited.png"
+        mascotSrc="/Maskottchen/Maskottchen-Unlimited.webp"
         title={
           <>
             {t("hero.title")}{" "}
@@ -359,7 +359,7 @@ export default function BeAFoxUnlimitedPage() {
               >
                 <Image
                   src={
-                    activeFeature?.mockup ?? "/assets/Mockups/Mockup-Start.png"
+                    activeFeature?.mockup ?? "/assets/Mockups/Mockup-Start.webp"
                   }
                   alt={t("appFeatures.mockupAlt", {
                     feature:
@@ -436,7 +436,7 @@ export default function BeAFoxUnlimitedPage() {
                       alt="Bea Maskottchen — Unlimited Feature"
                       width={200}
                       height={200}
-                      src="/Maskottchen/Maskottchen-Hero.png"
+                      src="/Maskottchen/Maskottchen-Hero.webp"
                       className="object-contain w-16 h-16 md:w-20 md:h-20 scale-150"
                       style={{
                         filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.08))",
@@ -607,7 +607,7 @@ export default function BeAFoxUnlimitedPage() {
                 alt="Bea Maskottchen — Jetzt Unlimited starten"
                 width={240}
                 height={240}
-                src="/Maskottchen/Maskottchen-Hero.png"
+                src="/Maskottchen/Maskottchen-Hero.webp"
                 className="object-contain w-16 h-16 md:w-24 md:h-24 flex-shrink-0 scale-150"
                 style={{
                   filter: "drop-shadow(0 6px 16px rgba(232,119,32,0.2))",

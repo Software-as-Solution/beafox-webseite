@@ -8,23 +8,23 @@ import SectionHeader from "@/components/SectionHeader";
 const STAR_PATH =
   "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z";
 const STORES = [
-  { src: "/assets/Apple.png", alt: "App Store", label: "App Store" },
-  { src: "/assets/Android.png", alt: "Google Play", label: "Google Play" },
+  { src: "/assets/Apple.webp", alt: "App Store", label: "App Store" },
+  { src: "/assets/Android.webp", alt: "Google Play", label: "Google Play" },
 ] as const;
 const PARTNER_LOGOS = [
-  { src: "/Partners/1.png", alt: "Dr. Robert Eckert Schulen" },
-  { src: "/Partners/2.png", alt: "Partner" },
-  { src: "/Partners/3.png", alt: "IHK Akademie" },
-  { src: "/Partners/4.png", alt: "Partner" },
-  { src: "/Partners/5.png", alt: "Partner" },
-  { src: "/Partners/6.png", alt: "Partner" },
-  { src: "/Partners/8.png", alt: "TechBase Regensburg" },
-  { src: "/Partners/9.png", alt: "Partner" },
-  { src: "/Partners/10.png", alt: "Partner" },
-  { src: "/Partners/11.png", alt: "Partner" },
-  { src: "/Partners/12.png", alt: "Partner" },
-  { src: "/Partners/13.png", alt: "Partner" },
-  { src: "/Partners/14.png", alt: "Eduplaces" },
+  { src: "/Partners/1.webp", alt: "Dr. Robert Eckert Schulen" },
+  { src: "/Partners/2.webp", alt: "Partner" },
+  { src: "/Partners/3.webp", alt: "IHK Akademie" },
+  { src: "/Partners/4.webp", alt: "Partner" },
+  { src: "/Partners/5.webp", alt: "Partner" },
+  { src: "/Partners/6.webp", alt: "Partner" },
+  { src: "/Partners/8.webp", alt: "TechBase Regensburg" },
+  { src: "/Partners/9.webp", alt: "Partner" },
+  { src: "/Partners/10.webp", alt: "Partner" },
+  { src: "/Partners/11.webp", alt: "Partner" },
+  { src: "/Partners/12.webp", alt: "Partner" },
+  { src: "/Partners/13.webp", alt: "Partner" },
+  { src: "/Partners/14.webp", alt: "Eduplaces" },
 ] as const;
 // CONSTANTS
 const USER_REVIEWS = [
@@ -91,7 +91,7 @@ export default function TrustSignalBar({
     ? [
         ...STORES,
         {
-          src: "/Partners/14.png",
+          src: "/Partners/14.webp",
           alt: "Eduplaces",
           label: "Eduplaces",
         } as const,
@@ -228,8 +228,8 @@ export default function TrustSignalBar({
                           <Image
                             src={
                               review.store === "apple"
-                                ? "/assets/Apple.png"
-                                : "/assets/Android.png"
+                                ? "/assets/Apple.webp"
+                                : "/assets/Android.webp"
                             }
                             alt={
                               review.store === "apple"

@@ -53,7 +53,7 @@ export default function BildungshausPage() {
       <LandingHero
         badge={t("hero.badge")}
         mascotAlt={t("hero.mascotAlt")}
-        mascotSrc="/Maskottchen/Maskottchen-Bildungshaus.png"
+        mascotSrc="/Maskottchen/Maskottchen-Bildungshaus.webp"
         cardText={t("hero.cardText")}
         mascotClassName="!scale-110 md:top-6"
         title={
@@ -183,7 +183,7 @@ export default function BildungshausPage() {
                 aria-hidden="true"
               />
               <Image
-                src="/Maskottchen/Maskottchen-Lebenssituationen.png"
+                src="/Maskottchen/Maskottchen-Lebenssituationen.webp"
                 alt="BeAFox × Bildungshaus Wolfsburg"
                 width={500}
                 height={500}
@@ -303,7 +303,7 @@ export default function BildungshausPage() {
       {/* ─── 6. PARTNERSCHAFT CTA ─── */}
       <GradientMascotCtaSection
         sectionClassName="bg-gray-50 py-8 md:py-12 lg:py-16"
-        mascotSrc="/Maskottchen/Maskottchen-Welcome.png"
+        mascotSrc="/Maskottchen/Maskottchen-Welcome.webp"
         mascotAlt="Bea winkt — Workshop-Reihe und Partnerschaft mit dem Bildungshaus Wolfsburg"
         mascotWidth={200}
         mascotHeight={200}

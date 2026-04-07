@@ -49,19 +49,19 @@ const RATGEBER_CATEGORIES: RatgeberCategory[] = [
     icon: Wrench,
     slug: "finanzen-fuer-azubis",
     href: "/finanzen-fuer-azubis",
-    mascot: "/Maskottchen/Maskottchen-Azubi.png",
+    mascot: "/Maskottchen/Maskottchen-Azubi.webp",
   },
   {
     icon: Home,
     slug: "finanzen-bei-lebensereignissen",
     href: "/finanzen-bei-lebensereignissen",
-    mascot: "/Maskottchen/Maskottchen-Lebenssituationen.png",
+    mascot: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
   },
   {
     icon: Briefcase,
     slug: "finanzen-fuer-berufseinsteiger",
     href: "/finanzen-fuer-berufseinsteiger",
-    mascot: "/Maskottchen/Maskottchen-Berufseinsteiger.png",
+    mascot: "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
   },
 ];
 const ICON_STYLE = {
@@ -78,15 +78,15 @@ const FAQ_PRODUCT_META: Record<
   { mascot: string; icon: LucideIcon }
 > = {
   unlimited: {
-    mascot: "/Maskottchen/Maskottchen-Unlimited.png",
+    mascot: "/Maskottchen/Maskottchen-Unlimited.webp",
     icon: InfinityIcon,
   },
   business: {
-    mascot: "/Maskottchen/Maskottchen-Business.png",
+    mascot: "/Maskottchen/Maskottchen-Business.webp",
     icon: Briefcase,
   },
   schools: {
-    mascot: "/Maskottchen/Maskottchen-School.png",
+    mascot: "/Maskottchen/Maskottchen-School.webp",
     icon: School,
   },
 };
@@ -94,17 +94,17 @@ const UNLIMITED_TARGET_GROUPS: UnlimitedTargetGroup[] = [
   {
     id: "students",
     icon: GraduationCap,
-    mascot: "/Maskottchen/Maskottchen-Studenten.png",
+    mascot: "/Maskottchen/Maskottchen-Studenten.webp",
   },
   {
     id: "apprentices",
     icon: Briefcase,
-    mascot: "/Maskottchen/Maskottchen-Azubi.png",
+    mascot: "/Maskottchen/Maskottchen-Azubi.webp",
   },
   {
     id: "careerStarters",
     icon: Briefcase,
-    mascot: "/Maskottchen/Maskottchen-Berufseinsteiger.png",
+    mascot: "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
   },
 ];
 

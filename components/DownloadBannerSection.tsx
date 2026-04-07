@@ -114,7 +114,7 @@ export default function DownloadBannerSection({
                   className="flex-1 min-w-[190px] flex items-center gap-2 md:gap-4 justify-center md:justify-start rounded-lg border border-darkerGray/20 p-2 bg-white/80 hover:scale-[1.02] transition-transform"
                 >
                   <Image
-                    src="/assets/Apple.png"
+                    src="/assets/Apple.webp"
                     alt={t("downloadBanner.storeBadges.appleAlt")}
                     width={160}
                     height={52}
@@ -131,7 +131,7 @@ export default function DownloadBannerSection({
                   className="flex-1 min-w-[190px] flex items-center gap-2 md:gap-4 justify-center md:justify-start rounded-lg border border-darkerGray/20 p-2 bg-white/80 hover:scale-[1.02] transition-transform"
                 >
                   <Image
-                    src="/assets/Android.png"
+                    src="/assets/Android.webp"
                     alt={t("downloadBanner.storeBadges.googleAlt")}
                     width={160}
                     height={52}
@@ -197,7 +197,7 @@ export default function DownloadBannerSection({
                 style={{ transform: "rotate(-8deg)", marginRight: "-24px" }}
               >
                 <Image
-                  src="/assets/Mockups/Mockup-Training.png"
+                  src="/assets/Mockups/Mockup-Training.webp"
                   alt={t("downloadBanner.mockups.trainingAlt")}
                   width={200}
                   height={428}
@@ -217,7 +217,7 @@ export default function DownloadBannerSection({
                 style={{ transform: "rotate(6deg)" }}
               >
                 <Image
-                  src="/assets/Mockups/Mockup-Lernpfad.png"
+                  src="/assets/Mockups/Mockup-Lernpfad.webp"
                   alt={t("downloadBanner.mockups.pathAlt")}
                   width={240}
                   height={514}

@@ -106,7 +106,7 @@ export default function FAQPage() {
         mascotAlt={t("hero.tag")}
         mascotClassName="scale-90 md:top-2"
         cardText={t("popular.subtitle")}
-        mascotSrc="/Maskottchen/Maskottchen-Herzen.png"
+        mascotSrc="/Maskottchen/Maskottchen-Herzen.webp"
         title={
           <>
             {t("hero.title")}{" "}
@@ -212,7 +212,7 @@ export default function FAQPage() {
                 alt="Bea Maskottchen — Keine Ergebnisse"
                 width={120}
                 height={120}
-                src="/Maskottchen/Maskottchen-Hero.png"
+                src="/Maskottchen/Maskottchen-Hero.webp"
                 className="object-contain w-24 h-24 mx-auto mb-4"
                 style={{ filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))" }}
               />
@@ -270,7 +270,7 @@ export default function FAQPage() {
                   width={260}
                   height={260}
                   loading="lazy"
-                  src="/Maskottchen/Maskottchen-Hero.png"
+                  src="/Maskottchen/Maskottchen-Hero.webp"
                   className="object-contain w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 scale-150"
                   style={{ filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.08))" }}
                 />

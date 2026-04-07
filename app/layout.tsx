@@ -68,7 +68,7 @@ export async function generateMetadata(): Promise<Metadata> {
           width: 1200,
           height: 630,
           alt: t("ogImageAlt"),
-          url: "/assets/og-image.jpg",
+          url: "/assets/og-image.webp",
         },
       ],
     },
@@ -76,7 +76,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       creator: "@beafox_app",
       title: t("twitterTitle"),
-      images: ["/assets/og-image.jpg"],
+      images: ["/assets/og-image.webp"],
       description: t("twitterDescription"),
     },
     robots: {
@@ -97,9 +97,9 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     icons: {
-      shortcut: "/assets/Logos/Logo.png",
-      icon: { url: "/assets/Logos/Logo.png", type: "image/png" },
-      apple: { url: "/assets/Logos/Logo.png", type: "image/png" },
+      shortcut: "/assets/Logos/Logo.webp",
+      icon: { url: "/assets/Logos/Logo.webp", type: "image/png" },
+      apple: { url: "/assets/Logos/Logo.webp", type: "image/png" },
     },
     themeColor: THEME_COLOR,
   };
@@ -118,6 +118,7 @@ export default async function RootLayout({
     <html lang={locale} className={inter.variable}>
       <head>
         <link rel="alternate" hrefLang="de" href={BASE_URL} />
+        <link rel="alternate" hrefLang="en" href={BASE_URL} />
         <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
       </head>
       <body className="antialiased bg-primaryWhite">

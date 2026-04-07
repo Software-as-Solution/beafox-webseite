@@ -149,7 +149,7 @@ export default function DownloadModal({
                       height={70}
                       alt="BeAFox"
                       className="object-contain"
-                      src="/assets/Logos/Logo.png"
+                      src="/assets/Logos/Logo.webp"
                     />
                   </div>
                   <motion.div
@@ -200,7 +200,7 @@ export default function DownloadModal({
                   <Image
                     width={160}
                     height={52}
-                    src="/assets/Apple.png"
+                    src="/assets/Apple.webp"
                     alt={tHome("downloadBanner.storeBadges.appleAlt")}
                     className="object-contain w-[40px] h-auto shrink-0"
                   />
@@ -218,7 +218,7 @@ export default function DownloadModal({
                   <Image
                     width={160}
                     height={52}
-                    src="/assets/Android.png"
+                    src="/assets/Android.webp"
                     alt={tHome("downloadBanner.storeBadges.googleAlt")}
                     className="object-contain w-[40px] h-auto shrink-0"
                   />

@@ -237,7 +237,7 @@ export default function BeaChatDemo({
               width={50}
               height={50}
               loading="lazy"
-              src="/Logo.png"
+              src="/Logo.webp"
               alt="Bea Maskottchen"
               className="object-cover w-full h-full"
             />

@@ -146,8 +146,46 @@ export default function GuideArticlePage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // BreadcrumbList structured data for SEO
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Startseite",
+        item: "https://beafox.app",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Ratgeber",
+        item: "https://beafox.app/ratgeber",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: category?.navLabel ?? kategorie,
+        item: `https://beafox.app${getRatgeberCategoryPath(kategorie)}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: title,
+        item: `https://beafox.app${getRatgeberCategoryPath(kategorie)}/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
+      {/* ── BREADCRUMB STRUCTURED DATA ───────────────────── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* ── READING PROGRESS BAR ─────────────────────────── */}
       <div className="fixed top-0 left-0 right-0 z-50 h-0.5">
         <motion.div

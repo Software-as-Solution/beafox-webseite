@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: "de_DE",
       images: [
         {
-          url: `${BASE_URL}/Team/Team.png`,
+          url: `${BASE_URL}/Team/Team.webp`,
           width: 600,
           height: 450,
           alt: "Das BeAFox Team",
@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: `${title} | BeAFox`,
       description,
-      images: [`${BASE_URL}/Team/Team.png`],
+      images: [`${BASE_URL}/Team/Team.webp`],
       creator: "@beafox_app",
     },
   };

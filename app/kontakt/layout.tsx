@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
           width: 1200,
           height: 630,
           alt: t("meta.ogImageAlt"),
-          url: `${BASE_URL}/assets/og-image.jpg`,
+          url: `${BASE_URL}/assets/og-image.webp`,
         },
       ],
     },
@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@beafox_app",
       title: `${title} | BeAFox`,
       card: "summary_large_image",
-      images: [`${BASE_URL}/assets/og-image.jpg`],
+      images: [`${BASE_URL}/assets/og-image.webp`],
     },
   };
 }

@@ -141,7 +141,7 @@ function CheckoutSuccessContent() {
                         className="inline-block transform hover:scale-105 transition-transform"
                       >
                         <img
-                          src="/assets/Apple.png"
+                          src="/assets/Apple.webp"
                           alt={t("storeBadges.appleAlt")}
                           className="h-12 sm:h-14 w-auto hover:opacity-90 transition-opacity scale-150 relative bottom-[1px] left-[9.5%] sm:left-0"
                         />
@@ -153,7 +153,7 @@ function CheckoutSuccessContent() {
                         className="inline-block transform hover:scale-105 transition-transform"
                       >
                         <img
-                          src="/assets/Android.png"
+                          src="/assets/Android.webp"
                           alt={t("storeBadges.googleAlt")}
                           className="h-12 sm:h-14 w-auto hover:opacity-90 transition-opacity scale-105"
                         />

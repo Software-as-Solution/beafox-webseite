@@ -98,7 +98,7 @@ export default function ForSchoolsPage() {
         badge={t("hero.badge")}
         mascotAlt={t("hero.badge")}
         cardText={t("hero.description")}
-        mascotSrc="/Maskottchen/Maskottchen-School.png"
+        mascotSrc="/Maskottchen/Maskottchen-School.webp"
         title={
           <>
             <span className="text-primaryOrange">
@@ -196,7 +196,7 @@ export default function ForSchoolsPage() {
                 width={500}
                 height={500}
                 alt={t("images.problemMascotAlt")}
-                src="/Maskottchen/Maskottchen-Langweilig.png"
+                src="/Maskottchen/Maskottchen-Langweilig.webp"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
                 className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
               />
@@ -349,7 +349,7 @@ export default function ForSchoolsPage() {
                 width={500}
                 height={500}
                 alt={t("images.solutionMascotAlt")}
-                src="/Maskottchen/Maskottchen-Freude.png"
+                src="/Maskottchen/Maskottchen-Freude.webp"
                 style={{ filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.1))" }}
                 className="relative z-10 object-contain w-[280px] md:w-[360px] lg:w-[420px] h-auto"
               />
@@ -432,7 +432,7 @@ export default function ForSchoolsPage() {
                   height={150}
                   key={sdg.id}
                   alt={sdg.name ?? t("benefits.sdgFallbackAlt", { id: sdgId })}
-                  src={`/Ziele/SDG-icon-DE-${sdgId}.jpg`}
+                  src={`/Ziele/SDG-icon-DE-${sdgId}.webp`}
                   className="w-14 h-14 md:w-24 md:h-24 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 scale-110"
                 />
               );
@@ -519,7 +519,7 @@ export default function ForSchoolsPage() {
                   className="relative z-10 object-contain w-full h-auto rounded-lg"
                   src={
                     activeDashboard?.mockup ??
-                    "/Mockup-Macbook/Live-Fortschritt.png"
+                    "/Mockup-Macbook/Live-Fortschritt.webp"
                   }
                   style={{
                     filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.15))",
@@ -615,7 +615,7 @@ export default function ForSchoolsPage() {
 
                 {/* Mascot */}
                 <Image
-                  src="/Maskottchen/Maskottchen-Hero.png"
+                  src="/Maskottchen/Maskottchen-Hero.webp"
                   alt={t("images.fundingMascotAlt")}
                   width={200}
                   height={200}

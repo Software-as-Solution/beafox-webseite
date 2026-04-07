@@ -528,7 +528,7 @@ export default async function CalculatorPage({ params }: PageProps) {
         containerClassName="max-w-3xl mx-auto"
         mascotAlt={t("downloadCta.description")}
         description={t("downloadCta.description")}
-        mascotSrc="/Maskottchen/Maskottchen-Hero.png"
+        mascotSrc="/Maskottchen/Maskottchen-Hero.webp"
         cardPaddingClassName="px-6 py-8 md:px-10 md:py-14"
         sectionClassName="bg-primaryWhite py-2 md:py-6 lg:py-10"
         actions={
