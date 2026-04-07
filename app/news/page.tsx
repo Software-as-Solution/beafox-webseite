@@ -135,7 +135,7 @@ export default function NewsHubPage() {
                 transition={{ duration: 0.25, delay: 0.25 + i * 0.04 }}
               >
                 <Link
-                  href={`/ratgeber/${cat.slug}`}
+                  href={`/${cat.slug}`}
                   className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/15 bg-white/5 hover:border-primaryOrange hover:bg-primaryOrange/15 text-primaryGray hover:text-white text-sm font-medium transition-all duration-200"
                 >
                   <span>{cat.emoji}</span>
@@ -332,7 +332,7 @@ export default function NewsHubPage() {
                   transition={{ duration: 0.28, delay: i * 0.05 }}
                 >
                   <Link
-                    href={`/ratgeber/${cat.slug}`}
+                    href={`/${cat.slug}`}
                     className="group flex flex-col items-center gap-2.5 rounded-2xl border border-gray-200 bg-white hover:border-primaryOrange/40 hover:shadow-md p-4 text-center transition-all duration-200"
                   >
                     <span className="text-3xl">{cat.emoji}</span>

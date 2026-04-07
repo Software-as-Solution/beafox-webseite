@@ -31,18 +31,29 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    // Ratgeber short → full slug redirects
-    const ratgeberRedirects = [];
+    // Ratgeber short → full slug redirects (direkt auf Root-Level)
+    const ratgeberShortRedirects = [];
     for (const [shortSlug, fullSlug] of ratgeberShortToFull) {
-      ratgeberRedirects.push(
+      ratgeberShortRedirects.push(
+        {
+          source: `/${shortSlug}`,
+          destination: `/${fullSlug}`,
+          permanent: true,
+        },
+        {
+          source: `/${shortSlug}/:slug`,
+          destination: `/${fullSlug}/:slug`,
+          permanent: true,
+        },
+        // Alte /ratgeber/ Kurzlinks
         {
           source: `/ratgeber/${shortSlug}`,
-          destination: `/ratgeber/${fullSlug}`,
+          destination: `/${fullSlug}`,
           permanent: true,
         },
         {
           source: `/ratgeber/${shortSlug}/:slug`,
-          destination: `/ratgeber/${fullSlug}/:slug`,
+          destination: `/${fullSlug}/:slug`,
           permanent: true,
         },
       );
@@ -57,17 +68,29 @@ const nextConfig = {
       { source: "/vhs", destination: "/bildungshaus", permanent: true },
       { source: "/vhs/:path*", destination: "/bildungshaus/:path*", permanent: true },
 
-      // ── Ratgeber Kurzlinks ──
-      ...ratgeberRedirects,
-
-      // ── Legacy /news/kategorie/slug → /ratgeber ──
+      // ── Ratgeber: alte /ratgeber/kategorie/slug → /kategorie/slug ──
       {
-        source: `/news/:kategorie(${RATGEBER_CATEGORY_SOURCE})/:slug`,
-        destination: "/ratgeber/:kategorie/:slug",
+        source: `/ratgeber/:kategorie(${RATGEBER_CATEGORY_SOURCE})/:slug`,
+        destination: "/:kategorie/:slug",
+        permanent: true,
+      },
+      {
+        source: `/ratgeber/:kategorie(${RATGEBER_CATEGORY_SOURCE})`,
+        destination: "/:kategorie",
         permanent: true,
       },
 
-      // ── Ratgeber updates → app-updates (old) → /updates (new) ──
+      // ── Ratgeber Kurzlinks ──
+      ...ratgeberShortRedirects,
+
+      // ── Legacy /news/kategorie/slug → /kategorie/slug ──
+      {
+        source: `/news/:kategorie(${RATGEBER_CATEGORY_SOURCE})/:slug`,
+        destination: "/:kategorie/:slug",
+        permanent: true,
+      },
+
+      // ── Ratgeber updates → /updates ──
       { source: "/ratgeber/updates", destination: "/updates", permanent: true },
 
       // ── Legacy /blog → /news ──

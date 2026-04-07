@@ -63,7 +63,7 @@ export default function LandingHero({
         <div className="grid lg:grid-cols-2 items-center">
           {/* Left — Content */}
           <motion.div
-            className="mt-4 lg:mt-0"
+            className="mt-4 lg:mt-0 relative md:left-[10%]"
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             initial={{ opacity: 0, x: -20 }}
@@ -110,7 +110,7 @@ export default function LandingHero({
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 initial={{ opacity: 0, y: 16, scale: 0.9 }}
                 transition={{ duration: 0.5, delay: 0.45 }}
-                className="absolute top-20 right-2 md:top-10 md:right-2 z-20 max-w-[300px]"
+                className="absolute top-20 right-2 md:top-6 z-20 max-w-[300px]"
               >
                 <div
                   style={GLOW_STYLE}
@@ -125,8 +125,8 @@ export default function LandingHero({
                     <div className="w-8 h-8 overflow-hidden flex-shrink-0">
                       <Image
                         alt="Bea"
-                        width={40}
-                        height={40}
+                        width={500}
+                        height={500}
                         className="object-contain"
                         src="/assets/Logos/Logo.png"
                       />

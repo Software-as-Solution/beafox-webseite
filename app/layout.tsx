@@ -63,18 +63,18 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: locale === "de" ? "de_DE" : "en_US",
       images: [
         {
-          width: 512,
-          height: 512,
+          width: 1200,
+          height: 630,
           alt: t("ogImageAlt"),
-          url: "/assets/Logos/Logo.png",
+          url: "/assets/og-image.jpg",
         },
       ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       creator: "@beafox_app",
       title: t("twitterTitle"),
-      images: ["/assets/Logos/Logo.png"],
+      images: ["/assets/og-image.jpg"],
       description: t("twitterDescription"),
     },
     robots: {

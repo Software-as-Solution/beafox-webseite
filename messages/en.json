@@ -3071,6 +3071,75 @@
     },
     "redirectNote": "You will be redirected to the appropriate app store automatically."
   },
+  "finanzrechner": {
+    "hero": {
+      "badge": "Financial calculators",
+      "titlePre": "Our BeAFox",
+      "titleHighlight": "calculators",
+      "description": "Search by keyword or filter by category — find the right calculator quickly.",
+      "cardText": "Calculate your salary, plan your budget, and keep your finances in view.",
+      "ctaPrimary": "Explore calculators"
+    },
+    "search": {
+      "titlePre": "Find the right",
+      "titleHighlight": "calculator",
+      "placeholder": "Search calculators...",
+      "categoriesLabel": "Filter categories",
+      "clearAria": "Clear search"
+    },
+    "grid": {
+      "emptyState": "No calculators found. Try different search terms.",
+      "resetFilters": "Reset filters",
+      "resultSingular": "calculator",
+      "resultPlural": "calculators",
+      "openCalculator": "Open calculator"
+    },
+    "ratgeberCta": {
+      "title": "Want more financial know-how?",
+      "description": "Our guides explain what you need to know about money — tailored to your situation.",
+      "button": "Browse guides"
+    },
+    "detail": {
+      "inputsTitle": "Inputs",
+      "resetButton": "Reset",
+      "resultsTitle": "Results",
+      "tipsTitle": "Tips & notes",
+      "notFound": {
+        "title": "Calculator not found",
+        "description": "This calculator does not exist.",
+        "backButton": "View all calculators"
+      },
+      "appCta": {
+        "title": "More than calculators?",
+        "description": "Bea guides you through real money situations — playfully and at your own pace.",
+        "button": "Download the app"
+      },
+      "resultCta": {
+        "title": "Did this calculator help?",
+        "description": "Bea walks you through every real money situation — right in the app.",
+        "button": "Get BeAFox for free"
+      },
+      "howItWorks": {
+        "titlePre": "How the",
+        "titleHighlight": "calculator works"
+      },
+      "tips": {
+        "titlePre": "Tips &",
+        "titleHighlight": "Advice"
+      },
+      "useCases": {
+        "titlePre": "When to use",
+        "titleHighlight": "this calculator"
+      },
+      "faq": {
+        "titlePre": "Frequently asked",
+        "titleHighlight": "Questions"
+      },
+      "related": {
+        "titlePre": "More calculators in"
+      }
+    }
+  },
   "shop": {
     "meta": {
       "title": "Shop – BeAFox Merch",

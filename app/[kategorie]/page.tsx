@@ -362,7 +362,7 @@ export default function RatgeberCategoryPage() {
                   transition={{ duration: 0.25, delay: i * 0.04 }}
                 >
                   <Link
-                    href={`/ratgeber/${c.slug}`}
+                    href={`/${c.slug}`}
                     className="group flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 hover:border-primaryOrange/40 hover:bg-primaryOrange/10 p-4 text-center transition-all duration-200"
                   >
                     <span className="text-2xl">{c.emoji}</span>

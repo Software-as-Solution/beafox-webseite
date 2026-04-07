@@ -433,10 +433,9 @@ export default function BeAFoxUnlimitedPage() {
                       ))}
                     </h3>
                     <Image
-                      alt=""
+                      alt="Bea Maskottchen — Unlimited Feature"
                       width={200}
                       height={200}
-                      aria-hidden="true"
                       src="/Maskottchen/Maskottchen-Hero.png"
                       className="object-contain w-16 h-16 md:w-20 md:h-20 scale-150"
                       style={{
@@ -605,10 +604,9 @@ export default function BeAFoxUnlimitedPage() {
 
             <div className="relative z-10 flex items-center gap-4 md:gap-6">
               <Image
-                alt=""
+                alt="Bea Maskottchen — Jetzt Unlimited starten"
                 width={240}
                 height={240}
-                aria-hidden="true"
                 src="/Maskottchen/Maskottchen-Hero.png"
                 className="object-contain w-16 h-16 md:w-24 md:h-24 flex-shrink-0 scale-150"
                 style={{

@@ -6,7 +6,7 @@ const BASE_URL = "https://beafox.app";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("about");
 
-  const title = "Über uns";
+  const title = t("meta.title");
   const description = t("meta.description");
   const url = `${BASE_URL}/ueber-uns`;
 

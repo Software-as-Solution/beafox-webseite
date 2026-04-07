@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Ratgeber category pages
   const categoryRoutes: MetadataRoute.Sitemap = BLOG_CATEGORIES.map(
     (category) => ({
-      url: `${BASE_URL}/ratgeber/${category.slug}`,
+      url: `${BASE_URL}/${category.slug}`,
       lastModified: BUILD_TIME,
       changeFrequency: "weekly",
       priority: 0.75,
@@ -89,7 +89,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Individual guide posts
   const guideRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
-    url: `${BASE_URL}/ratgeber/${post.categorySlug}/${post.slug}`,
+    url: `${BASE_URL}/${post.categorySlug}/${post.slug}`,
     lastModified: new Date(post.publishedAt),
     changeFrequency: "monthly",
     priority: 0.7,

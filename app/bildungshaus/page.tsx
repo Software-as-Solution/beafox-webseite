@@ -10,6 +10,7 @@ import SectionHeader from "@/components/SectionHeader";
 import TrustSignalBar from "@/components/TrustSignalBar";
 import StructuredData from "@/components/StructuredData";
 import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
+import GradientMascotCtaSection from "@/components/GradientMascotCtaSection";
 // IMPORTS
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -300,66 +301,36 @@ export default function BildungshausPage() {
       </Section>
 
       {/* ─── 6. PARTNERSCHAFT CTA ─── */}
-      <Section className="bg-gray-50 py-8 md:py-12 lg:py-16">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative overflow-hidden rounded-2xl p-6 md:p-10"
-            style={{
-              background:
-                "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 60%, #FFF2E8 100%)",
-              border: "2px solid rgba(232,119,32,0.2)",
-              boxShadow: "0 16px 48px rgba(232,119,32,0.08)",
-            }}
-          >
-            <div
-              className="absolute -top-16 -right-16 w-[200px] h-[200px] rounded-full pointer-events-none"
-              style={GLOW(0.06)}
-              aria-hidden="true"
-            />
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
-              <Image
-                src="/Maskottchen/Maskottchen-Welcome.png"
-                alt="Bea winkt — Workshop-Reihe und Partnerschaft mit dem Bildungshaus Wolfsburg"
-                width={200}
-                height={200}
-                className="object-contain w-24 h-24 md:w-32 md:h-32 flex-shrink-0 scale-150"
-                style={{ filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))" }}
-              />
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl md:text-2xl font-bold text-darkerGray mb-2">
-                  {t("cta.title")}
-                </h3>
-                <p className="text-sm md:text-base text-lightGray leading-relaxed mb-5">
-                  {t("cta.description")}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                  <Button
-                    href="/kontakt"
-                    variant="primary"
-                    className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 text-sm md:text-base"
-                  >
-                    <Presentation className="w-4 h-4" aria-hidden="true" />
-                    {t("cta.ctaPrimary")}
-                  </Button>
-                  <Button
-                    href={BILDUNGSHAUS_WOLFSBURG_URL}
-                    variant="outline"
-                    target="_blank"
-                    className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 text-sm md:text-base"
-                  >
-                    <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                    {t("cta.ctaSecondary")}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </Section>
+      <GradientMascotCtaSection
+        sectionClassName="bg-gray-50 py-8 md:py-12 lg:py-16"
+        mascotSrc="/Maskottchen/Maskottchen-Welcome.png"
+        mascotAlt="Bea winkt — Workshop-Reihe und Partnerschaft mit dem Bildungshaus Wolfsburg"
+        mascotWidth={200}
+        mascotHeight={200}
+        title={t("cta.title")}
+        description={t("cta.description")}
+        actions={
+          <>
+            <Button
+              href="/kontakt"
+              variant="primary"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 text-sm md:text-base"
+            >
+              <Presentation className="w-4 h-4" aria-hidden="true" />
+              {t("cta.ctaPrimary")}
+            </Button>
+            <Button
+              href={BILDUNGSHAUS_WOLFSBURG_URL}
+              variant="outline"
+              target="_blank"
+              className="flex items-center justify-center gap-2 !px-6 !py-3 md:!px-8 md:!py-4 text-sm md:text-base"
+            >
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              {t("cta.ctaSecondary")}
+            </Button>
+          </>
+        }
+      />
 
       {/* ─── 7. FINAL CTA ─── */}
       <DemoBookingCtaSection />

@@ -209,10 +209,9 @@ export default function FAQPage() {
               className="text-center py-12"
             >
               <Image
-                alt=""
+                alt="Bea Maskottchen — Keine Ergebnisse"
                 width={120}
                 height={120}
-                aria-hidden="true"
                 src="/Maskottchen/Maskottchen-Hero.png"
                 className="object-contain w-24 h-24 mx-auto mb-4"
                 style={{ filter: "drop-shadow(0 8px 16px rgba(0,0,0,0.08))" }}
@@ -267,11 +266,10 @@ export default function FAQPage() {
               </div>
               <div className="flex justify-center md:justify-end shrink-0">
                 <Image
-                  alt=""
+                  alt="Bea Maskottchen — Kontakt aufnehmen"
                   width={260}
                   height={260}
                   loading="lazy"
-                  aria-hidden="true"
                   src="/Maskottchen/Maskottchen-Hero.png"
                   className="object-contain w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 scale-150"
                   style={{ filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.08))" }}

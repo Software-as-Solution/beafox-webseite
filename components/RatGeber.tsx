@@ -48,19 +48,19 @@ const RATGEBER_CATEGORIES: RatgeberCategory[] = [
   {
     icon: Wrench,
     slug: "finanzen-fuer-azubis",
-    href: "/ratgeber/finanzen-fuer-azubis",
+    href: "/finanzen-fuer-azubis",
     mascot: "/Maskottchen/Maskottchen-Azubi.png",
   },
   {
     icon: Home,
     slug: "finanzen-bei-lebensereignissen",
-    href: "/ratgeber/finanzen-bei-lebensereignissen",
+    href: "/finanzen-bei-lebensereignissen",
     mascot: "/Maskottchen/Maskottchen-Lebenssituationen.png",
   },
   {
     icon: Briefcase,
     slug: "finanzen-fuer-berufseinsteiger",
-    href: "/ratgeber/finanzen-fuer-berufseinsteiger",
+    href: "/finanzen-fuer-berufseinsteiger",
     mascot: "/Maskottchen/Maskottchen-Berufseinsteiger.png",
   },
 ];
@@ -202,12 +202,11 @@ export default function RatgeberSection({
                         </div>
                         <div className="flex-shrink-0 -mt-1 -mr-1">
                           <Image
-                            alt=""
+                            alt={`Bea Maskottchen — ${row.title}`}
                             width={500}
                             height={500}
                             loading="lazy"
                             src={row.mascot}
-                            aria-hidden="true"
                             className="object-contain w-16 h-16 md:w-32 md:h-32 group-hover:scale-110 transition-transform duration-300 scale-150 relative top-2"
                           />
                         </div>
@@ -267,12 +266,11 @@ export default function RatgeberSection({
                         </div>
                         <div className="flex-shrink-0 -mt-1 -mr-1">
                           <Image
-                            alt=""
+                            alt={`Bea Maskottchen — ${tUnlimited(`targetGroups.${group.id}.title`)}`}
                             width={400}
                             height={400}
                             loading="lazy"
                             src={group.mascot}
-                            aria-hidden="true"
                             className="object-contain w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 group-hover:scale-110 transition-transform duration-300 scale-125 relative top-1"
                           />
                         </div>
@@ -324,12 +322,11 @@ export default function RatgeberSection({
                         {/* Mascot */}
                         <div className="flex-shrink-0 -mt-1 -mr-1">
                           <Image
-                            alt=""
+                            alt={`Bea Maskottchen — ${label}`}
                             width={400}
                             height={400}
                             loading="lazy"
                             src={cat.mascot}
-                            aria-hidden="true"
                             className="object-contain w-16 h-16 md:w-32 md:h-32 group-hover:scale-110 transition-transform duration-300 scale-150 relative top-2"
                           />
                         </div>

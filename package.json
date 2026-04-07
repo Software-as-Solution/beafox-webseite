@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@esbuild/linux-arm64": "^0.28.0",
     "@sendgrid/mail": "^8.1.6",
     "@stripe/react-stripe-js": "^5.4.1",
     "@stripe/stripe-js": "^8.6.1",

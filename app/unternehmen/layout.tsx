@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
         {
           width: 1200,
           height: 630,
-          url: `${BASE_URL}/assets/og-image-business.jpg`,
+          url: `${BASE_URL}/assets/og-image.jpg`,
           alt: "BeAFox für Unternehmen — Finanzbildung für Azubis",
         },
       ],
@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       creator: "@beafox_app",
       card: "summary_large_image",
       title: `${title} | BeAFox`,
-      images: [`${BASE_URL}/assets/og-image-business.jpg`],
+      images: [`${BASE_URL}/assets/og-image.jpg`],
     },
   };
 }

@@ -575,11 +575,10 @@ export default function ForBusinessPage() {
                   className="flex-1 rounded-2xl p-4 md:p-5 border border-primaryOrange/10 hover:border-primaryOrange/25 transition-all hover:shadow-md flex items-center gap-4 md:gap-5"
                 >
                   <Image
-                    alt=""
+                    alt={step.title}
                     width={200}
                     height={200}
                     src={step.image}
-                    aria-hidden="true"
                     className="object-contain w-16 h-16 md:w-24 md:h-24 flex-shrink-0 scale-150"
                     style={{
                       filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.08))",

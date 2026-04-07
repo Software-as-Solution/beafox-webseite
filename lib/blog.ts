@@ -951,12 +951,12 @@ export const BLOG_CATEGORY_SLUGS = BLOG_CATEGORIES.map((c) => c.slug);
 
 /** Öffentliche URL für Ratgeber-Kategorie */
 export function getRatgeberCategoryPath(categorySlug: string) {
-  return `/ratgeber/${categorySlug}`;
+  return `/${categorySlug}`;
 }
 
-/** Öffentliche URL für einen Guide (lebt unter /ratgeber/kategorie/slug) */
+/** Öffentliche URL für einen Guide (lebt unter /kategorie/slug) */
 export function getGuidePostPath(categorySlug: string, postSlug: string) {
-  return `/ratgeber/${categorySlug}/${postSlug}`;
+  return `/${categorySlug}/${postSlug}`;
 }
 
 /** @deprecated — benutze getGuidePostPath stattdessen */

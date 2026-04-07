@@ -135,7 +135,7 @@ export default function Header() {
     return cats.map((cat) => ({
       id: cat.slug,
       label: cat.navLabel,
-      href: `/ratgeber/${cat.slug}`,
+      href: `/${cat.slug}`,
       topics: getNavTopicsForCategory(cat.slug),
     }));
   }, []);
@@ -283,8 +283,8 @@ export default function Header() {
                   width={200}
                   height={200}
                   alt={t("images.logoAlt")}
-                  src="/assets/Logos/Logo-Big.png"
-                  className="object-contain h-14 w-auto scale-125 relative left-[10%]"
+                  src="/assets/Logos/Logo-Name.png"
+                  className="object-contain h-14 w-auto relative left-[2.5%]"
                 />
               </Link>
               {/* DESKTOP NAV */}
@@ -461,11 +461,35 @@ export default function Header() {
                           </Link>
                         ))}
                       </div>
+                      <Link
+                        href="/finanzrechner"
+                        onClick={closeAll}
+                        className="mt-4 flex items-center gap-2.5 rounded-xl px-3 py-2.5 transition-all hover:shadow-md"
+                        style={{
+                          background: "rgba(232,119,32,0.06)",
+                          border: "1px solid rgba(232,119,32,0.15)",
+                        }}
+                      >
+                        <div className="w-9 h-9 rounded-lg bg-primaryOrange/15 flex items-center justify-center flex-shrink-0">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#eb8a26" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="16" y1="18" x2="16" y2="18"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="12" y1="18" x2="12" y2="18"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/></svg>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs font-bold text-darkerGray leading-tight">
+                            Finanzrechner & Tools
+                          </div>
+                          <div className="text-[10px] text-lightGray mt-0.5">
+                            Brutto-Netto, Sparplan, Budget & mehr
+                          </div>
+                        </div>
+                        <div className="text-[11px] font-bold text-primaryOrange flex-shrink-0">
+                          →
+                        </div>
+                      </Link>
                       <a
                         target="_blank"
                         href={APP_DOWNLOAD_URL}
                         rel="noopener noreferrer"
-                        className="mt-5 flex items-center gap-2.5 rounded-xl px-3 py-2.5 transition-all hover:shadow-md"
+                        className="mt-2 flex items-center gap-2.5 rounded-xl px-3 py-2.5 transition-all hover:shadow-md"
                         style={{
                           background: "rgba(232,119,32,0.06)",
                           border: "1px solid rgba(232,119,32,0.15)",
@@ -757,6 +781,15 @@ export default function Header() {
                         </motion.div>
                       )}
                     </AnimatePresence>
+                    {/* Mobile Finanzrechner Link */}
+                    <Link
+                      href="/finanzrechner"
+                      onClick={closeAll}
+                      className="flex items-center gap-2 mx-4 mt-1 px-3 py-2.5 rounded-xl text-xs font-semibold text-primaryOrange bg-primaryOrange/5 hover:bg-primaryOrange/10 transition-all"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>
+                      Finanzrechner & Tools →
+                    </Link>
                   </div>
                   {/* Mobile Produkte */}
                   <div>

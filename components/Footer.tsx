@@ -251,7 +251,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {SORTED_BLOG_CATEGORIES.map((cat) => (
                   <li key={cat.slug}>
-                    <Link href={`/ratgeber/${cat.slug}`} className={LINK_CLASS}>
+                    <Link href={`/${cat.slug}`} className={LINK_CLASS}>
                       {cat.navLabel}
                     </Link>
                   </li>

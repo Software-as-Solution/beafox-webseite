@@ -2,7 +2,7 @@
   "rootMeta": {
     "title": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
     "titleTemplate": "%s | BeAFox",
-    "description": "BeAFox ist dein Begleiter für jede Finanzentscheidung. Die KI-gestützte Lern-App begleitet Azubis, Schüler und Berufseinsteiger durch echte Finanzsituationen — spielerisch, neutral und im eigenen Tempo.",
+    "description": "BeAFox ist dein Begleiter für jede Finanzentscheidung. Die KI-gestützte Lern-App für Azubis, Schüler und Berufseinsteiger — spielerisch, neutral und im eigenen Tempo.",
     "keywords": [
       "Finanzbildung App",
       "Finanzbildung für Azubis",
@@ -946,7 +946,7 @@
   },
   "about": {
     "meta": {
-      "title": "Über uns",
+      "title": "Über uns – Mission, Vision & Team",
       "description": "Erfahre mehr über BeAFox – unsere Mission, Werte und wie wir Finanzbildung für junge Menschen revolutionieren. Lerne unser Team und unsere Vision kennen."
     },
     "hero": {
@@ -2967,6 +2967,126 @@
     },
     "redirectNote": "Du wirst automatisch zum passenden App Store weitergeleitet."
   },
+  "finanzrechner": {
+    "rootMeta": {
+      "title": "Finanzrechner — Brutto-Netto, Sparplan & mehr | BeAFox",
+      "description": "Über 15 kostenlose Finanzrechner für junge Menschen. Brutto-Netto, Sparplan, Inflation und mehr — direkt im Browser, ohne Anmeldung."
+    },
+    "trust": {
+      "calculators": "Finanzrechner",
+      "free": "Komplett kostenlos",
+      "neutral": "Werbefrei & neutral",
+      "german": "Made in Germany"
+    },
+    "featured": {
+      "titlePre": "Beliebte",
+      "titleHighlight": "Rechner",
+      "description": "Mit diesen Rechnern fangen die meisten Nutzer an. Schnell, kostenlos und ohne Anmeldung.",
+      "badge": "Beliebt",
+      "cta": "Jetzt berechnen"
+    },
+    "all": {
+      "titlePre": "Alle",
+      "titleHighlight": "Finanzrechner",
+      "description": "Such dir den passenden Rechner aus — gefiltert nach Kategorie oder per Suche."
+    },
+    "appBanner": {
+      "title": "Bea hat noch viel mehr drauf",
+      "description": "In der BeAFox App begleitet dich Bea durch echte Finanzsituationen — vom ersten Gehalt bis zur Steuererklärung. Spielerisch und kostenlos.",
+      "cta": "App kostenlos laden"
+    },
+    "faq": {
+      "titlePre": "Häufige",
+      "titleHighlight": "Fragen",
+      "items": [
+        {
+          "question": "Sind die BeAFox-Rechner wirklich kostenlos?",
+          "answer": "Ja. Alle Rechner auf BeAFox sind komplett kostenlos und ohne Anmeldung nutzbar. Wir verdienen kein Geld mit Werbung oder dem Verkauf deiner Daten."
+        },
+        {
+          "question": "Wie aktuell sind die Steuersätze und Werte?",
+          "answer": "Die Rechner basieren auf den aktuellen Werten für 2026 — Mindestlohn, Grundfreibetrag, Sozialversicherungsbeiträge und alle relevanten Steuersätze. Wir aktualisieren die Werte jährlich."
+        },
+        {
+          "question": "Speichert BeAFox meine eingegebenen Daten?",
+          "answer": "Nein. Alle Berechnungen passieren direkt in deinem Browser. Wir speichern keine Eingaben und tracken nichts personenbezogen."
+        },
+        {
+          "question": "Brauche ich ein Konto, um die Rechner zu nutzen?",
+          "answer": "Nein. Du kannst alle Rechner direkt im Browser nutzen, ohne dich anzumelden. Erst wenn du Bea als persönlichen Finanzbegleiter in der App nutzen willst, brauchst du ein kostenloses Konto."
+        }
+      ]
+    },
+    "hero": {
+      "badge": "Finanzrechner",
+      "titlePre": "Unsere BeAFox",
+      "titleHighlight": "Rechner",
+      "description": "Du möchtest dein Gehalt, dein Budget oder deine Steuererklärung berechnen? Wir haben die passenden Rechner für dich.",
+      "cardText": "Berechne dein Gehalt, plane dein Budget und behalte deine Finanzen im Blick.",
+      "ctaPrimary": "App herunterladen",
+      "ctaSecondary": "Rechner entdecken"
+    },
+    "search": {
+      "titlePre": "Finde den passenden",
+      "titleHighlight": "Rechner",
+      "placeholder": "Rechner suchen...",
+      "categoriesLabel": "Kategorien filtern",
+      "clearAria": "Suche leeren"
+    },
+    "grid": {
+      "emptyState": "Keine Rechner gefunden. Versuche es mit anderen Suchbegriffen.",
+      "resetFilters": "Filter zurücksetzen",
+      "resultSingular": "Rechner",
+      "resultPlural": "Rechner",
+      "openCalculator": "Rechner öffnen"
+    },
+    "downloadCta": {
+      "title": "Mehr als nur Rechner?",
+      "description": "Bea begleitet dich durch echte Finanzsituationen — vom ersten Gehalt bis zur Steuererklärung. Spielerisch, neutral und in deinem Tempo.",
+      "button": "BeAFox herunterladen",
+      "secondaryButton": "Unlimited entdecken"
+    },
+    "detail": {
+      "inputsTitle": "Eingaben",
+      "resetButton": "Zurücksetzen",
+      "resultsTitle": "Ergebnisse",
+      "tipsTitle": "Tipps & Hinweise",
+      "notFound": {
+        "title": "Rechner nicht gefunden",
+        "description": "Dieser Rechner existiert leider nicht.",
+        "backButton": "Alle Rechner anzeigen"
+      },
+      "appCta": {
+        "title": "Mehr als nur Rechner?",
+        "description": "Bea begleitet dich durch echte Finanzsituationen — spielerisch und in deinem Tempo.",
+        "button": "App herunterladen"
+      },
+      "resultCta": {
+        "title": "Hat dir der Rechner geholfen?",
+        "description": "Bea begleitet dich durch echte Finanzsituationen. Direkt in der App.",
+        "button": "BeAFox kostenlos laden"
+      },
+      "howItWorks": {
+        "titlePre": "So funktioniert",
+        "titleHighlight": "der Rechner"
+      },
+      "tips": {
+        "titlePre": "Tipps &",
+        "titleHighlight": "Hinweise"
+      },
+      "useCases": {
+        "titlePre": "Wann nutzt du",
+        "titleHighlight": "diesen Rechner?"
+      },
+      "faq": {
+        "titlePre": "Häufig gestellte",
+        "titleHighlight": "Fragen"
+      },
+      "related": {
+        "titlePre": "Weitere Rechner in"
+      }
+    }
+  },
   "shop": {
     "meta": {
       "title": "Shop – BeAFox Merch",
@@ -3304,7 +3424,7 @@
   },
   "ratgeber": {
     "meta": {
-      "title": "Ratgeber | BeAFox",
+      "title": "Finanz-Ratgeber — 45+ Guides für Azubis, Schüler & Studenten",
       "description": "Finanz-Ratgeber für junge Lebensphasen: sechs Themenwelten als Pillar Pages — von Schule bis Investieren.",
       "ogTitle": "BeAFox Ratgeber — Finanzwissen für junge Lebensphasen",
       "ogDescription": "Ratgeber-Hub mit Kategorien zu Taschengeld, Ausbildung, Studium, Berufsstart, Lebensereignissen und Investieren."
