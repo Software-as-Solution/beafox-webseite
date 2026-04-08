@@ -4,7 +4,7 @@ import { PawPrint } from "lucide-react";
 import type { ReactNode } from "react";
 
 // TYPES
-interface HomeSectionHeaderProps {
+interface SectionHeaderProps {
   preTitle?: string;
   title?: ReactNode;
   highlight?: string;
@@ -26,7 +26,7 @@ const BASE_SUBTITLE =
   "text-lightGray text-sm md:text-base lg:text-lg max-w-2xl mx-auto whitespace-pre-line";
 
 // COMPONENT
-export default function HomeSectionHeader({
+export default function SectionHeader({
   title,
   preTitle,
   subtitle,
@@ -35,7 +35,7 @@ export default function HomeSectionHeader({
   titleClassName = "",
   wrapperClassName = "",
   subtitleClassName = "",
-}: HomeSectionHeaderProps) {
+}: SectionHeaderProps) {
   return (
     <div className={`${BASE_WRAPPER} ${wrapperClassName}`.trim()}>
       <div className={`${BASE_PILL} ${pillClassName}`.trim()}>

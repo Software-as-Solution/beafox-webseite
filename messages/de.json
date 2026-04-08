@@ -40,6 +40,7 @@
       "about": "Über uns",
       "home": "Startseite",
       "guide": "Ratgeber",
+      "magazin": "Magazin",
       "calculators": "Rechner",
       "allGuidesFor": "Alle {category}-Ratgeber →",
       "allCalculators": "Alle Rechner ansehen →"
@@ -108,6 +109,85 @@
     "closeAria": "Schließen",
     "title": "BeAFox-App herunterladen",
     "description": "Die BeAFox App ist nur für mobile Geräte verfügbar. Öffne diesen Link auf deinem Smartphone oder Tablet, um die App herunterzuladen."
+  },
+  "magazin": {
+    "title": "Beas Magazin - Insights zu Finanzbildung",
+    "description": "Wertvolle Insights rund um Finanzbildung für Unternehmen, Schulen und Ausbildungsbetriebe — von Expert:innen für Praxis-Profis.",
+    "page": {
+      "hero": {
+        "badge": "Forschung & Praxis",
+        "title": "Beas Magazin",
+        "subtitle": "Wo Forschung auf Praxis trifft:\nDiskussionsbeiträge, Studien und Analysen\nzur finanziellen Bildung in Deutschland."
+      },
+      "social": {
+        "instagram": "Instagram",
+        "linkedin": "LinkedIn",
+        "facebook": "Facebook",
+        "youtube": "YouTube",
+        "tiktok": "TikTok"
+      },
+      "featured": {
+        "title": "Meistgelesene Beiträge",
+        "description": "Die beliebtesten Studien und Analysen unserer Redaktion."
+      },
+      "allArticles": {
+        "title": "Entdecke das ganze Magazin",
+        "subtitle": "Durchstöbere Studien, Diskussionsbeiträge und Analysen"
+      },
+      "newsletter": {
+        "badge": "Newsletter",
+        "title": "Verpasse keinen Beitrag",
+        "subtitle": "Hol dir Beas besten Insights jeden Monat direkt in dein Postfach. Kein Spam, jederzeit abbestellbar.",
+        "emailPlaceholder": "Deine E-Mail-Adresse",
+        "emailAriaLabel": "E-Mail-Adresse",
+        "button": "Abonnieren",
+        "privacyPrefix": "Mit der Anmeldung akzeptierst du unsere",
+        "privacyLink": "Datenschutzerklärung"
+      },
+      "products": {
+        "title": "BeAFox in der Praxis",
+        "subtitle": "Vom Wissen zum Handeln — entdecke wie BeAFox Privatpersonen, Unternehmen und Bildungseinrichtungen unterstützt.",
+        "cardLinkLabel": "Mehr erfahren",
+        "unlimited": {
+          "badge": "Für dich persönlich",
+          "title": "BeAFox Unlimited",
+          "description": "Werde finanziell handlungsfähig — mit Bea als persönlichem KI-Coach. Über 30 Lernreisen, alle Rechner und unbegrenzter Zugang zu deiner Finanzwelt.",
+          "primaryCta": "App entdecken",
+          "secondaryCta": "Mehr über Unlimited"
+        },
+        "business": {
+          "badge": "Für Unternehmen",
+          "title": "Financial Wellness als Mitarbeiter-Benefit",
+          "description": "Reduziere Stress in deinem Team und stärke die Mitarbeiterbindung. Erfahre wie BeAFox als Corporate Benefit funktioniert."
+        },
+        "schools": {
+          "badge": "Für Bildung",
+          "title": "Finanzbildung im Unterricht",
+          "description": "Lehrplankompatibel, gamifiziert und gemeinsam mit Lehrkräften entwickelt. Entdecke unser Angebot für Schulen und Bildungseinrichtungen."
+        }
+      },
+      "articleCard": {
+        "readingTime": "{minutes} Min. Lesezeit",
+        "readMore": "Lesen"
+      }
+    },
+    "article": {
+      "notFoundTitle": "Artikel nicht gefunden",
+      "magazineLabel": "Beas Magazin",
+      "publisherFallback": "BeAFox",
+      "draftNotice": "Dieser Artikel wird gerade erstellt. Bitte schauen Sie später erneut vorbei.",
+      "faqTitle": "Häufig gestellte Fragen",
+      "linkedinProfile": "LinkedIn Profil",
+      "shareTitle": "Artikel teilen:",
+      "emailLabel": "E-Mail",
+      "downloadButton": "Download",
+      "relatedTitle": "Verwandte Artikel",
+      "downloadNow": "Jetzt herunterladen",
+      "readingTime": "{minutes} Min. Lesezeit",
+      "copyLinkTitle": "Link kopieren",
+      "linkedinLabel": "LinkedIn",
+      "xLabel": "X"
+    }
   },
   "cookie": {
     "banner": {
@@ -210,7 +290,63 @@
       "news": "News",
       "appUpdates": "App-Updates"
     },
-    "copyright": "Copyright © {year} BeAFox UG (haftungsbeschränkt)"
+    "copyright": "Copyright © {year} BeAFox UG (haftungsbeschränkt)",
+    "magazin": {
+      "title": "Magazin",
+      "hub": "Beas Magazin",
+      "allArticles": "Alle Artikel anzeigen"
+    }
+  },
+  "magazinContent": {
+    "hub": {
+      "title": "Beas Magazin",
+      "subtitle": "Wertvolle Insights rund um Finanzbildung für Unternehmen, Schulen und Ausbildungsbetriebe — von Expert:innen für Praxis-Profis.",
+      "searchPlaceholder": "Artikel durchsuchen...",
+      "featuredTitle": "Empfohlene Artikel",
+      "latestTitle": "Neueste Artikel",
+      "allArticles": "Alle Beiträge anzeigen",
+      "clusterTitle": "Themen entdecken",
+      "articlesCount": "{count} Artikel",
+      "newsletterTitle": "Verpasse keinen Beitrag — Hol dir Beas Insights direkt in dein Postfach",
+      "newsletterText": "Monatlich. Kein Spam. Jederzeit abbestellbar.",
+      "newsletterButton": "Abonnieren",
+      "ctaTitle": "Finanzbildung in Ihrem Unternehmen einführen?",
+      "ctaText": "Erfahren Sie in 15 Minuten, wie BeAFox funktioniert — mit Live-Demo und ROI-Berechnung.",
+      "ctaButton": "Kostenlose Demo buchen",
+      "filterAll": "Alle Beiträge"
+    },
+    "article": {
+      "readingTime": "{minutes} Min. Lesezeit",
+      "publishedAt": "Veröffentlicht am {date}",
+      "updatedAt": "Aktualisiert am {date}",
+      "tocTitle": "Inhaltsverzeichnis",
+      "authorTitle": "Über den Autor",
+      "moreFromAuthor": "Mehr Artikel von {name}",
+      "relatedTitle": "Verwandte Artikel",
+      "faqTitle": "Häufig gestellte Fragen",
+      "shareTitle": "Artikel teilen",
+      "downloadTitle": "Kostenloser Download",
+      "downloadGatedText": "Geben Sie Ihre E-Mail ein, um die Datei herunterzuladen.",
+      "downloadButton": "Jetzt herunterladen",
+      "backToHub": "← Zurück zum Magazin"
+    },
+    "cluster": {
+      "articlesIn": "Artikel in {cluster}",
+      "filterAll": "Alle Typen",
+      "sortNewest": "Neueste zuerst",
+      "sortPopular": "Beliebteste",
+      "sortReadingTime": "Kürzeste Lesezeit",
+      "relatedClusters": "Verwandte Themen",
+      "emptyState": "Noch keine Artikel in dieser Kategorie. Schauen Sie bald wieder vorbei!"
+    },
+    "types": {
+      "guide": "Leitfaden",
+      "article": "Artikel",
+      "caseStudy": "Praxisbericht",
+      "whitepaper": "Whitepaper",
+      "template": "Vorlage",
+      "data": "Studie"
+    }
   },
   "home": {
     "hero": {

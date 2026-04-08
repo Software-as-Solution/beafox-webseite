@@ -67,7 +67,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
           const isLast = index === breadcrumbItems.length - 1;
 
           return (
-            <li key={item.href} className="flex items-center">
+            <li key={`${item.href}-${index}`} className="flex items-center">
               {index === 0 ? (
                 <Link
                   href={item.href}

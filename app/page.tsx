@@ -12,6 +12,7 @@ import StructuredData from "@/components/StructuredData";
 import StickyMobileCTA from "@/components/StickyMobileCta";
 // CUSTOM COMPONENTS — below-the-fold (dynamically loaded for smaller initial bundle)
 const RatgeberSection = dynamic(() => import("@/components/RatGeber"));
+const MagazinPreview = dynamic(() => import("@/components/MagazinPreview"));
 const DownloadModal = dynamic(() => import("@/components/DownloadModal"));
 const TestimonialsCarousel = dynamic(() => import("@/components/TestimonialCarousel"));
 const DemoBookingCtaSection = dynamic(() => import("@/components/DemoBookingCtaSection"));
@@ -597,7 +598,10 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ─── 9. CTA ─── */}
+      {/* ─── 9. MAGAZIN PREVIEW ─── */}
+      <MagazinPreview />
+
+      {/* ─── 10. CTA ─── */}
       <DemoBookingCtaSection />
 
       {/* MODALS + STICKY */}

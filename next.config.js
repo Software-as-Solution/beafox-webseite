@@ -135,6 +135,10 @@ const nextConfig = {
       // ── Ratgeber updates → /updates ──
       { source: "/ratgeber/updates", destination: "/updates", permanent: true },
 
+      // ── Wissen → Magazin Rebrand ──
+      { source: "/wissen", destination: "/magazin", permanent: true },
+      { source: "/wissen/:path*", destination: "/magazin/:path*", permanent: true },
+
       // ── Legacy /blog → /news ──
       { source: "/blog", destination: "/news", permanent: true },
       { source: "/blog/:path*", destination: "/news/:path*", permanent: true },

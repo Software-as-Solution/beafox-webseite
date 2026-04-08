@@ -129,6 +129,85 @@
     "title": "Download the BeAFox app",
     "description": "The BeAFox app is only available on mobile devices. Open this link on your smartphone or tablet to download the app."
   },
+  "magazin": {
+    "title": "Bea's Magazine - Insights on Financial Education",
+    "description": "Valuable insights about financial education for companies, schools and training centers — from experts for practice professionals.",
+    "page": {
+      "hero": {
+        "badge": "Insights for professionals",
+        "title": "Bea's Magazine",
+        "subtitle": "Valuable insights about financial education\nfor companies, schools and training centers —\nfrom experts for practice professionals."
+      },
+      "social": {
+        "instagram": "Instagram",
+        "linkedin": "LinkedIn",
+        "facebook": "Facebook",
+        "youtube": "YouTube",
+        "tiktok": "TikTok"
+      },
+      "featured": {
+        "badge": "Recommendations",
+        "title": "Current favorites"
+      },
+      "allArticles": {
+        "badge": "All articles",
+        "title": "Discover the full magazine",
+        "subtitle": "Filter by topic and find articles, guides and studies on financial education in companies, schools and training."
+      },
+      "newsletter": {
+        "badge": "Newsletter",
+        "title": "Don't miss an article",
+        "subtitle": "Get Bea's best insights every month directly to your inbox. No spam, unsubscribe anytime.",
+        "emailPlaceholder": "Your email address",
+        "emailAriaLabel": "Email address",
+        "button": "Subscribe",
+        "privacyPrefix": "By signing up, you accept our",
+        "privacyLink": "Privacy Policy"
+      },
+      "seo": {
+        "title": "What is Bea's Magazine?",
+        "subtitle": "Your go-to place for well-founded insights and practical advice on financial education.",
+        "footerPrefix": "All articles are written by experts and updated regularly. Follow us on",
+        "footerAnd": "and",
+        "cards": {
+          "linkLabel": "Learn more",
+          "business": {
+            "title": "For businesses",
+            "text": "Financial wellness as an employee benefit. ROI models, GDPR-compliant implementation and best practices."
+          },
+          "schools": {
+            "title": "For schools",
+            "text": "Curriculum-compatible financial education with gamified content. Practical tips and research findings."
+          },
+          "training": {
+            "title": "For training companies",
+            "text": "Engage apprentices emotionally and professionally. Success examples and survey insights from practice."
+          }
+        }
+      },
+      "articleCard": {
+        "readingTime": "{minutes} min read",
+        "readMore": "Read"
+      }
+    },
+    "article": {
+      "notFoundTitle": "Article not found",
+      "magazineLabel": "Bea's Magazine",
+      "publisherFallback": "BeAFox",
+      "draftNotice": "This article is currently being prepared. Please check back later.",
+      "faqTitle": "Frequently asked questions",
+      "linkedinProfile": "LinkedIn profile",
+      "shareTitle": "Share article:",
+      "emailLabel": "Email",
+      "downloadButton": "Download",
+      "relatedTitle": "Related articles",
+      "downloadNow": "Download now",
+      "readingTime": "{minutes} min read",
+      "copyLinkTitle": "Copy link",
+      "linkedinLabel": "LinkedIn",
+      "xLabel": "X"
+    }
+  },
   "cookie": {
     "banner": {
       "title": "Cookie settings",

@@ -416,6 +416,14 @@ export default function Header() {
                     />
                   </button>
                 </div>
+                {/* Magazin */}
+                <Link
+                  href="/magazin"
+                  aria-current={isHydrated && pathname.startsWith("/magazin") ? "page" : undefined}
+                  className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${isHydrated && pathname.startsWith("/magazin") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                >
+                  {t("nav.magazin")}
+                </Link>
                 <div className="relative" ref={productsTriggerRef}>
                   <button
                     type="button"
@@ -1153,6 +1161,15 @@ export default function Header() {
                       )}
                     </AnimatePresence>
                   </div>
+                  {/* Mobile Magazin */}
+                  <Link
+                    href="/magazin"
+                    onClick={closeAll}
+                    aria-current={isHydrated && pathname.startsWith("/magazin") ? "page" : undefined}
+                    className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${isHydrated && pathname.startsWith("/magazin") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
+                  >
+                    {t("nav.magazin")}
+                  </Link>
                   {/* Mobile Produkte */}
                   <div>
                     <button

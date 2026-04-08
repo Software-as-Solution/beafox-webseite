@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { BLOG_CATEGORIES, BLOG_POSTS } from "@/lib/blog";
 import { CALCULATORS } from "@/lib/calculators";
+import { getAllArticles, getAllClusters } from "@/lib/wissen";
 
 // CONSTANTS
 const BASE_URL = "https://beafox.app";
@@ -54,6 +55,7 @@ const ROUTE_CONFIG: Record<string, RouteConfig> = {
   },
   "/faq": { priority: 0.8, changefreq: "monthly" },
   "/kontakt": { priority: 0.8, changefreq: "monthly" },
+  "/magazin": { priority: 0.9, changefreq: "weekly" },
   "/ratgeber": { priority: 0.8, changefreq: "weekly" },
   "/news": { priority: 0.8, changefreq: "weekly" },
   "/shop": { priority: 0.7, changefreq: "weekly" },
@@ -66,7 +68,7 @@ const ROUTE_CONFIG: Record<string, RouteConfig> = {
   "/barrierefreiheit": { priority: 0.3, changefreq: "yearly" },
 };
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static routes
   const staticRoutes: MetadataRoute.Sitemap = Object.entries(ROUTE_CONFIG).map(
     ([route, config]) => ({
@@ -114,5 +116,35 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticRoutes, ...categoryRoutes, ...guideRoutes, ...calculatorRoutes];
+  // ── Wissen Artikel (hub is already in ROUTE_CONFIG) ──
+  let wissenRoutes: MetadataRoute.Sitemap = [];
+
+  try {
+    const [clusters, articles] = await Promise.all([
+      getAllClusters(),
+      getAllArticles(),
+    ]);
+
+    // Cluster landing pages
+    const clusterRoutes: MetadataRoute.Sitemap = clusters.map((cluster) => ({
+      url: `${BASE_URL}/magazin/${cluster.slug}`,
+      lastModified: BUILD_TIME,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+
+    // Individual wissen articles
+    const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
+      url: `${BASE_URL}/magazin/${article.cluster?.slug || "artikel"}/${article.slug}`,
+      lastModified: new Date(article.publishedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    }));
+
+    wissenRoutes = [...wissenRoutes, ...clusterRoutes, ...articleRoutes];
+  } catch {
+    // If Sanity is unreachable, still include the hub page
+  }
+
+  return [...staticRoutes, ...categoryRoutes, ...guideRoutes, ...calculatorRoutes, ...wissenRoutes];
 }

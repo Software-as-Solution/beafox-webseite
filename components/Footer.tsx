@@ -10,6 +10,15 @@ import { useLocale, useTranslations } from "next-intl";
 import { Mail, ArrowRight, CheckCircle } from "lucide-react";
 // DATA
 import { BLOG_CATEGORIES } from "@/lib/blog";
+// Magazin Cluster links for footer (static, matches Sanity data)
+const MAGAZIN_CLUSTERS = [
+  { slug: "ausbildung", label: "Ausbildung & Azubis" },
+  { slug: "schule", label: "Schule & Bildung" },
+  { slug: "hr", label: "HR & Mitarbeiterförderung" },
+  { slug: "studien", label: "Studien & Daten" },
+  { slug: "praxis", label: "Praxis & Umsetzung" },
+  { slug: "finanzkompetenz", label: "Finanzkompetenz & Tools" },
+] as const;
 
 // CONSTANTS
 const LOCALE_COOKIE_MAX_AGE = 31536000;
@@ -244,7 +253,27 @@ export default function Footer() {
       {/* ─── Links Grid — ein zentrierter Block (max-w), Linie + Text gleiche Breite, linksbündig ─── */}
       <div className="w-full px-4 sm:px-6 py-16">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 mb-12 text-left justify-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 sm:gap-10 mb-12 text-left justify-items-center">
+            {/* Magazin (B2B) */}
+            <nav aria-label="Magazin">
+              <h3 className="text-darkerGray font-bold mb-5 text-sm md:text-base">
+                {t("magazin.title")}
+              </h3>
+              <ul className="space-y-2.5">
+                <li>
+                  <Link href="/magazin" className={LINK_CLASS}>
+                    {t("magazin.hub")}
+                  </Link>
+                </li>
+                {MAGAZIN_CLUSTERS.map((cluster) => (
+                  <li key={cluster.slug}>
+                    <Link href={`/magazin/${cluster.slug}`} className={LINK_CLASS}>
+                      {cluster.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             {/* Ratgeber */}
             <nav aria-label="Ratgeber">
               <h3 className="text-darkerGray font-bold mb-5 text-sm md:text-base">
