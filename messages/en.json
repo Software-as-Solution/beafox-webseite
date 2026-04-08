@@ -1069,6 +1069,12 @@
           ]
         }
       ]
+    },
+    "crossLinks": {
+      "title": "Discover more",
+      "ratgeber": "Financial Guides",
+      "calculators": "Financial Calculators",
+      "faq": "Frequently Asked Questions"
     }
   },
   "about": {
@@ -1354,6 +1360,12 @@
       "ctaCardBodyLine2": "We will put together an offer that fits your apprentice numbers and budget.",
       "requestQuoteCta": "Request a quote",
       "bookCta": "Book a call"
+    },
+    "crossLinks": {
+      "title": "Discover more",
+      "schools": "For Schools",
+      "bildungshaus": "For Education Centers",
+      "ratgeber": "Financial Guides"
     }
   },
   "ihk": {
@@ -1712,6 +1724,12 @@
       "solutionMascotAlt": "Bea — financial education for schools",
       "fundingMascotAlt": "Bea — financial companion for schools",
       "processStepMascotAlt": "Bea — {title}"
+    },
+    "crossLinks": {
+      "title": "Discover more",
+      "business": "For Companies",
+      "bildungshaus": "For Education Centers",
+      "ratgeber": "Financial Guides"
     },
     "structuredData": {
       "serviceName": "BeAFox for schools",

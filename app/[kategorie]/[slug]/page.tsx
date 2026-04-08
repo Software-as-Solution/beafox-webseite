@@ -178,12 +178,49 @@ export default function GuideArticlePage() {
     ],
   };
 
+  // Article structured data for SEO (E-E-A-T)
+  const articleUrl = `https://beafox.app${getRatgeberCategoryPath(kategorie)}/${slug}`;
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description: excerpt,
+    url: articleUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    image: post?.image ? `https://beafox.app${post.image}` : "https://beafox.app/assets/og-image.webp",
+    datePublished: sanityGuide?.publishedAt ?? post?.publishedAt ?? undefined,
+    dateModified: sanityGuide?.publishedAt ?? post?.publishedAt ?? undefined,
+    wordCount: readingTime * 200,
+    author: {
+      "@type": "Organization",
+      name: "BeAFox Redaktion",
+      url: "https://beafox.app/ueber-uns",
+      logo: "https://beafox.app/assets/Logos/Logo.webp",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "BeAFox",
+      url: "https://beafox.app",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://beafox.app/assets/Logos/Logo.webp",
+      },
+    },
+    inLanguage: "de-DE",
+    isAccessibleForFree: true,
+    ...(tags.length > 0 ? { keywords: tags.join(", ") } : {}),
+  };
+
   return (
     <>
-      {/* ── BREADCRUMB STRUCTURED DATA ───────────────────── */}
+      {/* ── STRUCTURED DATA (Breadcrumb + Article) ───────── */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
       {/* ── READING PROGRESS BAR ─────────────────────────── */}
@@ -270,14 +307,27 @@ export default function GuideArticlePage() {
               <div className="w-8 h-8 rounded-full bg-primaryOrange/20 flex items-center justify-center text-primaryOrange font-bold text-xs">
                 BF
               </div>
-              <div>
-                <span className="text-darkerGray text-xs font-medium">BeAFox Redaktion</span>
-                <span className="text-gray-300 mx-2">·</span>
-                <span className="text-lightGray text-xs">
-                  {post?.publishedAt
-                    ? new Date(post.publishedAt).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" })
+              <div className="flex flex-wrap items-center gap-x-1">
+                <a href="/ueber-uns" className="text-darkerGray text-xs font-medium hover:text-primaryOrange transition-colors" rel="author">
+                  BeAFox Redaktion
+                </a>
+                <span className="text-gray-300 mx-1">·</span>
+                <time
+                  dateTime={sanityGuide?.publishedAt ?? post?.publishedAt ?? ""}
+                  className="text-lightGray text-xs"
+                >
+                  {(sanityGuide?.publishedAt ?? post?.publishedAt)
+                    ? new Date(sanityGuide?.publishedAt ?? post!.publishedAt).toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })
                     : "2026"}
-                </span>
+                </time>
+                {sanityGuide?.publishedAt && post?.publishedAt && sanityGuide.publishedAt !== post.publishedAt && (
+                  <>
+                    <span className="text-gray-300 mx-1">·</span>
+                    <span className="text-lightGray text-xs">
+                      Aktualisiert: <time dateTime={sanityGuide.publishedAt}>{new Date(sanityGuide.publishedAt).toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })}</time>
+                    </span>
+                  </>
+                )}
               </div>
             </div>
             <button

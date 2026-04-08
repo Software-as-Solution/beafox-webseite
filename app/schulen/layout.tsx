@@ -29,6 +29,12 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${BASE_URL}/assets/og-image.webp`,
           alt: "BeAFox für Schulen — Finanzbildung im Unterricht",
         },
+        {
+          width: 500,
+          height: 500,
+          url: `${BASE_URL}/Maskottchen/Maskottchen-School.webp`,
+          alt: "BeAFox Schul-Maskottchen",
+        },
       ],
     },
     twitter: {

@@ -97,9 +97,12 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     icons: {
-      shortcut: "/assets/Logos/Logo.webp",
-      icon: { url: "/assets/Logos/Logo.webp", type: "image/png" },
-      apple: { url: "/assets/Logos/Logo.webp", type: "image/png" },
+      shortcut: "/favicon.png",
+      icon: [
+        { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      ],
+      apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     },
     themeColor: THEME_COLOR,
   };
@@ -130,8 +133,14 @@ export default async function RootLayout({
             dangerouslySetInnerHTML={{ __html: ANALYTICS_INIT_SCRIPT }}
           />
           <ShopCartProvider>
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primaryOrange focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:outline-none"
+            >
+              Zum Inhalt springen
+            </a>
             <Header />
-            <main className="min-h-screen">{children}</main>
+            <main id="main-content" className="min-h-screen">{children}</main>
             <ShopCart />
             <Footer />
           </ShopCartProvider>

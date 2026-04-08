@@ -983,6 +983,12 @@
           ]
         }
       ]
+    },
+    "crossLinks": {
+      "title": "Mehr entdecken",
+      "ratgeber": "Finanz-Ratgeber",
+      "calculators": "Finanzrechner",
+      "faq": "Häufige Fragen"
     }
   },
   "about": {
@@ -1264,6 +1270,12 @@
       "ctaCardBodyLine2": "Wir erstellen ein Angebot, das zu Ihrer Azubi-Anzahl und Ihrem Budget passt!",
       "requestQuoteCta": "Angebot anfordern",
       "bookCta": "Termin vereinbaren"
+    },
+    "crossLinks": {
+      "title": "Weitere Angebote entdecken",
+      "schools": "Für Schulen",
+      "bildungshaus": "Für Bildungshäuser",
+      "ratgeber": "Finanz-Ratgeber"
     }
   },
   "ihk": {
@@ -1621,6 +1633,12 @@
       "solutionMascotAlt": "Bea — Finanzbildung für Schulen",
       "fundingMascotAlt": "Bea — Finanzbegleiterin für Schulen",
       "processStepMascotAlt": "Bea — {title}"
+    },
+    "crossLinks": {
+      "title": "Weitere Angebote entdecken",
+      "business": "Für Unternehmen",
+      "bildungshaus": "Für Bildungshäuser",
+      "ratgeber": "Finanz-Ratgeber"
     },
     "structuredData": {
       "serviceName": "BeAFox für Schulen",

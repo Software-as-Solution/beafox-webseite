@@ -2,20 +2,23 @@
 
 // STANDARD COMPONENTS
 import Image from "next/image";
-// CUSTOM COMPONENTS
+import dynamic from "next/dynamic";
+// CUSTOM COMPONENTS — above-the-fold (eagerly loaded)
 import Button from "@/components/Button";
 import Section from "@/components/Section";
 import LandingHero from "@/components/LandingHero";
-import RatgeberSection from "@/components/RatGeber";
-import DownloadModal from "@/components/DownloadModal";
 import SectionHeader from "@/components/SectionHeader";
 import StructuredData from "@/components/StructuredData";
 import StickyMobileCTA from "@/components/StickyMobileCta";
-import TestimonialsCarousel from "@/components/TestimonialCarousel";
-import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
-import DownloadBannerSection from "@/components/DownloadBannerSection";
-import ContentShowcaseSection from "@/components/ContentShowcaseSection";
-import FaqAccordion, { type FaqAccordionItem } from "@/components/FaqAccordion";
+// CUSTOM COMPONENTS — below-the-fold (dynamically loaded for smaller initial bundle)
+const RatgeberSection = dynamic(() => import("@/components/RatGeber"));
+const DownloadModal = dynamic(() => import("@/components/DownloadModal"));
+const TestimonialsCarousel = dynamic(() => import("@/components/TestimonialCarousel"));
+const DemoBookingCtaSection = dynamic(() => import("@/components/DemoBookingCtaSection"));
+const DownloadBannerSection = dynamic(() => import("@/components/DownloadBannerSection"));
+const ContentShowcaseSection = dynamic(() => import("@/components/ContentShowcaseSection"));
+const FaqAccordion = dynamic(() => import("@/components/FaqAccordion"));
+import { type FaqAccordionItem } from "@/components/FaqAccordion";
 // IMPORTS
 import { useState, useCallback, useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";

@@ -9,7 +9,9 @@ import LandingHero from "@/components/LandingHero";
 import SectionHeader from "@/components/SectionHeader";
 import TrustSignalBar from "@/components/TrustSignalBar";
 import StructuredData from "@/components/StructuredData";
-import DemoBookingCtaSection from "@/components/DemoBookingCtaSection";
+// Below-fold: dynamisch geladen
+import dynamic from "next/dynamic";
+const DemoBookingCtaSection = dynamic(() => import("@/components/DemoBookingCtaSection"));
 // IMPORTS
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -709,6 +711,30 @@ export default function ForSchoolsPage() {
       </Section>
       {/* ─── 9. CTA ─── */}
       <DemoBookingCtaSection />
+      {/* ─── 10. CROSS-LINKS ─── */}
+      <Section className="bg-white py-10 md:py-14">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
+            {t("crossLinks.title")}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { href: "/unternehmen", label: t("crossLinks.business"), icon: "🏢" },
+              { href: "/bildungshaus", label: t("crossLinks.bildungshaus"), icon: "🎓" },
+              { href: "/ratgeber", label: t("crossLinks.ratgeber"), icon: "📚" },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="flex items-center justify-center gap-2 px-5 py-4 rounded-xl border border-gray-200 hover:border-primaryOrange hover:shadow-md transition-all text-darkerGray hover:text-primaryOrange font-medium"
+              >
+                <span>{link.icon}</span>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </Section>
       {/* STRUCTURED DATA */}
       <StructuredData
         id="schools-service"

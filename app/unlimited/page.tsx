@@ -627,7 +627,31 @@ export default function BeAFoxUnlimitedPage() {
       </Section>
       {/* ─── 8. CTA ─── */}
       <DownloadBannerSection />
-      {/* ─── 9. STRUCTURED DATA ─── */}
+      {/* ─── 9. CROSS-LINKS ─── */}
+      <Section className="bg-white py-10 md:py-14">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <h2 className="text-xl md:text-2xl font-bold text-darkerGray mb-6">
+            {t("crossLinks.title")}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { href: "/ratgeber", label: t("crossLinks.ratgeber"), icon: "📚" },
+              { href: "/finanzrechner", label: t("crossLinks.calculators"), icon: "🧮" },
+              { href: "/faq", label: t("crossLinks.faq"), icon: "❓" },
+            ].map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="flex items-center justify-center gap-2 px-5 py-4 rounded-xl border border-gray-200 hover:border-primaryOrange hover:shadow-md transition-all text-darkerGray hover:text-primaryOrange font-medium"
+              >
+                <span>{link.icon}</span>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </Section>
+      {/* ─── 10. STRUCTURED DATA ─── */}
       <StructuredData
         id="unlimited-product"
         data={{
@@ -644,6 +668,7 @@ export default function BeAFoxUnlimitedPage() {
           },
           aggregateRating: {
             bestRating: "5",
+            worstRating: "1",
             ratingCount: "71",
             ratingValue: "5.0",
             "@type": "AggregateRating",

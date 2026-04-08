@@ -31,6 +31,12 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${BASE_URL}/assets/og-image.webp`,
           alt: "BeAFox für Unternehmen — Finanzbildung für Azubis",
         },
+        {
+          width: 500,
+          height: 500,
+          url: `${BASE_URL}/Maskottchen/Maskottchen-Business.webp`,
+          alt: "BeAFox Business-Maskottchen",
+        },
       ],
     },
     twitter: {

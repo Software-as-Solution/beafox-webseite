@@ -3,6 +3,9 @@ import { getTranslations } from "next-intl/server";
 
 const BASE_URL = "https://beafox.app";
 
+// ISR: Revalidate guide overview every hour
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("ratgeber");
   const title = t("meta.title");
