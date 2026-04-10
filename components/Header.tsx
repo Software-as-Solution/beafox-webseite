@@ -354,13 +354,13 @@ export default function Header() {
                   height={200}
                   alt={t("images.logoAlt")}
                   src="/assets/Logos/Logo-Name.webp"
-                  className="object-contain h-14 w-auto relative left-[2.5%]"
+                  className="object-contain h-14 w-auto"
                 />
               </Link>
               {/* DESKTOP NAV */}
               <div
                 role="menubar"
-                className="hidden lg:flex items-center gap-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                className="hidden lg:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               >
                 {navItems.map((item) => {
                   const active = isHydrated && pathname === item.href;
@@ -370,18 +370,47 @@ export default function Header() {
                       role="menuitem"
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                      className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
                     >
                       {item.label}
                     </Link>
                   );
                 })}
+                {/* Magazin */}
+                <Link
+                  href="/magazin"
+                  aria-current={isHydrated && pathname.startsWith("/magazin") ? "page" : undefined}
+                  className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${isHydrated && pathname.startsWith("/magazin") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                >
+                  {t("nav.magazin")}
+                </Link>
+                <div className="relative" ref={productsTriggerRef}>
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    onClick={toggleProducts}
+                    aria-expanded={isDropdownOpen}
+                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${isDropdownOpen || (isHydrated && isProductPath(pathname)) ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                  >
+                    {t("products.label")}
+                    <ChevronDown
+                      size={16}
+                      aria-hidden="true"
+                      className="transition-transform duration-200"
+                      style={{
+                        transform: isDropdownOpen
+                          ? "rotate(-180deg)"
+                          : "rotate(0deg)",
+                      }}
+                    />
+                  </button>
+                </div>
                 <div ref={ratgeberRef}>
                   <button
                     onClick={toggleRatgeber}
                     aria-expanded={isRatgeberOpen}
                     aria-haspopup="true"
-                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${isRatgeberOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${isRatgeberOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
                   >
                     {t("nav.guide")}
                     <ChevronDown
@@ -401,7 +430,7 @@ export default function Header() {
                     onClick={toggleRechner}
                     aria-expanded={isRechnerOpen}
                     aria-haspopup="true"
-                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${isRechnerOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${isRechnerOpen ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
                   >
                     {t("nav.calculators")}
                     <ChevronDown
@@ -410,35 +439,6 @@ export default function Header() {
                       className="transition-transform duration-200"
                       style={{
                         transform: isRechnerOpen
-                          ? "rotate(-180deg)"
-                          : "rotate(0deg)",
-                      }}
-                    />
-                  </button>
-                </div>
-                {/* Magazin */}
-                <Link
-                  href="/magazin"
-                  aria-current={isHydrated && pathname.startsWith("/magazin") ? "page" : undefined}
-                  className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${isHydrated && pathname.startsWith("/magazin") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
-                >
-                  {t("nav.magazin")}
-                </Link>
-                <div className="relative" ref={productsTriggerRef}>
-                  <button
-                    type="button"
-                    aria-haspopup="true"
-                    onClick={toggleProducts}
-                    aria-expanded={isDropdownOpen}
-                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 ${isDropdownOpen || (isHydrated && isProductPath(pathname)) ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
-                  >
-                    {t("products.label")}
-                    <ChevronDown
-                      size={16}
-                      aria-hidden="true"
-                      className="transition-transform duration-200"
-                      style={{
-                        transform: isDropdownOpen
                           ? "rotate(-180deg)"
                           : "rotate(0deg)",
                       }}
@@ -454,14 +454,6 @@ export default function Header() {
                 >
                   {t("actions.contact")}
                 </Link>
-                <a
-                  target="_blank"
-                  href={APP_DOWNLOAD_URL}
-                  rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-full text-sm font-semibold text-primaryOrange border-2 border-primaryOrange/30 hover:border-primaryOrange hover:bg-primaryOrange/5 transition-all duration-200"
-                >
-                  {t("actions.download")}
-                </a>
               </div>
               {/* MOBILE TOGGLE */}
               <div className="lg:hidden flex items-center">

@@ -1,6 +1,6 @@
 {
   "rootMeta": {
-    "title": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
+    "title": "BeAFox – Werde finanziell handlungsfähig.",
     "titleTemplate": "%s | BeAFox",
     "description": "BeAFox ist dein Begleiter für jede Finanzentscheidung. Die KI-gestützte Lern-App für Azubis, Schüler und Berufseinsteiger — spielerisch, neutral und im eigenen Tempo.",
     "keywords": [
@@ -23,14 +23,14 @@
       "Gamification Finanzbildung",
       "BeAFox"
     ],
-    "ogTitle": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
+    "ogTitle": "BeAFox – Werde finanziell handlungsfähig.",
     "ogDescription": "Die KI-gestützte App für Azubis, Schüler und Berufseinsteiger. Spielerisch durch echte Finanzsituationen — vom ersten Gehalt bis zur Steuererklärung.",
-    "ogImageAlt": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
-    "twitterTitle": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
+    "ogImageAlt": "BeAFox – Werde finanziell handlungsfähig.",
+    "twitterTitle": "BeAFox – Werde finanziell handlungsfähig.",
     "twitterDescription": "Die KI-gestützte App die junge Menschen durch echte Finanzsituationen begleitet. Spielerisch, neutral und im eigenen Tempo."
   },
   "manifest": {
-    "name": "BeAFox - Deine Finanzen. Einfach durchgespielt.",
+    "name": "BeAFox - Werde finanziell handlungsfähig.",
     "shortName": "BeAFox",
     "description": "BeAFox ist dein Begleiter für jede Finanzentscheidung. Die KI-gestützte Lern-App begleitet Azubis, Schüler und Berufseinsteiger durch echte Finanzsituationen."
   },
@@ -127,31 +127,27 @@
         "tiktok": "TikTok"
       },
       "featured": {
+        "titlePre": "Meistgelesene",
+        "titleHighlight": "Beiträge",
         "title": "Meistgelesene Beiträge",
         "description": "Die beliebtesten Studien und Analysen unserer Redaktion."
       },
       "allArticles": {
         "title": "Entdecke das ganze Magazin",
-        "subtitle": "Durchstöbere Studien, Diskussionsbeiträge und Analysen"
-      },
-      "newsletter": {
-        "badge": "Newsletter",
-        "title": "Verpasse keinen Beitrag",
-        "subtitle": "Hol dir Beas besten Insights jeden Monat direkt in dein Postfach. Kein Spam, jederzeit abbestellbar.",
-        "emailPlaceholder": "Deine E-Mail-Adresse",
-        "emailAriaLabel": "E-Mail-Adresse",
-        "button": "Abonnieren",
-        "privacyPrefix": "Mit der Anmeldung akzeptierst du unsere",
-        "privacyLink": "Datenschutzerklärung"
+        "subtitle": "Durchstöbere Studien, Diskussionsbeiträge und Analysen",
+        "titlePre": "Entdecke das ganze",
+        "titleHighlight": "Magazin"
       },
       "products": {
+        "titlePre": "BeAFox in der",
+        "titleHighlight": "Praxis",
         "title": "BeAFox in der Praxis",
-        "subtitle": "Vom Wissen zum Handeln — entdecke wie BeAFox Privatpersonen, Unternehmen und Bildungseinrichtungen unterstützt.",
+        "subtitle": "Entdecke wie BeAFox die perfekte Lösung für die finanzielle Handlungsfähigkeit ist.",
         "cardLinkLabel": "Mehr erfahren",
         "unlimited": {
           "badge": "Für dich persönlich",
           "title": "BeAFox Unlimited",
-          "description": "Werde finanziell handlungsfähig — mit Bea als persönlichem KI-Coach. Über 30 Lernreisen, alle Rechner und unbegrenzter Zugang zu deiner Finanzwelt.",
+          "description": "Werde finanziell handlungsfähig! Mit Bea als dein persönlicher KI-Finanzbegleiter. Über 30 Lernreisen, alle Rechner und unbegrenzter Zugang zu deiner Finanzwelt.",
           "primaryCta": "App entdecken",
           "secondaryCta": "Mehr über Unlimited"
         },
@@ -162,7 +158,7 @@
         },
         "schools": {
           "badge": "Für Bildung",
-          "title": "Finanzbildung im Unterricht",
+          "title": "Finanzbildung\nim Unterricht",
           "description": "Lehrplankompatibel, gamifiziert und gemeinsam mit Lehrkräften entwickelt. Entdecke unser Angebot für Schulen und Bildungseinrichtungen."
         }
       },
@@ -256,6 +252,7 @@
     },
     "menu": {
       "title": "Menü",
+      "magazin": "Magazin",
       "faq": "FAQ",
       "contact": "Kontakt",
       "about": "Über uns",
@@ -355,12 +352,127 @@
       "aiIntroText": "Ich begleite dich bei deinen Finanzentscheidungen!",
       "mascotAlt": "Bea — Dein persönlicher KI-Finanzbegleiter in der BeAFox App",
       "headline": {
-        "line1": "Deine Finanzen.",
-        "line2": "Einfach durchgespielt."
+        "line1": "Werde finanziell",
+        "line2": "handlungsfähig."
       },
       "cta": {
         "download": "App herunterladen",
         "partner": "Demo anfordern"
+      }
+    },
+    "problemSection": {
+      "eyebrowPre": "Das Problem mit",
+      "eyebrowHighlight": "Finanzbildung",
+      "eyebrow": "Das Problem mit Finanzbildung",
+      "titlePre": "Überall",
+      "titleHighlight": "Wissen.",
+      "titlePost": "Nirgends ein klarer nächster Schritt.",
+      "beforeTitle": "Information Overload",
+      "beforeText": "Tausende Tipps, widersprüchliche Meinungen, ständig neue Trends — wer soll da noch durchblicken?",
+      "afterTitle": "Nichts ist persönlich",
+      "afterText": "Allgemeine Ratschläge ignorieren deine echte Lebenssituation komplett.",
+      "subTitle": "Wissen alleine reicht nicht aus",
+      "description": "Junge Menschen waren noch nie so gut informiert wie heute — und fühlen sich trotzdem verloren. Das Problem ist nicht der Mangel an Wissen, sondern der Mangel an Orientierung. Niemand sagt dir, was DU jetzt mit DEINEM Geld machen sollst.",
+      "listTitle": "Warum klassische Finanzbildung scheitert:",
+      "benefits": [
+        "Alle Inhalte ignorieren deine Lebenssituation",
+        "Fachbegriffe statt verständlicher Alltagssprache",
+        "Statisch und unflexibel, passt sich nicht an dich an",
+        "Theorie ohne Handlungsempfehlung für deinen Alltag"
+      ],
+      "mascotAlt": "Bea, dein KI-Begleiter",
+      "card1Title": "Zu viele Tipps.",
+      "card1Text": "Du hast schon alles gelesen und weißt trotzdem nicht, wo du anfangen sollst?",
+      "card2Title": "Nichts passt zu dir.",
+      "card2Text": "Tipps für andere Situationen, andere Gehälter, andere Pläne. Aber was ist mit deinen?"
+    },
+    "solutionSection": {
+      "eyebrowPre": "Die Lösung:",
+      "eyebrowHighlight": "Dein KI-Begleiter",
+      "titlePre": "Die App, die dich",
+      "titleHighlight": "handlungsfähig",
+      "titlePost": "macht.",
+      "card1Title": "Deine Situation",
+      "card1Text": "Bea kennt deine Lebenssituation und passt sich an.",
+      "card2Title": "Konkrete Schritte",
+      "card2Text": "Keine Theorie — nur was du jetzt tun musst.",
+      "kennstDuDas": "Kennst du das?",
+      "beforeTitle": "Information Overload",
+      "beforeText": "Ich hab Podcasts gehört, Bücher gelesen, stundenlang YouTube-Videos geschaut — und weiß trotzdem nicht, was ich jetzt mit meinem Geld machen soll.",
+      "afterTitle": "Nichts passt zu mir",
+      "afterText": "Die Tipps sind immer für irgendwen anderen — mit Eigenheim, Familie und festem Gehalt. Aber was soll ICH damit anfangen?",
+      "subTitle": "Dein KI-Coach für echte Entscheidungen",
+      "featuresTitle": "Was du in der App bekommst:",
+      "description": "Bea ist dein persönlicher KI-Begleiter. Sie kennt deine Lebenssituation, erklärt komplexe Themen in Alltagssprache und sagt dir genau, was dein nächster Schritt ist.",
+      "features": [
+        "Verständliche und direkte Ansprache",
+        "Konkrete Schritte statt allgemeiner Tipps",
+        "Lernt mit dir mit, wird mit der Zeit besser",
+        "Persönlich auf deine Lebenssituation zugeschnitten"
+      ],
+      "ctaLabel": "Jetzt Bea ausprobieren",
+      "miniDemo": {
+        "userMessage": "Ich hab 200€ über. Was soll ich damit machen?",
+        "beaMessage": "Bei deinem Einkommen würde ich 50€ auf dein Notgroschen-Konto legen und 150€ in deinen ETF-Sparplan stecken. Soll ich dir das einrichten?",
+        "statusOnline": "Online — antwortet sofort",
+        "liveLabel": "Live Demo"
+      }
+    },
+    "promiseSection": {
+      "eyebrow": "Was sich ändert",
+      "titlePre": "In 30 Tagen wirst du dich",
+      "titleHighlight": "nicht wiedererkennen.",
+      "subtitle": "Das ist kein Versprechen — das ist die Erfahrung von tausenden BeAFox-Usern, die endlich aufgehört haben sich Gedanken zu machen und angefangen haben zu handeln.",
+      "transformations": [
+        {
+          "before": "Du weißt nicht ob du genug sparst.",
+          "after": "Du hast einen klaren Plan und siehst jeden Monat deinen Fortschritt.",
+          "metric": "+47%",
+          "metricLabel": "mehr Sparrate"
+        },
+        {
+          "before": "Du verschiebst Finanzentscheidungen seit Monaten.",
+          "after": "Du triffst Entscheidungen in Minuten — mit Bea als Sparringspartner.",
+          "metric": "10×",
+          "metricLabel": "schneller entschieden"
+        },
+        {
+          "before": "Du verstehst die Hälfte der Finanzbegriffe nicht.",
+          "after": "Du erklärst sogar deinen Eltern, was ein ETF ist.",
+          "metric": "100+",
+          "metricLabel": "Begriffe verstanden"
+        },
+        {
+          "before": "Du verlierst Geld an Gebühren ohne es zu merken.",
+          "after": "Du kennst die besten Tools und sparst bei jedem Trade.",
+          "metric": "~340€",
+          "metricLabel": "Gebühren gespart/Jahr"
+        }
+      ],
+      "timeline": {
+        "eyebrow": "Dein 30-Tage Plan",
+        "title": "In einem Monat wirst du finanziell handlungsfähig!",
+        "description": "Egal wo du gerade stehst — Bea holt dich da ab und begleitet dich Schritt für Schritt. Keine Vorkenntnisse nötig, kein stundenlanges Lernen.",
+        "milestones": [
+          {
+            "day": "TAG 1",
+            "text": "Du kennst deinen finanziellen Status — schwarz auf weiß."
+          },
+          {
+            "day": "TAG 7",
+            "text": "Dein erster Sparplan läuft. Automatisch."
+          },
+          {
+            "day": "TAG 14",
+            "text": "Du verstehst ETFs, Steuern und Versicherungen — wirklich."
+          },
+          {
+            "day": "TAG 30",
+            "text": "Du hast eine Strategie, die zu deinem Leben passt."
+          }
+        ],
+        "ctaPrimary": "Jetzt mit BeAFox starten",
+        "ctaSecondary": "Bea erstmal kennenlernen"
       }
     },
     "stats": {
@@ -382,6 +494,141 @@
         "pre": "So einfach",
         "highlight": "geht's"
       }
+    },
+    "beaChatDemo": {
+      "titleOld": "Finanzbildung war gestern.",
+      "titleNewPrefix": "Heute:\n",
+      "titleNewHighlight": "Finanzielle Handlungsfähigkeit.",
+      "subtitle": "Stell deine Fragen, bekomme verständliche Antworten — direkt von deinem persönlichen KI-Coach.",
+      "tabsAriaLabel": "Wähle einen Anwendungsfall",
+      "logoAlt": "Bea Maskottchen",
+      "assistantName": "Bea",
+      "assistantStatus": "Dein KI-Begleiter",
+      "userName": "Du",
+      "replayTitle": "Nochmal abspielen",
+      "replayAriaLabel": "Chat-Demo erneut abspielen",
+      "chatLogAriaLabel": "Chat-Verlauf mit Bea",
+      "capabilitiesLabel": "Bea nutzt:",
+      "ctaLead": "Bea wird smarter, je länger du dabei bist.",
+      "ctaButton": "Bea kennenlernen",
+      "useCases": {
+        "lernen": {
+          "label": "Personalisiertes Lernen",
+          "shortLabel": "Lernen",
+          "description": "Bea schlägt dir passende Lerninhalte vor!",
+          "capabilities": [
+            "Gehaltsdaten",
+            "Lernfortschritt",
+            "Lebenssituation",
+            "Sparverhalten"
+          ],
+          "messages": [
+            {
+              "sender": "bea",
+              "text": "Hey! 👋 Du hast gerade dein erstes Gehalt bekommen: 1.247€ netto. Glückwunsch! Soll ich dir zeigen, was du als erstes damit tun solltest?",
+              "delayBefore": 2000
+            },
+            {
+              "sender": "user",
+              "text": "Ja bitte! Ich hab keine Ahnung was Brutto/Netto bedeutet 😅",
+              "delayBefore": 2500
+            },
+            {
+              "sender": "bea",
+              "text": "Kein Problem! Dafür bin ich da. Ich empfehle dir das Modul „Dein erstes Gehalt\" zu absolvieren. Dauert 5 Minuten, danach weißt du genau was abgezogen wird und was dein erster Schritt ist. Ready? 🐾",
+              "delayBefore": 2200
+            },
+            {
+              "sender": "user",
+              "text": "Los geht's! 🚀",
+              "delayBefore": 1800
+            },
+            {
+              "sender": "bea",
+              "text": "Du hast diesen Monat 124€ gespart, das sind 47€ mehr als letzten Monat! 🎉 Soll ich dir zeigen wie du das Geld jetzt für dich arbeiten lässt?",
+              "timeLabel": "· 3 Wochen später",
+              "delayBefore": 3000
+            }
+          ]
+        },
+        "proaktiv": {
+          "label": "Proaktive Hinweise",
+          "shortLabel": "Proaktivität",
+          "description": "Bea denkt mit! Bevor du überhaupt fragst",
+          "capabilities": [
+            "Kalender",
+            "Reiseziele",
+            "Kontostand",
+            "Vergangene Buchungen"
+          ],
+          "messages": [
+            {
+              "sender": "bea",
+              "text": "Hey! 🌴 Ich sehe in deinem Kalender, dass du in 6 Wochen nach Thailand fliegst. Hast du dich schon um Reisekrankenversicherung und Bargeld gekümmert?",
+              "delayBefore": 2000
+            },
+            {
+              "sender": "user",
+              "text": "Ohne Witz, daran hab ich gar nicht gedacht 😳",
+              "delayBefore": 2400
+            },
+            {
+              "sender": "bea",
+              "text": "Kein Stress! Für Thailand brauchst du eine Auslandskrankenversicherung (~15€ für 4 Wochen) und idealerweise eine kostenlose Kreditkarte fürs Bargeldabheben. Soll ich dir zeigen worauf du achten solltest?",
+              "delayBefore": 2800
+            },
+            {
+              "sender": "user",
+              "text": "Ja unbedingt! 🙏",
+              "delayBefore": 1600
+            },
+            {
+              "sender": "bea",
+              "text": "Übrigens: Dein Konto ist aktuell bei 2.840€. Wenn du 800€ für die Reise zurücklegst, bleibt dir noch genug Puffer für die Fixkosten. Soll ich das automatisch in deinem Sparplan einplanen? 💸",
+              "delayBefore": 3200
+            }
+          ]
+        },
+        "partner": {
+          "label": "Partner-Empfehlungen",
+          "shortLabel": "Partner",
+          "description": "Bea verbindet dich mit den richtigen Tools!",
+          "capabilities": [
+            "Deine Ziele",
+            "Risikoprofil",
+            "Partner-Netzwerk",
+            "Lebenssituation"
+          ],
+          "messages": [
+            {
+              "sender": "user",
+              "text": "Bea, ich will endlich anfangen zu investieren. Welches Tool soll ich nehmen?",
+              "delayBefore": 2000
+            },
+            {
+              "sender": "bea",
+              "text": "Spannend dass du loslegen willst! 🎯 Bevor ich dir was empfehle: Wie viel Zeit willst du pro Monat investieren, 5 Minuten oder aktiv selbst auswählen?",
+              "delayBefore": 2500
+            },
+            {
+              "sender": "user",
+              "text": "Ich möchte aktiv handeln und selbst auswählen.",
+              "delayBefore": 2300
+            },
+            {
+              "sender": "bea",
+              "text": "Perfekt! Dann passt brauchst du den passenden Broker. Mein Partner XTB bietet aktive Trades und ist genau für deinen Use Case gemacht. Soll ich dir den direkten Link mit unserem BeAFox-Bonus schicken? 🎁",
+              "delayBefore": 2800
+            },
+            {
+              "sender": "user",
+              "text": "Ja gerne! 🚀",
+              "delayBefore": 1600
+            }
+          ]
+        }
+      },
+      "typingLabel": "tippt…"
     },
     "testimonialsSection": {
       "title": {
@@ -654,7 +901,7 @@
       "pill": "Kostenlos starten",
       "ratingStarsAria": "Bewertung 5 von 5 Sternen",
       "ratingScore": "5,0",
-      "socialProof": "5,000+ aktive Nutzer",
+      "socialProof": "10.000+ aktive Nutzer",
       "sectionHeading": {
         "pre": "Worauf wartest du",
         "highlight": "noch?"
@@ -3827,10 +4074,10 @@
   },
   "news": {
     "meta": {
-      "title": "News & Artikel | BeAFox",
-      "description": "Alle Artikel und Stories: Hinter den Kulissen, Finanztipps und Updates — bisheriger Blog-Inhalt unter /news.",
-      "ogTitle": "BeAFox News — Artikel & Stories",
-      "ogDescription": "News-Hub mit allen bisherigen Blog-Artikeln, nach Kategorien sortiert."
+      "title": "BeAFox News — Behind the Scenes | Was gerade passiert",
+      "description": "Events, Auszeichnungen, Presseberichte, Partnerschaften, Meilensteine — der ehrliche Blick hinter die Kulissen bei BeAFox.",
+      "ogTitle": "BeAFox News — Behind the Scenes",
+      "ogDescription": "Was gerade bei BeAFox passiert: Events, Auszeichnungen, Pressestimmen und Team-Updates aus erster Hand."
     }
   },
   "appUpdates": {

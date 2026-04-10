@@ -84,7 +84,7 @@ export default function TrustSignalBar({
   showReviews = false,
   isEduplaces = false,
   showPartners = false,
-  preTitle = "5.000+ Menschen",
+  preTitle = "10.000+ Menschen",
   highlight = "vertrauen auf Bea",
 }: TrustSignalBarProps) {
   const stores = isEduplaces

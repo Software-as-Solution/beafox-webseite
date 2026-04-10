@@ -146,13 +146,17 @@
         "tiktok": "TikTok"
       },
       "featured": {
+        "titlePre": "Current",
+        "titleHighlight": "favorites",
         "badge": "Recommendations",
         "title": "Current favorites"
       },
       "allArticles": {
         "badge": "All articles",
         "title": "Discover the full magazine",
-        "subtitle": "Filter by topic and find articles, guides and studies on financial education in companies, schools and training."
+        "subtitle": "Filter by topic and find articles, guides and studies on financial education in companies, schools and training.",
+        "titlePre": "Discover the full",
+        "titleHighlight": "magazine"
       },
       "newsletter": {
         "badge": "Newsletter",
@@ -291,6 +295,7 @@
     },
     "menu": {
       "title": "Menu",
+      "magazin": "Magazine",
       "home": "Home",
       "shop": "Shop",
       "contact": "Contact",
@@ -758,6 +763,200 @@
       },
       "softwareApplication": {
         "description": "Playful learning app for financial education for young people. Learn money skills with gamification, missions, and challenges."
+      }
+    },
+    "beaChatDemo": {
+      "titleOld": "Financial education was yesterday.",
+      "titleNewPrefix": "Today:\n",
+      "titleNewHighlight": "Financial capability.",
+      "subtitle": "Ask your questions and get clear answers — directly from your personal AI coach.",
+      "tabsAriaLabel": "Choose a use case",
+      "logoAlt": "Bea mascot",
+      "assistantName": "Bea",
+      "assistantStatus": "Your AI companion",
+      "userName": "You",
+      "replayTitle": "Replay",
+      "replayAriaLabel": "Replay chat demo",
+      "chatLogAriaLabel": "Chat history with Bea",
+      "capabilitiesLabel": "Bea uses:",
+      "ctaLead": "Bea gets smarter the longer you use her.",
+      "ctaButton": "Meet Bea",
+      "useCases": {
+        "lernen": {
+          "label": "Personalized learning",
+          "shortLabel": "Learning",
+          "description": "Bea recommends the right learning content for you",
+          "capabilities": [
+            "Salary data",
+            "Learning progress",
+            "Life situation",
+            "Saving behavior"
+          ],
+          "messages": [
+            {
+              "sender": "bea",
+              "text": "Hey! 👋 You just got your first paycheck: €1,247 net. Congrats! Want me to show you what to do first?",
+              "delayBefore": 2000
+            },
+            {
+              "sender": "user",
+              "text": "Yes please! I have no idea what gross/net means 😅",
+              "delayBefore": 2500
+            },
+            {
+              "sender": "bea",
+              "text": "No worries! That's what I'm here for. I recommend the module \"Your first paycheck\". It takes 5 minutes, and after that you'll know exactly what gets deducted and what your first step should be. Ready? 🐾",
+              "delayBefore": 2200
+            },
+            {
+              "sender": "user",
+              "text": "Let's go! 🚀",
+              "delayBefore": 1800
+            },
+            {
+              "sender": "bea",
+              "text": "You saved €124 this month, that's €47 more than last month! 🎉 Want me to show you how to make that money work for you now?",
+              "timeLabel": "· 3 weeks later",
+              "delayBefore": 3000
+            }
+          ]
+        },
+        "proaktiv": {
+          "label": "Proactive nudges",
+          "shortLabel": "Proactive",
+          "description": "Bea thinks ahead — before you ask",
+          "capabilities": [
+            "Calendar",
+            "Travel plans",
+            "Account balance",
+            "Past transactions"
+          ],
+          "messages": [
+            {
+              "sender": "bea",
+              "text": "Hey! 🌴 I can see in your calendar that you're flying to Thailand in 6 weeks. Have you already sorted travel health insurance and cash?",
+              "delayBefore": 2000
+            },
+            {
+              "sender": "user",
+              "text": "No way, I totally forgot about that 😳",
+              "delayBefore": 2400
+            },
+            {
+              "sender": "bea",
+              "text": "No stress! For Thailand you'll need travel health insurance (~€15 for 4 weeks) and ideally a free credit card for cash withdrawals. Want me to show you what matters most?",
+              "delayBefore": 2800
+            },
+            {
+              "sender": "user",
+              "text": "Yes, absolutely! 🙏",
+              "delayBefore": 1600
+            },
+            {
+              "sender": "bea",
+              "text": "By the way: your account is currently at €2,840. If you set aside €800 for the trip, you'll still have enough buffer for fixed costs. Want me to add that to your savings plan automatically? 💸",
+              "delayBefore": 3200
+            }
+          ]
+        },
+        "partner": {
+          "label": "Partner recommendations",
+          "shortLabel": "Partners",
+          "description": "Bea connects you with the right tools",
+          "capabilities": [
+            "Your goals",
+            "Risk profile",
+            "Partner network",
+            "Life situation"
+          ],
+          "messages": [
+            {
+              "sender": "user",
+              "text": "Bea, I finally want to start investing. Which tool should I use?",
+              "delayBefore": 2000
+            },
+            {
+              "sender": "bea",
+              "text": "Great that you want to get started! 🎯 Before I recommend anything: how much time do you want to invest each month — around 5 minutes or actively picking things yourself?",
+              "delayBefore": 2500
+            },
+            {
+              "sender": "user",
+              "text": "5 minutes is enough. I want it to run in the background.",
+              "delayBefore": 2300
+            },
+            {
+              "sender": "bea",
+              "text": "Perfect! Then an ETF savings plan is ideal. My partner Trade Republic offers free savings plans from €1 and fits your use case well. Want me to send you the direct link with our BeAFox bonus? 🎁",
+              "delayBefore": 2800
+            },
+            {
+              "sender": "user",
+              "text": "Yes please! 🚀",
+              "delayBefore": 1600
+            }
+          ]
+        }
+      },
+      "typingLabel": "is typing…"
+    },
+    "problemSection": {
+      "eyebrowPre": "The problem with",
+      "eyebrowHighlight": "financial education",
+      "eyebrow": "The problem with financial education",
+      "titlePre": "Knowledge",
+      "titleHighlight": "everywhere.",
+      "titlePost": "No clear next step anywhere.",
+      "listTitle": "Why traditional financial education fails:",
+      "benefits": [
+        "Generic content that ignores your life situation",
+        "Too much theory and no concrete recommendation for your daily life",
+        "Complex jargon instead of clear everyday language",
+        "Static and inflexible — it does not adapt to you",
+        "No feedback, no guidance, no real next steps"
+      ],
+      "beforeTitle": "Too many tips.",
+      "beforeText": "You have read everything and still do not know where to start.",
+      "afterTitle": "Nothing fits you.",
+      "afterText": "Tips for other situations, other salaries, other plans. But what about yours?",
+      "subTitle": "Knowledge alone is not enough",
+      "description": "Young people have never been more informed — and still feel lost. The issue is not lack of knowledge, but lack of orientation. Nobody tells you what YOU should do with YOUR money now.",
+      "mascotAlt": "Bea, your AI companion",
+      "card1Title": "Too many tips.",
+      "card1Text": "You have read everything and still do not know where to start.",
+      "card2Title": "Nothing fits you.",
+      "card2Text": "Tips for other situations, other salaries, other plans. But what about yours?"
+    },
+    "solutionSection": {
+      "eyebrowPre": "The solution:",
+      "eyebrowHighlight": "Your AI companion",
+      "titlePre": "The app that makes you",
+      "titleHighlight": "ready to act",
+      "titlePost": ".",
+      "card1Title": "Your situation",
+      "card1Text": "Bea knows your life situation and adapts.",
+      "card2Title": "Concrete steps",
+      "card2Text": "No theory — only what you need to do now.",
+      "kennstDuDas": "Sound familiar?",
+      "beforeTitle": "Information overload",
+      "beforeText": "I listened to podcasts, read books, watched YouTube for hours — and still don’t know what to do with my money.",
+      "afterTitle": "Nothing fits me",
+      "afterText": "The tips are always for someone else — with a house, a family, a fixed salary. But what am I supposed to do with that?",
+      "subTitle": "Your AI coach for real decisions",
+      "featuresTitle": "What you get in the app:",
+      "description": "Bea is your personal AI companion. She understands your situation, explains complex topics in plain language, and tells you exactly what your next step is.",
+      "features": [
+        "Clear, direct communication",
+        "Concrete steps instead of generic tips",
+        "Learns with you and improves over time",
+        "Tailored to your life situation"
+      ],
+      "ctaLabel": "Try BeAFox for free",
+      "miniDemo": {
+        "userMessage": "I have €200 left over. What should I do with it?",
+        "beaMessage": "Given your income, I’d put €50 toward your emergency fund and €150 into your ETF savings plan. Want me to set that up?",
+        "statusOnline": "Online — replies instantly",
+        "liveLabel": "Live demo"
       }
     }
   },
@@ -3863,10 +4062,10 @@
   },
   "news": {
     "meta": {
-      "title": "News & articles | BeAFox",
-      "description": "All articles and stories: behind the scenes, tips, and updates—former blog content under /news.",
-      "ogTitle": "BeAFox news — articles & stories",
-      "ogDescription": "News hub with all former blog articles, sorted by category."
+      "title": "BeAFox News — Behind the scenes | What's happening",
+      "description": "Events, awards, press, partnerships, milestones — an honest look behind the scenes at BeAFox.",
+      "ogTitle": "BeAFox News — Behind the scenes",
+      "ogDescription": "What's happening at BeAFox right now: events, awards, press coverage and team updates, first-hand."
     }
   },
   "appUpdates": {

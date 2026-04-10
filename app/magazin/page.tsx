@@ -40,7 +40,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Studenten.webp",
     side: "left",
-    top: "36%",
+    top: "32%",
     offset: "18%",
     size: 120,
     rotate: -10,
@@ -50,7 +50,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Azubi.webp",
     side: "left",
-    top: "25%",
+    top: "22%",
     offset: "4%",
     size: 140,
     rotate: 6,
@@ -60,7 +60,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Hero.webp",
     side: "left",
-    top: "52%",
+    top: "45%",
     offset: "10%",
     size: 120,
     rotate: -8,
@@ -70,7 +70,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Freude.webp",
     side: "left",
-    top: "55%",
+    top: "50%",
     offset: "26%",
     size: 120,
     rotate: 12,
@@ -80,7 +80,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Lebenssituationen.webp",
     side: "left",
-    top: "19%",
+    top: "16%",
     offset: "23%",
     size: 120,
     rotate: -4,
@@ -91,7 +91,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Berufseinsteiger.webp",
     side: "right",
-    top: "36%",
+    top: "32%",
     offset: "18%",
     size: 125,
     rotate: 8,
@@ -101,7 +101,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-School.webp",
     side: "right",
-    top: "25%",
+    top: "22%",
     offset: "5%",
     size: 130,
     rotate: -6,
@@ -111,7 +111,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Investieren.webp",
     side: "right",
-    top: "52%",
+    top: "47%",
     offset: "10%",
     size: 120,
     rotate: 9,
@@ -121,7 +121,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Business.webp",
     side: "right",
-    top: "55%",
+    top: "50%",
     offset: "26%",
     size: 120,
     rotate: -11,
@@ -131,7 +131,7 @@ const HERO_MASCOTS = [
   {
     src: "Maskottchen-Rechner.webp",
     side: "right",
-    top: "18%",
+    top: "16%",
     offset: "23%",
     size: 120,
     rotate: 6,
@@ -302,12 +302,12 @@ export default async function MagazinPage() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl lg:text-2xl text-lightGray leading-relaxed max-w-2xl mx-auto mb-10 whitespace-pre-line">
+          <p className="text-lg md:text-xl lg:text-2xl text-lightGray leading-relaxed max-w-2xl mx-auto mb-8 whitespace-pre-line">
             {t("page.hero.subtitle")}
           </p>
 
           {/* Mobile mascots */}
-          <div className="flex lg:hidden justify-center items-center gap-2 mb-8 opacity-90">
+          <div className="flex lg:hidden justify-center items-center gap-2 mb-6 opacity-90">
             {HERO_MASCOTS.slice(0, 4).map((mascot, idx) => (
               <div
                 key={`mobile-${idx}`}
@@ -316,7 +316,8 @@ export default async function MagazinPage() {
                 <Image
                   src={`${MASCOT_BASE}/${mascot.src}`}
                   alt=""
-                  fill
+                  height={300}
+                  width={300}
                   className="object-contain"
                   sizes="56px"
                 />
@@ -354,9 +355,10 @@ export default async function MagazinPage() {
         <Section className="relative bg-gray-50 py-16 border-t border-gray-100 overflow-hidden">
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Editorial Header */}
-            <div className="mb-10 md:mb-14">
+            <div className="mb-8">
               <SectionHeader
-                title={t("page.featured.title")}
+                preTitle={t("page.featured.titlePre")}
+                highlight={t("page.featured.titleHighlight")}
                 subtitle={t("page.featured.description")}
                 subtitleClassName="mt-6"
               />
@@ -384,7 +386,8 @@ export default async function MagazinPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <SectionHeader
-              title={t("page.allArticles.title")}
+              preTitle={t("page.allArticles.titlePre")}
+              highlight={t("page.allArticles.titleHighlight")}
               subtitle={t("page.allArticles.subtitle")}
               subtitleClassName="mt-6"
             />
@@ -394,153 +397,58 @@ export default async function MagazinPage() {
         </div>
       </Section>
 
-{/* ─── 4. PRODUCTS / CONVERSION SECTION ─── */}
-<Section className="relative bg-gray-50 py-16 md:py-24 border-t border-gray-100 overflow-hidden">
-  {/* Ambient glow */}
-  <div
-    aria-hidden="true"
-    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
-    style={{
-      background:
-        "radial-gradient(ellipse at bottom, rgba(232,119,32,0.06) 0%, transparent 70%)",
-    }}
-  />
+      {/* ─── 4. PRODUCTS / CONVERSION SECTION ─── */}
+      <Section className="relative bg-gray-50 py-16 border-t border-gray-100 overflow-hidden">
+        {/* Ambient glow */}
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at bottom, rgba(232,119,32,0.06) 0%, transparent 70%)",
+          }}
+        />
 
-  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="mb-12 md:mb-16">
-      <SectionHeader
-        title={t("page.products.title")}
-        subtitle={t("page.products.subtitle")}
-        subtitleClassName="mt-6"
-      />
-    </div>
-
-    {/* Hero Card — Unlimited (B2C) */}
-    <div className="mb-6 md:mb-8">
-      <UnlimitedHeroCard
-        badge={t("page.products.unlimited.badge")}
-        title={t("page.products.unlimited.title")}
-        description={t("page.products.unlimited.description")}
-        primaryCta={t("page.products.unlimited.primaryCta")}
-        secondaryCta={t("page.products.unlimited.secondaryCta")}
-        href="/unlimited"
-      />
-    </div>
-
-    {/* Two B2B Cards Grid */}
-    <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-      <ProductCard
-        badge={t("page.products.business.badge")}
-        title={t("page.products.business.title")}
-        description={t("page.products.business.description")}
-        href="/unternehmen"
-        linkLabel={t("page.products.cardLinkLabel")}
-        mascot="Maskottchen-Business.webp"
-      />
-      <ProductCard
-        badge={t("page.products.schools.badge")}
-        title={t("page.products.schools.title")}
-        description={t("page.products.schools.description")}
-        href="/schulen"
-        linkLabel={t("page.products.cardLinkLabel")}
-        mascot="Maskottchen-School.webp"
-      />
-    </div>
-  </div>
-</Section>
-
-      {/* ─── 5. NEWSLETTER CTA ─── */}
-      <Section className="bg-primaryWhite py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="relative overflow-hidden rounded-3xl p-8 md:p-12"
-            style={{
-              background:
-                "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 50%, #FFEEDB 100%)",
-              border: "2px solid rgba(232,119,32,0.18)",
-              boxShadow: "0 12px 40px rgba(232,119,32,0.08)",
-            }}
-          >
-            <div
-              aria-hidden="true"
-              className="absolute -top-32 -right-32 w-[400px] h-[400px] rounded-full pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(232,119,32,0.08) 0%, transparent 70%)",
-              }}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <SectionHeader
+              preTitle={t("page.products.titlePre")}
+              highlight={t("page.products.titleHighlight")}
+              subtitle={t("page.products.subtitle")}
+              subtitleClassName="mt-6"
             />
+          </div>
 
-            <div className="relative z-10 grid md:grid-cols-[auto_1fr] gap-8 md:gap-10 items-center">
-              <div className="hidden md:block">
-                <div className="relative w-32 h-32 lg:w-40 lg:h-40">
-                  <Image
-                    src={`${MASCOT_BASE}/Maskottchen-Hero.webp`}
-                    alt=""
-                    fill
-                    className="object-contain"
-                    sizes="160px"
-                  />
-                </div>
-              </div>
+          {/* Two B2B Cards Grid */}
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            <ProductCard
+              badge={t("page.products.business.badge")}
+              title={t("page.products.business.title")}
+              description={t("page.products.business.description")}
+              href="/unternehmen"
+              linkLabel={t("page.products.cardLinkLabel")}
+              mascot="Maskottchen-Business.webp"
+            />
+            <ProductCard
+              badge={t("page.products.schools.badge")}
+              title={t("page.products.schools.title")}
+              description={t("page.products.schools.description")}
+              href="/schulen"
+              linkLabel={t("page.products.cardLinkLabel")}
+              mascot="Maskottchen-School.webp"
+            />
+          </div>
 
-              <div>
-                <div
-                  className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-4"
-                  style={{
-                    background: "rgba(232,119,32,0.1)",
-                    border: "1px solid rgba(232,119,32,0.2)",
-                  }}
-                >
-                  <Mail
-                    className="w-3.5 h-3.5 text-primaryOrange"
-                    aria-hidden="true"
-                  />
-                  <span className="text-[11px] font-bold text-primaryOrange uppercase tracking-widest">
-                    {t("page.newsletter.badge")}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-darkerGray mb-3 leading-tight">
-                  {t("page.newsletter.title")}
-                </h3>
-                <p className="text-base md:text-lg text-lightGray mb-6 max-w-xl">
-                  {t("page.newsletter.subtitle")}
-                </p>
-
-                <form
-                  className="flex flex-col sm:flex-row gap-3 max-w-lg"
-                  action="/api/newsletter"
-                  method="POST"
-                >
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder={t("page.newsletter.emailPlaceholder")}
-                    required
-                    aria-label={t("page.newsletter.emailAriaLabel")}
-                    className="flex-1 px-5 py-3.5 rounded-xl bg-white border-2 border-gray-200 focus:outline-none focus:border-primaryOrange transition-colors text-darkerGray placeholder:text-lightGray"
-                  />
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primaryOrange text-white font-semibold rounded-xl hover:bg-primaryOrange/90 transition-all whitespace-nowrap shadow-sm shadow-primaryOrange/25"
-                  >
-                    {t("page.newsletter.button")}
-                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                </form>
-
-                <p className="text-xs text-lightGray mt-3">
-                  {t("page.newsletter.privacyPrefix")}{" "}
-                  <Link
-                    href="/datenschutz"
-                    className="text-primaryOrange hover:underline"
-                  >
-                    {t("page.newsletter.privacyLink")}
-                  </Link>
-                  .
-                </p>
-              </div>
-            </div>
+          {/* Hero Card — Unlimited (B2C) */}
+          <div className="mt-6 md:mt-8">
+            <UnlimitedHeroCard
+              badge={t("page.products.unlimited.badge")}
+              title={t("page.products.unlimited.title")}
+              description={t("page.products.unlimited.description")}
+              primaryCta={t("page.products.unlimited.primaryCta")}
+              secondaryCta={t("page.products.unlimited.secondaryCta")}
+              href="/unlimited"
+            />
           </div>
         </div>
       </Section>
@@ -771,7 +679,7 @@ function UnlimitedHeroCard({
         }}
       />
 
-      <div className="relative z-10 grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-center p-8 md:p-12 lg:p-16">
+      <div className="relative z-10 grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-center p-8 md:p-12">
         {/* Left: Content */}
         <div className="text-white">
           {/* Badge */}
@@ -821,7 +729,7 @@ function UnlimitedHeroCard({
               src={`${MASCOT_BASE}/Maskottchen-Hero.webp`}
               alt=""
               fill
-              className="object-contain"
+              className="object-contain scale-110"
               style={{
                 filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.25))",
               }}
@@ -873,7 +781,7 @@ function ProductCard({
         />
 
         {/* Left: Badge + Title */}
-        <div className="relative z-10 flex-1 min-w-0">
+        <div className="relative z-10 flex-1 min-w-0 justify-center items-center">
           {/* Badge */}
           <div
             className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 mb-3"
@@ -888,22 +796,23 @@ function ProductCard({
           </div>
 
           {/* Title */}
-          <h3 className="text-xl md:text-2xl font-bold text-darkerGray group-hover:text-primaryOrange transition-colors leading-tight">
+          <h3 className="text-xl md:text-2xl font-bold text-darkerGray group-hover:text-primaryOrange transition-colors leading-tight whitespace-pre-line">
             {title}
           </h3>
         </div>
 
         {/* Right: Mascot */}
-        <div className="relative w-24 h-24 md:w-28 md:h-28 flex-shrink-0 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 ease-out">
+        <div className="relative w-24 h-24 md:w-28 md:h-28 flex flex-shrink-0 items-center justify-center group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 ease-out">
           <Image
             src={`${MASCOT_BASE}/${mascot}`}
             alt=""
-            fill
-            className="object-contain"
+            height={200}
+            width={200}
+            className="object-contain relative top-[6%]"
             style={{
               filter: "drop-shadow(0 10px 24px rgba(232,119,32,0.25))",
             }}
-            sizes="(max-width: 768px) 96px, 112px"
+            sizes="(max-width: 768px) 124px, 144px"
           />
         </div>
       </div>

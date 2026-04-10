@@ -256,7 +256,7 @@ export default function DownloadModal({
                   className="w-px h-3.5 rounded-full"
                 />
                 <span className="text-darkerGray/45 text-xs">
-                  5,000+ aktive Nutzer
+                  10.000+ aktive Nutzer
                 </span>
               </div>
             </div>

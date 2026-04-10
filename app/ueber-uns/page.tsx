@@ -95,7 +95,7 @@ export default function AboutPage() {
   // CONSTANTS
   const stats = useMemo(
     () => [
-      { value: "5,000+", label: t("stats.activeUsers"), icon: Users },
+      { value: "10.000+", label: t("stats.activeUsers"), icon: Users },
       { value: "10+", label: t("stats.schoolsCompanies"), icon: Building2 },
     ],
     [t],

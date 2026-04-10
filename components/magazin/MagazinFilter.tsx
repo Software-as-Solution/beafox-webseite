@@ -104,7 +104,7 @@ export default function MagazinFilter({
   return (
     <div className="w-full">
       {/* ─── SEARCH + FILTER BAR ─── */}
-      <div className="mb-10 space-y-5">
+      <div className="mb-6 space-y-5">
         {/* Search Input */}
         <div className="relative max-w-xl mx-auto">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-lightGray pointer-events-none">
