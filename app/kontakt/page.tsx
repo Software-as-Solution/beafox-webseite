@@ -166,8 +166,11 @@ export default function ContactPage() {
       <LandingHero
         badge={t("hero.tag")}
         mascotAlt={t("hero.tag")}
-        cardText={t("hero.cardText")}
-        description={t("hero.description")}
+        description={
+          <>
+            {t("hero.description")} {t("hero.cardText")}
+          </>
+        }
         mascotClassName="scale-75 md:top-0"
         mascotSrc="/Maskottchen/Maskottchen-Hero.webp"
         title={

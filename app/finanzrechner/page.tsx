@@ -114,7 +114,6 @@ export default async function FinanzrechnerPage() {
       <LandingHero
         badge={t("hero.badge")}
         mascotAlt={t("hero.badge")}
-        cardText={t("hero.cardText")}
         description={t("hero.description")}
         mascotClassName="scale-80 md:top-0"
         mascotSrc="/Maskottchen/Maskottchen-Rechner.webp"

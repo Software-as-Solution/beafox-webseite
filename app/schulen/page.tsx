@@ -99,7 +99,7 @@ export default function ForSchoolsPage() {
       <LandingHero
         badge={t("hero.badge")}
         mascotAlt={t("hero.badge")}
-        cardText={t("hero.description")}
+        description={t("hero.description")}
         mascotSrc="/Maskottchen/Maskottchen-School.webp"
         title={
           <>

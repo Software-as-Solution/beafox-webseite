@@ -60,7 +60,7 @@ export default function EduplacesPage() {
       <LandingHero
         badge={t("hero.badge")}
         mascotAlt={t("hero.badge")}
-        cardText={t("hero.cardText")}
+        description={t("hero.cardText")}
         mascotClassName="!scale-110 md:top-6"
         mascotSrc="/Maskottchen/Maskottchen-Eduplaces.webp"
         title={

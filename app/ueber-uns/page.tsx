@@ -121,7 +121,7 @@ export default function AboutPage() {
       <LandingHero
         badge={t("hero.badge")}
         mascotAlt={t("hero.badge")}
-        cardText={t("hero.subtitle")}
+        description={t("hero.subtitle")}
         contentClassName="md:left-[0%]"
         mascotSrc="/Maskottchen/Maskottchen-Friends.webp"
         title={

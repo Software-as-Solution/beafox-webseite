@@ -64,9 +64,12 @@ export default function IHKAkademiePage() {
       {/* ─── 1. HERO ─── */}
       <LandingHero
         badge={t("hero.badge")}
-        cardText={t("hero.cardText")}
         mascotAlt={t("hero.mascotAlt")}
-        description={t("hero.description")}
+        description={
+          <>
+            {t("hero.description")} {t("hero.cardText")}
+          </>
+        }
         mascotClassName="!scale-110 md:top-6"
         mascotSrc="/Maskottchen/Maskottchen-Akademie.webp"
         title={

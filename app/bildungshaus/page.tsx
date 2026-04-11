@@ -54,7 +54,6 @@ export default function BildungshausPage() {
         badge={t("hero.badge")}
         mascotAlt={t("hero.mascotAlt")}
         mascotSrc="/Maskottchen/Maskottchen-Bildungshaus.webp"
-        cardText={t("hero.cardText")}
         mascotClassName="!scale-110 md:top-6"
         title={
           <>
@@ -64,7 +63,11 @@ export default function BildungshausPage() {
             </span>
           </>
         }
-        description={t("hero.description")}
+        description={
+          <>
+            {t("hero.description")} {t("hero.cardText")}
+          </>
+        }
         actions={
           <>
             <Button

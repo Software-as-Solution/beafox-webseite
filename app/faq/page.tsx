@@ -105,7 +105,7 @@ export default function FAQPage() {
         badge={t("hero.tag")}
         mascotAlt={t("hero.tag")}
         mascotClassName="scale-90 md:top-2"
-        cardText={t("popular.subtitle")}
+        description={t("popular.subtitle")}
         mascotSrc="/Maskottchen/Maskottchen-Herzen.webp"
         title={
           <>

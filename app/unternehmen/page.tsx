@@ -104,7 +104,7 @@ export default function ForBusinessPage() {
         badge={t("hero.badge")}
         mascotAlt={t("hero.badge")}
         mascotClassName="scale-110"
-        cardText={t("hero.description")}
+        description={t("hero.description")}
         mascotSrc="/Maskottchen/Maskottchen-Business.webp"
         title={
           <>

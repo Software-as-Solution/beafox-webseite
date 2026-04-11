@@ -170,7 +170,7 @@ export default function BeAFoxUnlimitedPage() {
       <LandingHero
         badge={t("hero.tag")}
         mascotAlt={t("hero.tag")}
-        cardText={t("hero.description")}
+        description={t("hero.description")}
         mascotSrc="/Maskottchen/Maskottchen-Unlimited.webp"
         title={
           <>
