@@ -613,7 +613,7 @@ function getStaticFullArticle(): WissenArticle {
       pb([
         { text: "Die Daten sind eindeutig: Finanzielle Überforderung ist ein " },
         { text: "vermeidbarer Abbruchgrund", bold: true },
-        { text: ". Unternehmen, die ihre Azubis finanziell handlungsfähig machen, investieren in Fachkräftesicherung, Arbeitgeberattraktivität und eine messbar niedrigere Abbruchquote." },
+        { text: ". Unternehmen, die ihre Azubis beim Durchspielen ihrer Finanzen begleiten, investieren in Fachkräftesicherung, Arbeitgeberattraktivität und eine messbar niedrigere Abbruchquote." },
       ]),
       p("Die gute Nachricht: Der Einstieg ist einfacher als gedacht. Mit den richtigen Tools, einer klaren Struktur und dem Commitment der Ausbildungsleitung sehen Sie innerhalb eines Quartals erste Ergebnisse."),
       { _type: "ctaBanner", _key: key(), ctaType: "demo" },

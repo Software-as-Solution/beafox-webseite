@@ -38,6 +38,10 @@ const SCROLL_THRESHOLD = 20;
 const PRODUCT_NAV_SPLIT = 4;
 const PROGRESS_BAR_HEIGHT = 8;
 const APP_DOWNLOAD_URL = "https://apps.apple.com/de/app/beafox/id6746110612";
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.tapelea.beafox&pcampaignid=web_share";
+const STORE_BUTTON_SHADOW =
+  "0 12px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.4)";
 const PRODUCT_NAV: { id: ProductNavId; href: string }[] = [
   { id: "merch", href: "/shop" },
   { id: "unlimited", href: "/unlimited" },
@@ -85,6 +89,8 @@ export default function Header() {
   // HOOKS
   const pathname = usePathname();
   const t = useTranslations("header");
+  const tStoreLabels = useTranslations("home.downloadBanner.storeLabels");
+  const tStoreBadges = useTranslations("home.downloadBanner.storeBadges");
   // STATES
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -93,6 +99,7 @@ export default function Header() {
   const [isRechnerOpen, setIsRechnerOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isRatgeberOpen, setIsRatgeberOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobileRechnerOpen, setMobileRechnerOpen] = useState(false);
   const [mobileRatgeberOpen, setMobileRatgeberOpen] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -113,11 +120,12 @@ export default function Header() {
   const ratgeberPanelRef = useRef<HTMLDivElement>(null);
   const productsTriggerRef = useRef<HTMLDivElement>(null);
   // CONSTANTS
-  const navItems = useMemo(
-    () => [
-      { href: "/", label: t("nav.home") },
-      { href: "/ueber-uns", label: t("nav.about") },
-    ],
+  const navItems = useMemo(() => [{ href: "/", label: t("nav.home") }], [t]);
+  const beaLabel = useMemo(
+    () =>
+      t("nav.beaAi")
+        .replace(/\s*AI$/i, "")
+        .trim(),
     [t],
   );
   const productItems = useMemo(
@@ -155,34 +163,34 @@ export default function Header() {
         label: cat.label,
         emoji: cat.emoji,
         href: "/finanzrechner",
-        calculators: CALCULATORS.filter((calc) => calc.category === cat.label).sort(
-          (a, b) => {
-            const preferredOrderByCategory: Record<string, string[]> = {
-              "Gehalt & Arbeit": ["stundenlohn-rechner"],
-              "Sparen & Budget": [
-                "inflationsrechner",
-                "sparplan-rechner",
-                "notgroschen-rechner",
-                "budget-rechner",
-              ],
-              "Alltag & Lifestyle": [
-                "spritrechner",
-                "waehrungsrechner",
-                "mietkosten-rechner",
-                "taschengeld-rechner",
-              ],
-            };
-            const order = preferredOrderByCategory[cat.label];
-            if (!order) return 0;
+        calculators: CALCULATORS.filter(
+          (calc) => calc.category === cat.label,
+        ).sort((a, b) => {
+          const preferredOrderByCategory: Record<string, string[]> = {
+            "Gehalt & Arbeit": ["stundenlohn-rechner"],
+            "Sparen & Budget": [
+              "inflationsrechner",
+              "sparplan-rechner",
+              "notgroschen-rechner",
+              "budget-rechner",
+            ],
+            "Alltag & Lifestyle": [
+              "spritrechner",
+              "waehrungsrechner",
+              "mietkosten-rechner",
+              "taschengeld-rechner",
+            ],
+          };
+          const order = preferredOrderByCategory[cat.label];
+          if (!order) return 0;
 
-            const ai = order.indexOf(a.slug);
-            const bi = order.indexOf(b.slug);
-            if (ai === -1 && bi === -1) return 0;
-            if (ai === -1) return 1;
-            if (bi === -1) return -1;
-            return ai - bi;
-          },
-        ),
+          const ai = order.indexOf(a.slug);
+          const bi = order.indexOf(b.slug);
+          if (ai === -1 && bi === -1) return 0;
+          if (ai === -1) return 1;
+          if (bi === -1) return -1;
+          return ai - bi;
+        }),
       })),
     [],
   );
@@ -212,6 +220,7 @@ export default function Header() {
     setIsRechnerOpen(false);
     setMobileRatgeberOpen(false);
     setMobileRechnerOpen(false);
+    setMobileProductsOpen(false);
     setMobileRatgeberCategoryOpen(null);
     setMobileRechnerCategoryOpen(null);
   }, []);
@@ -376,35 +385,33 @@ export default function Header() {
                     </Link>
                   );
                 })}
+                {/* Bea AI */}
+                <Link
+                  href="/bea-ai"
+                  aria-current={
+                    isHydrated && pathname.startsWith("/bea-ai")
+                      ? "page"
+                      : undefined
+                  }
+                  className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 ${isHydrated && pathname.startsWith("/bea-ai") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                >
+                  {beaLabel}
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-md bg-gradient-to-br from-primaryOrange to-[#d4751e] text-[10px] font-black text-white leading-none">
+                    AI
+                  </span>
+                </Link>
                 {/* Magazin */}
                 <Link
                   href="/magazin"
-                  aria-current={isHydrated && pathname.startsWith("/magazin") ? "page" : undefined}
+                  aria-current={
+                    isHydrated && pathname.startsWith("/magazin")
+                      ? "page"
+                      : undefined
+                  }
                   className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${isHydrated && pathname.startsWith("/magazin") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
                 >
                   {t("nav.magazin")}
                 </Link>
-                <div className="relative" ref={productsTriggerRef}>
-                  <button
-                    type="button"
-                    aria-haspopup="true"
-                    onClick={toggleProducts}
-                    aria-expanded={isDropdownOpen}
-                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${isDropdownOpen || (isHydrated && isProductPath(pathname)) ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
-                  >
-                    {t("products.label")}
-                    <ChevronDown
-                      size={16}
-                      aria-hidden="true"
-                      className="transition-transform duration-200"
-                      style={{
-                        transform: isDropdownOpen
-                          ? "rotate(-180deg)"
-                          : "rotate(0deg)",
-                      }}
-                    />
-                  </button>
-                </div>
                 <div ref={ratgeberRef}>
                   <button
                     onClick={toggleRatgeber}
@@ -439,6 +446,27 @@ export default function Header() {
                       className="transition-transform duration-200"
                       style={{
                         transform: isRechnerOpen
+                          ? "rotate(-180deg)"
+                          : "rotate(0deg)",
+                      }}
+                    />
+                  </button>
+                </div>
+                <div className="relative" ref={productsTriggerRef}>
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    onClick={toggleProducts}
+                    aria-expanded={isDropdownOpen}
+                    className={`flex items-center gap-1 px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${isDropdownOpen || (isHydrated && isProductPath(pathname)) ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
+                  >
+                    {t("products.label")}
+                    <ChevronDown
+                      size={16}
+                      aria-hidden="true"
+                      className="transition-transform duration-200"
+                      style={{
+                        transform: isDropdownOpen
                           ? "rotate(-180deg)"
                           : "rotate(0deg)",
                       }}
@@ -966,6 +994,35 @@ export default function Header() {
                     );
                   })}
 
+                  {/* Mobile Bea AI */}
+                  <Link
+                    href="/bea-ai"
+                    onClick={closeAll}
+                    aria-current={
+                      isHydrated && pathname.startsWith("/bea-ai")
+                        ? "page"
+                        : undefined
+                    }
+                    className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${isHydrated && pathname.startsWith("/bea-ai") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
+                  >
+                    {beaLabel}
+                    <span className="inline-flex items-center justify-center w-5 h-5 rounded-md bg-gradient-to-br from-primaryOrange to-[#d4751e] text-[10px] font-black text-white leading-none">
+                      AI
+                    </span>
+                  </Link>
+                  {/* Mobile Magazin */}
+                  <Link
+                    href="/magazin"
+                    onClick={closeAll}
+                    aria-current={
+                      isHydrated && pathname.startsWith("/magazin")
+                        ? "page"
+                        : undefined
+                    }
+                    className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${isHydrated && pathname.startsWith("/magazin") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
+                  >
+                    {t("nav.magazin")}
+                  </Link>
                   {/* Mobile Ratgeber */}
                   <div>
                     <button
@@ -1005,13 +1062,13 @@ export default function Header() {
                                       isOpen ? null : cat.id,
                                     )
                                   }
-                                  className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${isOpen ? "text-primaryOrange bg-primaryOrange/5" : "text-darkerGray"}`}
+                                  className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${isOpen ? "text-primaryOrange bg-primaryOrange/5" : "text-darkerGray"}`}
                                 >
                                   <Image
-                                    width={24}
-                                    height={24}
+                                    width={32}
+                                    height={32}
                                     src={RATGEBER_MASCOTS[cat.id]}
-                                    className="w-5 h-5 object-contain flex-shrink-0"
+                                    className="h-8 w-8 object-contain flex-shrink-0"
                                     alt={t("images.ratgeberMascotAlt", {
                                       category: cat.label,
                                     })}
@@ -1042,7 +1099,7 @@ export default function Header() {
                                           key={topic.href}
                                           href={topic.href}
                                           onClick={closeAll}
-                                          className="block px-3 py-2 rounded-lg text-xs text-darkerGray hover:text-primaryOrange transition-colors"
+                                          className="block px-3 py-2 rounded-lg text-sm text-darkerGray hover:text-primaryOrange transition-colors"
                                         >
                                           {topic.label}
                                         </Link>
@@ -1050,7 +1107,7 @@ export default function Header() {
                                       <Link
                                         href={cat.href}
                                         onClick={closeAll}
-                                        className="block px-3 py-2 rounded-lg text-xs font-semibold text-primaryOrange"
+                                        className="block px-3 py-2 rounded-lg text-sm font-semibold text-primaryOrange"
                                       >
                                         {t("nav.allGuidesFor", {
                                           category: cat.label,
@@ -1065,7 +1122,7 @@ export default function Header() {
                         </motion.div>
                       )}
                     </AnimatePresence>
-                    {/* Mobile Finanzrechner Link */}
+                    {/* Mobile Rechner */}
                     <button
                       onClick={() => setMobileRechnerOpen(!mobileRechnerOpen)}
                       aria-expanded={mobileRechnerOpen}
@@ -1102,9 +1159,14 @@ export default function Header() {
                                       isOpen ? null : cat.id,
                                     )
                                   }
-                                  className={`w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${isOpen ? "text-primaryOrange bg-primaryOrange/5" : "text-darkerGray"}`}
+                                  className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${isOpen ? "text-primaryOrange bg-primaryOrange/5" : "text-darkerGray"}`}
                                 >
-                                  <span aria-hidden="true">{cat.emoji}</span>
+                                  <span
+                                    aria-hidden="true"
+                                    className="flex h-8 w-8 flex-shrink-0 items-center justify-center text-[18px] leading-none"
+                                  >
+                                    {cat.emoji}
+                                  </span>
                                   {cat.label}
                                   <ChevronDown
                                     size={12}
@@ -1131,7 +1193,7 @@ export default function Header() {
                                           key={calc.slug}
                                           href={`/finanzrechner/${calc.slug}`}
                                           onClick={closeAll}
-                                          className="block px-3 py-2 rounded-lg text-xs text-darkerGray hover:text-primaryOrange transition-colors"
+                                          className="block px-3 py-2 rounded-lg text-sm text-darkerGray hover:text-primaryOrange transition-colors"
                                         >
                                           {calc.title}
                                         </Link>
@@ -1145,7 +1207,7 @@ export default function Header() {
                           <Link
                             href="/finanzrechner"
                             onClick={closeAll}
-                            className="block px-3 py-2 rounded-lg text-xs font-semibold text-primaryOrange"
+                            className="block px-3 py-2 rounded-lg text-sm font-semibold text-primaryOrange"
                           >
                             {t("nav.allCalculators")}
                           </Link>
@@ -1153,21 +1215,12 @@ export default function Header() {
                       )}
                     </AnimatePresence>
                   </div>
-                  {/* Mobile Magazin */}
-                  <Link
-                    href="/magazin"
-                    onClick={closeAll}
-                    aria-current={isHydrated && pathname.startsWith("/magazin") ? "page" : undefined}
-                    className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${isHydrated && pathname.startsWith("/magazin") ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
-                  >
-                    {t("nav.magazin")}
-                  </Link>
                   {/* Mobile Produkte */}
                   <div>
                     <button
-                      aria-expanded={isDropdownOpen}
-                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${isDropdownOpen || (isHydrated && isProductPath(pathname)) ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
+                      aria-expanded={mobileProductsOpen}
+                      onClick={() => setMobileProductsOpen((prev) => !prev)}
+                      className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${mobileProductsOpen || (isHydrated && isProductPath(pathname)) ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
                     >
                       {t("products.label")}
                       <ChevronDown
@@ -1175,25 +1228,23 @@ export default function Header() {
                         aria-hidden="true"
                         className="transition-transform duration-200"
                         style={{
-                          transform: isDropdownOpen
+                          transform: mobileProductsOpen
                             ? "rotate(-180deg)"
                             : "rotate(0deg)",
                         }}
                       />
                     </button>
                     <AnimatePresence>
-                      {isDropdownOpen && (
+                      {mobileProductsOpen && (
                         <motion.div
                           role="menu"
                           transition={{ duration: 0.2 }}
                           exit={{ opacity: 0, height: 0 }}
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
-                          className="ml-4 mt-1 space-y-0.5 overflow-hidden"
+                          className="ml-2 mt-1 space-y-0.5 overflow-hidden"
                         >
-                          {productItems
-                            .slice(0, PRODUCT_NAV_SPLIT)
-                            .map((item) => {
+                          {PRODUCT_NAV.slice(0, PRODUCT_NAV_SPLIT).map((item) => {
                               const active =
                                 isHydrated && pathname.startsWith(item.href);
                               return (
@@ -1203,9 +1254,18 @@ export default function Header() {
                                   href={item.href}
                                   onClick={closeAll}
                                   aria-current={active ? "page" : undefined}
-                                  className={`block px-4 py-2.5 rounded-lg text-sm transition-all duration-150 ${active ? "text-primaryOrange font-semibold" : "text-darkerGray hover:text-primaryOrange"}`}
+                                  className={`flex w-full items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${active ? "text-primaryOrange font-semibold bg-primaryOrange/5" : "text-darkerGray hover:text-primaryOrange"}`}
                                 >
-                                  {item.label}
+                                  <Image
+                                    width={32}
+                                    height={32}
+                                    src={PRODUCT_MASCOTS[item.id]}
+                                    alt={t("images.productNavAlt", {
+                                      product: t(PRODUCT_LABEL_KEY[item.id]),
+                                    })}
+                                    className="h-8 w-8 object-contain flex-shrink-0"
+                                  />
+                                  {t(PRODUCT_LABEL_KEY[item.id])}
                                 </Link>
                               );
                             })}
@@ -1213,7 +1273,7 @@ export default function Header() {
                             aria-hidden="true"
                             className="mx-2 my-1.5 border-t border-gray-200/80"
                           />
-                          {productItems.slice(PRODUCT_NAV_SPLIT).map((item) => {
+                          {PRODUCT_NAV.slice(PRODUCT_NAV_SPLIT).map((item) => {
                             const active =
                               isHydrated && pathname.startsWith(item.href);
                             return (
@@ -1223,9 +1283,18 @@ export default function Header() {
                                 href={item.href}
                                 onClick={closeAll}
                                 aria-current={active ? "page" : undefined}
-                                className={`block px-4 py-2.5 rounded-lg text-sm transition-all duration-150 ${active ? "text-primaryOrange font-semibold" : "text-darkerGray hover:text-primaryOrange"}`}
+                                className={`flex w-full items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${active ? "text-primaryOrange font-semibold bg-primaryOrange/5" : "text-darkerGray hover:text-primaryOrange"}`}
                               >
-                                {item.label}
+                                <Image
+                                  width={32}
+                                  height={32}
+                                  src={PRODUCT_MASCOTS[item.id]}
+                                  alt={t("images.productNavAlt", {
+                                    product: t(PRODUCT_LABEL_KEY[item.id]),
+                                  })}
+                                  className="h-8 w-8 object-contain flex-shrink-0"
+                                />
+                                {t(PRODUCT_LABEL_KEY[item.id])}
                               </Link>
                             );
                           })}
@@ -1237,23 +1306,54 @@ export default function Header() {
                     aria-hidden="true"
                     className="border-t border-gray-200/60 !mt-3 !mb-3"
                   />
-                  <div className="flex gap-3 !mt-4 px-4">
+                  <div className="flex flex-col items-start gap-2.5 !mt-4 px-4">
+                    <div className="flex items-center gap-2.5 w-full max-w-[360px]">
+                      <a
+                        target="_blank"
+                        onClick={closeAll}
+                        href={APP_DOWNLOAD_URL}
+                        rel="noopener noreferrer"
+                        style={{ boxShadow: STORE_BUTTON_SHADOW }}
+                        className="group flex-1 flex items-center gap-2 justify-center rounded-2xl bg-white px-3 py-2.5 hover:scale-[1.04] transition-all duration-300"
+                      >
+                        <Image
+                          width={160}
+                          height={52}
+                          src="/assets/Apple.webp"
+                          alt={tStoreBadges("appleAlt")}
+                          className="object-contain w-[24px] h-auto shrink-0"
+                        />
+                        <span className="text-xs font-black text-darkerGray text-left leading-tight">
+                          {tStoreLabels("apple")}
+                        </span>
+                      </a>
+                      <a
+                        target="_blank"
+                        onClick={closeAll}
+                        href={PLAY_STORE_URL}
+                        rel="noopener noreferrer"
+                        style={{ boxShadow: STORE_BUTTON_SHADOW }}
+                        className="group flex-1 flex items-center gap-2 justify-center rounded-2xl bg-white px-3 py-2.5 hover:scale-[1.04] transition-all duration-300"
+                      >
+                        <Image
+                          width={160}
+                          height={52}
+                          src="/assets/Android.webp"
+                          alt={tStoreBadges("googleAlt")}
+                          className="object-contain w-[24px] h-auto shrink-0"
+                        />
+                        <span className="text-xs font-black text-darkerGray text-left leading-tight">
+                          {tStoreLabels("google")}
+                        </span>
+                      </a>
+                    </div>
                     <Link
                       href="/kontakt"
                       onClick={closeAll}
-                      className="flex-1 text-center px-5 py-2.5 rounded-full text-sm font-semibold text-primaryWhite bg-primaryOrange hover:bg-primaryOrange/85 transition-all duration-200 shadow-sm shadow-primaryOrange/20"
+                      className="w-full max-w-[360px] inline-flex items-center justify-center text-center px-6 py-2.5 rounded-full text-sm font-semibold text-primaryWhite bg-primaryOrange hover:bg-primaryOrange/85 transition-all duration-200 shadow-sm shadow-primaryOrange/20"
                     >
                       {t("actions.contact")}
                     </Link>
-                    <a
-                      target="_blank"
-                      onClick={closeAll}
-                      href={APP_DOWNLOAD_URL}
-                      rel="noopener noreferrer"
-                      className="flex-1 text-center px-5 py-2.5 rounded-full text-sm font-semibold text-primaryOrange border-2 border-primaryOrange/30 hover:border-primaryOrange hover:bg-primaryOrange/5 transition-all duration-200"
-                    >
-                      {t("actions.download")}
-                    </a>
                   </div>
                 </div>
               </motion.div>

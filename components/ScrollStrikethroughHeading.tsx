@@ -95,7 +95,7 @@ export default function ScrollStrikethroughHeading({
   return (
     <div
       ref={containerRef}
-      className={`text-center max-w-5xl mx-auto mb-8 ${className}`.trim()}
+      className={`text-center max-w-5xl mx-auto mb-10 ${className}`.trim()}
     >
       <h2 className="font-bold text-darkerGray leading-[1.15] tracking-tight">
         <motion.span

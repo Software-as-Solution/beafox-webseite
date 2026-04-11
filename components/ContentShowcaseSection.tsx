@@ -1,44 +1,40 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
+// IMPORTS
 import { motion } from "framer-motion";
+import type { ComponentProps, ReactNode } from "react";
+// CUSTOM COMPONENTS
 import Section from "@/components/Section";
 import SectionHeader from "@/components/SectionHeader";
 
+// TYPES
 export type ContentShowcaseHeaderProps = ComponentProps<typeof SectionHeader>;
-
 export interface ContentShowcaseSectionProps {
-  /** Zusätzliche Klassen für die äußere `Section` (z. B. Hintergrund, Abstände). */
-  sectionClassName?: string;
-  /** Optionaler Wrapper um Header + Inhalt (z. B. `max-w-6xl mx-auto`). */
-  innerClassName?: string;
-  /** Klassen für den Abstand unter dem Header-Bereich. */
-  headerMotionClassName?: string;
-  headerMotionDuration?: number;
-  sectionHeaderProps: ContentShowcaseHeaderProps;
   children: ReactNode;
+  innerClassName?: string;
+  sectionClassName?: string;
+  headerMotionDuration?: number;
+  headerMotionClassName?: string;
+  sectionHeaderProps: ContentShowcaseHeaderProps;
 }
 
-/**
- * Grauer Block mit PawPrint-`SectionHeader` und freiem Inhalt — gleiches Muster wie Ratgeber-Bereich / FAQ Quick Links.
- */
 export default function ContentShowcaseSection({
-  sectionClassName = "bg-gray-50 py-8 md:py-12 lg:py-16",
-  innerClassName,
-  headerMotionClassName = "text-center mb-8 md:mb-12",
-  headerMotionDuration = 0.6,
-  sectionHeaderProps,
   children,
+  innerClassName,
+  sectionHeaderProps,
+  headerMotionDuration = 0.6,
+  headerMotionClassName = "text-center mb-8 md:mb-12",
+  sectionClassName = "bg-gray-50 py-6 sm:py-8 md:py-12 lg:py-16",
 }: ContentShowcaseSectionProps) {
   return (
     <Section className={sectionClassName}>
       <div className={innerClassName}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: headerMotionDuration }}
+          initial={{ opacity: 0, y: 20 }}
           className={headerMotionClassName}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: headerMotionDuration }}
         >
           <SectionHeader {...sectionHeaderProps} />
         </motion.div>

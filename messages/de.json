@@ -1,6 +1,6 @@
 {
   "rootMeta": {
-    "title": "BeAFox – Werde finanziell handlungsfähig.",
+    "title": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
     "titleTemplate": "%s | BeAFox",
     "description": "BeAFox ist dein Begleiter für jede Finanzentscheidung. Die KI-gestützte Lern-App für Azubis, Schüler und Berufseinsteiger — spielerisch, neutral und im eigenen Tempo.",
     "keywords": [
@@ -23,14 +23,14 @@
       "Gamification Finanzbildung",
       "BeAFox"
     ],
-    "ogTitle": "BeAFox – Werde finanziell handlungsfähig.",
+    "ogTitle": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
     "ogDescription": "Die KI-gestützte App für Azubis, Schüler und Berufseinsteiger. Spielerisch durch echte Finanzsituationen — vom ersten Gehalt bis zur Steuererklärung.",
-    "ogImageAlt": "BeAFox – Werde finanziell handlungsfähig.",
-    "twitterTitle": "BeAFox – Werde finanziell handlungsfähig.",
+    "ogImageAlt": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
+    "twitterTitle": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
     "twitterDescription": "Die KI-gestützte App die junge Menschen durch echte Finanzsituationen begleitet. Spielerisch, neutral und im eigenen Tempo."
   },
   "manifest": {
-    "name": "BeAFox - Werde finanziell handlungsfähig.",
+    "name": "BeAFox - Deine Finanzen. Einfach durchgespielt.",
     "shortName": "BeAFox",
     "description": "BeAFox ist dein Begleiter für jede Finanzentscheidung. Die KI-gestützte Lern-App begleitet Azubis, Schüler und Berufseinsteiger durch echte Finanzsituationen."
   },
@@ -41,6 +41,7 @@
       "home": "Startseite",
       "guide": "Ratgeber",
       "magazin": "Magazin",
+      "beaAi": "Bea AI",
       "calculators": "Rechner",
       "allGuidesFor": "Alle {category}-Ratgeber →",
       "allCalculators": "Alle Rechner ansehen →"
@@ -147,7 +148,7 @@
         "unlimited": {
           "badge": "Für dich persönlich",
           "title": "BeAFox Unlimited",
-          "description": "Werde finanziell handlungsfähig! Mit Bea als dein persönlicher KI-Finanzbegleiter. Über 30 Lernreisen, alle Rechner und unbegrenzter Zugang zu deiner Finanzwelt.",
+          "description": "Deine Finanzen. Einfach durchgespielt! Mit Bea als dein persönlicher KI-Finanzbegleiter. Über 30 Lernreisen, alle Rechner und unbegrenzter Zugang zu deiner Finanzwelt.",
           "primaryCta": "App entdecken",
           "secondaryCta": "Mehr über Unlimited"
         },
@@ -352,21 +353,22 @@
       "aiIntroText": "Ich begleite dich bei deinen Finanzentscheidungen!",
       "mascotAlt": "Bea — Dein persönlicher KI-Finanzbegleiter in der BeAFox App",
       "headline": {
-        "line1": "Werde finanziell",
-        "line2": "handlungsfähig."
+        "line1": "Deine Finanzen.",
+        "line2": "Einfach durchgespielt."
       },
       "cta": {
         "download": "App herunterladen",
         "partner": "Demo anfordern"
-      }
+      },
+      "aiAvatarAlt": "Bea Profilbild"
     },
     "problemSection": {
-      "eyebrowPre": "Das Problem mit",
-      "eyebrowHighlight": "Finanzbildung",
+      "eyebrowPre": "Kennst du ",
+      "eyebrowHighlight": "das?",
       "eyebrow": "Das Problem mit Finanzbildung",
       "titlePre": "Überall",
       "titleHighlight": "Wissen.",
-      "titlePost": "Nirgends ein klarer nächster Schritt.",
+      "titlePost": "Aber nirgends ein klarer nächster Schritt.",
       "beforeTitle": "Information Overload",
       "beforeText": "Tausende Tipps, widersprüchliche Meinungen, ständig neue Trends — wer soll da noch durchblicken?",
       "afterTitle": "Nichts ist persönlich",
@@ -381,17 +383,17 @@
         "Theorie ohne Handlungsempfehlung für deinen Alltag"
       ],
       "mascotAlt": "Bea, dein KI-Begleiter",
-      "card1Title": "Zu viele Tipps.",
+      "card1Title": "Zu viele Tipps?",
       "card1Text": "Du hast schon alles gelesen und weißt trotzdem nicht, wo du anfangen sollst?",
-      "card2Title": "Nichts passt zu dir.",
+      "card2Title": "Nichts passt zu dir?",
       "card2Text": "Tipps für andere Situationen, andere Gehälter, andere Pläne. Aber was ist mit deinen?"
     },
     "solutionSection": {
+      "eyebrow": "Deine beste Freundin",
       "eyebrowPre": "Die Lösung:",
       "eyebrowHighlight": "Dein KI-Begleiter",
-      "titlePre": "Die App, die dich",
-      "titleHighlight": "handlungsfähig",
-      "titlePost": "macht.",
+      "titlePre": "Die Lösung:",
+      "titleHighlight": "Dein KI-Begleiter",
       "card1Title": "Deine Situation",
       "card1Text": "Bea kennt deine Lebenssituation und passt sich an.",
       "card2Title": "Konkrete Schritte",
@@ -403,11 +405,11 @@
       "afterText": "Die Tipps sind immer für irgendwen anderen — mit Eigenheim, Familie und festem Gehalt. Aber was soll ICH damit anfangen?",
       "subTitle": "Dein KI-Coach für echte Entscheidungen",
       "featuresTitle": "Was du in der App bekommst:",
-      "description": "Bea ist dein persönlicher KI-Begleiter. Sie kennt deine Lebenssituation, erklärt komplexe Themen in Alltagssprache und sagt dir genau, was dein nächster Schritt ist.",
+      "description": "Bea ist deine beste Freundin für Finanzen! Sie lernt deine Lebenssituation kennen, erklärt komplexe Themen und sagt dir genau, was dein nächster Schritt ist.",
       "features": [
         "Verständliche und direkte Ansprache",
-        "Konkrete Schritte statt allgemeiner Tipps",
-        "Lernt mit dir mit, wird mit der Zeit besser",
+        "Konkrete Schritte statt allgemeine Tipps",
+        "Lernt mit dir mit und wird mit der Zeit besser",
         "Persönlich auf deine Lebenssituation zugeschnitten"
       ],
       "ctaLabel": "Jetzt Bea ausprobieren",
@@ -419,7 +421,8 @@
       }
     },
     "promiseSection": {
-      "eyebrow": "Was sich ändert",
+      "eyebrow": "Du veränderst dich:",
+      "eyebrowHighlight": "Durch Bea",
       "titlePre": "In 30 Tagen wirst du dich",
       "titleHighlight": "nicht wiedererkennen.",
       "subtitle": "Das ist kein Versprechen — das ist die Erfahrung von tausenden BeAFox-Usern, die endlich aufgehört haben sich Gedanken zu machen und angefangen haben zu handeln.",
@@ -451,7 +454,7 @@
       ],
       "timeline": {
         "eyebrow": "Dein 30-Tage Plan",
-        "title": "In einem Monat wirst du finanziell handlungsfähig!",
+        "title": "In einem Monat hast du deine Finanzen durchgespielt!",
         "description": "Egal wo du gerade stehst — Bea holt dich da ab und begleitet dich Schritt für Schritt. Keine Vorkenntnisse nötig, kein stundenlanges Lernen.",
         "milestones": [
           {
@@ -628,7 +631,9 @@
           ]
         }
       },
-      "typingLabel": "tippt…"
+      "typingLabel": "tippt…",
+      "eyebrowPre": "Deine beste Freundin",
+      "eyebrowHighlight": "für Finanzen"
     },
     "testimonialsSection": {
       "title": {
@@ -729,12 +734,13 @@
         "highlight": "Einsatz ab"
       },
       "subtitle": {
-        "lead": "Entdecke unsere maßgeschneiderten Lösungen für",
+        "lead": "Entdecke maßgeschneiderten Lösungen für",
         "schools": "Schulen",
         "connector": "und",
         "businesses": "Unternehmen"
       },
-      "more": "Mehr erfahren"
+      "more": "Mehr erfahren",
+      "bottomTrust": "Über 10.000 Lernende vertrauen bereits auf BeAFox · DSGVO-konform · Made in Germany"
     },
     "useCases": {
       "unlimited": {
@@ -743,17 +749,29 @@
       },
       "business": {
         "title": "BeAFox für Unternehmen",
-        "description": "Mach deine Azubis & Mitarbeiter finanziell handlungsfähig und unterstreiche deine Rolle als zukunftsorientierter Arbeitgeber.",
-        "features": [
-          "Moderner Benefit in der Ausbildung",
-          "Stärkung Ihrer Arbeitgeberattraktivität",
-          "Weniger finanzielle Belastung und Stress",
-          "Handlungsorientierte Workshops & Lernmodule"
-        ]
+        "eyebrow": "Für Azubis & Werkstudenten",
+        "description": "Stärke dein Employer Branding und investiere in die finanzielle Bildung deiner Azubis und Mitarbeiter.",
+        "benefits": [
+          "Onboarding in unter 10 Minuten",
+          "Reportings für HR & Ausbildungsleitung",
+          "DSGVO-konform, gehostet in Deutschland"
+        ],
+        "trustNote": "Bereits von 10+ Unternehmen genutzt",
+        "ctaPrimary": "Mehr erfahren",
+        "ctaSecondary": "Mehr erfahren"
       },
       "schools": {
         "title": "BeAFox für Schulen",
-        "description": "Präventive Finanzbildung, die Schüler begeistert, echte Handlungskompetenz vermittelt und Lehrkräfte im Unterricht spürbar entlastet."
+        "eyebrow": "Für Schüler",
+        "description": "Lehrplankonforme Finanzbildung, die Schüler begeistert und Lehrkräfte spürbar entlastet.",
+        "benefits": [
+          "Lehrplankonform für alle Bundesländer",
+          "Fertige Unterrichtsmaterialien inklusive",
+          "Kostenlos für deine erste Klasse"
+        ],
+        "trustNote": "Bereits an 10+ Schulen im Einsatz",
+        "ctaPrimary": "Mehr erfahren",
+        "ctaSecondary": "Mehr erfahren"
       }
     },
     "experienceSection": {
@@ -798,8 +816,8 @@
       }
     },
     "howItWorks": {
-      "titlePre": "So funktioniert",
-      "titleHighlight": "BeAFox",
+      "titlePre": "BeAFox kann",
+      "titleHighlight": "noch mehr!",
       "titleSuffix": "",
       "scrollMore": "Scrollen für mehr",
       "mockupAlt": "BeAFox {feature} Mockup",
@@ -810,37 +828,65 @@
       "stufen": {
         "title": "Stufen",
         "description": "Wähle frei aus was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden. Egal ob Anfänger oder Fortgeschrittener, bei BeAFox findest du die passende Stufe für dich und kannst in deinem eigenen Tempo lernen.",
-        "highlights": ["Flexibel lernen", "Für jedes Level", "Eigenes Tempo"]
+        "highlights": [
+          "Flexibel lernen",
+          "Für jedes Level",
+          "Eigenes Tempo"
+        ]
       },
       "lernpfad": {
         "title": "Lernpfad",
         "description": "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer wo du stehst und was als Nächstes kommt. Der Lernpfad zeigt dir deinen Fortschritt visuell an und hilft dir, den Überblick zu behalten.",
-        "highlights": ["Strukturiert", "Schritt für Schritt", "Personalisiert"]
+        "highlights": [
+          "Strukturiert",
+          "Schritt für Schritt",
+          "Personalisiert"
+        ]
       },
       "lektion": {
         "title": "Lektionen",
         "description": "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich. Von Budgetplanung über Sparen bis hin zu Investitionen. Wir decken alle wichtigen Bereiche ab und kombinieren Videos, Texte und interaktive Elemente.",
-        "highlights": ["5 Min. Lektionen", "Praxisnah", "Sofort anwendbar"]
+        "highlights": [
+          "5 Min. Lektionen",
+          "Praxisnah",
+          "Sofort anwendbar"
+        ]
       },
       "quiz": {
         "title": "Quiz",
         "description": "Nach der Theorie kommt die Praxis. Teste dein Wissen mit interaktiven Quizzen und vertiefe das Gelernte. Durch sofortiges Feedback lernst du aus deinen Fehlern und kannst gezielt nacharbeiten. Mit jedem erfolgreich abgeschlossenen Quiz sammelst du Punkte und steigst in der Rangliste auf.",
-        "highlights": ["Wissen testen", "Sofort Feedback", "XP sammeln"]
+        "highlights": [
+          "Wissen testen",
+          "Sofort Feedback",
+          "XP sammeln"
+        ]
       },
       "rangliste": {
         "title": "Rangliste",
         "description": "Vergleiche dich mit anderen Lernenden und motiviere dich durch freundschaftlichen Wettbewerb. Sammle Punkte, erreiche neue Level und werde zum Finanz-Experten. Verschiedene Kategorien und Zeiträume sorgen dafür, dass jeder eine faire Chance hat, ganz oben zu stehen.",
-        "highlights": ["Gamification", "Wettbewerb", "Motivation"]
+        "highlights": [
+          "Gamification",
+          "Wettbewerb",
+          "Motivation"
+        ]
       },
       "missionen": {
         "title": "Missionen & Ziele",
         "description": "Erfülle spannende Missionen und erreiche deine persönlichen Ziele. Die Missionen reichen von täglichen Herausforderungen bis hin zu langfristigen Zielen. Jede erfolgreich abgeschlossene Mission wird belohnt und bringt dich deinem großen Ziel näher. Setze dir eigene Ziele oder nimm an vordefinierten Missionen teil.",
-        "highlights": ["Tägliche Ziele", "Belohnungen", "Gewohnheiten"]
+        "highlights": [
+          "Tägliche Ziele",
+          "Belohnungen",
+          "Gewohnheiten"
+        ]
       },
       "profil": {
         "title": "Profil",
         "description": "Sammle Statistiken über deinen Lernfortschritt und erhalte deinen persönlichen Fox Score. Dein Profil zeigt dir alle deine Leistungen: abgeschlossene Lektionen, erreichte Punkte und bestandene Quizze. Der Fox Score ist dein persönlicher Indikator für dein Finanzwissen und steigt mit jedem Fortschritt.",
-        "highlights": ["Fortschritt sehen", "Statistiken", "Erfolge feiern"]
+        "highlights": [
+          "Fortschritt sehen",
+          "Statistiken",
+          "Erfolge feiern"
+        ]
       }
     },
     "whyFinance": {
@@ -976,6 +1022,14 @@
       "softwareApplication": {
         "description": "Spielerische Lern-App für Finanzbildung junger Menschen. Lerne Finanzwissen mit Gamification, Missionen und Challenges."
       }
+    },
+    "trustBadge": {
+      "kpi": "10k+",
+      "rating": "5.0",
+      "avatarAlt": "Bea Maskottchen",
+      "trustedByPrefix": "Vertraut von",
+      "trustedByHighlight": "10.000+ Menschen",
+      "trustedBySuffix": "in Deutschland"
     }
   },
   "faq": {
@@ -1381,8 +1435,8 @@
     },
     "hero": {
       "badge": "Die Geschichte hinter BeAFox",
-      "titlePre": "Wir machen dich ",
-      "titleHighlight": "finanziell handlungsfähig.",
+      "titlePre": "Deine Finanzen. ",
+      "titleHighlight": "Einfach durchgespielt.",
       "titlePost": "",
       "subtitle": "BeAFox ist der KI-Begleiter, der Menschen durch echte Finanzsituationen führt."
     },
@@ -1545,7 +1599,7 @@
       "solutionImpactStatValue": "100%",
       "solutionImpactStatHeadline": "Zufriedenheit bei Azubis und Ausbildern",
       "solutionBullets": [
-        "Azubis werden durch Bea handlungsfähig",
+        "Azubis spielen mit Bea ihre Finanzen durch",
         "Inhalte, die sofort im Alltag anwendbar sind",
         "Monitoring-Dashboard zeigt Ihnen jeden Fortschritt",
         "Weniger Stress, weniger Fehlzeiten, stärkere Bindung"
@@ -1559,7 +1613,7 @@
       "subtitleLine2": "Keine Eigenentwicklung und kein Aufwand für Ihr Unternehmen.",
       "items": [
         {
-          "title": "Azubis handlungsfähig in 30 Tagen",
+          "title": "Finanzen durchgespielt in 30 Tagen",
           "description": "Vom ersten Gehalt bis zur Steuererklärung. Bea führt Ihre Azubis Schritt für Schritt durch jede Finanzsituation."
         },
         {
@@ -1666,7 +1720,7 @@
       "badge": "BeAFox × IHK Akademie",
       "title": "Finanzielle Handlungsfähigkeit",
       "titleHighlight": "für Azubis & Fachkräfte",
-      "description": "Gemeinsam mit der IHK Akademie haben wir einen Workshop entwickelt, der Azubis und Fachkräfte finanziell handlungsfähig macht.",
+      "description": "Gemeinsam mit der IHK Akademie haben wir einen Workshop entwickelt, mit dem Azubis und Fachkräfte ihre Finanzen einfach durchspielen.",
       "ctaPartner": "Workshop anfragen",
       "ctaBook": "Termin buchen"
     },
@@ -1988,7 +2042,7 @@
   "schools": {
     "meta": {
       "title": "Schulen – Jeder Schüler verdient eine Bea",
-      "description": "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte — selbstständiges Lernen ohne Unterrichtsausfall. Jetzt Demo anfragen.",
+      "description": "Mit Bea spielen Schüler ihre Finanzen einfach durch. Spielerische App, Live-Dashboard für Lehrkräfte — selbstständiges Lernen ohne Unterrichtsausfall. Jetzt Demo anfragen.",
       "ogTitle": "Schulen – Jeder Schüler verdient eine Bea",
       "ogDescription": "Bea begleitet Schüler durch jede Finanzsituation. Dashboard für Lehrkräfte, selbstständiges Lernen, null Aufwand."
     },
@@ -2025,7 +2079,7 @@
     },
     "structuredData": {
       "serviceName": "BeAFox für Schulen",
-      "serviceDescription": "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte — ohne Vorbereitung, ohne Unterrichtsausfall. Jetzt Demo anfragen.",
+      "serviceDescription": "Mit Bea spielen Schüler ihre Finanzen einfach durch. Spielerische App, Live-Dashboard für Lehrkräfte — ohne Vorbereitung, ohne Unterrichtsausfall. Jetzt Demo anfragen.",
       "providerName": "BeAFox UG (haftungsbeschränkt)"
     },
     "problemSolution": {
@@ -2408,7 +2462,7 @@
     "hero": {
       "badge": "BeAFox × IHK Akademie",
       "mascotAlt": "BeAFox × IHK Akademie",
-      "cardText": "Gemeinsam mit der IHK Akademie mache ich Azubis finanziell handlungsfähig.",
+      "cardText": "Gemeinsam mit der IHK Akademie helfe ich Azubis, ihre Finanzen einfach durchzuspielen.",
       "titlePre": "AzubiGo:",
       "titleHighlight": "Finanzen für Azubis",
       "description": "Die offizielle Workshop-Reihe von BeAFox und der IHK Akademie Ostbayern.",
@@ -3574,7 +3628,10 @@
     "hero": {
       "headlineKnow": "WISSEN.",
       "headlineMoney": "GELD.",
-      "typingWords": ["FREIHEIT", "SICHERHEIT"]
+      "typingWords": [
+        "FREIHEIT",
+        "SICHERHEIT"
+      ]
     },
     "mockups": {
       "trainingAlt": "BeAFox Training Mockup",
@@ -4410,7 +4467,10 @@
         "title": "Kontakt",
         "content": [
           {
-            "details": ["Telefon: +49 178 2723 673", "E-Mail: info@beafox.app"]
+            "details": [
+              "Telefon: +49 178 2723 673",
+              "E-Mail: info@beafox.app"
+            ]
           }
         ]
       },
@@ -4419,7 +4479,9 @@
         "title": "Vertreten durch",
         "content": [
           {
-            "details": ["Geschäftsführer: Alexandru Tapelea"]
+            "details": [
+              "Geschäftsführer: Alexandru Tapelea"
+            ]
           }
         ]
       },
@@ -4442,7 +4504,9 @@
         "content": [
           {
             "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-            "details": ["DE455701438"]
+            "details": [
+              "DE455701438"
+            ]
           }
         ]
       },

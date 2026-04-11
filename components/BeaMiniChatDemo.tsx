@@ -1,17 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+// STANDARD COMPONENTS
 import Link from "next/link";
+import Image from "next/image";
+// IMPORTS
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+// ICONS
 import { ArrowRight } from "lucide-react";
 
-// CONSTANTS
+// TYPES
 interface Message {
-  sender: "user" | "bea";
   text: string;
+  sender: "user" | "bea";
 }
-
+// CONSTANTS
 const CONVERSATION: Message[] = [
   {
     sender: "user",
@@ -40,10 +43,10 @@ const CONVERSATION: Message[] = [
 ];
 
 export default function BeaMiniChatDemo() {
-  // Start with first message ALWAYS visible to avoid empty state on initial render
+  // STAES
   const [visibleCount, setVisibleCount] = useState(1);
   const [typingFor, setTypingFor] = useState<number | null>(null);
-
+  // USE EFFECTS
   useEffect(() => {
     const timers: NodeJS.Timeout[] = [];
 
@@ -92,28 +95,22 @@ export default function BeaMiniChatDemo() {
           "0 4px 6px rgba(232,119,32,0.04), 0 24px 60px rgba(232,119,32,0.12)",
       }}
     >
-      {/* ─── HEADER ─── */}
       <div
         className="relative px-5 md:px-6 py-2 flex items-center gap-3 border-b border-orange-100/80 justify-center"
         style={{
           background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)",
         }}
       >
-        {/* Avatar */}
-        <div
-          className="relative w-11 h-11 flex items-center justify-center flex-shrink-0"
-        >
+        <div className="relative w-11 h-11 flex items-center justify-center flex-shrink-0">
           <div className="relative w-9 h-9">
             <Image
-              src="/assets/Logos/Logo.webp"
-              alt=""
               fill
+              alt="Bea Logo"
               className="object-contain"
+              src="/assets/Logos/Logo.webp"
             />
           </div>
         </div>
-
-        {/* Name + Status */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <div className="text-sm font-bold text-darkerGray">Bea</div>
@@ -123,14 +120,10 @@ export default function BeaMiniChatDemo() {
               <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
               <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-green-500 animate-ping" />
             </div>
-            <div className="text-[11px] text-lightGray">
-              Online
-            </div>
+            <div className="text-[11px] text-lightGray">Online</div>
           </div>
         </div>
       </div>
-
-      {/* ─── MESSAGES ─── */}
       <div className="relative px-5 md:px-6 py-5 md:py-6 space-y-3 min-h-[420px] bg-white">
         <AnimatePresence>
           {CONVERSATION.map((msg, idx) => {
@@ -140,13 +133,13 @@ export default function BeaMiniChatDemo() {
             return (
               <motion.div
                 key={`msg-${idx}`}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
                 initial={
                   messageNum === 1
                     ? { opacity: 1, y: 0, scale: 1 }
                     : { opacity: 0, y: 12, scale: 0.96 }
                 }
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
                 className={`flex ${
                   msg.sender === "user" ? "justify-end" : "justify-start"
                 }`}
@@ -175,16 +168,14 @@ export default function BeaMiniChatDemo() {
               </motion.div>
             );
           })}
-
-          {/* Typing indicator */}
           {typingFor !== null && (
             <motion.div
               key="typing"
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25 }}
+              animate={{ opacity: 1, y: 0 }}
               className="flex justify-start"
+              initial={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.25 }}
             >
               <div
                 className="rounded-2xl rounded-tl-md px-4 py-3"
@@ -197,12 +188,12 @@ export default function BeaMiniChatDemo() {
                   {[0, 0.15, 0.3].map((delay, i) => (
                     <motion.div
                       key={i}
-                      className="w-1.5 h-1.5 rounded-full bg-primaryOrange"
                       animate={{ opacity: [0.3, 1, 0.3] }}
+                      className="w-1.5 h-1.5 rounded-full bg-primaryOrange"
                       transition={{
+                        delay,
                         duration: 1.2,
                         repeat: Infinity,
-                        delay,
                       }}
                     />
                   ))}
@@ -212,8 +203,6 @@ export default function BeaMiniChatDemo() {
           )}
         </AnimatePresence>
       </div>
-
-      {/* ─── FOOTER ─── */}
       <div className="relative px-5 md:px-6 py-4 border-t border-gray-100 bg-gray-50/50 flex items-center justify-between gap-3">
         <div className="flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-primaryOrange animate-pulse" />
@@ -221,7 +210,6 @@ export default function BeaMiniChatDemo() {
             Live Demo
           </div>
         </div>
-
         <Link
           href="/unlimited"
           className="group inline-flex items-center gap-1 text-xs font-bold text-primaryOrange transition-all"

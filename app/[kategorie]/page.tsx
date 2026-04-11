@@ -317,7 +317,7 @@ export default function RatgeberCategoryPage() {
             </div>
             <div className="flex-1">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                Bea macht dich handlungsfähig
+                Deine Finanzen. Einfach durchgespielt.
               </h2>
               <p className="text-white/80 text-base leading-relaxed max-w-xl">
                 Alle Guides in dieser Kategorie — plus KI-Coaching, Challenges und

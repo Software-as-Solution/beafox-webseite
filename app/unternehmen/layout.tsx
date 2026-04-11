@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const url = `${BASE_URL}/unternehmen`;
   const title = "Unternehmen – Finanzbildung für Azubis";
   const description =
-    "Bea macht Ihre Azubis finanziell handlungsfähig. Spielerische App, Live-Dashboard, Workshops — ohne Aufwand für Ihr Team. Jetzt Demo anfordern.";
+    "Mit Bea spielen Ihre Azubis ihre Finanzen einfach durch. Spielerische App, Live-Dashboard, Workshops — ohne Aufwand für Ihr Team. Jetzt Demo anfordern.";
 
   return {
     title,

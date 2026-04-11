@@ -54,7 +54,6 @@ export default function StickyMobileCTA() {
     if (typeof window === "undefined") return false;
     return window.matchMedia(REDUCED_MOTION_QUERY).matches;
   }, []);
-  // FUNCTIONS — stable reference via ref, avoids scroll listener re-registration
   const handleScroll = useCallback(() => {
     if (isDismissedRef.current) return;
 
@@ -91,7 +90,6 @@ export default function StickyMobileCTA() {
     }
   }, []);
   // EFFECTS
-  // Check dismiss state from sessionStorage
   useEffect(() => {
     try {
       if (sessionStorage.getItem(DISMISS_KEY) === "true") {
@@ -101,7 +99,6 @@ export default function StickyMobileCTA() {
       // sessionStorage unavailable
     }
   }, []);
-  // Mobile detection via MediaQuery
   useEffect(() => {
     const mq = window.matchMedia(MOBILE_QUERY);
     setIsMobile(mq.matches);
@@ -109,7 +106,6 @@ export default function StickyMobileCTA() {
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
-  // Scroll listener with rAF cleanup
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
@@ -120,14 +116,11 @@ export default function StickyMobileCTA() {
       }
     };
   }, [handleScroll]);
-  // Impression tracking
   useEffect(() => {
     if (isVisible && !hasTrackedImpression.current) {
       hasTrackedImpression.current = true;
-      // trackEvent("sticky_cta_impression");
     }
   }, [isVisible]);
-
   // Early return for desktop
   if (!isMobile) return null;
 
@@ -154,18 +147,16 @@ export default function StickyMobileCTA() {
             }}
           >
             <div className="flex items-center gap-2.5">
-              {/* App icon */}
-              <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 border border-primaryOrange/20">
+              <div className="w-10 h-10 overflow-hidden flex-shrink-0">
                 <Image
                   width={40}
                   height={40}
                   loading="lazy"
-                  src="/Logo.webp"
                   alt="BeAFox App Icon"
-                  className="object-cover w-full h-full"
+                  src="/assets/Logos/Logo.webp"
+                  className="object-contain w-full h-full"
                 />
               </div>
-              {/* Text */}
               <div className="flex-1 min-w-0">
                 <div className="text-[13px] font-bold text-darkerGray leading-tight truncate">
                   {t("title")}
@@ -189,10 +180,9 @@ export default function StickyMobileCTA() {
                       </svg>
                     ))}
                   </div>
-                  <span className="text-[10px] text-lightGray ml-0.5">5.0</span>
+                  <span className="text-xs text-lightGray ml-0.5">5.0</span>
                 </div>
               </div>
-              {/* CTA Button */}
               <button
                 onClick={handleDownload}
                 style={CTA_BUTTON_STYLE}
@@ -203,7 +193,6 @@ export default function StickyMobileCTA() {
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </button>
             </div>
-            {/* Dismiss */}
             <button
               onClick={handleDismiss}
               aria-label={t("dismissAria")}

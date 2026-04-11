@@ -546,7 +546,7 @@ export default function GuideArticlePage() {
                         Mit Bea geht&apos;s schneller
                       </h3>
                       <p className="text-lightGray text-sm leading-relaxed">
-                        Bea ist dein KI-Begleiter in der BeAFox App — sie führt dich Schritt für Schritt durch diesen Guide, erinnert dich und macht dich handlungsfähig.
+                        Bea ist dein KI-Begleiter in der BeAFox App — sie führt dich Schritt für Schritt durch diesen Guide, erinnert dich und hilft dir, deine Finanzen durchzuspielen.
                       </p>
                     </div>
                     <a

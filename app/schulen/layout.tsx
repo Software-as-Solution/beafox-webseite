@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const url = `${BASE_URL}/schulen`;
   const title = "Schulen – Jeder Schüler verdient eine Bea";
   const description =
-    "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte — ohne Vorbereitung, ohne Unterrichtsausfall. Jetzt Demo anfragen.";
+    "Mit Bea spielen Schüler ihre Finanzen einfach durch. Spielerische App, Live-Dashboard für Lehrkräfte — ohne Vorbereitung, ohne Unterrichtsausfall. Jetzt Demo anfragen.";
 
   return {
     title,

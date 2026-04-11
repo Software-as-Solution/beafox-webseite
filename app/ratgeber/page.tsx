@@ -140,8 +140,8 @@ export default function RatgeberHubPage() {
             transition={{ duration: 0.45 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-darkerGray leading-tight mb-4"
           >
-            Finanzwissen das dich{" "}
-            <span className="text-primaryOrange">handlungsfähig</span> macht
+            Deine Finanzen.{" "}
+            <span className="text-primaryOrange">Einfach durchgespielt</span>.
           </motion.h1>
 
           <motion.p

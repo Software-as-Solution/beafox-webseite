@@ -40,6 +40,8 @@
       "about": "About us",
       "faq": "FAQ",
       "guide": "Guides",
+      "magazin": "Magazine",
+      "beaAi": "Bea AI",
       "calculators": "Calculators",
       "allGuidesFor": "All {category} guides →",
       "allCalculators": "View all calculators →"
@@ -149,7 +151,8 @@
         "titlePre": "Current",
         "titleHighlight": "favorites",
         "badge": "Recommendations",
-        "title": "Current favorites"
+        "title": "Current favorites",
+        "description": "The most popular studies and analyses from our editorial team."
       },
       "allArticles": {
         "badge": "All articles",
@@ -192,6 +195,30 @@
       "articleCard": {
         "readingTime": "{minutes} min read",
         "readMore": "Read"
+      },
+      "products": {
+        "titlePre": "BeAFox in",
+        "titleHighlight": "Practice",
+        "title": "BeAFox in Practice",
+        "subtitle": "Discover how BeAFox is the perfect solution for financial capability.",
+        "cardLinkLabel": "Learn more",
+        "unlimited": {
+          "badge": "For individuals",
+          "title": "BeAFox Unlimited",
+          "description": "Become financially capable with Bea as your personal AI finance companion. More than 30 learning journeys, all calculators, and unlimited access to your financial world.",
+          "primaryCta": "Discover the app",
+          "secondaryCta": "More about Unlimited"
+        },
+        "business": {
+          "badge": "For businesses",
+          "title": "Financial wellness as an employee benefit",
+          "description": "Reduce stress in your team and strengthen employee retention. Learn how BeAFox works as a corporate benefit."
+        },
+        "schools": {
+          "badge": "For education",
+          "title": "Financial education\nin the classroom",
+          "description": "Curriculum-compatible, gamified, and developed together with teachers. Discover our offering for schools and educational institutions."
+        }
       }
     },
     "article": {
@@ -310,7 +337,8 @@
       "clubs": "BeAFox for Clubs",
       "bildungshaus": "BeAFox × Bildungshaus Wolfsburg",
       "ihk": "BeAFox × IHK Academy",
-      "eduplaces": "BeAFox × Eduplaces"
+      "eduplaces": "BeAFox × Eduplaces",
+      "merch": "BeAFox Merch"
     },
     "legal": {
       "title": "Legal",
@@ -331,7 +359,12 @@
       "news": "News",
       "appUpdates": "App updates"
     },
-    "copyright": "Copyright © {year} BeAFox UG (limited liability)"
+    "copyright": "Copyright © {year} BeAFox UG (limited liability)",
+    "magazin": {
+      "title": "Magazine",
+      "hub": "Bea's Magazine",
+      "allArticles": "View all articles"
+    }
   },
   "home": {
     "hero": {
@@ -351,7 +384,8 @@
       "cta": {
         "download": "Download the app",
         "partner": "Become a partner"
-      }
+      },
+      "aiAvatarAlt": "Bea profile image"
     },
     "stats": {
       "privateUsers": "Active individual users",
@@ -898,7 +932,9 @@
           ]
         }
       },
-      "typingLabel": "is typing…"
+      "typingLabel": "is typing…",
+      "eyebrowPre": "How Bea supports you",
+      "eyebrowHighlight": "in real time"
     },
     "problemSection": {
       "eyebrowPre": "The problem with",
@@ -958,6 +994,71 @@
         "statusOnline": "Online — replies instantly",
         "liveLabel": "Live demo"
       }
+    },
+    "promiseSection": {
+      "eyebrow": "What changes",
+      "titlePre": "In 30 days, you will",
+      "titleHighlight": "hardly recognize yourself.",
+      "subtitle": "This is not a promise - it's the experience of thousands of BeAFox users who stopped overthinking and started taking action.",
+      "transformations": [
+        {
+          "before": "You don't know if you're saving enough.",
+          "after": "You have a clear plan and see your progress every month.",
+          "metric": "+47%",
+          "metricLabel": "higher savings rate"
+        },
+        {
+          "before": "You have been postponing financial decisions for months.",
+          "after": "You make decisions in minutes - with Bea as your sparring partner.",
+          "metric": "10x",
+          "metricLabel": "faster decisions"
+        },
+        {
+          "before": "You don't understand half of the finance terms.",
+          "after": "You even explain to your parents what an ETF is.",
+          "metric": "100+",
+          "metricLabel": "terms understood"
+        },
+        {
+          "before": "You're losing money to fees without noticing.",
+          "after": "You know the best tools and save on every trade.",
+          "metric": "~340 EUR",
+          "metricLabel": "fees saved/year"
+        }
+      ],
+      "timeline": {
+        "eyebrow": "Your 30-day plan",
+        "title": "In one month, you will be financially capable!",
+        "description": "No matter where you are right now - Bea meets you there and guides you step by step. No prior knowledge required, no endless studying.",
+        "milestones": [
+          {
+            "day": "DAY 1",
+            "text": "You know your financial status - in black and white."
+          },
+          {
+            "day": "DAY 7",
+            "text": "Your first savings plan is running. Automatically."
+          },
+          {
+            "day": "DAY 14",
+            "text": "You truly understand ETFs, taxes, and insurance."
+          },
+          {
+            "day": "DAY 30",
+            "text": "You have a strategy that fits your life."
+          }
+        ],
+        "ctaPrimary": "Start with BeAFox now",
+        "ctaSecondary": "Get to know Bea first"
+      }
+    },
+    "trustBadge": {
+      "kpi": "10k+",
+      "rating": "5.0",
+      "avatarAlt": "Bea mascot",
+      "trustedByPrefix": "Trusted by",
+      "trustedByHighlight": "10,000+ people",
+      "trustedBySuffix": "in Germany"
     }
   },
   "faq": {
@@ -1018,7 +1119,8 @@
     "contactCta": {
       "title": "Still have questions?",
       "subtitle": "If you have more questions that weren't answered here, feel free to contact us. We're happy to help!",
-      "cta": "Contact us"
+      "cta": "Contact us",
+      "text": "Couldn't find your question? Write to us and we'll reply within 24 hours."
     },
     "items": [
       {
@@ -1974,7 +2076,7 @@
   "schools": {
     "meta": {
       "title": "Schulen – Jeder Schüler verdient eine Bea",
-      "description": "Bea macht Schüler finanziell handlungsfähig. Spielerische App, Live-Dashboard für Lehrkräfte — selbstständiges Lernen ohne Unterrichtsausfall. Jetzt Demo anfragen.",
+      "description": "Mit Bea spielen Schüler ihre Finanzen einfach durch. Spielerische App, Live-Dashboard für Lehrkräfte — selbstständiges Lernen ohne Unterrichtsausfall. Jetzt Demo anfragen.",
       "ogTitle": "Schulen – Jeder Schüler verdient eine Bea",
       "ogDescription": "Bea begleitet Schüler durch jede Finanzsituation. Dashboard für Lehrkräfte, selbstständiges Lernen, null Aufwand."
     },
@@ -2397,6 +2499,11 @@
         "title": "Individuals",
         "description": "BeAFox Unlimited for you"
       }
+    },
+    "meta": {
+      "title": "Contact - Let's talk",
+      "description": "Write to us or book an appointment directly. Whether school, company, or personal question - we reply within 24 hours.",
+      "ogImageAlt": "BeAFox Contact"
     }
   },
   "ihkAkademie": {
@@ -2436,7 +2543,8 @@
         "Available on-site in Regensburg or online"
       ],
       "statValue": "100%",
-      "statHeading": "Satisfaction among participants and companies"
+      "statHeading": "Satisfaction among participants and companies",
+      "subtitle": "The official workshop series by BeAFox and IHK Academy East Bavaria."
     },
     "images": {
       "mascotAlt": "BeAFox × IHK Academy — AzubiGo workshop",
@@ -3655,7 +3763,8 @@
       "titleHighlight": "calculators",
       "description": "Search by keyword or filter by category — find the right calculator quickly.",
       "cardText": "Calculate your salary, plan your budget, and keep your finances in view.",
-      "ctaPrimary": "Explore calculators"
+      "ctaPrimary": "Explore calculators",
+      "ctaSecondary": "Discover calculators"
     },
     "search": {
       "titlePre": "Find the right",
@@ -3715,6 +3824,61 @@
       "related": {
         "titlePre": "More calculators in"
       }
+    },
+    "rootMeta": {
+      "title": "Financial Calculators - Gross Net, Savings Plan & More | BeAFox",
+      "description": "More than 15 free financial calculators for young people. Gross net, savings plan, inflation, and more - directly in your browser, no signup required."
+    },
+    "trust": {
+      "calculators": "Financial calculators",
+      "free": "Completely free",
+      "neutral": "Ad-free & neutral",
+      "german": "Made in Germany"
+    },
+    "featured": {
+      "titlePre": "Popular",
+      "titleHighlight": "Calculators",
+      "description": "These are the calculators most users start with. Fast, free, and without signup.",
+      "badge": "Popular",
+      "cta": "Calculate now"
+    },
+    "all": {
+      "titlePre": "All",
+      "titleHighlight": "Financial calculators",
+      "description": "Choose the right calculator - filtered by category or via search."
+    },
+    "appBanner": {
+      "title": "Bea can do much more",
+      "description": "In the BeAFox app, Bea guides you through real financial situations - from your first salary to your tax return. Playful and free.",
+      "cta": "Download app for free"
+    },
+    "faq": {
+      "titlePre": "Frequently",
+      "titleHighlight": "Asked Questions",
+      "items": [
+        {
+          "question": "Are the BeAFox calculators really free?",
+          "answer": "Yes. All calculators on BeAFox are completely free and usable without signup. We do not make money with ads or by selling your data."
+        },
+        {
+          "question": "How up to date are the tax rates and values?",
+          "answer": "The calculators are based on the current values for 2026 - minimum wage, basic allowance, social security contributions, and all relevant tax rates. We update the values every year."
+        },
+        {
+          "question": "Does BeAFox store my entered data?",
+          "answer": "No. All calculations happen directly in your browser. We do not store any inputs and do not track personal data."
+        },
+        {
+          "question": "Do I need an account to use the calculators?",
+          "answer": "No. You can use all calculators directly in the browser without logging in. Only if you want to use Bea as your personal finance companion in the app do you need a free account."
+        }
+      ]
+    },
+    "downloadCta": {
+      "title": "More than just calculators?",
+      "description": "Bea guides you through real financial situations - from your first salary to your tax return. Playful, neutral, and at your pace.",
+      "button": "Download BeAFox",
+      "secondaryButton": "Discover Unlimited"
     }
   },
   "shop": {
@@ -5581,6 +5745,57 @@
       "privacy": "Privacy Policy",
       "terms": "Terms & Conditions",
       "imprint": "Imprint"
+    }
+  },
+  "magazinContent": {
+    "hub": {
+      "title": "Bea's Magazine",
+      "subtitle": "Valuable insights around financial education for companies, schools, and training organizations - from experts for practical professionals.",
+      "searchPlaceholder": "Search articles...",
+      "featuredTitle": "Recommended articles",
+      "latestTitle": "Latest articles",
+      "allArticles": "View all posts",
+      "clusterTitle": "Discover topics",
+      "articlesCount": "{count} articles",
+      "newsletterTitle": "Don't miss a post - Get Bea's insights straight to your inbox",
+      "newsletterText": "Monthly. No spam. Unsubscribe anytime.",
+      "newsletterButton": "Subscribe",
+      "ctaTitle": "Introduce financial education in your company?",
+      "ctaText": "Find out in 15 minutes how BeAFox works - with live demo and ROI calculation.",
+      "ctaButton": "Book free demo",
+      "filterAll": "All posts"
+    },
+    "article": {
+      "readingTime": "{minutes} min read",
+      "publishedAt": "Published on {date}",
+      "updatedAt": "Updated on {date}",
+      "tocTitle": "Table of contents",
+      "authorTitle": "About the author",
+      "moreFromAuthor": "More articles by {name}",
+      "relatedTitle": "Related articles",
+      "faqTitle": "Frequently asked questions",
+      "shareTitle": "Share article",
+      "downloadTitle": "Free download",
+      "downloadGatedText": "Enter your email to download the file.",
+      "downloadButton": "Download now",
+      "backToHub": "<- Back to magazine"
+    },
+    "cluster": {
+      "articlesIn": "Articles in {cluster}",
+      "filterAll": "All types",
+      "sortNewest": "Newest first",
+      "sortPopular": "Most popular",
+      "sortReadingTime": "Shortest read time",
+      "relatedClusters": "Related topics",
+      "emptyState": "No articles in this category yet. Check back soon!"
+    },
+    "types": {
+      "guide": "Guide",
+      "article": "Article",
+      "caseStudy": "Case study",
+      "whitepaper": "Whitepaper",
+      "template": "Template",
+      "data": "Study"
     }
   }
 }

@@ -19,9 +19,9 @@ const BASE_WRAPPER = "text-center";
 const BASE_PILL =
   "flex items-center gap-1.5 md:gap-2 lg:gap-3 text-lightGray text-xs md:text-sm lg:text-lg xl:text-xl border-2 text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 lg:px-6 py-1.5 md:py-2 lg:py-3 w-fit mx-auto";
 const BASE_TITLE =
-  "font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl text-darkerGray";
+  "font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl px-2 text-darkerGray";
 const BASE_ICON =
-  "w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-8 xl:h-8 text-primaryOrange";
+  "lg:w-6 lg:h-6 xl:w-8 xl:h-8 text-primaryOrange";
 const BASE_SUBTITLE =
   "text-lightGray text-sm md:text-base lg:text-lg max-w-2xl mx-auto whitespace-pre-line";
 
