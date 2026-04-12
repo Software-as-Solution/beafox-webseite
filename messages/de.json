@@ -1,15 +1,18 @@
 {
   "rootMeta": {
-    "title": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
+    "title": "BeAFox – Finanzbildung App | Deine Finanzen. Einfach durchgespielt.",
     "titleTemplate": "%s | BeAFox",
-    "description": "BeAFox ist dein Begleiter für jede Finanzentscheidung. Die KI-gestützte Lern-App für Azubis, Schüler und Berufseinsteiger — spielerisch, neutral und im eigenen Tempo.",
+    "description": "Finanzbildung App für Azubis, Schüler & Berufseinsteiger. BeAFox begleitet dich KI-gestützt durch echte Finanzsituationen — spielerisch, neutral und im eigenen Tempo.",
     "keywords": [
+      "Finanzbildung",
       "Finanzbildung App",
       "Finanzbildung für Azubis",
       "Finanzbildung für Schulen",
       "Finanzbildung für Unternehmen",
       "Finanzbildung Schüler",
-      "finanzielle Handlungsfähigkeit",
+      "Finanzbildung Jugendliche",
+      "Finanzbildung junge Menschen",
+      "finanzielle Bildung",
       "Finanzkompetenz junge Menschen",
       "Finanz-App Azubis",
       "Geld lernen App",
@@ -21,6 +24,10 @@
       "erstes Gehalt planen",
       "DSGVO Finanz-App Schulen",
       "Gamification Finanzbildung",
+      "financial literacy App deutsch",
+      "Finanzen lernen App",
+      "Finanzcoaching Azubis",
+      "Taschengeld App",
       "BeAFox"
     ],
     "ogTitle": "BeAFox – Deine Finanzen. Einfach durchgespielt.",
@@ -1028,8 +1035,7 @@
       "rating": "5.0",
       "avatarAlt": "Bea Maskottchen",
       "trustedByPrefix": "Vertraut von",
-      "trustedByHighlight": "10.000+ Menschen",
-      "trustedBySuffix": "in Deutschland"
+      "trustedByHighlight": "10.000+ Menschen"
     }
   },
   "faq": {

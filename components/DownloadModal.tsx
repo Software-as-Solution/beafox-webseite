@@ -8,6 +8,8 @@ import { useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // ICONS
 import { X, Sparkles, Zap } from "lucide-react";
+// ANALYTICS
+import { trackDownloadClick } from "@/components/AhrefsAnalytics";
 
 // TYPES
 interface DownloadModalProps {
@@ -194,7 +196,7 @@ export default function DownloadModal({
                   target="_blank"
                   href={APP_STORE_URL}
                   rel="noopener noreferrer"
-                  onClick={handleAppStoreClick}
+                  onClick={(e) => { handleAppStoreClick(e); trackDownloadClick("ios"); }}
                   className="flex-1 min-w-[190px] flex items-center gap-2 md:gap-4 justify-center md:justify-start rounded-lg border border-darkerGray/20 p-2 bg-white/80 hover:scale-[1.02] transition-transform"
                 >
                   <Image
@@ -212,7 +214,7 @@ export default function DownloadModal({
                   target="_blank"
                   href={PLAY_STORE_URL}
                   rel="noopener noreferrer"
-                  onClick={handleAppStoreClick}
+                  onClick={(e) => { handleAppStoreClick(e); trackDownloadClick("android"); }}
                   className="flex-1 min-w-[190px] flex items-center gap-2 md:gap-4 justify-center md:justify-start rounded-lg border border-darkerGray/20 p-2 bg-white/80 hover:scale-[1.02] transition-transform"
                 >
                   <Image

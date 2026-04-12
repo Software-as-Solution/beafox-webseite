@@ -154,7 +154,7 @@ export default function LandingHero({
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative flex items-center justify-center">
-              <div className="relative z-10 w-full max-w-[220px] sm:max-w-[380px] lg:max-w-[400px]">
+              <div className="relative z-10 w-full max-w-[220px] sm:max-w-[380px]">
                 <Image
                   priority
                   width={450}
@@ -162,7 +162,7 @@ export default function LandingHero({
                   src={mascotSrc}
                   alt={mascotAlt}
                   className={twMerge(
-                    "object-contain drop-shadow-[0_28px_60px_rgba(0,0,0,0.16)] scale-100 sm:scale-125 relative right-[5%] sm:right-[10%] md:top-8",
+                    "object-contain drop-shadow-[0_28px_60px_rgba(0,0,0,0.16)] scale-100 relative right-[5%] sm:right-[10%] md:top-8",
                     mascotClassName,
                   )}
                 />
@@ -218,11 +218,11 @@ export default function LandingHero({
                     />
                   </svg>
                   <div className="absolute top-0 left-0 right-0 h-[58px] sm:h-[80px] md:h-[88px] flex items-center gap-2 sm:gap-4 pl-2 sm:pl-3 pr-3 sm:pr-5">
-                    <div className="relative left-[2%] sm:left-0 w-6 h-6 sm:w-14 sm:h-14 overflow-hidden flex-shrink-0">
+                    <div className="relative left-[2%] w-6 h-6 sm:w-14 sm:h-14 overflow-hidden flex-shrink-0">
                       <Image
-                        alt={t("aiAvatarAlt")}
                         width={400}
                         height={400}
+                        alt={t("aiAvatarAlt")}
                         src="/assets/Logos/Logo.webp"
                         className="object-contain w-full h-full"
                       />

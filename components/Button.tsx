@@ -10,12 +10,12 @@ import { Loader2 } from "lucide-react";
 // TYPES
 type ButtonVariant = "primary" | "secondary" | "outline";
 interface ButtonBaseProps {
+  rel?: string;
+  target?: string;
   loading?: boolean;
   className?: string;
   disabled?: boolean;
   variant?: ButtonVariant;
-  target?: string;
-  rel?: string;
   children: React.ReactNode;
 }
 interface ButtonAsButton extends ButtonBaseProps {
@@ -30,8 +30,6 @@ interface ButtonAsLink extends ButtonBaseProps {
 }
 type ButtonProps = ButtonAsButton | ButtonAsLink;
 // CONSTANTS
-const BASE_STYLES =
-  "inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold text-center transition-all duration-200 active:scale-[0.97]";
 const VARIANT_STYLES: Record<ButtonVariant, string> = {
   primary:
     "bg-primaryOrange text-primaryWhite hover:bg-primaryOrange/90 shadow-sm shadow-primaryOrange/20 hover:shadow-md hover:shadow-primaryOrange/25",
@@ -42,11 +40,15 @@ const VARIANT_STYLES: Record<ButtonVariant, string> = {
 };
 const LOADING_STYLES = "cursor-wait pointer-events-none";
 const DISABLED_STYLES = "opacity-50 cursor-not-allowed pointer-events-none";
+const BASE_STYLES =
+  "inline-flex items-center justify-center px-8 py-3 rounded-full font-semibold text-center transition-all duration-200 active:scale-[0.97]";
 
 const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   function Button(
     {
       href,
+      rel,
+      target,
       onClick,
       children,
       className = "",
@@ -54,8 +56,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       loading = false,
       disabled = false,
       variant = "primary",
-      target,
-      rel,
     },
     ref,
   ) {
@@ -85,13 +85,13 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     if (href) {
       return (
         <Link
+          rel={rel}
           href={href}
+          target={target}
           className={combinedClassName}
           tabIndex={isDisabled ? -1 : undefined}
           aria-disabled={isDisabled || undefined}
           ref={ref as React.Ref<HTMLAnchorElement>}
-          target={target}
-          rel={rel}
         >
           {content}
         </Link>

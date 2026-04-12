@@ -3,6 +3,7 @@
 // CUSTOM COMPONENTS
 import Button from "@/components/Button";
 import Section from "@/components/Section";
+import { trackContactSubmit } from "@/components/AhrefsAnalytics";
 import LandingHero from "@/components/LandingHero";
 import RatgeberSection from "@/components/RatGeber";
 import SectionHeader from "@/components/SectionHeader";
@@ -139,6 +140,7 @@ export default function ContactPage() {
         }
 
         setSubmitStatus("success");
+        trackContactSubmit();
         setFormData({ ...INITIAL_FORM });
       } catch {
         setErrorMessage(t("form.errorUnexpected"));

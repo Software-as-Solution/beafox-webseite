@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 // CUSTOM COMPONENTS
 import Button from "@/components/Button";
 import Section from "@/components/Section";
+import TrustBadge from "@/components/Trustbadge";
 import LandingHero from "@/components/LandingHero";
 import SectionHeader from "@/components/SectionHeader";
 import StructuredData from "@/components/StructuredData";
@@ -14,7 +15,7 @@ import StickyMobileCTA from "@/components/StickyMobileCta";
 import { type FaqAccordionItem } from "@/components/FaqAccordion";
 import TransformationsTimeline from "@/components/TransformationsTimeline";
 import ScrollStrikethroughHeading from "@/components/ScrollStrikethroughHeading";
-// CUSTOM COMPONENTS
+// DYNAMIC COMPONENTS
 const DemoBookingCtaSection = dynamic(
   () => import("@/components/DemoBookingCtaSection"),
 );
@@ -28,18 +29,10 @@ const DownloadModal = dynamic(() => import("@/components/DownloadModal"));
 // IMPORTS
 import { useLocale, useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState, useCallback, useMemo, type ReactNode } from "react";
+import { useState, useCallback, type ReactNode } from "react";
 // ICONS
-import {
-  Users,
-  Check,
-  Download,
-  Building2,
-  ArrowRight,
-  type LucideIcon,
-  Sparkles,
-} from "lucide-react";
-import TrustBadge from "@/components/Trustbadge";
+import { Check, Download, ArrowRight, Sparkles } from "lucide-react";
+
 // TYPES
 interface UseCase {
   id: string;
@@ -51,11 +44,56 @@ interface AppFeature {
   id: string;
   mockup: string;
 }
+interface TrustLogo {
+  src: string;
+  alt: string;
+}
 // CONSTANTS
 const APP_STORE_URL = "https://apps.apple.com/de/app/beafox/id6746110612";
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.tapelea.beafox&pcampaignid=web_share";
 const ORANGE_GRADIENT = "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)";
+const USE_CASES: readonly UseCase[] = [
+  {
+    id: "business",
+    href: "/unternehmen",
+    mascotAlt: "BeAFox für Unternehmen",
+    mascot: "/Maskottchen/Maskottchen-Business.webp",
+  },
+  {
+    id: "schools",
+    href: "/schulen",
+    mascotAlt: "BeAFox für Schulen",
+    mascot: "/Maskottchen/Maskottchen-School.webp",
+  },
+] as const;
+const APP_FEATURES: readonly AppFeature[] = [
+  { id: "stufen", mockup: "/assets/Mockups/Mockup-Stufen.webp" },
+  { id: "lernpfad", mockup: "/assets/Mockups/Mockup-Lernpfad.webp" },
+  { id: "lektion", mockup: "/assets/Mockups/Mockup-Lektion.webp" },
+  { id: "quiz", mockup: "/assets/Mockups/Mockup-Quiz.webp" },
+  { id: "rangliste", mockup: "/assets/Mockups/Mockup-Rangliste.webp" },
+  { id: "missionen", mockup: "/assets/Mockups/Mockup-Missionen.webp" },
+  { id: "profil", mockup: "/assets/Mockups/Mockup-Profil.webp" },
+] as const;
+const USE_CASE_TRUST_LOGOS: Record<string, readonly TrustLogo[]> = {
+  business: [
+    { src: "/Partners/3.webp", alt: "IHK Akademie" },
+    { src: "/Partners/8.webp", alt: "TechBase Regensburg" },
+    { src: "/Partners/1.webp", alt: "Eckert Schulen" },
+  ],
+  schools: [
+    { src: "/Partners/1.webp", alt: "Dr. Robert Eckert Schulen" },
+    { src: "/Partners/3.webp", alt: "IHK Akademie" },
+    { src: "/Partners/14.webp", alt: "Eduplaces" },
+  ],
+} as const;
+const PROBLEM_TITLE_HIGHLIGHTS = [
+  "nächster Schritt.",
+  "nächster Schritt",
+] as const;
+
+// STYLE CONSTANTS
 const CHECK_BULLET_STYLE = {
   background: ORANGE_GRADIENT,
   boxShadow: "0 2px 6px rgba(232,119,32,0.3)",
@@ -66,15 +104,15 @@ const SCROLL_TOUCH_STYLE = {
 const MOCKUP_SHADOW_STYLE = {
   filter: "drop-shadow(0 16px 32px rgba(0,0,0,0.16))",
 } as const;
-
 const PROBLEM_CARD_STYLE = {
   background: "#FFFFFF",
   border: "1px solid #F0E5D8",
   boxShadow:
     "0 1px 3px rgba(232,119,32,0.04), 0 8px 24px rgba(232,119,32,0.06)",
 } as const;
-const STORE_BUTTON_SHADOW =
-  "0 12px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.4)";
+const STORE_BUTTON_STYLE = {
+  boxShadow: "0 12px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.4)",
+} as const;
 const FEATURE_CARD_STYLE = {
   border: "1px solid rgba(232,119,32,0.15)",
   boxShadow: "0 16px 48px rgba(0,0,0,0.06), 0 0 0 1px rgba(232,119,32,0.04)",
@@ -88,33 +126,54 @@ const SOLUTION_CTA_STYLE = {
   background: ORANGE_GRADIENT,
   boxShadow: "0 8px 24px rgba(232,119,32,0.3)",
 } as const;
-const GLOW = (opacity: number) => ({
-  background: `radial-gradient(circle, rgba(232,119,32,${opacity}) 0%, transparent 70%)`,
-});
-const USE_CASES: UseCase[] = [
-  {
-    id: "business",
-    href: "/unternehmen",
-    mascotAlt: "BeAFox für Unternehmen",
-    mascot: "/Maskottchen/Maskottchen-Business.webp",
-  },
-  {
-    id: "schools",
-    href: "/schulen",
-    mascotAlt: "BeAFox für Schulen",
-    mascot: "/Maskottchen/Maskottchen-School.webp",
-  },
-];
-const APP_FEATURES: AppFeature[] = [
-  { id: "stufen", mockup: "/assets/Mockups/Mockup-Stufen.webp" },
-  { id: "lernpfad", mockup: "/assets/Mockups/Mockup-Lernpfad.webp" },
-  { id: "lektion", mockup: "/assets/Mockups/Mockup-Lektion.webp" },
-  { id: "quiz", mockup: "/assets/Mockups/Mockup-Quiz.webp" },
-  { id: "rangliste", mockup: "/assets/Mockups/Mockup-Rangliste.webp" },
-  { id: "missionen", mockup: "/assets/Mockups/Mockup-Missionen.webp" },
-  { id: "profil", mockup: "/assets/Mockups/Mockup-Profil.webp" },
-];
-// CONSTANTS — Use Cases Section
+const PROBLEM_AMBIENT_STYLE = {
+  background:
+    "radial-gradient(ellipse at center, rgba(232,119,32,0.04) 0%, transparent 70%)",
+} as const;
+const PROBLEM_VISUAL_BG_STYLE = {
+  background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 50%, #FFE0C2 100%)",
+} as const;
+const PROBLEM_BLOB_TR_STYLE = {
+  background:
+    "radial-gradient(circle, rgba(232,119,32,0.18) 0%, transparent 60%)",
+} as const;
+const PROBLEM_BLOB_BL_STYLE = {
+  background:
+    "radial-gradient(circle, rgba(232,119,32,0.12) 0%, transparent 60%)",
+} as const;
+const PROMISE_AMBIENT_STYLE = {
+  background:
+    "radial-gradient(ellipse at center top, rgba(232,119,32,0.06) 0%, transparent 60%)",
+} as const;
+const PROMISE_CTA_GRADIENT_STYLE = {
+  background: "linear-gradient(135deg, #E87720 0%, #F08A3C 50%, #F5A155 100%)",
+  boxShadow:
+    "0 32px 80px rgba(232,119,32,0.35), 0 0 0 1px rgba(255,255,255,0.1)",
+} as const;
+const CTA_BLOB_TOP_STYLE = {
+  background:
+    "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 60%)",
+} as const;
+const CTA_BLOB_BOTTOM_STYLE = {
+  background:
+    "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 60%)",
+} as const;
+const CTA_PATTERN_STYLE = {
+  backgroundSize: "24px 24px",
+  backgroundImage:
+    "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+} as const;
+const CTA_MASCOT_STYLE = {
+  filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.25))",
+} as const;
+const FEATURE_GLOW_LARGE_STYLE = {
+  background:
+    "radial-gradient(circle, rgba(232,119,32,0.08) 0%, transparent 70%)",
+} as const;
+const FEATURE_GLOW_BEHIND_STYLE = {
+  background:
+    "radial-gradient(circle, rgba(232,119,32,0.1) 0%, transparent 70%)",
+} as const;
 const USE_CASES_AMBIENT_STYLE = {
   background:
     "radial-gradient(ellipse at center top, rgba(232,119,32,0.05) 0%, transparent 60%)",
@@ -130,7 +189,7 @@ const USE_CASE_BLOB_STYLE = {
     "radial-gradient(circle, rgba(232,119,32,0.1) 0%, transparent 60%)",
 } as const;
 const USE_CASE_DOT_STYLE = {
-  background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
+  background: ORANGE_GRADIENT,
   boxShadow: "0 0 0 3px rgba(232,119,32,0.15)",
 } as const;
 const USE_CASE_PRIMARY_CTA_STYLE = {
@@ -141,18 +200,7 @@ const USE_CASE_HALO_STYLE = {
   background:
     "radial-gradient(circle at center, rgba(232,119,32,0.18) 0%, transparent 60%)",
 } as const;
-const USE_CASE_TRUST_LOGOS: Record<string, { src: string; alt: string }[]> = {
-  business: [
-    { src: "/Partners/3.webp", alt: "IHK Akademie" },
-    { src: "/Partners/8.webp", alt: "TechBase Regensburg" },
-    { src: "/Partners/1.webp", alt: "Eckert Schulen" },
-  ],
-  schools: [
-    { src: "/Partners/1.webp", alt: "Dr. Robert Eckert Schulen" },
-    { src: "/Partners/3.webp", alt: "IHK Akademie" },
-    { src: "/Partners/14.webp", alt: "Eduplaces" },
-  ],
-} as const;
+// STRUCTURED DATA─
 const COMPANY_ADDRESS = {
   postalCode: "93073",
   addressCountry: "DE",
@@ -211,6 +259,82 @@ const FAQ_STRUCTURED_DATA = {
   ],
 } as const;
 
+// HELPERS FUNCTIONS
+function buildOrganizationData(
+  description: string,
+  availableLanguage: readonly string[],
+) {
+  return {
+    "@type": "Organization",
+    url: "https://beafox.app",
+    "@context": "https://schema.org",
+    name: "BeAFox UG (haftungsbeschränkt)",
+    logo: "https://beafox.app/assets/logo.webp",
+    description,
+    address: COMPANY_ADDRESS,
+    contactPoint: { ...COMPANY_CONTACT_BASE, availableLanguage },
+    sameAs: SOCIAL_LINKS,
+  };
+}
+function buildWebsiteData(description: string) {
+  return {
+    name: "BeAFox",
+    "@type": "WebSite",
+    url: "https://beafox.app",
+    "@context": "https://schema.org",
+    description,
+    publisher: {
+      "@type": "Organization",
+      name: "BeAFox UG (haftungsbeschränkt)",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://beafox.app/search?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+function buildAppData(description: string) {
+  return {
+    name: "BeAFox",
+    "@type": "SoftwareApplication",
+    operatingSystem: "iOS, Android",
+    "@context": "https://schema.org",
+    applicationCategory: "EducationalApplication",
+    description,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+    aggregateRating: {
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "71",
+      ratingValue: "5.0",
+      "@type": "AggregateRating",
+    },
+  };
+}
+function highlightInString(
+  text: string,
+  candidates: readonly string[],
+): ReactNode {
+  const lower = text.toLocaleLowerCase();
+  for (const candidate of candidates) {
+    const idx = lower.indexOf(candidate.toLocaleLowerCase());
+    if (idx === -1) continue;
+    const end = idx + candidate.length;
+    return (
+      <>
+        {text.slice(0, idx)}
+        <span className="text-primaryOrange">{text.slice(idx, end)}</span>
+        {text.slice(end)}
+      </>
+    );
+  }
+  return text;
+}
+
 // SUBCOMPONENTS
 function BenefitListItem({ children }: { children: ReactNode }) {
   return (
@@ -253,11 +377,12 @@ function ProblemCard({
         <h3 className="text-2xl font-bold text-darkerGray leading-tight flex-1">
           {title}
         </h3>
-        <div className="relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0 bottom-1 sm:bottom-0">
+        <div className="relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0">
           <Image
             fill
             src={mascot}
-            alt="Maskottchen mit einem Problem"
+            alt=""
+            aria-hidden="true"
             className="object-contain scale-125"
           />
         </div>
@@ -281,8 +406,8 @@ function StoreButton({ href, imageSrc, imageAlt, label }: StoreButtonProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      style={STORE_BUTTON_STYLE}
       className="group flex-1 flex items-center gap-3 justify-center rounded-2xl bg-white px-5 py-4 hover:scale-[1.04] transition-all duration-300"
-      style={{ boxShadow: STORE_BUTTON_SHADOW }}
     >
       <Image
         width={160}
@@ -298,6 +423,7 @@ function StoreButton({ href, imageSrc, imageAlt, label }: StoreButtonProps) {
   );
 }
 
+// HOMEPAGE
 export default function HomePage() {
   // HOOKS
   const locale = useLocale();
@@ -306,86 +432,24 @@ export default function HomePage() {
   const [selectedFeature, setSelectedFeature] = useState(0);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   // CONSTANTS
-  const availableLanguage = useMemo(
-    () => (locale === "en" ? ["English"] : ["German"]),
-    [locale],
+  const featureHighlights = APP_FEATURES.map(
+    (f) => (t.raw(`appFeatures.${f.id}.highlights`) as string[]) ?? [],
   );
-  const featureHighlights = useMemo(
-    () =>
-      APP_FEATURES.map(
-        (f) => (t.raw(`appFeatures.${f.id}.highlights`) as string[]) ?? [],
-      ),
-    [t],
-  );
-  const problemBenefits = useMemo(
-    () => t.raw("problemSection.benefits") as readonly string[],
-    [t],
-  );
-  const solutionFeatures = useMemo(
-    () => t.raw("solutionSection.features") as readonly string[],
-    [t],
-  );
-  const faqItems = useMemo(
-    () => t.raw("faqSection.items") as FaqAccordionItem[],
-    [t],
-  );
+  const problemBenefits = t.raw("problemSection.benefits") as readonly string[];
+  const solutionFeatures = t.raw(
+    "solutionSection.features",
+  ) as readonly string[];
+  const faqItems = t.raw("faqSection.items") as FaqAccordionItem[];
   const activeFeature = APP_FEATURES[selectedFeature];
   const activeHighlights = featureHighlights[selectedFeature] ?? [];
-  // STRUCTURED DATA´
-  const organizationStructuredData = useMemo(
-    () => ({
-      "@type": "Organization",
-      url: "https://beafox.app",
-      "@context": "https://schema.org",
-      name: "BeAFox UG (haftungsbeschränkt)",
-      logo: "https://beafox.app/assets/logo.webp",
-      description: t("seo.organization.description"),
-      address: COMPANY_ADDRESS,
-      contactPoint: { ...COMPANY_CONTACT_BASE, availableLanguage },
-      sameAs: SOCIAL_LINKS,
-    }),
-    [t, availableLanguage],
+  const availableLanguage = locale === "en" ? ["English"] : ["German"];
+  const organizationStructuredData = buildOrganizationData(
+    t("seo.organization.description"),
+    availableLanguage,
   );
-  const websiteStructuredData = useMemo(
-    () => ({
-      name: "BeAFox",
-      "@type": "WebSite",
-      url: "https://beafox.app",
-      "@context": "https://schema.org",
-      description: t("seo.website.description"),
-      publisher: {
-        "@type": "Organization",
-        name: "BeAFox UG (haftungsbeschränkt)",
-      },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: "https://beafox.app/search?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
-      },
-    }),
-    [t],
-  );
-  const appStructuredData = useMemo(
-    () => ({
-      name: "BeAFox",
-      "@type": "SoftwareApplication",
-      operatingSystem: "iOS, Android",
-      "@context": "https://schema.org",
-      applicationCategory: "EducationalApplication",
-      description: t("seo.softwareApplication.description"),
-      offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-      aggregateRating: {
-        bestRating: "5",
-        worstRating: "1",
-        ratingCount: "71",
-        ratingValue: "5.0",
-        "@type": "AggregateRating",
-      },
-    }),
-    [t],
+  const websiteStructuredData = buildWebsiteData(t("seo.website.description"));
+  const appStructuredData = buildAppData(
+    t("seo.softwareApplication.description"),
   );
   // FUNCTIONS
   const openDownloadModal = useCallback(() => setIsDownloadModalOpen(true), []);
@@ -420,59 +484,45 @@ export default function HomePage() {
           </>
         }
         storeButtons={{
+          appStoreUrl: APP_STORE_URL,
+          playStoreUrl: PLAY_STORE_URL,
           appleLabel: t("downloadBanner.storeLabels.apple"),
           appleAlt: t("downloadBanner.storeBadges.appleAlt"),
           googleLabel: t("downloadBanner.storeLabels.google"),
           googleAlt: t("downloadBanner.storeBadges.googleAlt"),
-          appStoreUrl: "https://apps.apple.com/de/app/beafox/id6746110612",
-          playStoreUrl:
-            "https://play.google.com/store/apps/details?id=com.tapelea.beafox&pcampaignid=web_share",
         }}
       />
 
       {/* ─── 2. SOLUTION SECTION ─── */}
-      <Section className="relative bg-gray-50 py-10 sm:py-16 overflow-hidden">
+      <Section className="relative bg-gray-50 py-12 md:py-20 overflow-hidden">
         <div
           aria-hidden="true"
           style={SOLUTION_AMBIENT_STYLE}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] pointer-events-none"
         />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-0 sm:mb-14 md:mb-16">
+          <div className="text-center mb-8 md:mb-14">
             <ScrollStrikethroughHeading
               oldText={t("beaChatDemo.titleOld")}
               newPrefix={t("beaChatDemo.titleNewPrefix")}
               newHighlight={t("beaChatDemo.titleNewHighlight")}
             />
           </div>
-          <div className="grid lg:grid-cols-[55%_45%] gap-10 lg:gap-16 items-center">
-            <div className="relative bottom-12 sm:bottom-0 order-2 lg:order-1">
+          <div className="grid lg:grid-cols-[55%_45%] gap-8 lg:gap-16 items-center">
+            <div className="order-2 lg:order-1">
               <BeaChatDemo />
-              <div className="mt-8 lg:hidden text-center">
-                <Link
-                  href="/bea-ai"
-                  style={SOLUTION_CTA_STYLE}
-                  className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm md:text-base transition-all hover:scale-[1.03] hover:shadow-xl"
-                >
-                  {t("solutionSection.ctaLabel")}
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
-                  />
-                </Link>
-              </div>
             </div>
-            <div className="order-1 lg:order-2 items-center justify-center">
-              <div className="hidden md:inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-primaryOrange/10 border border-primaryOrange/20 mb-5">
+            <div className="order-1 lg:order-2">
+              <div className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primaryOrange/10 border border-primaryOrange/20 mb-5">
                 <Sparkles
                   aria-hidden="true"
-                  className="w-6 h-6 text-primaryOrange"
+                  className="w-4 h-4 text-primaryOrange"
                 />
-                <span className="text-base font-bold text-primaryOrange uppercase tracking-wider">
+                <span className="text-xs font-bold text-primaryOrange uppercase tracking-wider">
                   {t("solutionSection.eyebrow")}
                 </span>
               </div>
-              <p className="text-base relative bottom-4 sm:bottom-0 sm:text-lg md:text-xl text-darkerGray leading-relaxed mb-0 sm:mb-8 font-medium">
+              <p className="text-base sm:text-lg md:text-xl text-darkerGray leading-relaxed mb-6 sm:mb-8 font-medium">
                 {t("solutionSection.description")}
               </p>
               <ul className="space-y-3.5 mb-9">
@@ -483,7 +533,7 @@ export default function HomePage() {
               <Link
                 href="/bea-ai"
                 style={SOLUTION_CTA_STYLE}
-                className="group hidden lg:inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm md:text-base transition-all hover:scale-[1.03] hover:shadow-xl"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm md:text-base transition-all hover:scale-[1.03] hover:shadow-xl"
               >
                 {t("solutionSection.ctaLabel")}
                 <ArrowRight
@@ -500,11 +550,8 @@ export default function HomePage() {
       <Section className="relative bg-primaryWhite py-16 overflow-hidden">
         <div
           aria-hidden="true"
+          style={PROBLEM_AMBIENT_STYLE}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, rgba(232,119,32,0.04) 0%, transparent 70%)",
-          }}
         />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -513,30 +560,21 @@ export default function HomePage() {
               highlight={t("problemSection.eyebrowHighlight")}
             />
           </div>
-          <div className="grid lg:grid-cols-[45%_55%] gap-6 lg:gap-10 items-start mt-2">
-            <div className="order-2 lg:order-1 relative bottom-10 sm:bottom-0">
+          <div className="grid lg:grid-cols-[45%_55%] gap-6 lg:gap-10 items-start">
+            <div className="order-2 lg:order-1">
               <div
+                style={PROBLEM_VISUAL_BG_STYLE}
                 className="relative aspect-[4/2] rounded-2xl overflow-hidden mb-4"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 50%, #FFE0C2 100%)",
-                }}
               >
                 <div
                   aria-hidden="true"
+                  style={PROBLEM_BLOB_TR_STYLE}
                   className="absolute -top-20 -right-20 w-[300px] h-[300px] rounded-full pointer-events-none"
-                  style={{
-                    background:
-                      "radial-gradient(circle, rgba(232,119,32,0.18) 0%, transparent 60%)",
-                  }}
                 />
                 <div
                   aria-hidden="true"
+                  style={PROBLEM_BLOB_BL_STYLE}
                   className="absolute -bottom-24 -left-24 w-[280px] h-[280px] rounded-full pointer-events-none"
-                  style={{
-                    background:
-                      "radial-gradient(circle, rgba(232,119,32,0.12) 0%, transparent 60%)",
-                  }}
                 />
                 <div className="absolute inset-0 flex items-end justify-center">
                   <div className="relative w-full h-full max-w-[360px] max-h-[360px]">
@@ -559,42 +597,16 @@ export default function HomePage() {
               </ul>
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray leading-[1.1] tracking-tight mb-8 relative top-1">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray leading-[1.1] tracking-tight mb-8">
                 {t("problemSection.titlePre")}{" "}
                 <span className="text-primaryOrange">
                   {t("problemSection.titleHighlight")}
                 </span>
                 <br />
-                {(() => {
-                  const titlePost = t("problemSection.titlePost");
-                  const highlight = "nächster Schritt.";
-                  const fallbackHighlight = "nächster Schritt";
-                  const normalizedTitlePost = titlePost.toLocaleLowerCase();
-                  const startIndex = normalizedTitlePost.indexOf(
-                    highlight.toLocaleLowerCase(),
-                  );
-                  const activeHighlight =
-                    startIndex !== -1 ? highlight : fallbackHighlight;
-                  const finalStartIndex =
-                    startIndex !== -1
-                      ? startIndex
-                      : normalizedTitlePost.indexOf(
-                          fallbackHighlight.toLocaleLowerCase(),
-                        );
-
-                  if (finalStartIndex === -1) return titlePost;
-
-                  const endIndex = finalStartIndex + activeHighlight.length;
-                  return (
-                    <>
-                      {titlePost.slice(0, finalStartIndex)}
-                      <span className="text-primaryOrange">
-                        {titlePost.slice(finalStartIndex, endIndex)}
-                      </span>
-                      {titlePost.slice(endIndex)}
-                    </>
-                  );
-                })()}
+                {highlightInString(
+                  t("problemSection.titlePost"),
+                  PROBLEM_TITLE_HIGHLIGHTS,
+                )}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 mb-10">
                 <ProblemCard
@@ -618,11 +630,8 @@ export default function HomePage() {
       <Section className="relative bg-primaryWhite py-16 overflow-hidden">
         <div
           aria-hidden="true"
+          style={PROMISE_AMBIENT_STYLE}
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse at center top, rgba(232,119,32,0.06) 0%, transparent 60%)",
-          }}
         />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
@@ -631,8 +640,8 @@ export default function HomePage() {
               highlight={t("promiseSection.eyebrowHighlight")}
             />
           </div>
-          <div className="text-center mb-4 sm:mb-12 mt-4 relative bottom-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray leading-[1.1] tracking-tight mt-6 mb-5 max-w-3xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-darkerGray leading-[1.1] tracking-tight mb-5 max-w-3xl mx-auto">
               {t("promiseSection.titlePre")}{" "}
               <span className="text-primaryOrange">
                 {t("promiseSection.titleHighlight")}
@@ -645,43 +654,29 @@ export default function HomePage() {
           </div>
           <TransformationsTimeline />
           <div
+            style={PROMISE_CTA_GRADIENT_STYLE}
             className="relative rounded-[2rem] overflow-hidden"
-            style={{
-              background:
-                "linear-gradient(135deg, #E87720 0%, #F08A3C 50%, #F5A155 100%)",
-              boxShadow:
-                "0 32px 80px rgba(232,119,32,0.35), 0 0 0 1px rgba(255,255,255,0.1)",
-            }}
           >
             <div
               aria-hidden="true"
               className="absolute inset-0 pointer-events-none"
             >
               <div
+                style={CTA_BLOB_TOP_STYLE}
                 className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 60%)",
-                }}
               />
               <div
+                style={CTA_BLOB_BOTTOM_STYLE}
                 className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 60%)",
-                }}
               />
               <div
+                style={CTA_PATTERN_STYLE}
                 className="absolute inset-0 opacity-[0.04]"
-                style={{
-                  backgroundSize: "24px 24px",
-                  backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-                }}
               />
             </div>
             <div className="relative z-10 grid lg:grid-cols-[1.5fr_1fr] gap-8 lg:gap-12 items-center p-8 md:p-12 lg:p-16">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md mb-2 sm:mb-6 border border-white/20">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md mb-4 sm:mb-6 border border-white/20">
                   <div className="relative flex items-center justify-center">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-white animate-ping" />
@@ -690,7 +685,7 @@ export default function HomePage() {
                     {t("promiseSection.timeline.eyebrow")}
                   </div>
                 </div>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-[1.05] tracking-tight mb-4 sm:mb-8">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-[1.05] tracking-tight mb-6 sm:mb-8">
                   {t("promiseSection.timeline.title")}
                 </h3>
                 <div className="flex flex-col sm:flex-row gap-3 max-w-md">
@@ -713,12 +708,10 @@ export default function HomePage() {
                   <Image
                     fill
                     alt="Bea, dein KI-Coach"
-                    className="object-contain scale-110 sm:scale-125 md:scale-150"
+                    style={CTA_MASCOT_STYLE}
                     src="/Maskottchen/Maskottchen-Handy.png"
-                    sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 288px"
-                    style={{
-                      filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.25))",
-                    }}
+                    className="object-contain scale-110 sm:scale-125 md:scale-150"
+                    sizes="(max-width: 768px) 250px, (max-width: 1024px) 320px, 360px"
                   />
                 </div>
               </div>
@@ -797,8 +790,8 @@ export default function HomePage() {
                 className="relative rounded-3xl overflow-hidden px-5 py-6 md:px-10 md:py-8"
               >
                 <div
-                  style={GLOW(0.08)}
                   aria-hidden="true"
+                  style={FEATURE_GLOW_LARGE_STYLE}
                   className="absolute -top-20 -left-20 w-[260px] h-[260px] rounded-full pointer-events-none"
                 />
                 <div className="relative z-10 grid md:grid-cols-[40%_60%] gap-5 md:gap-8 items-center">
@@ -810,8 +803,8 @@ export default function HomePage() {
                   >
                     <div className="relative">
                       <div
-                        style={GLOW(0.1)}
                         aria-hidden="true"
+                        style={FEATURE_GLOW_BEHIND_STYLE}
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[180px] md:w-[220px] md:h-[220px] rounded-full pointer-events-none"
                       />
                       <Image
@@ -851,16 +844,14 @@ export default function HomePage() {
                         ))}
                       </div>
                     )}
-                    <div className="flex flex-col sm:flex-row gap-2.5">
-                      <Button
-                        variant="primary"
-                        onClick={openDownloadModal}
-                        className="flex items-center justify-center gap-2 w-full sm:w-auto !px-5 !py-2.5 text-sm"
-                      >
-                        <Download aria-hidden="true" className="w-3.5 h-3.5" />
-                        {t("howItWorks.ctaDownload")}
-                      </Button>
-                    </div>
+                    <Button
+                      variant="primary"
+                      onClick={openDownloadModal}
+                      className="flex items-center justify-center gap-2 w-full sm:w-auto !px-5 !py-2.5 text-sm"
+                    >
+                      <Download aria-hidden="true" className="w-3.5 h-3.5" />
+                      {t("howItWorks.ctaDownload")}
+                    </Button>
                   </motion.div>
                 </div>
               </div>
@@ -905,10 +896,10 @@ export default function HomePage() {
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             viewport={{ once: true }}
+            className="text-center mb-6"
             transition={{ duration: 0.6 }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-6"
           >
             <SectionHeader
               pillClassName="mb-6"
@@ -965,7 +956,7 @@ export default function HomePage() {
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
                     <div className="flex flex-col h-full">
-                      <p className="text-sm md:text-base text-lightGray leading-relaxed mb-2 sm:mb-6 max-w-md">
+                      <p className="text-sm md:text-base text-lightGray leading-relaxed mb-4 sm:mb-6 max-w-md">
                         {t(`useCases.${useCase.id}.description`)}
                       </p>
                       <div className="flex flex-col gap-2 mb-6 text-xs text-lightGray">
@@ -1013,7 +1004,6 @@ export default function HomePage() {
                         width={300}
                         height={300}
                         loading="lazy"
-                        aria-hidden="true"
                         src={useCase.mascot}
                         alt={useCase.mascotAlt}
                         className="relative object-contain scale-125 w-[120px] h-[120px] md:w-[170px] md:h-[170px] lg:w-[200px] lg:h-[200px] drop-shadow-[0_16px_32px_rgba(232,119,32,0.2)] group-hover:scale-105 transition-transform duration-500"

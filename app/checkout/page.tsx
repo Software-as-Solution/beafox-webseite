@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Elements, PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import getStripe from "@/lib/stripe";
 import client from "@/lib/api-client";
+import { trackPricingClick } from "@/components/AhrefsAnalytics";
 import Button from "@/components/Button";
 import { CheckCircle, XCircle, Loader2, ArrowRight, Infinity, Sparkles, Zap } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -66,6 +67,7 @@ const CheckoutForm = ({ plan, amount, clientSecret, promoCode, discountAmount = 
 
     setIsLoading(true);
     setError(null);
+    trackPricingClick(plan);
 
     try {
       const { error: submitError } = await elements.submit();

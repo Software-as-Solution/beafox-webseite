@@ -103,7 +103,6 @@ export default function TrustBadge({
           <span className="font-bold text-darkerGray">
             {t("trustedByHighlight")}
           </span>{" "}
-          {t("trustedBySuffix")}
         </p>
       </div>
     </Wrapper>

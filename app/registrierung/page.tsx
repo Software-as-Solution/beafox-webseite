@@ -21,6 +21,8 @@ import Button from "@/components/Button";
 // API
 import client from "@/lib/api-client";
 import { validateSignUp, SignUpFormData } from "@/lib/validation";
+// ANALYTICS
+import { trackRegistrationStart } from "@/components/AhrefsAnalytics";
 
 export default function RegistrierungPage() {
   const t = useTranslations("authRegister");
@@ -148,6 +150,8 @@ export default function RegistrierungPage() {
         );
       }
 
+      // Track successful registration
+      trackRegistrationStart();
       // Redirect to verification page with user info
       router.push(
         `/verification?userInfo=${encodeURIComponent(

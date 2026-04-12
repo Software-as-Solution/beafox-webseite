@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import ShopCart from "@/components/ShopCart";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
+import AhrefsAnalytics from "@/components/AhrefsAnalytics";
 import ShopCartProvider from "@/components/ShopCartProvider";
 // CSS
 import "./globals.css";
@@ -20,7 +21,6 @@ import "./globals.css";
 const GA_ID = "G-J0GWX92CNH";
 const THEME_COLOR = "#E87720";
 const BASE_URL = "https://beafox.app";
-const AHREFS_KEY = "6IuvzSgHsLDI1sabZKDkjA";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const ANALYTICS_INIT_SCRIPT = `
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
@@ -28,8 +28,7 @@ gtag('js',new Date());
 try{var c=JSON.parse(localStorage.getItem('cookieConsent')||'{}');
 if(c&&c.preferences&&c.preferences.analytics){
 var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=${GA_ID}';s.async=true;document.head.appendChild(s);
-gtag('consent','default',{'analytics_storage':'granted'});gtag('config','${GA_ID}');
-var a=document.createElement('script');a.src='https://analytics.ahrefs.com/analytics.js';a.async=true;a.dataset.key='${AHREFS_KEY}';document.head.appendChild(a)}
+gtag('consent','default',{'analytics_storage':'granted'});gtag('config','${GA_ID}')}
 else{gtag('consent','default',{'analytics_storage':'denied'})}}
 catch(e){gtag('consent','default',{'analytics_storage':'denied'})}`;
 
@@ -120,8 +119,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <head>
-        <link rel="alternate" hrefLang="de" href={BASE_URL} />
-        <link rel="alternate" hrefLang="en" href={BASE_URL} />
+        <link rel="alternate" hrefLang="de-DE" href={BASE_URL} />
         <link rel="alternate" hrefLang="x-default" href={BASE_URL} />
       </head>
       <body className="antialiased bg-primaryWhite">
@@ -146,6 +144,7 @@ export default async function RootLayout({
           </ShopCartProvider>
           <ScrollToTop />
           <CookieBanner />
+          <AhrefsAnalytics />
           <Analytics />
           <SpeedInsights />
         </NextIntlClientProvider>

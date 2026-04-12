@@ -10,6 +10,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { Mail, ArrowRight, CheckCircle } from "lucide-react";
 // DATA
 import { BLOG_CATEGORIES } from "@/lib/blog";
+// ANALYTICS
+import { trackNewsletterSignup } from "@/components/AhrefsAnalytics";
 
 // CONSTANTS
 const LOCALE_COOKIE_MAX_AGE = 31536000;
@@ -103,6 +105,7 @@ export default function Footer() {
             type: "success",
             message: data.message || t("newsletter.successFallback"),
           });
+          trackNewsletterSignup();
           setNewsletterEmail("");
         } else {
           setStatus({
