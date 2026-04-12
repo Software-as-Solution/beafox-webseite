@@ -13,6 +13,7 @@ import ShopCart from "@/components/ShopCart";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
 import AhrefsAnalytics from "@/components/AhrefsAnalytics";
+import LeadfeederTracker from "@/components/LeadfeederTracker";
 import ShopCartProvider from "@/components/ShopCartProvider";
 // CSS
 import "./globals.css";
@@ -145,6 +146,7 @@ export default async function RootLayout({
           <ScrollToTop />
           <CookieBanner />
           <AhrefsAnalytics />
+          <LeadfeederTracker />
           <Analytics />
           <SpeedInsights />
         </NextIntlClientProvider>
