@@ -1,33 +1,46 @@
 {
   "consent": {
-    "title": "Wir brauchen deine Zustimmung",
-    "intro": "Wir nutzen verschiedene Arten von Daten, um dir die App bereitzustellen und Bea kontinuierlich zu verbessern. Du entscheidest, was wir nutzen dürfen — jede Einwilligung ist separat, freiwillig und jederzeit widerrufbar.",
-    "expand": "Einstellungen anzeigen",
-    "collapse": "Einstellungen ausblenden",
-    "accept_all": "Alles akzeptieren",
-    "reject_all": "Nur Notwendiges",
-    "save_selection": "Auswahl speichern",
-    "analytics": {
-      "title": "Nutzungsstatistiken",
-      "desc": "Anonyme Metriken wie Seitenaufrufe und Abbruchraten im Onboarding. Hilft uns, Schwachstellen zu erkennen und zu beheben."
-    },
-    "prompt_iteration": {
-      "title": "Chat-Auswertung zur Qualitätsverbesserung",
-      "desc": "Dein Chat mit Bea wird intern ausgewertet, um Bea's Antworten zu verbessern. Deine Nachrichten werden PII-bereinigt, bevor sie gespeichert werden."
-    },
-    "model_training": {
-      "title": "Training des KI-Modells",
-      "desc": "Deine Chats dürfen genutzt werden, um Bea's KI-Modell langfristig weiterzuentwickeln. Nur pseudonymisierte Daten, kein Weiterverkauf an Dritte."
+    "title": "Du entscheidest, was ich über dich weiß",
+    "intro": "Damit ich dir wirklich helfen kann, brauche ich ein paar Daten. Aber welche davon du mir gibst, entscheidest ganz du — jede Einwilligung ist einzeln, freiwillig und du kannst sie jederzeit zurückziehen. Ich bin dann immer noch für dich da. 💛",
+    "accept_all": "Alles erlauben",
+    "reject_all": "Nur das Nötigste",
+    "save_selection": "Meine Auswahl speichern",
+    "recommended_badge": "Empfohlen",
+    "optional_badge": "Optional",
+    "always_on_badge": "Immer aktiv",
+    "necessary": {
+      "title": "Was ich zum Funktionieren brauche",
+      "desc": "Damit du dich einloggen kannst, deine Einstellungen gespeichert bleiben und ich überhaupt mit dir chatten kann. Ohne das geht leider nichts — deshalb ist es immer aktiv."
     },
     "profile_tracking": {
-      "title": "Fortschritt über Zeit",
-      "desc": "Dein Profil-Fortschritt wird aufgezeichnet, damit Bea deine Entwicklung verfolgen kann (z.B. ob ein Notgroschen wächst)."
+      "title": "Deinen Fortschritt mitverfolgen",
+      "desc": "Damit ich sehen kann, wie sich dein Notgroschen über die Monate entwickelt, ob du deine Ziele erreichst und wie sich deine Situation verändert. So kann ich dir wirklich zur Seite stehen statt bei jedem Gespräch wieder bei null anzufangen."
+    },
+    "analytics": {
+      "title": "Anonyme Nutzungsdaten",
+      "desc": "Zum Beispiel: an welcher Stelle viele Leute abspringen, welche Funktionen gut ankommen. Hilft mir zu verstehen, wo ich gerade noch im Weg stehe — ohne dass ich dich persönlich tracke. Keine Namen, keine E-Mails."
+    },
+    "prompt_iteration": {
+      "title": "Unsere Chats zur Verbesserung nutzen",
+      "desc": "Wenn du erlaubst, schauen sich mein Team und ich unsere Gespräche an, um zu lernen wo ich bessere Antworten geben kann. Bevor irgendwas gespeichert wird, entferne ich automatisch Namen, E-Mails, Kontonummern und andere persönliche Details."
+    },
+    "model_training": {
+      "title": "Mir beim Lernen helfen",
+      "desc": "Unsere Chats dürfen genutzt werden, damit meine KI langfristig schlauer wird. Alles pseudonymisiert, nie verkauft an Dritte, nie an Werbepartner. Nur damit ich nach und nach besser verstehe, was junge Leute in Deutschland wirklich brauchen."
+    },
+    "footer": {
+      "change_hint": "Du kannst diese Einstellungen jederzeit in deinem Profil anpassen.",
+      "privacy_link": "Mehr in meiner Datenschutzerklärung"
+    },
+    "saved": {
+      "title": "Gespeichert 💛",
+      "message": "Danke, dass du dir die Zeit genommen hast. Ich halte mich an deine Auswahl."
     },
     "prefs": {
-      "title": "Datenschutz-Einstellungen",
-      "subtitle": "Du kannst deine Zustimmung jederzeit ändern oder widerrufen.",
-      "granted_at": "Zugestimmt am {date}",
-      "revoked_at": "Widerrufen am {date}"
+      "title": "Deine Datenschutz-Einstellungen",
+      "subtitle": "Du kannst alles jederzeit ändern — auch Dinge, die du vorher erlaubt hast.",
+      "granted_at": "Erlaubt am {date}",
+      "revoked_at": "Zurückgezogen am {date}"
     }
   },
   "rootMeta": {
@@ -3800,7 +3813,7 @@
           "titleHighlight": "persönlicher.",
           "titleSuffix": "Wenn du an Geld denkst, was kommt zuerst? 💭",
           "description": "Es gibt keine richtige Antwort! Ich frage, weil dein Gefühl viel darüber sagt, wie ich dich am besten begleite.",
-          "continueButton": "Weiter zur nächsten Frage"
+          "continueButton": "Ich frag dich noch kurz was 💛"
         },
         "phase2": {
           "titlePrefix": "Wie wurde bei dir",
