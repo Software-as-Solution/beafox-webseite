@@ -6,6 +6,7 @@ import Image from "next/image";
 // CUSTOM COMPONENTS
 import OnboardingFlow from "@/components/bea-ai/OnboardingFlow";
 import LegalDisclaimer from "@/components/bea-ai/shared/LegalDisclaimer";
+import BetaAccessCard from "@/components/bea-ai/BetaAccessCard";
 // IMPORTS
 import {
   memo,
@@ -927,7 +928,7 @@ function ChatInput({
 
   return (
     <div
-      className="shrink-0 border-t border-primaryOrange/10 bg-white/95 px-3 pb-3 pt-2.5 backdrop-blur md:px-6 md:pb-4 md:pt-3"
+      className="shrink-0 bg-white/95 px-3 pb-3 pt-2.5 backdrop-blur md:px-6 md:pb-4 md:pt-3"
       style={{ boxShadow: "0 -8px 20px rgba(232,119,32,0.04)" }}
     >
       <form
@@ -1903,13 +1904,20 @@ export default function BeaAIPage() {
           </AnimatePresence>
 
           {!sessionLimitReached && (
-            <ChatInput
-              value={input}
-              onChange={setInput}
-              onSend={handleSendCurrentInput}
-              isStreaming={isStreaming}
-              inputRef={inputRef}
-            />
+            <>
+              <div className="shrink-0 border-t border-primaryOrange/10 bg-white/85 px-3 pt-3 backdrop-blur md:px-6 md:pt-3.5">
+                <div className="mx-auto max-w-3xl">
+                  <BetaAccessCard />
+                </div>
+              </div>
+              <ChatInput
+                value={input}
+                onChange={setInput}
+                onSend={handleSendCurrentInput}
+                isStreaming={isStreaming}
+                inputRef={inputRef}
+              />
+            </>
           )}
         </>
       )}

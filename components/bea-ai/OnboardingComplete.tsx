@@ -991,10 +991,10 @@ export default function OnboardingComplete({
                 whileTap={{ scale: 0.97 }}
                 whileHover={{ scale: 1.04 }}
                 style={PRIMARY_BUTTON_STYLE}
-                onClick={handleContinueToNewsletter}
+                onClick={onStartChat}
                 className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-black text-white focus:outline-none focus:ring-2 focus:ring-primaryOrange focus:ring-offset-2 md:text-base"
               >
-                {t("summary.ctaContinue")}
+                Jetzt mit Bea chatten
                 <svg
                   fill="none"
                   strokeWidth={3}
