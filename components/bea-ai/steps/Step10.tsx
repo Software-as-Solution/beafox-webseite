@@ -94,11 +94,11 @@ export default function Step10Personality({ onSelect }: Step10Props) {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
+    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-8 pt-5 md:px-8 md:pb-16 md:pt-12">
       <motion.div
         animate={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 20 }}
-        className="mb-8 flex items-start gap-3 md:gap-4"
+        className="mb-5 flex items-start gap-3 md:mb-8 md:gap-4"
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div
@@ -139,19 +139,19 @@ export default function Step10Personality({ onSelect }: Step10Props) {
             style={BUBBLE_STYLE}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             initial={{ opacity: 0, y: 8, scale: 0.97 }}
-            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-4 py-3 md:px-6 md:py-5"
             transition={{
               delay: 0.25,
               duration: 0.5,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+            <p className="text-[15px] font-semibold leading-relaxed text-darkerGray sm:text-base md:text-lg">
               {t("bubble.titlePrefix")}{" "}
               <span className="text-primaryOrange">{t("bubble.titleHighlight")}</span>{" "}
               {t("bubble.titleSuffix")}
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+            <p className="mt-1 text-[13px] leading-relaxed text-lightGray sm:text-sm md:text-[15px]">
               {t("bubble.description")}
             </p>
           </motion.div>
@@ -190,7 +190,7 @@ export default function Step10Personality({ onSelect }: Step10Props) {
           </span>
         </motion.div>
         <div className="flex w-full flex-col items-center">
-          <div className="relative h-[360px] w-full max-w-md md:h-[400px]">
+          <div className="relative h-[320px] w-full max-w-md sm:h-[360px] md:h-[400px]">
             <AnimatePresence mode="wait">
               {currentStatement && !isComplete && (
                 <motion.div
@@ -244,11 +244,11 @@ export default function Step10Personality({ onSelect }: Step10Props) {
                         "radial-gradient(circle, rgba(232,119,32,0.1) 0%, transparent 60%)",
                     }}
                   />
-                  <div className="relative flex h-full flex-col items-center justify-center p-8 text-center md:p-10">
+                  <div className="relative flex h-full flex-col items-center justify-center p-6 text-center sm:p-8 md:p-10">
                     <div className="mb-4 text-[10px] font-bold uppercase tracking-widest text-primaryOrange md:text-[11px]">
                       {t("card.statementIndex", { current: currentIdx + 1 })}
                     </div>
-                    <h3 className="max-w-sm text-xl font-black leading-tight text-darkerGray md:text-2xl">
+                    <h3 className="max-w-sm text-lg font-black leading-tight text-darkerGray sm:text-xl md:text-2xl">
                       {currentStatement.statement}
                     </h3>
                     <div className="mt-auto flex items-center gap-2 text-[10px] font-semibold text-lightGray md:text-xs">

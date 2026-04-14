@@ -12,6 +12,7 @@ import {
   useRef,
   useState,
   useEffect,
+  useMemo,
   useReducer,
   useCallback,
   type RefObject,
@@ -29,11 +30,19 @@ import {
   Download,
   RotateCcw,
   ArrowDown,
+  ArrowLeft,
   ArrowRight,
   X as XIcon,
 } from "lucide-react";
 // LIB
-import { type UserProfile, TOTAL_STEPS, buildProfileContext, generateInsights } from "@/lib/bea-ai/onboarding";
+import {
+  type UserProfile,
+  TOTAL_STEPS,
+  buildProfileContext,
+  generateInsights,
+  FINANCIAL_TYPES,
+} from "@/lib/bea-ai/onboarding";
+import type { OnboardingInsights } from "@/lib/bea-ai/onboarding";
 // ANALYTICS
 import {
   trackChatSessionStarted,
@@ -87,13 +96,20 @@ interface OnboardingState {
   stepIdx: number;
   isComplete: boolean;
 }
-type ChatStatus = "idle" | "streaming" | "error" | "session_limited";
+type ChatStatus =
+  | "idle"
+  | "streaming"
+  | "error"
+  | "session_limited"
+  | "greeting"; // Bea ist gerade dabei, die Begrüßung zu tippen
 interface ChatState {
   status: ChatStatus;
   messages: Message[];
   error: string | null;
   remaining: number | null;
   lastInput: string | null;
+  /** Quick-Reply-Chips unter der letzten Bea-Nachricht. Leer = keine anzeigen. */
+  quickReplies: QuickReply[];
 }
 type ChatAction =
   | { type: "addUserMessage"; message: Message; input: string }
@@ -110,7 +126,10 @@ type ChatAction =
   | { type: "sessionLimit" }
   | { type: "clearError" }
   | { type: "retryStart" }
-  | { type: "reset" };
+  | { type: "reset" }
+  | { type: "greetingStart" }
+  | { type: "greetingMessage"; message: Message }
+  | { type: "greetingDone"; quickReplies: QuickReply[] };
 
 // HELPERS
 /** Cheap collision-resistant ID for client-side message IDs. */
@@ -153,6 +172,166 @@ function getOnboardingEncouragement(current: number, total: number): string {
   return "Fertig!";
 }
 
+// ─── GREETING BUILDER ─────────────────────────────────────
+// Bea-als-beste-Freundin-Willkommen: personalisiert nach Fuchs-Typ,
+// Zielbild und Prioritäten. Wird als Serie von 2-3 Messages injiziert,
+// wie eine echte Freundin es schreiben würde.
+
+interface QuickReply {
+  id: string;
+  label: string;
+  prompt: string; // Text der an Bea gesendet wird
+  emoji?: string;
+}
+
+/** Messages die Bea proaktiv schreibt, mit verzögertem Timing. */
+interface GreetingMessage {
+  content: string;
+  /** Verzögerung ab dem vorherigen Greeting-Step, in ms */
+  delayMs: number;
+}
+
+interface Greeting {
+  messages: GreetingMessage[];
+  quickReplies: QuickReply[];
+}
+
+function buildGreeting(
+  profile: UserProfile,
+  insights: OnboardingInsights,
+): Greeting {
+  const foxLabel = insights.financialType.label;
+  const foxTagline = insights.financialType.tagline;
+  const zielbild = profile.zielbild?.trim();
+  const topPriority = profile.prioritaeten?.[0];
+
+  // Erste Nachricht: warmer Empfang
+  const line1: GreetingMessage = {
+    content: "Heeey 🧡 schön, dass du da bist.",
+    delayMs: 400,
+  };
+
+  // Zweite Nachricht: Fuchs-Typ-Anerkennung
+  const line2: GreetingMessage = {
+    content: `Ich hab mir alles in Ruhe angeschaut — und ich muss sagen: du bist ${foxLabel.toLowerCase().replace("der ", "ein ")}. ${foxTagline}.`,
+    delayMs: 1600,
+  };
+
+  // Dritte Nachricht: Zielbild-Pickup oder Priorität-Pickup oder offen
+  let line3: GreetingMessage;
+  if (zielbild && zielbild.length > 10) {
+    line3 = {
+      content: `Und dein Ziel — „${zielbild}" — das ist was, wo ich dir wirklich helfen möchte. Womit wollen wir anfangen?`,
+      delayMs: 1800,
+    };
+  } else if (topPriority) {
+    line3 = {
+      content:
+        "Du hast mir schon gesagt, was dir wichtig ist. Wir müssen also nicht bei Null anfangen — wo willst du einsteigen?",
+      delayMs: 1800,
+    };
+  } else {
+    line3 = {
+      content:
+        "Keine Sorge, wir müssen jetzt nicht direkt deep gehen. Du kannst mich alles fragen — oder wir quatschen einfach. Was sagst du?",
+      delayMs: 1800,
+    };
+  }
+
+  // Quick-Replies: kontext-spezifisch
+  const quickReplies: QuickReply[] = [];
+
+  // 1. Fuchs-Typ-Deep-Dive — immer vorhanden
+  quickReplies.push({
+    id: "explain_fox",
+    label: "Was heißt das genau?",
+    prompt: `Kannst du mir nochmal genauer erklären, warum ich ${foxLabel} bin und was das für mich heißt?`,
+    emoji: insights.financialType.icon,
+  });
+
+  // 2. Priorität-spezifischer Einstieg, falls vorhanden
+  if (topPriority) {
+    const priorityPrompts: Record<
+      string,
+      { label: string; prompt: string; emoji: string }
+    > = {
+      prio_overview: {
+        label: "Überblick bekommen",
+        prompt:
+          "Lass uns mit einem Überblick starten — wie fang ich an, meine Finanzen zu ordnen?",
+        emoji: "📊",
+      },
+      prio_saving: {
+        label: "Sparen lernen",
+        prompt: "Ich will sparen lernen. Wie fang ich konkret an?",
+        emoji: "💰",
+      },
+      prio_goal: {
+        label: "Auf mein Ziel sparen",
+        prompt: "Ich möchte auf mein Ziel hin sparen. Wie planen wir das?",
+        emoji: "🎯",
+      },
+      prio_debt: {
+        label: "Schulden loswerden",
+        prompt: "Ich möchte meine Schulden loswerden. Wo fangen wir an?",
+        emoji: "🔓",
+      },
+      prio_invest: {
+        label: "Investieren starten",
+        prompt: "Ich will anfangen zu investieren. Wo starte ich?",
+        emoji: "📈",
+      },
+      prio_retirement: {
+        label: "Altersvorsorge",
+        prompt: "Wie gehe ich das Thema Altersvorsorge an?",
+        emoji: "🌳",
+      },
+      prio_emergency: {
+        label: "Notgroschen aufbauen",
+        prompt: "Wie baue ich einen Notgroschen auf?",
+        emoji: "🛡️",
+      },
+      prio_budget: {
+        label: "Budget planen",
+        prompt: "Wie erstelle ich ein Budget, das ich auch durchziehe?",
+        emoji: "📝",
+      },
+    };
+    const pri = priorityPrompts[topPriority];
+    if (pri) {
+      quickReplies.push({
+        id: "top_priority",
+        label: pri.label,
+        prompt: pri.prompt,
+        emoji: pri.emoji,
+      });
+    }
+  }
+
+  // 3. Offener Talk — für User die erstmal quatschen wollen
+  quickReplies.push({
+    id: "casual",
+    label: "Einfach quatschen",
+    prompt: "Lass uns einfach mal quatschen — erzähl mir was über dich.",
+    emoji: "💬",
+  });
+
+  // 4. Zielbild-spezifisch, wenn vorhanden
+  if (zielbild && zielbild.length > 10) {
+    quickReplies.push({
+      id: "goal_deep_dive",
+      label: "Zu meinem Ziel",
+      prompt: `Lass uns über mein Ziel sprechen: „${zielbild}". Wie realistisch ist das und was brauche ich dafür?`,
+      emoji: "✨",
+    });
+  }
+
+  return {
+    messages: [line1, line2, line3],
+    quickReplies,
+  };
+}
+
 // CHAT REDUCER
 const initialChatState: ChatState = {
   error: null,
@@ -160,6 +339,7 @@ const initialChatState: ChatState = {
   status: "idle",
   remaining: null,
   lastInput: null,
+  quickReplies: [],
 };
 /**
  * Centralized chat state management. All chat-related state transitions
@@ -175,6 +355,8 @@ function chatReducer(state: ChatState, action: ChatAction): ChatState {
         status: "streaming",
         error: null,
         lastInput: action.input,
+        // Quick-Replies wegwerfen, sobald der User etwas eingegeben hat
+        quickReplies: [],
       };
 
     case "streamStart":
@@ -229,6 +411,22 @@ function chatReducer(state: ChatState, action: ChatAction): ChatState {
 
     case "reset":
       return initialChatState;
+
+    case "greetingStart":
+      return { ...state, status: "greeting", messages: [], quickReplies: [] };
+
+    case "greetingMessage":
+      return {
+        ...state,
+        messages: [...state.messages, action.message],
+      };
+
+    case "greetingDone":
+      return {
+        ...state,
+        status: "idle",
+        quickReplies: action.quickReplies,
+      };
   }
 }
 
@@ -264,69 +462,120 @@ const TypingDots = memo(function TypingDots() {
     </div>
   );
 });
-const Bubble = memo(function Bubble({ msg }: { msg: Message }) {
+// ─── Bubble (mit Cluster-Awareness) ────────────────────────
+// Aufeinanderfolgende Nachrichten der gleichen Person werden visuell
+// gruppiert — wie bei iMessage/WhatsApp. Avatar + Name erscheinen nur
+// bei der ERSTEN Nachricht eines Clusters, nicht bei jeder.
+
+interface BubbleProps {
+  msg: Message;
+  /** Ist das die erste Nachricht eines neuen Sprechers (Cluster-Start)? */
+  isClusterStart: boolean;
+  /** Ist das die letzte Nachricht eines Sprechers (Cluster-Ende)? */
+  isClusterEnd: boolean;
+}
+
+const Bubble = memo(function Bubble({
+  msg,
+  isClusterStart,
+  isClusterEnd,
+}: BubbleProps) {
   const isUser = msg.role === "user";
+
+  // Bubble-Corner-Shape: nach iMessage-Stil
+  const cornerClasses = isUser
+    ? isClusterEnd
+      ? "rounded-2xl rounded-tr-md rounded-br-md"
+      : "rounded-2xl rounded-br-md"
+    : isClusterEnd
+      ? "rounded-2xl rounded-tl-md rounded-bl-md"
+      : "rounded-2xl rounded-bl-md";
 
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
-      initial={{ opacity: 0, y: 14 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`flex gap-2.5 ${isUser ? "flex-row-reverse" : "flex-row"}`}
+      initial={{ opacity: 0, y: 10, scale: 0.98 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className={`flex gap-2.5 ${
+        isUser ? "flex-row-reverse" : "flex-row"
+      } ${isClusterStart ? "mt-3" : "mt-1"}`}
     >
-      {!isUser && <BeaAvatar size={34} />}
-      <div className="max-w-[82%] md:max-w-[68%]">
-        {!isUser && (
-          <span className="mb-1 block text-[11px] font-semibold text-primaryOrange">
+      {!isUser && (
+        <div className="h-8 w-8 shrink-0">
+          {isClusterStart && <BeaAvatar size={32} />}
+        </div>
+      )}
+      <div className="max-w-[85%] md:max-w-[68%]">
+        {!isUser && isClusterStart && (
+          <span className="mb-1 block text-[11px] font-bold tracking-wide text-primaryOrange">
             Bea
           </span>
         )}
         <div
-          className={`rounded-2xl px-4 py-3 text-[15px] leading-[1.65] ${
-            isUser
-              ? "rounded-tr-md text-white"
-              : "rounded-tl-md text-darkerGray"
+          className={`px-4 py-2.5 text-[14.5px] leading-[1.55] md:px-5 md:py-3 md:text-[15px] md:leading-[1.65] ${cornerClasses} ${
+            isUser ? "text-white" : "text-darkerGray"
           }`}
           style={
             isUser
               ? {
                   background: `linear-gradient(135deg, ${C.brand} 0%, ${C.brandLight} 100%)`,
-                  boxShadow: `0 2px 12px ${C.brandShadow}`,
+                  boxShadow: `0 4px 16px ${C.brandShadow}, 0 1px 2px rgba(232,119,32,0.25)`,
                 }
               : {
-                  background: C.brandBg,
-                  border: `1px solid ${C.brandBorder}`,
+                  background:
+                    "linear-gradient(180deg, #FFFFFF 0%, #FFFAF5 100%)",
+                  border: "1px solid rgba(232,119,32,0.18)",
+                  boxShadow: "0 2px 12px rgba(232,119,32,0.06)",
                 }
           }
         >
           <div className="whitespace-pre-wrap break-words">{msg.content}</div>
         </div>
-        <div
-          className={`mt-1 flex items-center gap-2 text-[10px] text-gray-400 ${
-            isUser ? "justify-end" : ""
-          }`}
-        >
-          <span>{fmtTime(msg.timestamp)}</span>
-          {msg.model && !isUser && (
-            <span
-              className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 font-medium"
-              style={{
-                background: msg.model.includes("sonnet")
-                  ? "rgba(124,58,237,0.08)"
-                  : C.brandBg,
-                color: msg.model.includes("sonnet") ? "#7C3AED" : C.brand,
-              }}
-            >
-              {msg.model.includes("sonnet") ? (
-                <>
-                  <Sparkles className="h-2.5 w-2.5" /> Sonnet
-                </>
-              ) : (
-                "Haiku"
-              )}
-            </span>
-          )}
-        </div>
+        {/* Timestamp nur am Cluster-Ende — wie bei iMessage */}
+        {isClusterEnd && (
+          <div
+            className={`mt-1 flex items-center gap-2 px-1 text-[10px] text-gray-400 ${
+              isUser ? "justify-end" : ""
+            }`}
+          >
+            <span>{fmtTime(msg.timestamp)}</span>
+            {isUser && (
+              <svg
+                className="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.5}
+                viewBox="0 0 24 24"
+                aria-label="Gelesen"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            )}
+            {msg.model && !isUser && (
+              <span
+                className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 font-medium"
+                style={{
+                  background: msg.model.includes("sonnet")
+                    ? "rgba(124,58,237,0.08)"
+                    : C.brandBg,
+                  color: msg.model.includes("sonnet") ? "#7C3AED" : C.brand,
+                }}
+              >
+                {msg.model.includes("sonnet") ? (
+                  <>
+                    <Sparkles className="h-2.5 w-2.5" /> Sonnet
+                  </>
+                ) : (
+                  "Haiku"
+                )}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -337,9 +586,9 @@ function SessionLimitScreen({ onReset }: { onReset: () => void }) {
     <motion.div
       animate={{ opacity: 1, scale: 1 }}
       initial={{ opacity: 0, scale: 0.95 }}
-      className="mx-auto my-8 flex max-w-md flex-col items-center rounded-2xl border border-primaryOrange/20 bg-gradient-to-b from-white to-orange-50/50 p-8 text-center"
+      className="mx-auto my-6 flex max-w-md flex-col items-center rounded-2xl border border-primaryOrange/20 bg-gradient-to-b from-white to-orange-50/50 p-6 text-center sm:my-8 sm:p-8"
     >
-      <div className="relative mb-5 h-24 w-24">
+      <div className="relative mb-4 h-20 w-20 sm:mb-5 sm:h-24 sm:w-24">
         <Image
           fill
           alt="Bea mit Herzen"
@@ -425,30 +674,92 @@ function ErrorBanner({
   );
 }
 
-// ─── Chat Empty State ──────────────────────────────────────
+// ─── Quick-Reply-Chips ─────────────────────────────────────
+// Kontextuelle Vorschläge unter Bea's letzter Nachricht.
+// Ein Klick schickt die Nachricht als User-Input an Bea.
 
-function ChatEmptyState() {
+interface QuickRepliesProps {
+  replies: QuickReply[];
+  onSelect: (prompt: string) => void;
+}
+
+function QuickRepliesRow({ replies, onSelect }: QuickRepliesProps) {
+  if (replies.length === 0) return null;
   return (
-    <div className="flex min-h-full flex-1 flex-col items-center justify-center px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center text-center"
-      >
-        <div className="relative mb-4 h-20 w-20">
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.2 }}
+      className="flex flex-wrap gap-2 pl-[42px]"
+    >
+      {replies.map((r, idx) => (
+        <motion.button
+          key={r.id}
+          type="button"
+          onClick={() => onSelect(r.prompt)}
+          initial={{ opacity: 0, y: 6, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            delay: 0.3 + idx * 0.06,
+            duration: 0.35,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          whileTap={{ scale: 0.96 }}
+          whileHover={{ y: -2 }}
+          className="group inline-flex items-center gap-1.5 rounded-full border border-primaryOrange/30 bg-white px-3 py-1.5 text-xs font-semibold text-darkerGray transition-colors hover:border-primaryOrange hover:bg-primaryOrange/5 hover:text-primaryOrange md:text-[13px]"
+          style={{ boxShadow: "0 2px 8px rgba(232,119,32,0.08)" }}
+        >
+          {r.emoji && <span className="text-sm">{r.emoji}</span>}
+          <span>{r.label}</span>
+        </motion.button>
+      ))}
+    </motion.div>
+  );
+}
+
+// ─── Chat Header (Bea-Presence oben) ───────────────────────
+// Ähnlich wie die Kopfzeile in iMessage/WhatsApp: Avatar + Name + Online-
+// Status. Macht klar: Du chattest mit einer Person (Bea), nicht mit
+// einer Settings-Oberfläche.
+
+function ChatHeader({ onReset }: { onReset: () => void }) {
+  return (
+    <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-primaryOrange/10 bg-white/85 px-4 pb-3 pl-[4.25rem] pt-3 backdrop-blur-md sm:pl-40 md:px-6 md:pl-48">
+      <div className="flex min-w-0 items-center gap-3">
+        <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-primaryOrange/10 md:h-10 md:w-10">
           <Image
-            src="/Maskottchen/Maskottchen-Beratung.webp"
-            alt="Bea bereit"
+            src="/Maskottchen/Maskottchen-Hero.webp"
+            alt="Bea"
             fill
+            sizes="40px"
             className="object-contain"
           />
+          <span
+            aria-hidden="true"
+            className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3"
+          >
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-70" />
+            <span className="relative inline-flex h-3 w-3 rounded-full border-2 border-white bg-green-500" />
+          </span>
         </div>
-        <p className="max-w-md text-sm text-lightGray">
-          Ich kenne dich jetzt schon ein bisschen besser! Frag mich einfach
-          drauflos — egal ob Sparen, Investieren, Budget oder was dich gerade
-          beschäftigt.
-        </p>
-      </motion.div>
+        <div className="min-w-0 leading-tight">
+          <div className="truncate text-sm font-black text-darkerGray md:text-[15px]">
+            Bea
+          </div>
+          <div className="truncate text-[11px] text-green-600 md:text-xs">
+            Gerade online
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={onReset}
+        className="flex shrink-0 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-darkerGray transition-colors hover:border-primaryOrange/40 hover:text-primaryOrange md:text-xs"
+        aria-label="Neuer Chat"
+      >
+        <RotateCcw className="h-3.5 w-3.5" />
+        <span className="hidden sm:inline">Neuer Chat</span>
+      </button>
     </div>
   );
 }
@@ -461,6 +772,8 @@ interface ChatMessagesProps {
   sessionLimitReached: boolean;
   onReset: () => void;
   bottomRef: RefObject<HTMLDivElement | null>;
+  quickReplies: QuickReply[];
+  onQuickReply: (prompt: string) => void;
 }
 
 function ChatMessages({
@@ -469,53 +782,84 @@ function ChatMessages({
   sessionLimitReached,
   onReset,
   bottomRef,
+  quickReplies,
+  onQuickReply,
 }: ChatMessagesProps) {
-  if (messages.length === 0) {
-    return <ChatEmptyState />;
-  }
+  // Cluster-Info pro Message: ist das der erste/letzte Eintrag eines
+  // Sprechers in einer Reihe aufeinanderfolgender Nachrichten?
+  const clusterInfo = useMemo(() => {
+    return messages.map((m, i) => {
+      const prev = messages[i - 1];
+      const next = messages[i + 1];
+      const isClusterStart = !prev || prev.role !== m.role;
+      const isClusterEnd = !next || next.role !== m.role;
+      return { isClusterStart, isClusterEnd };
+    });
+  }, [messages]);
 
-  // Show typing dots while streaming AND the last message is either a user
-  // message or an empty assistant message (chunks haven't arrived yet)
+  // Typing-Indicator: während Streaming oder Greeting
   const lastMsg = messages[messages.length - 1];
-  const showTyping =
+  const showStreamingTyping =
     status === "streaming" &&
-    (lastMsg.role === "user" ||
+    (!lastMsg ||
+      lastMsg.role === "user" ||
       (lastMsg.role === "assistant" && lastMsg.content === ""));
+  const showGreetingTyping = status === "greeting";
+  const showTyping = showStreamingTyping || showGreetingTyping;
+
+  // Quick-Replies nur zeigen, wenn status idle + letzte Nachricht von Bea
+  const showQuickReplies =
+    status === "idle" &&
+    quickReplies.length > 0 &&
+    lastMsg?.role === "assistant";
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 md:px-6">
-      <div className="flex flex-col gap-5">
-        {messages.map((m) => (
-          <Bubble key={m.id} msg={m} />
+    <div className="mx-auto max-w-3xl px-4 pb-4 pt-4 md:px-6 md:pt-6">
+      <div className="flex flex-col">
+        {messages.map((m, i) => (
+          <Bubble
+            key={m.id}
+            msg={m}
+            isClusterStart={clusterInfo[i].isClusterStart}
+            isClusterEnd={clusterInfo[i].isClusterEnd}
+          />
         ))}
 
         {showTyping && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-start gap-2.5"
+            transition={{ duration: 0.3 }}
+            className={`mt-3 flex items-start gap-2.5`}
           >
-            <BeaAvatar size={34} />
-            <div>
-              <span className="mb-1 block text-[11px] font-semibold text-primaryOrange">
-                Bea
-              </span>
-              <div
-                className="inline-flex rounded-2xl rounded-tl-md px-4 py-3"
-                style={{
-                  background: C.brandBg,
-                  border: `1px solid ${C.brandBorder}`,
-                }}
-              >
-                <TypingDots />
-              </div>
+            {/* Avatar-Platzhalter wenn vorheriges auch Bea war → leer */}
+            <div className="h-8 w-8 shrink-0">
+              {(!lastMsg || lastMsg.role !== "assistant") && (
+                <BeaAvatar size={32} />
+              )}
+            </div>
+            <div
+              className="inline-flex items-center rounded-2xl rounded-bl-md px-4 py-3"
+              style={{
+                background: "linear-gradient(180deg, #FFFFFF 0%, #FFFAF5 100%)",
+                border: "1px solid rgba(232,119,32,0.18)",
+                boxShadow: "0 2px 12px rgba(232,119,32,0.06)",
+              }}
+            >
+              <TypingDots />
             </div>
           </motion.div>
         )}
 
+        {showQuickReplies && (
+          <div className="mt-3">
+            <QuickRepliesRow replies={quickReplies} onSelect={onQuickReply} />
+          </div>
+        )}
+
         {sessionLimitReached && <SessionLimitScreen onReset={onReset} />}
 
-        <div ref={bottomRef} />
+        <div ref={bottomRef} className="h-4" />
       </div>
     </div>
   );
@@ -582,12 +926,24 @@ function ChatInput({
     );
 
   return (
-    <div className="shrink-0 border-t border-gray-100 bg-white px-4 pb-4 pt-3 md:px-6">
+    <div
+      className="shrink-0 border-t border-primaryOrange/10 bg-white/95 px-3 pb-3 pt-2.5 backdrop-blur md:px-6 md:pb-4 md:pt-3"
+      style={{ boxShadow: "0 -8px 20px rgba(232,119,32,0.04)" }}
+    >
       <form
         onSubmit={handleSubmit}
-        className="mx-auto flex max-w-3xl items-end gap-2.5"
+        className="mx-auto flex max-w-3xl items-end gap-2 md:gap-2.5"
       >
-        <div className="relative flex-1">
+        <div
+          className="relative flex-1 rounded-[22px] transition-all duration-200"
+          style={{
+            background: "#FFFFFF",
+            border: `1.5px solid ${trimmed ? C.brandBorder : "rgba(232,119,32,0.15)"}`,
+            boxShadow: trimmed
+              ? "0 4px 16px rgba(232,119,32,0.12)"
+              : "0 2px 8px rgba(0,0,0,0.04)",
+          }}
+        >
           <textarea
             ref={inputRef}
             value={value}
@@ -597,28 +953,30 @@ function ChatInput({
             disabled={isStreaming}
             rows={1}
             aria-label="Nachricht an Bea"
-            className="w-full resize-none rounded-2xl border bg-gray-50/80 px-4 py-3 pr-12 text-[15px] text-darkerGray placeholder-gray-400 outline-none transition-all duration-200 disabled:opacity-50"
-            style={{
-              maxHeight: MAX_TEXTAREA_HEIGHT,
-              borderColor: trimmed ? C.brandBorder : "rgb(229 231 235)",
-            }}
+            className="w-full resize-none rounded-[22px] bg-transparent px-4 py-3 pr-12 text-[15px] text-darkerGray placeholder-gray-400 outline-none transition-all duration-200 disabled:opacity-50"
+            style={{ maxHeight: MAX_TEXTAREA_HEIGHT }}
           />
           {value.length > MAX_INPUT_LENGTH * 0.8 && (
-            <span className="absolute bottom-2 right-14 text-[10px] text-gray-400">
+            <span className="absolute bottom-2 right-4 text-[10px] text-gray-400">
               {value.length}/{MAX_INPUT_LENGTH}
             </span>
           )}
         </div>
 
-        <button
+        <motion.button
           type="submit"
           disabled={!canSend}
           aria-label="Senden"
-          className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-xl text-white shadow-sm transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-30"
+          whileTap={canSend ? { scale: 0.93 } : {}}
+          whileHover={canSend ? { scale: 1.05 } : {}}
+          className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-full text-white transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-30"
           style={{
             background: trimmed
               ? `linear-gradient(135deg, ${C.brand}, ${C.brandLight})`
-              : "#d1d5db",
+              : "#e5e7eb",
+            boxShadow: trimmed
+              ? "0 6px 16px rgba(232,119,32,0.35)"
+              : "0 2px 6px rgba(0,0,0,0.06)",
           }}
         >
           {isStreaming ? (
@@ -626,11 +984,11 @@ function ChatInput({
           ) : (
             <Send className="h-5 w-5" />
           )}
-        </button>
+        </motion.button>
       </form>
 
-      <p className="mx-auto mt-2.5 max-w-3xl text-center text-[10px] text-gray-400">
-        Bea ist eine KI-Companion und kann Fehler machen. Keine Finanzberatung.{" "}
+      <p className="mx-auto mt-2 max-w-3xl text-center text-[10px] text-gray-400 md:mt-2.5">
+        Bea ist deine Lernbegleiterin, keine Anlageberaterin.{" "}
         <Link
           href="/datenschutz"
           className="underline hover:text-primaryOrange"
@@ -658,12 +1016,9 @@ function OnboardingProgress({ current, total }: OnboardingProgressProps) {
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <div
-            className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full md:h-9 md:w-9"
-            style={{ background: C.brandBg }}
-          >
+          <div className="relative h-8 w-8 shrink-0 overflow-hidden md:h-9 md:w-9">
             <Image
-              src="/Maskottchen/Maskottchen-Right.png"
+              src="/assets/Logos/Logo.webp"
               alt="Bea"
               fill
               className="object-contain"
@@ -725,14 +1080,14 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, y: -30, transition: { duration: 0.35 } }}
-      className="relative flex max-w-md flex-col items-center text-center"
+      className="relative flex max-w-md flex-col items-center px-4 text-center sm:px-0"
     >
       {/* Mascot + Speech Bubble */}
-      <div className="relative mb-6 flex h-[260px] w-full items-end justify-center md:h-[300px]">
+      <div className="relative mb-4 flex h-[220px] w-full items-end justify-center sm:mb-6 sm:h-[260px] md:h-[300px]">
         {/* Halo behind mascot */}
         <motion.div
           aria-hidden="true"
-          className="absolute bottom-0 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full blur-2xl md:h-64 md:w-64"
+          className="absolute bottom-0 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full blur-2xl sm:h-56 sm:w-56 md:h-64 md:w-64"
           style={{
             background:
               "radial-gradient(circle, rgba(232,119,32,0.28) 0%, transparent 65%)",
@@ -743,7 +1098,7 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
 
         {/* Mascot — gentle bob */}
         <motion.div
-          className="relative h-48 w-48 md:h-56 md:w-56"
+          className="relative h-40 w-40 sm:h-48 sm:w-48 md:h-56 md:w-56"
           initial={{ scale: 0.5, opacity: 0, y: 40 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           transition={{
@@ -773,7 +1128,7 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
 
         {/* Speech Bubble — SVG matching landing hero */}
         <motion.div
-          className="absolute left-1/2 top-[-20px] z-20 -translate-x-[55%]"
+          className="absolute left-[32.5%] sm:left-1/2 top-[-40px] sm:top-[-20px] z-20 -translate-x-[55%]"
           initial={{ opacity: 0, y: 16, scale: 0.85 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.65, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
@@ -783,7 +1138,7 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
             className="pointer-events-none absolute inset-0 rounded-[3rem] blur-3xl"
             style={{ background: "rgba(232,119,32,0.1)" }}
           />
-          <div className="relative h-[100px] w-[250px] md:h-[118px] md:w-[290px]">
+          <div className="relative h-[88px] w-[220px] sm:h-[100px] sm:w-[250px] md:h-[118px] md:w-[290px]">
             <svg
               fill="none"
               width="100%"
@@ -817,7 +1172,7 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
               />
             </svg>
             <div className="absolute left-0 right-0 top-0 flex h-[74px] items-center gap-3 px-4 md:h-[88px] md:gap-4 md:px-5">
-              <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden md:h-12 md:w-12">
+              <div className="relative h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 overflow-hidden md:h-12 md:w-12">
                 <Image
                   src="/assets/Logos/Logo.webp"
                   alt="Bea Logo"
@@ -827,14 +1182,14 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-green-500"
+                  className="absolute bottom-0 right-0 h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full border-2 border-white bg-green-500"
                 />
               </div>
               <div className="flex flex-col items-start text-left leading-tight">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-primaryOrange">
                   Bea
                 </span>
-                <span className="whitespace-nowrap text-base font-bold text-darkerGray md:text-lg">
+                <span className="whitespace-nowrap text-sm sm:text-base font-bold text-darkerGray md:text-lg">
                   Hey, ich bin Bea
                   <span aria-hidden="true" className="ml-1">
                     👋
@@ -848,7 +1203,7 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
 
       {/* Subline */}
       <motion.p
-        className="mb-6 mt-2 text-xl font-medium text-darkerGray"
+        className="mb-5 mt-2 text-lg font-medium leading-snug text-darkerGray sm:mb-6 sm:text-xl"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.1, duration: 0.5 }}
@@ -861,7 +1216,7 @@ function WelcomeGreeting({ onContinue }: WelcomeGreetingProps) {
       <motion.button
         type="button"
         onClick={onContinue}
-        className="group relative inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-base font-bold text-white transition-all duration-200 hover:scale-[1.04]"
+        className="group relative inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold text-white transition-all duration-200 hover:scale-[1.04] sm:gap-2.5 sm:px-8 sm:py-4 sm:text-base"
         style={{
           background: `linear-gradient(135deg, ${C.brand} 0%, ${C.brandLight} 100%)`,
           boxShadow: `0 10px 30px ${C.brandShadow}`,
@@ -905,10 +1260,10 @@ function WelcomeDisclaimer({ onContinue, onBack }: WelcomeDisclaimerProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -30 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="relative flex max-w-md flex-col items-center text-center"
+      className="relative flex max-w-md flex-col items-center px-4 text-center sm:px-0"
     >
       <motion.div
-        className="relative z-10 mb-[-40px] h-28 w-28"
+        className="relative z-10 mb-[-36px] h-24 w-24 sm:mb-[-40px] sm:h-28 sm:w-28"
         initial={{ y: -20, opacity: 0, rotate: -8 }}
         animate={{ y: 0, opacity: 1, rotate: 0 }}
         transition={{
@@ -937,7 +1292,7 @@ function WelcomeDisclaimer({ onContinue, onBack }: WelcomeDisclaimerProps) {
       </motion.div>
 
       <motion.div
-        className="relative w-full rounded-3xl p-8 pt-12"
+        className="relative w-full rounded-3xl p-6 pt-10 sm:p-8 sm:pt-12"
         style={{
           background: "linear-gradient(180deg, #FFFFFF 0%, #FFF8F3 100%)",
           border: `1.5px solid ${C.brandBorder}`,
@@ -1020,6 +1375,27 @@ function WelcomeDisclaimer({ onContinue, onBack }: WelcomeDisclaimerProps) {
         </motion.button>
       </motion.div>
     </motion.div>
+  );
+}
+
+// ─── Back-to-Site Button ──────────────────────────────────
+// Dezenter Pfeil oben links, der zur Hauptseite zurückführt.
+// Immer sichtbar (alle Phasen), mobile-first Tap-Target (≥44px).
+
+function BackToSiteButton() {
+  return (
+    <Link
+      href="/"
+      aria-label="Zurück zur BeAFox-Startseite"
+      title="Zur Startseite"
+      className="mt-2 group absolute left-3 top-3 z-30 inline-flex h-8 w-8 items-center justify-center gap-1.5 rounded-full border border-gray-200 bg-white/85 text-darkerGray shadow-sm backdrop-blur transition-all duration-200 hover:border-primaryOrange/40 hover:bg-white hover:text-primaryOrange sm:h-11 sm:w-auto sm:pl-3 sm:pr-4 sm:text-sm sm:font-semibold md:left-5 md:top-5"
+    >
+      <ArrowLeft
+        className="h-[18px] w-[18px] transition-transform duration-200 group-hover:-translate-x-0.5"
+        strokeWidth={2.4}
+      />
+      <span className="hidden sm:inline">Zur Startseite</span>
+    </Link>
   );
 }
 
@@ -1143,6 +1519,34 @@ export default function BeaAIPage() {
         system_prompt: systemPrompt,
         profile: p,
       });
+
+      // ─── Bea-Begrüßung starten (sequentielle Nachrichten) ──
+      const greeting = buildGreeting(p, insights);
+      dispatch({ type: "greetingStart" });
+      let cumulative = 0;
+      greeting.messages.forEach((gm) => {
+        cumulative += gm.delayMs;
+        setTimeout(() => {
+          dispatch({
+            type: "greetingMessage",
+            message: {
+              id: uid(),
+              role: "assistant",
+              content: gm.content,
+              timestamp: new Date(),
+            },
+          });
+        }, cumulative);
+      });
+      // Nachdem die letzte Nachricht sichtbar ist → Quick-Replies zeigen
+      setTimeout(
+        () =>
+          dispatch({
+            type: "greetingDone",
+            quickReplies: greeting.quickReplies,
+          }),
+        cumulative + 300,
+      );
     } catch (err) {
       // Tracking darf nie den UX-Flow brechen
       console.warn("[Analytics] Failed to track chat session start", err);
@@ -1404,7 +1808,8 @@ export default function BeaAIPage() {
 
   // ─── Render ──────────────────────────────────────────────
   return (
-    <div className="mt-[72px] flex h-[calc(100dvh-72px)] min-h-0 flex-col overflow-hidden bg-white md:mt-20 md:h-[calc(100dvh-80px)]">
+    <div className="relative flex h-full min-h-0 flex-col overflow-hidden bg-white">
+      <BackToSiteButton />
       {/* ── PHASE: Welcome ─────────────────────────────── */}
       {phase === "welcome" && (
         <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden px-4">
@@ -1414,8 +1819,8 @@ export default function BeaAIPage() {
               <WelcomeGreeting onContinue={handleWelcomeContinue} />
             ) : (
               <WelcomeDisclaimer
-                onContinue={handleStartOnboarding}
                 onBack={handleWelcomeBack}
+                onContinue={handleStartOnboarding}
               />
             )}
           </AnimatePresence>
@@ -1429,7 +1834,7 @@ export default function BeaAIPage() {
           className="flex min-h-0 flex-1 flex-col overflow-y-auto"
         >
           {!onboardingState.isComplete && (
-            <div className="border-b border-primaryOrange/10 bg-white px-4 pt-6 md:px-6 sm:pt-14">
+            <div className="mt-2 sticky top-0 z-10 border-b border-primaryOrange/10 bg-white/95 pb-2.5 pl-14 pr-4 pt-3 backdrop-blur sm:pl-40 md:pl-48 md:pr-6 md:pt-4">
               <div className="mx-auto w-full max-w-6xl">
                 <OnboardingProgress
                   current={onboardingState.stepIdx}
@@ -1438,7 +1843,7 @@ export default function BeaAIPage() {
               </div>
             </div>
           )}
-          <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col justify-center py-6 sm:px-2">
+          <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col justify-center py-4 sm:px-2 sm:py-6">
             <OnboardingFlow
               onFinish={handleOnboardingFinish}
               onStateChange={handleOnboardingStateChange}
@@ -1453,13 +1858,20 @@ export default function BeaAIPage() {
           <div
             ref={scrollRef}
             className="relative flex min-h-0 flex-1 flex-col overflow-y-auto"
+            style={{
+              background:
+                "linear-gradient(180deg, #FFFDFB 0%, #FFF8F0 40%, #FFFAF3 100%)",
+            }}
           >
+            <ChatHeader onReset={handleReset} />
             <ChatMessages
               messages={chatState.messages}
               status={chatState.status}
               sessionLimitReached={sessionLimitReached}
               onReset={handleReset}
               bottomRef={bottomRef}
+              quickReplies={chatState.quickReplies}
+              onQuickReply={(prompt) => sendMessage(prompt)}
             />
 
             <AnimatePresence>

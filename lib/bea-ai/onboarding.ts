@@ -1511,13 +1511,81 @@ export interface Insight {
    */
   confidence: number;
 }
+// ─── FINANCIAL TYPES (Fox Taxonomy) -----------------------------------------------------------------------------------------
+// Six distinct fox personalities that map to specific combinations
+// of maturity, stability, and emotional-vs-rational approach.
+// See getFinancialType() for the assignment logic.
+
+export type FinancialTypeId =
+  | "bauch_fuchs"
+  | "schutz_fuchs"
+  | "klar_fuchs"
+  | "meister_fuchs"
+  | "spuer_fuchs"
+  | "kletter_fuchs";
+
 export interface FinancialType {
+  id: FinancialTypeId;
   label: string;
   description: string;
   icon: string;
-  /** Short tagline, max 8 words */
+  /** Short tagline, max 14 words */
   tagline: string;
 }
+
+// CONSTANTS
+export const FINANCIAL_TYPES: Record<FinancialTypeId, FinancialType> = {
+  bauch_fuchs: {
+    id: "bauch_fuchs",
+    label: "Der Bauch-Fuchs",
+    icon: "💛",
+    tagline:
+      "Du spürst, bevor du rechnest — und liegst öfter richtig als du denkst",
+    description:
+      "Geld löst bei dir mehr Gefühl als Rechnung aus — und das ist okay. Dein Bauch hat dich bisher durchgebracht, und er ist ein ernstzunehmender Ratgeber. Was dir noch fehlt: ein paar handfeste Werkzeuge, damit dein Bauchgefühl sich auf Zahlen stützen kann, die du verstehst. Keine Formeln, kein Fachchinesisch — nur Dinge, die du selbst nachvollziehen kannst.",
+  },
+  schutz_fuchs: {
+    id: "schutz_fuchs",
+    label: "Der Schutz-Fuchs",
+    icon: "🛡️",
+    tagline:
+      "Sicherheit ist dein Anker — pass auf, dass er dich nicht auch festhält",
+    description:
+      "Du gehst Geld-Themen mit Vorsicht an, und das hat dich vor vielen Fehlern bewahrt. Gleichzeitig merkst du vielleicht selbst: manchmal hält dich das Sicherheits-Denken auch davon ab, Dinge zu tun, die dir langfristig gut täten. Zusammen schauen wir, wo dein Schutz dir hilft — und wo er dir eher im Weg steht.",
+  },
+  klar_fuchs: {
+    id: "klar_fuchs",
+    label: "Der Klar-Fuchs",
+    icon: "🎯",
+    tagline: "Klarer Kopf, klare Zahlen — du denkst, bevor du handelst",
+    description:
+      "Du gehst strukturiert an Geld ran — erst verstehen, dann entscheiden. Das ist eine starke Basis, auf der sich viel aufbauen lässt. Wir können uns also direkt den spannenderen Themen widmen: wie Kapital wirklich arbeitet, wo sich Mythen halten, und welche Muster im Kopf dir selbst die beste analytische Brille beschlagen lassen können.",
+  },
+  meister_fuchs: {
+    id: "meister_fuchs",
+    label: "Der Meister-Fuchs",
+    icon: "👑",
+    tagline: "Die Basics sitzen längst — jetzt geht's um die Feinheiten",
+    description:
+      "Du hast dein Fundament schon lange gelegt: Notgroschen, laufende Finanzen, erste Investitionen. Bei dir geht's nicht mehr um „wie fange ich an\", sondern um Feintuning — Steueroptimierung, langfristige Strategie, Fallstricke, die man erst sieht, wenn man drinsteckt. Hier bin ich für dich eher Sparringspartner als Lehrer.",
+  },
+  spuer_fuchs: {
+    id: "spuer_fuchs",
+    label: "Der Spür-Fuchs",
+    icon: "🧭",
+    tagline: "Wenig Erfahrung, aber ein richtig guter Riecher",
+    description:
+      "Du bist noch am Anfang deiner Finanz-Reise, aber dein Instinkt ist schon verblüffend gut. Das merkst du vielleicht selbst gar nicht — aber die Art, wie du Fragen stellst und Entscheidungen triffst, zeigt es. Wir können deshalb schneller ans Eingemachte als bei anderen Anfängern. Dein Riecher wird dich nicht hängen lassen — wir müssen ihn nur mit Wissen unterfüttern.",
+  },
+  kletter_fuchs: {
+    id: "kletter_fuchs",
+    label: "Der Kletter-Fuchs",
+    icon: "🧗",
+    tagline: "Schritt für Schritt — du baust dir dein Fundament",
+    description:
+      "Du bist mitten drin im Aufbau deines finanziellen Lebens — nicht ganz am Anfang, aber auch noch nicht fertig. Das ist eine spannende Phase: du hast schon erste Erfahrungen, aber es gibt noch viel, wo dir Klarheit fehlt. Wir nehmen uns das Schritt für Schritt vor, ohne Druck. Jede Etappe, die du gemacht hast, wird dein Fundament stabiler.",
+  },
+} as const;
 export interface OnboardingInsights {
   financialType: FinancialType;
   primaryStrength: Insight;
@@ -1601,83 +1669,54 @@ function extractSignals(profile: UserProfile) {
 }
 
 // FINANCIAL TYPE -------------------------------------------------------------------------------------------------------------
-// 6 archetypes based on maturity × bias pattern × money feeling.
-// Deliberately not flattering — they name reality.
-function getFinancialType(
-  profile: UserProfile,
+// 6 Fuchs-Archetypen, gemappt aus maturity × bias pattern × money feeling.
+// Die Namen sind Fuchs-thematisch und wärmend (nicht abwertend).
+// Die Daten selbst leben in FINANCIAL_TYPES — diese Funktion macht nur die Auswahl.
+function getFinancialTypeId(
   signals: OnboardingInsights["signals"],
-): FinancialType {
+): FinancialTypeId {
   const { maturity, biasPattern, isStressedAboutMoney } = signals;
 
-  // The impulsive starter
+  // Bauch-Fuchs — lebt im Moment, folgt dem Bauchgefühl
   if (biasPattern === "fragile" && maturity === "starter") {
-    return {
-      label: "Der impulsive Neuanfänger",
-      tagline: "Viel Gefühl, wenig Struktur — noch",
-      description:
-        "Du lebst stark im Moment — gutes Geld wird schnell verbraucht, schlechte Nachrichten machen Stress. Dir fehlen noch die Routinen, die dir Sicherheit geben. Aber du hast den Willen, und das ist der erste und wichtigste Schritt.",
-      icon: "🎢",
-    };
+    return "bauch_fuchs";
   }
 
-  // The cautious preserver
+  // Schutz-Fuchs — sucht Sicherheit, vermeidet Risiko
   if (biasPattern === "conservative" && isStressedAboutMoney) {
-    return {
-      label: "Der vorsichtige Bewahrer",
-      tagline: "Sicherheit ist alles — manchmal zu viel",
-      description:
-        "Du gehst kein Risiko ein und vermeidest Fehler — das schützt dich. Aber „sicher bedeutet für dich oft stehend: Du lässt Chancen liegen, weil dein Bauchgefühl dich ausbremst. Zusammen schauen wir, wie Sicherheit und Wachstum zusammengehen.",
-      icon: "🛡️",
-    };
+    return "schutz_fuchs";
   }
 
-  // The pragmatic realist
+  // Klar-Fuchs — denkt strukturiert, entscheidet mit Kopf
   if (
     (biasPattern === "rational" || biasPattern === "stable") &&
     (maturity === "developing" || maturity === "established")
   ) {
-    return {
-      label: "Der pragmatische Realist",
-      tagline: "Kühler Kopf, realistischer Blick",
-      description:
-        "Du triffst Geldentscheidungen mit dem Verstand, nicht mit dem Bauch. Du hast schon ein paar gute Routinen, und dein Umgang mit Geld ist grundsolide. Jetzt geht's darum, die letzten Lücken zu schließen und deine Strategie zu schärfen.",
-      icon: "🎯",
-    };
+    return "klar_fuchs";
   }
 
-  // The established strategist
+  // Meister-Fuchs — Basics sitzen, jetzt geht's um Feinheiten
   if (maturity === "established" && biasPattern !== "fragile") {
-    return {
-      label: "Der reife Stratege",
-      tagline: "Die Basics sitzen — jetzt wird optimiert",
-      description:
-        "Du hast die wichtigsten Finanz-Gewohnheiten schon aufgebaut — das ist selten in deinem Alter. Für dich ist meine Rolle nicht Aufbau, sondern Optimierung: Wo können wir noch mehr rausholen, wo sind deine blinden Flecken?",
-      icon: "♟️",
-    };
+    return "meister_fuchs";
   }
 
-  // The thoughtful beginner
+  // Spür-Fuchs — wenig Erfahrung, guter Instinkt
   if (
     maturity === "starter" &&
     (biasPattern === "stable" || biasPattern === "rational")
   ) {
-    return {
-      label: "Der reflektierte Anfänger",
-      tagline: "Am Anfang, aber mit dem richtigen Mindset",
-      description:
-        "Du bist noch am Anfang, aber du denkst bereits klar und ausgewogen. Das ist eine seltene Kombination — viele Anfänger machen Fehler, weil sie impulsiv sind. Du wirst schnell Fortschritte sehen, weil dein Mindset schon stimmt.",
-      icon: "🌱",
-    };
+    return "spuer_fuchs";
   }
 
-  // Default: the ambitious builder
-  return {
-    label: "Der ambitionierte Aufbauer",
-    tagline: "Mittendrin und auf dem Weg",
-    description:
-      "Du bist nicht mehr am Anfang, aber auch noch nicht am Ziel — du baust gerade dein finanzielles Fundament auf. Du hast einige Dinge schon richtig gemacht, und bei anderen gibt es Luft nach oben. Wir priorisieren, was dir jetzt am meisten bringt.",
-    icon: "🏗️",
-  };
+  // Kletter-Fuchs — Default: mittendrin im Aufbau
+  return "kletter_fuchs";
+}
+
+function getFinancialType(
+  _profile: UserProfile,
+  signals: OnboardingInsights["signals"],
+): FinancialType {
+  return FINANCIAL_TYPES[getFinancialTypeId(signals)];
 }
 
 // ─── SCORE-BASED INSIGHT SYSTEM ----------------------------------------------------------------------------------------------

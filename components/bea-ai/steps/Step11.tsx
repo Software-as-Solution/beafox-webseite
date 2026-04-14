@@ -133,11 +133,11 @@ export default function Step11GeldGefuehl({ onSelect }: Step11Props) {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
+    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-8 pt-5 md:px-8 md:pb-16 md:pt-12">
       <motion.div
         animate={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 20 }}
-        className="mb-8 flex items-start gap-3 md:gap-4"
+        className="mb-5 flex items-start gap-3 md:mb-8 md:gap-4"
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div
@@ -178,21 +178,21 @@ export default function Step11GeldGefuehl({ onSelect }: Step11Props) {
             style={BUBBLE_STYLE}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             initial={{ opacity: 0, y: 8, scale: 0.97 }}
-            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-4 py-3 md:px-6 md:py-5"
             transition={{
               delay: 0.25,
               duration: 0.5,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+            <p className="text-[15px] font-semibold leading-relaxed text-darkerGray sm:text-base md:text-lg">
               {t("phase1.titlePrefix")}{" "}
               <span className="text-primaryOrange">
                 {t("phase1.titleHighlight")}
               </span>{" "}
               {t("phase1.titleSuffix")}
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+            <p className="mt-1 text-[13px] leading-relaxed text-lightGray sm:text-sm md:text-[15px]">
               {t("phase1.description")}
             </p>
           </motion.div>
@@ -403,16 +403,16 @@ export default function Step11GeldGefuehl({ onSelect }: Step11Props) {
                   </div>
                   <div
                     style={BUBBLE_STYLE}
-                    className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+                    className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-4 py-3 md:px-6 md:py-5"
                   >
-                    <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+                    <p className="text-[15px] font-semibold leading-relaxed text-darkerGray sm:text-base md:text-lg">
                       {t("phase2.titlePrefix")}{" "}
                       <span className="text-primaryOrange">
                         {t("phase2.titleHighlight")}
                       </span>{" "}
                       {t("phase2.titleSuffix")}
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+                    <p className="mt-1 text-[13px] leading-relaxed text-lightGray sm:text-sm md:text-[15px]">
                       {t("phase2.description")}
                     </p>
                   </div>

@@ -917,7 +917,7 @@ export default function OnboardingComplete({
   );
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col px-4 pb-12 pt-6 md:px-6 md:pb-16 md:pt-8">
+    <div className="mx-auto flex w-full max-w-4xl flex-col px-4 pb-10 pt-16 md:px-6 md:pb-16 md:pt-20">
       <AnimatePresence mode="wait">
         {/* ═══════════════════════════════════════════════ */}
         {/* PHASE 1 — SUMMARY                                 */}

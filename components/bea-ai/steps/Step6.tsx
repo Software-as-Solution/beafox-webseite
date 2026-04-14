@@ -72,7 +72,7 @@ export default function Step6Zeithorizont({ onSelect }: Step6Props) {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
+    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-8 pt-5 md:px-8 md:pb-16 md:pt-12">
       <motion.div
         animate={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 20 }}
@@ -117,18 +117,18 @@ export default function Step6Zeithorizont({ onSelect }: Step6Props) {
             style={BUBBLE_STYLE}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             initial={{ opacity: 0, y: 8, scale: 0.97 }}
-            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-4 py-3 md:px-6 md:py-5"
             transition={{
               delay: 0.25,
               duration: 0.5,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+            <p className="text-[15px] font-semibold leading-relaxed text-darkerGray sm:text-base md:text-lg">
               {t("bubble.titlePrefix")}{" "}
               <span className="text-primaryOrange">{t("bubble.titleHighlight")}</span>
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+            <p className="mt-1 text-[13px] leading-relaxed text-lightGray sm:text-sm md:text-[15px]">
               {t("bubble.description")}
             </p>
           </motion.div>

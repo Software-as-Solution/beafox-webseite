@@ -7,15 +7,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 // CUSTOM COMPONENTS
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ShopCart from "@/components/ShopCart";
-import ScrollToTop from "@/components/ScrollToTop";
-import CookieBanner from "@/components/CookieBanner";
-import AnalyticsRoot from "@/components/consent/AnalyticsRoot";
 import AhrefsAnalytics from "@/components/AhrefsAnalytics";
 import LeadfeederTracker from "@/components/LeadfeederTracker";
 import ShopCartProvider from "@/components/ShopCartProvider";
+import ConditionalChrome from "@/components/layout/ConditionalChrome";
+import ConditionalGlobals from "@/components/layout/ConditionalGlobals";
 // CSS
 import "./globals.css";
 
@@ -133,20 +129,9 @@ export default async function RootLayout({
             dangerouslySetInnerHTML={{ __html: ANALYTICS_INIT_SCRIPT }}
           />
           <ShopCartProvider>
-            <a
-              href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-primaryOrange focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:outline-none"
-            >
-              Zum Inhalt springen
-            </a>
-            <Header />
-            <main id="main-content" className="min-h-screen">{children}</main>
-            <ShopCart />
-            <Footer />
+            <ConditionalChrome>{children}</ConditionalChrome>
           </ShopCartProvider>
-          <ScrollToTop />
-          <CookieBanner />
-          <AnalyticsRoot />
+          <ConditionalGlobals />
           <AhrefsAnalytics />
           <LeadfeederTracker />
           <Analytics />

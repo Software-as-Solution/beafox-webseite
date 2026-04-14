@@ -117,11 +117,11 @@ export default function Step2({ onSelect }: Step2Props) {
   }, [handleConfirm]);
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
+    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-8 pt-5 md:px-8 md:pb-16 md:pt-12">
       <motion.div
         animate={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: 20 }}
-        className="mb-6 flex items-start gap-3 md:gap-4"
+        className="mb-4 flex items-start gap-3 md:mb-6 md:gap-4"
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
         {/* Bea Avatar */}
@@ -163,19 +163,19 @@ export default function Step2({ onSelect }: Step2Props) {
             style={BUBBLE_STYLE}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             initial={{ opacity: 0, y: 8, scale: 0.97 }}
-            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-4 py-3 md:px-6 md:py-5"
             transition={{
               delay: 0.25,
               duration: 0.5,
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+            <p className="text-[15px] font-semibold leading-relaxed text-darkerGray sm:text-base md:text-lg">
               {t("bubble.titlePrefix")}{" "}
               <span className="text-primaryOrange">{t("bubble.titleHighlight")}</span>{" "}
               {t("bubble.titleSuffix")}
             </p>
-            <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+            <p className="mt-1 text-[13px] leading-relaxed text-lightGray sm:text-sm md:text-[15px]">
               {t("bubble.description")}
             </p>
           </motion.div>
@@ -196,7 +196,7 @@ export default function Step2({ onSelect }: Step2Props) {
           style={CARD_STYLE}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           initial={{ opacity: 0, y: 20, scale: 0.97 }}
-          className="relative w-full max-w-2xl overflow-hidden rounded-3xl rounded-tr-md px-6 py-8 md:px-10 md:py-10"
+          className="relative w-full max-w-2xl overflow-hidden rounded-3xl rounded-tr-md px-5 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10"
           transition={{
             delay: 0.55,
             duration: 0.55,
@@ -258,7 +258,7 @@ export default function Step2({ onSelect }: Step2Props) {
                   exit={{ opacity: 0, y: -18, scale: 0.85 }}
                   initial={{ opacity: 0, y: 18, scale: 0.85 }}
                   transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-[88px] font-black leading-none tabular-nums md:text-[100px]"
+                  className="text-[72px] font-black leading-none tabular-nums sm:text-[88px] md:text-[100px]"
                 >
                   {age}
                 </motion.span>
@@ -313,8 +313,8 @@ export default function Step2({ onSelect }: Step2Props) {
                 />
                 <div className="pointer-events-none absolute inset-x-0 -bottom-6 flex justify-between text-[10px] font-medium text-lightGray">
                   <span>{AGE_MIN}</span>
-                  <span>20</span>
-                  <span>25</span>
+                  <span>22</span>
+                  <span>26</span>
                   <span>30</span>
                   <span>{AGE_MAX}+</span>
                 </div>
