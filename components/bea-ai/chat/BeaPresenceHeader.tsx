@@ -25,7 +25,7 @@ export default function BeaPresenceHeader({
   presence,
   onReset,
 }: Props) {
-  const t = useTranslations("beaAi.chat");
+  const t = useTranslations("onboarding.beaAi.chat");
   const isAvailable = isPresenceAvailable(presence);
   const isThinking = presence === "thinking" || presence === "typing";
 

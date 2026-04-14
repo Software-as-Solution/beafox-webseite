@@ -25,7 +25,7 @@ interface Props {
 }
 
 export default function BetaAccessCardInline({ onAccept, onDismiss }: Props) {
-  const t = useTranslations("beaAi.chat.betaAccessCard");
+  const t = useTranslations("onboarding.beaAi.chat.betaAccessCard");
 
   return (
     <motion.div

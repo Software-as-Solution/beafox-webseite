@@ -14,7 +14,6 @@ import {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 import {
   buildProfileContext,
@@ -73,7 +72,6 @@ interface Props {
 }
 
 export default function ChatPhase({ profile, onReset }: Props) {
-  const t = useTranslations("beaAi.chat");
   const [chatState, dispatch] = useReducer(chatReducer, initialChatState);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -191,7 +189,8 @@ export default function ChatPhase({ profile, onReset }: Props) {
           });
         }, cumulative);
       });
-      // After greeting messages — append WelcomeCard + open quick-replies
+      // After greeting messages — append WelcomeCard (no duplicate quick-replies,
+      // the card already surfaces the same quick-start actions).
       window.setTimeout(() => {
         dispatch({
           type: "addCard",
@@ -210,7 +209,7 @@ export default function ChatPhase({ profile, onReset }: Props) {
         });
         dispatch({
           type: "greetingDone",
-          quickReplies: greeting.quickReplies,
+          quickReplies: [],
         });
       }, cumulative + 600);
     } catch (err) {
@@ -429,8 +428,6 @@ export default function ChatPhase({ profile, onReset }: Props) {
         </div>
       )}
 
-      {/* Suppress unused t binding warning when no inline strings consumed yet */}
-      <span hidden>{t("header.name")}</span>
     </>
   );
 }

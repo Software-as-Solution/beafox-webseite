@@ -3772,6 +3772,39 @@
       "continueCta": "Continue to registration"
     },
     "beaAi": {
+      "chat": {
+        "presence": {
+          "arriving": "Bea is coming online…",
+          "online": "Online now",
+          "thinking": "Thinking…",
+          "typing": "Typing…",
+          "away": "Briefly away",
+          "sleeping": "Sleeping",
+          "returning": "Returning…"
+        },
+        "input": {
+          "placeholder": "Write Bea a message…",
+          "placeholderWithReplies": "…or type your own",
+          "disclaimer": "Bea is your learning companion, not an investment advisor.",
+          "privacyLink": "Privacy",
+          "send": "Send"
+        },
+        "header": {
+          "name": "Bea",
+          "newChat": "New chat"
+        },
+        "awayAcknowledge": "Your message has arrived — Bea will reply shortly ✨",
+        "welcomeCard": {
+          "title": "Where do we start?",
+          "subtitle": "Pick whatever feels most interesting right now."
+        },
+        "betaAccessCard": {
+          "intro": "I want to be honest with you…",
+          "body": "I'm currently in beta — not available for everyone yet. If you want in, I can put you on the Early-Access list.",
+          "accept": "Yes, I want Early-Access",
+          "dismiss": "Later"
+        }
+      },
       "legalDisclaimer": {
         "compact": "I'm your learning companion — not an investment advisor 🧡",
         "full": {

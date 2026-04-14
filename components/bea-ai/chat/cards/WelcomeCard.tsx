@@ -95,7 +95,7 @@ export default function WelcomeCard({
   insights,
   onQuickStart,
 }: Props) {
-  const t = useTranslations("beaAi.chat.welcomeCard");
+  const t = useTranslations("onboarding.beaAi.chat.welcomeCard");
   const buttons = buildQuickStarts(userProfile, insights);
 
   return (

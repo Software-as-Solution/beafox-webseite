@@ -49,7 +49,7 @@ export default function ChatInput({
   isHidden = false,
   showAwayAcknowledge = false,
 }: Props) {
-  const t = useTranslations("beaAi.chat");
+  const t = useTranslations("onboarding.beaAi.chat");
   const [showToast, setShowToast] = useState(false);
   const trimmed = value.trim();
   const canSend = trimmed.length > 0 && !isStreaming;
