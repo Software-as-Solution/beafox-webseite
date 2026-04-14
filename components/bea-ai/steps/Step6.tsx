@@ -1,261 +1,272 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+// STANDARD COMPONENTS
+import Image from "next/image";
+// IMPORTS
+import { motion } from "framer-motion";
 import { useState } from "react";
-import StepHeading from "../shared/StepHeading";
-import {
-  PRIORITY_OPTIONS,
-  PRIORITY_RANK_COUNT,
-  type PriorityOption,
-} from "@/lib/bea-ai/onboarding";
+import { useTranslations } from "next-intl";
+// LIBS
+import { ZEITHORIZONT_OPTIONS } from "@/lib/bea-ai/onboarding";
 
+// TYPES
 interface Step6Props {
-  onSelect: (priorities: string[]) => void;
+  onSelect: (id: string) => void;
 }
+// CONSTANTS
+const BUBBLE_STYLE = {
+  background: "linear-gradient(180deg, #FFFFFF 0%, #FFF8F3 100%)",
+  border: "1.5px solid rgba(232,119,32,0.22)",
+  boxShadow:
+    "0 12px 32px rgba(232,119,32,0.12), 0 0 0 1px rgba(232,119,32,0.05)",
+} as const;
+const CARD_UNSELECTED_STYLE = {
+  background: "#FFFFFF",
+  border: "1.5px solid #F0E5D8",
+  boxShadow:
+    "0 1px 3px rgba(232,119,32,0.04), 0 4px 16px rgba(232,119,32,0.06)",
+} as const;
+const CARD_SELECTED_STYLE = {
+  background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)",
+  border: "1.5px solid #E87720",
+  boxShadow: "0 8px 24px rgba(232,119,32,0.18), 0 0 0 1px rgba(232,119,32,0.3)",
+} as const;
+const CARD_HOVER_STYLE = {
+  background: "#FFFCF8",
+  border: "1.5px solid rgba(232,119,32,0.35)",
+  boxShadow:
+    "0 12px 32px rgba(232,119,32,0.14), 0 0 0 1px rgba(232,119,32,0.15)",
+} as const;
+const CHECK_BADGE_STYLE = {
+  background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
+  boxShadow: "0 6px 16px rgba(232,119,32,0.45)",
+} as const;
+const TIMELINE_LINE_STYLE = {
+  background:
+    "linear-gradient(to right, rgba(232,119,32,0.2), rgba(232,119,32,0.4), rgba(232,119,32,0.2))",
+} as const;
 
 /**
- * STEP 6 — Priority Ranking
+ * STEP 6 — Zeithorizont
  *
- * Pattern: Click-to-rank (no drag library required).
- * User clicks cards in order — first click = rank 1, second = rank 2, etc.
- * Clicking a ranked card removes it from the ranking.
- * Once all 3 slots are filled, the continue button appears.
+ * Conversational pattern matching Steps 1-5:
+ * Bea asks how soon the user wants to see change,
+ * user picks one of four time horizons.
+ * A subtle timeline connector visually reinforces the temporal nature.
  */
-export default function Step6Priorities({ onSelect }: Step6Props) {
-  const [ranking, setRanking] = useState<string[]>([]);
-  const [isConfirming, setIsConfirming] = useState(false);
-
-  const handleCardClick = (id: string) => {
-    if (isConfirming) return;
-    const currentRank = ranking.indexOf(id);
-    if (currentRank !== -1) {
-      // Remove from ranking
-      setRanking(ranking.filter((r) => r !== id));
-    } else if (ranking.length < PRIORITY_RANK_COUNT) {
-      // Add to ranking
-      setRanking([...ranking, id]);
-    }
+export default function Step6Zeithorizont({ onSelect }: Step6Props) {
+  // STATES
+  const t = useTranslations("onboarding.beaAi.step6");
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  // FUNCTIONS
+  const handleSelect = (id: string) => {
+    if (selectedId) return;
+    setSelectedId(id);
+    setTimeout(() => onSelect(id), 550);
   };
-
-  const handleConfirm = () => {
-    if (ranking.length !== PRIORITY_RANK_COUNT || isConfirming) return;
-    setIsConfirming(true);
-    setTimeout(() => onSelect(ranking), 400);
+  const getCardStyle = (id: string) => {
+    if (selectedId === id) return CARD_SELECTED_STYLE;
+    if (hoveredId === id && !selectedId) return CARD_HOVER_STYLE;
+    return CARD_UNSELECTED_STYLE;
   };
-
-  const getRank = (id: string) => {
-    const idx = ranking.indexOf(id);
-    return idx === -1 ? null : idx + 1;
-  };
-
-  const isFull = ranking.length === PRIORITY_RANK_COUNT;
 
   return (
-    <div className="flex flex-col items-center px-4 md:px-8 py-8 md:py-12">
-      <StepHeading
-        eyebrow="Schritt 6 — Deine Prioritäten"
-        title={
-          <>
-            Was beschäftigt dich am{" "}
-            <span className="text-primaryOrange">meisten?</span>
-          </>
-        }
-        subtitle={`Wähle deine Top ${PRIORITY_RANK_COUNT} in der Reihenfolge, die für dich am wichtigsten ist.`}
-      />
-
-      {/* Selected slots preview */}
-      <div className="mt-8 md:mt-10 w-full max-w-2xl">
-        <div className="flex items-center justify-center gap-3 md:gap-4">
-          {Array.from({ length: PRIORITY_RANK_COUNT }).map((_, slotIdx) => {
-            const filledId = ranking[slotIdx];
-            const filledOption = filledId
-              ? PRIORITY_OPTIONS.find((p) => p.id === filledId)
-              : null;
-
-            return (
-              <motion.div
-                key={slotIdx}
-                animate={{
-                  scale: filledOption ? 1 : 0.95,
-                }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 relative aspect-square rounded-2xl flex flex-col items-center justify-center p-3 md:p-4 overflow-hidden"
-                style={{
-                  background: filledOption
-                    ? "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)"
-                    : "rgba(255,248,243,0.4)",
-                  border: `2px dashed ${filledOption ? "#E87720" : "#FED4B0"}`,
-                }}
-              >
-                {/* Rank number */}
-                <div
-                  className="absolute top-2 left-2 w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center text-xs md:text-sm font-black"
+    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-10 flex items-start gap-3 md:gap-4"
+      >
+        <motion.div
+          initial={{ scale: 0.7, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative flex-shrink-0"
+          transition={{
+            delay: 0.1,
+            damping: 18,
+            type: "spring",
+            stiffness: 200,
+          }}
+        >
+          <div className="relative h-14 w-14 overflow-hidden md:h-16 md:w-16">
+            <Image
+              fill
+              priority
+              alt="Bea"
+              className="object-contain"
+              src="/Maskottchen/Maskottchen-Right.png"
+            />
+          </div>
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 right-0 flex h-3.5 w-3.5"
+          >
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500" />
+          </span>
+        </motion.div>
+        <div className="flex-1">
+          <div className="mb-1 flex items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-primaryOrange">
+              {t("speaker.bea")}
+            </span>
+          </div>
+          <motion.div
+            style={BUBBLE_STYLE}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
+            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+            transition={{
+              delay: 0.25,
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+              {t("bubble.titlePrefix")}{" "}
+              <span className="text-primaryOrange">{t("bubble.titleHighlight")}</span>
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+              {t("bubble.description")}
+            </p>
+          </motion.div>
+        </div>
+      </motion.div>
+      <div className="flex flex-col items-end">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mb-3 flex items-center gap-1.5"
+        >
+          <span className="text-[11px] font-bold uppercase tracking-wider text-darkerGray/60">
+            {t("speaker.you")}
+          </span>
+        </motion.div>
+        <div className="w-full">
+          <div className="relative mb-4 hidden md:block">
+            <div
+              aria-hidden="true"
+              style={TIMELINE_LINE_STYLE}
+              className="absolute left-12 right-12 top-1/2 h-0.5 -translate-y-1/2 rounded-full"
+            />
+            <div className="relative flex justify-between px-12">
+              {ZEITHORIZONT_OPTIONS.map((option, idx) => (
+                <motion.div
+                  key={option.id}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="relative z-10 h-3 w-3 rounded-full border-2 border-primaryOrange bg-white"
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.7 + idx * 0.07,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
                   style={{
-                    background: filledOption
-                      ? "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)"
-                      : "#FED4B0",
-                    color: filledOption ? "#FFFFFF" : "#E87720",
-                    boxShadow: filledOption
-                      ? "0 4px 12px rgba(232,119,32,0.4)"
-                      : "none",
+                    boxShadow:
+                      selectedId === option.id
+                        ? "0 0 0 4px rgba(232,119,32,0.2)"
+                        : "none",
+                    transition: "box-shadow 0.3s ease",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-4">
+            {ZEITHORIZONT_OPTIONS.map((option, idx) => {
+              const isSelected = selectedId === option.id;
+              const isDimmed = selectedId !== null && !isSelected;
+
+              return (
+                <motion.button
+                  type="button"
+                  key={option.id}
+                  disabled={!!selectedId}
+                  whileTap={{ scale: 0.97 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  style={getCardStyle(option.id)}
+                  whileHover={{ y: selectedId ? 0 : -6 }}
+                  onClick={() => handleSelect(option.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  onMouseEnter={() => setHoveredId(option.id)}
+                  className="group relative flex flex-col items-center gap-3 overflow-hidden rounded-3xl p-5 text-center transition-all duration-300 disabled:cursor-default md:p-6"
+                  animate={{
+                    opacity: isDimmed ? 0.35 : 1,
+                    y: 0,
+                    scale: isSelected ? 1.03 : 1,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.55 + idx * 0.07,
+                    ease: [0.22, 1, 0.36, 1],
                   }}
                 >
-                  {slotIdx + 1}
-                </div>
-
-                <AnimatePresence mode="wait">
-                  {filledOption ? (
-                    <motion.div
-                      key={filledOption.id}
-                      initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex flex-col items-center text-center"
-                    >
-                      <div className="text-3xl md:text-4xl mb-1">
-                        {filledOption.icon}
-                      </div>
-                      <div className="text-[10px] md:text-xs font-bold text-darkerGray leading-tight line-clamp-2">
-                        {filledOption.label}
-                      </div>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="empty"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.4 }}
-                      exit={{ opacity: 0 }}
-                      className="text-xs text-lightGray text-center"
-                    >
-                      Leer
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Option cards */}
-      <div className="mt-10 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-        {PRIORITY_OPTIONS.map((option, idx) => {
-          const rank = getRank(option.id);
-          const isSelected = rank !== null;
-          const isDimmed = !isSelected && isFull;
-
-          return (
-            <motion.button
-              key={option.id}
-              type="button"
-              onClick={() => handleCardClick(option.id)}
-              disabled={isDimmed}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: isDimmed ? 0.35 : 1,
-                y: 0,
-              }}
-              transition={{
-                delay: idx * 0.07,
-                duration: 0.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              whileHover={!isDimmed ? { scale: 1.02, y: -2 } : {}}
-              whileTap={!isDimmed ? { scale: 0.98 } : {}}
-              className="group relative flex items-center gap-3 md:gap-4 rounded-2xl p-4 md:p-5 text-left transition-all duration-300"
-              style={{
-                background: isSelected
-                  ? "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)"
-                  : "#FFFFFF",
-                border: `2px solid ${isSelected ? "#E87720" : "#F0E5D8"}`,
-                boxShadow: isSelected
-                  ? "0 12px 32px rgba(232,119,32,0.18)"
-                  : "0 4px 12px rgba(232,119,32,0.06)",
-                cursor: isDimmed ? "not-allowed" : "pointer",
-              }}
-            >
-              <div className="text-3xl md:text-4xl flex-shrink-0">
-                {option.icon}
-              </div>
-
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm md:text-base font-black text-darkerGray leading-tight mb-1">
-                  {option.label}
-                </h3>
-                <p className="text-[11px] md:text-xs text-lightGray leading-snug">
-                  {option.description}
-                </p>
-              </div>
-
-              {/* Rank badge */}
-              <AnimatePresence>
-                {rank !== null && (
                   <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0, opacity: 0 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 18,
+                    className="text-4xl md:text-5xl"
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    animate={{
+                      y: hoveredId === option.id || isSelected ? -3 : 0,
+                      scale: hoveredId === option.id || isSelected ? 1.12 : 1,
                     }}
-                    className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-sm md:text-base font-black text-white"
                     style={{
-                      background:
-                        "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
-                      boxShadow: "0 4px 12px rgba(232,119,32,0.4)",
+                      filter:
+                        hoveredId === option.id || isSelected
+                          ? "drop-shadow(0 8px 16px rgba(232,119,32,0.25))"
+                          : "drop-shadow(0 4px 8px rgba(232,119,32,0.1))",
                     }}
                   >
-                    {rank}
+                    {option.icon}
                   </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
-          );
-        })}
-      </div>
-
-      {/* Helper text */}
-      <div className="mt-6 text-xs md:text-sm text-lightGray">
-        {ranking.length === 0 && "Klicke auf deine wichtigste Priorität"}
-        {ranking.length === 1 && "Noch 2 weitere wählen"}
-        {ranking.length === 2 && "Noch eine..."}
-        {ranking.length === PRIORITY_RANK_COUNT && "Top-3 ausgewählt"}
-      </div>
-
-      {/* Confirm button */}
-      <motion.button
-        type="button"
-        onClick={handleConfirm}
-        disabled={!isFull || isConfirming}
-        animate={{
-          opacity: isFull ? 1 : 0.4,
-          y: isFull ? 0 : 10,
-        }}
-        whileHover={isFull ? { scale: 1.04 } : {}}
-        whileTap={isFull ? { scale: 0.97 } : {}}
-        className="mt-6 inline-flex items-center gap-2 rounded-full px-8 py-4 text-white font-black text-base md:text-lg disabled:cursor-not-allowed"
-        style={{
-          background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
-          boxShadow: "0 12px 32px rgba(232,119,32,0.35)",
-        }}
-      >
-        Weiter
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={3}
+                  <h3 className="text-base font-black leading-tight text-darkerGray md:text-lg">
+                    {option.label}
+                  </h3>
+                  <p className="text-[11px] leading-snug text-lightGray md:text-xs">
+                    {option.description}
+                  </p>
+                  {isSelected && (
+                    <motion.div
+                      style={CHECK_BADGE_STYLE}
+                      animate={{ scale: 1, rotate: 0 }}
+                      initial={{ scale: 0, rotate: -30 }}
+                      className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-white"
+                      transition={{
+                        damping: 18,
+                        type: "spring",
+                        stiffness: 300,
+                      }}
+                    >
+                      <svg
+                        fill="none"
+                        strokeWidth={3.5}
+                        className="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          d="M5 13l4 4L19 7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </motion.div>
+                  )}
+                </motion.button>
+              );
+            })}
+          </div>
+        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          className="mt-4 text-sm text-gray-400"
+          animate={{ opacity: selectedId ? 0 : 1 }}
+          transition={{ delay: 1.2, duration: 0.4 }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"
-          />
-        </svg>
-      </motion.button>
+          {t("hint")}
+        </motion.p>
+      </div>
     </div>
   );
 }

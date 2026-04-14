@@ -3739,6 +3739,319 @@
       "noCodePre": "No code? No problem!",
       "noCodePost": "You can still register and unlock BeAFox Unlimited anytime.",
       "continueCta": "Continue to registration"
+    },
+    "beaAi": {
+      "legalDisclaimer": {
+        "compact": "I'm your learning companion — not an investment advisor 🧡",
+        "full": {
+          "badge": "Honestly",
+          "body": "I'm your best <strong>friend for finances.</strong> I help you understand concepts, build routines, and finally gain clarity about your money. No pressure, but fully at your pace.",
+          "legal": "What I intentionally don't do: I don't recommend specific ETFs, insurances, or loans. That would be regulated financial advice or insurance brokerage and requires licensed professionals. When you're ready, I'll gladly show you where to find them."
+        }
+      },
+      "complete": {
+        "shared": {
+          "beaAlt": "Bea",
+          "speakerBea": "Bea",
+          "timestampNow": "just now"
+        },
+        "financialType": {
+          "label": "Your financial type"
+        },
+        "crisis": {
+          "ariaLabel": "Support services for financial distress",
+          "title": "If you're currently in a difficult situation",
+          "description": "There are free support services that can help more directly than I can. You don't have to do this alone."
+        },
+        "insightCard": {
+          "confidence": {
+            "firstAssessment": "Initial estimate",
+            "stillVague": "Still vague"
+          }
+        },
+        "secondaryInsights": {
+          "title": "Also important:"
+        },
+        "inconsistencies": {
+          "title": "I noticed something",
+          "description": "A few things don't fully line up yet — great conversation starters for later."
+        },
+        "goalAndValues": {
+          "goalTitle": "Your vision — in your own words",
+          "editAriaLabel": "Edit vision",
+          "editButton": "Edit",
+          "valuesLabelWithGoal": "Important:",
+          "valuesLabelWithoutGoal": "What matters to you:"
+        },
+        "additionalContext": {
+          "title": "Want to add anything else...",
+          "description": "Anything else I should know about you? Write it down — or leave this field empty.",
+          "ariaLabel": "Additional information for Bea",
+          "placeholder": "For example: I'm currently changing jobs and I'm unsure how that will affect my finances...",
+          "optional": "Optional",
+          "remainingChars": "{count} characters left"
+        },
+        "summary": {
+          "bubble": {
+            "line1Prefix": "Okay — twelve questions, and I've",
+            "line1Highlight": "learned a lot about you",
+            "line1Suffix": ". 💛",
+            "line2": "Here's what I understood — take your time reading through it."
+          },
+          "insightLabels": {
+            "strength": "Your strength",
+            "challenge": "Your challenge",
+            "startingPoint": "Where we'll start"
+          },
+          "ctaContinue": "Looks good — continue"
+        },
+        "newsletter": {
+          "bubble": {
+            "line1": "One honest thing first 💛",
+            "line2Prefix": "I'm currently in",
+            "line2Highlight": "beta",
+            "line2Suffix": "— not yet available to everyone. Add your email and you'll get early access.",
+            "line3": "No spam — just one email when we launch."
+          },
+          "form": {
+            "speakerYou": "You",
+            "ariaLabel": "Newsletter signup for beta access",
+            "emailPlaceholder": "you@mail.com",
+            "emailAriaLabel": "Email address",
+            "submit": {
+              "default": "Sign up",
+              "loading": "One moment..."
+            },
+            "privacyHint": "Your email stays with us. You can unsubscribe anytime.",
+            "backButton": "Back to summary",
+            "errors": {
+              "invalidEmail": "Please enter a valid email address.",
+              "generic": "Something went wrong. Please try again in a moment — or send us an email."
+            }
+          }
+        },
+        "confirmed": {
+          "imageAlt": "Bea celebrating",
+          "title": "You're on the list 🧡",
+          "description": "Thanks for taking the time. I'll email you at <strong>{email}</strong> as soon as I'm ready for you.",
+          "whatToExpectTitle": "What to expect",
+          "singleLine": "Your best friend for finances!",
+          "ctaTryBeaNow": "Try Bea now"
+        }
+      },
+      "step12": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "line1": "Last question, promise! 🧡",
+          "line2Prefix": "And it's the",
+          "line2Highlight": "most important: ",
+          "line2Suffix": "Where do you see yourself financially when everything goes well?",
+          "description": "Just write what comes to mind. One sentence is enough."
+        },
+        "charCounter": {
+          "label": "Your goal vision"
+        },
+        "starterChooser": {
+          "empty": "Or click a starter sentence:",
+          "filled": "Choose another starter — it will replace the current text:"
+        },
+        "submit": {
+          "ready": "Let's get started",
+          "empty": "Write something..."
+        },
+        "hint": "Tip: Be specific — \"in one year\" is better than \"someday\"",
+        "lifeValues": {
+          "title": "And what matters most to you in life?",
+          "subtitle": "Choose 1–2 values that drive you. (Optional)"
+        }
+      },
+      "step11": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "phase1": {
+          "titlePrefix": "Last two questions and they're a bit",
+          "titleHighlight": "more personal.",
+          "titleSuffix": "When you think about money, what comes up first? 💭",
+          "description": "There is no right answer! I'm asking because your feeling says a lot about how I can support you best.",
+          "continueButton": "Continue to the next question"
+        },
+        "phase2": {
+          "titlePrefix": "How was money talked about",
+          "titleHighlight": "at home",
+          "titleSuffix": "for you?",
+          "description": "Our early imprint influences how we deal with money today — often more than we think."
+        },
+        "hint": "Tip: There is no \"right\" imprint — each one has strengths and downsides"
+      },
+      "step10": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Now it gets quick:",
+          "titleHighlight": "Six statements about you",
+          "titleSuffix": "💫",
+          "description": "Swipe right if it fits, left if not. Or click the buttons. An honest answer helps both of us most. There's no pressure to be perfect."
+        },
+        "progress": {
+          "statement": "Statement {current} / {total}"
+        },
+        "card": {
+          "statementIndex": "Statement {current}",
+          "swipeOrClick": "Swipe or tap"
+        },
+        "hint": "Tip: If unsure, answer with your first impulse"
+      },
+      "step9": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Let's do two small",
+          "titleHighlight": "thought experiments",
+          "titleSuffix": "🎲",
+          "description": "Feel free to answer from your gut! With me, there is no right or wrong. I just want to understand how you react when money comes in AND when money goes out."
+        },
+        "progress": {
+          "situation": "Situation {current} / {total}"
+        },
+        "summary": {
+          "windfallLabel": "With a money windfall",
+          "crisisLabel": "With sudden costs",
+          "beaThinkingLabel": "Bea's take"
+        },
+        "actions": {
+          "understood": "Got it"
+        },
+        "hint": "Tip: Answer spontaneously. Your first reaction is usually the most honest"
+      },
+      "step8": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Mini quiz! ✨",
+          "titleHighlight": "Three short questions: no test, no pressure.",
+          "description": "Don't worry! \"I don't know\" is always a valid answer too. I'll explain anything you want to know afterward."
+        },
+        "progress": {
+          "question": "Question {current} / {total}"
+        },
+        "actions": {
+          "nextQuestion": "Next question",
+          "finishQuiz": "Finish quiz"
+        },
+        "hint": "There are no embarrassing answers! I'm here to help you."
+      },
+      "step7": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Now it gets exciting:",
+          "titleHighlight": "What is currently on your mind the most?",
+          "titleSuffix": "✨",
+          "description": "Pick your top {count} in the order that matters most to you. We'll start exactly there."
+        },
+        "counter": {
+          "zero": "Click what is weighing on you most",
+          "one": "Nice! Pick two more",
+          "two": "Almost there! One more to go",
+          "full": "Perfect, these are your top 3 🧡"
+        },
+        "slotEmpty": "Empty",
+        "confirm": "Looks good",
+        "hint": "Click a card again to remove it"
+      },
+      "step6": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Okay, that's it for the personal stuff 🧡. Now it gets lighter again.",
+          "titleHighlight": "What time horizon are you currently looking at?",
+          "description": "Are you aiming for quick change, or do you think more in years?"
+        },
+        "hint": "There is no wrong answer, we can adjust the plan anytime"
+      },
+      "step5": {
+        "speaker": {
+          "beaAlt": "Bea",
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "One quick one more, then it gets easier:",
+          "titleHighlight": "How are things for you with debt or overdraft? 😌",
+          "description": "Honesty helps me give you realistic guidance."
+        },
+        "hint": "Tip: BAfoeG doesn't count here! That's student funding/loan support, not consumer debt."
+      },
+      "step4": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Now it gets a little personal:",
+          "titleHighlight": "How much lands in your account each month?",
+          "titleSuffix": "💸",
+          "description": "A rough range is completely enough."
+        },
+        "hint": "Gross or net - whatever is easier for you. We only use it as a rough direction"
+      },
+      "step3": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "And tell me:",
+          "titleHighlight": "How are you living right now?",
+          "titleSuffix": "🏡",
+          "description": "Your living situation affects your finances more than you might think."
+        },
+        "hint": "If multiple options fit, choose the one where you spend most of your time"
+      },
+      "step2": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Very cool! And",
+          "titleHighlight": "how old are you?",
+          "titleSuffix": "🎂",
+          "description": "This helps me understand which topics are most relevant for you right now."
+        },
+        "ageUnit": "years",
+        "sliderAriaLabel": "Select age",
+        "confirm": "Looks good",
+        "hint": "Drag the slider or use the arrow keys ← →"
+      },
+      "step1": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "You"
+        },
+        "bubble": {
+          "titlePrefix": "Let's get",
+          "titleHighlight": "started",
+          "titleSuffix": "🧡",
+          "description": "First, tell me which life phase you're currently in so I can understand your situation properly."
+        },
+        "hint": "Choose what fits you best right now - you can adjust everything later."
+      }
     }
   },
   "referral": {

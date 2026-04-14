@@ -1,16 +1,21 @@
 "use client";
 
+// IMPORTS
+import type { ComponentType } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+// LIB
 import {
   STEP_ORDER,
   TOTAL_STEPS,
   emptyProfile,
   type StepId,
+  type LifeValue,
   type UserProfile,
+  type MoneyFeeling,
+  type BehaviorBias,
 } from "@/lib/bea-ai/onboarding";
-
-// Steps
+// STEPS
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
 import Step3 from "./steps/Step3";
@@ -21,195 +26,255 @@ import Step7 from "./steps/Step7";
 import Step8 from "./steps/Step8";
 import Step9 from "./steps/Step9";
 import Step10 from "./steps/Step10";
-
-// Complete
+import Step11 from "./steps/Step11";
+import Step12 from "./steps/Step12";
+// CUSTOM COMPONENTS
 import OnboardingComplete from "./OnboardingComplete";
 
+// TYPES
 interface OnboardingFlowProps {
-  /** Called once the user finishes the completion reveal and wants to chat. */
   onFinish: (profile: UserProfile) => void;
-  /**
-   * Fires whenever the current step or completion state changes.
-   * Use this to render the progress indicator in the parent header
-   * instead of a duplicate bar inside the flow.
-   */
+  onNewsletterSubmit?: (
+    email: string,
+    profile: UserProfile,
+  ) => Promise<void> | void;
   onStateChange?: (state: {
     stepIdx: number;
     total: number;
     isComplete: boolean;
   }) => void;
 }
+/**
+ * A step definition pairs a StepId with the React component that renders
+ * it AND a profile-merge function describing what the step contributes.
+ */
+interface StepDefinition {
+  id: StepId;
+  Component: ComponentType<{ onSelect: (...args: never[]) => void }>;
+  toProfilePatch: (...args: never[]) => Partial<UserProfile>;
+}
+// STEP CONFIGURATION
+const STEP_DEFINITIONS: readonly StepDefinition[] = [
+  {
+    id: "lebenssituation",
+    Component: Step1 as StepDefinition["Component"],
+    toProfilePatch: (id: string) => ({ lebenssituation: id }),
+  },
+  {
+    id: "alter",
+    Component: Step2 as StepDefinition["Component"],
+    toProfilePatch: (age: number) => ({ alter: age }),
+  },
+  {
+    id: "wohnsituation",
+    Component: Step3 as StepDefinition["Component"],
+    toProfilePatch: (id: string) => ({ wohnsituation: id }),
+  },
+  {
+    id: "einkommen",
+    Component: Step4 as StepDefinition["Component"],
+    toProfilePatch: (id: string) => ({ einkommensRange: id }),
+  },
+  {
+    id: "schulden",
+    Component: Step5 as StepDefinition["Component"],
+    toProfilePatch: (debtId: string) => ({
+      schuldenOptionId: debtId,
+      hatSchulden: debtId !== "" && debtId !== "debt_none",
+    }),
+  },
+  {
+    id: "zeithorizont",
+    Component: Step6 as StepDefinition["Component"],
+    toProfilePatch: (id: string) => ({ zeithorizont: id }),
+  },
+  {
+    id: "prioritaeten",
+    Component: Step7 as StepDefinition["Component"],
+    toProfilePatch: (priorities: string[]) => ({ prioritaeten: priorities }),
+  },
+  {
+    id: "wissenstest",
+    Component: Step8 as StepDefinition["Component"],
+    toProfilePatch: (correctCount: number, answeredIds: string[]) => ({
+      wissenstest: { correctCount, answeredIds },
+    }),
+  },
+  {
+    id: "szenario",
+    Component: Step9 as StepDefinition["Component"],
+    toProfilePatch: (windfallBias: BehaviorBias, crisisBias: BehaviorBias) => ({
+      szenario: { windfallBias, crisisBias },
+    }),
+  },
+  {
+    id: "persoenlichkeit",
+    Component: Step10 as StepDefinition["Component"],
+    toProfilePatch: (answers: Record<string, boolean>) => ({
+      persoenlichkeit: answers,
+    }),
+  },
+  {
+    id: "geldgefuehl",
+    Component: Step11 as StepDefinition["Component"],
+    toProfilePatch: (feeling: MoneyFeeling, praegung: string) => ({
+      geldgefuehl: feeling,
+      geldpraegung: praegung,
+    }),
+  },
+  {
+    id: "zielbild",
+    Component: Step12 as StepDefinition["Component"],
+    toProfilePatch: (zielbild: string, lebenswerte: LifeValue[]) => ({
+      zielbild,
+      lebenswerte: lebenswerte ?? [],
+    }),
+  },
+] as const;
+
+// CONSTANTS
+const STEP_TRANSITION = {
+  duration: 0.45,
+  ease: [0.22, 1, 0.36, 1],
+} as const;
+const COMPLETE_TRANSITION = {
+  duration: 0.5,
+} as const;
+const STEP_EXIT = { opacity: 0, y: -24 } as const;
+const STEP_ANIMATE = { opacity: 1, y: 0 } as const;
+const STEP_INITIAL = { opacity: 0, y: 24 } as const;
+
+// ─── COMPONENT ────────────────────────────────────────────
 
 /**
- * The top-level orchestrator for the Bea AI onboarding journey.
+ * Top-level orchestrator for the Bea AI onboarding journey.
  *
- * Renders only the step content + transitions. Progress UI is delegated to
- * the parent via `onStateChange` so it can live in the global header bar.
+ * Renders 12 sequential steps then a completion reveal.
+ * Each step is config-driven via STEP_DEFINITIONS — adding a new step
+ * means one entry, no handler or render code.
+ *
+ * Progress UI is delegated to the parent via onStateChange so the
+ * progress bar can live in the global header instead of duplicating here.
+ *
+ * Edit-from-complete: when the user clicks an edit button in
+ * OnboardingComplete, handleEditStep jumps back to the requested step
+ * and re-enters the flow. After re-answering, they advance back through
+ * any remaining steps (or directly to complete if it was the last step).
  */
 export default function OnboardingFlow({
   onFinish,
   onStateChange,
+  onNewsletterSubmit,
 }: OnboardingFlowProps) {
+  // STATE
   const [stepIdx, setStepIdx] = useState(0);
-  const [profile, setProfile] = useState<UserProfile>(emptyProfile);
   const [isComplete, setIsComplete] = useState(false);
+  const [profile, setProfile] = useState<UserProfile>(emptyProfile);
+  // CONSTANTS
+  const currentDefinition = useMemo(
+    () => STEP_DEFINITIONS[stepIdx] ?? null,
+    [stepIdx],
+  );
+  // FUNCTIONS
+  // Single advance function — replaces 12 individual handlers
+  const advance = useCallback(() => {
+    setStepIdx((prev) => {
+      const next = prev + 1;
+      if (next >= TOTAL_STEPS) {
+        setIsComplete(true);
+        return prev;
+      }
+      return next;
+    });
+  }, []);
+  // Generic handler — closes over the current step's patch function.
+  const handleStepSelect = useCallback(
+    (...args: never[]) => {
+      const definition = STEP_DEFINITIONS[stepIdx];
+      if (!definition) return;
+      const patch = definition.toProfilePatch(...args);
+      setProfile((prev) => ({ ...prev, ...patch }));
+      advance();
+    },
+    [stepIdx, advance],
+  );
+  // Edit-from-complete: jump back to a specific step
+  const handleEditStep = useCallback((targetStepId: StepId) => {
+    const targetIdx = STEP_ORDER.indexOf(targetStepId);
+    if (targetIdx >= 0) {
+      setStepIdx(targetIdx);
+      setIsComplete(false);
+    }
+  }, []);
+  // Newsletter submission proxy
+  const handleNewsletterSubmit = useCallback(
+    async (email: string) => {
+      if (onNewsletterSubmit) {
+        await onNewsletterSubmit(email, profile);
+        return;
+      }
 
-  const currentStepId: StepId | undefined = STEP_ORDER[stepIdx];
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-  // Notify parent of state changes — used for header progress UI
+      if (!response.ok) {
+        throw new Error("Newsletter submit failed");
+      }
+    },
+    [onNewsletterSubmit, profile],
+  );
+  const handleStartChat = useCallback(() => {
+    onFinish(profile);
+  }, [profile, onFinish]);
+  // USE EFFECT
   useEffect(() => {
     onStateChange?.({ stepIdx, total: TOTAL_STEPS, isComplete });
   }, [stepIdx, isComplete, onStateChange]);
 
-  // Advance to the next step
-  const advance = useCallback(() => {
-    if (stepIdx + 1 >= TOTAL_STEPS) {
-      setIsComplete(true);
-    } else {
-      setStepIdx(stepIdx + 1);
-    }
-  }, [stepIdx]);
+  // Validate STEP_DEFINITIONS matches STEP_ORDER at render time.
+  if (
+    process.env.NODE_ENV !== "production" &&
+    STEP_DEFINITIONS.length !== STEP_ORDER.length
+  ) {
+    console.warn(
+      `OnboardingFlow: STEP_DEFINITIONS has ${STEP_DEFINITIONS.length} entries ` +
+        `but STEP_ORDER has ${STEP_ORDER.length}. They must match.`,
+    );
+  }
 
-  // Typed setters per step. Each updates the profile AND advances.
-  const handleLifeSituation = useCallback(
-    (id: string) => {
-      setProfile((p) => ({ ...p, lebenssituation: id }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleAge = useCallback(
-    (age: number) => {
-      setProfile((p) => ({ ...p, alter: age }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleMoneyFeeling = useCallback(
-    (id: "freiheit" | "stress") => {
-      setProfile((p) => ({ ...p, geldgefuehl: id }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleSelfRating = useCallback(
-    (level: number) => {
-      setProfile((p) => ({ ...p, wissensstand: level }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleKnowledgeQuiz = useCallback(
-    (answerId: string, correct: boolean) => {
-      setProfile((p) => ({
-        ...p,
-        wissenstest: { answerId, correct },
-      }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handlePriorities = useCallback(
-    (priorities: string[]) => {
-      setProfile((p) => ({ ...p, prioritaeten: priorities }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleScenario = useCallback(
-    (insight: string) => {
-      setProfile((p) => ({ ...p, szenarioInsight: insight }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleSaving = useCallback(
-    (percent: number) => {
-      setProfile((p) => ({ ...p, sparverhaltenProzent: percent }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handlePersonality = useCallback(
-    (answers: Record<string, boolean>) => {
-      setProfile((p) => ({ ...p, persoenlichkeit: answers }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleGoal = useCallback(
-    (goal: string) => {
-      setProfile((p) => ({ ...p, ziel: goal }));
-      advance();
-    },
-    [advance],
-  );
-
-  const handleStartChat = useCallback(() => {
-    onFinish(profile);
-  }, [profile, onFinish]);
-
-  // ─── Render ─────────────────────────────────────────────
   return (
     <AnimatePresence mode="wait">
       {isComplete ? (
         <motion.div
           key="complete"
+          exit={{ opacity: 0 }}
+          className="min-h-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="min-h-full"
+          transition={COMPLETE_TRANSITION}
         >
-          <OnboardingComplete profile={profile} onStartChat={handleStartChat} />
+          <OnboardingComplete
+            profile={profile}
+            onEditStep={handleEditStep}
+            onStartChat={handleStartChat}
+            onNewsletterSubmit={handleNewsletterSubmit}
+          />
         </motion.div>
-      ) : (
+      ) : currentDefinition ? (
         <motion.div
-          key={currentStepId}
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -24 }}
-          transition={{
-            duration: 0.45,
-            ease: [0.22, 1, 0.36, 1],
-          }}
+          exit={STEP_EXIT}
           className="min-h-full"
+          initial={STEP_INITIAL}
+          animate={STEP_ANIMATE}
+          key={currentDefinition.id}
+          transition={STEP_TRANSITION}
         >
-          {currentStepId === "lebenssituation" && (
-            <Step1 onSelect={handleLifeSituation} />
-          )}
-          {currentStepId === "alter" && <Step2 onSelect={handleAge} />}
-          {currentStepId === "geldgefuehl" && (
-            <Step3 onSelect={handleMoneyFeeling} />
-          )}
-          {currentStepId === "wissensstand" && (
-            <Step4 onSelect={handleSelfRating} />
-          )}
-          {currentStepId === "wissenstest" && (
-            <Step5 onSelect={handleKnowledgeQuiz} />
-          )}
-          {currentStepId === "prioritaeten" && (
-            <Step6 onSelect={handlePriorities} />
-          )}
-          {currentStepId === "szenario" && <Step7 onSelect={handleScenario} />}
-          {currentStepId === "sparverhalten" && (
-            <Step8 onSelect={handleSaving} />
-          )}
-          {currentStepId === "persoenlichkeit" && (
-            <Step9 onSelect={handlePersonality} />
-          )}
-          {currentStepId === "ziel" && <Step10 onSelect={handleGoal} />}
+          <currentDefinition.Component onSelect={handleStepSelect} />
         </motion.div>
-      )}
+      ) : null}
     </AnimatePresence>
   );
 }

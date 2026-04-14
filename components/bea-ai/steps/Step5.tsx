@@ -1,264 +1,293 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import StepHeading from "../shared/StepHeading";
-import BeaPresence from "../shared/BeaPresence";
-import { KNOWLEDGE_QUIZ, type QuizAnswer } from "@/lib/bea-ai/onboarding";
+// IMPORTS
+import Image from "next/image";
+// IMPORTS
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { useState, type CSSProperties } from "react";
+// LIBS
+import { SCHULDEN_OPTIONS, type DebtSeverity } from "@/lib/bea-ai/onboarding";
 
+// TYPES
 interface Step5Props {
-  onSelect: (answerId: string, correct: boolean) => void;
+  onSelect: (debtId: string) => void;
 }
+type SeverityStyleSet = {
+  shadowColor: string;
+  hover: CSSProperties;
+  selected: CSSProperties;
+  checkBadge: CSSProperties;
+};
+// CONSTANTS
+const BUBBLE_STYLE = {
+  border: "1.5px solid rgba(232,119,32,0.22)",
+  background: "linear-gradient(180deg, #FFFFFF 0%, #FFF8F3 100%)",
+  boxShadow:
+    "0 12px 32px rgba(232,119,32,0.12), 0 0 0 1px rgba(232,119,32,0.05)",
+} as const;
+const CARD_BASE_STYLE = {
+  border: "1.5px solid #F0E5D8",
+  boxShadow: "0 4px 16px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02)",
+} as const;
+const SEVERITY_STYLES: Record<DebtSeverity, SeverityStyleSet> = {
+  none: {
+    hover: {
+      border: "1.5px solid rgba(34,197,94,0.45)",
+      boxShadow:
+        "0 16px 40px rgba(34,197,94,0.16), 0 0 0 1px rgba(34,197,94,0.18)",
+    },
+    selected: {
+      border: "1.5px solid #22c55e",
+      boxShadow:
+        "0 20px 48px rgba(34,197,94,0.22), 0 0 0 2px rgba(34,197,94,0.4)",
+    },
+    checkBadge: {
+      boxShadow: "0 6px 16px rgba(34,197,94,0.45)",
+      background: "linear-gradient(135deg, #22c55e 0%, #4ade80 100%)",
+    },
+    shadowColor: "rgba(34,197,94,0.25)",
+  },
+  manageable: {
+    hover: {
+      border: "1.5px solid rgba(245,158,11,0.45)",
+      boxShadow:
+        "0 16px 40px rgba(245,158,11,0.16), 0 0 0 1px rgba(245,158,11,0.18)",
+    },
+    selected: {
+      border: "1.5px solid #f59e0b",
+      boxShadow:
+        "0 20px 48px rgba(245,158,11,0.22), 0 0 0 2px rgba(245,158,11,0.4)",
+    },
+    checkBadge: {
+      background: "linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%)",
+      boxShadow: "0 6px 16px rgba(245,158,11,0.45)",
+    },
+    shadowColor: "rgba(245,158,11,0.25)",
+  },
+  significant: {
+    hover: {
+      border: "1.5px solid rgba(232,119,32,0.45)",
+      boxShadow:
+        "0 16px 40px rgba(232,119,32,0.18), 0 0 0 1px rgba(232,119,32,0.2)",
+    },
+    selected: {
+      border: "1.5px solid #E87720",
+      boxShadow:
+        "0 20px 48px rgba(232,119,32,0.25), 0 0 0 2px rgba(232,119,32,0.4)",
+    },
+    checkBadge: {
+      background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
+      boxShadow: "0 6px 16px rgba(232,119,32,0.45)",
+    },
+    shadowColor: "rgba(232,119,32,0.25)",
+  },
+};
 
 /**
- * STEP 5 — Knowledge Quiz
+ * STEP 5 — Schulden-Status (3-stage severity)
  *
- * Pattern: Multiple choice with instant feedback.
- * User picks an answer → correct one lights up green, incorrect stays neutral.
- * Bea reacts with a personalized response depending on the choice.
- * This is the only step where we actually TEST the user instead of asking.
+ * Conversational pattern matching Steps 1-4:
+ * Bea asks the sensitive debt question with explicit reassurance.
+ * User picks one of three nuanced cards — none / manageable / significant.
+ * Each severity has its own color tone (green / amber / orange) without
+ * being alarming. No red — never red for debt questions.
  */
-export default function Step5KnowledgeQuiz({ onSelect }: Step5Props) {
-  const [selectedAnswer, setSelectedAnswer] = useState<QuizAnswer | null>(null);
-  const [showFeedback, setShowFeedback] = useState(false);
-
-  const handleSelect = (answer: QuizAnswer) => {
-    if (selectedAnswer) return;
-    setSelectedAnswer(answer);
-    setTimeout(() => setShowFeedback(true), 400);
+export default function Step5Schulden({ onSelect }: Step5Props) {
+  // STATES
+  const t = useTranslations("onboarding.beaAi.step5");
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  // FUNCTIONS
+  const handleSelect = (id: string) => {
+    if (selectedId) return;
+    setSelectedId(id);
+    setTimeout(() => onSelect(id), 550);
   };
-
-  const handleContinue = () => {
-    if (!selectedAnswer) return;
-    onSelect(selectedAnswer.id, selectedAnswer.correct);
+  const getCardStyle = (id: string, severity: DebtSeverity): CSSProperties => {
+    const styles = SEVERITY_STYLES[severity];
+    if (selectedId === id) return styles.selected;
+    if (hoveredId === id && !selectedId) return styles.hover;
+    return CARD_BASE_STYLE;
   };
 
   return (
-    <div className="flex flex-col items-center px-4 md:px-8 py-8 md:py-12">
-      <StepHeading
-        eyebrow="Schritt 5 — Kleiner Check"
-        title={
-          <>
-            Eine <span className="text-primaryOrange">kleine Frage</span> an
-            dich
-          </>
-        }
-        subtitle="Kein Druck — ich will nur sehen wo wir wirklich stehen."
-      />
-
-      {/* Big mascot */}
-      {!showFeedback && (
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="mt-8 md:mt-10"
-        >
-          <BeaPresence
-            mascotSrc="/Maskottchen/Maskottchen-Beratung.webp"
-            size="md"
-          />
-        </motion.div>
-      )}
-
-      {/* Feedback mascot */}
-      {showFeedback && selectedAnswer && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 md:mt-10"
-        >
-          <BeaPresence
-            mascotSrc={
-              selectedAnswer.correct
-                ? "/Maskottchen/Maskottchen-Freude.webp"
-                : "/Maskottchen/Maskottchen-Beratung.webp"
-            }
-            size="md"
-          />
-        </motion.div>
-      )}
-
-      {/* Quiz question */}
+    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="mt-8 md:mt-10 w-full max-w-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-10 flex items-start gap-3 md:gap-4"
       >
-        <div
-          className="relative rounded-3xl p-6 md:p-8 text-center"
-          style={{
-            background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)",
-            border: "2px solid rgba(232,119,32,0.2)",
+        <motion.div
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative flex-shrink-0"
+          initial={{ scale: 0.7, opacity: 0 }}
+          transition={{
+            delay: 0.1,
+            damping: 18,
+            type: "spring",
+            stiffness: 200,
           }}
         >
-          <div className="text-[10px] md:text-[11px] font-bold text-primaryOrange uppercase tracking-widest mb-3">
-            Finanz-Quiz
+          <div className="relative h-14 w-14 overflow-hidden md:h-16 md:w-16">
+            <Image
+              fill
+              priority
+              alt={t("speaker.beaAlt")}
+              className="object-contain"
+              src="/Maskottchen/Maskottchen-Right.png"
+            />
           </div>
-          <h3 className="text-2xl md:text-3xl font-black text-darkerGray leading-tight">
-            {KNOWLEDGE_QUIZ.question}
-          </h3>
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 right-0 flex h-3.5 w-3.5"
+          >
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500" />
+          </span>
+        </motion.div>
+        <div className="flex-1">
+          <div className="mb-1 flex items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-primaryOrange">
+              {t("speaker.bea")}
+            </span>
+          </div>
+          <motion.div
+            style={BUBBLE_STYLE}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
+            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+            transition={{
+              delay: 0.25,
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+              {t("bubble.titlePrefix")}{" "}
+              <span className="text-primaryOrange">
+                {t("bubble.titleHighlight")}
+              </span>
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+              {t("bubble.description")}
+            </p>
+          </motion.div>
         </div>
       </motion.div>
+      <div className="flex flex-col items-end">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mb-3 flex items-center gap-1.5"
+        >
+          <span className="text-[11px] font-bold uppercase tracking-wider text-darkerGray/60">
+            {t("speaker.you")}
+          </span>
+        </motion.div>
+        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+          {SCHULDEN_OPTIONS.map((option, idx) => {
+            const isSelected = selectedId === option.id;
+            const isDimmed = selectedId !== null && !isSelected;
+            const severityStyles = SEVERITY_STYLES[option.severity];
 
-      {/* Answer options */}
-      <div className="mt-6 w-full max-w-2xl space-y-3">
-        {KNOWLEDGE_QUIZ.answers.map((answer, idx) => {
-          const isSelected = selectedAnswer?.id === answer.id;
-          const isRevealed = selectedAnswer !== null;
-          const isCorrect = answer.correct;
-          const showAsCorrect = isRevealed && isCorrect;
-          const showAsWrong = isSelected && !isCorrect;
-
-          return (
-            <motion.button
-              key={answer.id}
-              type="button"
-              onClick={() => handleSelect(answer)}
-              disabled={isRevealed}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{
-                opacity: isRevealed && !isSelected && !isCorrect ? 0.5 : 1,
-                x: 0,
-              }}
-              transition={{
-                delay: 0.4 + idx * 0.08,
-                duration: 0.4,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              whileHover={!isRevealed ? { scale: 1.02, x: 4 } : {}}
-              whileTap={!isRevealed ? { scale: 0.98 } : {}}
-              className="w-full relative flex items-center gap-4 rounded-2xl p-4 md:p-5 text-left transition-all duration-300"
-              style={{
-                background: showAsCorrect
-                  ? "linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%)"
-                  : showAsWrong
-                    ? "linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%)"
-                    : "#FFFFFF",
-                border: `2px solid ${
-                  showAsCorrect
-                    ? "#10B981"
-                    : showAsWrong
-                      ? "#EF4444"
-                      : "#F0E5D8"
-                }`,
-                boxShadow: showAsCorrect
-                  ? "0 8px 24px rgba(16,185,129,0.2)"
-                  : showAsWrong
-                    ? "0 8px 24px rgba(239,68,68,0.15)"
-                    : "0 4px 12px rgba(232,119,32,0.06)",
-                cursor: isRevealed ? "default" : "pointer",
-              }}
-            >
-              {/* Letter badge */}
-              <div
-                className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-black text-sm"
+            return (
+              <motion.button
+                type="button"
+                key={option.id}
+                disabled={!!selectedId}
+                whileTap={{ scale: 0.98 }}
+                initial={{ opacity: 0, y: 20 }}
+                onClick={() => handleSelect(option.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                whileHover={{ y: selectedId ? 0 : -6 }}
+                onMouseEnter={() => setHoveredId(option.id)}
+                className="group relative flex min-h-[260px] flex-col items-center justify-center overflow-hidden rounded-3xl rounded-tr-md p-6 text-center transition-all duration-300 disabled:cursor-default md:min-h-[300px] md:p-8"
                 style={{
-                  background: showAsCorrect
-                    ? "#10B981"
-                    : showAsWrong
-                      ? "#EF4444"
-                      : "#FFF8F3",
-                  color: showAsCorrect || showAsWrong ? "#FFFFFF" : "#E87720",
-                  border: `2px solid ${
-                    showAsCorrect
-                      ? "#10B981"
-                      : showAsWrong
-                        ? "#EF4444"
-                        : "#FED4B0"
-                  }`,
+                  ...getCardStyle(option.id, option.severity),
+                  background: option.gradient,
+                }}
+                animate={{
+                  y: 0,
+                  opacity: isDimmed ? 0.3 : 1,
+                  scale: isSelected ? 1.02 : 1,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.55 + idx * 0.07,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
               >
-                {answer.id.toUpperCase()}
-              </div>
-
-              <span className="flex-1 text-sm md:text-base text-darkerGray font-semibold leading-snug">
-                {answer.text}
-              </span>
-
-              {showAsCorrect && (
                 <motion.div
-                  initial={{ scale: 0, rotate: -180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: [0.22, 1, 0.36, 1],
+                  className="relative mb-3 h-20 w-20 md:h-28 md:w-28"
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  animate={{
+                    y: hoveredId === option.id || isSelected ? -6 : 0,
+                    scale: hoveredId === option.id || isSelected ? 1.08 : 1,
                   }}
-                  className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center"
                 >
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={3}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                  <Image
+                    fill
+                    sizes="112px"
+                    alt={option.label}
+                    src={option.mascot}
+                    className="object-contain"
+                    style={{
+                      filter: `drop-shadow(0 12px 24px ${severityStyles.shadowColor})`,
+                    }}
+                  />
                 </motion.div>
-              )}
-            </motion.button>
-          );
-        })}
+                <div className="relative mb-1 text-2xl md:text-3xl">
+                  {option.emoji}
+                </div>
+                <h3 className="relative mb-2 px-2 text-lg font-black leading-tight tracking-tight text-darkerGray md:text-xl">
+                  {option.label}
+                </h3>
+                <p className="relative max-w-xs px-2 text-xs font-medium leading-snug text-darkerGray/70 md:text-sm">
+                  {option.description}
+                </p>
+                {isSelected && (
+                  <motion.div
+                    animate={{ scale: 1, rotate: 0 }}
+                    style={severityStyles.checkBadge}
+                    initial={{ scale: 0, rotate: -30 }}
+                    className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-white"
+                    transition={{
+                      damping: 18,
+                      type: "spring",
+                      stiffness: 300,
+                    }}
+                  >
+                    <svg
+                      fill="none"
+                      strokeWidth={3.5}
+                      className="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </motion.div>
+                )}
+              </motion.button>
+            );
+          })}
+        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          className="mt-4 text-sm text-gray-400"
+          animate={{ opacity: selectedId ? 0 : 1 }}
+          transition={{ delay: 1.2, duration: 0.4 }}
+        >
+          {t("hint")}
+        </motion.p>
       </div>
-
-      {/* Feedback + Continue */}
-      <AnimatePresence>
-        {showFeedback && selectedAnswer && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 w-full max-w-2xl flex flex-col items-center gap-6"
-          >
-            <div
-              className="rounded-2xl p-5 md:p-6 text-center max-w-xl"
-              style={{
-                background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)",
-                border: "2px solid rgba(232,119,32,0.2)",
-              }}
-            >
-              <p className="text-sm md:text-base text-darkerGray leading-relaxed font-medium">
-                {selectedAnswer.feedback}
-              </p>
-            </div>
-
-            <motion.button
-              type="button"
-              onClick={handleContinue}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-white font-black text-base md:text-lg"
-              style={{
-                background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
-                boxShadow: "0 12px 32px rgba(232,119,32,0.35)",
-              }}
-            >
-              Weiter
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={3}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </motion.button>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

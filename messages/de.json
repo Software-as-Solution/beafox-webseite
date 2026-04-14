@@ -379,6 +379,9 @@
       "beforeTitle": "Information Overload",
       "beforeText": "Tausende Tipps, widersprüchliche Meinungen, ständig neue Trends — wer soll da noch durchblicken?",
       "afterTitle": "Nichts ist persönlich",
+      "bridgeTitle": "Du kennst das Problem?",
+      "bridgeHighlight": "Löse es mit Bea.",
+      "bridgeCtaLabel": "Jetzt mit Bea starten",
       "afterText": "Allgemeine Ratschläge ignorieren deine echte Lebenssituation komplett.",
       "subTitle": "Wissen alleine reicht nicht aus",
       "description": "Junge Menschen waren noch nie so gut informiert wie heute — und fühlen sich trotzdem verloren. Das Problem ist nicht der Mangel an Wissen, sondern der Mangel an Orientierung. Niemand sagt dir, was DU jetzt mit DEINEM Geld machen sollst.",
@@ -521,6 +524,9 @@
       "capabilitiesLabel": "Bea nutzt:",
       "ctaLead": "Bea wird smarter, je länger du dabei bist.",
       "ctaButton": "Bea kennenlernen",
+      "endCtaQuestion": "Konnte ich dein Interesse wecken?",
+      "endCtaQuestionHighlight": "Probier mich einfach aus!",
+      "endCtaButton": "Jetzt Bea ausprobieren",
       "useCases": {
         "lernen": {
           "label": "Personalisiertes Lernen",
@@ -835,65 +841,37 @@
       "stufen": {
         "title": "Stufen",
         "description": "Wähle frei aus was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden. Egal ob Anfänger oder Fortgeschrittener, bei BeAFox findest du die passende Stufe für dich und kannst in deinem eigenen Tempo lernen.",
-        "highlights": [
-          "Flexibel lernen",
-          "Für jedes Level",
-          "Eigenes Tempo"
-        ]
+        "highlights": ["Flexibel lernen", "Für jedes Level", "Eigenes Tempo"]
       },
       "lernpfad": {
         "title": "Lernpfad",
         "description": "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer wo du stehst und was als Nächstes kommt. Der Lernpfad zeigt dir deinen Fortschritt visuell an und hilft dir, den Überblick zu behalten.",
-        "highlights": [
-          "Strukturiert",
-          "Schritt für Schritt",
-          "Personalisiert"
-        ]
+        "highlights": ["Strukturiert", "Schritt für Schritt", "Personalisiert"]
       },
       "lektion": {
         "title": "Lektionen",
         "description": "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich. Von Budgetplanung über Sparen bis hin zu Investitionen. Wir decken alle wichtigen Bereiche ab und kombinieren Videos, Texte und interaktive Elemente.",
-        "highlights": [
-          "5 Min. Lektionen",
-          "Praxisnah",
-          "Sofort anwendbar"
-        ]
+        "highlights": ["5 Min. Lektionen", "Praxisnah", "Sofort anwendbar"]
       },
       "quiz": {
         "title": "Quiz",
         "description": "Nach der Theorie kommt die Praxis. Teste dein Wissen mit interaktiven Quizzen und vertiefe das Gelernte. Durch sofortiges Feedback lernst du aus deinen Fehlern und kannst gezielt nacharbeiten. Mit jedem erfolgreich abgeschlossenen Quiz sammelst du Punkte und steigst in der Rangliste auf.",
-        "highlights": [
-          "Wissen testen",
-          "Sofort Feedback",
-          "XP sammeln"
-        ]
+        "highlights": ["Wissen testen", "Sofort Feedback", "XP sammeln"]
       },
       "rangliste": {
         "title": "Rangliste",
         "description": "Vergleiche dich mit anderen Lernenden und motiviere dich durch freundschaftlichen Wettbewerb. Sammle Punkte, erreiche neue Level und werde zum Finanz-Experten. Verschiedene Kategorien und Zeiträume sorgen dafür, dass jeder eine faire Chance hat, ganz oben zu stehen.",
-        "highlights": [
-          "Gamification",
-          "Wettbewerb",
-          "Motivation"
-        ]
+        "highlights": ["Gamification", "Wettbewerb", "Motivation"]
       },
       "missionen": {
         "title": "Missionen & Ziele",
         "description": "Erfülle spannende Missionen und erreiche deine persönlichen Ziele. Die Missionen reichen von täglichen Herausforderungen bis hin zu langfristigen Zielen. Jede erfolgreich abgeschlossene Mission wird belohnt und bringt dich deinem großen Ziel näher. Setze dir eigene Ziele oder nimm an vordefinierten Missionen teil.",
-        "highlights": [
-          "Tägliche Ziele",
-          "Belohnungen",
-          "Gewohnheiten"
-        ]
+        "highlights": ["Tägliche Ziele", "Belohnungen", "Gewohnheiten"]
       },
       "profil": {
         "title": "Profil",
         "description": "Sammle Statistiken über deinen Lernfortschritt und erhalte deinen persönlichen Fox Score. Dein Profil zeigt dir alle deine Leistungen: abgeschlossene Lektionen, erreichte Punkte und bestandene Quizze. Der Fox Score ist dein persönlicher Indikator für dein Finanzwissen und steigt mit jedem Fortschritt.",
-        "highlights": [
-          "Fortschritt sehen",
-          "Statistiken",
-          "Erfolge feiern"
-        ]
+        "highlights": ["Fortschritt sehen", "Statistiken", "Erfolge feiern"]
       }
     },
     "whyFinance": {
@@ -3634,10 +3612,7 @@
     "hero": {
       "headlineKnow": "WISSEN.",
       "headlineMoney": "GELD.",
-      "typingWords": [
-        "FREIHEIT",
-        "SICHERHEIT"
-      ]
+      "typingWords": ["FREIHEIT", "SICHERHEIT"]
     },
     "mockups": {
       "trainingAlt": "BeAFox Training Mockup",
@@ -3655,6 +3630,319 @@
       "noCodePre": "Kein Code? Kein Problem!",
       "noCodePost": "Du kannst dich trotzdem registrieren und später jederzeit BeAFox Unlimited freischalten.",
       "continueCta": "Weiter zur Registrierung"
+    },
+    "beaAi": {
+      "legalDisclaimer": {
+        "compact": "Ich bin deine Lernbegleiterin und keine Anlageberaterin 🧡",
+        "full": {
+          "badge": "Ehrlich gesagt",
+          "body": "Ich bin deine beste <strong>Freundin für Finanzen.</strong> Ich helfe dir, Konzepte zu verstehen, Routinen aufzubauen und endlich Klarheit über dein Geld zu kriegen. Ganz ohne Druck, aber dafür in deinem Tempo.",
+          "legal": "Was ich bewusst nicht mache: Ich empfehle dir keine spezifischen ETFs, Versicherungen oder Kredite. Das wäre Anlageberatung im Sinne des §1 KWG bzw. Versicherungsvermittlung nach §34d GewO, und dafür gibt's lizenzierte Profis. Wenn du soweit bist, zeig ich dir gerne, wo du die findest."
+        }
+      },
+      "complete": {
+        "shared": {
+          "beaAlt": "Bea",
+          "speakerBea": "Bea",
+          "timestampNow": "gerade eben"
+        },
+        "financialType": {
+          "label": "Dein Finanz-Typ"
+        },
+        "crisis": {
+          "ariaLabel": "Hilfsangebote bei finanzieller Notlage",
+          "title": "Falls du gerade in einer schwierigen Situation bist",
+          "description": "Es gibt kostenlose Hilfsangebote, die gezielter helfen können als ich. Du musst das nicht alleine machen."
+        },
+        "insightCard": {
+          "confidence": {
+            "firstAssessment": "Erste Einschätzung",
+            "stillVague": "Noch vage"
+          }
+        },
+        "secondaryInsights": {
+          "title": "Auch wichtig:"
+        },
+        "inconsistencies": {
+          "title": "Mir ist was aufgefallen",
+          "description": "Ein paar Dinge passen nicht ganz zusammen — spannende Gesprächsanlässe für später."
+        },
+        "goalAndValues": {
+          "goalTitle": "Dein Zielbild: In deinen Worten",
+          "editAriaLabel": "Zielbild ändern",
+          "editButton": "Ändern",
+          "valuesLabelWithGoal": "Wichtig:",
+          "valuesLabelWithoutGoal": "Was dir wichtig ist:"
+        },
+        "additionalContext": {
+          "title": "Du willst noch etwas ergänzen...",
+          "description": "Irgendetwas, das ich noch über dich wissen sollte? Schreib's mir oder lass das Feld einfach leer.",
+          "ariaLabel": "Zusätzliche Information für Bea",
+          "placeholder": "Zum Beispiel: Ich mache gerade einen Jobwechsel und bin unsicher, wie sich das auf meine Finanzen auswirkt...",
+          "optional": "Optional",
+          "remainingChars": "{count} Zeichen übrig"
+        },
+        "summary": {
+          "bubble": {
+            "line1Prefix": "Zwölf Fragen, und ich habe",
+            "line1Highlight": "richtig viel über dich gelernt.",
+            "line1Suffix": " 🧡",
+            "line2": "Hier ist, was ich verstanden habe. Lies es in Ruhe durch."
+          },
+          "insightLabels": {
+            "strength": "Deine Stärke",
+            "challenge": "Deine Baustelle",
+            "startingPoint": "Wo wir starten"
+          },
+          "ctaContinue": "Passt alles: Weiter"
+        },
+        "newsletter": {
+          "bubble": {
+            "line1": "Eine Sache noch 🧡",
+            "line2Prefix": "Ich bin gerade in der",
+            "line2Highlight": "Beta-Phase",
+            "line2Suffix": "und noch nicht vollständig für alle verfügbar. Ich lerne noch vieles dazu um jeden Tag ein Stück besser zu werden. Um dich beim offiziellen Release mit dem Zugang zu unterstützen, bitte ich dich deine E-Mail einzutragen.",
+            "line3": "Ich verspreche: Obwohl meine E-Mails cool sind, gibt es kein Spam!"
+          },
+          "form": {
+            "speakerYou": "Du",
+            "ariaLabel": "Newsletter-Anmeldung für Beta-Zugang",
+            "emailPlaceholder": "deine@mail.de",
+            "emailAriaLabel": "E-Mail-Adresse",
+            "submit": {
+              "default": "Eintragen",
+              "loading": "Moment..."
+            },
+            "privacyHint": "Deine Mail bleibt bei uns. Abmelden jederzeit möglich.",
+            "backButton": "Zurück zur Zusammenfassung",
+            "errors": {
+              "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
+              "generic": "Da ist was schiefgelaufen. Versuch es gleich nochmal — oder schick uns eine Mail."
+            }
+          }
+        },
+        "confirmed": {
+          "imageAlt": "Bea feiert",
+          "title": "Du bist auf der Liste 🧡",
+          "description": "Danke, dass du dir so viel Zeit genommen hast. Ich melde mich bei dir an <strong>{email}</strong>, sobald ich für dich bereit bin.",
+          "whatToExpectTitle": "Was dich erwartet",
+          "singleLine": "Die beste Freundin für Finanzen!",
+          "ctaTryBeaNow": "Jetzt Bea ausprobieren"
+        }
+      },
+      "step12": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "line1": "Letzte Frage, versprochen! 🧡",
+          "line2Prefix": "Und es ist die",
+          "line2Highlight": "wichtigste: ",
+          "line2Suffix": "Wo siehst du dich finanziell, wenn alles gut läuft?",
+          "description": "Schreib einfach was dir spontan einfällt. Ein Satz reicht."
+        },
+        "charCounter": {
+          "label": "Dein Zielbild"
+        },
+        "starterChooser": {
+          "empty": "Oder klick einen Startsatz:",
+          "filled": "Anderen Startsatz wählen — ersetzt den aktuellen Text:"
+        },
+        "submit": {
+          "ready": "Lass uns starten",
+          "empty": "Schreib was..."
+        },
+        "hint": "Tipp: Sei konkret — „in einem Jahr\" ist besser als „irgendwann\"",
+        "lifeValues": {
+          "title": "Und was ist dir im Leben am wichtigsten?",
+          "subtitle": "Wähle 1–2 Werte, die dich antreiben."
+        }
+      },
+      "step11": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "phase1": {
+          "titlePrefix": "Letzte zwei Fragen und sie sind etwas",
+          "titleHighlight": "persönlicher.",
+          "titleSuffix": "Wenn du an Geld denkst, was kommt zuerst? 💭",
+          "description": "Es gibt keine richtige Antwort! Ich frage, weil dein Gefühl viel darüber sagt, wie ich dich am besten begleite.",
+          "continueButton": "Weiter zur nächsten Frage"
+        },
+        "phase2": {
+          "titlePrefix": "Wie wurde bei dir",
+          "titleHighlight": "zuhause",
+          "titleSuffix": "über Geld gesprochen?",
+          "description": "Unsere Prägung von früher beeinflusst, wie wir heute mit Geld umgehen und das oft mehr, als wir denken."
+        },
+        "hint": "Tipp: Es gibt keine „richtige\" Prägung — alle haben Vor- und Nachteile"
+      },
+      "step10": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Jetzt wird's schnell:",
+          "titleHighlight": "Sechs Aussagen über dich",
+          "titleSuffix": "💫",
+          "description": "Swipe nach rechts wenn's passt, nach links wenn nicht. Oder klick die Buttons. Eine ehrliche Antwort hilft uns beiden am meisten. Du hast kein Druck, perfekt zu sein."
+        },
+        "progress": {
+          "statement": "Aussage {current} / {total}"
+        },
+        "card": {
+          "statementIndex": "Aussage {current}",
+          "swipeOrClick": "Swipe oder klick"
+        },
+        "hint": "Tipp: Wenn unsicher, antworte mit deinem ersten Impuls"
+      },
+      "step9": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Lass uns zwei kleine",
+          "titleHighlight": "Gedankenexperimente",
+          "titleSuffix": "machen 🎲",
+          "description": "Antworte gerne aus dem Bauch heraus! Bei mir gibt es kein richtig oder falsch. Ich will nur verstehen, wie du tickst, wenn Geld kommt UND wenn Geld geht."
+        },
+        "progress": {
+          "situation": "Situation {current} / {total}"
+        },
+        "summary": {
+          "windfallLabel": "Bei Geldsegen",
+          "crisisLabel": "Bei plötzlichen Kosten",
+          "beaThinkingLabel": "Bea denkt dazu"
+        },
+        "actions": {
+          "understood": "Verstanden"
+        },
+        "hint": "Tipp: Antworte spontan. Die erste Reaktion ist meist die ehrlichste"
+      },
+      "step8": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Mini-Quiz! ✨",
+          "titleHighlight": "Drei kurze Fragen: kein Test, kein Druck.",
+          "description": "Keine Angst! \"Weiß nicht\" ist auch immer eine richtige Antwort. Ich erklär dir danach alles, was du wissen willst."
+        },
+        "progress": {
+          "question": "Frage {current} / {total}"
+        },
+        "actions": {
+          "nextQuestion": "Nächste Frage",
+          "finishQuiz": "Quiz beenden"
+        },
+        "hint": "Es gibt keine peinlichen Antworten! Ich bin hier, um dir zu helfen."
+      },
+      "step7": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Jetzt wird's spannend:",
+          "titleHighlight": "Was beschäftigt dich am meisten?",
+          "titleSuffix": "✨",
+          "description": "Wähl deine Top {count} in der Reihenfolge, die für dich am wichtigsten ist. Wir starten dann genau dort."
+        },
+        "counter": {
+          "zero": "Klick auf das, was dich am meisten beschäftigt",
+          "one": "Stark! Wähl noch zwei mehr",
+          "two": "Fast da! Eine fehlt noch",
+          "full": "Perfekt, das sind deine Top 3 🧡"
+        },
+        "slotEmpty": "Leer",
+        "confirm": "Passt so",
+        "hint": "Klick eine Karte nochmal, um sie wieder zu entfernen"
+      },
+      "step6": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Okay, das war's mit den persönlichen Sachen 🧡. Jetzt wird's wieder lockerer.",
+          "titleHighlight": "Auf welchen Zeitraum schaust du gerade?",
+          "description": "Geht's dir um schnelle Veränderung oder denkst du eher in Jahren?"
+        },
+        "hint": "Es gibt keine falsche Antwort, wir können den Plan jederzeit anpassen"
+      },
+      "step5": {
+        "speaker": {
+          "beaAlt": "Bea",
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Noch eine kurze, dann wird's entspannter:",
+          "titleHighlight": "Wie sieht's bei dir mit Schulden oder Dispo aus? 😌",
+          "description": "Ehrlichkeit hilft mir, dir realistische Tipps zu geben."
+        },
+        "hint": "Tipp: BAföG zählt nicht dazu! Das ist ein Studienkredit und kein Konsumkredit."
+      },
+      "step4": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Jetzt wird's ein bisschen persönlich:",
+          "titleHighlight": "Wie viel landet im Monat auf deinem Konto?",
+          "titleSuffix": "💸",
+          "description": "Eine grobe Range reicht völlig."
+        },
+        "hint": "Brutto oder Netto, was dir leichter fällt. Wir nutzen es nur als grobe Richtung"
+      },
+      "step3": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Und sag mal:",
+          "titleHighlight": "Wie wohnst du gerade?",
+          "titleSuffix": "🏡",
+          "description": "Deine Wohnsituation beeinflusst deine Finanzen mehr, als du vielleicht denkst."
+        },
+        "hint": "Wenn mehreres zutrifft, wähl das, wo du die meiste Zeit verbringst"
+      },
+      "step2": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Sehr cool! Und",
+          "titleHighlight": "wie alt bist du?",
+          "titleSuffix": "🎂",
+          "description": "Das hilft mir zu verstehen, welche Themen gerade wichtig für dich sind."
+        },
+        "ageUnit": "Jahre",
+        "sliderAriaLabel": "Alter auswählen",
+        "confirm": "Passt so",
+        "hint": "Zieh den Regler oder nutze die Pfeiltasten ← →"
+      },
+      "step1": {
+        "speaker": {
+          "bea": "Bea",
+          "you": "Du"
+        },
+        "bubble": {
+          "titlePrefix": "Lass uns direkt",
+          "titleHighlight": "loslegen",
+          "titleSuffix": "🧡",
+          "description": "Erzähl mir zuerst, in welcher Lebensphase du gerade bist, damit ich dich richtig einordnen kann."
+        },
+        "hint": "Wähle, was aktuell am besten zu dir passt, du kannst später alles anpassen."
+      }
     }
   },
   "referral": {
@@ -4473,10 +4761,7 @@
         "title": "Kontakt",
         "content": [
           {
-            "details": [
-              "Telefon: +49 178 2723 673",
-              "E-Mail: info@beafox.app"
-            ]
+            "details": ["Telefon: +49 178 2723 673", "E-Mail: info@beafox.app"]
           }
         ]
       },
@@ -4485,9 +4770,7 @@
         "title": "Vertreten durch",
         "content": [
           {
-            "details": [
-              "Geschäftsführer: Alexandru Tapelea"
-            ]
+            "details": ["Geschäftsführer: Alexandru Tapelea"]
           }
         ]
       },
@@ -4510,9 +4793,7 @@
         "content": [
           {
             "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-            "details": [
-              "DE455701438"
-            ]
+            "details": ["DE455701438"]
           }
         ]
       },

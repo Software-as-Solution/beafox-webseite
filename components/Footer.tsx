@@ -5,6 +5,7 @@ import Link from "next/link";
 // IMPORTS
 import { motion } from "framer-motion";
 import { useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 // ICONS
 import { Mail, ArrowRight, CheckCircle } from "lucide-react";
@@ -65,6 +66,7 @@ const SORTED_BLOG_CATEGORIES = (() => {
 
 export default function Footer() {
   // HOOKS
+  const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("footer");
   const tHeader = useTranslations("header");
@@ -130,6 +132,11 @@ export default function Footer() {
     },
     [],
   );
+
+  // Bea AI page is an app-like full-screen experience without footer.
+  if (pathname?.startsWith("/bea-ai")) {
+    return null;
+  }
 
   return (
     <footer

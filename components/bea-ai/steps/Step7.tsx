@@ -1,214 +1,399 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+// STANDARD COMPONENTS
+import Image from "next/image";
+// IMPORTS
 import { useState } from "react";
-import StepHeading from "../shared/StepHeading";
-import BeaPresence from "../shared/BeaPresence";
-import {
-  SCENARIO_SETUP,
-  SCENARIO_OPTIONS,
-  type ScenarioOption,
-} from "@/lib/bea-ai/onboarding";
+import { useTranslations } from "next-intl";
+import { motion, AnimatePresence } from "framer-motion";
+// LIBS
+import { PRIORITY_OPTIONS, PRIORITY_RANK_COUNT } from "@/lib/bea-ai/onboarding";
 
+// TYPES
 interface Step7Props {
-  onSelect: (insight: string) => void;
+  onSelect: (priorities: string[]) => void;
 }
+// CONSTANTS
+const BUBBLE_STYLE = {
+  border: "1.5px solid rgba(232,119,32,0.22)",
+  background: "linear-gradient(180deg, #FFFFFF 0%, #FFF8F3 100%)",
+  boxShadow:
+    "0 12px 32px rgba(232,119,32,0.12), 0 0 0 1px rgba(232,119,32,0.05)",
+} as const;
+const CARD_UNSELECTED_STYLE = {
+  background: "#FFFFFF",
+  border: "1.5px solid #F0E5D8",
+  boxShadow:
+    "0 1px 3px rgba(232,119,32,0.04), 0 4px 16px rgba(232,119,32,0.06)",
+} as const;
+const CARD_SELECTED_STYLE = {
+  border: "1.5px solid #E87720",
+  background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)",
+  boxShadow: "0 8px 24px rgba(232,119,32,0.18), 0 0 0 1px rgba(232,119,32,0.3)",
+} as const;
+const SLOT_FILLED_STYLE = {
+  border: "2px dashed #E87720",
+  background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)",
+} as const;
+const SLOT_EMPTY_STYLE = {
+  border: "2px dashed #FED4B0",
+  background: "rgba(255,248,243,0.5)",
+} as const;
+const RANK_BADGE_FILLED_STYLE = {
+  color: "#FFFFFF",
+  boxShadow: "0 4px 12px rgba(232,119,32,0.4)",
+  background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
+} as const;
+const RANK_BADGE_EMPTY_STYLE = {
+  color: "#E87720",
+  boxShadow: "none",
+  background: "#FED4B0",
+} as const;
+const CARD_RANK_BADGE_STYLE = {
+  boxShadow: "0 6px 16px rgba(232,119,32,0.45)",
+  background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
+} as const;
+const CONFIRM_BUTTON_STYLE = {
+  boxShadow: "0 12px 32px rgba(232,119,32,0.35)",
+  background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
+} as const;
 
 /**
- * STEP 7 — Scenario
+ * STEP 7 — Priority Ranking
  *
- * Pattern: Storybook card with a hypothetical situation.
- * User sees a "What would you do?" scenario, picks an answer,
- * and Bea reacts with insight about their bias.
- * This reveals real-world behavior better than "How do you think about money?".
+ * Conversational pattern matching Steps 1-6, but with multi-select:
+ * Bea asks for the user's top 3 priorities in ranking order.
+ * User clicks cards in order — first click = rank 1, etc.
+ * Clicking a ranked card removes it. Once 3 are picked, Weiter activates.
+ *
+ * The slot preview at the top shows the live ranking state,
+ * making the order explicit and undo-friendly.
  */
-export default function Step7Scenario({ onSelect }: Step7Props) {
-  const [selected, setSelected] = useState<ScenarioOption | null>(null);
-  const [showReaction, setShowReaction] = useState(false);
-
-  const handleSelect = (option: ScenarioOption) => {
-    if (selected) return;
-    setSelected(option);
-    setTimeout(() => setShowReaction(true), 400);
+export default function Step7Priorities({ onSelect }: Step7Props) {
+  // STATES
+  const t = useTranslations("onboarding.beaAi.step7");
+  const [ranking, setRanking] = useState<string[]>([]);
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // CONSTANTS
+  const isFull = ranking.length === PRIORITY_RANK_COUNT;
+  // FUNCTIONS
+  const handleCardClick = (id: string) => {
+    if (isConfirming) return;
+    const currentRank = ranking.indexOf(id);
+    if (currentRank !== -1) {
+      setRanking(ranking.filter((r) => r !== id));
+    } else if (ranking.length < PRIORITY_RANK_COUNT) {
+      setRanking([...ranking, id]);
+    }
   };
-
-  const handleContinue = () => {
-    if (!selected) return;
-    onSelect(selected.insight);
+  const handleConfirm = () => {
+    if (ranking.length !== PRIORITY_RANK_COUNT || isConfirming) return;
+    setIsConfirming(true);
+    setTimeout(() => onSelect(ranking), 400);
+  };
+  const getRank = (id: string): number | null => {
+    const idx = ranking.indexOf(id);
+    return idx === -1 ? null : idx + 1;
+  };
+  const getCardStyle = (id: string) => {
+    if (getRank(id) !== null) return CARD_SELECTED_STYLE;
+    return CARD_UNSELECTED_STYLE;
+  };
+  const getCounterText = () => {
+    if (ranking.length === 0) return t("counter.zero");
+    if (ranking.length === 1) return t("counter.one");
+    if (ranking.length === 2) return t("counter.two");
+    return t("counter.full");
   };
 
   return (
-    <div className="flex flex-col items-center px-4 md:px-8 py-8 md:py-12">
-      <StepHeading
-        eyebrow="Schritt 7 — Dein Bauchgefühl-Check"
-        title={
-          <>
-            Stell dir mal <span className="text-primaryOrange">Folgendes</span>{" "}
-            vor
-          </>
-        }
-        subtitle="Eine hypothetische Situation — du antwortest einfach aus dem Bauch heraus."
-      />
-
-      {/* Scenario card — storybook style */}
+    <div className="mx-auto flex w-full max-w-5xl flex-col px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
       <motion.div
-        initial={{ opacity: 0, y: 20, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-8 md:mt-10 w-full max-w-2xl"
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        className="mb-2 flex items-start gap-3 md:gap-4"
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div
-          className="relative rounded-3xl p-6 md:p-8 overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, #FFFFFF 0%, #FFF8F3 50%, #FFEEDB 100%)",
-            border: "2px solid rgba(232,119,32,0.2)",
-            boxShadow: "0 24px 60px rgba(232,119,32,0.15)",
+        <motion.div
+          animate={{ scale: 1, opacity: 1 }}
+          className="relative flex-shrink-0"
+          initial={{ scale: 0.7, opacity: 0 }}
+          transition={{
+            delay: 0.1,
+            damping: 18,
+            type: "spring",
+            stiffness: 200,
           }}
         >
-          {/* Decorative corner blob */}
-          <div
+          <div className="relative h-14 w-14 overflow-hidden md:h-16 md:w-16">
+            <Image
+              fill
+              priority
+              alt="Bea"
+              className="object-contain"
+              src="/Maskottchen/Maskottchen-Right.png"
+            />
+          </div>
+          <span
             aria-hidden="true"
-            className="absolute -top-24 -right-24 w-[280px] h-[280px] rounded-full pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(232,119,32,0.15) 0%, transparent 60%)",
+            className="absolute bottom-0 right-0 flex h-3.5 w-3.5"
+          >
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500" />
+          </span>
+        </motion.div>
+        <div className="flex-1">
+          <div className="mb-1 flex items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-primaryOrange">
+              {t("speaker.bea")}
+            </span>
+          </div>
+          <motion.div
+            style={BUBBLE_STYLE}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 8, scale: 0.97 }}
+            className="relative inline-block max-w-2xl rounded-2xl rounded-tl-md px-5 py-4 md:px-6 md:py-5"
+            transition={{
+              delay: 0.25,
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
             }}
-          />
-
-          {/* Money emoji */}
-          <div className="relative flex justify-center mb-4">
-            <motion.div
-              initial={{ scale: 0, rotate: -10 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{
-                delay: 0.4,
-                duration: 0.6,
-                type: "spring",
-                stiffness: 200,
-                damping: 15,
-              }}
-              className="relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center text-5xl md:text-6xl"
-              style={{
-                background: "linear-gradient(135deg, #FFF8F3 0%, #FED4B0 100%)",
-                border: "2px solid rgba(232,119,32,0.3)",
-                boxShadow: "0 12px 32px rgba(232,119,32,0.25)",
-              }}
-            >
-              💸
-            </motion.div>
-          </div>
-
-          <div className="relative text-center">
-            <div className="text-[10px] md:text-[11px] font-bold text-primaryOrange uppercase tracking-widest mb-3">
-              Die Situation
-            </div>
-            <p className="text-base md:text-xl font-bold text-darkerGray leading-relaxed max-w-lg mx-auto">
-              {SCENARIO_SETUP}
+          >
+            <p className="text-base font-semibold leading-relaxed text-darkerGray md:text-lg">
+              {t("bubble.titlePrefix")}{" "}
+              <span className="text-primaryOrange">
+                {t("bubble.titleHighlight")}
+              </span>{" "}
+              {t("bubble.titleSuffix")}
             </p>
-          </div>
+            <p className="mt-1 text-sm leading-relaxed text-lightGray md:text-[15px]">
+              {t("bubble.description", { count: PRIORITY_RANK_COUNT })}
+            </p>
+          </motion.div>
         </div>
       </motion.div>
-
-      {/* Answer options */}
-      {!showReaction && (
-        <div className="mt-6 w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {SCENARIO_OPTIONS.map((option, idx) => {
-            const isSelected = selected?.id === option.id;
-            const isDimmed = selected !== null && !isSelected;
-
-            return (
-              <motion.button
-                key={option.id}
-                type="button"
-                onClick={() => handleSelect(option)}
-                disabled={selected !== null}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{
-                  opacity: isDimmed ? 0.4 : 1,
-                  y: 0,
-                  scale: isSelected ? 1.03 : 1,
-                }}
-                transition={{
-                  delay: 0.5 + idx * 0.08,
-                  duration: 0.4,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                whileHover={!selected ? { y: -4, scale: 1.02 } : {}}
-                whileTap={!selected ? { scale: 0.97 } : {}}
-                className="relative rounded-2xl p-4 md:p-5 text-left transition-all duration-300"
-                style={{
-                  background: isSelected
-                    ? "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)"
-                    : "#FFFFFF",
-                  border: `2px solid ${isSelected ? "#E87720" : "#F0E5D8"}`,
-                  boxShadow: isSelected
-                    ? "0 12px 32px rgba(232,119,32,0.18)"
-                    : "0 4px 12px rgba(232,119,32,0.06)",
-                  cursor: selected ? "default" : "pointer",
-                }}
-              >
-                <h3 className="text-sm md:text-base font-black text-darkerGray leading-tight mb-1">
-                  {option.label}
-                </h3>
-                <p className="text-[11px] md:text-xs text-lightGray leading-snug">
-                  {option.description}
-                </p>
-              </motion.button>
-            );
-          })}
-        </div>
-      )}
-
-      {/* Bea's reaction */}
-      <AnimatePresence>
-        {showReaction && selected && (
+      <div className="flex flex-col items-end">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mb-3 flex items-center gap-1.5"
+        >
+          <span className="text-[11px] font-bold uppercase tracking-wider text-darkerGray/60">
+            {t("speaker.you")}
+          </span>
+        </motion.div>
+        <div className="w-full">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 w-full max-w-2xl flex flex-col items-center gap-6"
+            initial={{ opacity: 0, y: 10 }}
+            transition={{ delay: 0.55, duration: 0.5 }}
+            className="mb-5 grid grid-cols-3 gap-3 md:gap-4"
           >
-            <BeaPresence
-              mascotSrc="/Maskottchen/Maskottchen-Beratung.webp"
-              size="md"
-            />
+            {Array.from({ length: PRIORITY_RANK_COUNT }).map((_, slotIdx) => {
+              const filledId = ranking[slotIdx];
+              const filledOption = filledId
+                ? PRIORITY_OPTIONS.find((p) => p.id === filledId)
+                : null;
 
-            <div
-              className="rounded-2xl p-5 md:p-6 text-center max-w-xl"
-              style={{
-                background: "linear-gradient(135deg, #FFF8F3 0%, #FFEEDB 100%)",
-                border: "2px solid rgba(232,119,32,0.2)",
-                boxShadow: "0 12px 32px rgba(232,119,32,0.12)",
-              }}
-            >
-              <div className="text-[10px] font-bold text-primaryOrange uppercase tracking-widest mb-2">
-                Bea denkt dazu
+              return (
+                <motion.div
+                  key={slotIdx}
+                  animate={{ scale: filledOption ? 1 : 0.97 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  style={filledOption ? SLOT_FILLED_STYLE : SLOT_EMPTY_STYLE}
+                  className="relative flex aspect-square flex-col items-center justify-center overflow-hidden rounded-2xl p-3 md:p-4"
+                >
+                  <div
+                    style={
+                      filledOption
+                        ? RANK_BADGE_FILLED_STYLE
+                        : RANK_BADGE_EMPTY_STYLE
+                    }
+                    className="absolute left-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-xs font-black md:h-8 md:w-8 md:text-sm"
+                  >
+                    {slotIdx + 1}
+                  </div>
+                  <AnimatePresence mode="wait">
+                    {filledOption ? (
+                      <motion.div
+                        key={filledOption.id}
+                        transition={{ duration: 0.3 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: -10 }}
+                        initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                        className="flex flex-col items-center text-center"
+                      >
+                        <div className="mb-1 text-3xl md:text-4xl">
+                          {filledOption.icon}
+                        </div>
+                        <div className="line-clamp-2 text-[10px] font-bold leading-tight text-darkerGray md:text-xs">
+                          {filledOption.label}
+                        </div>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="empty"
+                        exit={{ opacity: 0 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.45 }}
+                        className="text-center text-[10px] font-medium text-lightGray md:text-xs"
+                      >
+                        {t("slotEmpty")}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+          <div className="mb-6 flex items-center justify-center gap-2.5">
+            <div className="relative h-9 w-9 flex-shrink-0 md:h-10 md:w-10">
+              <div className="relative h-full w-full overflow-hidden rounded-full bg-white">
+                <Image
+                  src="/Maskottchen/Maskottchen-Right.png"
+                  alt="Bea"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <p className="text-sm md:text-base text-darkerGray leading-relaxed font-medium">
-                {selected.beaReaction}
-              </p>
+              <span
+                aria-hidden="true"
+                className="absolute bottom-0 right-0 flex h-2.5 w-2.5"
+              >
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full border-2 border-white bg-green-500" />
+              </span>
             </div>
+            <div className="flex-1 pt-0.5">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={ranking.length}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.97 }}
+                  initial={{ opacity: 0, y: 6, scale: 0.97 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  style={{
+                    background: isFull
+                      ? "linear-gradient(180deg, #FFF8F3 0%, #FFEEDB 100%)"
+                      : "linear-gradient(180deg, #FFFFFF 0%, #FFF8F3 100%)",
+                    border: isFull
+                      ? "1.5px solid rgba(232,119,32,0.4)"
+                      : "1.5px solid rgba(232,119,32,0.18)",
+                    boxShadow: isFull
+                      ? "0 8px 24px rgba(232,119,32,0.15), 0 0 0 1px rgba(232,119,32,0.1)"
+                      : "0 4px 16px rgba(232,119,32,0.08)",
+                  }}
+                  className="inline-block rounded-2xl rounded-tl-md px-4 py-2.5 text-xs font-semibold leading-snug text-darkerGray md:text-sm"
+                >
+                  {getCounterText()}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:gap-4">
+            {PRIORITY_OPTIONS.map((option, idx) => {
+              const rank = getRank(option.id);
+              const isSelected = rank !== null;
+              const isDimmed = !isSelected && isFull;
 
+              return (
+                <motion.button
+                  type="button"
+                  key={option.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  style={getCardStyle(option.id)}
+                  disabled={isDimmed || isConfirming}
+                  onMouseLeave={() => setHoveredId(null)}
+                  whileTap={{ scale: isDimmed ? 1 : 0.98 }}
+                  onClick={() => handleCardClick(option.id)}
+                  onMouseEnter={() => setHoveredId(option.id)}
+                  className="group relative flex items-center gap-3 overflow-hidden rounded-2xl p-4 text-left transition-all duration-300 disabled:cursor-not-allowed md:gap-4 md:p-5"
+                  animate={{
+                    y: 0,
+                    scale: isSelected ? 1.02 : 1,
+                    opacity: isDimmed ? 0.35 : 1,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: 0.65 + idx * 0.06,
+                  }}
+                  whileHover={{
+                    y: isDimmed || isSelected ? 0 : -4,
+                  }}
+                >
+                  <motion.div
+                    transition={{ duration: 0.3 }}
+                    className="flex-shrink-0 text-3xl md:text-4xl"
+                    animate={{
+                      scale:
+                        hoveredId === option.id && !isSelected && !isDimmed
+                          ? 1.1
+                          : 1,
+                    }}
+                    style={{
+                      filter: isSelected
+                        ? "drop-shadow(0 8px 16px rgba(232,119,32,0.25))"
+                        : "drop-shadow(0 4px 8px rgba(232,119,32,0.1))",
+                    }}
+                  >
+                    {option.icon}
+                  </motion.div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="mb-1 text-sm font-black leading-tight text-darkerGray md:text-base">
+                      {option.label}
+                    </h3>
+                    <p className="text-[11px] leading-snug text-lightGray md:text-xs">
+                      {option.description}
+                    </p>
+                  </div>
+                  <AnimatePresence>
+                    {rank !== null && (
+                      <motion.div
+                        style={CARD_RANK_BADGE_STYLE}
+                        exit={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        initial={{ scale: 0, rotate: -30 }}
+                        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-base font-black text-white md:h-10 md:w-10 md:text-lg"
+                        transition={{
+                          damping: 18,
+                          type: "spring",
+                          stiffness: 300,
+                        }}
+                      >
+                        {rank}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.button>
+              );
+            })}
+          </div>
+          <div className="mt-6 flex flex-col items-center">
             <motion.button
               type="button"
-              onClick={handleContinue}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-white font-black text-base md:text-lg"
-              style={{
-                background: "linear-gradient(135deg, #E87720 0%, #F08A3C 100%)",
-                boxShadow: "0 12px 32px rgba(232,119,32,0.35)",
+              onClick={handleConfirm}
+              style={CONFIRM_BUTTON_STYLE}
+              disabled={!isFull || isConfirming}
+              whileTap={isFull ? { scale: 0.97 } : {}}
+              whileHover={isFull ? { scale: 1.04 } : {}}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-base font-black text-white disabled:cursor-not-allowed md:text-lg"
+              animate={{
+                y: isFull ? 0 : 8,
+                scale: isFull ? 1 : 0.97,
+                opacity: isFull ? 1 : 0.4,
               }}
             >
-              Weiter
+              {t("confirm")}
               <svg
-                className="w-5 h-5"
                 fill="none"
+                strokeWidth={3}
+                className="h-5 w-5"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                strokeWidth={3}
               >
                 <path
                   strokeLinecap="round"
@@ -217,9 +402,17 @@ export default function Step7Scenario({ onSelect }: Step7Props) {
                 />
               </svg>
             </motion.button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isFull ? 0 : 1 }}
+            transition={{ delay: 1.4, duration: 0.4 }}
+            className="mt-6 text-center text-sm text-gray-400"
+          >
+            {t("hint")}
+          </motion.p>
+        </div>
+      </div>
     </div>
   );
 }

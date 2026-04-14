@@ -1,6 +1,7 @@
 "use client";
 
 // STANDARD COMPONENTS
+import Link from "next/link";
 import Image from "next/image";
 // HOOKS
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -10,7 +11,14 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 // ICONS
 import type { LucideIcon } from "lucide-react";
-import { Zap, RotateCcw, Handshake, GraduationCap } from "lucide-react";
+import {
+  Zap,
+  RotateCcw,
+  Handshake,
+  GraduationCap,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
 
 // TYPES
 type Sender = "bea" | "user";
@@ -89,6 +97,14 @@ const STYLES = {
   capabilityPill: {
     color: C.brand,
     background: C.brand15,
+  },
+  endCtaButton: {
+    background: `linear-gradient(135deg, ${C.brand} 0%, ${C.brandLight} 100%)`,
+    boxShadow: `0 8px 24px ${C.brand35}`,
+  },
+  endCtaCard: {
+    background: `linear-gradient(180deg, #FFFFFF 0%, ${C.brand06} 100%)`,
+    border: `1.5px solid ${C.brand22}`,
   },
 } as const;
 const IN_VIEW_THRESHOLD = 0.4;
@@ -240,12 +256,15 @@ export default function BeaChatDemo() {
       userName: t("userName"),
       typingLabel: t("typingLabel"),
       replayTitle: t("replayTitle"),
+      endCtaButton: t("endCtaButton"),
       assistantName: t("assistantName"),
       tabsAriaLabel: t("tabsAriaLabel"),
+      endCtaQuestion: t("endCtaQuestion"),
       assistantStatus: t("assistantStatus"),
       replayAriaLabel: t("replayAriaLabel"),
       chatLogAriaLabel: t("chatLogAriaLabel"),
       capabilitiesLabel: t("capabilitiesLabel"),
+      endCtaQuestionHighlight: t("endCtaQuestionHighlight"),
     }),
     [t],
   );
@@ -315,7 +334,7 @@ export default function BeaChatDemo() {
       top: chatEl.scrollHeight,
       behavior: prefersReducedMotion ? "auto" : "smooth",
     });
-  }, [visibleCount, isTyping, prefersReducedMotion]);
+  }, [visibleCount, isTyping, isComplete, prefersReducedMotion]);
   useEffect(() => clearTimer, [clearTimer]);
 
   return (
@@ -358,11 +377,10 @@ export default function BeaChatDemo() {
                     }}
                   />
                 )}
-                <Icon
-                  aria-hidden="true"
-                  className="w-4 h-4 relative z-10"
-                />
-                <span className="relative z-10 text-sm md:text-base">{uc.shortLabel}</span>
+                <Icon aria-hidden="true" className="w-4 h-4 relative z-10" />
+                <span className="relative z-10 text-sm md:text-base">
+                  {uc.shortLabel}
+                </span>
               </button>
             );
           })}
@@ -428,7 +446,7 @@ export default function BeaChatDemo() {
           aria-live="polite"
           style={{ scrollbarWidth: "none" }}
           aria-label={labels.chatLogAriaLabel}
-          className="px-4 py-4 md:px-5 md:py-6 space-y-3 md:space-y-4 min-h-[280px] md:min-h-[320px] max-h-[340px] md:max-h-[380px] overflow-y-auto"
+          className="px-4 py-4 md:px-5 md:py-6 space-y-3 md:space-y-4 min-h-[280px] md:min-h-[320px] max-h-[420px] md:max-h-[480px] overflow-y-auto"
         >
           {activeUseCase.messages.slice(0, visibleCount).map((msg, idx) => (
             <ChatBubble
@@ -457,6 +475,59 @@ export default function BeaChatDemo() {
                       : labels.userName
                   }
                 />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
+            {isComplete && (
+              <motion.div
+                key="end-cta"
+                exit={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                className="flex flex-col items-center text-center pt-4 md:pt-6 pb-2"
+                transition={{
+                  delay: 0.3,
+                  duration: 0.5,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-8 md:w-9 md:h-9 bg-primaryWhite overflow-hidden flex-shrink-0">
+                    <Image
+                      width={80}
+                      height={80}
+                      alt={labels.logoAlt}
+                      src="/assets/Logos/Logo.webp"
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
+                  <span className="text-base font-bold tracking-wider text-primaryOrange">
+                    {labels.assistantName}
+                  </span>
+                </div>
+                <p className="text-sm md:text-base font-semibold text-darkerGray max-w-[280px] md:max-w-[340px] leading-snug mb-4">
+                  {labels.endCtaQuestion}
+                  <br />
+                  <span className="text-primaryOrange">
+                    {labels.endCtaQuestionHighlight}
+                  </span>
+                </p>
+                <Link
+                  href="/bea-ai"
+                  style={STYLES.endCtaButton}
+                  className="group inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-white font-bold text-xs md:text-sm transition-all hover:scale-[1.04] hover:shadow-xl"
+                >
+                  <Sparkles
+                    aria-hidden="true"
+                    className="w-3.5 h-3.5 md:w-4 md:h-4"
+                  />
+                  {labels.endCtaButton}
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="w-3.5 h-3.5 md:w-4 md:h-4 transition-transform group-hover:translate-x-0.5"
+                  />
+                </Link>
               </motion.div>
             )}
           </AnimatePresence>

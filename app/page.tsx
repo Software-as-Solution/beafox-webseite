@@ -608,7 +608,7 @@ export default function HomePage() {
                   PROBLEM_TITLE_HIGHLIGHTS,
                 )}
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 mb-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
                 <ProblemCard
                   text={t("problemSection.card1Text")}
                   title={t("problemSection.card1Title")}
@@ -623,6 +623,33 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-12 md:mt-16 flex flex-col items-center text-center"
+          >
+            <h3 className="text-2xl font-bold text-darkerGray leading-tight mb-3 max-w-2xl">
+              {t("problemSection.bridgeTitle")}
+              <br />
+              <span className="text-primaryOrange">
+                {t("problemSection.bridgeHighlight")}
+              </span>
+            </h3>
+            <Link
+              href="/bea-ai"
+              style={SOLUTION_CTA_STYLE}
+              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm md:text-base transition-all hover:scale-[1.03] hover:shadow-xl"
+            >
+              <Sparkles aria-hidden="true" className="w-4 h-4" />
+              {t("problemSection.bridgeCtaLabel")}
+              <ArrowRight
+                aria-hidden="true"
+                className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
+              />
+            </Link>
+          </motion.div>
         </div>
       </Section>
 
