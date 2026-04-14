@@ -1,4 +1,35 @@
 {
+  "consent": {
+    "title": "We need your consent",
+    "intro": "We use different categories of data to run the app and improve Bea. You decide what we may use — each consent is separate, voluntary, and revocable at any time.",
+    "expand": "Show settings",
+    "collapse": "Hide settings",
+    "accept_all": "Accept all",
+    "reject_all": "Essential only",
+    "save_selection": "Save selection",
+    "analytics": {
+      "title": "Usage statistics",
+      "desc": "Anonymous metrics such as page views and onboarding drop-off rates. Helps us find and fix weak spots."
+    },
+    "prompt_iteration": {
+      "title": "Chat analysis for quality improvement",
+      "desc": "Your chat with Bea is analyzed internally to improve her answers. Messages are PII-scrubbed before storage."
+    },
+    "model_training": {
+      "title": "AI model training",
+      "desc": "Your chats may be used to evolve Bea's AI model long-term. Only pseudonymized data, never sold to third parties."
+    },
+    "profile_tracking": {
+      "title": "Progress over time",
+      "desc": "Your profile development is tracked so Bea can see how you're evolving (e.g. a growing emergency fund)."
+    },
+    "prefs": {
+      "title": "Privacy settings",
+      "subtitle": "You can change or revoke your consent at any time.",
+      "granted_at": "Granted on {date}",
+      "revoked_at": "Revoked on {date}"
+    }
+  },
   "rootMeta": {
     "title": "BeAFox – Your finances. Simply played through.",
     "titleTemplate": "%s | BeAFox",

@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import ShopCart from "@/components/ShopCart";
 import ScrollToTop from "@/components/ScrollToTop";
 import CookieBanner from "@/components/CookieBanner";
+import AnalyticsRoot from "@/components/consent/AnalyticsRoot";
 import AhrefsAnalytics from "@/components/AhrefsAnalytics";
 import LeadfeederTracker from "@/components/LeadfeederTracker";
 import ShopCartProvider from "@/components/ShopCartProvider";
@@ -145,6 +146,7 @@ export default async function RootLayout({
           </ShopCartProvider>
           <ScrollToTop />
           <CookieBanner />
+          <AnalyticsRoot />
           <AhrefsAnalytics />
           <LeadfeederTracker />
           <Analytics />

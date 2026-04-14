@@ -33,7 +33,17 @@ import {
   X as XIcon,
 } from "lucide-react";
 // LIB
-import { type UserProfile, TOTAL_STEPS } from "@/lib/bea-ai/onboarding";
+import { type UserProfile, TOTAL_STEPS, buildProfileContext, generateInsights } from "@/lib/bea-ai/onboarding";
+// ANALYTICS
+import {
+  trackChatSessionStarted,
+  trackChatMessageSent,
+  trackChatResponseReceived,
+  trackChatError,
+  trackChatSessionEnded,
+  trackInsightsGenerated,
+  uuid,
+} from "@/lib/analytics";
 
 // BRAND CONSTANTS
 const C = {
@@ -1099,6 +1109,10 @@ export default function BeaAIPage() {
   const onboardingScrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  // ANALYTICS — conversation tracking
+  const conversationIdRef = useRef<string>("");
+  const conversationStartRef = useRef<number>(0);
+  const conversationMessageCountRef = useRef<number>(0);
   const isNearBottomRef = useRef(true);
   // Mirror of chatState so sendMessage doesn't need to depend on it
   const stateRef = useRef(chatState);
@@ -1115,6 +1129,24 @@ export default function BeaAIPage() {
   const handleOnboardingFinish = useCallback((p: UserProfile) => {
     setProfile(p);
     setPhase("chat");
+    // ANALYTICS — frische Chat-Session + Insights
+    const newConvId = uuid();
+    conversationIdRef.current = newConvId;
+    conversationStartRef.current = Date.now();
+    conversationMessageCountRef.current = 0;
+    try {
+      const insights = generateInsights(p);
+      trackInsightsGenerated(insights);
+      const systemPrompt = buildProfileContext(p);
+      trackChatSessionStarted({
+        conversation_id: newConvId,
+        system_prompt: systemPrompt,
+        profile: p,
+      });
+    } catch (err) {
+      // Tracking darf nie den UX-Flow brechen
+      console.warn("[Analytics] Failed to track chat session start", err);
+    }
     // Defer focus to next tick so the textarea exists in the DOM
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
@@ -1167,9 +1199,11 @@ export default function BeaAIPage() {
 
       // Build the conversation history depending on whether this is a retry
       let history: Message[];
+      let userMsgId = "";
       if (options?.isRetry) {
         // The failed user message is still at the end of the messages array
         history = stateRef.current.messages;
+        userMsgId = history[history.length - 1]?.id ?? "";
         dispatch({ type: "retryStart" });
       } else {
         const userMsg: Message = {
@@ -1178,10 +1212,21 @@ export default function BeaAIPage() {
           content: trimmed,
           timestamp: new Date(),
         };
+        userMsgId = userMsg.id;
         dispatch({ type: "addUserMessage", message: userMsg, input: trimmed });
         history = [...stateRef.current.messages, userMsg];
+        // ANALYTICS — User-Message gesendet
+        conversationMessageCountRef.current += 1;
+        if (conversationIdRef.current) {
+          trackChatMessageSent({
+            conversation_id: conversationIdRef.current,
+            message_id: userMsg.id,
+            content: trimmed,
+          });
+        }
       }
 
+      const requestStartMs = Date.now();
       setInput("");
 
       // Cancel any previous in-flight request
@@ -1268,6 +1313,18 @@ export default function BeaAIPage() {
         }
 
         dispatch({ type: "streamEnd" });
+        // ANALYTICS — Bea-Antwort komplett angekommen
+        if (conversationIdRef.current && beaText) {
+          conversationMessageCountRef.current += 1;
+          trackChatResponseReceived({
+            conversation_id: conversationIdRef.current,
+            message_id: assistantId,
+            in_reply_to: userMsgId,
+            content: beaText,
+            model: beaModel,
+            latency_ms: Date.now() - requestStartMs,
+          });
+        }
       } catch (err) {
         // Aborted requests are silent — they're either user-initiated
         // (reset, new send) or component unmount
@@ -1276,6 +1333,14 @@ export default function BeaAIPage() {
         const message =
           err instanceof Error ? err.message : "Etwas ist schiefgelaufen.";
         dispatch({ type: "error", message });
+        // ANALYTICS — Fehler erfassen
+        if (conversationIdRef.current) {
+          trackChatError({
+            conversation_id: conversationIdRef.current,
+            error_code: err instanceof Error ? err.name : "unknown",
+            error_message: message,
+          });
+        }
       } finally {
         if (abortRef.current === controller) {
           abortRef.current = null;
@@ -1302,6 +1367,16 @@ export default function BeaAIPage() {
 
   const handleReset = useCallback(() => {
     abortRef.current?.abort();
+    // ANALYTICS — vorherige Chat-Session schließen, falls aktiv
+    if (conversationIdRef.current) {
+      trackChatSessionEnded({
+        conversation_id: conversationIdRef.current,
+        message_count: conversationMessageCountRef.current,
+        duration_ms: Date.now() - conversationStartRef.current,
+      });
+      conversationIdRef.current = "";
+      conversationMessageCountRef.current = 0;
+    }
     dispatch({ type: "reset" });
     setInput("");
     setPhase("welcome");

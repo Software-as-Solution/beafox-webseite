@@ -1,4 +1,35 @@
 {
+  "consent": {
+    "title": "Wir brauchen deine Zustimmung",
+    "intro": "Wir nutzen verschiedene Arten von Daten, um dir die App bereitzustellen und Bea kontinuierlich zu verbessern. Du entscheidest, was wir nutzen dürfen — jede Einwilligung ist separat, freiwillig und jederzeit widerrufbar.",
+    "expand": "Einstellungen anzeigen",
+    "collapse": "Einstellungen ausblenden",
+    "accept_all": "Alles akzeptieren",
+    "reject_all": "Nur Notwendiges",
+    "save_selection": "Auswahl speichern",
+    "analytics": {
+      "title": "Nutzungsstatistiken",
+      "desc": "Anonyme Metriken wie Seitenaufrufe und Abbruchraten im Onboarding. Hilft uns, Schwachstellen zu erkennen und zu beheben."
+    },
+    "prompt_iteration": {
+      "title": "Chat-Auswertung zur Qualitätsverbesserung",
+      "desc": "Dein Chat mit Bea wird intern ausgewertet, um Bea's Antworten zu verbessern. Deine Nachrichten werden PII-bereinigt, bevor sie gespeichert werden."
+    },
+    "model_training": {
+      "title": "Training des KI-Modells",
+      "desc": "Deine Chats dürfen genutzt werden, um Bea's KI-Modell langfristig weiterzuentwickeln. Nur pseudonymisierte Daten, kein Weiterverkauf an Dritte."
+    },
+    "profile_tracking": {
+      "title": "Fortschritt über Zeit",
+      "desc": "Dein Profil-Fortschritt wird aufgezeichnet, damit Bea deine Entwicklung verfolgen kann (z.B. ob ein Notgroschen wächst)."
+    },
+    "prefs": {
+      "title": "Datenschutz-Einstellungen",
+      "subtitle": "Du kannst deine Zustimmung jederzeit ändern oder widerrufen.",
+      "granted_at": "Zugestimmt am {date}",
+      "revoked_at": "Widerrufen am {date}"
+    }
+  },
   "rootMeta": {
     "title": "BeAFox – Finanzbildung App | Deine Finanzen. Einfach durchgespielt.",
     "titleTemplate": "%s | BeAFox",

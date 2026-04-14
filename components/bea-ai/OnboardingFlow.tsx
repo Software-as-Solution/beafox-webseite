@@ -3,7 +3,15 @@
 // IMPORTS
 import type { ComponentType } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+// ANALYTICS
+import {
+  trackOnboardingStarted,
+  trackStepViewed,
+  trackStepCompleted,
+  trackStepAbandoned,
+  trackOnboardingCompleted,
+} from "@/lib/analytics";
 // LIB
 import {
   STEP_ORDER,
@@ -170,6 +178,9 @@ export default function OnboardingFlow({
   const [stepIdx, setStepIdx] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [profile, setProfile] = useState<UserProfile>(emptyProfile);
+  // ANALYTICS — timing refs for duration measurements
+  const onboardingStartRef = useRef<number>(Date.now());
+  const stepStartRef = useRef<number>(Date.now());
   // CONSTANTS
   const currentDefinition = useMemo(
     () => STEP_DEFINITIONS[stepIdx] ?? null,
@@ -193,6 +204,14 @@ export default function OnboardingFlow({
       const definition = STEP_DEFINITIONS[stepIdx];
       if (!definition) return;
       const patch = definition.toProfilePatch(...args);
+      // ANALYTICS — step completed
+      const duration = Date.now() - stepStartRef.current;
+      trackStepCompleted(
+        definition.id,
+        stepIdx,
+        duration,
+        patch as Record<string, unknown>,
+      );
       setProfile((prev) => ({ ...prev, ...patch }));
       advance();
     },
@@ -233,6 +252,47 @@ export default function OnboardingFlow({
   useEffect(() => {
     onStateChange?.({ stepIdx, total: TOTAL_STEPS, isComplete });
   }, [stepIdx, isComplete, onStateChange]);
+
+  // ANALYTICS — onboarding.started beim ersten Mount
+  useEffect(() => {
+    trackOnboardingStarted();
+    onboardingStartRef.current = Date.now();
+    // Cleanup: wenn User die Seite verlässt, ohne abgeschlossen zu haben
+    const handleBeforeUnload = () => {
+      if (!isComplete) {
+        const def = STEP_DEFINITIONS[stepIdx];
+        if (def) {
+          trackStepAbandoned(
+            def.id,
+            stepIdx,
+            Date.now() - stepStartRef.current,
+          );
+        }
+      }
+    };
+    window.addEventListener("pagehide", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("pagehide", handleBeforeUnload);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ANALYTICS — step.viewed bei jedem Step-Wechsel
+  useEffect(() => {
+    if (isComplete) return;
+    const def = STEP_DEFINITIONS[stepIdx];
+    if (!def) return;
+    stepStartRef.current = Date.now();
+    trackStepViewed(def.id, stepIdx);
+  }, [stepIdx, isComplete]);
+
+  // ANALYTICS — onboarding.completed
+  useEffect(() => {
+    if (!isComplete) return;
+    const totalDuration = Date.now() - onboardingStartRef.current;
+    trackOnboardingCompleted(profile, totalDuration);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isComplete]);
 
   // Validate STEP_DEFINITIONS matches STEP_ORDER at render time.
   if (
