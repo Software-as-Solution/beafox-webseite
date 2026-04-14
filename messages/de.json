@@ -3676,6 +3676,39 @@
       "continueCta": "Weiter zur Registrierung"
     },
     "beaAi": {
+      "chat": {
+        "presence": {
+          "arriving": "Bea kommt gleich online…",
+          "online": "Gerade online",
+          "thinking": "Denkt nach…",
+          "typing": "Schreibt gerade…",
+          "away": "Kurz weg",
+          "sleeping": "Schläft",
+          "returning": "Kommt zurück…"
+        },
+        "input": {
+          "placeholder": "Schreib Bea eine Nachricht…",
+          "placeholderWithReplies": "…oder schreib selbst",
+          "disclaimer": "Bea ist deine Lernbegleiterin, keine Anlageberaterin.",
+          "privacyLink": "Datenschutz",
+          "send": "Senden"
+        },
+        "header": {
+          "name": "Bea",
+          "newChat": "Neuer Chat"
+        },
+        "awayAcknowledge": "Deine Nachricht ist angekommen — Bea meldet sich gleich ✨",
+        "welcomeCard": {
+          "title": "Womit wollen wir starten?",
+          "subtitle": "Wähl einfach, was dich gerade am meisten interessiert."
+        },
+        "betaAccessCard": {
+          "intro": "Ich muss dir was Ehrliches sagen…",
+          "body": "Ich bin gerade in der Beta-Phase — noch nicht für alle verfügbar. Wenn du dabei sein willst, kann ich dich auf die Early-Access-Liste setzen.",
+          "accept": "Ja, ich will Early-Access",
+          "dismiss": "Später"
+        }
+      },
       "legalDisclaimer": {
         "compact": "Ich bin deine Lernbegleiterin und keine Anlageberaterin 🧡",
         "full": {
