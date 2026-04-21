@@ -4,14 +4,17 @@
 // AnalyticsRoot — Client-only wrapper for the root layout
 // ─────────────────────────────────────────────────────────────
 // Bootstraps the analytics system (via useAnalytics) and renders
-// the first-visit consent banner. Mount this once in app/layout.tsx.
+// the unified cookie-/consent-banner. Mount this once in
+// app/layout.tsx.
 //
-// Separation of concerns:
-// - This is NOT the cookie banner for Google Analytics / Ahrefs —
-//   those are handled by a separate CookieBanner component for
-//   strictly technical third-party tags.
-// - This banner is for Bea's internal consent purposes (analytics,
-//   prompt iteration, model training, profile tracking).
+// Scope of the banner:
+// - Covers cookie categories (Notwendig / Analyse / Marketing) and
+//   Bea-internal consent purposes (analytics, profile_tracking).
+// - Writes both the Bea consent store AND GA4 Consent Mode v2 +
+//   the legacy `cookieConsent` localStorage key for backward-compat.
+// - AI-specific purposes (prompt_iteration, model_training) are
+//   handled separately via `BeaChatConsentGate` directly in the
+//   Bea chat — NOT through this banner.
 //
 // Performance notes:
 // - ConsentBanner is dynamically imported with ssr: false. It's

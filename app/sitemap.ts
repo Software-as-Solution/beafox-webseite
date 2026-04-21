@@ -58,7 +58,7 @@ const ROUTE_CONFIG: Record<string, RouteConfig> = {
   "/magazin": { priority: 0.9, changefreq: "weekly" },
   "/ratgeber": { priority: 0.8, changefreq: "weekly" },
   "/news": { priority: 0.8, changefreq: "weekly" },
-  "/shop": { priority: 0.7, changefreq: "weekly" },
+  // /shop läuft ab 2026-04-21 extern auf shop.beafox.app (Shopify) — eigene Sitemap dort.
   "/updates": { priority: 0.7, changefreq: "weekly" },
   "/community-richtlinien": { priority: 0.6, changefreq: "yearly" },
   "/impressum": { priority: 0.3, changefreq: "yearly" },

@@ -3,18 +3,18 @@
 // ─────────────────────────────────────────────────────────────
 // ConditionalGlobals — Unterdrückt UX-Overlays auf Standalone-Pages
 // ─────────────────────────────────────────────────────────────
-// ScrollToTop, CookieBanner und AnalyticsRoot (der BeAFox-spezifische
-// Consent-Banner) sind Marketing-Elemente. Auf der Bea-AI-App-Page
+// ScrollToTop und AnalyticsRoot (unser vereinigter Cookie-/Consent-
+// Banner) sind Marketing-/Chrome-Elemente. Auf der Bea-AI-App-Page
 // sollen sie NICHT erscheinen — der User soll das Gefühl haben,
 // in einer eigenen App zu sein, nicht auf einer Website-Subpage.
 //
-// Wichtig: AnalyticsRoot bleibt aktiv, weil der Consent auf der
-// Hauptseite erteilt worden sein sollte. Auf /bea-ai kein zweiter Banner.
+// Hinweis: Der frühere separate `CookieBanner` wurde in den
+// `ConsentBanner` (gerendert durch AnalyticsRoot) integriert, daher
+// nur noch ein einziger Banner-Mount hier.
 // ─────────────────────────────────────────────────────────────
 
 import { usePathname } from "next/navigation";
 import ScrollToTop from "@/components/ScrollToTop";
-import CookieBanner from "@/components/CookieBanner";
 import AnalyticsRoot from "@/components/consent/AnalyticsRoot";
 
 // CONSTANTS
@@ -38,7 +38,6 @@ export default function ConditionalGlobals() {
   return (
     <>
       <ScrollToTop />
-      <CookieBanner />
       <AnalyticsRoot />
     </>
   );

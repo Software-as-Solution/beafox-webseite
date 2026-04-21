@@ -30,14 +30,17 @@ export interface PurposeConfig {
 // ─── Config ─────────────────────────────────────────────────
 
 /**
- * All non-essential consent purposes in display order. Recommended items
- * come first so users see the most-valued options before the optional
- * ones — people read top-to-bottom and decision fatigue is real.
+ * Cookie-/Tracking-Zwecke — gesteuert über den Cookie-Banner.
+ *
+ * Bewusst OHNE KI-spezifische Zwecke: `prompt_iteration` und
+ * `model_training` werden direkt im Bea-Chat eingeholt, damit der
+ * Cookie-Banner nicht fälschlich suggeriert, dass die KI die Daten
+ * aus dem Cookie-Hinweis sammelt.
  *
  * When adding a new purpose:
  * 1. Add it to the `ConsentPurpose` union in @/lib/analytics
  * 2. Add translation keys under `consent.{purpose_id}.{title,desc}`
- * 3. Add it here with the appropriate recommendation
+ * 3. Add it here (Cookie) oder in AI_PURPOSES (KI-Training)
  */
 export const PURPOSES: readonly PurposeConfig[] = [
   {
@@ -52,6 +55,14 @@ export const PURPOSES: readonly PurposeConfig[] = [
     descKey: "analytics.desc",
     recommendation: "recommended",
   },
+] as const;
+
+/**
+ * KI-spezifische Zwecke — werden NICHT im Cookie-Banner gezeigt.
+ * Werden im Bea-Chat beim ersten Öffnen als Start-Hinweis eingeholt
+ * und lassen sich über die Einstellungen später widerrufen.
+ */
+export const AI_PURPOSES: readonly PurposeConfig[] = [
   {
     id: "prompt_iteration",
     titleKey: "prompt_iteration.title",

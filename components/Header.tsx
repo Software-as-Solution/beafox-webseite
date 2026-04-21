@@ -42,8 +42,9 @@ const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.tapelea.beafox&pcampaignid=web_share";
 const STORE_BUTTON_SHADOW =
   "0 12px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.4)";
-const PRODUCT_NAV: { id: ProductNavId; href: string }[] = [
-  { id: "merch", href: "/shop" },
+const SHOP_EXTERNAL_URL = "https://shop.beafox.app";
+const PRODUCT_NAV: { id: ProductNavId; href: string; external?: boolean }[] = [
+  { id: "merch", href: SHOP_EXTERNAL_URL, external: true },
   { id: "unlimited", href: "/unlimited" },
   { id: "schools", href: "/schulen" },
   { id: "business", href: "/unternehmen" },

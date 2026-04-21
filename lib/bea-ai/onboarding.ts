@@ -265,7 +265,7 @@ export const EINKOMMENS_OPTIONS: readonly EinkommensOption[] = [
   },
   {
     id: "income_500_1000",
-    label: "500 – 1.000 €",
+    label: "500 bis 1.000 €",
     description: "Werkstudent, frühe Ausbildung, Teilzeit-Schüler",
     minEur: 500,
     maxEur: 1000,
@@ -273,7 +273,7 @@ export const EINKOMMENS_OPTIONS: readonly EinkommensOption[] = [
   },
   {
     id: "income_1000_1500",
-    label: "1.000 – 1.500 €",
+    label: "1.000 bis 1.500 €",
     description: "Azubi-Gehalt, Teilzeit, BAföG-Höchstsatz",
     minEur: 1000,
     maxEur: 1500,
@@ -281,7 +281,7 @@ export const EINKOMMENS_OPTIONS: readonly EinkommensOption[] = [
   },
   {
     id: "income_1500_2500",
-    label: "1.500 – 2.500 €",
+    label: "1.500 bis 2.500 €",
     description: "Einstiegsgehalt nach Ausbildung oder Studium",
     minEur: 1500,
     maxEur: 2500,
@@ -289,7 +289,7 @@ export const EINKOMMENS_OPTIONS: readonly EinkommensOption[] = [
   },
   {
     id: "income_2500_3500",
-    label: "2.500 – 3.500 €",
+    label: "2.500 bis 3.500 €",
     description: "Erste Berufsjahre, solides Vollzeit-Gehalt",
     minEur: 2500,
     maxEur: 3500,
@@ -297,7 +297,7 @@ export const EINKOMMENS_OPTIONS: readonly EinkommensOption[] = [
   },
   {
     id: "income_3500_plus",
-    label: "3.500 € +",
+    label: "3.500 € und mehr",
     description: "Erfahrene Fachkraft, Spezialist:in, Führungsrolle",
     minEur: 3500,
     maxEur: null,
@@ -2262,22 +2262,22 @@ export function buildProfileContext(profile: UserProfile): string {
     (o) => o.id === profile.lebenssituation,
   );
   if (situation) {
-    lines.push(`- **Lebenssituation**: ${situation.label} (${situation.sub})`);
+    lines.push(`- Lebenssituation: ${situation.label} (${situation.sub})`);
   }
 
-  lines.push(`- **Alter**: ${profile.alter} Jahre`);
+  lines.push(`- Alter: ${profile.alter} Jahre`);
 
   const wohnung = WOHNSITUATION_OPTIONS.find(
     (o) => o.id === profile.wohnsituation,
   );
   if (wohnung) {
-    lines.push(`- **Wohnsituation**: ${wohnung.label}`);
+    lines.push(`- Wohnsituation: ${wohnung.label}`);
   }
 
   if (profile.einkommensRange && profile.einkommensRange !== "income_skip") {
     const einkommen = getEinkommensOption(profile.einkommensRange);
     if (einkommen) {
-      lines.push(`- **Einkommens-Range**: ${einkommen.label} netto/Monat`);
+      lines.push(`- Einkommens-Range: ${einkommen.label} netto/Monat`);
     }
   }
 
@@ -2286,26 +2286,26 @@ export function buildProfileContext(profile: UserProfile): string {
     : null;
   if (schuldenOpt) {
     lines.push(
-      `- **Schulden**: ${schuldenOpt.label} — ${schuldenOpt.description}`,
+      `- Schulden: ${schuldenOpt.label} — ${schuldenOpt.description}`,
     );
   }
 
   const zeit = getZeithorizontOption(profile.zeithorizont);
   if (zeit) {
-    lines.push(`- **Zeithorizont**: ${zeit.label} (${zeit.description})`);
+    lines.push(`- Zeithorizont: ${zeit.label} (${zeit.description})`);
   }
 
   if (profile.prioritaeten.length) {
     const prioLabels = profile.prioritaeten
       .map((id) => getPriorityOption(id)?.label ?? id)
       .join(" → ");
-    lines.push(`- **Top-Prioritäten**: ${prioLabels}`);
+    lines.push(`- Top-Prioritäten: ${prioLabels}`);
   }
 
   // Quiz: numerical score + derived level
   const knowledgeLevel = getKnowledgeLevel(profile.wissenstest.correctCount);
   lines.push(
-    `- **Wissens-Level**: ${knowledgeLevel} (${profile.wissenstest.correctCount}/${KNOWLEDGE_QUIZ.length} richtig)`,
+    `- Wissens-Level: ${knowledgeLevel} (${profile.wissenstest.correctCount}/${KNOWLEDGE_QUIZ.length} richtig)`,
   );
 
   // Scenario: combined bias pattern, not raw answers
@@ -2315,26 +2315,26 @@ export function buildProfileContext(profile: UserProfile): string {
       profile.szenario.crisisBias,
     );
     lines.push(
-      `- **Verhaltens-Muster**: ${pattern} (Geldsegen: ${profile.szenario.windfallBias}, Krise: ${profile.szenario.crisisBias})`,
+      `- Verhaltens-Muster: ${pattern} (Geldsegen: ${profile.szenario.windfallBias}, Krise: ${profile.szenario.crisisBias})`,
     );
   }
 
   // Personality: derived maturity + raw established habits
   const maturity = getMaturityLevel(profile.persoenlichkeit);
-  lines.push(`- **Finanz-Reife**: ${maturity}`);
+  lines.push(`- Finanz-Reife: ${maturity}`);
 
   const establishedHabits = Object.entries(profile.persoenlichkeit)
     .filter(([, v]) => v)
     .map(([k]) => k);
   if (establishedHabits.length) {
     lines.push(
-      `- **Bereits etablierte Gewohnheiten**: ${establishedHabits.join(", ")}`,
+      `- Bereits etablierte Gewohnheiten: ${establishedHabits.join(", ")}`,
     );
   }
 
   // Money feeling + imprint
   lines.push(
-    `- **Einstellung zu Geld**: ${
+    `- Einstellung zu Geld: ${
       profile.geldgefuehl === "freedom"
         ? "Sieht Geld als Freiheit/Werkzeug"
         : "Hat Stress mit dem Thema Geld"
@@ -2344,12 +2344,12 @@ export function buildProfileContext(profile: UserProfile): string {
   const praegung = getGeldpraegungOption(profile.geldpraegung);
   if (praegung) {
     lines.push(
-      `- **Prägung durch Elternhaus**: ${praegung.label} — ${praegung.description}`,
+      `- Prägung durch Elternhaus: ${praegung.label} — ${praegung.description}`,
     );
   }
 
   if (profile.zielbild.trim()) {
-    lines.push(`- **Finanzielles Zielbild**: "${profile.zielbild.trim()}"`);
+    lines.push(`- Finanzielles Zielbild: "${profile.zielbild.trim()}"`);
   }
 
   // Life values + value-based speech rule
@@ -2357,10 +2357,10 @@ export function buildProfileContext(profile: UserProfile): string {
     const valueLabels = profile.lebenswerte
       .map((v) => LIFE_VALUES.find((o) => o.id === v)?.label ?? v)
       .join(", ");
-    lines.push(`- **Lebenswerte**: ${valueLabels}`);
+    lines.push(`- Lebenswerte: ${valueLabels}`);
     const toneRule = getValueBasedTone(profile.lebenswerte);
     if (toneRule) {
-      lines.push(`- **Sprachregel für Bea**: ${toneRule}`);
+      lines.push(`- Sprachregel für Bea: ${toneRule}`);
     }
   }
 
@@ -2370,26 +2370,26 @@ export function buildProfileContext(profile: UserProfile): string {
   lines.push("## Bea's Analyse (aus dem Onboarding abgeleitet)");
   lines.push("");
   lines.push(
-    `- **Finanz-Typ**: ${insights.financialType.label} — ${insights.financialType.tagline}`,
+    `- Finanz-Typ: ${insights.financialType.label} — ${insights.financialType.tagline}`,
   );
   lines.push(
-    `- **Größte Stärke**: ${insights.primaryStrength.title} (Confidence: ${insights.primaryStrength.confidence.toFixed(1)} — ${insights.primaryStrength.confidence >= 0.8 ? "assertive Sprache verwenden" : insights.primaryStrength.confidence >= 0.5 ? "vorsichtig formulieren" : "sehr tentativ bleiben"})`,
+    `- Größte Stärke: ${insights.primaryStrength.title} (Confidence: ${insights.primaryStrength.confidence.toFixed(1)} — ${insights.primaryStrength.confidence >= 0.8 ? "assertive Sprache verwenden" : insights.primaryStrength.confidence >= 0.5 ? "vorsichtig formulieren" : "sehr tentativ bleiben"})`,
   );
   if (insights.secondaryStrength) {
     lines.push(
-      `- **Zweitstärkste Stärke**: ${insights.secondaryStrength.title} (Confidence: ${insights.secondaryStrength.confidence.toFixed(1)})`,
+      `- Zweitstärkste Stärke: ${insights.secondaryStrength.title} (Confidence: ${insights.secondaryStrength.confidence.toFixed(1)})`,
     );
   }
   lines.push(
-    `- **Größte Baustelle**: ${insights.primaryChallenge.title} (Confidence: ${insights.primaryChallenge.confidence.toFixed(1)} — ${insights.primaryChallenge.confidence >= 0.8 ? "assertive Sprache verwenden" : insights.primaryChallenge.confidence >= 0.5 ? "vorsichtig formulieren" : "sehr tentativ bleiben"})`,
+    `- Größte Baustelle: ${insights.primaryChallenge.title} (Confidence: ${insights.primaryChallenge.confidence.toFixed(1)} — ${insights.primaryChallenge.confidence >= 0.8 ? "assertive Sprache verwenden" : insights.primaryChallenge.confidence >= 0.5 ? "vorsichtig formulieren" : "sehr tentativ bleiben"})`,
   );
   if (insights.secondaryChallenge) {
     lines.push(
-      `- **Zweitgrößte Baustelle**: ${insights.secondaryChallenge.title} (Confidence: ${insights.secondaryChallenge.confidence.toFixed(1)})`,
+      `- Zweitgrößte Baustelle: ${insights.secondaryChallenge.title} (Confidence: ${insights.secondaryChallenge.confidence.toFixed(1)})`,
     );
   }
   lines.push(
-    `- **Empfohlener Startpunkt**: ${insights.startingPoint.title} (Confidence: ${insights.startingPoint.confidence.toFixed(1)})`,
+    `- Empfohlener Startpunkt: ${insights.startingPoint.title} (Confidence: ${insights.startingPoint.confidence.toFixed(1)})`,
   );
 
   // Relative performance vs. life phase
@@ -2400,7 +2400,7 @@ export function buildProfileContext(profile: UserProfile): string {
       : relPerf === "behind"
         ? "Unter Erwartung für diese Lebensphase — ermutigend und ohne Vorwurf ansprechen"
         : "Im erwarteten Bereich für diese Lebensphase";
-  lines.push(`- **Lebensphasen-Performance**: ${relPerf} — ${relPerfLabel}`);
+  lines.push(`- Lebensphasen-Performance: ${relPerf} — ${relPerfLabel}`);
 
   // Cross-validation inconsistencies — conversation hooks
   if (insights.inconsistencies.length > 0) {
@@ -2412,7 +2412,7 @@ export function buildProfileContext(profile: UserProfile): string {
     );
     lines.push("");
     for (const inc of insights.inconsistencies) {
-      lines.push(`- **${inc.id}** (${inc.severity}): ${inc.description}`);
+      lines.push(`- ${inc.id} (${inc.severity}): ${inc.description}`);
       lines.push(`  → Gesprächs-Einstieg: "${inc.chatPrompt}"`);
     }
   }
@@ -2432,9 +2432,9 @@ export function buildProfileContext(profile: UserProfile): string {
   lines.push(
     [
       "Die Confidence-Werte oben geben an, wie sicher Bea's Analyse ist. Passe deine Sprache entsprechend an:",
-      '- **Confidence ≥ 0.8**: Assertiv formulieren. "Du bist gut darin..." / "Dein größtes Thema ist..."',
-      '- **Confidence 0.5–0.7**: Vorsichtig formulieren. "Du wirkst auf mich wie jemand, der..." / "Es sieht so aus, als ob..."',
-      '- **Confidence < 0.5**: Sehr tentativ bleiben. "Es scheint, als ob..." / "Möglicherweise..."',
+      '- Confidence ≥ 0.8: Assertiv formulieren. "Du bist gut darin..." / "Dein größtes Thema ist..."',
+      '- Confidence 0.5–0.7: Vorsichtig formulieren. "Du wirkst auf mich wie jemand, der..." / "Es sieht so aus, als ob..."',
+      '- Confidence < 0.5: Sehr tentativ bleiben. "Es scheint, als ob..." / "Möglicherweise..."',
       "- Wenn du einen Insight im Chat aufgreifst, nutze den passenden Hedging-Level. NIEMALS einen Low-Confidence-Insight als Tatsache darstellen.",
     ].join("\n"),
   );
@@ -2476,7 +2476,7 @@ export function buildProfileContext(profile: UserProfile): string {
     lines.push("");
     for (const signal of crisisSignals) {
       lines.push(
-        `- **Crisis-Signal**: ${signal.type} (${signal.severity}) — ${signal.description}`,
+        `- Crisis-Signal: ${signal.type} (${signal.severity}) — ${signal.description}`,
       );
     }
     lines.push("");

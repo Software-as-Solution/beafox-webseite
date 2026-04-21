@@ -1,12 +1,24 @@
 {
   "consent": {
-    "title": "We need your consent",
-    "intro": "We use different categories of data to run the app and improve Bea. You decide what we may use — each consent is separate, voluntary, and revocable at any time.",
+    "title": "Cookies & Privacy",
+    "intro": "We use cookies to run the site and understand what resonates. You decide what we may store — everything optional, changeable anytime.",
     "expand": "Show settings",
     "collapse": "Hide settings",
     "accept_all": "Accept all",
-    "reject_all": "Essential only",
+    "reject_all": "Reject",
     "save_selection": "Save selection",
+    "recommended_badge": "Recommended",
+    "optional_badge": "Optional",
+    "always_on_badge": "Always on",
+    "bar": {
+      "message": "We use cookies for basics and anonymous stats. You decide.",
+      "manage": "Settings",
+      "close_settings": "Close settings"
+    },
+    "necessary": {
+      "title": "What the site needs to work",
+      "desc": "So you can log in, keep your settings, and use the site at all. Without this, nothing works — so it's always on."
+    },
     "analytics": {
       "title": "Usage statistics",
       "desc": "Anonymous metrics such as page views and onboarding drop-off rates. Helps us find and fix weak spots."
@@ -23,12 +35,48 @@
       "title": "Progress over time",
       "desc": "Your profile development is tracked so Bea can see how you're evolving (e.g. a growing emergency fund)."
     },
+    "category": {
+      "analytics": {
+        "title": "Analytics & improvement",
+        "desc": "Anonymous statistics (e.g. via Google Analytics) so we can see which pages resonate and where we can do better. No names, no emails — only aggregated numbers."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "desc": "Cookies for advertising and retargeting purposes (e.g. Meta Pixel). Lets us show you more relevant content. Completely optional — the site works without them."
+      }
+    },
+    "table": {
+      "name": "Name",
+      "provider": "Provider",
+      "purpose": "Purpose",
+      "duration": "Storage duration"
+    },
+    "cookie_list": "Which cookies are set?",
+    "footer": {
+      "change_hint": "You can change these settings anytime in your profile.",
+      "privacy_link": "More in our privacy policy"
+    },
+    "saved": {
+      "title": "Saved 💛",
+      "message": "Thanks for taking the time. We'll stick to your choice."
+    },
     "prefs": {
       "title": "Privacy settings",
       "subtitle": "You can change or revoke your consent at any time.",
       "granted_at": "Granted on {date}",
-      "revoked_at": "Revoked on {date}"
+      "revoked_at": "Revoked on {date}",
+      "cookies_title": "Cookies & usage data",
+      "cookies_subtitle": "Controls what is stored and measured on the website.",
+      "ai_title": "AI training with Bea",
+      "ai_subtitle": "Only affects your chats with Bea — you can revoke this anytime."
     }
+  },
+  "bea_chat_gate": {
+    "title": "Hi, I'm Bea 💛",
+    "message": "Before we start: so I can give you better answers, our chats are stored anonymously. Names, emails and account data are automatically filtered out beforehand.",
+    "start_button": "Start chat",
+    "revoke_hint": "You can revoke this anytime in your profile.",
+    "privacy_link": "More about privacy"
   },
   "rootMeta": {
     "title": "BeAFox – Your finances. Simply played through.",

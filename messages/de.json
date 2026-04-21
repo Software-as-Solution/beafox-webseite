@@ -1,13 +1,18 @@
 {
   "consent": {
-    "title": "Du entscheidest, was ich über dich weiß",
-    "intro": "Damit ich dir wirklich helfen kann, brauche ich ein paar Daten. Aber welche davon du mir gibst, entscheidest ganz du — jede Einwilligung ist einzeln, freiwillig und du kannst sie jederzeit zurückziehen. Ich bin dann immer noch für dich da. 💛",
-    "accept_all": "Alles erlauben",
-    "reject_all": "Nur das Nötigste",
-    "save_selection": "Meine Auswahl speichern",
+    "title": "Cookies & Datenschutz",
+    "intro": "Wir nutzen Cookies, damit die Seite funktioniert und wir verstehen, was gut ankommt. Du entscheidest, was wir speichern dürfen — alles freiwillig und jederzeit änderbar.",
+    "accept_all": "Alle akzeptieren",
+    "reject_all": "Ablehnen",
+    "save_selection": "Auswahl speichern",
     "recommended_badge": "Empfohlen",
     "optional_badge": "Optional",
     "always_on_badge": "Immer aktiv",
+    "bar": {
+      "message": "Wir nutzen Cookies für Basics und anonyme Statistiken. Du entscheidest.",
+      "manage": "Einstellungen",
+      "close_settings": "Einstellungen schließen"
+    },
     "necessary": {
       "title": "Was ich zum Funktionieren brauche",
       "desc": "Damit du dich einloggen kannst, deine Einstellungen gespeichert bleiben und ich überhaupt mit dir chatten kann. Ohne das geht leider nichts — deshalb ist es immer aktiv."
@@ -28,6 +33,23 @@
       "title": "Mir beim Lernen helfen",
       "desc": "Unsere Chats dürfen genutzt werden, damit meine KI langfristig schlauer wird. Alles pseudonymisiert, nie verkauft an Dritte, nie an Werbepartner. Nur damit ich nach und nach besser verstehe, was junge Leute in Deutschland wirklich brauchen."
     },
+    "category": {
+      "analytics": {
+        "title": "Analyse & Verbesserung",
+        "desc": "Anonyme Statistiken (z.B. über Google Analytics), damit wir sehen, welche Seiten gut ankommen und wo wir noch besser werden können. Keine Namen, keine E-Mails — nur aggregierte Zahlen."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "desc": "Cookies für Werbe- und Retargeting-Zwecke (z.B. Meta-Pixel). Damit können wir dir relevantere Inhalte zeigen. Komplett optional — die Webseite funktioniert auch ohne."
+      }
+    },
+    "table": {
+      "name": "Name",
+      "provider": "Anbieter",
+      "purpose": "Zweck",
+      "duration": "Speicherdauer"
+    },
+    "cookie_list": "Welche Cookies werden gesetzt?",
     "footer": {
       "change_hint": "Du kannst diese Einstellungen jederzeit in deinem Profil anpassen.",
       "privacy_link": "Mehr in meiner Datenschutzerklärung"
@@ -40,8 +62,19 @@
       "title": "Deine Datenschutz-Einstellungen",
       "subtitle": "Du kannst alles jederzeit ändern — auch Dinge, die du vorher erlaubt hast.",
       "granted_at": "Erlaubt am {date}",
-      "revoked_at": "Zurückgezogen am {date}"
+      "revoked_at": "Zurückgezogen am {date}",
+      "cookies_title": "Cookies & Nutzungsdaten",
+      "cookies_subtitle": "Steuert, was auf der Webseite gespeichert und gemessen wird.",
+      "ai_title": "KI-Training mit Bea",
+      "ai_subtitle": "Betrifft nur deine Chats mit Bea — kannst du hier jederzeit widerrufen."
     }
+  },
+  "bea_chat_gate": {
+    "title": "Hi, ich bin Bea 💛",
+    "message": "Bevor wir loslegen: Damit ich dir bessere Antworten geben kann, werden unsere Chats anonymisiert gespeichert. Namen, E-Mails und Kontodaten filtere ich vorher automatisch raus.",
+    "start_button": "Chat starten",
+    "revoke_hint": "Du kannst das jederzeit in deinem Profil widerrufen.",
+    "privacy_link": "Mehr zum Datenschutz"
   },
   "rootMeta": {
     "title": "BeAFox – Finanzbildung App | Deine Finanzen. Einfach durchgespielt.",

@@ -154,6 +154,13 @@ const nextConfig = {
         destination: "https://play.google.com/store/apps/details?id=com.tapelea.beafox",
         permanent: false,
       },
+
+      // ── Merch / Shop → Shopify (shop.beafox.app) ──
+      // Eigenentwicklung abgelöst; alles unter /shop und /checkout leitet auf Shopify um.
+      { source: "/shop", destination: "https://shop.beafox.app", permanent: true },
+      { source: "/shop/:path*", destination: "https://shop.beafox.app/:path*", permanent: true },
+      { source: "/checkout", destination: "https://shop.beafox.app/cart", permanent: true },
+      { source: "/checkout/:path*", destination: "https://shop.beafox.app/cart", permanent: true },
     ];
   },
 };

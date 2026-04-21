@@ -13,10 +13,17 @@
 
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { Shield } from "lucide-react";
+import { Shield, Sparkles } from "lucide-react";
 import { useConsent } from "@/hooks/useConsent";
 import type { ConsentPurpose } from "@/lib/analytics";
-import { ConsentBadge, ConsentRecommendation, ConsentToggle, PURPOSES } from "./ConsentPrimitives";
+import {
+  AI_PURPOSES,
+  ConsentBadge,
+  ConsentRecommendation,
+  ConsentToggle,
+  PURPOSES,
+  type PurposeConfig,
+} from "./ConsentPrimitives";
 
 // ═══════════════════════════════════════════════════════════
 // STYLE CONSTANTS
@@ -197,14 +204,48 @@ function PurposeCard({
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════
 
+// ─── Section-Header (für Cookies vs. KI-Training) ──────────
+
+interface SectionHeaderProps {
+  icon: typeof Shield;
+  title: string;
+  subtitle: string;
+}
+
+function SectionHeader({ icon: Icon, title, subtitle }: SectionHeaderProps) {
+  return (
+    <div className="mb-3 mt-5 flex items-start gap-2.5 first:mt-0">
+      <div
+        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+        style={{ background: "rgba(232,119,32,0.1)" }}
+      >
+        <Icon
+          className="h-4 w-4 text-primaryOrange"
+          aria-hidden="true"
+          strokeWidth={2.5}
+        />
+      </div>
+      <div className="flex-1">
+        <h4 className="text-sm font-black text-darkerGray md:text-[15px]">
+          {title}
+        </h4>
+        <p className="mt-0.5 text-[11px] leading-relaxed text-lightGray md:text-xs">
+          {subtitle}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function ConsentPreferences() {
   const t = useTranslations("consent");
   const { consent, setPurpose } = useConsent();
 
-  // Precompute the per-purpose status text so the render stays clean
+  // Precompute status texts across BOTH cookie and AI purposes
   const statusTexts = useMemo(() => {
     const next: Record<string, string | null> = {};
-    for (const p of PURPOSES) {
+    const all: readonly PurposeConfig[] = [...PURPOSES, ...AI_PURPOSES];
+    for (const p of all) {
       const entry = consent[p.id];
       const isGranted = entry.granted && entry.revoked_at === null;
 
@@ -224,6 +265,24 @@ export default function ConsentPreferences() {
   const getBadgeLabel = (rec: ConsentRecommendation) =>
     rec === "recommended" ? t("recommended_badge") : t("optional_badge");
 
+  const renderPurposeCard = (p: PurposeConfig) => {
+    const isGranted =
+      consent[p.id].granted && consent[p.id].revoked_at === null;
+    return (
+      <PurposeCard
+        key={p.id}
+        id={p.id}
+        title={t(p.titleKey)}
+        desc={t(p.descKey)}
+        recommendation={p.recommendation}
+        recommendationLabel={getBadgeLabel(p.recommendation)}
+        checked={isGranted}
+        onToggle={(checked) => setPurpose(p.id, checked)}
+        statusText={statusTexts[p.id]}
+      />
+    );
+  };
+
   return (
     <div>
       <PreferencesHeader
@@ -231,6 +290,12 @@ export default function ConsentPreferences() {
         subtitle={t("prefs.subtitle")}
       />
 
+      {/* ─── Cookie-/Tracking-Zwecke ─── */}
+      <SectionHeader
+        icon={Shield}
+        title={t("prefs.cookies_title")}
+        subtitle={t("prefs.cookies_subtitle")}
+      />
       <div className="space-y-2.5">
         <NecessaryCard
           title={t("necessary.title")}
@@ -238,24 +303,16 @@ export default function ConsentPreferences() {
           badgeLabel={t("always_on_badge")}
         />
 
-        {PURPOSES.map((p) => {
-          const isGranted =
-            consent[p.id].granted && consent[p.id].revoked_at === null;
-          return (
-            <PurposeCard
-              key={p.id}
-              id={p.id}
-              title={t(p.titleKey)}
-              desc={t(p.descKey)}
-              recommendation={p.recommendation}
-              recommendationLabel={getBadgeLabel(p.recommendation)}
-              checked={isGranted}
-              onToggle={(checked) => setPurpose(p.id, checked)}
-              statusText={statusTexts[p.id]}
-            />
-          );
-        })}
+        {PURPOSES.map(renderPurposeCard)}
       </div>
+
+      {/* ─── KI-Training-Zwecke ─── */}
+      <SectionHeader
+        icon={Sparkles}
+        title={t("prefs.ai_title")}
+        subtitle={t("prefs.ai_subtitle")}
+      />
+      <div className="space-y-2.5">{AI_PURPOSES.map(renderPurposeCard)}</div>
     </div>
   );
 }

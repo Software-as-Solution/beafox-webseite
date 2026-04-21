@@ -17,7 +17,7 @@ import { trackNewsletterSignup } from "@/components/AhrefsAnalytics";
 // CONSTANTS
 const LOCALE_COOKIE_MAX_AGE = 31536000;
 const PRODUCT_LINKS = [
-  { href: "/shop", key: "merch" },
+  { href: "https://shop.beafox.app", key: "merch", external: true },
   { href: "/unlimited", key: "unlimited" },
   { href: "/schulen", key: "schools" },
   { href: "/unternehmen", key: "business" },
@@ -279,9 +279,19 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {PRODUCT_LINKS.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className={LINK_CLASS}>
-                      {t(`products.${link.key}`)}
-                    </Link>
+                    {"external" in link && link.external ? (
+                      <a
+                        href={link.href}
+                        className={LINK_CLASS}
+                        rel="noopener"
+                      >
+                        {t(`products.${link.key}`)}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className={LINK_CLASS}>
+                        {t(`products.${link.key}`)}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
