@@ -157,8 +157,10 @@ const nextConfig = {
 
       // ── Merch / Shop → Shopify (shop.beafox.app) ──
       // Eigenentwicklung abgelöst; alles unter /shop und /checkout leitet auf Shopify um.
+      // Hinweis: alte Deep-Links (/shop/<slug>) hatten andere Slugs als Shopify (/products/<slug>),
+      // deshalb landen alle Wildcard-Requests auf der Produktübersicht statt auf 404s.
       { source: "/shop", destination: "https://shop.beafox.app", permanent: true },
-      { source: "/shop/:path*", destination: "https://shop.beafox.app/:path*", permanent: true },
+      { source: "/shop/:path*", destination: "https://shop.beafox.app/collections/all", permanent: true },
       { source: "/checkout", destination: "https://shop.beafox.app/cart", permanent: true },
       { source: "/checkout/:path*", destination: "https://shop.beafox.app/cart", permanent: true },
     ];
