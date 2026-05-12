@@ -100,6 +100,13 @@
       "first salary planning",
       "GDPR finance app schools",
       "gamification financial education",
+      "BeAFox",
+      "GDPR finance app schools",
+      "Gamification financial education",
+      "financial literacy app German",
+      "Learn finance app",
+      "Financial coaching apprentices",
+      "Pocket money app",
       "BeAFox"
     ],
     "ogTitle": "BeAFox – Your finances. Simply played through.",
@@ -318,36 +325,6 @@
       "xLabel": "X"
     }
   },
-  "cookie": {
-    "banner": {
-      "title": "Cookie settings",
-      "text": "We use cookies to provide you with the best possible experience on our website. Some cookies are necessary for the operation of the website, while others help us improve the website and user experience (tracking cookies). You can decide whether you want to allow cookies.",
-      "more": "Learn more",
-      "settings": "Settings",
-      "reject": "Reject",
-      "acceptAll": "Accept all"
-    },
-    "modal": {
-      "title": "Cookie settings",
-      "intro": "You can adjust your cookie preferences at any time. More information can be found in our",
-      "privacy": "Privacy Policy",
-      "necessary": {
-        "title": "Necessary cookies",
-        "alwaysOn": "Always active",
-        "text": "These cookies are required for the website to function properly and cannot be disabled. They are usually set only in response to actions you take, such as setting your privacy preferences."
-      },
-      "analytics": {
-        "title": "Analytics cookies",
-        "text": "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve our website."
-      },
-      "marketing": {
-        "title": "Marketing cookies",
-        "text": "These cookies are used to show you relevant advertising and marketing content. They may also be used to limit the number of ads and measure the effectiveness of advertising campaigns."
-      },
-      "cancel": "Cancel",
-      "save": "Save settings"
-    }
-  },
   "notFound": {
     "title": "Page not found",
     "description": "The page you're looking for doesn't exist or has been moved. But don't worry — our fox will help you out!",
@@ -477,20 +454,6 @@
         "post": "use BeAFox"
       }
     },
-    "partnersCarousel": {
-      "alt": "Partner {index}"
-    },
-    "mockupShowcase": {
-      "titleLine1": "Financial education and learning were yesterday.",
-      "titleLine2": "Today: personalized, AI-powered capability to act.",
-      "subtitle": "BeAFox combines interactive app features with intelligent guidance from Bea - for decisions that truly work in daily life."
-    },
-    "simpleStepsSection": {
-      "title": {
-        "pre": "It's that",
-        "highlight": "easy"
-      }
-    },
     "testimonialsSection": {
       "title": {
         "pre": "What our",
@@ -595,7 +558,8 @@
         "connector": "and",
         "businesses": "businesses"
       },
-      "more": "Learn more"
+      "more": "Learn more",
+      "bottomTrust": "Over 10,000 learners already trust BeAFox · GDPR-compliant · Made in Germany"
     },
     "useCases": {
       "unlimited": {
@@ -616,7 +580,16 @@
           "Custom workshops",
           "Employee certificates",
           "Company dashboards"
-        ]
+        ],
+        "benefits": [
+          "Onboarding in under 10 minutes",
+          "Reports for HR & training managers",
+          "GDPR-compliant, hosted in Germany"
+        ],
+        "ctaPrimary": "Learn more",
+        "ctaSecondary": "Learn more",
+        "eyebrow": "For apprentices & working students",
+        "trustNote": "Already used by 10+ companies"
       },
       "schools": {
         "title": "BeAFox for Schools",
@@ -626,7 +599,16 @@
           "Preventive approach",
           "Teaching materials",
           "Motivating learning methods"
-        ]
+        ],
+        "benefits": [
+          "Curriculum-compliant for all federal states",
+          "Ready-made teaching materials included",
+          "Free for your first class"
+        ],
+        "ctaPrimary": "Learn more",
+        "ctaSecondary": "Learn more",
+        "eyebrow": "For pupils",
+        "trustNote": "Already in use at 10+ schools"
       }
     },
     "experienceSection": {
@@ -637,38 +619,6 @@
       "paragraph1": "We were apprentices ourselves – young, excited, finally earning our own money. But without knowing anything about budgets, saving, or contracts, we burned through every cent. Overdrafts, installment traps, subscription pitfalls. What started as freedom quickly turned into real stress: sleepless nights, shame, and the feeling of being completely alone with it.",
       "paragraph2": "That exact feeling was the spark behind BeAFox. We don't want the next generation to repeat these mistakes. So we built an app that teaches financial knowledge the way we wished someone had taught us back then: honestly, clearly, and without judgment.",
       "paragraph3": "If even one person makes one fewer mistake because of BeAFox – it was all worth it."
-    },
-    "ecosystem": {
-      "title": "Financial education ecosystem",
-      "left": {
-        "anytime": {
-          "title": "Learn anytime",
-          "text": "Learn whenever and wherever you want—on your phone on the go, on your laptop at home, or on your tablet during a break. BeAFox fits into your everyday life. Your progress is synced automatically so you can switch devices seamlessly."
-        },
-        "action": {
-          "title": "Financial actionability",
-          "text": "We don't just teach theory—we build real financial capability. So everyone can actually apply finance in real life, from budgeting and contracts to confident everyday decisions."
-        },
-        "school": {
-          "title": "Learning at school",
-          "text": "BeAFox is built for classroom use. Teachers can track class progress and start playful competitions. This way, financial education can be taught even beyond the standard curriculum."
-        }
-      },
-      "right": {
-        "training": {
-          "title": "Learning in training companies",
-          "text": "Apprentices get practical financial education they can apply directly in everyday work. Companies can support young talent and show they care about their apprentices’ financial future."
-        },
-        "school": {
-          "title": "Learning at schools",
-          "text": "BeAFox is built for classroom use. Teachers can track class progress and start playful competitions. This way, financial education can be taught even beyond the standard curriculum."
-        }
-      },
-      "mockups": {
-        "phoneAlt": "BeAFox phone mockup",
-        "laptopAlt": "BeAFox laptop mockup",
-        "tabletAlt": "BeAFox tablet mockup"
-      }
     },
     "howItWorks": {
       "titlePre": "How",
@@ -834,29 +784,6 @@
         "book": "Book a meeting"
       }
     },
-    "contentHub": {
-      "title": "Behind the scenes",
-      "subtitle": {
-        "line1": "A look behind the scenes:",
-        "highlight": "Our stories & all the latest news"
-      },
-      "items": [
-        {
-          "id": "news",
-          "title": "News",
-          "description": "Stories, events, and articles—how BeAFox is built and growing.",
-          "href": "/news",
-          "cta": "Open news"
-        },
-        {
-          "id": "appUpdates",
-          "title": "App updates",
-          "description": "Versions, features, and fixes for the BeAFox app at a glance.",
-          "href": "/app-updates",
-          "cta": "View changelog"
-        }
-      ]
-    },
     "faqAccordionLabel": "Frequently asked questions",
     "stickyMobileCta": {
       "title": "BeAFox: Finance gamified",
@@ -1013,7 +940,10 @@
       },
       "typingLabel": "is typing…",
       "eyebrowPre": "How Bea supports you",
-      "eyebrowHighlight": "in real time"
+      "eyebrowHighlight": "in real time",
+      "endCtaButton": "Try Bea now",
+      "endCtaQuestion": "Did I spark your interest?",
+      "endCtaQuestionHighlight": "Just give me a try!"
     },
     "problemSection": {
       "eyebrowPre": "The problem with",
@@ -1040,7 +970,10 @@
       "card1Title": "Too many tips.",
       "card1Text": "You have read everything and still do not know where to start.",
       "card2Title": "Nothing fits you.",
-      "card2Text": "Tips for other situations, other salaries, other plans. But what about yours?"
+      "card2Text": "Tips for other situations, other salaries, other plans. But what about yours?",
+      "bridgeCtaLabel": "Get started with Bea",
+      "bridgeHighlight": "Solve it with Bea.",
+      "bridgeTitle": "Sound familiar?"
     },
     "solutionSection": {
       "eyebrowPre": "The solution:",
@@ -1072,7 +1005,8 @@
         "beaMessage": "Given your income, I’d put €50 toward your emergency fund and €150 into your ETF savings plan. Want me to set that up?",
         "statusOnline": "Online — replies instantly",
         "liveLabel": "Live demo"
-      }
+      },
+      "eyebrow": "Your best friend"
     },
     "promiseSection": {
       "eyebrow": "What changes",
@@ -1129,7 +1063,8 @@
         ],
         "ctaPrimary": "Start with BeAFox now",
         "ctaSecondary": "Get to know Bea first"
-      }
+      },
+      "eyebrowHighlight": "With Bea"
     },
     "trustBadge": {
       "kpi": "10k+",
@@ -1827,127 +1762,6 @@
       "ratgeber": "Financial Guides"
     }
   },
-  "ihk": {
-    "hero": {
-      "badge": "BeAFox × IHK Academy",
-      "title": "Financial capability",
-      "titleHighlight": "for apprentices & professionals",
-      "description": "Together with IHK Academy, we developed a workshop that makes apprentices and professionals financially capable.",
-      "ctaPartner": "Request a workshop",
-      "ctaBook": "Book a call"
-    },
-    "trustSignal": {
-      "preTitle": "IHK Academy partnership",
-      "highlight": "officially certified"
-    },
-    "images": {
-      "problemMascotAlt": "Financial insecurity among apprentices",
-      "solutionMascotAlt": "BeAFox × IHK Academy workshop solution"
-    },
-    "problemSolution": {
-      "problemHeaderPre": "No plan, no budget,",
-      "problemHeaderHighlight": "no clue",
-      "problemBullets": [
-        "Apprentices don't know what's left of their salary",
-        "Taxes, insurance, retirement — all foreign concepts",
-        "Financial stress lowers performance and increases dropout rates",
-        "Traditional trainings are too theoretical and outdated"
-      ],
-      "problemShockStatValue": "78%",
-      "problemShockStatHeadline": "of apprentices feel financially insecure",
-      "problemShockStatBody": "Most career starters never learned how to handle money. The first paycheck quickly becomes overwhelming — with consequences for both the company and the apprentice.",
-      "solutionHeaderPre": "The workshop that",
-      "solutionHeaderHighlight": "actually lands",
-      "solutionText": "Together with IHK Academy, we developed a workshop that combines financial knowledge with practice. No lectures — real exercises that help immediately in everyday life.",
-      "solutionImpactStatValue": "100%",
-      "solutionImpactStatHeadline": "recommendation rate among workshop participants",
-      "solutionBullets": [
-        "Hands-on workshop with IHK quality standards",
-        "Create your own budget, understand your payslip",
-        "Open a brokerage account, understand insurance, plan your tax return",
-        "BeAFox app as companion after the workshop"
-      ],
-      "ctaButton": "Request a workshop"
-    },
-    "benefits": {
-      "title": "What your",
-      "titleHighlight": "workshop includes",
-      "subtitleLine1": "One day that prepares apprentices for their entire career.",
-      "subtitleLine2": "Developed with IHK Academy — proven and practical.",
-      "items": [
-        {
-          "title": "Understand your payslip",
-          "description": "Gross, net, social contributions — apprentices finally understand what's on their payslip and why."
-        },
-        {
-          "title": "Create your own budget",
-          "description": "Every participant creates a personal budget. Not a template, but real numbers from their own life."
-        },
-        {
-          "title": "Plan first investments",
-          "description": "Set up an ETF savings plan, open a brokerage account — step by step without jargon."
-        },
-        {
-          "title": "Understand insurance",
-          "description": "Which insurances do I really need? Apprentices learn the essential basics for their career start."
-        },
-        {
-          "title": "IHK certified",
-          "description": "The workshop meets IHK quality standards. Participants receive an official certificate."
-        },
-        {
-          "title": "App companion afterwards",
-          "description": "After the workshop, Bea continues to guide participants — with personalized tasks and reminders."
-        }
-      ]
-    },
-    "workshop": {
-      "title": "How the",
-      "titleHighlight": "workshop works",
-      "format": {
-        "title": "Workshop format",
-        "duration": "Duration: 4-6 hours",
-        "groupSize": "Group size: 10-25 participants",
-        "location": "On-site at your location or at the IHK Academy",
-        "certificate": "Incl. IHK participation certificate"
-      },
-      "modules": [
-        {
-          "step": "1",
-          "title": "Payslip & budget planning",
-          "description": "Participants analyze a real payslip and create their personal budget.",
-          "image": "/Maskottchen/Maskottchen-Beratung.webp"
-        },
-        {
-          "step": "2",
-          "title": "Insurance & retirement",
-          "description": "Which insurances are mandatory, which are useful? Practical exercise with real scenarios.",
-          "image": "/Maskottchen/Maskottchen-Setup.webp"
-        },
-        {
-          "step": "3",
-          "title": "Investing & wealth building",
-          "description": "From savings account to ETF savings plan — participants open a demo brokerage account together.",
-          "image": "/Maskottchen/Maskottchen-Start.webp"
-        },
-        {
-          "step": "4",
-          "title": "Tax return & app companion",
-          "description": "Understand the basics of tax returns. Then Bea continues to guide each participant individually.",
-          "image": "/Maskottchen/Maskottchen-Begleitung.webp"
-        }
-      ]
-    },
-    "price": {
-      "headingPre": "Request your",
-      "headingHighlight": "workshop now",
-      "ctaCardTitle": "Custom workshop offer",
-      "ctaCardBodyLine1": "We adapt the workshop to your group size and requirements.",
-      "ctaCardBodyLine2": "Contact us for a non-binding offer!",
-      "requestQuoteCta": "Request a quote",
-      "bookCta": "Book a call"
-    }
-  },
   "bildungshaus": {
     "meta": {
       "title": "BeAFox × Bildungshaus Wolfsburg – Finances for every life situation",
@@ -2072,7 +1886,6 @@
       "authorName": "BeAFox UG (haftungsbeschränkt)",
       "authorUrl": "https://beafox.app"
     },
-    "breadcrumbLabel": "Eduplaces",
     "hero": {
       "badge": "BeAFox × Eduplaces",
       "titlePre": "Financial education in",
@@ -2154,10 +1967,10 @@
   },
   "schools": {
     "meta": {
-      "title": "Schulen – Jeder Schüler verdient eine Bea",
-      "description": "Mit Bea spielen Schüler ihre Finanzen einfach durch. Spielerische App, Live-Dashboard für Lehrkräfte — selbstständiges Lernen ohne Unterrichtsausfall. Jetzt Demo anfragen.",
-      "ogTitle": "Schulen – Jeder Schüler verdient eine Bea",
-      "ogDescription": "Bea begleitet Schüler durch jede Finanzsituation. Dashboard für Lehrkräfte, selbstständiges Lernen, null Aufwand."
+      "title": "Schools – every student deserves a Bea",
+      "description": "With Bea, students simply play through their finances. Playful app, live dashboard for teachers, GDPR-compliant — built for schools and educational institutions.",
+      "ogTitle": "Schools – every student deserves a Bea",
+      "ogDescription": "Bea guides students through every financial situation. Dashboard for teachers, independent learning, scientifically tested."
     },
     "hero": {
       "badge": "BeAFox für Schulen",
@@ -2199,73 +2012,73 @@
       "problemHeaderPre": "Wissen allein",
       "problemHeaderHighlight": "reicht nicht aus",
       "problemShockStatValue": "Über 90%",
-      "problemShockStatHeadline": "der Schüler können nach der Schule keine einzige Finanzentscheidung selbstständig treffen",
-      "problemShockStatBody": "Sie wissen vielleicht was Zinsen sind. Aber wenn der erste Vertrag kommt und das erste Gehalt kommt, steht niemand daneben und sagt was zu tun ist.",
+      "problemShockStatHeadline": "of students cannot make a single financial decision on their own after school",
+      "problemShockStatBody": "You may know what interest is. But when the first contract arrives and the first salary lands in your account, theory turns into a problem.",
       "problemBullets": [
-        "Finanzen existieren in der Schule kaum",
-        "Schüler werden nicht aktiv auf das Leben danach vorbereitet",
-        "Lehrkräfte wollen helfen, aber es fehlt an einfachen Lösungen",
-        "Jeder 4. junge Erwachsene ist innerhalb von 2 Jahren verschuldet"
+        "Finances are barely present in school",
+        "Students are not actively prepared for life after school",
+        "Teachers want to help, but easy solutions are missing",
+        "1 in 4 young adults is in debt within 2 years"
       ],
-      "solutionHeaderPre": "Die einzige App die Schüler",
+      "solutionHeaderPre": "The only app that students",
       "solutionHeaderHighlight": "freiwillig öffnen",
       "solutionImpactStatValue": "98%",
-      "solutionImpactStatHeadline": "Zufriedenheit bei Lehrkräften und Schülern",
-      "solutionText": "Bea ist die Lösung, die gefehlt hat. Schüler lernen selbstständig und üben echte Entscheidungen. Im Unterricht, in Vertretungsstunden oder als Hausaufgabe.",
-      "solutionText2": "Ihr Dashboard zeigt wer lernt, wer pausiert und wer Unterstützung braucht. Sie greifen nur ein, wenn es nötig ist.",
+      "solutionImpactStatHeadline": "satisfaction among teachers and students",
+      "solutionText": "Bea is the solution that has been missing. Students learn independently and practice real decisions — playfully, in their own pace, with topics that actually concern them.",
+      "solutionText2": "Your dashboard shows who is learning, who is pausing and who needs support. You only step in where it really matters.",
       "solutionBullets": [
-        "Bea trainiert Handlungsfähigkeit — nicht nur Wissen",
-        "Dashboard zeigt jeden Fortschritt — pro Schüler, pro Klasse",
-        "Null Vorbereitung: Schüler starten sofort, Sie lehnen sich zurück",
-        "Schüler bleiben freiwillig dran dank einem spielerischen System"
+        "Bea trains real-life skills — not just knowledge",
+        "Dashboard shows every progress — per student, per class",
+        "Zero prep: students start instantly, you lean back",
+        "Students stay on it voluntarily thanks to a playful system"
       ],
       "ctaButton": "Demo anfordern"
     },
     "benefits": {
       "title": "Was Sie",
       "titleHighlight": "konkret bekommen?",
-      "subtitle": "Alles aus einer Hand:\nKeine Vorbereitung, kein IT-Aufwand, kein zusätzliches Personal.",
+      "subtitle": "Everything from one source:\nNo prep, no IT effort, no extra staff.",
       "sdgsIntro": "Together we support the UN Sustainable Development Goals",
       "sdgFallbackAlt": "Sustainable Development Goal {id}",
       "items": [
         {
           "title": "Null Vorbereitungszeit",
-          "description": "Bea übernimmt. Schüler starten sofort — in Vertretungsstunden, Projektwochen oder als Hausaufgabe. Sie müssen nichts vorbereiten."
+          "description": "Bea takes over. Students start right away — in cover lessons, project weeks or as homework. You decide when, Bea does the rest."
         },
         {
-          "title": "Live-Dashboard für Lehrkräfte",
-          "description": "Wer übt, wer hängt, wer Hilfe braucht — alles auf einen Blick. Pro Schüler, pro Klasse, als PDF-Export."
+          "title": "Live dashboard for teachers",
+          "description": "Who practices, who stalls, who needs help — all at a glance. Per student, per class, all in one dashboard."
         },
         {
-          "title": "Schwächen erkennen, Stärken belohnen",
-          "description": "Bea zeigt wo einzelne Schüler nicht weiterkommen. Gute Leistungen werden automatisch mit Punkten und Badges belohnt."
+          "title": "Spot weaknesses, reward strengths",
+          "description": "Bea shows where individual students get stuck. Strong performance is automatically rewarded with points and badges — without you having to lift a finger."
         },
         {
           "title": "100% DSGVO-konform",
-          "description": "Gehostet in Deutschland, keine Daten an Dritte, keine Werbung. Ihr Datenschutzbeauftragter sagt ja."
+          "description": "Hosted in Germany, no data sharing with third parties, no ads. Your data protection officer will love us."
         },
         {
-          "title": "500+ Teilnehmer im Forschungsprojekt",
-          "description": "Die Methode ist wissenschaftlich getestet. Ergebnisse: höheres Selbstvertrauen bei Finanzentscheidungen, messbar bessere Handlungsfähigkeit."
+          "title": "500+ participants in the research project",
+          "description": "The method is scientifically tested. Results: more confidence in financial topics, sustainable learning effect, students who actually stay engaged."
         },
         {
-          "title": "Schüler, die freiwillig dranbleiben",
-          "description": "Punkte, Missionen, Ranglisten und Bea als persönliche Begleiterin. Kein Zwang — Schüler öffnen die App weil sie wollen, nicht weil sie müssen."
+          "title": "Students who voluntarily stick with it",
+          "description": "Points, missions, leaderboards and Bea as a personal companion. No pressure — students open Bea because they want to."
         }
       ]
     },
     "funding": {
       "badge": "Gut zu wissen",
-      "titlePre": "Bea kann für Ihre Schule",
+      "titlePre": "Bea can be",
       "titleHighlight": "kostenlos",
       "titlePost": " sein!",
-      "description": "Viele unserer Partnerschulen nutzen Bea ohne einen Cent aus dem eigenen Budget. Wie? Über bestehende Fördertöpfe, die fast jede Schule abrufen kann, aber kaum jemand kennt.",
+      "description": "Many of our partner schools use Bea without spending a cent of their own budget. How? Through funding programs that often go unused.",
       "bullets": [
-        "Wir prüfen gemeinsam welche Fördertöpfe für Ihre Schule passen",
-        "Wir helfen beim Antrag und Sie schicken ihn nur noch ab",
-        "Innerhalb von 48 Stunden wissen Sie ob Bea für Ihre Schule kostenlos ist"
+        "We jointly check which funding pots fit your school",
+        "We help with the application — you only need to submit it",
+        "Within 48 hours you know whether Bea is free for your school"
       ],
-      "ctaButton": "Jetzt kostenlos beraten lassen"
+      "ctaButton": "Get free consultation now"
     },
     "schoolProcess": {
       "title": "Startbereit in",
@@ -2274,25 +2087,25 @@
         {
           "step": "1",
           "title": "Kurzes Gespräch",
-          "description": "15 Minuten reichen. Wir klären Ihre Schülerzahl, Ihre Ziele und prüfen ob Fördermittel möglich sind.",
+          "description": "15 minutes are enough. We clarify your number of students, your goals and check whether funding is possible.",
           "image": "/Maskottchen/Maskottchen-Beratung.webp"
         },
         {
           "step": "2",
-          "title": "Wir richten alles ein",
-          "description": "Klassen anlegen, Accounts erstellen, Dashboard startklar machen. Null Aufwand für Sie oder Ihre IT.",
+          "title": "We set everything up",
+          "description": "Set up classes, create accounts, prepare the dashboard. Zero effort for you or your IT team.",
           "image": "/Maskottchen/Maskottchen-Setup.webp"
         },
         {
           "step": "3",
           "title": "Schüler öffnen Bea",
-          "description": "Keine Einführung nötig. Schüler starten sofort — im Unterricht, in der Vertretungsstunde oder zu Hause.",
+          "description": "No introduction needed. Students start immediately — in lessons, cover lessons or at home.",
           "image": "/Maskottchen/Maskottchen-Start.webp"
         },
         {
           "step": "4",
-          "title": "Sie lehnen sich zurück",
-          "description": "Dashboard öffnen, Fortschritte sehen, fertig. Bea kümmert sich um den Rest.",
+          "title": "You lean back",
+          "description": "Open the dashboard, see progress, done. Bea takes care of the rest.",
           "image": "/Maskottchen/Maskottchen-Begleitung.webp"
         }
       ]
@@ -2300,36 +2113,28 @@
     "pricing": {
       "title": "Faire Preise für",
       "titleHighlight": "Schulen",
-      "subtitle": "Flexible Staffelpreise: passgenau für Ihre Schule oder Institution.",
+      "subtitle": "Flexible volume pricing: tailored to your school or institution.",
       "price": "€1",
       "perPupil": "pro Schüler",
       "perYear": "pro Jahr",
-      "tagline": "Transparent, fair und ohne versteckte Kosten.",
+      "tagline": "Transparent, fair and with no hidden costs.",
       "partnerCta": "Demo anfordern",
       "includedTitle": "Im Preis enthalten:",
       "includedItems": [
-        "Vollständiger Zugang für alle Schüler",
-        "Monitoring-Dashboard für Lehrer",
-        "Unbegrenzte Lektionen & Features",
-        "PDF-Export für Reports",
+        "Full access for all students",
+        "Monitoring dashboard for teachers",
+        "Unlimited lessons & features",
+        "PDF export for reports",
         "Support & Updates"
       ],
       "extraTitle": "Zusätzliche Vorteile:",
       "extraItems": [
-        "Keine versteckten Kosten",
+        "No hidden costs",
         "Monatlich kündbar",
         "DSGVO-konform",
         "Einfache Einrichtung",
         "Persönlicher Ansprechpartner"
       ]
-    },
-    "individualOffer": {
-      "headingPre": "Finanzbildung für",
-      "headingHighlight": "Ihre Schule",
-      "ctaCardTitle": "Individuelles Angebot für Ihre Schule",
-      "ctaCardBodyLine1": "Jede Schule hat unterschiedliche Anforderungen. Wir erstellen ein Angebot, das zu Ihrer Schülerzahl und Ihrem Budget passt — faire Staffelpreise, transparent und ohne versteckte Kosten.",
-      "requestQuoteCta": "Angebot anfordern",
-      "bookCta": "Termin vereinbaren"
     },
     "dashboard": {
       "title": "So setzen Schulen",
@@ -2338,32 +2143,32 @@
       "items": [
         {
           "id": "vertretung",
-          "title": "Vertretungsstunden mit Inhalt füllen",
-          "description": "Lehrkraft krank? Schüler öffnen Bea und lernen selbstständig. Kein Lückenfüller, sondern echte Lebensskills. Sie sehen im Dashboard wer was gemacht hat.",
+          "title": "Fill cover lessons with substance",
+          "description": "Teacher off sick? Students open Bea and learn independently. Not a filler, but a real step forward — every minute counts.",
           "mockup": "/Mockup-Macbook/Live-Fortschritt.webp"
         },
         {
           "id": "unterricht",
-          "title": "Im Unterricht gezielt einsetzen",
-          "description": "Projektwoche, Wirtschaftskunde oder fächerübergreifend: Weisen Sie Themen pro Klasse zu und verfolgen Sie den Fortschritt live.",
+          "title": "Use it specifically in lessons",
+          "description": "Project week, economics class or cross-subject: assign topics per class and have students work on them in a structured way.",
           "mockup": "/Mockup-Macbook/Verwalten.webp"
         },
         {
           "id": "hausaufgabe",
-          "title": "Als Hausaufgabe aufgeben",
-          "description": "Schüler üben zu Hause in ihrem Tempo. Sie sehen am nächsten Tag wer geübt hat und wo es hakt — ohne etwas korrigieren zu müssen.",
+          "title": "Assign as homework",
+          "description": "Students practice at home at their own pace. The next day you see who has practiced and where things got stuck.",
           "mockup": "/Mockup-Macbook/Stufen-Tracking.webp"
         },
         {
           "id": "klasse",
-          "title": "Neue Klasse in 2 Minuten einrichten",
-          "description": "CSV hochladen oder Schüler manuell anlegen. Klasse zuweisen, fertig. Keine IT-Abteilung nötig.",
+          "title": "Set up a new class in 2 minutes",
+          "description": "Upload a CSV or add students manually. Assign a class — done. No IT department needed.",
           "mockup": "/Mockup-Macbook/Klasse-erstellen.webp"
         },
         {
           "id": "pdf",
-          "title": "PDF-Reports für Elterngespräche",
-          "description": "Fortschrittsberichte per Klick exportieren. Perfekt für Zeugniskonferenzen, Elternabende und Dokumentation.",
+          "title": "PDF reports for parent meetings",
+          "description": "Export progress reports with a click. Perfect for grading conferences, parent evenings and reports.",
           "mockup": "/Mockup-Macbook/Schueler-PDF.webp"
         }
       ],
@@ -2374,18 +2179,18 @@
       "points": [
         {
           "number": "1",
-          "title": "Finanzbildung ist Allgemeinbildung",
-          "description": "Finanzielle Bildung ist ein wichtiger Teil der Allgemeinbildung. Jeder junge Mensch sollte die Möglichkeit haben, finanzielle Kompetenzen zu erlernen – unabhängig vom familiären Hintergrund."
+          "title": "Financial literacy is general education",
+          "description": "Financial literacy is an important part of general education. Every young person should know the basics to lead a self-determined life."
         },
         {
           "number": "2",
           "title": "Schulden-Prävention",
-          "description": "Statistisch gesehen wird sich mindestens ein:e Schüler:in pro Klasse im Laufe des Lebens überschulden. Hochwertige finanzielle Bildung beugt Überschuldung effektiv vor."
+          "description": "Statistically, at least one student per class will become heavily indebted at some point in their life. Education is the best prevention."
         },
         {
           "number": "3",
           "title": "Chancengerechtigkeit",
-          "description": "Jede:r sollte über Finanzen Bescheid wissen, um sich eine eigene Meinung bilden zu können; unabhängig davon, welche eigenen finanziellen und familiären Ressourcen man mitbringt."
+          "description": "Everyone should know about finances to form their own opinion; otherwise others will do it for you."
         }
       ]
     },
@@ -2395,15 +2200,15 @@
       "subtitle": "Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.",
       "items": [
         {
-          "quote": "Die Fortbildung war äußerst bereichernd und ist absolut empfehlenswert. Der Referentin gelang es hervorragend, ein komplexes Thema lebendig und verständlich darzustellen. Ich freue mich bereits darauf, die Unterlagen in meinem Unterricht einzusetzen.",
+          "quote": "The training was extremely enriching and is absolutely worth recommending. The presenter did an excellent job of bringing a complex topic to life in a clear and understandable way. I am already looking forward to using the materials in my classroom.",
           "author": "Lehrkraft, Gymnasium"
         },
         {
-          "quote": "Die Fortbildung war mega interessant und hat viele praktische und im Unterricht leicht umsetzbare Methoden vermittelt. Die Materialen sind toll aufbereitet und sofort einsetzbar.",
+          "quote": "The training was extremely interesting and shared many practical methods that are easy to use in class. The materials are beautifully prepared and ready to use right away.",
           "author": "Lehrkraft, Realschule"
         },
         {
-          "quote": "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln.",
+          "quote": "Financial education is taught here in a very hands-on way and with plenty of useful application tips. After this, there are really no more reasons not to cover this very important and interesting topic in school.",
           "author": "Lehrkraft, Berufsschule"
         }
       ]
@@ -2414,40 +2219,40 @@
       "items": [
         {
           "id": 1,
-          "question": "Wie lange dauert die Einrichtung?",
-          "answer": "Die Einrichtung geht schnell und unkompliziert. Nach der Beratung richten wir die App für Ihre Schule ein und erstellen Accounts für alle Schüler. Der gesamte Prozess dauert in der Regel nur wenige Tage."
+          "question": "How long does setup take?",
+          "answer": "Setup is quick and straightforward. After the consultation, we set up the app for your school in just a few days. The whole process — from initial contact to the first lesson — typically takes one to two weeks."
         },
         {
           "id": 2,
-          "question": "Benötigen die Schüler eigene Geräte?",
-          "answer": "Nein, BeAFox funktioniert auf allen gängigen Geräten – Smartphones, Tablets und Computern. Die Schüler können die App auf ihren eigenen Geräten nutzen oder auf schuleigenen Geräten."
+          "question": "Do students need their own devices?",
+          "answer": "No — BeAFox works on all common devices: smartphones, tablets and computers. The school can decide whether students use their own devices or school-provided ones."
         },
         {
           "id": 3,
-          "question": "Wie werden die Daten geschützt?",
-          "answer": "Alle Daten werden sicher und DSGVO-konform gespeichert. Wir legen großen Wert auf Datenschutz und Sicherheit. Ihre Schülerdaten sind bei uns in besten Händen."
+          "question": "How is the data protected?",
+          "answer": "All data is stored securely and in line with GDPR. We take data privacy very seriously and have integrated all relevant security measures. Detailed information is available in our privacy policy."
         },
         {
           "id": 4,
           "question": "Können wir BeAFox testen, bevor wir uns entscheiden?",
-          "answer": "Ja, gerne! Wir bieten eine kostenlose Beratung und können Ihnen auch eine Testphase ermöglichen. Kontaktieren Sie uns einfach für weitere Informationen."
+          "answer": "Yes, of course! We offer a free consultation and can also set up a trial phase so you can see how BeAFox works in your school."
         },
         {
           "id": 5,
           "question": "Was passiert, wenn wir BeAFox nicht mehr nutzen möchten?",
-          "answer": "Kein Problem! Sie können BeAFox jederzeit monatlich kündigen. Es gibt keine langfristigen Verträge oder versteckten Kosten."
+          "answer": "No problem! You can cancel BeAFox monthly at any time. There are no long contract commitments. Your data stays with you and can be exported."
         },
         {
           "id": 6,
-          "question": "Gibt es Schulungen für Lehrkräfte?",
-          "answer": "Ja, wir bieten Fortbildungen für Lehrkräfte an, in denen wir das System, das Dashboard und die besten Praktiken für den Einsatz im Unterricht erklären."
+          "question": "Are there trainings for teachers?",
+          "answer": "Yes, we offer training sessions for teachers where we explain the system, the dashboard and the teaching materials. We are also happy to support you with the implementation in your school."
         }
       ],
       "viewAllCta": "Alle FAQs ansehen"
     },
     "cta": {
-      "title": "Bereit, Finanzbildung in Ihre Schule zu bringen?",
-      "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihre Schule.",
+      "title": "Ready to bring financial education to your school?",
+      "subtitle": "Contact us for a no-obligation consultation and receive an individual offer for your school.",
       "cta": "Demo anfordern"
     }
   },
@@ -2737,12 +2542,6 @@
           "location": "Virtual training room"
         }
       ]
-    },
-    "inhouseCta": {
-      "title": "AzubiGo for your company",
-      "description": "Want AzubiGo as an in-house workshop for your apprentices? We come to you — backed by the IHK Academy. From 10 participants, we prepare a tailored quote.",
-      "inhouseButton": "Request in-house quote",
-      "scheduleButton": "Book an appointment"
     }
   },
   "authLogin": {
@@ -3155,11 +2954,11 @@
           },
           {
             "subtitle": "Loss of Right of Withdrawal",
-            "text": "The right of withdrawal expires early if BeAFox has begun performing the service and the consumer (a) has explicitly agreed that BeAFox begins performance before the withdrawal period expires, and (b) has acknowledged awareness of the loss of the right of withdrawal (§ 312g para. 2 sentence 2 German Civil Code). In the event of withdrawal, only the service provided is charged."
+            "text": "The right of withdrawal expires early if BeAFox has begun performing the service and the consumer (a) has explicitly agreed that BeAFox begins performance before the withdrawal period expires, and (b) has acknowledged awareness of the loss of the right of withdrawal (§ 312g para. 2 sentence 2 German Civil Code). If the right of withdrawal expires in this way, only the services already provided up to that point will be charged."
           },
           {
             "subtitle": "Exercise of Right of Withdrawal",
-            "text": "To exercise the right of withdrawal, you must inform BeAFox using an unambiguous statement (e.g., a letter by mail, fax, or email). The statement can be made using our model withdrawal form. You can also use the app settings to cancel your subscription (available in account settings).\n\nAddress:\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nGermany\n\nEmail: info@beafox.app\nFax: +49 (0) 941 XXXXXXX"
+            "text": "To exercise the right of withdrawal, you must inform BeAFox using an unambiguous statement (e.g., a letter by mail, fax, or email). The statement can be made using our model withdrawal form. You can also use the app settings to cancel your subscription (available in account settings).\n\nAddress:\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nGermany\n\nEmail: info@beafox.app\nPhone: +49 178 2723 673"
           },
           {
             "subtitle": "Model Withdrawal Form",
@@ -3249,7 +3048,7 @@
             "text": "It is particularly prohibited to: use screenshots or content for commercial purposes; copy, reverse engineer, or manipulate the app; use automated systems (bots, scrapers) to use the app; introduce malware; rent, pledge, or give away the app or parts of it; overload the system or conduct denial-of-service attacks."
           },
           {
-            "subtitle": "Right to Object",
+            "subtitle": "Enforcement and Reservation of Rights",
             "text": "Violations of these provisions may lead to immediate account suspension. BeAFox reserves the right to take legal action, including pursuing damage claims."
           }
         ]
@@ -3420,7 +3219,7 @@
         "content": [
           {
             "subtitle": "Cancellation by Consumers",
-            "text": "Consumers can cancel subscriptions at any time with one month's notice to the end of the billing period (month or year). Cancellation can be made through: (1) cancellation button in the app (account settings); (2) in writing by mail or email to info@beafox.app; (3) by phone upon request. Cancellation must be confirmed in writing."
+            "text": "Consumers can cancel subscriptions at any time with one month's notice to the end of the billing period (month or year). Cancellation can be made through: (1) cancellation button in the app (account settings); (2) in writing by mail or email to info@beafox.app; (3) by phone upon request. BeAFox confirms receipt of the cancellation in text form (e.g., by email)."
           },
           {
             "subtitle": "Cancellation Button pursuant to § 312k German Civil Code",
@@ -3525,7 +3324,7 @@
           },
           {
             "subtitle": "EU AI Act",
-            "text": "BeAFox aligns with the requirements of the EU AI Act (Regulation 2024/1689, when in effect) regarding transparency, risk mitigation, and documentation of AI systems."
+            "text": "BeAFox aligns with the requirements of the EU AI Act (Regulation (EU) 2024/1689) regarding transparency, risk mitigation, and documentation of AI systems. Bea is classified as a low- to medium-risk AI system."
           },
           {
             "subtitle": "Right to Explanation",
@@ -3539,8 +3338,8 @@
         "iconId": "handshake",
         "content": [
           {
-            "subtitle": "EU Online Dispute Resolution Platform",
-            "text": "The European Commission has established a platform for out-of-court online dispute resolution (ODR platform). Consumers can use these free platforms to resolve disputes:\n\nURL: https://ec.europa.eu/consumers/odr/\n\nBeAFox is willing to participate in proceedings on this platform."
+            "subtitle": "Note on the EU Online Dispute Resolution Platform",
+            "text": "The European Commission's Online Dispute Resolution (ODR) platform was permanently discontinued on 20 July 2025 and is no longer available. Consumers with disputes can contact BeAFox directly at info@beafox.app or consider the arbitration centers mentioned below."
           },
           {
             "subtitle": "Consumer Arbitration Centers",
@@ -3552,7 +3351,7 @@
           },
           {
             "subtitle": "Court Proceedings",
-            "text": "Should a dispute not be resolved out-of-court, consumers can contact the appropriate courts. For consumers, the statutory court jurisdiction rules apply. For businesses, the place of jurisdiction is the District Court (Amtsgericht) or Regional Court (Landgericht) Regensburg, where BeAFox is located."
+            "text": "Should a dispute not be resolved out of court, consumers can turn to the competent courts. For consumers, the statutory rules on jurisdiction apply. For business customers, the place of jurisdiction is the District Court (Amtsgericht) or Regional Court (Landgericht) Regensburg, where BeAFox has its registered office."
           }
         ]
       },
@@ -3637,6 +3436,122 @@
           {
             "subtitle": "Contract Language",
             "text": "These Terms are drafted in the German language and constitute the binding version. Translations into other languages serve for information purposes only and are not binding. In case of discrepancies between the German and a translated version, the German version shall prevail."
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "title": "Scope for our online shop",
+        "iconId": "building",
+        "content": [
+          {
+            "subtitle": "Applicability",
+            "text": "Sections 22 to 28 apply additionally to all orders for physical goods placed via our online shop (e.g. at shop.beafox.app or the shop areas on beafox.app). In case of conflicts with the preceding clauses, sections 22-28 prevail for goods purchases."
+          },
+          {
+            "subtitle": "Seller",
+            "text": "Seller is BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Germany (full details in our imprint). Contract language is German."
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "title": "Conclusion of contract in the shop",
+        "iconId": "handshake",
+        "content": [
+          {
+            "subtitle": "Offer and acceptance",
+            "text": "Products shown in the shop do not constitute a binding offer but an invitation to place an order. By clicking the button labelled \"Order with obligation to pay\" (or equivalent) you submit a binding offer to purchase the products in your cart."
+          },
+          {
+            "subtitle": "Order confirmation and acceptance",
+            "text": "We will confirm receipt of your order by email without delay. This confirmation of receipt does not constitute acceptance. The contract is only concluded when we expressly declare acceptance (shipping confirmation) or ship the goods."
+          },
+          {
+            "subtitle": "Storage of contract text",
+            "text": "We store the contract text. These terms are available at beafox.app/agb; your order details are additionally sent to you by email."
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "title": "Prices, shipping costs and payment",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "subtitle": "End prices",
+            "text": "All prices in the shop are end prices including statutory VAT. Any shipping costs are shown separately during checkout."
+          },
+          {
+            "subtitle": "Deliveries outside the EU",
+            "text": "For deliveries to countries outside the EU, additional taxes (e.g. import VAT) and customs duties may apply, payable by the recipient unless expressly stated otherwise."
+          },
+          {
+            "subtitle": "Available payment methods",
+            "text": "Available payment methods are displayed during checkout. The purchase price becomes due upon conclusion of the contract."
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "title": "Delivery and print-on-demand",
+        "iconId": "wrench",
+        "content": [
+          {
+            "subtitle": "Fulfilment by Printful",
+            "text": "Our shop products are produced, picked and shipped on a print-on-demand basis by our fulfilment partner Printful Inc. Production only starts after receipt of your order."
+          },
+          {
+            "subtitle": "Delivery times",
+            "text": "Total delivery time consists of production time plus shipping time. Current estimates are available in our shipping policy at beafox.app/versand."
+          },
+          {
+            "subtitle": "Unavailability",
+            "text": "If a product is exceptionally unavailable we will inform you without delay. Any payments already made will be refunded promptly."
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Retention of title",
+        "iconId": "shield",
+        "content": [
+          {
+            "text": "The delivered goods remain our property until they have been paid for in full."
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "title": "Liability for defects on goods",
+        "iconId": "scale",
+        "content": [
+          {
+            "subtitle": "Statutory warranty",
+            "text": "Statutory warranty rights apply. The limitation period for warranty claims on newly manufactured goods is two years from receipt of the goods."
+          },
+          {
+            "subtitle": "Notification of defects",
+            "text": "Obvious defects should be reported to us within a reasonable period after discovery; statutory consumer warranty rights remain unaffected."
+          },
+          {
+            "subtitle": "Guarantee",
+            "text": "Any guarantee beyond statutory warranty applies only if expressly granted for an item."
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "title": "Right of withdrawal in the shop",
+        "iconId": "rotate",
+        "content": [
+          {
+            "subtitle": "Statutory right of withdrawal",
+            "text": "Consumers have a 14-day right of withdrawal from receipt of the goods for purchases in the shop. The full information notice and the model withdrawal form are available at beafox.app/widerrufsbelehrung."
+          },
+          {
+            "subtitle": "Exception for personalised items",
+            "text": "For items personalised to your specifications or clearly tailored to your personal needs (e.g. print with a custom name, text or motif), the right of withdrawal is excluded under § 312g (2) no. 1 of the German Civil Code. We point this out separately before you place such an order."
           }
         ]
       }
@@ -4272,11 +4187,6 @@
       "titleHighlight": "Financial calculators",
       "description": "Choose the right calculator - filtered by category or via search."
     },
-    "appBanner": {
-      "title": "Bea can do much more",
-      "description": "In the BeAFox app, Bea guides you through real financial situations - from your first salary to your tax return. Playful and free.",
-      "cta": "Download app for free"
-    },
     "faq": {
       "titlePre": "Frequently",
       "titleHighlight": "Asked Questions",
@@ -4305,341 +4215,6 @@
       "button": "Download BeAFox",
       "secondaryButton": "Discover Unlimited"
     }
-  },
-  "shop": {
-    "meta": {
-      "title": "Shop – BeAFox Merch",
-      "description": "Discover exclusive BeAFox merchandise: T-shirts, hoodies, mugs, stickers, and more. Show your BeAFox passion!",
-      "ogImageAlt": "BeAFox Merch — Bea with merchandise",
-      "keywords": [
-        "BeAFox Merch",
-        "BeAFox Shop",
-        "BeAFox Merchandise",
-        "financial education merch",
-        "BeAFox T-shirt",
-        "BeAFox hoodie"
-      ]
-    },
-    "structuredData": {
-      "itemListName": "BeAFox Merch Shop"
-    },
-    "images": {
-      "mascotAlt": "Bea with BeAFox merch — official merch store"
-    },
-    "hero": {
-      "badge": "BeAFox Merch Shop",
-      "title": "BeAFox Merch Shop",
-      "subtitle": "Show your BeAFox passion with our exclusive merchandise"
-    },
-    "categories": {
-      "all": "All",
-      "clothing": "Clothing",
-      "drinkware": "Mugs",
-      "stickers": "Stickers",
-      "accessories": "Accessories",
-      "art": "Wall Art"
-    },
-    "empty": "No products found in this category.",
-    "addToCart": "Add to cart",
-    "addedToCart": "Added!",
-    "sale": "Sale",
-    "backToShop": "Back to shop",
-    "productNotFound": "Product not found",
-    "products": {
-      "tshirt": {
-        "name": "BeAFox Classic T-Shirt",
-        "description": "Premium cotton T-shirt with the BeAFox logo. Soft, comfortable, and perfect for everyday wear."
-      },
-      "hoodie": {
-        "name": "BeAFox Classic Hoodie",
-        "description": "Cozy hoodie with BeAFox branding. Your go-to companion for chilly days and relaxed evenings."
-      },
-      "mug": {
-        "name": "BeAFox Mug",
-        "description": "Ceramic mug with BeAFox design. Perfect for your morning coffee or tea."
-      },
-      "stickers": {
-        "name": "BeAFox Sticker Pack",
-        "description": "Set of 5 cool BeAFox stickers. Bea in different poses for your laptop, phone & more."
-      },
-      "totebag": {
-        "name": "BeAFox Tote Bag",
-        "description": "Sturdy tote bag with BeAFox print. Sustainable and stylish — for shopping, uni, or the office."
-      },
-      "phonecase": {
-        "name": "BeAFox Phone Case",
-        "description": "Protect your smartphone with a BeAFox case. Slim design, solid protection."
-      },
-      "poster": {
-        "name": "BeAFox Poster",
-        "description": "Motivational poster with BeAFox design. Premium print on high-quality paper."
-      },
-      "notebook": {
-        "name": "BeAFox Notebook",
-        "description": "High-quality notebook with BeAFox design"
-      }
-    },
-    "detail": {
-      "color": "Color",
-      "size": "Size",
-      "variant": "Variant",
-      "shipping": "3-5 day delivery",
-      "secure": "Secure payment",
-      "returns": "14-day returns",
-      "related": "You might also like"
-    },
-    "cart": {
-      "title": "Cart",
-      "close": "Close cart",
-      "empty": "Your cart is empty",
-      "remove": "Remove item",
-      "decrease": "Decrease quantity",
-      "increase": "Increase quantity",
-      "subtotal": "Subtotal",
-      "shippingNote": "Shipping calculated at checkout",
-      "checkout": "Checkout",
-      "processing": "Loading...",
-      "clear": "Clear cart",
-      "products": {
-        "tshirt": "BeAFox Classic T-Shirt",
-        "hoodie": "BeAFox Classic Hoodie",
-        "mug": "BeAFox Mug",
-        "stickers": "BeAFox Sticker Pack",
-        "totebag": "BeAFox Tote Bag",
-        "phonecase": "BeAFox Phone Case",
-        "poster": "BeAFox Poster",
-        "notebook": "BeAFox Notebook"
-      }
-    },
-    "success": {
-      "title": "Thank you for your order!",
-      "subtitle": "Your order is being prepared and will be shipped soon.",
-      "shipping": {
-        "title": "Shipping in 3-5 business days",
-        "description": "You'll receive an email with a tracking link once your order has been shipped."
-      },
-      "confirmation": {
-        "title": "Order confirmation via email",
-        "description": "A confirmation has been sent to your email address."
-      },
-      "reference": "Order reference",
-      "continueShopping": "Continue shopping",
-      "backToHome": "Back to home"
-    },
-    "faq": {
-      "title": "Frequently asked questions",
-      "items": [
-        {
-          "q": "How long does shipping take?",
-          "a": "Shipping takes 3-5 business days after your order is placed. We produce locally in Germany, so delivery routes are short."
-        },
-        {
-          "q": "Which payment methods are accepted?",
-          "a": "We accept credit card, PayPal, and SEPA direct debit."
-        },
-        {
-          "q": "Is there a return policy?",
-          "a": "Yes, you can return items within 14 days of receiving them. See our terms for details."
-        },
-        {
-          "q": "Where are the products made?",
-          "a": "Our products are made by local print partners in Germany — short routes, less CO₂."
-        }
-      ]
-    }
-  },
-  "blog": {
-    "meta": {
-      "title": "Blog",
-      "description": "BeAFox blog — articles, updates, and news about financial education, our app, and the BeAFox community.",
-      "ogTitle": "BeAFox blog — articles & updates",
-      "ogDescription": "Articles, updates, and news about financial education and the BeAFox community."
-    },
-    "hero": {
-      "badge": "Our blog",
-      "title": {
-        "pre": "Discover how BeAFox",
-        "highlight": "comes to life",
-        "post": "behind the scenes"
-      },
-      "subtitle": "Learn more about our journey, events, updates, and how we’re revolutionizing financial education for young people."
-    },
-    "specialMomentsSection": {
-      "title": {
-        "pre": "Our",
-        "highlight": "special moments"
-      },
-      "subtitle": "The most important milestones of our journey with BeAFox."
-    },
-    "allArticlesSection": {
-      "title": {
-        "pre": "All our",
-        "highlight": "articles"
-      },
-      "subtitle": "Explore all our blog posts and updates.",
-      "imageAltFallback": "Blog article {id}"
-    },
-    "specialMoments": [
-      {
-        "id": 1,
-        "title": "We won!",
-        "description": "We’re proud to have won the Deggendorfer Gründerpreis! Despite nerves and a last-minute pitch update, our work paid off—around 60% of the audience voted for us. Thanks to the whole team for the great organization and the €2,500 prize. We’re excited for the next steps with BeAFox!",
-        "image": "/assets/Blogs/Blog1.webp",
-        "date": "Nov 20, 2025",
-        "category": "Events"
-      },
-      {
-        "id": 2,
-        "title": "BeAFox at Ed.One in Munich!",
-        "description": "This is what financial education feels like in the classroom. At the Ed.One Summit in Munich, students, teachers, and trainers tested BeAFox live—from the dashboard to the learning app and worksheets. We received valuable feedback, made exciting connections, and presented our pitch. BeAFox shows how simple financial education can be. We’re looking for you!",
-        "image": "/assets/Blogs/Blog2.webp",
-        "date": "Oct 9, 2025",
-        "category": "Events"
-      },
-      {
-        "id": 3,
-        "title": "BeAFox wins Startup Summit!",
-        "description": "BeAFox achieved 2nd place at Startup Summit Germany—our first official award! For the first time, we pitched as a duo with a new pitch, deck, and an even clearer vision. After two years of hard work, it shows that perseverance, courage, and teamwork pay off. Thanks to Volksbank am Württemberg eG for this great event!",
-        "image": "/assets/Blogs/Blog3.webp",
-        "date": "Sep 29, 2025",
-        "category": "Events"
-      }
-    ],
-    "articles": [
-      {
-        "id": 19,
-        "image": "/assets/Blogs/19.webp",
-        "title": "Startchancen program",
-        "description": "Big news: BeAFox is part of the Startchancen program! This allows schools to fully fund our learning app through subsidies. For us, it’s a strong signal that financial education belongs in everyday school life. Many of us would have loved an offer like this in school—practical, playful, and relevant. Now we can reach schools that previously had little access to such opportunities, bringing us closer to real equal opportunities.",
-        "category": "News"
-      },
-      {
-        "id": 18,
-        "image": "/assets/Blogs/18.webp",
-        "title": "Rütteltest with the Economic Junior Chamber Regensburg",
-        "description": "At the Rütteltest of the Wirtschaftsjunioren Regensburg we pitched BeAFox for over 20 minutes and then received more than an hour of honest, in-depth feedback from six experts. Our entire business model was constructively challenged—exactly what we wanted. We’re taking away many impulses, set new priorities, and decided to join the organization right away. An experience we recommend to any startup.",
-        "category": "Events"
-      },
-      {
-        "id": 17,
-        "image": "/assets/Blogs/17.webp",
-        "title": "Our first workshop.",
-        "description": "Our first financial education workshop for apprentices—combined with the BeAFox app—was a great success. Instead of one-off theory, we focus on practical exercises: building personal budgets, opening a brokerage account, planning first investments, understanding insurance, and using a tax return. The best part: with BeAFox, participants can keep learning after the workshop and deepen their knowledge. Companies get a sustainable education offering.",
-        "category": "News"
-      },
-      {
-        "id": 16,
-        "image": "/assets/Blogs/16.webp",
-        "title": "BeAFox at DemoNight in Nuremberg",
-        "description": "BeAFox at BayStartup’s DemoNight in Nuremberg: right when we arrived, a founder approached us who knew us from social media—a small moment that motivated us a lot. The evening was full of exciting conversations, new contacts, and innovative ideas. Events like this remind us why we build BeAFox: to solve real problems and bring financial education to where it truly matters in young people’s everyday lives.",
-        "category": "Events"
-      },
-      {
-        "id": 15,
-        "image": "/assets/Blogs/15.webp",
-        "title": "What an experience: YFC",
-        "description": "What an experience: we attended YFC in Munich with BeAFox, the first conference of the Young Founders Network. Between inspiring speakers, many startups, and great networking, we showcased our learning app at our own booth. The organization, atmosphere, and conversations impressed us. A special highlight: the announcement of the Young Founders Fund—a chance we definitely want to pursue.",
-        "category": "Events"
-      },
-      {
-        "id": 14,
-        "image": "/assets/Blogs/14.webp",
-        "title": "BeAFox at the Summit of the Entrepreneurship Foundation",
-        "description": "BeAFox at the Summit of the Stiftung Entrepreneurship in Berlin—an inspiring weekend. Again and again we heard: “Financial education is important!” and felt how big the need for modern solutions is. We presented our app, received consistently positive feedback, and had intense conversations with people who take the topic as seriously as we do. This event strengthened our vision even more.",
-        "category": "Events"
-      },
-      {
-        "id": 13,
-        "image": "/assets/Blogs/13.webp",
-        "title": "BeAFox at the BÖB Congress",
-        "description": "At the congress of Bündnis Ökonomische Bildung Deutschland, there was a lot of discussion about making financial education a standalone school subject—with new textbooks, courses, and training. I asked: is that really enough? With teacher shortages and a topic many people avoid talking about? I believe we also need new paths: digital tools, gamification, and project-based learning. That’s exactly where BeAFox comes in—as a complement, not a competitor to teaching.",
-        "category": "News"
-      },
-      {
-        "id": 12,
-        "image": "/assets/Blogs/12.webp",
-        "title": "We did it",
-        "description": "With BeAFox we achieved 2nd place at Startup Summit Germany! Our first team pitch together, a new deck, a new concept—and an award including prize money. After two intense years of testing, discarding, and improving, this moment feels like a strong sign: our idea works. A huge thank you to everyone supporting us and to Volksbank am Württemberg eG.",
-        "category": "News"
-      },
-      {
-        "id": 11,
-        "image": "/assets/Blogs/11.webp",
-        "title": "I pitched BeAFox at Innovation Day",
-        "description": "My first pitch in English—five minutes at Innovation Day in front of an international audience. Even though we didn’t win this time, it was an incredibly valuable experience. I presented BeAFox on a new stage, gained new perspectives on financial education, and made many exciting connections. Moments like these show how important it is to be brave, try new things, and continuously improve.",
-        "category": "Events"
-      },
-      {
-        "id": 10,
-        "image": "/assets/Blogs/10.webp",
-        "title": "BeAFox at ChamlandSchau",
-        "description": "Left school at 18, no plan for life, and built up debt—that’s how my story began. Today I’ve learned how to handle money and built a startup with BeAFox that tackles exactly that. At ChamlandSchau, our small booth stood among big companies—and still we had nonstop conversations. It shows: young people feel that financial education is missing and are looking for answers.",
-        "category": "Events"
-      },
-      {
-        "id": 9,
-        "image": "/assets/Blogs/9.webp",
-        "title": "Release in App Store & Play Store",
-        "description": "It’s happening: BeAFox is officially available in the App Store and Play Store! After more than 1.5 years of development, testing, and countless adjustments, we went live—three months earlier than planned. Our goal: make financial education as simple and accessible as possible, without ads or hidden sales interests. Now every download, every feedback, and every recommendation helps us reach more young people.",
-        "category": "News"
-      },
-      {
-        "id": 8,
-        "image": "/assets/Blogs/8.webp",
-        "title": "Donau-Post article",
-        "description": "BeAFox in the newspaper—this time with a very special headline: “We need to talk about money!” Donau-Post published an in-depth article about us and how an idea became a real learning offer for schools. After 1.5 years of work, doubts, and many late nights, this moment is special. It shows that the time invested pays off—and our mission is reaching more and more people.",
-        "category": "News"
-      },
-      {
-        "id": 7,
-        "image": "/assets/Blogs/7.webp",
-        "title": "A new logo for BeAFox",
-        "description": "Feedback is gold: our first logo felt improvised and not professional enough—so we acted. Together with a designer, we created a new BeAFox logo: more modern, clear, friendly, and perfectly aligned with our target group. For us this is more than a design update. It’s a symbol of how seriously we take our mission and how important a consistent brand presence is for schools, companies, and users.",
-        "category": "News"
-      },
-      {
-        "id": 6,
-        "image": "/assets/Blogs/6.webp",
-        "title": "Mittelbayerische Zeitung",
-        "description": "“From smartphone to finance fox” — that was the headline of our first major article in Mittelbayerische Zeitung. A goosebump moment to see our vision in print. Focus: why financial education is so important for young people, how BeAFox supports teachers in class, and why we intentionally stay independent from ads and sales interests. A huge thank you to everyone involved!",
-        "category": "News"
-      },
-      {
-        "id": 5,
-        "image": "/assets/Blogs/5.webp",
-        "title": "BeAFox in the classroom for the first time",
-        "description": "Today was special: BeAFox was used in real class for the first time—at the State Secondary School Neutraubling. Together with 25 students we tried financial education with the app. Result: 24 out of 25 want BeAFox to be a fixed part of their lessons. For us, a strong signal that young people want digital, interactive formats—and that our approach fits the classroom.",
-        "category": "Events"
-      },
-      {
-        "id": 4,
-        "image": "/assets/Blogs/4.webp",
-        "title": "Another successful pitch for BeAFox",
-        "description": "At Ideenpitch Region Nürnberg we presented BeAFox outside Regensburg for the first time. The improved pitch was well received and helped make our idea clearer and more tangible. We especially enjoyed the many conversations with people from education and business. Our goal: bring BeAFox to schools in time for the Bavarian school start—so financial education finally arrives where it belongs.",
-        "category": "Events"
-      },
-      {
-        "id": 3,
-        "image": "/assets/Blogs/3.webp",
-        "title": "My first pitch — in front of 200+ people",
-        "description": "My very first pitch—and straight away in front of more than 200 people at the “Tigers” of TechBase Regensburg! I presented our BeAFox vision, why financial education is so important for young people, and how our app addresses that gap. The conversations afterward were especially valuable: teachers, students, and companies recognized themselves in the story and showed interest in collaborating.",
-        "category": "Events"
-      },
-      {
-        "id": 2,
-        "image": "/assets/Blogs/2.webp",
-        "title": "It’s official. We went to the notary",
-        "description": "BeAFox is officially founded: we went to the notary and signed the articles of association—a major milestone after months of ideas, feedback, and testing. Our goal remains clear: make financial education understandable, independent, and playful for young people. Next up: trademark registration, more pilot projects with schools and companies, and the next big step toward a breakthrough.",
-        "category": "News"
-      },
-      {
-        "id": 1,
-        "image": "/assets/Blogs/1.webp",
-        "title": "What a day: DENK.Summit",
-        "description": "With BeAFox we presented our startup in the startup area of DENK.Summit—with overwhelmingly positive feedback: “insanely beautiful booth”, “cool branding, you really stand out”. In just two hours, 50+ pupils and students tested the app. Almost everyone confirmed: financial education barely happens in schools today. This experience once again showed us how important our mission is.",
-        "category": "Events"
-      }
-    ]
   },
   "ratgeber": {
     "meta": {
@@ -4819,7 +4394,7 @@
           "Do not share personal financial data such as account numbers, PINs, TAN numbers, credit card data, or other sensitive information in public areas",
           "Never share passwords, access credentials, or authentication codes – BeAFox staff will never ask you for these",
           "Respect other users' privacy: Do not share their personal data, images, or private information without explicit consent",
-          "Report suspicious activities, phishing attempts, unusual account access, or security vulnerabilities immediately to support@beafox.app",
+          "Report suspicious activities, phishing attempts, unusual account access, or security vulnerabilities immediately to info@beafox.app",
           "Use a strong, unique password for your BeAFox account and enable two-factor authentication if available",
           "Understand that BeAFox processes your data in accordance with GDPR and our privacy policy – find privacy information at beafox.app/privacy"
         ]
@@ -5079,15 +4654,8 @@
             "text": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."
           },
           {
-            "subtitle": "Online Dispute Resolution (ODR)",
-            "text": "The European Commission provides a platform for online dispute resolution (ODR):",
-            "link": {
-              "text": "https://ec.europa.eu/consumers/odr/",
-              "href": "https://ec.europa.eu/consumers/odr/"
-            }
-          },
-          {
-            "text": "Our email address is: info@beafox.app"
+            "subtitle": "Note on Online Dispute Resolution",
+            "text": "The European Commission's central Online Dispute Resolution (ODR) platform was permanently discontinued on 20 July 2025 and is no longer available. Consumers can contact us directly at info@beafox.app in case of disputes."
           }
         ]
       },
@@ -5520,7 +5088,7 @@
         "content": [
           {
             "subtitle": "Google Analytics (GA4)",
-            "text": "We use Google Analytics, a web analytics tool from Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google Analytics processes data about your user behavior on our website using cookies. The collected data is used to analyze the use of our website, create reports and to help us improve our website. The ID of our Google Analytics property is: G-J0GWX92CNH."
+            "text": "We use Google Analytics, a web analytics tool provided by Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Ireland) and its parent company Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google Analytics processes data about your user behavior on our website by means of cookies. The collected data is used to analyze website usage, generate reports, and help us improve our website."
           },
           {
             "subtitle": "Consent for Google Analytics",
@@ -5544,7 +5112,7 @@
           },
           {
             "subtitle": "Ahrefs Analytics",
-            "text": "We use Ahrefs Analytics (Ahrefs Pte. Ltd., 11 Changi Business Park, Singapore 486048), a web analytics tool for analyzing website traffic and search engine performance. Ahrefs processes pseudonymous data about your user behavior using cookies."
+            "text": "We use Ahrefs Analytics (Ahrefs Pte. Ltd., 11 Changi Business Park Central 1, Singapore 486048), a web analytics tool for analyzing website traffic and search engine performance. Ahrefs processes pseudonymous data about your user behavior using cookies. Because Ahrefs processes personal data in Singapore (a third country without an adequacy decision), we have concluded Standard Contractual Clauses (SCCs) with Ahrefs in accordance with Art. 46 GDPR."
           },
           {
             "subtitle": "Consent for Ahrefs",
@@ -5556,7 +5124,7 @@
           },
           {
             "subtitle": "Vercel Analytics (Web Vitals)",
-            "text": "Additionally, we use Vercel Analytics from Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, USA). Vercel Analytics is a privacy-friendly analytics tool that does not set cookies and does not collect personal data. It only measures technical metrics such as page load times and Core Web Vitals."
+            "text": "In addition, we use Vercel Web Analytics from Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, USA). Vercel Web Analytics is a privacy-friendly analytics tool that sets no cookies and does not collect directly identifying personal data. It measures aggregated technical metrics such as page load times and Core Web Vitals. A transfer to the USA (third country) cannot be fully ruled out; we have therefore concluded a Data Processing Agreement pursuant to Art. 28 GDPR and Standard Contractual Clauses (SCCs) pursuant to Art. 46 GDPR with Vercel."
           },
           {
             "subtitle": "No consent required for Vercel Analytics",
@@ -5570,7 +5138,7 @@
       },
       {
         "id": 14,
-        "title": "Fonts (Google Fonts)",
+        "title": "Fonts",
         "content": [
           {
             "subtitle": "Self-hosting without external connection",
@@ -5591,28 +5159,28 @@
         "title": "Use of Artificial Intelligence (AI)",
         "content": [
           {
-            "subtitle": "Bea - Your AI-based learning assistant",
-            "text": "The BeAFox app offers an AI-powered learning assistant called \"Bea\". Bea uses artificial intelligence to provide you with personalized learning tips, answer questions and support your learning process."
+            "subtitle": "Bea – your AI-powered learning assistant",
+            "text": "The BeAFox app provides an AI-powered learning assistant named “Bea”. Bea supports you with questions on financial education, gives explanatory hints and accompanies your learning. Bea is not human – it is software."
           },
           {
-            "subtitle": "Data relationships in AI use",
-            "text": "To improve response quality, Bea may analyze your learning and usage data (e.g. previous answers, learning progress). All data is processed within our systems."
+            "subtitle": "AI providers used",
+            "text": "To operate Bea, we process your inputs (prompts), conversation history and, where required, aggregated learning context via the API of OpenAI Ireland Ltd. (1st Floor, The Liffey Trust Centre, 117–126 Sheriff Street Upper, Dublin 1, Ireland), which acts as a processor under Art. 28 GDPR. OpenAI may transmit data to its parent company OpenAI, L.L.C. (USA), a third country without an unrestricted adequacy decision. We have entered into a Data Processing Agreement (DPA) and EU Standard Contractual Clauses (SCCs) under Art. 46 GDPR with OpenAI. Data submitted via OpenAI’s API is, in line with OpenAI’s Enterprise/API policies, not used to train OpenAI’s general foundation models."
           },
           {
-            "subtitle": "No profiling under Art. 22 GDPR",
-            "text": "We refrain from automated decision-making through Bea. This means: Bea does NOT make legally binding decisions about you. Bea provides recommendations; the final decision is always yours."
+            "subtitle": "Data processed by Bea",
+            "text": "We process in particular: your prompt or message inputs, Bea’s responses, a pseudonymous user/conversation ID and – where required for response quality – aggregated learning context (e.g. recently completed lesson). We expressly ask you not to share particularly sensitive data (e.g. health, account or TAN data) with Bea."
           },
           {
-            "subtitle": "Transparency and human contact",
-            "text": "If you are unsure about an AI-generated response or would like human review, please contact us at any time at info@beafox.app. Our team will review your request and provide you with a definitive answer."
+            "subtitle": "No solely automated decision-making within the meaning of Art. 22 GDPR",
+            "text": "Bea does not make legally binding decisions about you and no decisions with similarly significant effects. Learning recommendations and personalization serve learning support only; no solely automated individual decision-making within the meaning of Art. 22 GDPR takes place. You can reach a human team member at info@beafox.app at any time."
           },
           {
             "subtitle": "Legal basis",
-            "text": "Processing by Bea is carried out on the basis of Art. 6 para. 1 point b GDPR (contract performance - provision of the AI assistant) and Art. 6 para. 1 point f GDPR (legitimate interest in improving services)."
+            "text": "Processing in connection with Bea is based on Art. 6 (1) lit. b GDPR (performance of the contract – provision of the AI assistant) and on our legitimate interest in security, stability and improvement of the service (Art. 6 (1) lit. f GDPR)."
           },
           {
-            "subtitle": "EU AI Act (Regulation 2024/1689)",
-            "text": "Our use of Bea complies with the EU Regulation on Artificial Intelligence (EU AI Act, Regulation 2024/1689). Bea is operated as a system of low to medium risk level. We are committed to transparency regarding the use of this technology."
+            "subtitle": "EU AI Act",
+            "text": "Our use of Bea is aligned with Regulation (EU) 2024/1689 (AI Act). Bea is categorised as an AI system with low to medium risk; based on our assessment it does not qualify as a “high-risk AI system” under Annex III. We label AI-generated content and inform users about the limitations of automated responses (Art. 50 AI Act)."
           }
         ]
       },
@@ -5686,7 +5254,7 @@
         "title": "Automated decision-making",
         "content": [
           {
-            "text": "As a responsible company, we refrain from automated decision-making or profiling. Your personal data will not be used for automated decision-making processes that could disadvantage you."
+            "text": "No solely automated decision-making with legal effect or similarly significant impact within the meaning of Art. 22 GDPR takes place. Personalization and recommendation logic (e.g. the learning path within the app or hints from Bea) serve learning support only and do not result in any solely automated individual decision-making that would be detrimental to you."
           }
         ]
       },
@@ -5721,6 +5289,93 @@
           {
             "subtitle": "Compliance with Art. 8 GDPR",
             "text": "Our processes ensure full compliance with Art. 8 GDPR, in particular with regard to the consent of minors and the prevention of unauthorized data processing."
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "title": "Order processing via Shopify (shop)",
+        "content": [
+          {
+            "text": "Our online shop is operated on the platform of Shopify International Limited, Victoria Buildings, 1-2 Haddington Road, Dublin 4, D04 XN32, Ireland (\"Shopify\"). For every order Shopify processes personal data on our behalf (in particular name, shipping address, billing address, email address, optional phone number, order details and payment status)."
+          },
+          {
+            "subtitle": "Legal basis",
+            "text": "Legal basis is Art. 6(1)(b) GDPR (performance of the contract). We have a data processing agreement with Shopify under Art. 28 GDPR. For transfers to third countries (e.g. the USA for group companies and sub-processors), the EU Commission's Standard Contractual Clauses apply under Art. 46(2)(c) GDPR."
+          },
+          {
+            "subtitle": "Further information",
+            "details": [
+              "Shopify privacy notice: https://www.shopify.com/legal/privacy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "title": "Print-on-demand fulfilment by Printful",
+        "content": [
+          {
+            "text": "To produce and ship our shop products (t-shirts, hoodies, bags etc.) we transmit the data required to fulfil the order (name, shipping address, optional email for shipping notifications, order content) to Printful Inc., 11025 Westlake Drive, Charlotte, NC 28273, USA."
+          },
+          {
+            "subtitle": "Legal basis and third-country transfer",
+            "text": "Legal basis is Art. 6(1)(b) GDPR (performance of the contract). A data processing agreement including Standard Contractual Clauses (Art. 46(2)(c) GDPR) is in place to safeguard the transfer to the USA. Further information: https://www.printful.com/policies/privacy"
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "title": "Payment processing in the shop",
+        "content": [
+          {
+            "text": "Several payment methods are available at checkout. Depending on the method you choose, your payment data is transmitted to the respective payment service provider."
+          },
+          {
+            "subtitle": "Shopify Payments",
+            "text": "Card payments and Apple Pay / Google Pay are processed via Shopify Payments (Shopify International Ltd., c/o Shopify Payments Europe Ltd., Dublin, Ireland). Legal basis: Art. 6(1)(b) GDPR."
+          },
+          {
+            "subtitle": "PayPal",
+            "text": "When you choose PayPal your payment data is transmitted to PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, 2449 Luxembourg. Legal basis: Art. 6(1)(b) GDPR. Privacy notice: https://www.paypal.com/de/legalhub/privacy-full"
+          },
+          {
+            "subtitle": "Other payment providers",
+            "text": "If further payment methods are offered at checkout, the respective providers' privacy notices apply and are linked during the order process."
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "title": "Customer account and order history",
+        "content": [
+          {
+            "text": "If you create a shop customer account, we store the data you provide (email, address, order history) to perform the contract and to simplify future orders. Legal basis is Art. 6(1)(b) GDPR."
+          },
+          {
+            "subtitle": "Deletion",
+            "text": "You can delete your customer account at any time yourself or ask us informally at info@beafox.app to do so. Statutory retention obligations (German Commercial Code, Tax Code) for order data remain unaffected."
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "title": "Marketing cookies and analytics in the shop",
+        "content": [
+          {
+            "text": "In the shop we use marketing cookies and tracking technologies only with your explicit consent (Art. 6(1)(a) GDPR, § 25(1) TTDSG). Consent is collected via our cookie banner shown on first visit."
+          },
+          {
+            "subtitle": "Tools in use",
+            "list": [
+              "Meta Pixel (Meta Platforms Ireland Ltd., Ireland) for measurement and optimisation of ads",
+              "Google Analytics 4 / Google Ads (Google Ireland Ltd., Ireland) for statistical analysis and conversion tracking",
+              "Other third-party providers listed in the cookie consent dialog"
+            ]
+          },
+          {
+            "subtitle": "Withdrawal",
+            "text": "You can withdraw your consent at any time for the future by clicking \"Cookie settings\" in the footer and disabling the respective category."
           }
         ]
       }
@@ -5782,7 +5437,7 @@
     "hero": {
       "badge": "Consumer Rights",
       "title": "Right of Withdrawal",
-      "subtitle": "Information about your statutory right of withdrawal under §§ 355 ff. BGB (German Civil Code) for distance contracts for digital content."
+      "subtitle": "Information on your statutory right of withdrawal under §§ 355 ff. of the German Civil Code - for contracts on digital content (app subscriptions) as well as for purchases in our online shop."
     },
     "sections": [
       {
@@ -5919,6 +5574,79 @@
             "text": "Ideally, send your withdrawal by email to info@beafox.app. You will receive a confirmation within 48 hours (business days). Please include your name, the email address associated with your account and the date of the contract in your withdrawal."
           }
         ]
+      },
+      {
+        "id": 7,
+        "title": "Right of withdrawal for goods from our shop",
+        "iconId": "rotate",
+        "content": [
+          {
+            "subtitle": "Notice",
+            "text": "Sections 1 to 6 of this notice apply to contracts on digital content and subscriptions of our app. For orders of physical goods in our online shop, sections 7 to 10 below apply."
+          },
+          {
+            "subtitle": "Right of withdrawal",
+            "text": "You have the right to withdraw from this contract within fourteen days without giving any reason. The withdrawal period expires fourteen days after the day on which you or a third party (other than the carrier) indicated by you acquired physical possession of the last goods."
+          },
+          {
+            "subtitle": "Exercise",
+            "text": "To exercise the right of withdrawal you must inform us (BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, email: info@beafox.app, phone: +49 178 2723 673) of your decision to withdraw from this contract by an unequivocal statement (e.g. a letter sent by post or an email). You may use the model withdrawal form below, but it is not mandatory."
+          },
+          {
+            "subtitle": "Meeting the deadline",
+            "text": "To meet the withdrawal deadline it is sufficient for you to send your communication concerning your exercise of the right of withdrawal before the withdrawal period has expired."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Effects of withdrawal for goods purchases",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "subtitle": "Reimbursement",
+            "text": "If you withdraw from this contract, we shall reimburse to you all payments received from you, including the costs of delivery (with the exception of the supplementary costs resulting from your choice of a type of delivery other than the least expensive type of standard delivery offered by us), without undue delay and in any event not later than 14 days from the day on which we are informed about your decision to withdraw from this contract."
+          },
+          {
+            "subtitle": "Means of reimbursement",
+            "text": "We will carry out such reimbursement using the same means of payment as you used for the initial transaction, unless you have expressly agreed otherwise; in any event, you will not incur any fees as a result of such reimbursement."
+          },
+          {
+            "subtitle": "Right of retention",
+            "text": "We may withhold reimbursement until we have received the goods back or you have supplied evidence of having sent back the goods, whichever is the earliest."
+          },
+          {
+            "subtitle": "Return of goods",
+            "text": "You shall send back the goods or hand them over to us or our authorised return service provider without undue delay and in any event not later than 14 days from the day on which you communicate your withdrawal from this contract to us. The deadline is met if you send back the goods before the period of 14 days has expired."
+          },
+          {
+            "subtitle": "Cost of return",
+            "text": "You will have to bear the direct cost of returning the goods."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Compensation for loss of value",
+        "iconId": "alert",
+        "content": [
+          {
+            "text": "You are only liable for any diminished value of the goods resulting from handling other than what is necessary to establish the nature, characteristics and functioning of the goods."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Exclusion of the right of withdrawal for personalised items",
+        "iconId": "xCircle",
+        "content": [
+          {
+            "text": "The right of withdrawal does not apply to contracts for the supply of goods that are not pre-fabricated and that are manufactured based on an individual choice or decision by the consumer, or which are clearly tailored to the personal needs of the consumer (§ 312g (2) no. 1 of the German Civil Code)."
+          },
+          {
+            "text": "We point out this exclusion separately on the affected items before you place your order."
+          }
+        ]
       }
     ],
     "contact": {
@@ -5998,7 +5726,7 @@
               "Text-based alternative descriptions (alt attributes) for informative images",
               "Sufficient color contrast in accordance with WCAG 2.1 AA (contrast ratio of at least 4.5:1 for normal text)",
               "No exclusively color-based information conveyance",
-              "Self-hosting of fonts (Google Fonts via next/font) – no external dependencies",
+              "Self-hosting of the Poppins font via next/font – no external dependencies on Google",
               "Focus indicators for interactive elements",
               "Structured form fields with labels and error messages"
             ]
@@ -6041,7 +5769,7 @@
               "JavaScript / TypeScript",
               "WAI-ARIA 1.2",
               "Next.js 14 (React 18) with server and client components",
-              "next/font for self-hosted fonts"
+              "next/font for the self-hosted Poppins font"
             ]
           },
           {
@@ -6172,55 +5900,139 @@
       "imprint": "Imprint"
     }
   },
-  "magazinContent": {
-    "hub": {
-      "title": "Bea's Magazine",
-      "subtitle": "Valuable insights around financial education for companies, schools, and training organizations - from experts for practical professionals.",
-      "searchPlaceholder": "Search articles...",
-      "featuredTitle": "Recommended articles",
-      "latestTitle": "Latest articles",
-      "allArticles": "View all posts",
-      "clusterTitle": "Discover topics",
-      "articlesCount": "{count} articles",
-      "newsletterTitle": "Don't miss a post - Get Bea's insights straight to your inbox",
-      "newsletterText": "Monthly. No spam. Unsubscribe anytime.",
-      "newsletterButton": "Subscribe",
-      "ctaTitle": "Introduce financial education in your company?",
-      "ctaText": "Find out in 15 minutes how BeAFox works - with live demo and ROI calculation.",
-      "ctaButton": "Book free demo",
-      "filterAll": "All posts"
+  "shipping": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Home"
     },
-    "article": {
-      "readingTime": "{minutes} min read",
-      "publishedAt": "Published on {date}",
-      "updatedAt": "Updated on {date}",
-      "tocTitle": "Table of contents",
-      "authorTitle": "About the author",
-      "moreFromAuthor": "More articles by {name}",
-      "relatedTitle": "Related articles",
-      "faqTitle": "Frequently asked questions",
-      "shareTitle": "Share article",
-      "downloadTitle": "Free download",
-      "downloadGatedText": "Enter your email to download the file.",
-      "downloadButton": "Download now",
-      "backToHub": "<- Back to magazine"
+    "company": {
+      "name": "BeAFox UG (haftungsbeschränkt)",
+      "street": "Siemensweg 2",
+      "city": "93073 Neutraubling",
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
     },
-    "cluster": {
-      "articlesIn": "Articles in {cluster}",
-      "filterAll": "All types",
-      "sortNewest": "Newest first",
-      "sortPopular": "Most popular",
-      "sortReadingTime": "Shortest read time",
-      "relatedClusters": "Related topics",
-      "emptyState": "No articles in this category yet. Check back soon!"
+    "legalLinks": {
+      "title": "More legal information",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "withdrawal": "Right of withdrawal",
+      "imprint": "Imprint"
     },
-    "types": {
-      "guide": "Guide",
-      "article": "Article",
-      "caseStudy": "Case study",
-      "whitepaper": "Whitepaper",
-      "template": "Template",
-      "data": "Study"
+    "meta": {
+      "title": "Shipping policy | BeAFox Shop",
+      "description": "Delivery times, shipping costs and tracking for orders from the BeAFox shop. Fulfilment by Printful, shipping within the EU and to Switzerland."
+    },
+    "hero": {
+      "badge": "Shipping",
+      "title": "Shipping policy",
+      "subtitle": "Delivery times, shipping costs and tracking for orders from our print-on-demand shop."
+    },
+    "tableOfContents": {
+      "title": "Contents"
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Fulfilment partner",
+        "iconId": "package",
+        "content": [
+          {
+            "text": "All shop products are produced, picked and shipped on a print-on-demand basis by our fulfilment partner Printful Inc. Production only begins after we receive your order."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Delivery areas",
+        "iconId": "globe",
+        "content": [
+          {
+            "text": "We currently deliver to the following regions:",
+            "list": [
+              "Germany",
+              "Austria",
+              "Switzerland",
+              "Other EU member states (France, Italy, Netherlands, Belgium, Spain etc. - see selector at checkout)"
+            ]
+          },
+          {
+            "text": "If your country is not selectable at checkout, please contact info@beafox.app - we review individual cases on request."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Processing and delivery times",
+        "iconId": "clock",
+        "content": [
+          {
+            "text": "Total delivery time consists of production time plus shipping time. Estimates:",
+            "list": [
+              "Production time (Printful): 2 - 7 business days",
+              "Shipping within Germany: 3 - 5 business days",
+              "Shipping within EU: 5 - 10 business days",
+              "Shipping to Switzerland: 5 - 10 business days (customs handling may extend this)"
+            ]
+          },
+          {
+            "text": "These are estimates and not guaranteed delivery dates. Seasonal effects (e.g. November/December) may extend production time; we will note this on the product page where applicable."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Shipping costs",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "text": "Applicable shipping costs are shown separately at checkout before you complete your order. They depend on the destination, total weight and (where applicable) the shipping method you choose."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Tracking",
+        "iconId": "tracking",
+        "content": [
+          {
+            "text": "Once your order leaves the Printful warehouse, you will receive a shipping confirmation by email containing a tracking link. You can use it to check the current status of your shipment at any time."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Shipments outside the EU / customs",
+        "iconId": "alert",
+        "content": [
+          {
+            "text": "For deliveries outside the European Union (e.g. to Switzerland or the United Kingdom) additional customs duties, import VAT and service charges may apply, payable by the recipient."
+          },
+          {
+            "text": "Before placing your order we recommend checking the exact conditions with the responsible customs authority."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Damaged or faulty deliveries",
+        "iconId": "shield",
+        "content": [
+          {
+            "text": "If your order arrives damaged, faulty or incomplete, please contact us within 14 days of receipt at info@beafox.app with a photo of the damage and your order number. We will arrange a replacement or refund together with Printful immediately."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Questions about delivery?",
+      "text": "For any questions about your order, the delivery or tracking, the fastest way to reach us is by email. We reply within one business day.",
+      "cta": "Get in touch"
+    },
+    "lastUpdated": {
+      "stand": "Last updated: 12 May 2026",
+      "notice": "We update this shipping policy when material changes occur. The version valid at the time of your order applies."
     }
   }
 }

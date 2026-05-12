@@ -8,15 +8,11 @@
 // Für alle anderen Pages wird die normale Website-Chrome gerendert.
 //
 // Die Entscheidung passiert client-seitig via `usePathname`.
-// `ShopCartProvider` wird im Root-Layout eine Ebene höher gewrappt,
-// damit der Context auch auf Bea-AI verfügbar bleibt, falls später
-// dort Shop-Elemente auftauchen.
 // ─────────────────────────────────────────────────────────────
 
 import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ShopCart from "@/components/ShopCart";
 
 // CONSTANTS
 const STANDALONE_PREFIXES = ["/bea-ai"] as const;
@@ -57,7 +53,6 @@ export default function ConditionalChrome({
       <main id="main-content" className="min-h-screen">
         {children}
       </main>
-      <ShopCart />
       <Footer />
     </>
   );

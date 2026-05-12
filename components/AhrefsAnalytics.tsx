@@ -19,7 +19,6 @@ function getPageCategory(pathname: string): string {
   if (pathname.startsWith("/ratgeber")) return "content";
   if (pathname.startsWith("/news")) return "content";
   if (pathname.startsWith("/finanzrechner")) return "tools";
-  if (pathname.startsWith("/shop")) return "shop";
   if (pathname.startsWith("/ueber-uns")) return "about";
   if (pathname.startsWith("/kontakt")) return "contact";
   if (pathname.startsWith("/faq")) return "support";
@@ -95,11 +94,6 @@ export function trackRegistrationStart() {
 /** Track demo booking click */
 export function trackDemoBooking(target: string) {
   trackAhrefsEvent("demo_booking", { target });
-}
-
-/** Track shop add to cart */
-export function trackAddToCart(product: string) {
-  trackAhrefsEvent("add_to_cart", { product });
 }
 
 /** Track Bea AI chat interaction */

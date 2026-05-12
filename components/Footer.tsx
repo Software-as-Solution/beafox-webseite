@@ -283,7 +283,8 @@ export default function Footer() {
                       <a
                         href={link.href}
                         className={LINK_CLASS}
-                        rel="noopener"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {t(`products.${link.key}`)}
                       </a>

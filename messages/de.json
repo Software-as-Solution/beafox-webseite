@@ -67,7 +67,9 @@
       "cookies_subtitle": "Steuert, was auf der Webseite gespeichert und gemessen wird.",
       "ai_title": "KI-Training mit Bea",
       "ai_subtitle": "Betrifft nur deine Chats mit Bea — kannst du hier jederzeit widerrufen."
-    }
+    },
+    "collapse": "Einstellungen ausblenden",
+    "expand": "Einstellungen anzeigen"
   },
   "bea_chat_gate": {
     "title": "Hi, ich bin Bea 💛",
@@ -145,7 +147,27 @@
       "business": "BeAFox für Unternehmen",
       "partnerIhk": "BeAFox × IHK Akademie",
       "partnerEduplaces": "BeAFox × Eduplaces",
-      "partnerBildungshaus": "BeAFox × Bildungshaus"
+      "partnerBildungshaus": "BeAFox × Bildungshaus",
+      "panel": {
+        "bildungshaus": {
+          "description": "Partnerschaft mit dem Bildungshaus: Finanzkompetenz für Lernende in Kursen und Programmen — klar, praxisnah und auf Augenhöhe."
+        },
+        "business": {
+          "description": "Ganzheitliche Finanzbildung für Azubis und Teams: App, optionale Workshops und Insights über Dashboards — für moderne Ausbildungsbetriebe."
+        },
+        "eduplaces": {
+          "description": "Partnerschaft mit Eduplaces: Finanzbildung als Teil moderner Lern- und Bildungsprogramme — verständlich, interaktiv und begleitet von Bea."
+        },
+        "ihk": {
+          "description": "Gemeinsam mit der IHK Akademie: bewährte Standards, praxisnahe Inhalte und Workshops, die junge Talente im Arbeitsalltag stärken."
+        },
+        "schools": {
+          "description": "Finanzbildung für den Unterricht: strukturiert, gamifiziert und mit Monitoring für Lehrkräfte — gemacht für Schulen und Bildungseinrichtungen."
+        },
+        "unlimited": {
+          "description": "Voller Zugang zu Bea, allen Lernmodulen und Premium-Features — für alle, die Finanzbildung privat und flexibel vertiefen wollen."
+        }
+      }
     },
     "language": {
       "label": "Sprache",
@@ -215,13 +237,15 @@
         "titlePre": "Meistgelesene",
         "titleHighlight": "Beiträge",
         "title": "Meistgelesene Beiträge",
-        "description": "Die beliebtesten Studien und Analysen unserer Redaktion."
+        "description": "Die beliebtesten Studien und Analysen unserer Redaktion.",
+        "badge": "Empfehlungen"
       },
       "allArticles": {
         "title": "Entdecke das ganze Magazin",
         "subtitle": "Durchstöbere Studien, Diskussionsbeiträge und Analysen",
         "titlePre": "Entdecke das ganze",
-        "titleHighlight": "Magazin"
+        "titleHighlight": "Magazin",
+        "badge": "Alle Artikel"
       },
       "products": {
         "titlePre": "BeAFox in der",
@@ -250,6 +274,37 @@
       "articleCard": {
         "readingTime": "{minutes} Min. Lesezeit",
         "readMore": "Lesen"
+      },
+      "newsletter": {
+        "badge": "Newsletter",
+        "button": "Abonnieren",
+        "emailAriaLabel": "E-Mail-Adresse",
+        "emailPlaceholder": "Deine E-Mail-Adresse",
+        "privacyLink": "Datenschutzerklärung",
+        "privacyPrefix": "Mit deiner Anmeldung akzeptierst du unsere",
+        "subtitle": "Erhalte Beas beste Insights jeden Monat direkt in dein Postfach. Kein Spam, jederzeit abbestellbar.",
+        "title": "Verpasse keinen Artikel"
+      },
+      "seo": {
+        "cards": {
+          "business": {
+            "text": "Financial Wellness als Mitarbeiter-Benefit. ROI-Modelle, DSGVO-konforme Umsetzung und Best Practices.",
+            "title": "Für Unternehmen"
+          },
+          "linkLabel": "Mehr erfahren",
+          "schools": {
+            "text": "Lehrplankompatible Finanzbildung mit gamifizierten Inhalten. Praxistipps und Forschungsergebnisse.",
+            "title": "Für Schulen"
+          },
+          "training": {
+            "text": "Azubis emotional und fachlich abholen. Erfolgsbeispiele und Umfrage-Insights aus der Praxis.",
+            "title": "Für Ausbildungsbetriebe"
+          }
+        },
+        "footerAnd": "und",
+        "footerPrefix": "Alle Artikel werden von Experten verfasst und regelmäßig aktualisiert. Folge uns auf",
+        "subtitle": "Dein Anlaufpunkt für fundierte Insights und praxisnahe Tipps rund um Finanzbildung.",
+        "title": "Was ist Beas Magazin?"
       }
     },
     "article": {
@@ -268,36 +323,6 @@
       "copyLinkTitle": "Link kopieren",
       "linkedinLabel": "LinkedIn",
       "xLabel": "X"
-    }
-  },
-  "cookie": {
-    "banner": {
-      "title": "Cookie-Einstellungen",
-      "text": "Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Einige Cookies sind notwendig für den Betrieb der Website, während andere uns helfen, diese Website und die Nutzererfahrung zu verbessern (Tracking-Cookies). Sie können selbst entscheiden, ob Sie die Cookies zulassen möchten.",
-      "more": "Weitere Informationen",
-      "settings": "Einstellungen",
-      "reject": "Ablehnen",
-      "acceptAll": "Alle akzeptieren"
-    },
-    "modal": {
-      "title": "Cookie-Einstellungen",
-      "intro": "Sie können Ihre Cookie-Präferenzen jederzeit anpassen. Weitere Informationen finden Sie in unserer",
-      "privacy": "Datenschutzerklärung",
-      "necessary": {
-        "title": "Notwendige Cookies",
-        "alwaysOn": "Immer aktiv",
-        "text": "Diese Cookies sind für das ordnungsgemäße Funktionieren der Website erforderlich und können nicht deaktiviert werden. Sie werden normalerweise nur als Reaktion auf Ihre Aktionen gesetzt, z.B. beim Festlegen Ihrer Datenschutzeinstellungen."
-      },
-      "analytics": {
-        "title": "Analyse-Cookies",
-        "text": "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie Informationen anonymisiert sammeln und melden. Dies hilft uns, unsere Website zu verbessern."
-      },
-      "marketing": {
-        "title": "Marketing-Cookies",
-        "text": "Diese Cookies werden verwendet, um Ihnen relevante Werbung und Marketinginhalte anzuzeigen. Sie können auch verwendet werden, um die Anzahl der Anzeigen zu begrenzen und die Wirksamkeit von Werbekampagnen zu messen."
-      },
-      "cancel": "Abbrechen",
-      "save": "Einstellungen speichern"
     }
   },
   "notFound": {
@@ -320,6 +345,18 @@
       {
         "href": "/unternehmen",
         "label": "BeAFox für Unternehmen"
+      },
+      {
+        "href": "/unternehmen",
+        "label": "Für Unternehmen"
+      },
+      {
+        "href": "/faq",
+        "label": "FAQ"
+      },
+      {
+        "href": "/kontakt",
+        "label": "Kontakt"
       }
     ]
   },
@@ -341,7 +378,8 @@
       "faq": "FAQ",
       "contact": "Kontakt",
       "about": "Über uns",
-      "home": "Startseite"
+      "home": "Startseite",
+      "shop": "Shop"
     },
     "products": {
       "title": "Produkte",
@@ -351,7 +389,8 @@
       "business": "BeAFox für Unternehmen",
       "ihk": "BeAFox × IHK Akademie",
       "eduplaces": "BeAFox × Eduplaces",
-      "bildungshaus": "BeAFox × Bildungshaus"
+      "bildungshaus": "BeAFox × Bildungshaus",
+      "clubs": "BeAFox für Vereine"
     },
     "legal": {
       "title": "Rechtliches",
@@ -377,57 +416,10 @@
       "title": "Magazin",
       "hub": "Beas Magazin",
       "allArticles": "Alle Artikel anzeigen"
-    }
-  },
-  "magazinContent": {
-    "hub": {
-      "title": "Beas Magazin",
-      "subtitle": "Wertvolle Insights rund um Finanzbildung für Unternehmen, Schulen und Ausbildungsbetriebe — von Expert:innen für Praxis-Profis.",
-      "searchPlaceholder": "Artikel durchsuchen...",
-      "featuredTitle": "Empfohlene Artikel",
-      "latestTitle": "Neueste Artikel",
-      "allArticles": "Alle Beiträge anzeigen",
-      "clusterTitle": "Themen entdecken",
-      "articlesCount": "{count} Artikel",
-      "newsletterTitle": "Verpasse keinen Beitrag — Hol dir Beas Insights direkt in dein Postfach",
-      "newsletterText": "Monatlich. Kein Spam. Jederzeit abbestellbar.",
-      "newsletterButton": "Abonnieren",
-      "ctaTitle": "Finanzbildung in Ihrem Unternehmen einführen?",
-      "ctaText": "Erfahren Sie in 15 Minuten, wie BeAFox funktioniert — mit Live-Demo und ROI-Berechnung.",
-      "ctaButton": "Kostenlose Demo buchen",
-      "filterAll": "Alle Beiträge"
     },
-    "article": {
-      "readingTime": "{minutes} Min. Lesezeit",
-      "publishedAt": "Veröffentlicht am {date}",
-      "updatedAt": "Aktualisiert am {date}",
-      "tocTitle": "Inhaltsverzeichnis",
-      "authorTitle": "Über den Autor",
-      "moreFromAuthor": "Mehr Artikel von {name}",
-      "relatedTitle": "Verwandte Artikel",
-      "faqTitle": "Häufig gestellte Fragen",
-      "shareTitle": "Artikel teilen",
-      "downloadTitle": "Kostenloser Download",
-      "downloadGatedText": "Geben Sie Ihre E-Mail ein, um die Datei herunterzuladen.",
-      "downloadButton": "Jetzt herunterladen",
-      "backToHub": "← Zurück zum Magazin"
-    },
-    "cluster": {
-      "articlesIn": "Artikel in {cluster}",
-      "filterAll": "Alle Typen",
-      "sortNewest": "Neueste zuerst",
-      "sortPopular": "Beliebteste",
-      "sortReadingTime": "Kürzeste Lesezeit",
-      "relatedClusters": "Verwandte Themen",
-      "emptyState": "Noch keine Artikel in dieser Kategorie. Schauen Sie bald wieder vorbei!"
-    },
-    "types": {
-      "guide": "Leitfaden",
-      "article": "Artikel",
-      "caseStudy": "Praxisbericht",
-      "whitepaper": "Whitepaper",
-      "template": "Vorlage",
-      "data": "Studie"
+    "brand": {
+      "logoAlt": "BeAFox Logo",
+      "tagline": "Die erste unabhängige, spielerische Lern-App für Finanzbildung."
     }
   },
   "home": {
@@ -444,7 +436,12 @@
         "download": "App herunterladen",
         "partner": "Demo anfordern"
       },
-      "aiAvatarAlt": "Bea Profilbild"
+      "aiAvatarAlt": "Bea Profilbild",
+      "mockups": {
+        "pathAlt": "BeAFox Lernpfad — Schritt für Schritt zur gamifizierten Finanzbildung",
+        "rankingAlt": "BeAFox Rangliste — Gamification in der Finanz-App",
+        "trainingAlt": "BeAFox Finanz-App Trainings-Screen — Lernmodule für Finanzbildung"
+      }
     },
     "problemSection": {
       "eyebrowPre": "Kennst du ",
@@ -467,7 +464,8 @@
         "Alle Inhalte ignorieren deine Lebenssituation",
         "Fachbegriffe statt verständlicher Alltagssprache",
         "Statisch und unflexibel, passt sich nicht an dich an",
-        "Theorie ohne Handlungsempfehlung für deinen Alltag"
+        "Theorie ohne Handlungsempfehlung für deinen Alltag",
+        "Kein Feedback, keine Anleitung, keine echten nächsten Schritte"
       ],
       "mascotAlt": "Bea, dein KI-Begleiter",
       "card1Title": "Zu viele Tipps?",
@@ -505,7 +503,8 @@
         "beaMessage": "Bei deinem Einkommen würde ich 50€ auf dein Notgroschen-Konto legen und 150€ in deinen ETF-Sparplan stecken. Soll ich dir das einrichten?",
         "statusOnline": "Online — antwortet sofort",
         "liveLabel": "Live Demo"
-      }
+      },
+      "titlePost": "."
     },
     "promiseSection": {
       "eyebrow": "Du veränderst dich:",
@@ -568,21 +567,12 @@
     "stats": {
       "privateUsers": "Aktive Privatnutzer",
       "schools": {
-        "pre": "Schulen & Ausbildungsbetriebe"
-      }
-    },
-    "partnersCarousel": {
-      "alt": "Partner {index}"
-    },
-    "mockupShowcase": {
-      "titleLine1": "Finanzbildung war gestern.",
-      "titleLine2": "Heute:\nKI-basierte Handlungsfähigkeit!",
-      "subtitle": "BeAFox verbindet interaktive App-Features mit intelligenter Begleitung durch Bea - für Entscheidungen, die im Alltag wirklich ankommen."
-    },
-    "simpleStepsSection": {
-      "title": {
-        "pre": "So einfach",
-        "highlight": "geht's"
+        "pre": "Schulen & Ausbildungsbetriebe",
+        "post": "nutzen BeAFox"
+      },
+      "learners": {
+        "post": "nutzen BeAFox",
+        "pre": "Schüler, Studenten und Azubis, die"
       }
     },
     "beaChatDemo": {
@@ -835,7 +825,13 @@
     "useCases": {
       "unlimited": {
         "title": "BeAFox Unlimited",
-        "description": "Die Premium-Version für alle, die ihre Finanzbildung auf das nächste Level bringen wollen."
+        "description": "Die Premium-Version für alle, die ihre Finanzbildung auf das nächste Level bringen wollen.",
+        "features": [
+          "Exklusive Premium-Inhalte",
+          "Aktive Community",
+          "Persönliche Lernpfade",
+          "Unbegrenzter Zugang"
+        ]
       },
       "business": {
         "title": "BeAFox für Unternehmen",
@@ -848,7 +844,13 @@
         ],
         "trustNote": "Bereits von 10+ Unternehmen genutzt",
         "ctaPrimary": "Mehr erfahren",
-        "ctaSecondary": "Mehr erfahren"
+        "ctaSecondary": "Mehr erfahren",
+        "features": [
+          "Employer Branding",
+          "Individuelle Workshops",
+          "Mitarbeiter-Zertifikate",
+          "Unternehmens-Dashboards"
+        ]
       },
       "schools": {
         "title": "BeAFox für Schulen",
@@ -861,7 +863,13 @@
         ],
         "trustNote": "Bereits an 10+ Schulen im Einsatz",
         "ctaPrimary": "Mehr erfahren",
-        "ctaSecondary": "Mehr erfahren"
+        "ctaSecondary": "Mehr erfahren",
+        "features": [
+          "DSGVO-konform",
+          "Präventiver Ansatz",
+          "Unterrichtsmaterialien",
+          "Motivierende Lernmethoden"
+        ]
       }
     },
     "experienceSection": {
@@ -872,38 +880,6 @@
       "paragraph1": "Wir waren selbst Azubis – jung, aufgeregt, endlich eigenes Geld. Doch ohne Plan haben wir jeden Cent verbrannt. Was als Freiheit begann, wurde schnell zu echtem Stress. Das Problem war nie fehlendes Wissen, sondern dass uns niemand gesagt hat, was wir konkret tun sollen.",
       "paragraph2": "Genau deshalb haben wir BeAFox gebaut. Nicht noch eine Lern-App, sondern einen KI-Begleiter, der junge Menschen durch echte Finanzsituationen führt. Vom ersten Gehalt bis zur Steuererklärung & Investieren",
       "paragraph3": "Wenn auch nur eine Person durch BeAFox einen Fehler weniger macht, dann hat sich alles gelohnt."
-    },
-    "ecosystem": {
-      "title": "Finanzbildungs-Ökosystem",
-      "left": {
-        "anytime": {
-          "title": "Finanzbildung jederzeit",
-          "text": "Lerne wann und wo du willst. Ob auf dem Smartphone in der Bahn, am Laptop zu Hause oder auf dem Tablet in der Pause. BeAFox passt sich deinem Alltag an. Dein Fortschritt wird automatisch synchronisiert, sodass du nahtlos zwischen Geräten wechseln kannst."
-        },
-        "action": {
-          "title": "Finanzielle Handlungsfähigkeit",
-          "text": "Wir vermitteln nicht nur Wissen, sondern echte Handlungskompetenz. Damit jede Person Finanzen im echten Leben sicher anwenden kann – von Budgetplanung über Verträge bis hin zu wichtigen Alltagsentscheidungen."
-        },
-        "school": {
-          "title": "Finanzbildung in der Schule",
-          "text": "BeAFox ist speziell für den Einsatz im Unterricht entwickelt. Lehrkräfte können den Lernfortschritt ihrer Klasse verfolgen und spielerische Wettbewerbe starten. So kann Finanzbildung auch außerhalb des Lehrplans unterrichtet werden."
-        }
-      },
-      "right": {
-        "training": {
-          "title": "Finanzbildung in Ausbildungsbetrieben",
-          "text": "Auszubildende erhalten mit BeAFox praxisnahe Finanzbildung, die direkt im Berufsalltag anwendbar ist. Betriebe können ihren Nachwuchs gezielt fördern und zeigen, dass ihnen die finanzielle Zukunft ihrer Auszubildenden wichtig ist."
-        },
-        "school": {
-          "title": "Finanzbildung in Schulen",
-          "text": "BeAFox ist speziell für den Einsatz im Unterricht entwickelt. Lehrkräfte können den Lernfortschritt ihrer Klasse verfolgen und spielerische Wettbewerbe starten. So kann Finanzbildung auch außerhalb des Lehrplans unterrichtet werden."
-        }
-      },
-      "mockups": {
-        "phoneAlt": "BeAFox Smartphone Mockup",
-        "laptopAlt": "BeAFox Macbook Mockup",
-        "tabletAlt": "BeAFox iPad Mockup"
-      }
     },
     "howItWorks": {
       "titlePre": "BeAFox kann",
@@ -918,37 +894,65 @@
       "stufen": {
         "title": "Stufen",
         "description": "Wähle frei aus was du lernen möchtest. Unsere Stufen-Struktur gibt dir die Flexibilität, Themen nach deinen Interessen und Bedürfnissen zu erkunden. Egal ob Anfänger oder Fortgeschrittener, bei BeAFox findest du die passende Stufe für dich und kannst in deinem eigenen Tempo lernen.",
-        "highlights": ["Flexibel lernen", "Für jedes Level", "Eigenes Tempo"]
+        "highlights": [
+          "Flexibel lernen",
+          "Für jedes Level",
+          "Eigenes Tempo"
+        ]
       },
       "lernpfad": {
         "title": "Lernpfad",
         "description": "Folge einem strukturierten Lernpfad, der dich Schritt für Schritt durch alle wichtigen Finanzthemen führt. Du weißt immer wo du stehst und was als Nächstes kommt. Der Lernpfad zeigt dir deinen Fortschritt visuell an und hilft dir, den Überblick zu behalten.",
-        "highlights": ["Strukturiert", "Schritt für Schritt", "Personalisiert"]
+        "highlights": [
+          "Strukturiert",
+          "Schritt für Schritt",
+          "Personalisiert"
+        ]
       },
       "lektion": {
         "title": "Lektionen",
         "description": "Lerne Schritt für Schritt alles, was du über Finanzen wissen musst. Unsere interaktiven Lektionen vermitteln komplexe Themen einfach und verständlich. Von Budgetplanung über Sparen bis hin zu Investitionen. Wir decken alle wichtigen Bereiche ab und kombinieren Videos, Texte und interaktive Elemente.",
-        "highlights": ["5 Min. Lektionen", "Praxisnah", "Sofort anwendbar"]
+        "highlights": [
+          "5 Min. Lektionen",
+          "Praxisnah",
+          "Sofort anwendbar"
+        ]
       },
       "quiz": {
         "title": "Quiz",
         "description": "Nach der Theorie kommt die Praxis. Teste dein Wissen mit interaktiven Quizzen und vertiefe das Gelernte. Durch sofortiges Feedback lernst du aus deinen Fehlern und kannst gezielt nacharbeiten. Mit jedem erfolgreich abgeschlossenen Quiz sammelst du Punkte und steigst in der Rangliste auf.",
-        "highlights": ["Wissen testen", "Sofort Feedback", "XP sammeln"]
+        "highlights": [
+          "Wissen testen",
+          "Sofort Feedback",
+          "XP sammeln"
+        ]
       },
       "rangliste": {
         "title": "Rangliste",
         "description": "Vergleiche dich mit anderen Lernenden und motiviere dich durch freundschaftlichen Wettbewerb. Sammle Punkte, erreiche neue Level und werde zum Finanz-Experten. Verschiedene Kategorien und Zeiträume sorgen dafür, dass jeder eine faire Chance hat, ganz oben zu stehen.",
-        "highlights": ["Gamification", "Wettbewerb", "Motivation"]
+        "highlights": [
+          "Gamification",
+          "Wettbewerb",
+          "Motivation"
+        ]
       },
       "missionen": {
         "title": "Missionen & Ziele",
         "description": "Erfülle spannende Missionen und erreiche deine persönlichen Ziele. Die Missionen reichen von täglichen Herausforderungen bis hin zu langfristigen Zielen. Jede erfolgreich abgeschlossene Mission wird belohnt und bringt dich deinem großen Ziel näher. Setze dir eigene Ziele oder nimm an vordefinierten Missionen teil.",
-        "highlights": ["Tägliche Ziele", "Belohnungen", "Gewohnheiten"]
+        "highlights": [
+          "Tägliche Ziele",
+          "Belohnungen",
+          "Gewohnheiten"
+        ]
       },
       "profil": {
         "title": "Profil",
         "description": "Sammle Statistiken über deinen Lernfortschritt und erhalte deinen persönlichen Fox Score. Dein Profil zeigt dir alle deine Leistungen: abgeschlossene Lektionen, erreichte Punkte und bestandene Quizze. Der Fox Score ist dein persönlicher Indikator für dein Finanzwissen und steigt mit jedem Fortschritt.",
-        "highlights": ["Fortschritt sehen", "Statistiken", "Erfolge feiern"]
+        "highlights": [
+          "Fortschritt sehen",
+          "Statistiken",
+          "Erfolge feiern"
+        ]
       }
     },
     "whyFinance": {
@@ -1041,29 +1045,6 @@
         "book": "Termin vereinbaren"
       }
     },
-    "contentHub": {
-      "title": "Behind the scenes",
-      "subtitle": {
-        "line1": "Ein Blick hinter die Kulissen:",
-        "highlight": "Unsere Stories & alle Neuigkeiten"
-      },
-      "items": [
-        {
-          "id": "news",
-          "title": "News",
-          "description": "Stories, Events und Artikel. So entsteht und wächst BeAFox.",
-          "href": "/news",
-          "cta": "Zu den News"
-        },
-        {
-          "id": "appUpdates",
-          "title": "App-Updates",
-          "description": "Versionen, Features und Fixes der BeAFox-App auf einen Blick.",
-          "href": "/updates",
-          "cta": "Zum Changelog"
-        }
-      ]
-    },
     "faqAccordionLabel": "Häufig gestellte Fragen",
     "stickyMobileCta": {
       "title": "BeAFox: Finanzen durchgespielt",
@@ -1090,7 +1071,8 @@
       "rating": "5.0",
       "avatarAlt": "Bea Maskottchen",
       "trustedByPrefix": "Vertraut von",
-      "trustedByHighlight": "10.000+ Menschen"
+      "trustedByHighlight": "10.000+ Menschen",
+      "trustedBySuffix": "in Deutschland"
     }
   },
   "faq": {
@@ -1559,6 +1541,10 @@
         {
           "name": "Prof. Dr. Marcel Dulgeridis",
           "role": "CFO"
+        },
+        {
+          "name": "Nico Moos",
+          "role": "CSO"
         }
       ]
     },
@@ -1776,127 +1762,6 @@
       "ratgeber": "Finanz-Ratgeber"
     }
   },
-  "ihk": {
-    "hero": {
-      "badge": "BeAFox × IHK Akademie",
-      "title": "Finanzielle Handlungsfähigkeit",
-      "titleHighlight": "für Azubis & Fachkräfte",
-      "description": "Gemeinsam mit der IHK Akademie haben wir einen Workshop entwickelt, mit dem Azubis und Fachkräfte ihre Finanzen einfach durchspielen.",
-      "ctaPartner": "Workshop anfragen",
-      "ctaBook": "Termin buchen"
-    },
-    "trustSignal": {
-      "preTitle": "IHK Akademie Partnerschaft",
-      "highlight": "offiziell zertifiziert"
-    },
-    "images": {
-      "problemMascotAlt": "Finanzielle Unsicherheit bei Azubis",
-      "solutionMascotAlt": "BeAFox × IHK Akademie Workshop-Lösung"
-    },
-    "problemSolution": {
-      "problemHeaderPre": "Kein Plan, kein Budget,",
-      "problemHeaderHighlight": "kein Durchblick",
-      "problemBullets": [
-        "Azubis wissen nicht, was von ihrem Gehalt übrig bleibt",
-        "Steuer, Versicherung, Vorsorge — alles Fremdwörter",
-        "Finanzstress senkt Leistung und erhöht Abbruchquoten",
-        "Klassische Schulungen sind zu theoretisch und veraltet"
-      ],
-      "problemShockStatValue": "78%",
-      "problemShockStatHeadline": "der Azubis fühlen sich finanziell unsicher",
-      "problemShockStatBody": "Die meisten Berufseinsteiger haben nie gelernt, mit Geld umzugehen. Das erste Gehalt wird schnell zur Überforderung — mit Folgen für Betrieb und Azubi.",
-      "solutionHeaderPre": "Der Workshop, der",
-      "solutionHeaderHighlight": "wirklich ankommt",
-      "solutionText": "Gemeinsam mit der IHK Akademie haben wir einen Workshop entwickelt, der Finanzwissen mit Praxis verbindet. Kein Frontalunterricht — sondern echte Übungen, die sofort im Alltag helfen.",
-      "solutionImpactStatValue": "100%",
-      "solutionImpactStatHeadline": "Weiterempfehlungsrate bei Workshop-Teilnehmern",
-      "solutionBullets": [
-        "Praxis-Workshop mit IHK-Qualitätsstandard",
-        "Eigenes Budget erstellen, Gehaltsabrechnung verstehen",
-        "Depot eröffnen, Versicherungen durchblicken, Steuererklärung planen",
-        "BeAFox-App als Begleitung nach dem Workshop"
-      ],
-      "ctaButton": "Workshop anfragen"
-    },
-    "benefits": {
-      "title": "Was Ihr",
-      "titleHighlight": "Workshop beinhaltet",
-      "subtitleLine1": "Ein Tag, der Azubis für ihr ganzes Berufsleben vorbereitet.",
-      "subtitleLine2": "Entwickelt mit der IHK Akademie — bewährt und praxisnah.",
-      "items": [
-        {
-          "title": "Gehaltsabrechnung verstehen",
-          "description": "Brutto, Netto, Sozialabgaben — Azubis verstehen endlich, was auf ihrer Abrechnung steht und warum."
-        },
-        {
-          "title": "Eigenes Budget erstellen",
-          "description": "Jeder Teilnehmer erstellt ein persönliches Budget. Kein Muster, sondern echte Zahlen aus dem eigenen Leben."
-        },
-        {
-          "title": "Erste Investitionen planen",
-          "description": "ETF-Sparplan einrichten, Depot eröffnen — Schritt für Schritt und ohne Fachjargon."
-        },
-        {
-          "title": "Versicherungen durchblicken",
-          "description": "Welche Versicherungen brauche ich wirklich? Azubis lernen die wichtigsten Basics für den Berufsstart."
-        },
-        {
-          "title": "IHK-zertifiziert",
-          "description": "Der Workshop erfüllt IHK-Qualitätsstandards. Teilnehmer erhalten ein offizielles Zertifikat."
-        },
-        {
-          "title": "App-Begleitung danach",
-          "description": "Nach dem Workshop begleitet Bea die Teilnehmer weiter — mit personalisierten Aufgaben und Erinnerungen."
-        }
-      ]
-    },
-    "workshop": {
-      "title": "So läuft der",
-      "titleHighlight": "Workshop ab",
-      "format": {
-        "title": "Workshop-Format",
-        "duration": "Dauer: 4-6 Stunden",
-        "groupSize": "Gruppengröße: 10-25 Teilnehmer",
-        "location": "Vor Ort bei Ihnen oder in der IHK Akademie",
-        "certificate": "Inkl. IHK-Teilnahmezertifikat"
-      },
-      "modules": [
-        {
-          "step": "1",
-          "title": "Gehaltsabrechnung & Budgetplanung",
-          "description": "Teilnehmer analysieren eine echte Gehaltsabrechnung und erstellen ihr persönliches Budget.",
-          "image": "/Maskottchen/Maskottchen-Beratung.webp"
-        },
-        {
-          "step": "2",
-          "title": "Versicherungen & Vorsorge",
-          "description": "Welche Versicherungen sind Pflicht, welche sinnvoll? Praxisübung mit echten Szenarien.",
-          "image": "/Maskottchen/Maskottchen-Setup.webp"
-        },
-        {
-          "step": "3",
-          "title": "Investieren & Vermögensaufbau",
-          "description": "Vom Tagesgeld zum ETF-Sparplan — Teilnehmer eröffnen gemeinsam ein Demo-Depot.",
-          "image": "/Maskottchen/Maskottchen-Start.webp"
-        },
-        {
-          "step": "4",
-          "title": "Steuererklärung & App-Begleitung",
-          "description": "Grundlagen der Steuererklärung verstehen. Danach begleitet Bea jeden Teilnehmer individuell weiter.",
-          "image": "/Maskottchen/Maskottchen-Begleitung.webp"
-        }
-      ]
-    },
-    "price": {
-      "headingPre": "Workshop jetzt",
-      "headingHighlight": "anfragen",
-      "ctaCardTitle": "Individuelles Workshop-Angebot",
-      "ctaCardBodyLine1": "Wir passen den Workshop an Ihre Gruppengröße und Ihre Anforderungen an.",
-      "ctaCardBodyLine2": "Kontaktieren Sie uns für ein unverbindliches Angebot!",
-      "requestQuoteCta": "Angebot anfordern",
-      "bookCta": "Termin vereinbaren"
-    }
-  },
   "bildungshaus": {
     "meta": {
       "title": "BeAFox × Bildungshaus Wolfsburg – Finanzen für alle Lebenssituationen",
@@ -2021,7 +1886,6 @@
       "authorName": "BeAFox UG (haftungsbeschränkt)",
       "authorUrl": "https://beafox.app"
     },
-    "breadcrumbLabel": "Eduplaces",
     "hero": {
       "badge": "BeAFox × Eduplaces",
       "titlePre": "Finanzbildung im größten",
@@ -2065,7 +1929,8 @@
           "title": "Die Sicherheit, die Schulträger brauchen",
           "description": "DSGVO-konform, Server in Deutschland, AV-Vertrag hinterlegt. Keine Werbung, keine Verkaufsinteressen."
         }
-      ]
+      ],
+      "subtitle": "Zwei Bausteine, ein Ziel: Schüler, die selbstständig finanzielle Entscheidungen treffen können."
     },
     "why": {
       "title": "Warum über",
@@ -2271,14 +2136,6 @@
         "Persönlicher Ansprechpartner"
       ]
     },
-    "individualOffer": {
-      "headingPre": "Finanzbildung für",
-      "headingHighlight": "Ihre Schule",
-      "ctaCardTitle": "Individuelles Angebot für Ihre Schule",
-      "ctaCardBodyLine1": "Jede Schule hat unterschiedliche Anforderungen. Wir erstellen ein Angebot, das zu Ihrer Schülerzahl und Ihrem Budget passt — faire Staffelpreise, transparent und ohne versteckte Kosten.",
-      "requestQuoteCta": "Angebot anfordern",
-      "bookCta": "Termin vereinbaren"
-    },
     "dashboard": {
       "title": "So setzen Schulen",
       "titleHighlight": "Bea ein",
@@ -2378,6 +2235,25 @@
       "title": "Bereit, Finanzbildung in Ihre Schule zu bringen?",
       "subtitle": "Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch und erhalten Sie ein individuelles Angebot für Ihre Schule.",
       "cta": "Demo anfordern"
+    },
+    "testimonials": {
+      "items": [
+        {
+          "author": "Lehrkraft, Gymnasium",
+          "quote": "Die Fortbildung war äußerst bereichernd und ist absolut empfehlenswert. Der Referentin gelang es hervorragend, ein komplexes Thema lebendig und verständlich darzustellen. Ich freue mich bereits darauf, die Unterlagen in meinem Unterricht einzusetzen."
+        },
+        {
+          "author": "Lehrkraft, Realschule",
+          "quote": "Die Fortbildung war mega interessant und hat viele praktische und im Unterricht leicht umsetzbare Methoden vermittelt. Die Materialen sind toll aufbereitet und sofort einsetzbar."
+        },
+        {
+          "author": "Lehrkraft, Berufsschule",
+          "quote": "Finanzielle Bildung wird hier sehr praxisnah und mit zahlreichen guten Anwendungstipps vermittelt. Danach gibt es eigentlich keine Gründe mehr dieses sehr wichtige und interessante Thema nicht in der Schule zu behandeln."
+        }
+      ],
+      "subtitle": "Das sagen teilnehmende Lehrkräfte nach der Einführung von BeAFox.",
+      "title": "Feedback von",
+      "titleHighlight": "Lehrkräften"
     }
   },
   "contact": {
@@ -2550,7 +2426,9 @@
         "Kombination aus Live-Workshop und App-basiertem Lernen"
       ],
       "statValue": "100%",
-      "statHeading": "Zufriedenheit bei Teilnehmern und Unternehmen"
+      "statHeading": "Zufriedenheit bei Teilnehmern und Unternehmen",
+      "p2": "Das Besondere: Der Workshop verbindet IHK-geprüfte Inhalte mit Beas spielerischem Lernsystem. Die Azubis nutzen die App, lösen gemeinsam Missionen und nehmen das Gelernte direkt in den Alltag mit.",
+      "pill": "Die Workshop-Reihe"
     },
     "images": {
       "mascotAlt": "BeAFox × IHK Akademie — AzubiGo Workshop",
@@ -2618,23 +2496,52 @@
         {
           "date": "04. Mai 2026",
           "type": "Online",
-          "status": "Startgarantie"
+          "status": "Startgarantie",
+          "location": "Virtueller Trainingsraum"
         },
         {
           "date": "01. Oktober 2026",
-          "type": "Präsenz"
+          "type": "Präsenz",
+          "location": "Regensburg, Im Gewerbepark B27"
         },
         {
           "date": "10. November 2026",
-          "type": "Online"
+          "type": "Online",
+          "location": "Virtueller Trainingsraum"
         }
-      ]
+      ],
+      "subtitle": "125 € pro Azubi — inklusive IHK-Zertifikat und BeAFox App-Zugang."
     },
-    "inhouseCta": {
-      "title": "AzubiGo für Ihr Unternehmen",
-      "description": "Sie möchten AzubiGo als Inhouse-Workshop für Ihre Azubis? Wir kommen zu Ihnen — mit der IHK Akademie im Rücken. Ab 10 Teilnehmern erstellen wir ein individuelles Angebot.",
-      "inhouseButton": "Inhouse-Angebot anfragen",
-      "scheduleButton": "Termin vereinbaren"
+    "benefits": {
+      "items": [
+        {
+          "description": "Ein halber Tag genügt. Azubis gehen mit konkretem Wissen und einem Plan für ihr Geld nach Hause.",
+          "title": "Nur 3,5 Stunden — maximale Wirkung"
+        },
+        {
+          "description": "Jeder Teilnehmende erhält ein offizielles IHK-Zertifikat — ideal für Ausbildungsnachweise und Beurteilungen.",
+          "title": "IHK-Zertifikat inklusive"
+        },
+        {
+          "description": "Nach dem Workshop lernen Azubis mit Bea weiter — spielerisch, im eigenen Tempo, ohne Mehraufwand für Sie.",
+          "title": "App-Zugang inklusive"
+        },
+        {
+          "description": "Flexibel buchbar: in Präsenz in Regensburg oder als Live-Online-Workshop im virtuellen Trainingsraum.",
+          "title": "Vor Ort oder online"
+        },
+        {
+          "description": "Interaktive Übungen, Team-Missionen und reale Szenarien. Azubis lernen durch Machen, nicht durch Zuhören.",
+          "title": "Kein Frontalunterricht"
+        },
+        {
+          "description": "Wir kommen zu Ihnen. Ihr Termin, Ihre Räume, Inhalte zugeschnitten auf Ihr Unternehmen.",
+          "title": "Inhouse ab 10 Teilnehmenden"
+        }
+      ],
+      "subtitle": "Der Workshop zahlt sich aus — für Azubis und für Sie.",
+      "title": "Warum Unternehmen",
+      "titleHighlight": "AzubiGo buchen"
     }
   },
   "authLogin": {
@@ -2983,7 +2890,7 @@
         "iconId": "scale",
         "content": [
           {
-            "text": "Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, HR Regensburg, Registernummer HRB 21689 (nachfolgend „BeAFox“ genannt) und ihren Kunden über die Nutzung der BeAFox-App und der damit verbundenen Dienstleistungen. BeAFox ist ein Unternehmen, das in den Bereich der Finanzbildung tätig ist und sich an private Verbraucher (Altersgruppe 16-30 Jahre), Bildungseinrichtungen und Unternehmen richtet."
+            "text": "Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen der BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, HR Regensburg, Registernummer HRB 21689 (nachfolgend „BeAFox“ genannt) und ihren Kunden über die Nutzung der BeAFox-App und der damit verbundenen Dienstleistungen. BeAFox ist ein Unternehmen, das im Bereich der Finanzbildung tätig ist und sich an private Verbraucher (Altersgruppe 16-30 Jahre), Bildungseinrichtungen und Unternehmen richtet."
           },
           {
             "subtitle": "Kontakt und Datenschutz",
@@ -3047,11 +2954,11 @@
           },
           {
             "subtitle": "Entfallen des Widerrufsrechts",
-            "text": "Das Widerrufsrecht erlischt vorzeitig, wenn BeAFox mit der Ausführung der Dienstleistung begonnen hat und der Verbraucher (a) ausdrücklich zugestimmt hat, dass BeAFox die Leistung vor Ablauf der Widerrufsfrist beginnt, und (b) quittiert hat, dass er mit dem Entfall des Widerrufsrechts rechnet (§ 312g Abs. 2 Satz 2 BGB). Im Falle des Entzugs des Widerrufsrechts wird nur die erbrachte Leistung berechnet."
+            "text": "Das Widerrufsrecht erlischt vorzeitig, wenn BeAFox mit der Ausführung der Dienstleistung begonnen hat und der Verbraucher (a) ausdrücklich zugestimmt hat, dass BeAFox die Leistung vor Ablauf der Widerrufsfrist beginnt, und (b) quittiert hat, dass er mit dem Entfall des Widerrufsrechts rechnet (§ 312g Abs. 2 Satz 2 BGB). Im Falle des Entfalls des Widerrufsrechts wird nur die erbrachte Leistung berechnet."
           },
           {
             "subtitle": "Ausübung des Widerrufsrechts",
-            "text": "Zur Ausübung des Widerrufsrechts müssen Sie BeAFox informieren mittels einer eindeutigen Erklärung (z.B. ein Brief per Post, Fax oder E-Mail). Die Erklärung kann über unseres Muster-Widerrufsformular erfolgen. Sie können auch die App-Einstellungen nutzen, um Ihr Abonnement zu kündigen (verfügbar in der Kontoeinstellung).\n\nAdresse:\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nDeutschland\n\nE-Mail: info@beafox.app\nFax: +49 (0) 941 XXXXXXX"
+            "text": "Zur Ausübung des Widerrufsrechts müssen Sie BeAFox informieren mittels einer eindeutigen Erklärung (z.B. ein Brief per Post, Fax oder E-Mail). Die Erklärung kann über unser Muster-Widerrufsformular erfolgen. Sie können auch die App-Einstellungen nutzen, um Ihr Abonnement zu kündigen (verfügbar in der Kontoeinstellung).\n\nAdresse:\nBeAFox UG (haftungsbeschränkt)\nSiemensweg 2\n93073 Neutraubling\nDeutschland\n\nE-Mail: info@beafox.app\nTelefon: +49 178 2723 673"
           },
           {
             "subtitle": "Muster-Widerrufsformular",
@@ -3059,7 +2966,7 @@
           },
           {
             "subtitle": "Folgen des Widerrufs",
-            "text": "Wenn Sie diesen Vertrag widerrufen, haben wir alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen 14 Tagen ab dem Tag, an dem die Mitteilung über Ihren Widerruf bei uns eingegangen ist, zurückzuzahlen (§ 312g Abs. 3 BGB). Diese Rückzahlung erfolgt mit denselben Zahlungsmitteln, das Sie für die ursprüngliche Transaktion genutzt haben, sofern Sie keine abweichenden Anweisungen gegeben haben."
+            "text": "Wenn Sie diesen Vertrag widerrufen, haben wir alle Zahlungen, die wir von Ihnen erhalten haben, unverzüglich und spätestens binnen 14 Tagen ab dem Tag, an dem die Mitteilung über Ihren Widerruf bei uns eingegangen ist, zurückzuzahlen (§ 312g Abs. 3 BGB). Diese Rückzahlung erfolgt mit demselben Zahlungsmittel, das Sie für die ursprüngliche Transaktion genutzt haben, sofern Sie keine abweichenden Anweisungen gegeben haben."
           }
         ]
       },
@@ -3077,7 +2984,7 @@
           },
           {
             "subtitle": "Änderungen der Funktionen",
-            "text": "BeAFox behält sich vor, Funktionen der App zu ändern, zu erweitern oder zu entfernen. Wesentliche Funktionen werden nicht ohne vorherige Ankündigung entfernt. Nutzer werden über wesentliche Funktionsveränderungen mindestens zwei Wochen im Voraus informiert. Ein Anspruch auf bestimmte Funktionen besteht nicht, sofern diese nicht ausdrücklich als wesentlich in der Vertragsvertrag festgehalten wurden."
+            "text": "BeAFox behält sich vor, Funktionen der App zu ändern, zu erweitern oder zu entfernen. Wesentliche Funktionen werden nicht ohne vorherige Ankündigung entfernt. Nutzer werden über wesentliche Funktionsveränderungen mindestens zwei Wochen im Voraus informiert. Ein Anspruch auf bestimmte Funktionen besteht nicht, sofern diese nicht ausdrücklich als wesentlich im Vertrag festgehalten wurden."
           },
           {
             "subtitle": "Updates",
@@ -3312,7 +3219,7 @@
         "content": [
           {
             "subtitle": "Kündigung durch Verbraucher",
-            "text": "Verbraucher können Abonnements jederzeit mit einer Frist von einem Monat zum Ende der Abrechnungsperiode (Monat oder Jahr) kündigen. Die Kündigung kann erfolgen durch: (1) Kündigungsbutton in der App (Kontoeinstellungen); (2) schriftlich per Post oder E-Mail an info@beafox.app; (3) per Telefon auf Anfrage. Die Kündigung muss schriftlich bestätigt werden."
+            "text": "Verbraucher können Abonnements jederzeit mit einer Frist von einem Monat zum Ende der Abrechnungsperiode (Monat oder Jahr) kündigen. Die Kündigung kann erfolgen durch: (1) Kündigungsbutton in der App (Kontoeinstellungen); (2) schriftlich per Post oder E-Mail an info@beafox.app; (3) per Telefon auf Anfrage. BeAFox bestätigt den Eingang der Kündigung in Textform (z. B. per E-Mail)."
           },
           {
             "subtitle": "Kündigungsbutton gemäß § 312k BGB",
@@ -3417,7 +3324,7 @@
           },
           {
             "subtitle": "EU-KI-Verordnung",
-            "text": "BeAFox orientiert sich an den Anforderungen der EU-KI-Verordnung (AI Act, wenn in Kraft) bezüglich Transparenz, Risikominderung und Dokumentation von KI-Systemen."
+            "text": "BeAFox orientiert sich an den Anforderungen der EU-Verordnung über künstliche Intelligenz (Verordnung (EU) 2024/1689, „AI Act\") bezüglich Transparenz, Risikominderung und Dokumentation von KI-Systemen. Bea ist als KI-System mit geringer bis mittlerer Risikostufe einzuordnen."
           },
           {
             "subtitle": "Recht auf Erklärung",
@@ -3431,12 +3338,12 @@
         "iconId": "handshake",
         "content": [
           {
-            "subtitle": "EU-Online-Streitbeilegungsplattform",
-            "text": "Die Europäische Kommission hat eine Plattform für außergerichtliche Online-Streitbeilegung (OS-Plattform) eingerichtet. Verbraucher können diese kostenlosen Plattformen nutzen, um ihre Streitigkeiten beizulegen:\n\nURL: https://ec.europa.eu/consumers/odr/\n\nBeAFox ist bereit, an Verfahren auf dieser Plattform teilzunehmen."
+            "subtitle": "Hinweis zur EU-Online-Streitbeilegungsplattform",
+            "text": "Die von der Europäischen Kommission betriebene Plattform zur Online-Streitbeilegung (OS-Plattform) wurde am 20. Juli 2025 dauerhaft eingestellt und ist nicht mehr verfügbar. Verbraucherinnen und Verbraucher können sich bei Streitigkeiten direkt an BeAFox unter info@beafox.app wenden oder die unten genannten Schlichtungsstellen prüfen."
           },
           {
-            "subtitle": "Verbraucherschlichtstellen",
-            "text": "In Deutschland gibt es Verbraucherschlichtstellen (z.B. Schlichtungsstelle des Einzelhandelsverbandes). Diese können zur Beilegung von Streitigkeiten angerufen werden. BeAFox wird auf angemessene Schlichtumsanträge prüfen, ist aber nach dem Verbraucherstreitbeilegungsgesetz (VSBG) nicht verpflichtet, daran teilzunehmen."
+            "subtitle": "Verbraucherschlichtungsstellen",
+            "text": "In Deutschland gibt es Verbraucherschlichtungsstellen (z.B. Schlichtungsstelle des Einzelhandelsverbandes). Diese können zur Beilegung von Streitigkeiten angerufen werden. BeAFox wird auf angemessene Schlichtungsanträge prüfen, ist aber nach dem Verbraucherstreitbeilegungsgesetz (VSBG) nicht verpflichtet, daran teilzunehmen."
           },
           {
             "subtitle": "Hinweis nach VSBG",
@@ -3474,7 +3381,7 @@
             "text": "Für unwesentliche Änderungen (redaktionelle Anpassungen, Klarstellungen, technische Verbesserungen) reicht die Zustimmung durch Weiterverwendung der App nach Ankündigung auf der Website."
           },
           {
-            "subtitle": "Kein Tacit Consent",
+            "subtitle": "Keine stillschweigende Zustimmung",
             "text": "Schweigen oder Nichtwidersprechen gilt NICHT als Zustimmung zu den geänderten AGB. BeAFox wird bei jeder Änderung ausdrücklich um Zustimmung bitten."
           }
         ]
@@ -3529,6 +3436,122 @@
           {
             "subtitle": "Vertragssprache",
             "text": "Diese AGB sind in deutscher Sprache verfasst und sind die verbindliche Fassung. Übersetzungen in andere Sprachen dienen nur der Information und sind nicht verbindlich. Im Falle von Widersprüchen zwischen der deutschen und einer übersetzten Fassung ist die deutsche Fassung maßgeblich."
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "title": "Geltungsbereich für unseren Online-Shop",
+        "iconId": "building",
+        "content": [
+          {
+            "subtitle": "Anwendungsbereich",
+            "text": "Die nachfolgenden Bestimmungen (§§ 22 bis 28) gelten ergänzend für alle Bestellungen physischer Waren über unseren Online-Shop (z. B. unter shop.beafox.app oder über die Shop-Bereiche auf beafox.app). Bei Widersprüchen mit den vorstehenden Regelungen gehen die §§ 22-28 für Warenkäufe vor."
+          },
+          {
+            "subtitle": "Vertragspartner",
+            "text": "Verkäuferin ist die BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, Deutschland (vollständige Angaben im Impressum). Vertragssprache ist Deutsch."
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "title": "Vertragsschluss im Shop",
+        "iconId": "handshake",
+        "content": [
+          {
+            "subtitle": "Angebot und Annahme",
+            "text": "Die im Shop dargestellten Produkte stellen kein verbindliches Angebot dar, sondern eine Aufforderung an Sie, ein Angebot abzugeben. Mit dem Klick auf den Button „Zahlungspflichtig bestellen\" (bzw. eine gleichwertige Beschriftung) geben Sie ein verbindliches Angebot zum Kauf der im Warenkorb befindlichen Produkte ab."
+          },
+          {
+            "subtitle": "Bestätigung und Annahme",
+            "text": "Den Eingang Ihrer Bestellung bestätigen wir unverzüglich per E-Mail. Diese Bestelleingangsbestätigung stellt noch keine Annahme dar. Der Kaufvertrag kommt erst mit unserer ausdrücklichen Annahmeerklärung (Versandbestätigung) oder mit dem Versand der Ware zustande."
+          },
+          {
+            "subtitle": "Speicherung des Vertragstexts",
+            "text": "Wir speichern den Vertragstext. Diese AGB sind jederzeit auf beafox.app/agb abrufbar; Ihre Bestelldaten erhalten Sie zusätzlich per E-Mail."
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "title": "Preise, Versandkosten und Zahlung",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "subtitle": "Endpreise",
+            "text": "Alle Preise im Shop sind Endpreise inklusive der gesetzlichen Umsatzsteuer. Etwaige Versandkosten werden im Bestellprozess gesondert ausgewiesen."
+          },
+          {
+            "subtitle": "Lieferungen außerhalb der EU",
+            "text": "Bei Lieferungen in Länder außerhalb der EU können zusätzliche Steuern (z. B. Einfuhrumsatzsteuer) und Zollgebühren anfallen, die von der Empfängerin / dem Empfänger zu tragen sind, sofern nicht ausdrücklich anders angegeben."
+          },
+          {
+            "subtitle": "Verfügbare Zahlungsarten",
+            "text": "Die jeweils verfügbaren Zahlungsarten werden im Bestellprozess angezeigt. Der Kaufpreis ist mit Vertragsschluss zur Zahlung fällig."
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "title": "Lieferung und Print-on-Demand",
+        "iconId": "wrench",
+        "content": [
+          {
+            "subtitle": "Fulfillment durch Printful",
+            "text": "Unsere Shop-Produkte werden im Print-on-Demand-Verfahren durch unseren Fulfillment-Partner Printful Inc. produziert, kommissioniert und versendet. Die Produktion erfolgt erst nach Eingang Ihrer Bestellung."
+          },
+          {
+            "subtitle": "Lieferzeiten",
+            "text": "Die Gesamtlieferzeit setzt sich aus Produktions- und Versanddauer zusammen. Aktuelle Richtwerte finden Sie in unseren Versandbedingungen (beafox.app/versand)."
+          },
+          {
+            "subtitle": "Lieferschwierigkeiten",
+            "text": "Sollte ein bestelltes Produkt ausnahmsweise nicht verfügbar sein, informieren wir Sie unverzüglich. Bereits geleistete Zahlungen werden in diesem Fall umgehend erstattet."
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "title": "Eigentumsvorbehalt",
+        "iconId": "shield",
+        "content": [
+          {
+            "text": "Die gelieferte Ware bleibt bis zur vollständigen Bezahlung unser Eigentum."
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "title": "Mängelhaftung bei Waren",
+        "iconId": "scale",
+        "content": [
+          {
+            "subtitle": "Gesetzliche Gewährleistung",
+            "text": "Es gelten die gesetzlichen Mängelrechte. Die Verjährungsfrist für Mängelansprüche beträgt bei neu hergestellten Waren zwei Jahre ab Erhalt der Ware."
+          },
+          {
+            "subtitle": "Anzeige von Mängeln",
+            "text": "Offensichtliche Mängel sollten uns in angemessener Frist nach Feststellung mitgeteilt werden; die gesetzlichen Mängelrechte des Verbrauchers bleiben hiervon unberührt."
+          },
+          {
+            "subtitle": "Garantie",
+            "text": "Eine darüber hinausgehende Garantie besteht nur, soweit sie für einen Artikel ausdrücklich abgegeben wurde."
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "title": "Widerrufsrecht im Shop",
+        "iconId": "rotate",
+        "content": [
+          {
+            "subtitle": "Gesetzliches Widerrufsrecht",
+            "text": "Verbrauchern steht für Warenkäufe im Shop ein 14-tägiges Widerrufsrecht ab Erhalt der Ware zu. Die ausführliche Belehrung und das Muster-Widerrufsformular finden Sie unter beafox.app/widerrufsbelehrung."
+          },
+          {
+            "subtitle": "Ausnahme bei personalisierten Artikeln",
+            "text": "Bei nach Kundenwunsch personalisierten oder eindeutig auf persönliche Bedürfnisse zugeschnittenen Artikeln (z. B. Aufdruck mit individuellem Namen, Wunschtext oder Wunschmotiv) ist das Widerrufsrecht gemäß § 312g Abs. 2 Nr. 1 BGB ausgeschlossen. Wir weisen vor Abgabe der Bestellung gesondert auf den Ausschluss hin."
           }
         ]
       }
@@ -3689,7 +3712,10 @@
     "hero": {
       "headlineKnow": "WISSEN.",
       "headlineMoney": "GELD.",
-      "typingWords": ["FREIHEIT", "SICHERHEIT"]
+      "typingWords": [
+        "FREIHEIT",
+        "SICHERHEIT"
+      ]
     },
     "mockups": {
       "trainingAlt": "BeAFox Training Mockup",
@@ -4093,11 +4119,6 @@
       "titleHighlight": "Finanzrechner",
       "description": "Such dir den passenden Rechner aus — gefiltert nach Kategorie oder per Suche."
     },
-    "appBanner": {
-      "title": "Bea hat noch viel mehr drauf",
-      "description": "In der BeAFox App begleitet dich Bea durch echte Finanzsituationen — vom ersten Gehalt bis zur Steuererklärung. Spielerisch und kostenlos.",
-      "cta": "App kostenlos laden"
-    },
     "faq": {
       "titlePre": "Häufige",
       "titleHighlight": "Fragen",
@@ -4188,342 +4209,12 @@
       "related": {
         "titlePre": "Weitere Rechner in"
       }
+    },
+    "ratgeberCta": {
+      "button": "Ratgeber entdecken",
+      "description": "Unsere Ratgeber erklären dir, was du über Geld wissen musst — passend zu deiner Situation.",
+      "title": "Du willst mehr Finanz-Know-how?"
     }
-  },
-  "shop": {
-    "meta": {
-      "title": "Shop – BeAFox Merch",
-      "description": "Entdecke exklusives BeAFox Merchandise: T-Shirts, Hoodies, Tassen, Sticker und mehr. Zeige deine BeAFox-Leidenschaft!",
-      "ogImageAlt": "BeAFox Merch — Bea mit Merchandise",
-      "keywords": [
-        "BeAFox Merch",
-        "BeAFox Shop",
-        "BeAFox Merchandise",
-        "Finanzbildung Merch",
-        "BeAFox T-Shirt",
-        "BeAFox Hoodie"
-      ]
-    },
-    "structuredData": {
-      "itemListName": "BeAFox Merch Shop"
-    },
-    "images": {
-      "mascotAlt": "Bea mit BeAFox Merch — offizieller Merch-Shop"
-    },
-    "hero": {
-      "badge": "BeAFox Merch Shop",
-      "title": "BeAFox Merch Shop",
-      "subtitle": "Zeige deine BeAFox-Leidenschaft mit unserem exklusiven Merchandise"
-    },
-    "categories": {
-      "all": "Alle",
-      "clothing": "Kleidung",
-      "drinkware": "Tassen",
-      "stickers": "Sticker",
-      "accessories": "Accessoires",
-      "art": "Wandkunst"
-    },
-    "empty": "Keine Produkte in dieser Kategorie gefunden.",
-    "addToCart": "In den Warenkorb",
-    "addedToCart": "Hinzugefügt!",
-    "sale": "Sale",
-    "backToShop": "Zurück zum Shop",
-    "productNotFound": "Produkt nicht gefunden",
-    "products": {
-      "tshirt": {
-        "name": "BeAFox Classic T-Shirt",
-        "description": "Premium Baumwoll-T-Shirt mit dem BeAFox-Logo. Weich, bequem und perfekt für den Alltag."
-      },
-      "hoodie": {
-        "name": "BeAFox Classic Hoodie",
-        "description": "Kuscheliger Hoodie mit BeAFox-Branding. Dein Begleiter für gemütliche Tage und kalte Abende."
-      },
-      "mug": {
-        "name": "BeAFox Tasse",
-        "description": "Keramik-Tasse mit BeAFox-Design. Perfekt für deinen Morgenkaffee oder Tee."
-      },
-      "stickers": {
-        "name": "BeAFox Sticker Pack",
-        "description": "Set mit 5 coolen BeAFox-Stickern. Bea in verschiedenen Posen für Laptop, Handy & Co."
-      },
-      "totebag": {
-        "name": "BeAFox Jutebeutel",
-        "description": "Robuster Jutebeutel mit BeAFox-Print. Nachhaltig und stylisch — für Einkauf, Uni oder Büro."
-      },
-      "phonecase": {
-        "name": "BeAFox Handy-Hülle",
-        "description": "Schütze dein Smartphone mit einer BeAFox-Hülle. Schlankes Design, solider Schutz."
-      },
-      "poster": {
-        "name": "BeAFox Poster",
-        "description": "Motivierendes Poster mit BeAFox-Design. Premium-Druck auf hochwertigem Papier."
-      },
-      "notebook": {
-        "name": "BeAFox Notizbuch",
-        "description": "Hochwertiges Notizbuch mit BeAFox-Design"
-      }
-    },
-    "detail": {
-      "color": "Farbe",
-      "size": "Größe",
-      "variant": "Variante",
-      "shipping": "3-5 Tage Lieferung",
-      "secure": "Sichere Zahlung",
-      "returns": "14 Tage Rückgabe",
-      "related": "Das könnte dir auch gefallen"
-    },
-    "cart": {
-      "title": "Warenkorb",
-      "close": "Warenkorb schließen",
-      "empty": "Dein Warenkorb ist leer",
-      "remove": "Artikel entfernen",
-      "decrease": "Menge verringern",
-      "increase": "Menge erhöhen",
-      "subtotal": "Zwischensumme",
-      "shippingNote": "Versandkosten werden im Checkout berechnet",
-      "checkout": "Zur Kasse",
-      "processing": "Wird geladen...",
-      "clear": "Warenkorb leeren",
-      "products": {
-        "tshirt": "BeAFox Classic T-Shirt",
-        "hoodie": "BeAFox Classic Hoodie",
-        "mug": "BeAFox Tasse",
-        "stickers": "BeAFox Sticker Pack",
-        "totebag": "BeAFox Jutebeutel",
-        "phonecase": "BeAFox Handy-Hülle",
-        "poster": "BeAFox Poster",
-        "notebook": "BeAFox Notizbuch"
-      }
-    },
-    "success": {
-      "title": "Vielen Dank für deine Bestellung!",
-      "subtitle": "Deine Bestellung wird vorbereitet und bald versandt.",
-      "shipping": {
-        "title": "Versand in 3-5 Werktagen",
-        "description": "Du erhältst eine E-Mail mit Tracking-Link sobald deine Bestellung versandt wurde."
-      },
-      "confirmation": {
-        "title": "Bestellbestätigung per E-Mail",
-        "description": "Eine Bestätigung wurde an deine E-Mail-Adresse gesendet."
-      },
-      "reference": "Bestellreferenz",
-      "continueShopping": "Weiter shoppen",
-      "backToHome": "Zur Startseite"
-    },
-    "faq": {
-      "title": "Häufig gestellte Fragen",
-      "items": [
-        {
-          "q": "Wie lange dauert der Versand?",
-          "a": "Der Versand erfolgt innerhalb von 3-5 Werktagen nach Bestelleingang. Wir produzieren in Deutschland, daher sind die Lieferwege kurz."
-        },
-        {
-          "q": "Welche Zahlungsmethoden werden akzeptiert?",
-          "a": "Wir akzeptieren Kreditkarte, PayPal und SEPA-Lastschrift."
-        },
-        {
-          "q": "Gibt es ein Rückgaberecht?",
-          "a": "Ja, innerhalb von 14 Tagen nach Erhalt kannst du Artikel zurückgeben. Weitere Details findest du in unseren AGB."
-        },
-        {
-          "q": "Wo wird produziert?",
-          "a": "Unsere Produkte werden bei lokalen Druckpartnern in Deutschland produziert — kurze Wege, weniger CO₂."
-        }
-      ]
-    }
-  },
-  "blog": {
-    "meta": {
-      "title": "Blog",
-      "description": "BeAFox Blog - Aktuelle Artikel, Updates und Neuigkeiten rund um Finanzbildung, unsere App und die BeAFox Community.",
-      "ogTitle": "BeAFox Blog - Artikel & Updates",
-      "ogDescription": "Aktuelle Artikel, Updates und Neuigkeiten rund um Finanzbildung und die BeAFox Community."
-    },
-    "hero": {
-      "badge": "Unser Blog",
-      "title": {
-        "pre": "Entdecke, wie BeAFox",
-        "highlight": "zum Leben erweckt",
-        "post": "wird"
-      },
-      "subtitle": "Erfahre mehr über unsere Reise, Events, Updates und wie wir Finanzbildung für junge Menschen revolutionieren."
-    },
-    "specialMomentsSection": {
-      "title": {
-        "pre": "Unsere",
-        "highlight": "besonderen Momente"
-      },
-      "subtitle": "Die wichtigsten Meilensteine unserer Reise mit BeAFox."
-    },
-    "allArticlesSection": {
-      "title": {
-        "pre": "All unsere",
-        "highlight": "Artikel"
-      },
-      "subtitle": "Entdecke all unsere Blog-Posts und Updates.",
-      "imageAltFallback": "Blog Artikel {id}"
-    },
-    "specialMoments": [
-      {
-        "id": 1,
-        "title": "Wir haben gewonnen!",
-        "description": "Wir sind stolz darauf, den Deggendorfer Gründerpreis gewonnen zu haben! Trotz Nervosität und einem in letzter Minute überarbeiteten Pitch hat sich unsere Arbeit ausgezahlt - etwa 60% des Publikums haben für uns gestimmt. Vielen Dank an das gesamte Team für die tolle Organisation und die 2.500€ Preisgeld. Wir freuen uns auf weitere Schritte mit BeAFox!",
-        "image": "/assets/Blogs/Blog1.webp",
-        "date": "20.11.2025",
-        "category": "Events"
-      },
-      {
-        "id": 2,
-        "title": "BeAFox bei Ed.One in München!",
-        "description": "So erlebt man Finanzbildung im Klassenzimmer. Beim Ed.One Summit in München haben Schüler, Lehrer und Ausbilder BeAFox live getestet - vom Dashboard über die Lern-App bis hin zu den Arbeitsblättern. Wir haben wertvolles Feedback erhalten, spannende Kontakte geknüpft und unseren Pitch präsentiert. BeAFox zeigt, wie einfach Finanzbildung sein kann. Wir suchen dich!",
-        "image": "/assets/Blogs/Blog2.webp",
-        "date": "09.10.2025",
-        "category": "Events"
-      },
-      {
-        "id": 3,
-        "title": "BeAFox gewinnt Startup Summit!",
-        "description": "BeAFox hat den 2. Platz beim Startup Summit Germany erreicht - unser erster offizieller Preis! Zum ersten Mal haben wir als Duo gepitcht, mit einem neuen Pitch, Pitch Deck und einer Präsentation, die unsere Vision noch stärker vermittelt hat. Nach zwei Jahren harter Arbeit zeigt es, dass Durchhaltevermögen, Mut und Teamarbeit sich auszahlen. Vielen Dank an die Volksbank am Württemberg eG für diese großartige Veranstaltung!",
-        "image": "/assets/Blogs/Blog3.webp",
-        "date": "29.09.2025",
-        "category": "Events"
-      }
-    ],
-    "articles": [
-      {
-        "id": 19,
-        "image": "/assets/Blogs/19.webp",
-        "title": "Startchancen-Programm",
-        "description": "Große Neuigkeiten: BeAFox ist Teil des Startchancen-Programms! Dadurch können Schulen unsere Lern-App vollständig über Fördermittel finanzieren. Für uns ist das ein starkes Signal: Finanzbildung gehört in den Schulalltag. Viele von uns hätten sich genau so ein Angebot in ihrer Schulzeit gewünscht – praxisnah, spielerisch und alltagsrelevant. Jetzt erreichen wir Schulen, die bisher kaum Zugang zu solchen Angeboten hatten, und kommen unserem Ziel echter Chancengerechtigkeit näher.",
-        "category": "News"
-      },
-      {
-        "id": 18,
-        "image": "/assets/Blogs/18.webp",
-        "title": "Rütteltest Wirtschaftsjunioren Regensburg",
-        "description": "Beim Rütteltest der Wirtschaftsjunioren Regensburg durften wir BeAFox über 20 Minuten pitchen und bekamen anschließend mehr als eine Stunde ehrliches, tiefgehendes Feedback von sechs Expert:innen. Unser gesamtes Geschäftsmodell wurde konstruktiv hinterfragt – genau das, was wir uns gewünscht hatten. Wir nehmen viele Impulse mit, haben neue Prioritäten gesetzt und uns direkt entschieden, den Wirtschaftsjunioren beizutreten. Eine Erfahrung, die wir jedem Startup empfehlen.",
-        "category": "Events"
-      },
-      {
-        "id": 17,
-        "image": "/assets/Blogs/17.webp",
-        "title": "Unser erster Workshop.",
-        "description": "Unser erster Finanzbildungs-Workshop für Auszubildende – in Kombination mit der BeAFox-App – war ein voller Erfolg. Statt einmaliger Theorie setzen wir auf praktische Übungen: individuelle Budgets erstellen, Depot eröffnen, erste Investitionen planen, Versicherungen verstehen und die Steuererklärung nutzen. Das Besondere: Mit BeAFox können die Teilnehmenden nach dem Workshop weiterlernen und das Wissen vertiefen. Unternehmen erhalten so ein nachhaltiges Bildungsangebot.",
-        "category": "News"
-      },
-      {
-        "id": 16,
-        "image": "/assets/Blogs/16.webp",
-        "title": "BeAFox auf der DemoNight in Nürnberg",
-        "description": "BeAFox auf der Startup DemoNight von BayStartup in Nürnberg: Schon beim Ankommen sprach uns ein Gründer an, der uns aus Social Media kannte – ein kurzer Moment, der uns enorm motiviert hat. Der Abend bot spannende Gespräche, neue Kontakte und viele innovative Ideen. Solche Events erinnern uns daran, warum wir BeAFox bauen: um echte Probleme zu lösen und Finanzbildung dorthin zu bringen, wo sie im Alltag junger Menschen wirklich ankommt.",
-        "category": "Events"
-      },
-      {
-        "id": 15,
-        "image": "/assets/Blogs/15.webp",
-        "title": "Was für ein Erlebnis: Die YFC",
-        "description": "Was für ein Erlebnis: Mit BeAFox waren wir auf der YFC in München, der ersten Konferenz des Young Founders Network. Zwischen inspirierenden Speakern, vielen Startups und großartigem Networking konnten wir unsere Lern-App an einem eigenen Stand zeigen. Die Organisation, die Atmosphäre und der Austausch haben uns beeindruckt. Ein besonderes Highlight: die Ankündigung des Young Founders Fund – eine Chance, die wir natürlich nutzen wollen.",
-        "category": "Events"
-      },
-      {
-        "id": 14,
-        "image": "/assets/Blogs/14.webp",
-        "title": "BeAFox auf dem Summit der Stiftung Entrepreneurship",
-        "description": "BeAFox auf dem Summit der Stiftung Entrepreneurship in Berlin – ein Wochenende voller Inspiration. Immer wieder hörten wir den Satz: „Finanzbildung ist wichtig!“ und spürten, wie groß der Bedarf an modernen Lösungen ist. Wir konnten unsere App vorstellen, bekamen durchweg positives Feedback und führten intensive Gespräche mit Menschen, die das Thema genauso ernst nehmen wie wir. Dieses Event hat uns in unserer Vision klar bestärkt.",
-        "category": "Events"
-      },
-      {
-        "id": 13,
-        "image": "/assets/Blogs/13.webp",
-        "title": "BeAFox auf dem BÖB Kongress",
-        "description": "Beim Kongress des Bündnis Ökonomische Bildung Deutschland wurde viel über Finanzbildung als eigenes Schulfach diskutiert – mit neuen Lehrbüchern, Fächern und Fortbildungen. Ich habe die Frage gestellt: Reicht das wirklich? Bei Lehrkräftemangel und einem Thema, über das viele ungern sprechen? Ich glaube, wir brauchen zusätzlich neue Wege: digitale Tools, Gamification und Projektarbeit. Genau hier setzt BeAFox an – als Ergänzung, nicht als Konkurrenz zum Unterricht.",
-        "category": "News"
-      },
-      {
-        "id": 12,
-        "image": "/assets/Blogs/12.webp",
-        "title": "We did it",
-        "description": "Mit BeAFox haben wir den 2. Platz beim Startup Summit Deutschland erreicht! Unser erster gemeinsamer Team-Pitch, neues Deck, neues Konzept – und direkt eine Auszeichnung inklusive Preisgeld. Nach zwei Jahren intensiver Arbeit, in denen wir viel getestet, verworfen und verbessert haben, fühlt sich dieser Moment wie ein starkes Zeichen an: Unsere Idee trägt. Ein großes Dankeschön an alle Unterstützer:innen und die Volksbank am Württemberg eG.",
-        "category": "News"
-      },
-      {
-        "id": 11,
-        "image": "/assets/Blogs/11.webp",
-        "title": "Ich durfte BeAFox auf dem Innovationstag pitchen",
-        "description": "Mein erster Pitch auf Englisch – fünf Minuten lang beim Innovationstag, vor einem internationalen Publikum. Auch wenn wir diesmal nicht gewonnen haben, war es eine enorm wertvolle Erfahrung. Ich durfte BeAFox auf einer neuen Bühne präsentieren, neue Perspektiven auf Finanzbildung kennenlernen und viele spannende Kontakte knüpfen. Genau solche Momente zeigen, wie wichtig es ist, mutig zu sein, Neues auszuprobieren und kontinuierlich besser zu werden.",
-        "category": "Events"
-      },
-      {
-        "id": 10,
-        "image": "/assets/Blogs/10.webp",
-        "title": "BeAFox auf der ChamlandSchau",
-        "description": "Mit 18 die Schule beendet, keinen Plan vom Leben und Schulden aufgebaut – so begann meine Geschichte. Heute habe ich gelernt, mit Geld umzugehen und mit BeAFox ein Startup aufgebaut, das genau hier ansetzt. Auf der Chamlandschau standen wir mit unserem kleinen Stand zwischen großen Unternehmen – und hatten trotzdem durchgehend volle Gespräche. Das zeigt: Gerade junge Menschen spüren, dass Finanzbildung fehlt und suchen nach Antworten.",
-        "category": "Events"
-      },
-      {
-        "id": 9,
-        "image": "/assets/Blogs/9.webp",
-        "title": "Release App Store & Play Store",
-        "description": "Es ist so weit: BeAFox ist offiziell im App Store und Play Store verfügbar! Nach über 1,5 Jahren Entwicklung, Tests und unzähligen Anpassungen sind wir live gegangen – sogar drei Monate früher als ursprünglich geplant. Unser Anspruch: Finanzbildung so einfach und zugänglich wie möglich machen, ohne Werbung, ohne versteckte Verkaufsinteressen. Jetzt zählt jeder Download, jedes Feedback und jede Empfehlung, um noch mehr junge Menschen zu erreichen.",
-        "category": "News"
-      },
-      {
-        "id": 8,
-        "image": "/assets/Blogs/8.webp",
-        "title": "Donau-Post Artikel",
-        "description": "BeAFox in der Zeitung – diesmal mit einem ganz besonderen Titel: „Wir müssen über Geld reden!“ Die Donau-Post hat einen ausführlichen Artikel über uns veröffentlicht und erzählt, wie aus einer Idee ein echtes Lernangebot für Schulen wurde. Nach 1,5 Jahren Arbeit, Zweifeln und vielen Nachtschichten ist dieser Moment etwas Besonderes. Er zeigt: All die investierte Zeit zahlt sich aus – und unsere Mission erreicht immer mehr Menschen.",
-        "category": "News"
-      },
-      {
-        "id": 7,
-        "image": "/assets/Blogs/7.webp",
-        "title": "Neues Logo für BeAFox",
-        "description": "Feedback ist Gold wert: Unser erstes Logo wirkte improvisiert und nicht professionell genug – also haben wir gehandelt. Gemeinsam mit einem Designer ist ein neues BeAFox-Logo entstanden: moderner, klarer, freundlicher und perfekt auf unsere Zielgruppe abgestimmt. Für uns ist das mehr als ein Design-Update. Es ist ein Symbol dafür, wie ernst wir unsere Mission nehmen und wie wichtig ein stimmiger Auftritt für Schulen, Unternehmen und Nutzer:innen ist.",
-        "category": "News"
-      },
-      {
-        "id": 6,
-        "image": "/assets/Blogs/6.webp",
-        "title": "Mittelbayerische Zeitung",
-        "description": "„Mit dem Smartphone zum Finanzfuchs“ – unter diesem Titel ist unser erster großer Artikel in der Mittelbayerischen Zeitung erschienen. Ein Gänsehautmoment, die eigene Vision plötzlich schwarz auf weiß zu sehen. Im Fokus: Warum Finanzbildung für junge Menschen so wichtig ist, wie BeAFox Lehrkräfte im Unterricht unterstützt und weshalb wir bewusst unabhängig von Werbung und Verkaufsinteressen bleiben. Ein riesiges Dankeschön an alle Beteiligten!",
-        "category": "News"
-      },
-      {
-        "id": 5,
-        "image": "/assets/Blogs/5.webp",
-        "title": "BeAFox das erste Mal im Klassenzimmer",
-        "description": "Heute war ein besonderer Tag: BeAFox war zum ersten Mal im echten Unterricht im Einsatz – an der Staatlichen Realschule Neutraubling. Gemeinsam mit 25 Schüler:innen haben wir Finanzbildung mit der App ausprobiert. Das Ergebnis: 24 von 25 wünschen sich BeAFox fest in ihrem Unterricht. Für uns ein starkes Signal, dass junge Menschen digitale, interaktive Formate wollen – und dass wir mit unserem Ansatz im Klassenzimmer genau richtig liegen.",
-        "category": "Events"
-      },
-      {
-        "id": 4,
-        "image": "/assets/Blogs/4.webp",
-        "title": "Nächster erfolgreicher Pitch für BeAFox",
-        "description": "Beim Ideenpitch Region Nürnberg durften wir BeAFox zum ersten Mal außerhalb von Regensburg vorstellen. Der überarbeitete Pitch kam super an und half, unsere Idee noch klarer und greifbarer zu machen. Besonders gefreut haben uns die vielen Gespräche mit Vertreter*innen aus Bildung und Wirtschaft. Unser Ziel: BeAFox rechtzeitig zum bayerischen Schulstart an die Schulen bringen – damit Finanzbildung endlich dort ankommt, wo sie hingehört.",
-        "category": "Events"
-      },
-      {
-        "id": 3,
-        "image": "/assets/Blogs/3.webp",
-        "title": "Unser erster Pitch und dann gleich vor über 200 Menschen",
-        "description": "Mein erster Pitch überhaupt – und dann direkt vor über 200 Menschen bei den Tigern der TechBase Regensburg! Ich durfte unsere Vision von BeAFox präsentieren, erzählen, warum Finanzbildung für junge Menschen so wichtig ist und wie unsere App genau dort ansetzt. Besonders wertvoll waren die Gespräche im Anschluss: Lehrkräfte, Schüler*innen und Unternehmen haben sich in der Story wiedergefunden und Interesse an einer Zusammenarbeit gezeigt.",
-        "category": "Events"
-      },
-      {
-        "id": 2,
-        "image": "/assets/Blogs/2.webp",
-        "title": "Jetzt ist es offiziell. Wir waren beim Notar",
-        "description": "BeAFox ist offiziell gegründet: Wir waren beim Notar und haben den Gesellschaftsvertrag unterschrieben – ein großer Meilenstein nach vielen Monaten voller Ideen, Feedback und Tests. Unser Ziel bleibt klar: Finanzbildung für junge Menschen verständlich, unabhängig und spielerisch machen. Als Nächstes folgen Markeneintragung, weitere Demoe mit Schulen und Unternehmen und der nächste große Schritt in Richtung Marktdurchbruch.",
-        "category": "News"
-      },
-      {
-        "id": 1,
-        "image": "/assets/Blogs/1.webp",
-        "title": "Was für ein Tag: DENK.Summit",
-        "description": "Mit BeAFox durften wir unser Startup in der Startup-Area des DENK.Summit präsentieren – mit überwältigend positivem Feedback: „Wahnsinnig schöner Stand“, „cooles Branding, ihr stecht richtig heraus“. In nur zwei Stunden testeten über 50 Schüler*innen und Studierende die App. Fast alle bestätigten: Finanzbildung findet in der Schule bisher kaum statt. Dieses Erlebnis hat uns einmal mehr gezeigt, wie wichtig unsere Mission ist.",
-        "category": "Events"
-      }
-    ]
   },
   "ratgeber": {
     "meta": {
@@ -4675,7 +4366,7 @@
           "Stelle Fragen, wenn du etwas nicht verstehst, und bemühe dich, Antworten nachzuvollziehen",
           "Teile deine Erfahrungen und Tipps sachlich und faktengestützt mit der Community",
           "Gib konstruktives Feedback, das anderen konkret hilft, besser zu werden",
-          "Vermeide Spam, Werbung, unsolicited promotions oder unerwünschte kommerzialisierte Inhalte",
+          "Vermeide Spam, unaufgeforderte Werbung oder unerwünschte kommerzielle Inhalte",
           "Halte Diskussionen sachlich, themenbezogen und frei von persönlichen Angriffen"
         ]
       },
@@ -4691,7 +4382,7 @@
           "Terrorismus und Extremismus: Inhalte, die Terrorismus verherrlichen, verbreiten oder aufstacheln; Propagandamaterial extremistischer Organisationen",
           "Betrug und illegale Aktivitäten: Inhalte, die zu Betrug, Urkundenfälschung, Diebstahl oder anderen Straftaten auffordern oder anleiten; Verbreitung von Malware oder Phishing-Links",
           "Urheberrecht und geistiges Eigentum: Verbreitung von Inhalten, die Urheberrechte, Markenrechte oder andere geistige Eigentumsrechte Dritter verletzen, ohne dass eine rechtliche Grundlage vorliegt",
-          "Impersonation und Täuschung: Vortäuschung einer anderen Person's Identität, besonders von BeAFox-Mitarbeitern, Moderatoren oder bekannten Personen; Verbreitung von bewusst falschen oder irreführenden Informationen zu Finanzthemen",
+          "Impersonation und Täuschung: Vortäuschung der Identität einer anderen Person, besonders von BeAFox-Mitarbeitern, Moderatoren oder bekannten Personen; Verbreitung von bewusst falschen oder irreführenden Informationen zu Finanzthemen",
           "Illegal angebotene Waren oder Dienstleistungen: Verbreitung oder Bewerbung von rechtswidrig hergestellten, importierten oder vertriebenen Waren"
         ]
       },
@@ -4703,7 +4394,7 @@
           "Teile keine persönlichen Finanzdaten wie Kontonummern, PINs, TAN-Nummern, Kreditkartendaten oder andere sensible Informationen in öffentlichen Bereichen",
           "Gib keine Passwörter, Zugangsdaten oder Authentifizierungscodes weiter – BeAFox-Mitarbeiter werden dich niemals danach fragen",
           "Respektiere die Privatsphäre anderer Nutzer: Teile nicht ihre persönlichen Daten, Bilder oder private Informationen ohne explizite Zustimmung",
-          "Melde verdächtige Aktivitäten, Phishing-Versuche, ungewöhnliche Kontozugriffe oder Sicherheitslücken sofort an support@beafox.app",
+          "Melde verdächtige Aktivitäten, Phishing-Versuche, ungewöhnliche Kontozugriffe oder Sicherheitslücken sofort an info@beafox.app",
           "Verwende ein starkes, einzigartiges Passwort für dein BeAFox-Konto und aktiviere Zwei-Faktor-Authentifizierung, wenn verfügbar",
           "Verstehe, dass BeAFox deine Daten gemäß DSGVO und unserer Datenschutzerklärung verarbeitet – Datenschutzhinweise findest du unter beafox.app/datenschutz"
         ]
@@ -4729,7 +4420,7 @@
           "Gib keine konkreten Anlageempfehlungen, kein Tipping oder Finanzprognosen – das ist Finanzberatung, für die eine Lizenz erforderlich ist",
           "Verweise auf professionelle, lizenzierte Finanzberater oder Behörden (wie die BaFin) bei komplexen oder persönlichen Finanzfragen",
           "Teile Allgemeinwissen über Finanzen und Konzepte, aber nicht deine persönlichen Finanzentscheidungen oder Strategien, die als Ratschlag missverstanden werden könnten",
-          "Erinnere andere darin, dass individuelle professionelle Beratung für größere finanzielle Entscheidungen (Kredite, Investitionen, Versicherungen) wichtig und empfohlen ist"
+          "Erinnere andere daran, dass individuelle professionelle Beratung für größere finanzielle Entscheidungen (Kredite, Investitionen, Versicherungen) wichtig und empfohlen ist"
         ]
       },
       {
@@ -4739,7 +4430,7 @@
         "rules": [
           "Bea ist eine KI: Bea wird von künstlicher Intelligenz angetrieben und kann Fehler machen. Bea ist kein Mensch und hat keine persönlichen Gefühle oder Intentionen",
           "Transparenz über KI-generierte Inhalte: Inhalte, die von Bea oder anderen KI-Systemen generiert wurden, werden als solche gekennzeichnet. BeAFox mischt nicht verborgen KI-Inhalte unter menschliche Inhalte",
-          "Grenzen von Bea: Bea bietet keine professionelle Finanzberatung, kann in Krisensituationen nicht unterstützen und ersetzt keine menschliche Fachperson. Bei ernsten Problemen kontaktiere einen Vertrauensperson, Therapeuten oder Behörden",
+          "Grenzen von Bea: Bea bietet keine professionelle Finanzberatung, kann in Krisensituationen nicht unterstützen und ersetzt keine menschliche Fachperson. Bei ernsten Problemen kontaktiere eine Vertrauensperson, Therapeuten oder Behörden",
           "Datenschutz bei KI: Deine Gespräche mit Bea werden zum Trainieren und Verbessern von Bea verwendet (anonym und pseudonymisiert gemäß DSGVO). Detailangaben findest du unter beafox.app/datenschutz",
           "Beschwerde über Bea-Verhalten: Wenn Bea-Inhalte unangemessen wirken oder dich falsch darstellen, kannst du dies melden. BeAFox wird den Fall reviewen"
         ]
@@ -4761,8 +4452,8 @@
         "title": "Inhaltsmoderation und Entscheidungstransparenz (DSA Art. 14, 17)",
         "description": "BeAFox moderiert Inhalte, um die Richtlinien durchzusetzen. Wir sind transparent über wie, warum und von wem Entscheidungen getroffen werden.",
         "rules": [
-          "Moderationsmethoden: BeAFox nutzt eine Kombination aus automatisierter Erkennung (Kunstliche Intelligenz) und menschlicher Überprüfung. Flagged Inhalte werden von geschulten Moderatoren geprüft, bevor Maßnahmen ergriffen werden",
-          "Begründungspflicht (DSA Art. 17): Wenn dein Konto gesperrt, ein Beitrag gelöscht oder eine andere Maßnahme ergriffen wird, erhältst du eine Mitteilung mit: (1) der genauen Regelabschnitt oder dem Grund, (2) der genauen Begründung warum die Maßnahme ergriffen wurde, (3) Information über dein Beschwerderecht. Diese Informationen werden innerhalb von angemessener Zeit bereitgestellt",
+          "Moderationsmethoden: BeAFox nutzt eine Kombination aus automatisierter Erkennung (Künstliche Intelligenz) und menschlicher Überprüfung. Flagged Inhalte werden von geschulten Moderatoren geprüft, bevor Maßnahmen ergriffen werden",
+          "Begründungspflicht (DSA Art. 17): Wenn dein Konto gesperrt, ein Beitrag gelöscht oder eine andere Maßnahme ergriffen wird, erhältst du eine Mitteilung mit: (1) den genauen Regelabschnitt oder den Grund, (2) der genauen Begründung, warum die Maßnahme ergriffen wurde, (3) Information über dein Beschwerderecht. Diese Informationen werden innerhalb angemessener Zeit bereitgestellt",
           "Transparenzbericht: BeAFox veröffentlicht regelmäßig Berichte über Inhaltsmoderation: Anzahl der erhaltenen Meldungen, bearbeitete Inhalte, Gründe für Löschungen, und Beschwerden",
           "Menschliche Überprüfung bei Beschwerden: Wenn du gegen eine Moderationsentscheidung Einspruch erhebst, wird dein Fall von einem anderen geschulten Moderator erneut überprüft (nicht dieselbe Person, nicht nur automatisierte Systeme)",
           "Ausnahmefälle für Notfälle: Bei unmittelbar bevorstehender Gefahr (z.B. Selbstmord-Ankündigung, Bombendrohung) kann BeAFox ohne Vorwarnung Inhalte entfernen und die Behörden kontaktieren"
@@ -4774,10 +4465,10 @@
         "description": "Du hast das Recht, gegen Moderationsentscheidungen, Sperren oder Löschungen Beschwerde einzureichen. BeAFox bietet ein internes Review-Verfahren und externe Optionen.",
         "rules": [
           "Interne Beschwerde: Wenn du eine Moderationsentscheidung anfechten möchtest, kannst du innerhalb von 14 Tagen nach Notification eine Beschwerde an appeals@beafox.app einreichen. Gib an: (1) welche Entscheidung du anfechtest, (2) deine Gründe, warum die Entscheidung falsch ist, (3) ggf. neue Informationen. Formatiere sachlich und konkret",
-          "Interne Review-Frist: BeAFox überprüft deine Beschwerde innerhalb von 14 Tagen und teilt dir das Ergebnis mit: Entscheidung bestätigt, teilweise rückgängig gemacht oder vollständig überrufen. Die Begründung wird mitgeteilt",
+          "Interne Review-Frist: BeAFox überprüft deine Beschwerde innerhalb von 14 Tagen und teilt dir das Ergebnis mit: Entscheidung bestätigt, teilweise rückgängig gemacht oder vollständig aufgehoben. Die Begründung wird mitgeteilt",
           "Außergerichtliches Streitbeilegung: Falls du mit der internen Entscheidung nicht einverstanden bist, kannst du ein Verfahren bei einer unabhängigen Ombudsperson oder einem Schiedsverfahren einleiten. BeAFox ist Mitglied des Digital Services Act-Beschwerdeverfahrens (Details unter beafox.app/beschwerde)",
           "Gerichtliche Überprüfung: Du hast das Recht, jede Moderationsentscheidung vor einem deutschen oder EU-Gericht anzufechten (Verwaltungsrecht oder Privatrecht je nach Situation)",
-          "Keine Repressalien: BeAFox wird nicht dein Konto sperren, deine Inhalte löschen oder dir sonstwie schaden, weil du Beschwerde einreicht. Das ist Repressalie und verboten"
+          "Keine Repressalien: BeAFox wird nicht dein Konto sperren, deine Inhalte löschen oder dir sonstwie schaden, weil du Beschwerde einreichst. Das wäre eine Repressalie und ist ausdrücklich verboten"
         ]
       }
     ],
@@ -4786,10 +4477,10 @@
       "description": "BeAFox setzt diese Richtlinien durch, um alle Nutzer zu schützen. Je nach Schweregrad und Häufigkeit können folgende Maßnahmen ergriffen werden. Alle Maßnahmen werden transparent mitgeteilt mit Begründung und Beschwerderecht.",
       "actions": [
         "Stufe 1 – Verwarnung: Der Nutzer wird informiert, dass ein Verstoß vorliegen könnte, und aufgefordert, sein Verhalten zu ändern. Der Inhalt wird möglicherweise verborgen, aber nicht gelöscht",
-        "Stufe 2 – Inhaltsentfernung: Der verstoßende Inhalte wird entfernt. Der Nutzer wird benachrichtigt mit Begründung und kann Beschwerde einreichen",
-        "Stufe 3 – Temporäre Sperrung (7–90 Tage): Das Benutzerkonto wird für einen definierten Zeitraum gesperrt. Der Nutzer kann während dieser Zeit nicht auf die Plattform zugreifen. Alle anderen Funktionen (Lektionen, Quiz, Rangliste) sind gesperrt. Konversationen sind möglich nach Aufhebung",
+        "Stufe 2 – Inhaltsentfernung: Der verstoßende Inhalt wird entfernt. Der Nutzer wird benachrichtigt mit Begründung und kann Beschwerde einreichen",
+        "Stufe 3 – Temporäre Sperrung (7–90 Tage): Das Benutzerkonto wird für einen definierten Zeitraum gesperrt. Der Nutzer kann während dieser Zeit nicht auf die Plattform zugreifen. Alle anderen Funktionen (Lektionen, Quiz, Rangliste) sind gesperrt. Nach Aufhebung der Sperre kann das Konto wieder regulär genutzt werden",
         "Stufe 4 – Permanente Sperrung: Das Benutzerkonto wird unwiderruflich gelöscht für wiederholte schwere Verstöße, Rechtsverletzungen (CSAM, Terrorismus), oder bei Verstößen gegen die Sicherheit anderer. Der Nutzer kann nicht mehr auf die Plattform zugreifen. BeAFox kann Daten zu Strafverfolgung oder Zivilklagen bewahren",
-        "Stufe 5 – Meldung an Behörden: Bei Verdacht auf Straftaten (Kindesmissbrauch, Terrorismus, Betrug, Belästigung) wird BeAFox die zuständigen deutschen oder europäischen Behörden (Polizei, BKA, NCMECs, Europol) benachrichtigen und ggf. Beweise übermitteln",
+        "Stufe 5 – Meldung an Behörden: Bei Verdacht auf Straftaten (Kindesmissbrauch, Terrorismus, Betrug, Belästigung) wird BeAFox die zuständigen deutschen oder europäischen Behörden (Polizei, BKA, NCMEC, Europol) benachrichtigen und ggf. Beweise übermitteln",
         "Besonderheiten bei Minderjährigen: Bei Verstößen durch oder gegen Minderjährige orientiert sich BeAFox zusätzlich an JuSchG und JMStV. Bei Gefährdung wird ggf. das Jugendamt kontaktiert",
         "Wiederholung und Eskalation: Erste Verstöße führen zu Verwarnungen. Wiederholte Verstöße führen zu härteren Maßnahmen (Sperrung, Löschung). Schwere Verstöße (z.B. Hass, Gewalt, CSAM, Betrug) führen direkt zu Sperrung und/oder Behördenmeldung, unabhängig davon, ob es eine erste Warnung gab"
       ]
@@ -4871,7 +4562,10 @@
         "title": "Kontakt",
         "content": [
           {
-            "details": ["Telefon: +49 178 2723 673", "E-Mail: info@beafox.app"]
+            "details": [
+              "Telefon: +49 178 2723 673",
+              "E-Mail: info@beafox.app"
+            ]
           }
         ]
       },
@@ -4880,7 +4574,9 @@
         "title": "Vertreten durch",
         "content": [
           {
-            "details": ["Geschäftsführer: Alexandru Tapelea"]
+            "details": [
+              "Geschäftsführer: Alexandru Tapelea"
+            ]
           }
         ]
       },
@@ -4902,8 +4598,10 @@
         "title": "Umsatzsteuer-ID",
         "content": [
           {
-            "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:",
-            "details": ["DE455701438"]
+            "text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:",
+            "details": [
+              "DE455701438"
+            ]
           }
         ]
       },
@@ -4956,15 +4654,8 @@
             "text": "Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
           },
           {
-            "subtitle": "Online-Streitbeilegung (OS)",
-            "text": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:",
-            "link": {
-              "text": "https://ec.europa.eu/consumers/odr/",
-              "href": "https://ec.europa.eu/consumers/odr/"
-            }
-          },
-          {
-            "text": "Unsere E-Mail-Adresse lautet: info@beafox.app"
+            "subtitle": "Hinweis zur Online-Streitbeilegung",
+            "text": "Die zentrale Plattform der Europäischen Kommission zur Online-Streitbeilegung (OS-Plattform) wurde am 20. Juli 2025 dauerhaft eingestellt und ist nicht mehr erreichbar. Verbraucherinnen und Verbraucher können sich bei Streitigkeiten direkt an uns unter info@beafox.app wenden."
           }
         ]
       },
@@ -4989,7 +4680,7 @@
           },
           {
             "subtitle": "Transparenzhinweis gemäß EU AI Act",
-            "text": "Gemäß Art. 50 der EU-Verordnung über künstliche Intelligenz (KI-VO / EU 2024/1689) weisen wir darauf hin, dass die KI-Funktion „Bea” auf Large Language Models (LLMs) von Drittanbietern basiert. Die Verarbeitung Ihrer Eingaben erfolgt über die API von OpenAI (OpenAI, Inc., San Francisco, USA). Weitere Informationen zur Datenverarbeitung durch den KI-Anbieter finden Sie in unserer Datenschutzerklärung. BeAFox übernimmt keine Gewähr für die Richtigkeit, Vollständigkeit oder Aktualität der KI-generierten Inhalte."
+            "text": "Gemäß Art. 50 der EU-Verordnung über künstliche Intelligenz (KI-VO / Verordnung (EU) 2024/1689) weisen wir darauf hin, dass die KI-Funktion „Bea“ auf Large Language Models (LLMs) eines Drittanbieters basiert. Die Verarbeitung Ihrer Eingaben sowie der Modellantworten erfolgt über die API von OpenAI Ireland Ltd. (1st Floor, The Liffey Trust Centre, 117–126 Sheriff Street Upper, Dublin 1, Irland) bzw. deren Muttergesellschaft OpenAI, L.L.C. (USA). Detaillierte Angaben zu Rechtsgrundlagen, Empfängern und Drittlandtransfers finden Sie in unserer Datenschutzerklärung. BeAFox übernimmt keine Gewähr für die Richtigkeit, Vollständigkeit oder Aktualität der KI-generierten Inhalte."
           }
         ]
       }
@@ -5176,11 +4867,11 @@
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Die Speicherung von Informationen in Ihrem Endgerät oder der Zugriff hierauf erfolgt, soweit nicht unbedingt erforderlich, auf Grundlage Ihrer Einwilligung (§ 25 Abs. 1 TDDDG i.V.m. Art. 6 Abs. 1 lit. a DSGVO). Technisch notwendige Cookies verwenden wir auf Grundlage von § 25 Abs. 2 TDDDG und Art. 6 Abs. 1 lit. f DSGVO."
+            "text": "Die Speicherung von Informationen in Ihrem Endgerät oder der Zugriff hierauf erfolgt, soweit nicht unbedingt erforderlich, auf Grundlage Ihrer Einwilligung (§ 25 Abs. 1 TDDDG i.V.m. Art. 6 Abs. 1 lit. a DSGVO). Unbedingt erforderliche Cookies (z. B. Login-Session) setzen wir auf Grundlage von § 25 Abs. 2 Nr. 2 TDDDG; die anschließende Datenverarbeitung erfolgt zur Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO) bzw. zur Wahrung unseres berechtigten Interesses an einem stabilen, sicheren Betrieb (Art. 6 Abs. 1 lit. f DSGVO)."
           },
           {
             "subtitle": "Datentrennung",
-            "text": "Diese gespeicherten Informationen werden getrennt von eventuell weiter bei uns angegeben Daten gespeichert. Insbesondere werden die Daten der Cookies nicht mit Ihren weiteren Daten verknüpft."
+            "text": "Diese gespeicherten Informationen werden getrennt von etwaigen weiteren bei uns gespeicherten Daten verwahrt. Insbesondere werden die Daten der Cookies nicht mit Ihren weiteren Daten verknüpft."
           }
         ]
       },
@@ -5344,7 +5035,7 @@
         "content": [
           {
             "subtitle": "Zahlungsabwicklung",
-            "text": "Auf unserer Website bieten wir kostenpflichtige Abos über einen Checkout an. Die Zahlungsabwicklung erfolgt durch Stripe Inc., 354 Oyster Point Blvd, South San Francisco, CA 94080, USA. Wir bieten folgende Pläne an:",
+            "text": "Auf unserer Website bieten wir kostenpflichtige Abonnements über einen Checkout an. Die Zahlungsabwicklung erfolgt durch Stripe Payments Europe, Limited, 1 Grand Canal Street Lower, Grand Canal Dock, Dublin, D02 H210, Irland (im Folgenden „Stripe“); Mutter- und Konzerngesellschaften können unterstützend tätig werden, insbesondere Stripe, Inc. (510 Townsend Street, San Francisco, CA 94103, USA). Wir bieten folgende Pläne an:",
             "list": [
               "Monatliches Abo: EUR 4,99/Monat",
               "Jährliches Abo: EUR 44,99/Jahr",
@@ -5397,7 +5088,7 @@
         "content": [
           {
             "subtitle": "Google Analytics (GA4)",
-            "text": "Wir nutzen Google Analytics, ein Webanalytik-Tool der Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google Analytics verarbeitet Daten über Ihr Nutzerverhalten auf unserer Website mittels Cookies. Die gesammelten Daten werden verwendet, um die Nutzung unserer Website zu analysieren, Reports zu erstellen und um uns bei der Verbesserung unserer Website zu helfen. Die ID unseres Google Analytics Properties lautet: G-J0GWX92CNH."
+            "text": "Wir nutzen Google Analytics, ein Webanalytik-Tool der Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Irland) bzw. ihrer Muttergesellschaft Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Google Analytics verarbeitet Daten über Ihr Nutzerverhalten auf unserer Website mittels Cookies. Die gesammelten Daten werden verwendet, um die Nutzung unserer Website zu analysieren, Berichte zu erstellen und um uns bei der Verbesserung unserer Website zu helfen."
           },
           {
             "subtitle": "Einwilligung für Google Analytics",
@@ -5421,7 +5112,7 @@
           },
           {
             "subtitle": "Ahrefs Analytics",
-            "text": "Wir nutzen Ahrefs Analytics (Ahrefs Pte. Ltd., 11 Changi Business Park, Singapore 486048), ein Webanalytik-Tool zur Analyse von Website-Traffic und Suchmaschinen-Performance. Ahrefs verarbeitet pseudonyme Daten über Ihr Nutzerverhalten mittels Cookies."
+            "text": "Wir nutzen Ahrefs Analytics (Ahrefs Pte. Ltd., 11 Changi Business Park Central 1, Singapur 486048), ein Webanalytik-Tool zur Analyse von Website-Traffic und Suchmaschinen-Performance. Ahrefs verarbeitet pseudonyme Daten über Ihr Nutzerverhalten mittels Cookies. Da Ahrefs personenbezogene Daten in Singapur verarbeitet (Drittland ohne Angemessenheitsbeschluss), haben wir mit Ahrefs Standardvertragsklauseln (SCC) gemäß Art. 46 DSGVO vereinbart."
           },
           {
             "subtitle": "Einwilligung für Ahrefs",
@@ -5433,7 +5124,7 @@
           },
           {
             "subtitle": "Vercel Analytics (Web Vitals)",
-            "text": "Zusätzlich nutzen wir Vercel Analytics von Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, USA). Vercel Analytics ist ein datenschutzfreundliches Analyse-Tool, das keine Cookies setzt und keine personenbezogenen Daten erfasst. Es misst nur technische Metriken wie Page Load Times und Core Web Vitals."
+            "text": "Zusätzlich nutzen wir Vercel Web Analytics von Vercel Inc. (340 S Lemon Ave #4133, Walnut, CA 91789, USA). Vercel Web Analytics ist ein datenschutzfreundliches Analyse-Tool, das keine Cookies setzt und keine unmittelbar personenbezogenen Daten erfasst. Es misst aggregierte technische Metriken wie Page Load Times und Core Web Vitals. Eine Übermittlung in die USA (Drittland) ist nicht ausgeschlossen; mit Vercel haben wir hierfür einen Auftragsverarbeitungsvertrag nach Art. 28 DSGVO sowie Standardvertragsklauseln (SCC) gemäß Art. 46 DSGVO geschlossen."
           },
           {
             "subtitle": "Keine Einwilligung für Vercel Analytics erforderlich",
@@ -5447,7 +5138,7 @@
       },
       {
         "id": 14,
-        "title": "Schriftarten (Google Fonts)",
+        "title": "Schriftarten",
         "content": [
           {
             "subtitle": "Selbsthosting ohne externe Verbindung",
@@ -5468,28 +5159,28 @@
         "title": "Einsatz von Künstlicher Intelligenz (KI)",
         "content": [
           {
-            "subtitle": "Bea - Ihr KI-basierter Lernassistent",
-            "text": "Die BeAFox-App bietet einen KI-gestützten Lernassistenten namens „Bea“. Bea nutzt künstliche Intelligenz, um Ihnen personalisierte Lerntipps zu geben, Fragen zu beantworten und Ihren Lernprozess zu unterstützen."
+            "subtitle": "Bea – Ihr KI-basierter Lernassistent",
+            "text": "Die BeAFox-App bietet einen KI-gestützten Lernassistenten namens „Bea“. Bea unterstützt Sie bei Fragen zur Finanzbildung, gibt erläuternde Hinweise und begleitet Ihren Lernprozess. Bea ist kein Mensch, sondern eine Software."
           },
           {
-            "subtitle": "Datenverhältnisse bei KI-Nutzung",
-            "text": "Zur Verbesserung der Antwortqualität kann Bea Ihre Lern- und Nutzungsdaten analysieren (z.B. bisherige Antworten, Lernfortschritt). Alle Daten werden innerhalb unserer Systeme verarbeitet."
+            "subtitle": "Eingesetzte KI-Anbieter",
+            "text": "Für den Betrieb von Bea verarbeiten wir Ihre Eingaben (Prompts), Konversationsverläufe und ggf. Lernkontextdaten über die API von OpenAI Ireland Ltd. (1st Floor, The Liffey Trust Centre, 117–126 Sheriff Street Upper, Dublin 1, Irland), die als Auftragsverarbeiter im Sinne des Art. 28 DSGVO für BeAFox tätig wird. OpenAI kann Daten an die Muttergesellschaft OpenAI, L.L.C. (USA) übermitteln (Drittland ohne uneingeschränkten Angemessenheitsbeschluss). Mit OpenAI haben wir einen Auftragsverarbeitungsvertrag (DPA) sowie EU-Standardvertragsklauseln (SCC) gemäß Art. 46 DSGVO abgeschlossen. Inhalte aus der API-Nutzung werden gemäß OpenAIs Enterprise-/API-Richtlinien nicht zum Trainieren der allgemeinen Foundation-Modelle verwendet."
           },
           {
-            "subtitle": "Kein Profiling nach Art. 22 DSGVO",
-            "text": "Wir verzichten auf automatisierte Entscheidungsfindung durch Bea. Das bedeutet: Bea trifft KEINE rechtsverbindlichen Entscheidungen über Sie. Bea gibt Empfehlungen, die letzte Entscheidung liegt immer bei Ihnen."
+            "subtitle": "Welche Daten Bea verarbeitet",
+            "text": "Verarbeitet werden insbesondere: Ihre Frage- bzw. Prompt-Eingaben, von Bea erzeugte Antworten, eine pseudonyme Nutzer-/Konversations-ID sowie – soweit für die Antwortqualität nötig – aggregierte Lernkontextdaten (z. B. zuletzt abgeschlossene Lektion). Wir bitten Sie ausdrücklich, gegenüber Bea keine besonders sensiblen Daten (z. B. Gesundheits-, Konto- oder TAN-Daten) anzugeben."
           },
           {
-            "subtitle": "Transparenz und menschlicher Kontakt",
-            "text": "Wenn Sie sich bezüglich einer KI-generierten Antwort unsicher sind oder eine menschliche Überprüfung wünschen, kontaktieren Sie uns jederzeit unter info@beafox.app. Unser Team überprüft Ihre Anfrage und gibt Ihnen eine verbindliche Antwort."
+            "subtitle": "Keine automatisierte Einzelfallentscheidung im Sinne von Art. 22 DSGVO",
+            "text": "Bea trifft keine rechtlich bindenden Entscheidungen über Sie und keine Entscheidungen mit ähnlich erheblicher Wirkung. Lernempfehlungen und Personalisierungen dienen ausschließlich der Lernbegleitung; eine ausschließlich automatisierte Entscheidungsfindung im Sinne des Art. 22 DSGVO findet nicht statt. Sie können sich jederzeit an einen Menschen unseres Teams unter info@beafox.app wenden."
           },
           {
             "subtitle": "Rechtsgrundlage",
-            "text": "Die Verarbeitung durch Bea erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung - Bereitstellung des KI-Assistenten) und Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Verbesserung der Dienste)."
+            "text": "Die Verarbeitung im Rahmen von Bea erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung – Bereitstellung des KI-Assistenten) sowie auf Grundlage unseres berechtigten Interesses an Sicherheit, Stabilität und Verbesserung des Dienstes (Art. 6 Abs. 1 lit. f DSGVO)."
           },
           {
-            "subtitle": "EU AI Act (EU-KI-Verordnung)",
-            "text": "Unser Einsatz von Bea richtet sich nach der EU-Verordnung über künstliche Intelligenz (EU-KI-Verordnung 2024/1689). Bea wird als System geringer bis mittlerer Risikostufe betrieben. Wir verpflichten uns zur Transparenz über den Einsatz dieser Technologie."
+            "subtitle": "EU AI Act (KI-Verordnung)",
+            "text": "Unser Einsatz von Bea richtet sich nach der Verordnung (EU) 2024/1689 (AI Act). Bea ist als KI-System mit geringer bis mittlerer Risikostufe einzuordnen; eine Klassifikation als „Hochrisiko-KI-System“ im Sinne des Anhangs III liegt nach unserer Bewertung nicht vor. Wir kennzeichnen KI-generierte Inhalte und weisen auf die Einschränkungen automatisierter Antworten hin (Art. 50 KI-VO)."
           }
         ]
       },
@@ -5563,7 +5254,7 @@
         "title": "Automatisierte Entscheidungsfindung",
         "content": [
           {
-            "text": "Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein Profiling. Ihre personenbezogenen Daten werden nicht für automatisierte Entscheidungsprozesse verwendet, die zu Nachteilen für Sie führen könnten."
+            "text": "Eine ausschließlich automatisierte Entscheidungsfindung mit rechtlicher Wirkung oder ähnlich erheblicher Beeinträchtigung im Sinne des Art. 22 DSGVO findet nicht statt. Personalisierungs- und Empfehlungslogiken (z. B. der Lernpfad innerhalb der App oder Hinweise von Bea) dienen ausschließlich der Lernbegleitung und führen zu keiner für Sie nachteiligen automatisierten Einzelfallentscheidung."
           }
         ]
       },
@@ -5573,7 +5264,7 @@
         "content": [
           {
             "subtitle": "Schutz Minderjähriger",
-            "text": "Unsere Dienste richten sich auch an Minderjährige. Wir nehmen den Schutz der Privatsphäre von Minderjährigen sehr ernst. Nach Art. 8 DSGVO benötigen Nutzer unter 16 Jahren die Einwilligung ihrer Eltern oder Erziehungsberechtigten, bevor wir ihre personenbezogenen Daten verarbeiten können."
+            "text": "Unsere Dienste richten sich primär an Nutzer ab 16 Jahren. Wir nehmen den Schutz der Privatsphäre von Minderjährigen sehr ernst. Nach Art. 8 DSGVO benötigen Nutzer unter 16 Jahren die Einwilligung ihrer Eltern oder Erziehungsberechtigten, bevor wir ihre personenbezogenen Daten verarbeiten können. Soweit BeAFox in Schul- oder Bildungskontexten von Schülerinnen und Schülern unter 16 Jahren genutzt wird, holt die jeweilige Bildungseinrichtung die erforderlichen Einwilligungen der Erziehungs-berechtigten ein."
           },
           {
             "subtitle": "Sicherstellung der elterlichen Zustimmung",
@@ -5600,6 +5291,93 @@
             "text": "Unsere Prozesse gewährleisten vollständige Compliance mit Art. 8 DSGVO, insbesondere hinsichtlich der Einwilligung von Minderjährigen und der Verhinderung unbefugter Datenverarbeitung."
           }
         ]
+      },
+      {
+        "id": 21,
+        "title": "Bestellabwicklung über Shopify (Shop)",
+        "content": [
+          {
+            "text": "Unseren Online-Shop betreiben wir über die Plattform der Shopify International Limited, Victoria Buildings, 1-2 Haddington Road, Dublin 4, D04 XN32, Irland (nachfolgend „Shopify\"). Bei jeder Bestellung verarbeitet Shopify in unserem Auftrag personenbezogene Daten (insbesondere Name, Lieferadresse, Rechnungsadresse, E-Mail-Adresse, ggf. Telefonnummer, Bestelldaten und Zahlungsstatus)."
+          },
+          {
+            "subtitle": "Rechtsgrundlage",
+            "text": "Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Erfüllung des Kaufvertrags). Mit Shopify haben wir einen Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO geschlossen. Bei Datentransfers in Drittländer (z. B. USA für Konzerngesellschaften und Subdienstleister) greifen die Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO."
+          },
+          {
+            "subtitle": "Weitere Informationen",
+            "details": [
+              "Datenschutz Shopify: https://www.shopify.com/legal/privacy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "title": "Print-on-Demand-Fulfillment durch Printful",
+        "content": [
+          {
+            "text": "Zur Produktion und zum Versand unserer Shop-Produkte (T-Shirts, Hoodies, Taschen u. a.) übermitteln wir die für die Ausführung der Bestellung erforderlichen Daten (Name, Lieferadresse, ggf. E-Mail-Adresse für Versandbenachrichtigungen, Bestellinhalt) an die Printful Inc., 11025 Westlake Drive, Charlotte, NC 28273, USA."
+          },
+          {
+            "subtitle": "Rechtsgrundlage und Drittlandtransfer",
+            "text": "Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung). Mit Printful besteht ein Auftragsverarbeitungsvertrag inklusive Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO) zur Absicherung des Datentransfers in die USA. Weitere Informationen: https://www.printful.com/policies/privacy"
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "title": "Zahlungsabwicklung im Shop",
+        "content": [
+          {
+            "text": "Im Checkout des Shops stehen unterschiedliche Zahlungsarten zur Auswahl. Je nach gewählter Zahlungsart werden Ihre Zahlungsdaten an den jeweiligen Zahlungsdienstleister übermittelt."
+          },
+          {
+            "subtitle": "Shopify Payments",
+            "text": "Zahlungen per Kreditkarte oder Apple Pay / Google Pay werden über Shopify Payments (Shopify International Ltd., c/o Shopify Payments Europe Ltd., Dublin, Irland) abgewickelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO."
+          },
+          {
+            "subtitle": "PayPal",
+            "text": "Bei Auswahl von PayPal werden die Zahlungsdaten an die PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, 2449 Luxemburg übermittelt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO. Datenschutzhinweise: https://www.paypal.com/de/legalhub/privacy-full"
+          },
+          {
+            "subtitle": "Weitere Zahlungsanbieter",
+            "text": "Sollten im Checkout weitere Zahlungsmethoden zur Verfügung stehen, gelten die jeweiligen Datenschutzhinweise der Anbieter, die im Bestellprozess verlinkt werden."
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "title": "Kundenkonto und Bestellhistorie",
+        "content": [
+          {
+            "text": "Sofern Sie ein Shop-Kundenkonto anlegen, speichern wir die von Ihnen angegebenen Daten (E-Mail, Anschrift, Bestellhistorie) zur Vertragsabwicklung sowie zur Vereinfachung künftiger Bestellungen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO."
+          },
+          {
+            "subtitle": "Löschung",
+            "text": "Sie können Ihr Kundenkonto jederzeit selbst löschen oder uns formlos an info@beafox.app dazu auffordern. Gesetzliche Aufbewahrungspflichten (HGB, AO) für Bestelldaten bleiben hiervon unberührt."
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "title": "Marketing-Cookies und Reichweitenmessung im Shop",
+        "content": [
+          {
+            "text": "Im Shop setzen wir Marketing-Cookies und Tracking-Technologien nur nach Ihrer ausdrücklichen Einwilligung ein (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TTDSG). Die Einwilligung erfolgt über unser Cookie-Banner, das beim ersten Aufruf erscheint."
+          },
+          {
+            "subtitle": "Eingesetzte Tools",
+            "list": [
+              "Meta-Pixel (Meta Platforms Ireland Ltd., Irland) zur Messung und Optimierung von Werbeanzeigen",
+              "Google Analytics 4 / Google Ads (Google Ireland Ltd., Irland) für statistische Auswertung und Conversion-Tracking",
+              "Weitere in der Cookie-Einwilligung gelistete Drittanbieter"
+            ]
+          },
+          {
+            "subtitle": "Widerruf",
+            "text": "Sie können Ihre Einwilligung jederzeit für die Zukunft widerrufen, indem Sie im Footer auf „Cookie-Einstellungen\" klicken und die jeweilige Kategorie deaktivieren."
+          }
+        ]
       }
     ],
     "contact": {
@@ -5611,7 +5389,7 @@
     },
     "lastUpdated": {
       "date": "Stand dieser Datenschutzerklärung: April 2026",
-      "note": "Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder Änderungen unserer Leistungen abzubilden."
+      "note": "Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen abzubilden."
     }
   },
   "widerruf": {
@@ -5659,7 +5437,7 @@
     "hero": {
       "badge": "Verbraucherrecht",
       "title": "Widerrufsbelehrung",
-      "subtitle": "Informationen zu Ihrem gesetzlichen Widerrufsrecht gemäß §§ 355 ff. BGB bei Fernabsatzverträgen über digitale Inhalte."
+      "subtitle": "Informationen zu Ihrem gesetzlichen Widerrufsrecht gemäß §§ 355 ff. BGB - für Verträge über digitale Inhalte (App-Abos) sowie für den Kauf von Waren in unserem Online-Shop."
     },
     "sections": [
       {
@@ -5796,6 +5574,79 @@
             "text": "Senden Sie Ihren Widerruf idealerweise per E-Mail an info@beafox.app. Sie erhalten innerhalb von 48 Stunden (werktags) eine Bestätigung. Bitte geben Sie in Ihrem Widerruf Ihren Namen, die mit dem Konto verknüpfte E-Mail-Adresse und das Datum des Vertragsschlusses an."
           }
         ]
+      },
+      {
+        "id": 7,
+        "title": "Widerrufsrecht für Waren aus unserem Shop",
+        "iconId": "rotate",
+        "content": [
+          {
+            "subtitle": "Hinweis",
+            "text": "Die §§ 1 bis 6 dieser Belehrung gelten für Verträge über digitale Inhalte und Abonnements unserer App. Für Bestellungen physischer Waren in unserem Online-Shop gelten die nachfolgenden §§ 7 bis 10."
+          },
+          {
+            "subtitle": "Widerrufsrecht",
+            "text": "Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die letzte Ware in Besitz genommen haben bzw. hat."
+          },
+          {
+            "subtitle": "Ausübung",
+            "text": "Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (BeAFox UG (haftungsbeschränkt), Siemensweg 2, 93073 Neutraubling, E-Mail: info@beafox.app, Telefon: +49 178 2723 673) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das unten stehende Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist."
+          },
+          {
+            "subtitle": "Fristwahrung",
+            "text": "Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist absenden."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "title": "Folgen des Widerrufs bei Warenkäufen",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "subtitle": "Rückerstattung",
+            "text": "Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist."
+          },
+          {
+            "subtitle": "Rückzahlungsmittel",
+            "text": "Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung Entgelte berechnet."
+          },
+          {
+            "subtitle": "Zurückbehaltungsrecht",
+            "text": "Wir können die Rückzahlung verweigern, bis wir die Waren wieder zurückerhalten haben oder bis Sie den Nachweis erbracht haben, dass Sie die Waren zurückgesandt haben, je nachdem, welches der frühere Zeitpunkt ist."
+          },
+          {
+            "subtitle": "Rücksendung",
+            "text": "Sie haben die Waren unverzüglich und in jedem Fall spätestens binnen vierzehn Tagen ab dem Tag, an dem Sie uns über den Widerruf dieses Vertrags unterrichten, an uns oder unseren beauftragten Retouren-Dienstleister zurückzusenden oder zu übergeben. Die Frist ist gewahrt, wenn Sie die Waren vor Ablauf der Frist von vierzehn Tagen absenden."
+          },
+          {
+            "subtitle": "Rücksendekosten",
+            "text": "Sie tragen die unmittelbaren Kosten der Rücksendung der Waren."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "title": "Wertersatz",
+        "iconId": "alert",
+        "content": [
+          {
+            "text": "Sie müssen für einen etwaigen Wertverlust der Waren nur aufkommen, wenn dieser Wertverlust auf einen zum Prüfen der Beschaffenheit, Eigenschaften und Funktionsweise der Waren nicht notwendigen Umgang mit ihnen zurückzuführen ist."
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "title": "Ausschluss des Widerrufsrechts bei personalisierten Artikeln",
+        "iconId": "xCircle",
+        "content": [
+          {
+            "text": "Das Widerrufsrecht besteht nicht bei Verträgen zur Lieferung von Waren, die nicht vorgefertigt sind und für deren Herstellung eine individuelle Auswahl oder Bestimmung durch den Verbraucher maßgeblich ist oder die eindeutig auf die persönlichen Bedürfnisse des Verbrauchers zugeschnitten sind (§ 312g Abs. 2 Nr. 1 BGB)."
+          },
+          {
+            "text": "Auf diesen Ausschluss weisen wir bei betroffenen Artikeln vor Abgabe Ihrer Bestellung gesondert hin."
+          }
+        ]
       }
     ],
     "contact": {
@@ -5875,7 +5726,7 @@
               "Textbasierte Alternativbeschreibungen (alt-Attribute) für informative Bilder",
               "Ausreichende Farbkontraste gemäß WCAG 2.1 AA (Kontrastverhältnis mindestens 4,5:1 für normalen Text)",
               "Keine ausschließlich farbbasierte Informationsvermittlung",
-              "Self-Hosting von Schriftarten (Google Fonts via next/font) – keine externen Abhängigkeiten",
+              "Self-Hosting der Schriftart Poppins via next/font – keine externen Abhängigkeiten zu Google",
               "Fokusindikatoren für interaktive Elemente",
               "Strukturierte Formularfelder mit Labels und Fehlermeldungen"
             ]
@@ -5918,7 +5769,7 @@
               "JavaScript / TypeScript",
               "WAI-ARIA 1.2",
               "Next.js 14 (React 18) mit Server- und Client-Komponenten",
-              "next/font für selbstgehostete Schriftarten"
+              "next/font für die selbstgehostete Schriftart Poppins"
             ]
           },
           {
@@ -6047,6 +5898,141 @@
     "lastUpdated": {
       "stand": "Stand dieser Erklärung zur Barrierefreiheit: April 2026",
       "notice": "Diese Erklärung wird regelmäßig überprüft und bei Änderungen aktualisiert, zuletzt am 7. April 2026."
+    }
+  },
+  "shipping": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "homeAria": "Startseite"
+    },
+    "company": {
+      "name": "BeAFox UG (haftungsbeschränkt)",
+      "street": "Siemensweg 2",
+      "city": "93073 Neutraubling",
+      "email": "info@beafox.app",
+      "phone": "+49 178 2723 673",
+      "phoneHref": "tel:+491782723673"
+    },
+    "legalLinks": {
+      "title": "Weitere rechtliche Informationen",
+      "terms": "AGB",
+      "privacy": "Datenschutzerklärung",
+      "withdrawal": "Widerrufsbelehrung",
+      "imprint": "Impressum"
+    },
+    "meta": {
+      "title": "Versandbedingungen | BeAFox Shop",
+      "description": "Lieferzeiten, Versandkosten und Sendungsverfolgung für Bestellungen aus dem BeAFox Shop. Fulfillment durch Printful, Versand in die EU und Schweiz."
+    },
+    "hero": {
+      "badge": "Versand",
+      "title": "Versandbedingungen",
+      "subtitle": "Lieferzeiten, Versandkosten und Sendungsverfolgung für Bestellungen aus unserem Print-on-Demand-Shop."
+    },
+    "tableOfContents": {
+      "title": "Inhalt"
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Fulfillment-Partner",
+        "iconId": "package",
+        "content": [
+          {
+            "text": "Sämtliche Produkte unseres Shops werden im Print-on-Demand-Verfahren durch unseren Fulfillment-Partner Printful Inc. produziert, kommissioniert und versendet. Die Produktion erfolgt erst nach Eingang Ihrer Bestellung."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Liefergebiete",
+        "iconId": "globe",
+        "content": [
+          {
+            "text": "Wir liefern aktuell in folgende Gebiete:",
+            "list": [
+              "Deutschland",
+              "Österreich",
+              "Schweiz",
+              "Übrige EU-Mitgliedsstaaten (Frankreich, Italien, Niederlande, Belgien, Spanien u. a. - siehe Auswahl im Checkout)"
+            ]
+          },
+          {
+            "text": "Sollte Ihr Land im Checkout nicht auswählbar sein, wenden Sie sich an info@beafox.app - wir prüfen Einzelfälle auf Anfrage."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Bearbeitungs- und Lieferzeiten",
+        "iconId": "clock",
+        "content": [
+          {
+            "text": "Die Gesamtlieferzeit setzt sich aus Produktionszeit und Versanddauer zusammen. Richtwerte:",
+            "list": [
+              "Produktionszeit (Printful): 2 - 7 Werktage",
+              "Versanddauer Deutschland: 3 - 5 Werktage",
+              "Versanddauer EU: 5 - 10 Werktage",
+              "Versanddauer Schweiz: 5 - 10 Werktage (Zollabwicklung kann verlängern)"
+            ]
+          },
+          {
+            "text": "Die genannten Zeiten sind Richtwerte und keine garantierten Liefertermine. Saisonbedingt (z. B. im November/Dezember) kann sich die Produktionszeit verlängern; wir weisen ggf. auf der Produktseite darauf hin."
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Versandkosten",
+        "iconId": "creditCard",
+        "content": [
+          {
+            "text": "Die jeweils anfallenden Versandkosten werden im Checkout vor Abschluss der Bestellung gesondert ausgewiesen. Sie hängen ab vom Liefergebiet, vom Gesamtgewicht und gegebenenfalls von der gewählten Versandart."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Sendungsverfolgung",
+        "iconId": "tracking",
+        "content": [
+          {
+            "text": "Sobald Ihre Bestellung das Printful-Lager verlässt, erhalten Sie automatisch eine Versandbestätigung per E-Mail mit Tracking-Link. Über den Link können Sie den aktuellen Sendungsstatus jederzeit einsehen."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Sendungen außerhalb der EU / Zoll",
+        "iconId": "alert",
+        "content": [
+          {
+            "text": "Bei Lieferungen außerhalb der Europäischen Union (z. B. in die Schweiz oder das Vereinigte Königreich) können zusätzlich Zollgebühren, Einfuhrumsatzsteuer und Servicegebühren anfallen, die von der Empfängerin oder dem Empfänger zu tragen sind."
+          },
+          {
+            "text": "Wir empfehlen, sich vor der Bestellung bei der zuständigen Zollbehörde nach den genauen Bedingungen zu erkundigen."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "title": "Beschädigte oder fehlerhafte Lieferung",
+        "iconId": "shield",
+        "content": [
+          {
+            "text": "Sollte Ihre Bestellung beschädigt, fehlerhaft oder unvollständig bei Ihnen eintreffen, kontaktieren Sie uns bitte innerhalb von 14 Tagen nach Erhalt unter info@beafox.app mit einem Foto des Schadens und der Bestellnummer. Wir kümmern uns gemeinsam mit Printful umgehend um Ersatz oder Erstattung."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Fragen zur Lieferung?",
+      "text": "Bei Fragen zu deiner Bestellung, zur Lieferung oder zum Tracking erreichst du uns am schnellsten per E-Mail. Wir antworten innerhalb eines Werktags.",
+      "cta": "Kontakt aufnehmen"
+    },
+    "lastUpdated": {
+      "stand": "Stand: 12. Mai 2026",
+      "notice": "Diese Versandbedingungen werden bei wesentlichen Änderungen aktualisiert. Maßgeblich ist die Fassung zum Zeitpunkt der Bestellung."
     }
   }
 }

@@ -9,7 +9,6 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 // CUSTOM COMPONENTS
 import AhrefsAnalytics from "@/components/AhrefsAnalytics";
 import LeadfeederTracker from "@/components/LeadfeederTracker";
-import ShopCartProvider from "@/components/ShopCartProvider";
 import ConditionalChrome from "@/components/layout/ConditionalChrome";
 import ConditionalGlobals from "@/components/layout/ConditionalGlobals";
 // CSS
@@ -128,9 +127,7 @@ export default async function RootLayout({
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{ __html: ANALYTICS_INIT_SCRIPT }}
           />
-          <ShopCartProvider>
-            <ConditionalChrome>{children}</ConditionalChrome>
-          </ShopCartProvider>
+          <ConditionalChrome>{children}</ConditionalChrome>
           <ConditionalGlobals />
           <AhrefsAnalytics />
           <LeadfeederTracker />

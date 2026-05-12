@@ -881,13 +881,9 @@ export default function Header() {
                       {PRODUCT_NAV.slice(0, PRODUCT_NAV_SPLIT).map((p) => {
                         const active =
                           isHydrated && pathname.startsWith(p.href);
-                        return (
-                          <Link
-                            key={p.id}
-                            href={p.href}
-                            onClick={closeAll}
-                            className={`flex items-center gap-3.5 rounded-xl px-3 py-3 transition-all group ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
-                          >
+                        const itemClass = `flex items-center gap-3.5 rounded-xl px-3 py-3 transition-all group ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`;
+                        const content = (
+                          <>
                             <Image
                               width={200}
                               height={200}
@@ -906,6 +902,27 @@ export default function Header() {
                               aria-hidden="true"
                               className={`w-3.5 h-3.5 ml-auto transition-opacity duration-150 ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
                             />
+                          </>
+                        );
+                        return p.external ? (
+                          <a
+                            key={p.id}
+                            href={p.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={closeAll}
+                            className={itemClass}
+                          >
+                            {content}
+                          </a>
+                        ) : (
+                          <Link
+                            key={p.id}
+                            href={p.href}
+                            onClick={closeAll}
+                            className={itemClass}
+                          >
+                            {content}
                           </Link>
                         );
                       })}
@@ -919,13 +936,9 @@ export default function Header() {
                       {PRODUCT_NAV.slice(PRODUCT_NAV_SPLIT).map((p) => {
                         const active =
                           isHydrated && pathname.startsWith(p.href);
-                        return (
-                          <Link
-                            key={p.id}
-                            href={p.href}
-                            onClick={closeAll}
-                            className={`flex items-center gap-3.5 rounded-xl px-3 py-3 transition-all group ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
-                          >
+                        const itemClass = `flex items-center gap-3.5 rounded-xl px-3 py-3 transition-all group ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`;
+                        const content = (
+                          <>
                             <Image
                               width={200}
                               height={200}
@@ -944,6 +957,27 @@ export default function Header() {
                               aria-hidden="true"
                               className={`w-3.5 h-3.5 ml-auto transition-opacity duration-150 ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
                             />
+                          </>
+                        );
+                        return p.external ? (
+                          <a
+                            key={p.id}
+                            href={p.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={closeAll}
+                            className={itemClass}
+                          >
+                            {content}
+                          </a>
+                        ) : (
+                          <Link
+                            key={p.id}
+                            href={p.href}
+                            onClick={closeAll}
+                            className={itemClass}
+                          >
+                            {content}
                           </Link>
                         );
                       })}
@@ -1248,15 +1282,9 @@ export default function Header() {
                           {PRODUCT_NAV.slice(0, PRODUCT_NAV_SPLIT).map((item) => {
                               const active =
                                 isHydrated && pathname.startsWith(item.href);
-                              return (
-                                <Link
-                                  key={item.id}
-                                  role="menuitem"
-                                  href={item.href}
-                                  onClick={closeAll}
-                                  aria-current={active ? "page" : undefined}
-                                  className={`flex w-full items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${active ? "text-primaryOrange font-semibold bg-primaryOrange/5" : "text-darkerGray hover:text-primaryOrange"}`}
-                                >
+                              const itemClass = `flex w-full items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${active ? "text-primaryOrange font-semibold bg-primaryOrange/5" : "text-darkerGray hover:text-primaryOrange"}`;
+                              const content = (
+                                <>
                                   <Image
                                     width={32}
                                     height={32}
@@ -1267,6 +1295,31 @@ export default function Header() {
                                     className="h-8 w-8 object-contain flex-shrink-0"
                                   />
                                   {t(PRODUCT_LABEL_KEY[item.id])}
+                                </>
+                              );
+                              return item.external ? (
+                                <a
+                                  key={item.id}
+                                  role="menuitem"
+                                  href={item.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={closeAll}
+                                  aria-current={active ? "page" : undefined}
+                                  className={itemClass}
+                                >
+                                  {content}
+                                </a>
+                              ) : (
+                                <Link
+                                  key={item.id}
+                                  role="menuitem"
+                                  href={item.href}
+                                  onClick={closeAll}
+                                  aria-current={active ? "page" : undefined}
+                                  className={itemClass}
+                                >
+                                  {content}
                                 </Link>
                               );
                             })}
@@ -1277,15 +1330,9 @@ export default function Header() {
                           {PRODUCT_NAV.slice(PRODUCT_NAV_SPLIT).map((item) => {
                             const active =
                               isHydrated && pathname.startsWith(item.href);
-                            return (
-                              <Link
-                                key={item.id}
-                                role="menuitem"
-                                href={item.href}
-                                onClick={closeAll}
-                                aria-current={active ? "page" : undefined}
-                                className={`flex w-full items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${active ? "text-primaryOrange font-semibold bg-primaryOrange/5" : "text-darkerGray hover:text-primaryOrange"}`}
-                              >
+                            const itemClass = `flex w-full items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${active ? "text-primaryOrange font-semibold bg-primaryOrange/5" : "text-darkerGray hover:text-primaryOrange"}`;
+                            const content = (
+                              <>
                                 <Image
                                   width={32}
                                   height={32}
@@ -1296,6 +1343,31 @@ export default function Header() {
                                   className="h-8 w-8 object-contain flex-shrink-0"
                                 />
                                 {t(PRODUCT_LABEL_KEY[item.id])}
+                              </>
+                            );
+                            return item.external ? (
+                              <a
+                                key={item.id}
+                                role="menuitem"
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={closeAll}
+                                aria-current={active ? "page" : undefined}
+                                className={itemClass}
+                              >
+                                {content}
+                              </a>
+                            ) : (
+                              <Link
+                                key={item.id}
+                                role="menuitem"
+                                href={item.href}
+                                onClick={closeAll}
+                                aria-current={active ? "page" : undefined}
+                                className={itemClass}
+                              >
+                                {content}
                               </Link>
                             );
                           })}

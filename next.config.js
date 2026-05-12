@@ -156,13 +156,13 @@ const nextConfig = {
       },
 
       // ── Merch / Shop → Shopify (shop.beafox.app) ──
-      // Eigenentwicklung abgelöst; alles unter /shop und /checkout leitet auf Shopify um.
-      // Hinweis: alte Deep-Links (/shop/<slug>) hatten andere Slugs als Shopify (/products/<slug>),
-      // deshalb landen alle Wildcard-Requests auf der Produktübersicht statt auf 404s.
+      // Der Merch-Shop läuft als eigenständiger Shopify-Store auf shop.beafox.app.
+      // Hinweis: alte Deep-Links (/shop/<slug>) hatten andere Slugs als Shopify
+      // (/products/<slug>), deshalb landen Wildcards auf der Produktübersicht.
+      // /checkout bleibt bewusst lokal — es ist die Subscription-Checkout-Seite
+      // (Monats-/Jahresabo, Lifetime), NICHT der Merch-Checkout.
       { source: "/shop", destination: "https://shop.beafox.app", permanent: true },
       { source: "/shop/:path*", destination: "https://shop.beafox.app/collections/all", permanent: true },
-      { source: "/checkout", destination: "https://shop.beafox.app/cart", permanent: true },
-      { source: "/checkout/:path*", destination: "https://shop.beafox.app/cart", permanent: true },
     ];
   },
 };
