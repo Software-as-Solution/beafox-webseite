@@ -53,7 +53,7 @@ export const BANNER_RATGEBER_AZUBIS: BannerConfig = {
   description:
     "Vom ersten Gehalt bis zur eigenen Wohnung — alles was du als Azubi über Geld wissen musst.",
   ctaLabel: "Zu den Ratgebern",
-  ctaHref: "/ratgeber/finanzen-fuer-azubis",
+  ctaHref: "/ratgeber/azubis",
   variant: "subtle",
 };
 
@@ -63,7 +63,7 @@ export const BANNER_RATGEBER_STUDENTEN: BannerConfig = {
   description:
     "BAföG, Werkstudentenjob, WG-Kosten und die erste Steuererklärung — kompakt erklärt für dein Studium.",
   ctaLabel: "Zu den Ratgebern",
-  ctaHref: "/ratgeber/finanzen-fuer-studenten",
+  ctaHref: "/ratgeber/studenten",
   variant: "subtle",
 };
 
@@ -73,7 +73,7 @@ export const BANNER_RATGEBER_INVESTIEREN: BannerConfig = {
   description:
     "ETFs, Sparpläne und worauf du wirklich achten solltest — neutral und ohne Verkaufsabsicht.",
   ctaLabel: "Investieren lernen",
-  ctaHref: "/ratgeber/investieren-fuer-anfaenger",
+  ctaHref: "/ratgeber/investieren",
   variant: "subtle",
 };
 

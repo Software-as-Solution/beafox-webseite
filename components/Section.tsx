@@ -9,6 +9,10 @@ interface SectionProps {
   as?: SectionTag;
   className?: string;
   ariaLabel?: string;
+  /** Prefer over `ariaLabel` when a visible heading exposes the accessible name (e.g. hero). */
+  ariaLabelledBy?: string;
+  /** When false, omits default `py-10 md:py-12` (use for loaders, heroes, asymmetric spacing). */
+  defaultPadding?: boolean;
   width?: SectionWidth;
   noContainer?: boolean;
   children: React.ReactNode;
@@ -28,6 +32,8 @@ export default function Section({
   id,
   children,
   ariaLabel,
+  ariaLabelledBy,
+  defaultPadding = true,
   sectionRef,
   className = "",
   width = "default",
@@ -35,7 +41,15 @@ export default function Section({
   noContainer = false,
 }: SectionProps) {
   // CONSTANTS
-  const sectionClassName = `${BASE_STYLES} ${className}`;
+  const sectionClassName = defaultPadding
+    ? `${BASE_STYLES} ${className}`
+    : className;
+  const labelledProps =
+    ariaLabelledBy !== undefined
+      ? { "aria-labelledby": ariaLabelledBy }
+      : ariaLabel !== undefined
+        ? { "aria-label": ariaLabel }
+        : {};
   const containerClassName = `${WIDTH_STYLES[width]} ${CONTAINER_BASE}`;
   // FUNCTIONS
   const setRef = (node: HTMLElement | null) => {
@@ -47,18 +61,22 @@ export default function Section({
     }
   };
 
-  const content = noContainer ? children : <div className={containerClassName}>{children}</div>;
+  const content = noContainer ? (
+    children
+  ) : (
+    <div className={containerClassName}>{children}</div>
+  );
 
   if (sectionRef) {
     return (
-      <Tag id={id} ref={setRef} aria-label={ariaLabel} className={sectionClassName}>
+      <Tag id={id} ref={setRef} className={sectionClassName} {...labelledProps}>
         {content}
       </Tag>
     );
   }
 
   return (
-    <Tag id={id} aria-label={ariaLabel} className={sectionClassName}>
+    <Tag id={id} className={sectionClassName} {...labelledProps}>
       {content}
     </Tag>
   );

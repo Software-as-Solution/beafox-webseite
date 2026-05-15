@@ -18,8 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `${BASE_URL}${getRatgeberCategoryPath(kategorie)}`;
 
+  // metaTitle enthält bereits das Branding — `absolute` verhindert, dass das
+  // `%s | BeAFox`-Template aus dem Root-Layout es doppelt anhängt.
+  const headTitle = category.metaTitle;
+
   return {
-    title: category.metaTitle,
+    title: { absolute: headTitle },
     description: category.metaDescription,
     alternates: {
       canonical: url,
@@ -29,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       locale: "de_DE",
       siteName: "BeAFox",
-      title: category.metaTitle,
+      title: headTitle,
       description: category.metaDescription,
       images: [
         {
@@ -43,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       creator: "@beafox_app",
-      title: category.metaTitle,
+      title: headTitle,
       description: category.metaDescription,
     },
   };

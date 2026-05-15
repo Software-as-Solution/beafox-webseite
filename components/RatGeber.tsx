@@ -8,6 +8,7 @@ import Button from "@/components/Button";
 // IMPORTS
 import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { BLOG_CATEGORIES } from "@/lib/blog";
 import { useTranslations } from "next-intl";
 // ICONS
 import {
@@ -42,25 +43,32 @@ interface UnlimitedTargetGroup {
 }
 interface RatgeberSectionProps {
   variant?: RatgeberVariant;
+  viewAllHref?: string;
+  viewAllLabel?: string;
+  categoryCtaLabel?: string;
+  showAllGuideCategories?: boolean;
+  showViewAllButton?: boolean;
+  /** Ersetzt die Standard-Breite (`max-w-6xl`) bei `variant="guides"` (z. B. `w-full` auf Artikel-Seiten). */
+  guidesOuterClassName?: string;
 }
 // CONSTANTS
 const RATGEBER_CATEGORIES: RatgeberCategory[] = [
   {
     icon: Wrench,
-    slug: "finanzen-fuer-azubis",
-    href: "/finanzen-fuer-azubis",
+    slug: "azubis",
+    href: "/azubis",
     mascot: "/Maskottchen/Maskottchen-Azubi.webp",
   },
   {
     icon: Home,
-    slug: "finanzen-bei-lebensereignissen",
-    href: "/finanzen-bei-lebensereignissen",
+    slug: "lebenssituation",
+    href: "/lebenssituation",
     mascot: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
   },
   {
     icon: Briefcase,
-    slug: "finanzen-fuer-berufseinsteiger",
-    href: "/finanzen-fuer-berufseinsteiger",
+    slug: "berufseinsteiger",
+    href: "/berufseinsteiger",
     mascot: "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
   },
 ];
@@ -110,13 +118,43 @@ const UNLIMITED_TARGET_GROUPS: UnlimitedTargetGroup[] = [
 
 export default function RatgeberSection({
   variant = "guides",
+  viewAllHref = "/ratgeber",
+  viewAllLabel,
+  categoryCtaLabel,
+  showAllGuideCategories = false,
+  showViewAllButton = true,
+  guidesOuterClassName,
 }: RatgeberSectionProps) {
   // HOOKS
   const tFaq = useTranslations("faq.quickLinks");
   const tGuides = useTranslations("home.ratgeberHomeSection");
   const tUnlimited = useTranslations("unlimited.hero");
   // CONSTANTS
-  const categories = useMemo(() => RATGEBER_CATEGORIES, []);
+  const categories = useMemo(() => {
+    if (!showAllGuideCategories) return RATGEBER_CATEGORIES;
+    const iconMap: Record<string, LucideIcon> = {
+      azubis: Wrench,
+      lebenssituation: Home,
+      berufseinsteiger: Briefcase,
+      schueler: School,
+      studenten: GraduationCap,
+      investieren: InfinityIcon,
+    };
+    const mascotMap: Record<string, string> = {
+      azubis: "/Maskottchen/Maskottchen-Azubi.webp",
+      lebenssituation: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
+      berufseinsteiger: "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
+      schueler: "/Maskottchen/Maskottchen-Schueler.png",
+      studenten: "/Maskottchen/Maskottchen-Studenten.webp",
+      investieren: "/Maskottchen/Maskottchen-Investieren.webp",
+    };
+    return BLOG_CATEGORIES.map((cat) => ({
+      slug: cat.slug,
+      href: `/${cat.slug}`,
+      icon: iconMap[cat.slug] ?? Wrench,
+      mascot: mascotMap[cat.slug] ?? "/Maskottchen/Maskottchen-Ratgeber.webp",
+    }));
+  }, [showAllGuideCategories]);
   const faqProductRows = useMemo(() => {
     if (variant !== "faqProducts") return [];
     const raw = tFaq.raw("links") as FaqProductLink[];
@@ -156,7 +194,9 @@ export default function RatgeberSection({
   return (
     <div
       className={
-        variant === "guides" ? "max-w-6xl mx-auto" : "max-w-5xl mx-auto"
+        variant === "guides"
+          ? (guidesOuterClassName ?? "max-w-6xl mx-auto")
+          : "max-w-5xl mx-auto"
       }
     >
       <div
@@ -211,7 +251,7 @@ export default function RatgeberSection({
                             loading="lazy"
                             src={row.mascot}
                             alt={`Bea Maskottchen — ${row.title}`}
-                            className="object-contain w-16 h-16 md:w-32 md:h-32 group-hover:scale-110 transition-transform duration-300 scale-150 relative top-2"
+                            className="object-contain w-16 h-16 md:w-32 md:h-32 group-hover:scale-110 transition-transform duration-300 scale-125 relative top-2"
                           />
                         </div>
                       </div>
@@ -285,8 +325,15 @@ export default function RatgeberSection({
               })
             : categories.map((cat, idx) => {
               const Icon = cat.icon;
-              const label = tGuides(`categories.${cat.slug}.label`);
-              const desc = tGuides(`categories.${cat.slug}.desc`);
+              const isDefaultGuidesCardSet = !showAllGuideCategories;
+              const label = isDefaultGuidesCardSet
+                ? tGuides(`categories.${cat.slug}.label`)
+                : (BLOG_CATEGORIES.find((entry) => entry.slug === cat.slug)
+                    ?.navLabel ?? cat.slug);
+              const desc = isDefaultGuidesCardSet
+                ? tGuides(`categories.${cat.slug}.desc`)
+                : (BLOG_CATEGORIES.find((entry) => entry.slug === cat.slug)
+                    ?.description ?? "");
               return (
                 <motion.div
                   key={cat.slug}
@@ -296,51 +343,52 @@ export default function RatgeberSection({
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: idx * 0.1 }}
                 >
-                  <div className="group relative flex flex-col h-full rounded-2xl bg-white border border-gray-200/80 hover:border-primaryOrange/30 transition-all duration-200 hover:shadow-lg overflow-hidden pt-2">
+                  <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white pt-2 transition-all duration-200 hover:border-primaryOrange/30 hover:shadow-lg">
                     <div
                       style={HOVER_GRADIENT_STYLE}
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     />
                     {/* CONTENT */}
-                    <div className="relative flex flex-col flex-1 p-5 md:p-6">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="flex-1 min-w-0">
-                          <div
-                            style={ICON_STYLE}
-                            className="w-11 h-11 rounded-xl flex items-center justify-center mb-3 transition-all duration-200 group-hover:bg-primaryOrange/15"
-                          >
-                            <Icon
-                              aria-hidden="true"
-                              className="w-6 h-6 md:w-7 md:h-7 text-primaryOrange"
-                            />
-                          </div>
-                          {/* Title */}
-                          <h3 className="text-lg md:text-xl font-bold text-darkerGray group-hover:text-primaryOrange transition-colors leading-tight">
-                            {label}
-                          </h3>
-                          {/* Description */}
-                          <p className="text-sm md:text-base text-lightGray leading-relaxed mt-2.5">
-                            {desc}
-                          </p>
-                        </div>
-                        {/* Mascot */}
-                        <div className="flex-shrink-0 -mt-1 -mr-1 md:-mr-2">
-                          <Image
-                            width={400}
-                            height={400}
-                            loading="lazy"
-                            src={cat.mascot}
-                            alt={`Bea Maskottchen — ${label}`}
-                            className="object-contain w-24 h-24 md:w-40 md:h-40 group-hover:scale-110 transition-transform duration-300 scale-150 relative top-4 left-0 sm:left-2"
+                    <div className="relative flex flex-1 flex-col p-5 md:p-6">
+                      <div className="relative mb-4 flex h-40 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-[#FFF7EF] via-white to-[#FFE8D2]">
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primaryOrange/10 blur-2xl"
+                        />
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute -bottom-10 left-6 h-24 w-24 rounded-full bg-primaryOrange/10 blur-2xl"
+                        />
+                        <div
+                          style={ICON_STYLE}
+                          className="absolute left-3 top-3 z-10 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-200 group-hover:bg-primaryOrange/15"
+                        >
+                          <Icon
+                            aria-hidden="true"
+                            className="h-6 w-6 text-primaryOrange"
                           />
                         </div>
+                        <Image
+                          width={380}
+                          height={380}
+                          loading="lazy"
+                          src={cat.mascot}
+                          alt={`Bea Maskottchen — ${label}`}
+                          className="relative h-36 w-36 scale-110 object-contain drop-shadow-[0_12px_24px_rgba(232,119,32,0.2)] transition-transform duration-300 group-hover:scale-[1.18] md:h-40 md:w-40"
+                        />
                       </div>
+                      <h3 className="text-lg font-bold leading-tight text-darkerGray transition-colors group-hover:text-primaryOrange md:text-xl">
+                        {label}
+                      </h3>
+                      <p className="mt-2.5 text-sm leading-relaxed text-lightGray md:text-base">
+                        {desc}
+                      </p>
                       <Link
                         href={cat.href}
                         aria-label={tGuides("viewCategoryAria", { label })}
                         className="inline-flex items-center justify-center sm:justify-start gap-2 text-base font-semibold text-primaryOrange hover:gap-3 transition-all mt-5 w-full"
                       >
-                        {tGuides("viewCategory")}
+                        {categoryCtaLabel ?? tGuides("viewCategory")}
                         <ArrowRight
                           aria-hidden="true"
                           className="w-4 h-4 shrink-0"
@@ -353,7 +401,7 @@ export default function RatgeberSection({
             })}
       </div>
       {/* ALL RATGEBER BUTTON */}
-      {variant === "guides" && (
+      {variant === "guides" && showViewAllButton && (
         <motion.div
           initial={{ opacity: 0 }}
           viewport={{ once: true }}
@@ -362,11 +410,11 @@ export default function RatgeberSection({
           transition={{ duration: 0.4, delay: 0.4 }}
         >
           <Button
-            href="/ratgeber"
+            href={viewAllHref}
             variant="primary"
             className="inline-flex items-center justify-center gap-2 !px-6 !py-2.5 md:!px-8 md:!py-3 ext-base"
           >
-            {tGuides("viewAll")}
+            {viewAllLabel ?? tGuides("viewAll")}
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Button>
         </motion.div>

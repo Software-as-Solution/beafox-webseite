@@ -27,6 +27,7 @@ const PRODUCT_LINKS = [
 ] as const;
 const MENU_LINKS = [
   { href: "/faq", key: "faq" },
+  { href: "/presse", key: "press" },
   { href: "/kontakt", key: "contact" },
   { href: "/magazin", key: "magazin" },
   { href: "/ueber-uns", key: "about" },
@@ -52,10 +53,10 @@ const LINK_CLASS =
 const SORTED_BLOG_CATEGORIES = (() => {
   const cats = [...BLOG_CATEGORIES];
   const investIdx = cats.findIndex(
-    (c) => c.slug === "investieren-fuer-anfaenger",
+    (c) => c.slug === "investieren",
   );
   const berufIdx = cats.findIndex(
-    (c) => c.slug === "finanzen-fuer-berufseinsteiger",
+    (c) => c.slug === "berufseinsteiger",
   );
   if (investIdx !== -1 && berufIdx !== -1 && investIdx > berufIdx) {
     const [investCat] = cats.splice(investIdx, 1);
@@ -278,7 +279,7 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2.5">
                 {PRODUCT_LINKS.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.key}-${link.href}`}>
                     {"external" in link && link.external ? (
                       <a
                         href={link.href}
@@ -304,7 +305,7 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2.5">
                 {MENU_LINKS.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.key}-${link.href}`}>
                     <Link href={link.href} className={LINK_CLASS}>
                       {t(`menu.${link.key}`)}
                     </Link>
@@ -319,7 +320,7 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2.5">
                 {LEGAL_LINKS.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.key}-${link.href}`}>
                     <Link href={link.href} className={LINK_CLASS}>
                       {t(`legal.${link.key}`)}
                     </Link>

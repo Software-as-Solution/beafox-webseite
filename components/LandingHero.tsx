@@ -27,9 +27,14 @@ interface LandingHeroProps {
   title: React.ReactNode;
   mascotClassName?: string;
   contentClassName?: string;
+  /** Merged onto the two-column grid — e.g. narrower max-width for /news. */
+  gridClassName?: string;
+  /** Merged onto the inner wrapper around the mascot image. */
+  mascotWrapperClassName?: string;
   actions?: React.ReactNode;
   description?: React.ReactNode;
   storeButtons?: StoreButtonsConfig;
+  trustBadgeFirst?: boolean;
 }
 // CONSTANTS
 const GLOW_STYLE = {
@@ -84,13 +89,16 @@ export default function LandingHero({
   storeButtons,
   mascotClassName,
   contentClassName,
+  gridClassName,
+  mascotWrapperClassName,
+  trustBadgeFirst = false,
 }: LandingHeroProps) {
   const t = useTranslations("home.hero");
   const hasActions = Boolean(actions) || Boolean(storeButtons);
 
   return (
     <section className="pt-32 pb-4 md:pb-0 md:pt-36 bg-primaryWhite">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center">
           <div className="flex items-center gap-2 text-lightGray text-xs md:text-sm border text-center justify-center border-primaryOrange rounded-full px-3 md:px-4 py-1.5 md:py-2">
             <Sparkles
@@ -106,13 +114,18 @@ export default function LandingHero({
             />
           </div>
         </div>
-        <div className="grid lg:grid-cols-2 items-center">
+        <div
+          className={twMerge(
+            "grid lg:grid-cols-2 items-center",
+            gridClassName,
+          )}
+        >
           <motion.div
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             initial={{ opacity: 0, x: -20 }}
             className={twMerge(
-              "mt-4 lg:mt-0 relative md:left-[5%]",
+              "mt-4 lg:mt-0",
               contentClassName,
             )}
           >
@@ -124,8 +137,14 @@ export default function LandingHero({
                 {description}
               </p>
             )}
+            {trustBadgeFirst && <TrustBadge className="!mt-0" />}
             {hasActions && (
-              <div className="flex flex-row gap-2 md:gap-3 lg:gap-4 max-w-[280px] sm:max-w-md">
+              <div
+                className={twMerge(
+                  "flex flex-row gap-2 md:gap-3 lg:gap-4 max-w-[280px] sm:max-w-md",
+                  trustBadgeFirst && "mt-5 md:mt-7",
+                )}
+              >
                 {storeButtons && (
                   <>
                     <StoreButton
@@ -145,7 +164,7 @@ export default function LandingHero({
                 {actions}
               </div>
             )}
-            <TrustBadge />
+            {!trustBadgeFirst && <TrustBadge />}
           </motion.div>
           <motion.div
             className="mt-12 lg:mt-0"
@@ -154,7 +173,12 @@ export default function LandingHero({
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative flex items-center justify-center">
-              <div className="relative z-10 w-full max-w-[220px] sm:max-w-[380px]">
+              <div
+                className={twMerge(
+                  "relative z-10 w-full max-w-[220px] sm:max-w-[380px]",
+                  mascotWrapperClassName,
+                )}
+              >
                 <Image
                   priority
                   width={450}

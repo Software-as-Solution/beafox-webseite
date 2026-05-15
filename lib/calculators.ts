@@ -3968,6 +3968,113 @@ export const CALCULATORS: Calculator[] = [
       },
     ],
   },
+
+  // ─── Kauf vs. Leasing Rechner ────────────────────────────────────────────
+  {
+    slug: "auto-kaufen-oder-leasen",
+    title: "Kauf vs. Leasing Rechner",
+    excerpt:
+      "Kaufen oder leasen — welche Option ist wirklich günstiger? Trag deine Zahlen ein und sieh sofort, wie viel du mit der besseren Wahl sparen kannst.",
+    category: "Alltag & Lifestyle",
+    categoryEmoji: "🚗",
+    computeAll(v) {
+      const kaufpreis = v.kaufpreis ?? 18000;
+      const laufzeit = Math.max(1, v.laufzeit ?? 3);
+      const restwertPct = Math.min(100, Math.max(0, v.restwert ?? 55));
+      const leasingrate = v.leasingrate ?? 250;
+      const sonderzahlung = v.sonderzahlung ?? 0;
+
+      // ── Kauf ──
+      const restwert_abs = kaufpreis * (restwertPct / 100);
+      const wertverlust = kaufpreis - restwert_abs;
+      const kauf_pro_monat = wertverlust / (laufzeit * 12);
+
+      // ── Leasing ──
+      const leasing_gesamt =
+        sonderzahlung + leasingrate * 12 * laufzeit;
+      const leasing_pro_monat =
+        sonderzahlung / (laufzeit * 12) + leasingrate;
+
+      // ── Vergleich ──
+      const diff = Math.abs(wertverlust - leasing_gesamt);
+      const kaufGuenstiger = wertverlust <= leasing_gesamt;
+
+      return {
+        ersparnis: diff,
+        guenstiger: kaufGuenstiger
+          ? "Kaufen ist günstiger"
+          : "Leasen ist günstiger",
+        kauf_wertverlust: wertverlust,
+        kauf_restwert: restwert_abs,
+        kauf_pro_monat: kauf_pro_monat,
+        leasing_gesamt: leasing_gesamt,
+        leasing_pro_monat: leasing_pro_monat,
+      };
+    },
+    fields: [
+      {
+        id: "kaufpreis",
+        label: "Kaufpreis des Autos",
+        suffix: "€",
+        defaultValue: 18000,
+        min: 1000,
+        max: 100000,
+        step: 500,
+      },
+      {
+        id: "laufzeit",
+        label: "Vergleichszeitraum",
+        suffix: "Jahre",
+        type: "select" as const,
+        defaultValue: 3,
+        options: [
+          { value: 2, label: "2 Jahre" },
+          { value: 3, label: "3 Jahre" },
+          { value: 4, label: "4 Jahre" },
+          { value: 5, label: "5 Jahre" },
+          { value: 6, label: "6 Jahre" },
+        ],
+      },
+      {
+        id: "restwert",
+        label: "Restwert des Autos nach X Jahren",
+        suffix: "%",
+        defaultValue: 55,
+        min: 10,
+        max: 90,
+        step: 5,
+      },
+      {
+        id: "leasingrate",
+        label: "Monatliche Leasingrate",
+        suffix: "€",
+        defaultValue: 250,
+        min: 50,
+        max: 2000,
+        step: 10,
+      },
+      {
+        id: "sonderzahlung",
+        label: "Leasing-Sonderzahlung (einmalig)",
+        suffix: "€",
+        defaultValue: 0,
+        min: 0,
+        max: 10000,
+        step: 250,
+      },
+    ],
+    results: [
+      { label: "Ersparnis", key: "ersparnis", highlight: true },
+      { label: "Günstigere Option", key: "guenstiger" },
+      { label: "Kauf", isSectionHeader: true, key: "_sec_kauf" },
+      { label: "Wertverlust gesamt", key: "kauf_wertverlust" },
+      { label: "Restwert des Autos", key: "kauf_restwert" },
+      { label: "Effektive Kosten pro Monat", key: "kauf_pro_monat" },
+      { label: "Leasing", isSectionHeader: true, key: "_sec_leasing" },
+      { label: "Gesamtkosten Leasing", key: "leasing_gesamt" },
+      { label: "Kosten pro Monat (inkl. Sonderzahlung)", key: "leasing_pro_monat" },
+    ],
+  },
 ];
 
 export const CALCULATOR_CATEGORIES = [

@@ -25,7 +25,15 @@ function getPageCategory(pathname: string): string {
   if (pathname.startsWith("/registrierung") || pathname.startsWith("/onboarding")) return "signup";
   if (pathname.startsWith("/login")) return "login";
   // Content categories (guide articles)
-  if (pathname.startsWith("/finanzen-fuer-") || pathname.startsWith("/investieren-")) return "content";
+  if (
+    pathname.startsWith("/schueler") ||
+    pathname.startsWith("/azubis") ||
+    pathname.startsWith("/studenten") ||
+    pathname.startsWith("/berufseinsteiger") ||
+    pathname.startsWith("/lebenssituation") ||
+    pathname.startsWith("/investieren")
+  )
+    return "content";
   return "other";
 }
 

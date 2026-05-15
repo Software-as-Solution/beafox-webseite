@@ -19,10 +19,14 @@ import {
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import {
   BLOG_CATEGORIES,
+  getGuidePostPath,
   type BlogCategorySlug,
-  getNavTopicsForCategory,
 } from "@/lib/blog";
 import { CALCULATORS, CALCULATOR_CATEGORIES } from "@/lib/calculators";
+import {
+  getGuideNavTopics,
+  type SanityGuideNavTopic,
+} from "@/lib/sanity.client";
 
 // TYPES
 type ProductNavId =
@@ -71,14 +75,14 @@ const PRODUCT_LABEL_KEY: Record<ProductNavId, string> = {
   eduplaces: "products.partnerEduplaces",
 };
 const RATGEBER_MASCOTS: Record<BlogCategorySlug, string> = {
-  "finanzen-fuer-schueler": "/Maskottchen/Maskottchen-Freude.webp",
-  "finanzen-fuer-azubis": "/Maskottchen/Maskottchen-Azubi.webp",
-  "finanzen-fuer-studenten": "/Maskottchen/Maskottchen-Studenten.webp",
-  "finanzen-fuer-berufseinsteiger":
+  "schueler": "/Maskottchen/Maskottchen-Freude.webp",
+  "azubis": "/Maskottchen/Maskottchen-Azubi.webp",
+  "studenten": "/Maskottchen/Maskottchen-Studenten.webp",
+  "berufseinsteiger":
     "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
-  "finanzen-bei-lebensereignissen":
+  "lebenssituation":
     "/Maskottchen/Maskottchen-Lebenssituationen.webp",
-  "investieren-fuer-anfaenger": "/Maskottchen/Maskottchen-Investieren.webp",
+  "investieren": "/Maskottchen/Maskottchen-Investieren.webp",
 } as const;
 const PRODUCT_PATHS = PRODUCT_NAV.map((p) => p.href);
 // HELPER FUNCTIONS
@@ -106,6 +110,7 @@ export default function Header() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [activeRatgeberCategory, setActiveRatgeberCategory] =
     useState<BlogCategorySlug>(BLOG_CATEGORIES[0].slug);
+  const [navTopics, setNavTopics] = useState<SanityGuideNavTopic[]>([]);
   const [mobileRatgeberCategoryOpen, setMobileRatgeberCategoryOpen] = useState<
     string | null
   >(null);
@@ -141,10 +146,10 @@ export default function Header() {
   const ratgeberCategories = useMemo(() => {
     const cats = [...BLOG_CATEGORIES];
     const investIdx = cats.findIndex(
-      (c) => c.slug === "investieren-fuer-anfaenger",
+      (c) => c.slug === "investieren",
     );
     const berufIdx = cats.findIndex(
-      (c) => c.slug === "finanzen-fuer-berufseinsteiger",
+      (c) => c.slug === "berufseinsteiger",
     );
     if (investIdx !== -1 && berufIdx !== -1 && investIdx > berufIdx) {
       const [inv] = cats.splice(investIdx, 1);
@@ -154,9 +159,14 @@ export default function Header() {
       id: cat.slug,
       label: cat.navLabel,
       href: `/${cat.slug}`,
-      topics: getNavTopicsForCategory(cat.slug),
+      topics: navTopics
+        .filter((topic) => topic.category === cat.slug)
+        .map((topic) => ({
+          label: topic.title,
+          href: getGuidePostPath(cat.slug, topic.slug),
+        })),
     }));
-  }, []);
+  }, [navTopics]);
   const rechnerCategories = useMemo(
     () =>
       CALCULATOR_CATEGORIES.map((cat) => ({
@@ -251,6 +261,17 @@ export default function Header() {
   }, [handleScroll]);
   useEffect(() => {
     setIsHydrated(true);
+  }, []);
+  useEffect(() => {
+    let active = true;
+    getGuideNavTopics()
+      .then((topics) => {
+        if (active) setNavTopics(topics);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
   }, []);
   useEffect(() => {
     if (!isDropdownOpen && !isRatgeberOpen && !isRechnerOpen) return;
@@ -360,11 +381,11 @@ export default function Header() {
               >
                 <Image
                   priority
-                  width={200}
-                  height={200}
+                  width={56}
+                  height={56}
                   alt={t("images.logoAlt")}
-                  src="/assets/Logos/Logo-Name.webp"
-                  className="object-contain h-14 w-auto"
+                  src="/assets/Logos/Logo.webp"
+                  className="object-contain h-12 w-12"
                 />
               </Link>
               {/* DESKTOP NAV */}

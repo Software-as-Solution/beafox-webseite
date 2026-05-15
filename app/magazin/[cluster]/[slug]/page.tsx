@@ -14,6 +14,7 @@ import CopyLinkButton from "@/components/magazin/CopyLinkButton";
 
 // Allow dynamic routes not returned by generateStaticParams
 export const dynamicParams = true;
+const BASE_URL = "https://beafox.app";
 
 interface PageProps {
   params: Promise<{
@@ -52,6 +53,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: article.metaTitle || article.title,
     description: article.metaDescription || article.excerpt,
+    alternates: {
+      canonical: `${BASE_URL}/magazin/${clusterParam}/${slug}`,
+    },
+    robots: article.noindex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
     openGraph: {
       title: article.metaTitle || article.title,
       description: article.metaDescription || article.excerpt,
@@ -61,7 +68,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       authors: ["BeAFox Redaktion"],
       tags: article.tags || [],
       images: ogImage ? [ogImage] : undefined,
-      url: `https://beafox.app/magazin/${clusterParam}/${slug}`,
+      url: `${BASE_URL}/magazin/${clusterParam}/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -84,6 +91,7 @@ export default async function MagazinArticlePage({ params }: PageProps) {
 
   const toc = extractTableOfContents(article.body || []);
   const ctaConfig = getCTAConfig(article.ctaType);
+  const takeaways = toc.slice(0, 4).map((item) => item.text);
 
   const breadcrumbItems = [
     { label: tm("magazineLabel"), href: "/magazin" },
@@ -98,9 +106,10 @@ export default async function MagazinArticlePage({ params }: PageProps) {
     { label: article.title, href: `/magazin/${clusterSlug}/${article.slug}` },
   ];
 
-  const readingTimeMinutes = Math.ceil((article.body?.length || 0) / 200);
+  const readingTimeMinutes = article.readingTime || Math.max(1, Math.ceil((article.body?.length || 0) / 200));
   const publishDate = new Date(article.publishedAt);
   const modifiedDate = article.updatedAt ? new Date(article.updatedAt) : publishDate;
+  const articleUrl = `${BASE_URL}/magazin/${clusterSlug}/${article.slug}`;
 
   return (
     <>
@@ -110,6 +119,8 @@ export default async function MagazinArticlePage({ params }: PageProps) {
           "@type": "Article",
           headline: article.title,
           description: article.excerpt,
+          mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+          url: articleUrl,
           image: article.heroImage?.asset?.url,
           author: {
             "@type": "Organization",
@@ -117,31 +128,33 @@ export default async function MagazinArticlePage({ params }: PageProps) {
           },
           datePublished: article.publishedAt,
           dateModified: article.updatedAt || article.publishedAt,
+          wordCount: readingTimeMinutes * 200,
+          inLanguage: "de-DE",
+          isAccessibleForFree: true,
+          ...(article.tags?.length ? { keywords: article.tags.join(", ") } : {}),
           publisher: {
             "@type": "Organization",
             name: "BeAFox",
             logo: {
               "@type": "ImageObject",
-              url: "https://beafox.app/logo.png",
+              url: `${BASE_URL}/assets/Logos/Logo.webp`,
             },
           },
         }}
       />
 
-      {toc.length > 0 && (
-        <StructuredData
-          data={{
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: breadcrumbItems.map((item, idx) => ({
-              "@type": "ListItem",
-              position: idx + 1,
-              name: item.label,
-              item: `https://beafox.app${item.href}`,
-            })),
-          }}
-        />
-      )}
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: breadcrumbItems.map((item, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            name: item.label,
+            item: `${BASE_URL}${item.href}`,
+          })),
+        }}
+      />
 
       {article.faqSection && article.faqSection.length > 0 && (
         <StructuredData
@@ -160,7 +173,7 @@ export default async function MagazinArticlePage({ params }: PageProps) {
         />
       )}
 
-      <div className="min-h-screen bg-white">
+      <main className="min-h-screen bg-white">
         {/* Breadcrumbs */}
         <div className="max-w-7xl mx-auto px-4 py-6 border-b border-gray-100">
           <Breadcrumbs items={breadcrumbItems} />
@@ -248,11 +261,30 @@ export default async function MagazinArticlePage({ params }: PageProps) {
             )}
 
             {/* Center Content */}
-            <div
+            <article
               className={`${
                 toc.length > 0 ? "lg:col-span-2" : "lg:col-span-3"
               } max-w-3xl mx-auto`}
             >
+              {takeaways.length > 0 && (
+                <div className="mb-10 rounded-2xl border border-primaryOrange/20 bg-[#fff8ef] p-6">
+                  <h2 className="text-xl font-bold text-darkerGray mb-4">
+                    Was du wissen solltest
+                  </h2>
+                  <ul className="space-y-2.5">
+                    {takeaways.map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2.5 text-sm text-darkerGray leading-relaxed"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primaryOrange flex-shrink-0" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {article.body && article.body.length > 0 ? (
                 <WissenPortableText blocks={article.body} />
               ) : (
@@ -355,7 +387,7 @@ export default async function MagazinArticlePage({ params }: PageProps) {
                   />
                 </div>
               </div>
-            </div>
+            </article>
 
             {/* Right Sidebar */}
             {(article.ctaType || article.relatedArticles?.length) && (
@@ -493,7 +525,7 @@ export default async function MagazinArticlePage({ params }: PageProps) {
             </div>
           </div>
         )}
-      </div>
+      </main>
     </>
   );
 }

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sanity:import": "node --env-file=.env sanity/seed/import.cjs",
+    "sanity:migrate-categories": "node --env-file=.env sanity/seed/migrate-categories.cjs",
+    "sanity:migrate-authors": "node --env-file=.env sanity/seed/migrate-authors.cjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.87.0",

@@ -1,11 +1,15 @@
 import { MetadataRoute } from "next";
-import { BLOG_CATEGORIES, BLOG_POSTS } from "@/lib/blog";
+import { BLOG_CATEGORIES } from "@/lib/blog";
 import { CALCULATORS } from "@/lib/calculators";
+import { getAllGuides } from "@/lib/sanity.client";
 import { getAllArticles, getAllClusters } from "@/lib/wissen";
 
 // CONSTANTS
 const BASE_URL = "https://beafox.app";
 const BUILD_TIME = new Date();
+
+// Sitemap stündlich neu generieren, damit neue Sanity-Ratgeber schnell drin sind.
+export const revalidate = 3600;
 // TYPES
 type ChangeFreq =
   | "always"
@@ -58,6 +62,7 @@ const ROUTE_CONFIG: Record<string, RouteConfig> = {
   "/magazin": { priority: 0.9, changefreq: "weekly" },
   "/ratgeber": { priority: 0.8, changefreq: "weekly" },
   "/news": { priority: 0.8, changefreq: "weekly" },
+  "/presse": { priority: 0.7, changefreq: "monthly" },
   // /shop läuft ab 2026-04-21 extern auf shop.beafox.app (Shopify) — eigene Sitemap dort.
   "/updates": { priority: 0.7, changefreq: "weekly" },
   "/community-richtlinien": { priority: 0.6, changefreq: "yearly" },
@@ -92,13 +97,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  // Individual guide posts
-  const guideRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
-    url: `${BASE_URL}/${post.categorySlug}/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  // Individual guide pages — Sanity-driven (single source of truth)
+  let guideRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const guides = await getAllGuides();
+    const seen = new Set<string>();
+    guideRoutes = guides
+      .filter((guide) => guide.slug && guide.category)
+      .map((guide) => ({
+        url: `${BASE_URL}/${guide.category}/${guide.slug}`,
+        lastModified: guide.publishedAt
+          ? new Date(guide.publishedAt)
+          : BUILD_TIME,
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+      }))
+      // Dubletten im Sanity-Datensatz nicht doppelt in die Sitemap schreiben
+      .filter((route) => {
+        if (seen.has(route.url)) return false;
+        seen.add(route.url);
+        return true;
+      });
+  } catch {
+    // Sanity unreachable — die restliche Sitemap wird trotzdem gebaut
+  }
 
   // Finanzrechner index + individual calculator pages
   const calculatorRoutes: MetadataRoute.Sitemap = [

@@ -19,9 +19,6 @@ import ScrollStrikethroughHeading from "@/components/ScrollStrikethroughHeading"
 const DemoBookingCtaSection = dynamic(
   () => import("@/components/DemoBookingCtaSection"),
 );
-const ContentShowcaseSection = dynamic(
-  () => import("@/components/ContentShowcaseSection"),
-);
 const BeaChatDemo = dynamic(() => import("@/components/BeaChatDemo"));
 const RatgeberSection = dynamic(() => import("@/components/RatGeber"));
 const FaqAccordion = dynamic(() => import("@/components/FaqAccordion"));
@@ -888,30 +885,49 @@ export default function HomePage() {
       </Section>
 
       {/* ─── 6. RATGEBER ─── */}
-      <ContentShowcaseSection
-        headerMotionDuration={0.5}
-        sectionClassName="bg-gray-50 py-16"
-        headerMotionClassName="text-center mb-8"
-        sectionHeaderProps={{
-          pillClassName: "mb-4 sm:mb-6",
-          preTitle: t("ratgeberHomeSection.title.pre"),
-          highlight: t("ratgeberHomeSection.title.highlight"),
-          subtitle: (
-            <>
-              <span className="block">
-                {t("ratgeberHomeSection.subtitleLine1")}
-              </span>
-              <span className="block mt-1">
-                <span className="text-primaryOrange">
-                  {t("ratgeberHomeSection.subtitleLine2")}
-                </span>
-              </span>
-            </>
-          ),
-        }}
+      <Section
+        id="home-ratgeber"
+        className="relative overflow-hidden border-t border-gray-100/80 bg-gray-50 py-16 md:py-20"
+        ariaLabel={t("ratgeberHomeSection.sectionAria")}
       >
-        <RatgeberSection />
-      </ContentShowcaseSection>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.5]"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 60% at 50% -30%, rgba(232,119,32,0.08), transparent 55%)",
+          }}
+        />
+        <div className="relative z-[1]">
+          <motion.div
+            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8 text-center md:mb-10"
+          >
+            <SectionHeader
+              pillClassName="mb-4 sm:mb-6"
+              preTitle={t("ratgeberHomeSection.title.pre")}
+              highlight={t("ratgeberHomeSection.title.highlight")}
+              subtitle={
+                <>
+                  <span className="block">
+                    {t("ratgeberHomeSection.subtitleLine1")}
+                  </span>
+                  <span className="mt-1 block">
+                    <span className="text-primaryOrange">
+                      {t("ratgeberHomeSection.subtitleLine2")}
+                    </span>
+                  </span>
+                </>
+              }
+            />
+          </motion.div>
+
+          <RatgeberSection />
+        </div>
+      </Section>
 
       {/* ─── 7. B2B USE CASES ─── */}
       <Section className="relative bg-primaryWhite py-16 overflow-hidden">

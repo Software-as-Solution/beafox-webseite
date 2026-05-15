@@ -3,18 +3,8 @@ const createNextIntlPlugin = require("next-intl/plugin");
 const withNextIntl = createNextIntlPlugin();
 
 // CONSTANTS
-/** Kurz-URLs → kanonische Kategorie-Slugs */
-const ratgeberShortToFull = [
-  ["schueler", "finanzen-fuer-schueler"],
-  ["azubis", "finanzen-fuer-azubis"],
-  ["studenten", "finanzen-fuer-studenten"],
-  ["berufseinsteiger", "finanzen-fuer-berufseinsteiger"],
-  ["lebenssituationen", "finanzen-bei-lebensereignissen"],
-  ["investieren", "investieren-fuer-anfaenger"],
-];
-
 const RATGEBER_CATEGORY_SOURCE =
-  "finanzen-fuer-schueler|finanzen-fuer-azubis|finanzen-fuer-studenten|finanzen-fuer-berufseinsteiger|finanzen-bei-lebensereignissen|investieren-fuer-anfaenger";
+  "schueler|azubis|studenten|berufseinsteiger|lebenssituation|investieren";
 
 // ─── Security Headers ───
 const securityHeaders = [
@@ -68,34 +58,6 @@ const nextConfig = {
     ];
   },
   async redirects() {
-    // Ratgeber short → full slug redirects (direkt auf Root-Level)
-    const ratgeberShortRedirects = [];
-    for (const [shortSlug, fullSlug] of ratgeberShortToFull) {
-      ratgeberShortRedirects.push(
-        {
-          source: `/${shortSlug}`,
-          destination: `/${fullSlug}`,
-          permanent: true,
-        },
-        {
-          source: `/${shortSlug}/:slug`,
-          destination: `/${fullSlug}/:slug`,
-          permanent: true,
-        },
-        // Alte /ratgeber/ Kurzlinks
-        {
-          source: `/ratgeber/${shortSlug}`,
-          destination: `/${fullSlug}`,
-          permanent: true,
-        },
-        {
-          source: `/ratgeber/${shortSlug}/:slug`,
-          destination: `/${fullSlug}/:slug`,
-          permanent: true,
-        },
-      );
-    }
-
     return [
       // ── URL-Restructure 2026 ──
       { source: "/beafox-unlimited", destination: "/unlimited", permanent: true },
@@ -117,9 +79,6 @@ const nextConfig = {
         destination: "/:kategorie",
         permanent: true,
       },
-
-      // ── Ratgeber Kurzlinks ──
-      ...ratgeberShortRedirects,
 
       // ── Legacy /news/kategorie/slug → /kategorie/slug ──
       {

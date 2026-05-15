@@ -127,6 +127,7 @@
       "faq": "FAQ",
       "guide": "Guides",
       "magazin": "Magazine",
+      "press": "Press",
       "beaAi": "Bea AI",
       "calculators": "Calculators",
       "allGuidesFor": "All {category} guides →",
@@ -379,6 +380,7 @@
     "menu": {
       "title": "Menu",
       "magazin": "Magazine",
+      "press": "Press",
       "home": "Home",
       "shop": "Shop",
       "contact": "Contact",
@@ -498,15 +500,15 @@
         "highlight": "every situation"
       },
       "categories": {
-        "finanzen-fuer-azubis": {
+        "azubis": {
           "label": "Apprentices",
           "desc": "First salary, payslip, employer savings"
         },
-        "finanzen-bei-lebensereignissen": {
+        "lebenssituation": {
           "label": "Life events",
           "desc": "First apartment, moving in together, getting married"
         },
-        "finanzen-fuer-berufseinsteiger": {
+        "berufseinsteiger": {
           "label": "Career starters",
           "desc": "Tax return, salary negotiation, insurance"
         }
@@ -516,7 +518,8 @@
       "viewAll": "Discover all guides",
       "listLabel": "Guide categories",
       "subtitleLine1": "Whether student, apprentice, or career starter:",
-      "subtitleLine2": "The guide that fits you."
+      "subtitleLine2": "The guide that fits you.",
+      "sectionAria": "Guides: topics and categories"
     },
     "faqSection": {
       "title": {
@@ -4230,6 +4233,97 @@
       "description": "Events, awards, press, partnerships, milestones — an honest look behind the scenes at BeAFox.",
       "ogTitle": "BeAFox News — Behind the scenes",
       "ogDescription": "What's happening at BeAFox right now: events, awards, press coverage and team updates, first-hand."
+    },
+    "hero": {
+      "badge": "Behind the scenes",
+      "titlePre": "BeAFox",
+      "titleHighlight": "News",
+      "description": "What's happening at BeAFox right now — events, awards, press coverage, and what keeps our team busy. Not a classic blog: an honest look behind the scenes.",
+      "scrollCta": "Browse posts",
+      "magazinCta": "Magazine"
+    },
+    "list": {
+      "latestBadge": "Latest",
+      "moreNews": "More news",
+      "readingTimeShort": "{count} min",
+      "readingTimeFull": "{count} min read"
+    },
+    "emptyCategory": "There are no news posts yet.",
+    "bottomCta": {
+      "title": "Want to read more about BeAFox?",
+      "text": "The magazine has in-depth articles and guides on financial education. App updates show what's new in the app.",
+      "magazin": "Magazine",
+      "updates": "App updates",
+      "mascotAlt": "Bea mascot"
+    }
+  },
+  "press": {
+    "meta": {
+      "title": "Press | BeAFox",
+      "description": "Press and media information: contact, mentions, and press kit for BeAFox.",
+      "ogTitle": "BeAFox Press — Contact & Media Kit"
+    },
+    "hero": {
+      "eyebrow": "Press & Media",
+      "titlePre": "Information for",
+      "titleHighlight": "Press"
+    },
+    "description": "Journalists, media teams, and partners can find the key BeAFox resources here: press contact, recent mentions, and coverage material.",
+    "coverage": {
+      "badge": "Press Coverage",
+      "title": "BeAFox in the Press",
+      "subtitle": "Selected articles, features, and mentions about BeAFox.",
+      "items": [
+        {
+          "slug": "mittelbayerische-mit-dem-smartphone-zum-finanzfuchs",
+          "title": "Mittelbayerische Zeitung: Mit dem Smartphone zum Finanzfuchs",
+          "source": "Mittelbayerische Zeitung",
+          "url": "/news"
+        },
+        {
+          "slug": "donau-post-wir-muessen-ueber-geld-reden",
+          "title": "Donau-Post: Wir müssen über Geld reden",
+          "source": "Donau-Post",
+          "url": "/news"
+        },
+        {
+          "slug": "ed-one-education-innovation-summit",
+          "title": "Ed.One Education Innovation Summit",
+          "source": "Event coverage",
+          "url": "/news"
+        },
+        {
+          "slug": "baystartup-summit-startup-spotlight",
+          "title": "BayStartUP Summit: BeAFox in the startup spotlight",
+          "source": "Startup ecosystem",
+          "url": "/news"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Press Contact",
+      "nameRole": "BeAFox Press Team",
+      "imageAlt": "Alex and Selina from the BeAFox team",
+      "teamLabel": "Alex & Selina",
+      "email": "info@beafox.app",
+      "note": "For interviews, quotes, and press material, reach us directly via email.",
+      "responseTime": "Response typically within 24h",
+      "directTeam": "Media inquiries handled by our team",
+      "kitCta": "Request press kit",
+      "contactCta": "Contact us"
+    },
+    "assets": {
+      "badge": "Press Kit",
+      "title": "Available Materials",
+      "subtitle": "All materials are press-ready and can be used immediately.",
+      "requestNow": "Request press kit now",
+      "emailRequest": "Request via email",
+      "points": [
+        "Company profile and fact sheet",
+        "Logo assets and product screenshots",
+        "Team and event imagery",
+        "Quotes and background information"
+      ]
     }
   },
   "appUpdates": {
@@ -6010,7 +6104,26 @@
             "text": "For deliveries outside the European Union (e.g. to Switzerland or the United Kingdom) additional customs duties, import VAT and service charges may apply, payable by the recipient."
           },
           {
-            "text": "Before placing your order we recommend checking the exact conditions with the responsible customs authority."
+            "subtitle": "Delivery term (Incoterm): DAP – Delivered at Place"
+          },
+          {
+            "text": "All orders outside the EU are shipped under the Incoterm DAP (Delivered at Place). This means the price in the shop includes shipping but does not include any import duties of the destination country. These are charged on import by customs or the delivery carrier and are paid directly by the recipient."
+          },
+          {
+            "subtitle": "Typical additional costs (indicative, no guarantee)"
+          },
+          {
+            "list": [
+              "Switzerland (CH): import VAT 8.1% on the goods value including shipping, customs duty according to the tariff where applicable, plus a clearance fee charged by the carrier (typically 15–30 CHF).",
+              "United Kingdom (GB): import VAT 20% on the goods value including shipping for shipments above 135 GBP, customs duty where applicable, plus a clearance fee charged by the carrier (typically 8–15 GBP).",
+              "Norway (NO), USA and other third countries: import charges and carrier service fees according to local rules."
+            ]
+          },
+          {
+            "text": "Please note: our shop currently runs on the Shopify Basic plan. Pre-calculation and collection of import duties at checkout (DDP – Delivered Duty Paid) is not available on this plan. Duties are therefore charged on delivery."
+          },
+          {
+            "text": "Before placing your order we recommend checking the exact conditions with the responsible customs authority. If a shipment is refused on delivery, the costs of the return shipment will be borne by the customer."
           }
         ]
       },

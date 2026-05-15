@@ -191,6 +191,12 @@ export default async function MagazinPage() {
   const clusters = await getAllClusters();
   const featuredArticles = await getFeaturedArticles(3);
   const allArticles = await getAllArticles();
+  const clusterCounts = new Map<string, number>();
+  for (const article of allArticles) {
+    const slug = article.cluster?.slug;
+    if (!slug) continue;
+    clusterCounts.set(slug, (clusterCounts.get(slug) ?? 0) + 1);
+  }
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -259,7 +265,10 @@ export default async function MagazinPage() {
       />
 
       {/* ─── 1. HERO SECTION ─── */}
-      <Section className="overflow-hidden bg-primaryWhite pt-28 md:pt-36 pb-24 md:pb-32">
+      <Section
+        id="magazin-hero"
+        className="overflow-hidden bg-primaryWhite pt-28 md:pt-36 pb-24 md:pb-32"
+      >
         {/* Soft orange ambient glow */}
         <div
           aria-hidden="true"
@@ -347,12 +356,71 @@ export default async function MagazinPage() {
               </a>
             ))}
           </div>
+          <nav className="mt-8 flex flex-wrap justify-center gap-2" aria-label="Magazin Abschnitte">
+            <a
+              href="#magazin-themen"
+              className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-darkerGray hover:border-primaryOrange/40 hover:text-primaryOrange transition-colors"
+            >
+              Themenfelder
+            </a>
+            <a
+              href="#magazin-featured"
+              className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-darkerGray hover:border-primaryOrange/40 hover:text-primaryOrange transition-colors"
+            >
+              Beliebt
+            </a>
+            <a
+              href="#magazin-all"
+              className="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-darkerGray hover:border-primaryOrange/40 hover:text-primaryOrange transition-colors"
+            >
+              Alle Artikel
+            </a>
+          </nav>
+        </div>
+      </Section>
+
+      <Section id="magazin-themen" className="bg-white py-12 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-6 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-darkerGray">
+              Themen im Überblick
+            </h2>
+            <p className="mt-2 text-sm text-lightGray">
+              Direkter Einstieg nach Themenfeld und Artikelanzahl
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {clusters.map((cluster) => {
+              const color = CLUSTER_COLORS[cluster.color] ?? CLUSTER_COLORS.orange;
+              return (
+                <a
+                  key={cluster.slug}
+                  href="#magazin-all"
+                  className="group rounded-2xl border border-gray-200 bg-gray-50 p-4 hover:border-primaryOrange/40 hover:bg-white transition-all"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-2xl">{cluster.icon}</span>
+                    <span className="text-xs font-bold text-lightGray">
+                      {clusterCounts.get(cluster.slug) ?? 0} Artikel
+                    </span>
+                  </div>
+                  <div className="text-sm font-semibold text-darkerGray group-hover:text-primaryOrange transition-colors">
+                    {cluster.title}
+                  </div>
+                  <div className={`mt-2 inline-flex h-1.5 w-8 rounded-full ${color.bg}`} />
+                </a>
+              );
+            })}
+          </div>
         </div>
       </Section>
 
       {/* ─── 2. POPULAR ARTICLES ─── */}
       {featuredArticles.length > 0 && (
-        <Section className="relative bg-gray-50 py-16 border-t border-gray-100 overflow-hidden">
+        <Section
+          id="magazin-featured"
+          className="relative bg-gray-50 py-16 border-t border-gray-100 overflow-hidden"
+        >
           <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Editorial Header */}
             <div className="mb-8">
@@ -382,7 +450,7 @@ export default async function MagazinPage() {
         </Section>
       )}
       {/* ─── 3. ALL ARTICLES + FILTER ─── */}
-      <Section className="bg-primaryWhite py-16">
+      <Section id="magazin-all" className="bg-primaryWhite py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <SectionHeader

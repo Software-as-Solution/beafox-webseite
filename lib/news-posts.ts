@@ -83,6 +83,8 @@ export interface NewsPost {
   title: string;
   excerpt: string;
   image: string; // Path relative to /public
+  /** Optional visual correction for source photos with wrong orientation. */
+  imageRotation?: "cw90" | "ccw90" | "rotate180";
   imageAlt: string;
   publishedAt: string; // ISO date
   author: string;
@@ -90,6 +92,9 @@ export interface NewsPost {
   location?: string;
   tags: string[];
 }
+
+/** Anzeige-Byline auf /news — wie bei Ratgeber-Artikeln („BeAFox Redaktion“). */
+export const NEWS_LIST_AUTHOR_BYLINE = "BeAFox Redaktion";
 
 // ─── Posts — sortiert nach Datum (neueste zuerst in der UI) ───
 export const NEWS_POSTS: NewsPost[] = [
@@ -99,7 +104,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "BeAFox ist live: App jetzt im Google Play Store verfügbar",
     excerpt:
       "Nach Monaten Entwicklung ist es soweit: Die BeAFox-App steht ab sofort im Google Play Store zum Download bereit. Ein großer Schritt für unser Team — und der Startschuss für gamifizierte Finanzbildung in Deutschland.",
-    image: "/assets/Blogs/9.webp",
+    image: "/assets/news/19.webp",
+    imageRotation: "cw90",
     imageAlt: "BeAFox App im Google Play Store",
     publishedAt: "2026-03-28",
     author: "Alex Tapelea",
@@ -113,7 +119,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "edtech-Verband: BeAFox im Startchancen-Programm gelistet",
     excerpt:
       "Wir sind stolz, Teil des Startchancen-Programms des Bundesverbands Bildungstechnologie zu sein. Als unabhängige Lern-App für Finanzbildung stehen wir Schulen und Bildungsträgern ab sofort über die Plattform des Verbands zur Verfügung.",
-    image: "/assets/Blogs/19.webp",
+    image: "/assets/news/18.webp",
     imageAlt: "BeAFox beim Startchancen-Programm des edtech-Verbands gelistet",
     publishedAt: "2026-03-20",
     author: "BeAFox Redaktion",
@@ -127,7 +133,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "2.500 € Preis gewonnen: BeAFox räumt beim Pitch-Event ab",
     excerpt:
       "In der Kategorie Finanzbildung ging der Preis — und damit 2.500 € — an BeAFox. Eine App, mit der man den Umgang mit den eigenen Finanzen lernt. Vielen Dank an das tolle Team, die Jury und alle, die uns unterstützt haben.",
-    image: "/assets/Blogs/Blog1.webp",
+    image: "/assets/news/17.webp",
     imageAlt: "Preisverleihung: BeAFox gewinnt 2.500 Euro im Pitch-Wettbewerb",
     publishedAt: "2026-03-12",
     author: "Alex Tapelea",
@@ -141,7 +147,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Ed.One Education Innovation Summit: BeAFox auf der Bühne",
     excerpt:
       "Das exklusive Leitevent für digitale Bildungsinnovationen: Beim Ed.One Education Innovation Summit hatten wir die Chance, BeAFox vor Entscheiderinnen und Entscheidern der Bildungsbranche zu pitchen. Was wir mitgenommen haben — und wen wir getroffen haben.",
-    image: "/assets/Blogs/Blog2.webp",
+    image: "/assets/news/16.webp",
     imageAlt: "Alex Tapelea pitcht BeAFox beim Ed.One Education Innovation Summit",
     publishedAt: "2026-03-05",
     author: "Alex Tapelea",
@@ -155,7 +161,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Mittelbayerische Zeitung: \u201EMit dem Smartphone zum Finanzfuchs\u201C",
     excerpt:
       "Große Wirkung im Kleinen: Die Mittelbayerische Zeitung berichtet auf Seite 7 über BeAFox. Unter dem Titel \u201EMit dem Smartphone zum Finanzfuchs\u201C erzählen wir, wie ein Gründer-Paar aus Neutraubling mit einer Spiele-App jungen Menschen Finanzbildung näherbringen will.",
-    image: "/assets/Blogs/6.webp",
+    image: "/assets/news/15.webp",
     imageAlt: "Artikel in der Mittelbayerischen Zeitung über BeAFox",
     publishedAt: "2026-02-28",
     author: "BeAFox Redaktion",
@@ -169,7 +175,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Donau-Post: \u201EWir müssen über Geld reden\u201C",
     excerpt:
       "Alexandru Tapelea und Selina Fuchs haben in Neutraubling ein eigenes Start-up gegründet. Die Donau-Post bringt uns auf Seite 19 groß raus — und erklärt, warum wir mit Schülerinnen, Schülern und Azubis über den richtigen Umgang mit Finanzen sprechen wollen.",
-    image: "/assets/Blogs/8.webp",
+    image: "/assets/news/14.webp",
     imageAlt: "Artikel in der Donau-Post über das Gründer-Paar von BeAFox",
     publishedAt: "2026-02-20",
     author: "BeAFox Redaktion",
@@ -183,7 +189,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Paneldiskussion: Wie sichern wir gute ökonomische Bildung?",
     excerpt:
       "Spannende Runde mit Prof. Dr. Nils Goldschmidt (Universität Tübingen) und Dr. Stephan Friebel-Piechotta. Für uns eine große Ehre, als Gründer von BeAFox auf dem Panel zu sitzen und darüber zu sprechen, welche Rolle spielerische Formate für Finanzkompetenz haben.",
-    image: "/assets/Blogs/13.webp",
+    image: "/assets/news/13.webp",
     imageAlt: "Paneldiskussion zu ökonomischer Bildung mit BeAFox",
     publishedAt: "2026-02-14",
     author: "Alex Tapelea",
@@ -197,7 +203,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Bayerischer Innovationstag: Financial Literacy im Fokus",
     excerpt:
       "Beim Bayerischen Innovationstag durfte Alex auf der Bühne darüber sprechen, wie wir Financial Literacy across generations denken. \u201EWhat did you learn about finance back then?\u201C — die Antworten waren eindeutig. Zeit, das zu ändern.",
-    image: "/assets/Blogs/11.webp",
+    image: "/assets/news/12.webp",
     imageAlt: "Alex Tapelea spricht beim Bayerischen Innovationstag",
     publishedAt: "2026-02-08",
     author: "Alex Tapelea",
@@ -211,7 +217,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "BayStartUP Summit: BeAFox im Start-up-Spotlight",
     excerpt:
       "Bunt, laut, voller Energie: Beim BayStartUP Summit hatten wir einen Abend lang die Bühne für uns. Neue Kontakte, alte Mitstreiterinnen, und mindestens drei Gespräche, aus denen echte Kooperationen werden könnten. Wir sind noch ganz geflasht.",
-    image: "/assets/Blogs/16.webp",
+    image: "/assets/news/11.webp",
+    imageRotation: "rotate180",
     imageAlt: "Alex und Selina beim BayStartUP Summit",
     publishedAt: "2026-02-02",
     author: "Selina Fuchs",
@@ -225,7 +232,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Makers of Tomorrow: Unser Wochenende auf der Expo",
     excerpt:
       "Zwei Tage Expo, hunderte Gespräche, ein Kuscheltier-Fuchs als Maskottchen — und eine Community, die zeigt: Finanzbildung berührt Menschen aller Altersgruppen. Die Makers of Tomorrow Expo hat uns daran erinnert, warum wir das hier machen.",
-    image: "/assets/Blogs/14.webp",
+    image: "/assets/news/10.webp",
+    imageRotation: "rotate180",
     imageAlt: "BeAFox Team auf der Makers of Tomorrow Expo",
     publishedAt: "2026-01-25",
     author: "Selina Fuchs",
@@ -239,7 +247,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Spreadshirt Makers of Tomorrow: BeAFox im Rampenlicht",
     excerpt:
       "Frisch bedruckte Lanyards, Rampenlicht-Atmosphäre und eine Jury aus Profis. Auf der Spreadshirt-Bühne haben wir BeAFox in 5 Minuten erklärt — und mindestens so viele neue Stimmen für spielerische Finanzbildung gewonnen.",
-    image: "/assets/Blogs/15.webp",
+    image: "/assets/news/9.webp",
+    imageRotation: "cw90",
     imageAlt: "Alex und Selina bei Spreadshirt Makers of Tomorrow",
     publishedAt: "2026-01-18",
     author: "Alex Tapelea",
@@ -253,7 +262,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Pitch Night für Start-ups: BeAFox stellt sich vor",
     excerpt:
       "Kurze Slides, klare Botschaft: Bei der Pitch Night für Start-ups haben wir vor Investoren und Gründercommunity erklärt, warum gamifizierte Finanzbildung jetzt ein Markt ist — und wie BeAFox ihn verändert.",
-    image: "/assets/Blogs/3.webp",
+    image: "/assets/news/8.webp",
+    imageRotation: "cw90",
     imageAlt: "Alex pitcht BeAFox bei der Pitch Night für Start-ups",
     publishedAt: "2026-01-10",
     author: "Alex Tapelea",
@@ -267,7 +277,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Keynote: Warum Finanzbildung jetzt spielerisch werden muss",
     excerpt:
       "\u201EMehr Wissen. Mehr Geld. Mehr Freiheit.\u201C — unter diesem Motto hat Alex eine Keynote zur Zukunft der Finanzbildung gehalten. Vor über 200 Zuhörerinnen und Zuhörern haben wir gezeigt, wie Gamification lernen dramatisch beschleunigen kann.",
-    image: "/assets/Blogs/4.webp",
+    image: "/assets/news/7.webp",
+    imageRotation: "cw90",
     imageAlt: "Alex Tapelea bei der Keynote über spielerische Finanzbildung",
     publishedAt: "2025-12-18",
     author: "Alex Tapelea",
@@ -281,7 +292,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Erste Schulkooperation: BeAFox zu Besuch im Klassenzimmer",
     excerpt:
       "Von der Theorie in die Praxis: Selina und Alex waren zu Gast in einer 9. Klasse — mit Aufgaben, Prototypen und vielen neugierigen Fragen. Das erste direkte Feedback von der Zielgruppe, für die wir BeAFox bauen. Spoiler: Es war Gold wert.",
-    image: "/assets/Blogs/1.webp",
+    image: "/assets/news/6.webp",
+    imageRotation: "cw90",
     imageAlt: "BeAFox Team zu Besuch in einer Schulklasse",
     publishedAt: "2025-12-10",
     author: "Selina Fuchs",
@@ -295,7 +307,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Neue Kooperation: Partnerschaftsvertrag unterzeichnet",
     excerpt:
       "Unterschrift drauf — und los geht's: Wir haben unsere erste große Kooperationsvereinbarung unterzeichnet. Was das für BeAFox bedeutet und wie unser Partner uns dabei hilft, noch mehr Jugendliche an Finanzbildung heranzuführen.",
-    image: "/assets/Blogs/2.webp",
+    image: "/assets/news/5.webp",
+    imageRotation: "cw90",
     imageAlt: "Alex und Selina unterzeichnen einen Kooperationsvertrag",
     publishedAt: "2025-12-02",
     author: "Alex Tapelea",
@@ -309,7 +322,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "TechSpace AS: Unser neues Zuhause im Tech-Accelerator",
     excerpt:
       "Stay hungry, stay foolish — und stay connected: BeAFox hat einen festen Platz im TechSpace AS Accelerator bezogen. Mehr Raum, mehr Austausch mit anderen Gründerinnen und Gründern, und die beste Kaffee-Maschine der Stadt. Wir sind angekommen.",
-    image: "/assets/Blogs/18.webp",
+    image: "/assets/news/4.webp",
+    imageRotation: "cw90",
     imageAlt: "BeAFox Team im TechSpace AS Accelerator",
     publishedAt: "2025-11-22",
     author: "BeAFox Redaktion",
@@ -323,7 +337,7 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Gastvorlesung: Warum Gamification Finanzbildung verändert",
     excerpt:
       "Alex durfte an einer Hochschule eine Gastvorlesung halten — vor Studierenden der Wirtschaftswissenschaften. Thema: Wie Gamification Lernprozesse verändert und warum Finanzbildung dringend ein neues Format braucht.",
-    image: "/assets/Blogs/17.webp",
+    image: "/assets/news/3.webp",
     imageAlt: "Alex Tapelea bei einer Gastvorlesung an der Hochschule",
     publishedAt: "2025-11-15",
     author: "Alex Tapelea",
@@ -337,7 +351,8 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "Messestand-Debut: Erste Besucher, erste Insights",
     excerpt:
       "Rollup ausgepackt, Flyer sortiert, Maskottchen im Arm — und ab auf die Messe. Unser erstes Mal als Aussteller auf einer Bildungsmesse. Was wir gelernt haben: Finanzbildung spricht nicht nur Schulen an. Sondern auch Eltern. Und Großeltern.",
-    image: "/assets/Blogs/10.webp",
+    image: "/assets/news/2.webp",
+    imageRotation: "cw90",
     imageAlt: "Alex am BeAFox Messestand auf einer Bildungsmesse",
     publishedAt: "2025-11-05",
     author: "Alex Tapelea",
@@ -351,41 +366,14 @@ export const NEWS_POSTS: NewsPost[] = [
     title: "BeAFox Gaming-Stand: Finanzbildung zum Ausprobieren",
     excerpt:
       "Ein Arcade-Automat mit BeAFox-Challenges, mitten im Foyer. Die Idee: Finanzbildung muss greifbar sein. Wer vorbeikommt, darf direkt loslegen. Und die Reaktionen zeigen: Kinder verstehen die Logik von Level-Ups schneller als mancher Erwachsene die von Zinseszins.",
-    image: "/assets/Blogs/5.webp",
+    image: "/assets/news/1.webp",
+    imageRotation: "cw90",
     imageAlt: "BeAFox Gaming-Stand mit Arcade-Automat",
     publishedAt: "2025-10-28",
     author: "Selina Fuchs",
     readingTime: 3,
     location: "Regensburg",
     tags: ["Gaming", "Arcade", "Event", "Interaktiv"],
-  },
-  {
-    slug: "gruender-auf-der-messe",
-    category: "team",
-    title: "Zwei Gründer, ein Maskottchen: BeAFox auf der Gründermesse",
-    excerpt:
-      "Alex und Selina haben den Fuchs geschnappt und die Gründermesse unsicher gemacht. Stand auf-, Stand abbauen, mittendrin: unzählige Gespräche, ein Kuscheltier-Fuchs als Publikumsliebling und viele Kontakte, die jetzt schon Früchte tragen.",
-    image: "/assets/Blogs/12.webp",
-    imageAlt: "Alex und Selina am BeAFox Messestand auf der Gründermesse",
-    publishedAt: "2025-10-20",
-    author: "Selina Fuchs",
-    readingTime: 3,
-    location: "Regensburg",
-    tags: ["Gründermesse", "Team", "Networking", "Event"],
-  },
-  {
-    slug: "beafox-auf-der-gruendermesse",
-    category: "event",
-    title: "Erste Begegnungen mit der Community",
-    excerpt:
-      "Noch frisch aus der Verpackung: unser erstes Banner. Mit Rollup und Demo-Phone haben wir die Besucherinnen und Besucher einer Gründermesse für BeAFox begeistert. Die ersten echten Reaktionen auf unser Produkt — ein Moment, den wir nie vergessen werden.",
-    image: "/assets/Blogs/Blog3.webp",
-    imageAlt: "Alex und Selina am BeAFox Stand auf einer Gründermesse",
-    publishedAt: "2025-10-10",
-    author: "Alex Tapelea",
-    readingTime: 3,
-    location: "Regensburg",
-    tags: ["Gründermesse", "Community", "Feedback", "Debut"],
   },
 ];
 

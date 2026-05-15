@@ -127,6 +127,7 @@
       "home": "Startseite",
       "guide": "Ratgeber",
       "magazin": "Magazin",
+      "press": "Presse",
       "beaAi": "Bea AI",
       "calculators": "Rechner",
       "allGuidesFor": "Alle {category}-Ratgeber →",
@@ -375,6 +376,7 @@
     "menu": {
       "title": "Menü",
       "magazin": "Magazin",
+      "press": "Presse",
       "faq": "FAQ",
       "contact": "Kontakt",
       "about": "Über uns",
@@ -759,15 +761,15 @@
         "highlight": "Ratgeber"
       },
       "categories": {
-        "finanzen-fuer-azubis": {
+        "azubis": {
           "label": "Auszubildende",
           "desc": "Erstes Gehalt, Gehaltsabrechnung, VWL nutzen"
         },
-        "finanzen-bei-lebensereignissen": {
+        "lebenssituation": {
           "label": "Lebenssituationen",
           "desc": "Erste Wohnung, Zusammenziehen, Heiraten"
         },
-        "finanzen-fuer-berufseinsteiger": {
+        "berufseinsteiger": {
           "label": "Berufseinsteiger",
           "desc": "Steuererklärung, Gehaltsverhandlung, Versicherungen"
         }
@@ -777,7 +779,8 @@
       "viewAll": "Alle Ratgeber entdecken",
       "listLabel": "Ratgeber-Kategorien",
       "subtitleLine1": "Ob Schüler, Azubi oder Berufseinsteiger:",
-      "subtitleLine2": "Der Ratgeber der zu dir passt."
+      "subtitleLine2": "Der Ratgeber der zu dir passt.",
+      "sectionAria": "Ratgeber: Themen und Kategorien"
     },
     "faqSection": {
       "title": {
@@ -4230,6 +4233,97 @@
       "description": "Events, Auszeichnungen, Presseberichte, Partnerschaften, Meilensteine — der ehrliche Blick hinter die Kulissen bei BeAFox.",
       "ogTitle": "BeAFox News — Behind the Scenes",
       "ogDescription": "Was gerade bei BeAFox passiert: Events, Auszeichnungen, Pressestimmen und Team-Updates aus erster Hand."
+    },
+    "hero": {
+      "badge": "Behind the Scenes",
+      "titlePre": "BeAFox",
+      "titleHighlight": "News",
+      "description": "Was gerade bei BeAFox passiert — Events, Auszeichnungen, Presseberichte und alles, was unser Team bewegt. Kein klassischer Blog, sondern ein ehrlicher Blick hinter die Kulissen.",
+      "scrollCta": "Zu den Beiträgen",
+      "magazinCta": "Zum Magazin"
+    },
+    "list": {
+      "latestBadge": "Neueste News",
+      "moreNews": "Weitere News",
+      "readingTimeShort": "{count} Min.",
+      "readingTimeFull": "{count} Min. Lesezeit"
+    },
+    "emptyCategory": "Aktuell gibt es keine News-Einträge.",
+    "bottomCta": {
+      "title": "Du willst mehr über BeAFox lesen?",
+      "text": "Im Magazin findest du tiefe Artikel und Guides rund um Finanzbildung. Unter App-Updates siehst du, was sich in der App tut.",
+      "magazin": "Zum Magazin",
+      "updates": "App-Updates",
+      "mascotAlt": "Bea Maskottchen"
+    }
+  },
+  "press": {
+    "meta": {
+      "title": "Presse | BeAFox",
+      "description": "Infomaterial für Presse und Medien: Kontakt, Erwähnungen und Pressekit rund um BeAFox.",
+      "ogTitle": "BeAFox Presse — Kontakt & Pressematerial"
+    },
+    "hero": {
+      "eyebrow": "Presse & Medien",
+      "titlePre": "Infomaterial für",
+      "titleHighlight": "Presse"
+    },
+    "description": "Hier finden Journalistinnen, Medien und Partner die wichtigsten Informationen zu BeAFox: Pressekontakt, aktuelle Erwähnungen und Material für Berichterstattung.",
+    "coverage": {
+      "badge": "Presseberichte",
+      "title": "BeAFox in der Presse",
+      "subtitle": "Auswahl an Artikeln, Features und Erwähnungen über BeAFox.",
+      "items": [
+        {
+          "slug": "mittelbayerische-mit-dem-smartphone-zum-finanzfuchs",
+          "title": "Mittelbayerische Zeitung: Mit dem Smartphone zum Finanzfuchs",
+          "source": "Mittelbayerische Zeitung",
+          "url": "/news"
+        },
+        {
+          "slug": "donau-post-wir-muessen-ueber-geld-reden",
+          "title": "Donau-Post: Wir müssen über Geld reden",
+          "source": "Donau-Post",
+          "url": "/news"
+        },
+        {
+          "slug": "ed-one-education-innovation-summit",
+          "title": "Ed.One Education Innovation Summit",
+          "source": "Event-Berichterstattung",
+          "url": "/news"
+        },
+        {
+          "slug": "baystartup-summit-startup-spotlight",
+          "title": "BayStartUP Summit: BeAFox im Start-up-Spotlight",
+          "source": "Startup-Ökosystem",
+          "url": "/news"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Pressekontakt",
+      "nameRole": "BeAFox Presseteam",
+      "imageAlt": "Alex und Selina vom BeAFox Team",
+      "teamLabel": "Alex & Selina",
+      "email": "info@beafox.app",
+      "note": "Für Interview-Anfragen, Statements und Pressematerial erreichst du uns direkt per E-Mail.",
+      "responseTime": "Antwort in der Regel innerhalb 24h",
+      "directTeam": "Medienanfragen direkt ans Team",
+      "kitCta": "Pressekit anfragen",
+      "contactCta": "Kontakt aufnehmen"
+    },
+    "assets": {
+      "badge": "Pressekit",
+      "title": "Verfügbares Material",
+      "subtitle": "Alle Materialien sind pressefertig aufbereitet und sofort einsetzbar.",
+      "requestNow": "Pressekit jetzt anfordern",
+      "emailRequest": "Per E-Mail anfragen",
+      "points": [
+        "Unternehmensprofil und Faktenblatt",
+        "Logo-Assets und Produkt-Screenshots",
+        "Bildmaterial zu Team und Events",
+        "Statements und Hintergrundinfos"
+      ]
     }
   },
   "appUpdates": {
@@ -6010,7 +6104,26 @@
             "text": "Bei Lieferungen außerhalb der Europäischen Union (z. B. in die Schweiz oder das Vereinigte Königreich) können zusätzlich Zollgebühren, Einfuhrumsatzsteuer und Servicegebühren anfallen, die von der Empfängerin oder dem Empfänger zu tragen sind."
           },
           {
-            "text": "Wir empfehlen, sich vor der Bestellung bei der zuständigen Zollbehörde nach den genauen Bedingungen zu erkundigen."
+            "subtitle": "Lieferbedingung (Incoterm): DAP – Delivered at Place"
+          },
+          {
+            "text": "Alle Bestellungen außerhalb der EU werden nach dem Incoterm DAP (Delivered at Place) versandt. Das bedeutet: Der Kaufpreis im Shop enthält Versandkosten, jedoch keine Einfuhrabgaben des Bestimmungslandes. Diese werden erst bei der Einfuhr durch den Zoll bzw. den Zustelldienst erhoben und sind von der Empfängerin oder dem Empfänger direkt zu zahlen."
+          },
+          {
+            "subtitle": "Typische Zusatzkosten (Richtwerte, ohne Gewähr)"
+          },
+          {
+            "list": [
+              "Schweiz (CH): Einfuhrumsatzsteuer 8,1 % auf den Warenwert inkl. Versand, ggf. Zoll nach Warentarif sowie eine Verzollungsgebühr des Zustelldienstes (typisch 15–30 CHF).",
+              "Vereinigtes Königreich (GB): Einfuhr-VAT 20 % auf den Warenwert inkl. Versand für Sendungen ab 135 GBP, ggf. Zoll sowie eine Verzollungsgebühr des Zustelldienstes (typisch 8–15 GBP).",
+              "Norwegen (NO), USA und andere Drittländer: jeweils landesübliche Einfuhrabgaben und Service-Fees des Zustelldienstes."
+            ]
+          },
+          {
+            "text": "Hinweis: Unser Shop nutzt aktuell den Shopify Basic-Plan. Eine Vorab-Berechnung und Bezahlung der Einfuhrabgaben an der Kasse (DDP – Delivered Duty Paid) ist auf diesem Plan nicht möglich. Die Abgaben werden daher direkt bei Lieferung erhoben."
+          },
+          {
+            "text": "Wir empfehlen, sich vor der Bestellung bei der zuständigen Zollbehörde nach den genauen Bedingungen zu erkundigen. Bei Annahmeverweigerung der Sendung trägt die Bestellerin oder der Besteller die durch die Rücksendung entstehenden Kosten."
           }
         ]
       },
