@@ -18,18 +18,12 @@ import { defineField, defineType } from "sanity";
  */
 
 const CATEGORY_LIST = [
-  { title: "Finanzen für Schüler", value: "schueler" },
-  { title: "Finanzen für Azubis", value: "azubis" },
-  { title: "Finanzen für Studenten", value: "studenten" },
-  {
-    title: "Finanzen für Berufseinsteiger",
-    value: "berufseinsteiger",
-  },
-  {
-    title: "Finanzen bei Lebensereignissen",
-    value: "lebenssituation",
-  },
-  { title: "Investieren für Anfänger", value: "investieren" },
+  { title: "Schüler", value: "schueler" },
+  { title: "Azubis", value: "azubis" },
+  { title: "Studenten", value: "studenten" },
+  { title: "Berufseinsteiger", value: "berufseinsteiger" },
+  { title: "Lebenssituationen", value: "lebenssituationen" },
+  { title: "Investieren", value: "investieren" },
 ];
 
 export default defineType({
@@ -66,21 +60,6 @@ export default defineType({
       type: "string",
       group: "meta",
       options: { list: CATEGORY_LIST },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "difficulty",
-      title: "Schwierigkeitsgrad",
-      type: "string",
-      group: "meta",
-      options: {
-        list: [
-          { title: "Einsteiger", value: "einsteiger" },
-          { title: "Fortgeschritten", value: "fortgeschritten" },
-        ],
-        layout: "radio",
-      },
-      initialValue: "einsteiger",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -298,14 +277,13 @@ export default defineType({
     select: {
       title: "title",
       category: "category",
-      difficulty: "difficulty",
       author: "author.name",
     },
-    prepare({ title, category, difficulty, author }) {
+    prepare({ title, category, author }) {
       const cat = CATEGORY_LIST.find((c) => c.value === category)?.title;
       return {
         title,
-        subtitle: `${cat ?? category ?? "—"} · ${difficulty ?? "einsteiger"}${author ? ` · ${author}` : ""}`,
+        subtitle: `${cat ?? category ?? "?"}${author ? ` · ${author}` : ""}`,
       };
     },
   },

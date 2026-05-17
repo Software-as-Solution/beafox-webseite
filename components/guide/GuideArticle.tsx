@@ -17,7 +17,6 @@ import {
   type GuideFull,
   type GuideSource,
   type GuideVisual,
-  type GuideAuthor,
   type GuideInteractive,
   type GuideSummary,
   type GuideComparisonTable,
@@ -58,7 +57,7 @@ const CATEGORY_MASCOTS: Record<string, string> = {
   "studenten": "/Maskottchen/Maskottchen-Studenten.webp",
   "berufseinsteiger":
     "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
-  "lebenssituation":
+  "lebenssituationen":
     "/Maskottchen/Maskottchen-Lebenssituationen.webp",
   "investieren": "/Maskottchen/Maskottchen-Investieren.webp",
 };
@@ -1259,42 +1258,6 @@ function GuideSummaryBlock({ summary }: { summary: GuideSummary }) {
   return <SummaryBoxBlock heading={summary.heading} points={summary.points} />;
 }
 
-interface AuthorBioProps {
-  author: GuideAuthor;
-}
-function AuthorBio({ author }: AuthorBioProps) {
-  return (
-    <section className="mt-10 rounded-[22px] border border-gray-200/80 bg-gray-50/60 p-5 md:p-7">
-      <div className="flex items-start gap-4">
-        <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-primaryOrange/12 ring-1 ring-primaryOrange/20">
-          <Image
-            src="/assets/Logos/Logo.webp"
-            alt=""
-            width={28}
-            height={28}
-            className="h-7 w-7 object-contain"
-          />
-        </span>
-        <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-primaryOrange">
-            Über den Autor
-          </p>
-          <p className="mt-1 text-[16px] font-bold text-darkerGray">
-            {author.name}
-          </p>
-          <p className="text-[13px] text-lightGray">
-            {author.role}
-            {author.credentials ? ` · ${author.credentials}` : ""}
-          </p>
-          <p className="mt-2 text-[14px] leading-[1.7] text-[#374151]">
-            {author.bio}
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 interface SourcesListProps {
   sources: GuideSource[];
 }
@@ -1801,7 +1764,7 @@ export default function GuideArticle({
                 </div>
 
                 <h2 className="mt-5 text-[26px] font-bold leading-[1.15] tracking-tight text-white md:text-[34px]">
-                  Mach aus diesem Ratgeber deinen Plan
+                  Mach aus diesem Ratgeber eine Entscheidung
                 </h2>
                 <p className="mt-3 text-[16px] leading-[1.7] text-white/90">
                   {guide.beaBlock.intro}
@@ -1919,9 +1882,6 @@ export default function GuideArticle({
                 </div>
               </div>
             </motion.section>
-
-            {/* ── AUTOR ── */}
-            {guide.author && <AuthorBio author={guide.author} />}
 
             {/* ── QUELLEN ── */}
             {guide.sources && guide.sources.length > 0 && (

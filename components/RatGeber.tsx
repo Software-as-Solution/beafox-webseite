@@ -61,8 +61,8 @@ const RATGEBER_CATEGORIES: RatgeberCategory[] = [
   },
   {
     icon: Home,
-    slug: "lebenssituation",
-    href: "/lebenssituation",
+    slug: "lebenssituationen",
+    href: "/lebenssituationen",
     mascot: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
   },
   {
@@ -134,7 +134,7 @@ export default function RatgeberSection({
     if (!showAllGuideCategories) return RATGEBER_CATEGORIES;
     const iconMap: Record<string, LucideIcon> = {
       azubis: Wrench,
-      lebenssituation: Home,
+      lebenssituationen: Home,
       berufseinsteiger: Briefcase,
       schueler: School,
       studenten: GraduationCap,
@@ -142,7 +142,7 @@ export default function RatgeberSection({
     };
     const mascotMap: Record<string, string> = {
       azubis: "/Maskottchen/Maskottchen-Azubi.webp",
-      lebenssituation: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
+      lebenssituationen: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
       berufseinsteiger: "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
       schueler: "/Maskottchen/Maskottchen-Schueler.png",
       studenten: "/Maskottchen/Maskottchen-Studenten.webp",

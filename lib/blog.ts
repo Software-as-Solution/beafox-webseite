@@ -45,12 +45,12 @@ export const BLOG_CATEGORIES = [
     emoji: "💼",
   },
   {
-    slug: "lebenssituation",
+    slug: "lebenssituationen",
     navLabel: "Lebenssituationen",
-    title: "Finanzen bei Lebensereignissen",
+    title: "Finanzen bei Lebenssituationen",
     description:
       "Umzug, Heiraten, Eltern werden - was du finanziell beachten musst.",
-    metaTitle: "Finanzen bei Lebensereignissen - Umzug, Hochzeit & mehr | BeAFox",
+    metaTitle: "Finanzen bei Lebenssituationen - Umzug, Hochzeit & mehr | BeAFox",
     metaDescription:
       "Erste eigene Wohnung, Zusammenziehen, Heiraten, Eltern werden: Was du finanziell beachten musst. Ratgeber von BeAFox.",
     emoji: "🏠",

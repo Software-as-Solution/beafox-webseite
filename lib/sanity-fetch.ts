@@ -16,7 +16,6 @@ export interface SanityGuide {
   metaTitle?: string;
   metaDescription?: string;
   excerpt: string;
-  difficulty: "einsteiger" | "fortgeschritten";
   readingTime: number;
   tags: string[];
   publishedAt: string;
@@ -59,7 +58,7 @@ export async function fetchSanityGuide(
 ): Promise<SanityGuide | null> {
   const query = `*[_type == "guide" && category == $category && slug.current == $slug][0]{
     _id, title, "slug": slug.current, category, metaTitle, metaDescription,
-    excerpt, difficulty, readingTime, tags, publishedAt,
+    excerpt, readingTime, tags, publishedAt,
     steps[]{ title, description }, body
   }`;
   return sanityFetch<SanityGuide | null>(query, { category, slug });
@@ -70,7 +69,7 @@ export async function fetchSanityGuidesByCategory(
   category: string
 ): Promise<SanityGuide[]> {
   const query = `*[_type == "guide" && category == $category] | order(publishedAt desc) {
-    _id, title, "slug": slug.current, category, excerpt, difficulty,
+    _id, title, "slug": slug.current, category, excerpt,
     readingTime, tags, publishedAt, steps[]{ title, description }
   }`;
   return sanityFetch<SanityGuide[]>(query, { category });
@@ -79,7 +78,7 @@ export async function fetchSanityGuidesByCategory(
 /** All guides across all categories */
 export async function fetchAllSanityGuides(): Promise<SanityGuide[]> {
   const query = `*[_type == "guide"] | order(publishedAt desc) {
-    _id, title, "slug": slug.current, category, excerpt, difficulty,
+    _id, title, "slug": slug.current, category, excerpt,
     readingTime, tags, publishedAt
   }`;
   return sanityFetch<SanityGuide[]>(query);
@@ -225,7 +224,6 @@ export interface GuideFull {
   metaTitle?: string;
   metaDescription?: string;
   excerpt: string;
-  difficulty: "einsteiger" | "fortgeschritten";
   readingTime: number;
   tags: string[];
   publishedAt: string;

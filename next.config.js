@@ -4,7 +4,7 @@ const withNextIntl = createNextIntlPlugin();
 
 // CONSTANTS
 const RATGEBER_CATEGORY_SOURCE =
-  "schueler|azubis|studenten|berufseinsteiger|lebenssituation|investieren";
+  "schueler|azubis|studenten|berufseinsteiger|lebenssituationen|investieren";
 
 // ─── Security Headers ───
 const securityHeaders = [

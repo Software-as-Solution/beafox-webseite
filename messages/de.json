@@ -765,7 +765,7 @@
           "label": "Auszubildende",
           "desc": "Erstes Gehalt, Gehaltsabrechnung, VWL nutzen"
         },
-        "lebenssituation": {
+        "lebenssituationen": {
           "label": "Lebenssituationen",
           "desc": "Erste Wohnung, Zusammenziehen, Heiraten"
         },
@@ -4224,7 +4224,7 @@
       "title": "Finanz-Ratgeber — 45+ Guides für Azubis, Schüler & Studenten",
       "description": "Finanz-Ratgeber für junge Lebensphasen: sechs Themenwelten als Pillar Pages — von Schule bis Investieren.",
       "ogTitle": "BeAFox Ratgeber — Finanzwissen für junge Lebensphasen",
-      "ogDescription": "Ratgeber-Hub mit Kategorien zu Taschengeld, Ausbildung, Studium, Berufsstart, Lebensereignissen und Investieren."
+      "ogDescription": "Ratgeber-Hub mit Kategorien zu Taschengeld, Ausbildung, Studium, Berufsstart, Lebenssituationen und Investieren."
     }
   },
   "news": {

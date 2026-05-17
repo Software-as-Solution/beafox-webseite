@@ -504,7 +504,7 @@
           "label": "Apprentices",
           "desc": "First salary, payslip, employer savings"
         },
-        "lebenssituation": {
+        "lebenssituationen": {
           "label": "Life events",
           "desc": "First apartment, moving in together, getting married"
         },

@@ -36,7 +36,7 @@ const CATEGORY_MASCOTS: Record<string, string> = {
   studenten: "/Maskottchen/Maskottchen-Studenten.webp",
   investieren: "/Maskottchen/Maskottchen-Investieren.webp",
   berufseinsteiger: "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
-  lebenssituation: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
+  lebenssituationen: "/Maskottchen/Maskottchen-Lebenssituationen.webp",
 };
 
 // Bea-Motive für die Ratgeber-Karten, deterministisch per Index rotiert

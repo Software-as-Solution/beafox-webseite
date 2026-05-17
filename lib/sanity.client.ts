@@ -19,7 +19,6 @@ export const guidesByCategoryQuery = `
     "slug": slug.current,
     category,
     excerpt,
-    difficulty,
     readingTime,
     tags,
     publishedAt,
@@ -37,7 +36,6 @@ export const guideBySlugQuery = `
     metaTitle,
     metaDescription,
     excerpt,
-    difficulty,
     readingTime,
     tags,
     publishedAt,
@@ -54,7 +52,6 @@ export const allGuidesQuery = `
     "slug": slug.current,
     category,
     excerpt,
-    difficulty,
     readingTime,
     tags,
     publishedAt
@@ -85,7 +82,6 @@ export interface SanityGuide {
   metaTitle?: string;
   metaDescription?: string;
   excerpt: string;
-  difficulty: "einsteiger" | "fortgeschritten";
   readingTime: number;
   tags: string[];
   publishedAt: string;
@@ -191,7 +187,7 @@ export async function getGuideMeta(
 export const guideFullQuery = `
   *[_type == "guide" && category == $category && slug.current == $slug][0] {
     _id, title, "slug": slug.current, category, metaTitle, metaDescription,
-    excerpt, difficulty, readingTime, tags, publishedAt, quickAnswer,
+    excerpt, readingTime, tags, publishedAt, quickAnswer,
     author->{ name, role, credentials, bio },
     chapters[]{
       heading, body, beaPrompt,

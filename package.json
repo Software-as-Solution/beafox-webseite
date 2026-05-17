@@ -7,9 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sanity:import": "node --env-file=.env sanity/seed/import.cjs",
-    "sanity:migrate-categories": "node --env-file=.env sanity/seed/migrate-categories.cjs",
-    "sanity:migrate-authors": "node --env-file=.env sanity/seed/migrate-authors.cjs"
+    "sanity:create-guide-3": "node --env-file=.env sanity/seed/create-guide-3.cjs",
+    "sanity:create-guide-4": "node --env-file=.env sanity/seed/create-guide-4.cjs",
+    "sanity:create-guide-5": "node --env-file=.env sanity/seed/create-guide-5.cjs",
+    "sanity:create-guide-6": "node --env-file=.env sanity/seed/create-guide-6.cjs",
+    "sanity:create-guide-7": "node --env-file=.env sanity/seed/create-guide-7.cjs",
+    "sanity:create-guide-8": "node --env-file=.env sanity/seed/create-guide-8.cjs",
+    "sanity:unset-difficulty": "node --env-file=.env sanity/seed/unset-difficulty.cjs",
+    "sanity:rename-lebenssituationen": "node --env-file=.env sanity/seed/rename-category-lebenssituationen.cjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.87.0",

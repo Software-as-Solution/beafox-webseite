@@ -30,7 +30,7 @@ function getPageCategory(pathname: string): string {
     pathname.startsWith("/azubis") ||
     pathname.startsWith("/studenten") ||
     pathname.startsWith("/berufseinsteiger") ||
-    pathname.startsWith("/lebenssituation") ||
+    pathname.startsWith("/lebenssituationen") ||
     pathname.startsWith("/investieren")
   )
     return "content";

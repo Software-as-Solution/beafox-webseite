@@ -80,7 +80,7 @@ const RATGEBER_MASCOTS: Record<BlogCategorySlug, string> = {
   "studenten": "/Maskottchen/Maskottchen-Studenten.webp",
   "berufseinsteiger":
     "/Maskottchen/Maskottchen-Berufseinsteiger.webp",
-  "lebenssituation":
+  "lebenssituationen":
     "/Maskottchen/Maskottchen-Lebenssituationen.webp",
   "investieren": "/Maskottchen/Maskottchen-Investieren.webp",
 } as const;
