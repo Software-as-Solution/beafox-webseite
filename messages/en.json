@@ -380,6 +380,8 @@
     "menu": {
       "title": "Menu",
       "magazin": "Magazine",
+      "news": "News",
+      "appUpdates": "App Updates",
       "press": "Press",
       "home": "Home",
       "shop": "Shop",
