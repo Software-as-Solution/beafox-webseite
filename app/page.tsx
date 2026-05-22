@@ -231,14 +231,6 @@ const FAQ_STRUCTURED_DATA = {
     },
     {
       "@type": "Question",
-      name: "Was macht Bea anders als andere Finanz-Apps?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Bea ist kein Chatbot der Wikipedia zitiert. Bea kennt deine Lebenssituation — ob Azubi, Student oder Berufseinsteiger — und empfiehlt dir genau die Schritte, die jetzt für dich relevant sind.",
-      },
-    },
-    {
-      "@type": "Question",
       name: "Sind meine Daten sicher?",
       acceptedAnswer: {
         "@type": "Answer",
@@ -251,6 +243,14 @@ const FAQ_STRUCTURED_DATA = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "Für alle zwischen 16 und 30, die ihre Finanzen selbst in die Hand nehmen wollen — besonders Azubis, Studierende und Berufseinsteiger.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Was macht Bea anders als andere Finanz-Apps?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Bea ist kein Chatbot der Wikipedia zitiert. Bea kennt deine Lebenssituation — ob Azubi, Student oder Berufseinsteiger — und empfiehlt dir genau die Schritte, die jetzt für dich relevant sind.",
       },
     },
   ],
@@ -335,7 +335,7 @@ function highlightInString(
 // SUBCOMPONENTS
 function BenefitListItem({ children }: { children: ReactNode }) {
   return (
-    <li className="flex items-start gap-3">
+    <li className="flex items-start gap-3.5">
       <div
         style={CHECK_BULLET_STYLE}
         className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
@@ -346,7 +346,7 @@ function BenefitListItem({ children }: { children: ReactNode }) {
           className="w-3 h-3 text-white"
         />
       </div>
-      <span className="text-sm md:text-base text-darkerGray leading-relaxed">
+      <span className="text-[15px] md:text-[17px] text-darkerGray leading-relaxed">
         {children}
       </span>
     </li>
@@ -370,11 +370,11 @@ function ProblemCard({
       style={PROBLEM_CARD_STYLE}
       className={`relative rounded-2xl ${paddingClass} transition-all duration-300 hover:-translate-y-1`}
     >
-      <div className="flex items-center justify-between gap-3 mb-3">
-        <h3 className="text-2xl font-bold text-darkerGray leading-tight flex-1">
+      <div className="flex items-center justify-between gap-3.5 mb-3">
+        <h3 className="text-[1.625rem] md:text-[1.75rem] font-bold text-darkerGray leading-tight flex-1">
           {title}
         </h3>
-        <div className="relative w-20 h-20 md:w-24 md:h-24 flex-shrink-0">
+        <div className="relative w-[5.5rem] h-[5.5rem] md:w-[6.5rem] md:h-[6.5rem] flex-shrink-0">
           <Image
             fill
             src={mascot}
@@ -384,7 +384,7 @@ function ProblemCard({
           />
         </div>
       </div>
-      <p className="text-sm md:text-[15px] text-lightGray leading-relaxed">
+      <p className="text-[15px] md:text-base text-lightGray leading-relaxed">
         {text}
       </p>
     </div>
@@ -515,14 +515,14 @@ export default function HomePage() {
                   aria-hidden="true"
                   className="w-4 h-4 text-primaryOrange"
                 />
-                <span className="text-xs font-bold text-primaryOrange uppercase tracking-wider">
+                <span className="text-sm font-bold text-primaryOrange uppercase tracking-wider">
                   {t("solutionSection.eyebrow")}
                 </span>
               </div>
-              <p className="text-base sm:text-lg md:text-xl text-darkerGray leading-relaxed mb-6 sm:mb-8 font-medium">
+              <p className="text-[17px] sm:text-[19px] md:text-[21px] text-darkerGray leading-relaxed mb-6 sm:mb-8 font-medium">
                 {t("solutionSection.description")}
               </p>
-              <ul className="space-y-3.5 mb-9">
+              <ul className="space-y-3.5 mb-9 [&_span]:text-base md:[&_span]:text-lg">
                 {solutionFeatures.map((feature, idx) => (
                   <BenefitListItem key={idx}>{feature}</BenefitListItem>
                 ))}
@@ -530,7 +530,7 @@ export default function HomePage() {
               <Link
                 href="/bea-ai"
                 style={SOLUTION_CTA_STYLE}
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm md:text-base transition-all hover:scale-[1.03] hover:shadow-xl"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-base md:text-[17px] transition-all hover:scale-[1.03] hover:shadow-xl"
               >
                 {t("solutionSection.ctaLabel")}
                 <ArrowRight
@@ -557,11 +557,11 @@ export default function HomePage() {
               highlight={t("problemSection.eyebrowHighlight")}
             />
           </div>
-          <div className="grid lg:grid-cols-[45%_55%] gap-6 lg:gap-10 items-start">
-            <div className="order-2 lg:order-1">
+          <div className="space-y-8 md:space-y-10">
+            <div className="grid items-center gap-6 lg:grid-cols-[44%_56%] lg:gap-10">
               <div
                 style={PROBLEM_VISUAL_BG_STYLE}
-                className="relative aspect-[4/2] rounded-2xl overflow-hidden mb-4"
+                className="relative mx-auto w-full max-w-[560px] aspect-[4/2] rounded-2xl overflow-hidden"
               >
                 <div
                   aria-hidden="true"
@@ -584,39 +584,48 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <h3 className="text-lg font-bold text-darkerGray mb-2">
-                {t("problemSection.listTitle")}
-              </h3>
-              <ul className="space-y-3">
-                {problemBenefits.map((benefit, idx) => (
-                  <BenefitListItem key={idx}>{benefit}</BenefitListItem>
-                ))}
-              </ul>
+
+              <div className="mx-auto w-full max-w-[760px] text-center lg:text-left">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray leading-[1.1] tracking-tight">
+                  {t("problemSection.titlePre")}{" "}
+                  <span className="text-primaryOrange">
+                    {t("problemSection.titleHighlight")}
+                  </span>
+                  <br />
+                  {highlightInString(
+                    t("problemSection.titlePost"),
+                    PROBLEM_TITLE_HIGHLIGHTS,
+                  )}
+                </h2>
+              </div>
             </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-darkerGray leading-[1.1] tracking-tight mb-8">
-                {t("problemSection.titlePre")}{" "}
-                <span className="text-primaryOrange">
-                  {t("problemSection.titleHighlight")}
-                </span>
-                <br />
-                {highlightInString(
-                  t("problemSection.titlePost"),
-                  PROBLEM_TITLE_HIGHLIGHTS,
-                )}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-                <ProblemCard
-                  text={t("problemSection.card1Text")}
-                  title={t("problemSection.card1Title")}
-                  mascot="/Maskottchen/Maskottchen-Unklar.png"
-                />
-                <ProblemCard
-                  paddingClass="p-6"
-                  text={t("problemSection.card2Text")}
-                  title={t("problemSection.card2Title")}
-                  mascot="/Maskottchen/Maskottchen-Weinen.png"
-                />
+
+            <div className="grid items-center gap-6 lg:grid-cols-[44%_56%] lg:gap-10">
+              <div className="mx-auto w-full max-w-[560px]">
+                <h3 className="text-xl font-bold text-darkerGray mb-2.5">
+                  {t("problemSection.listTitle")}
+                </h3>
+                <ul className="space-y-3">
+                  {problemBenefits.slice(0, 4).map((benefit, idx) => (
+                    <BenefitListItem key={idx}>{benefit}</BenefitListItem>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mx-auto w-full max-w-[760px]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                  <ProblemCard
+                    text={t("problemSection.card1Text")}
+                    title={t("problemSection.card1Title")}
+                    mascot="/Maskottchen/Maskottchen-Unklar.png"
+                  />
+                  <ProblemCard
+                    paddingClass="p-6 md:p-7"
+                    text={t("problemSection.card2Text")}
+                    title={t("problemSection.card2Title")}
+                    mascot="/Maskottchen/Maskottchen-Weinen.png"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -625,7 +634,7 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-12 md:mt-16 flex flex-col items-center text-center"
+            className="mt-12 flex flex-col items-center text-center"
           >
             <h3 className="text-2xl font-bold text-darkerGray leading-tight mb-3 max-w-2xl">
               {t("problemSection.bridgeTitle")}

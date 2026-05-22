@@ -9,6 +9,14 @@ import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 // ICONS
 import { Mail, ArrowRight, CheckCircle } from "lucide-react";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTiktok,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 // DATA
 import { BLOG_CATEGORIES } from "@/lib/blog";
 // ANALYTICS
@@ -27,11 +35,13 @@ const PRODUCT_LINKS = [
 ] as const;
 const MENU_LINKS = [
   { href: "/faq", key: "faq" },
+  { href: "/news", key: "news" },
   { href: "/presse", key: "press" },
   { href: "/kontakt", key: "contact" },
   { href: "/magazin", key: "magazin" },
   { href: "/ueber-uns", key: "about" },
   { href: "/", key: "home" },
+  { href: "/updates", key: "appUpdates" },
 ] as const;
 const LEGAL_LINKS = [
   { href: "/agb", key: "agb" },
@@ -41,12 +51,17 @@ const LEGAL_LINKS = [
   { href: "/widerrufsbelehrung", key: "withdrawal" },
   { href: "/community-richtlinien", key: "guidelines" },
 ] as const;
-const SOCIAL_LINKS = [
-  { href: "https://x.com/beafox_app", label: "X" },
-  { href: "https://www.tiktok.com/@beafox_app", label: "TikTok" },
-  { href: "https://www.linkedin.com/company/beafox-app/", label: "LinkedIn" },
-  { href: "https://www.youtube.com/@beafox_app", label: "YouTube" },
-  { href: "https://instagram.com/beafox_app", label: "Instagram" },
+const SOCIAL_BAR_LINKS = [
+  {
+    href: "https://www.linkedin.com/company/beafox-app/",
+    label: "LinkedIn",
+    Icon: FaLinkedinIn,
+  },
+  { href: "https://facebook.com/beafox", label: "Facebook", Icon: FaFacebookF },
+  { href: "https://instagram.com/beafox_app", label: "Instagram", Icon: FaInstagram },
+  { href: "https://x.com/beafox_app", label: "X", Icon: FaXTwitter },
+  { href: "https://www.youtube.com/@beafox_app", label: "YouTube", Icon: FaYoutube },
+  { href: "https://www.tiktok.com/@beafox_app", label: "TikTok", Icon: FaTiktok },
 ] as const;
 const LINK_CLASS =
   "hover:text-primaryOrange transition-colors text-lightGray text-xs lg:text-sm";
@@ -253,10 +268,34 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <div className="w-full px-4 sm:px-6 pt-6">
+        <div className="mx-auto w-full max-w-6xl rounded-2xl border border-primaryOrange/20 bg-primaryOrange/5 px-4 py-3 sm:px-6 sm:py-4 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-primaryOrange">
+              {locale === "de" ? "Hier findest du uns" : "Find us here"}
+            </p>
+            <ul className="flex items-center gap-1.5 sm:gap-2">
+              {SOCIAL_BAR_LINKS.map(({ href, label, Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-primaryOrange/20 bg-white text-primaryOrange transition-all hover:-translate-y-0.5 hover:bg-primaryOrange hover:text-white"
+                  >
+                    <Icon className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
       {/* ─── Links Grid — ein zentrierter Block (max-w), Linie + Text gleiche Breite, linksbündig ─── */}
       <div className="w-full px-4 sm:px-6 py-16">
         <div className="mx-auto w-full max-w-6xl">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 mb-12 text-left justify-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 sm:gap-10 mb-12 text-left justify-items-center">
             {/* Ratgeber */}
             <nav aria-label="Ratgeber">
               <h3 className="text-darkerGray font-bold mb-5 text-sm md:text-base">
@@ -326,36 +365,6 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
-              </ul>
-            </nav>
-            {/* Social + Content */}
-            <nav aria-label="Social Media & Updates">
-              <h3 className="text-darkerGray font-bold mb-5 text-sm md:text-base">
-                {t("content.title")}
-              </h3>
-              <ul className="space-y-2.5">
-                {SOCIAL_LINKS.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      target="_blank"
-                      href={link.href}
-                      className={LINK_CLASS}
-                      rel="noopener noreferrer"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-                <li>
-                  <Link href="/news" className={LINK_CLASS}>
-                    {t("content.news")}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/updates" className={LINK_CLASS}>
-                    {t("content.appUpdates")}
-                  </Link>
-                </li>
               </ul>
             </nav>
           </div>

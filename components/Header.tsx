@@ -126,7 +126,6 @@ export default function Header() {
   const ratgeberPanelRef = useRef<HTMLDivElement>(null);
   const productsTriggerRef = useRef<HTMLDivElement>(null);
   // CONSTANTS
-  const navItems = useMemo(() => [{ href: "/", label: t("nav.home") }], [t]);
   const beaLabel = useMemo(
     () =>
       t("nav.beaAi")
@@ -393,20 +392,6 @@ export default function Header() {
                 role="menubar"
                 className="hidden lg:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               >
-                {navItems.map((item) => {
-                  const active = isHydrated && pathname === item.href;
-                  return (
-                    <Link
-                      key={item.href}
-                      role="menuitem"
-                      href={item.href}
-                      aria-current={active ? "page" : undefined}
-                      className={`relative px-4 py-2 rounded-xl text-base font-semibold transition-all duration-200 whitespace-nowrap shrink-0 ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-primaryOrange/5"}`}
-                    >
-                      {item.label}
-                    </Link>
-                  );
-                })}
                 {/* Bea AI */}
                 <Link
                   href="/bea-ai"
@@ -1035,21 +1020,6 @@ export default function Header() {
                 }
               >
                 <div className="px-5 py-5 space-y-1">
-                  {navItems.map((item) => {
-                    const active = isHydrated && pathname === item.href;
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={closeAll}
-                        aria-current={active ? "page" : undefined}
-                        className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 ${active ? "text-primaryOrange bg-primaryOrange/10" : "text-darkerGray hover:text-primaryOrange hover:bg-gray-50"}`}
-                      >
-                        {item.label}
-                      </Link>
-                    );
-                  })}
-
                   {/* Mobile Bea AI */}
                   <Link
                     href="/bea-ai"
