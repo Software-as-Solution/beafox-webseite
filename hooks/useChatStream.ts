@@ -10,6 +10,9 @@ import type { UserProfile } from "@/lib/bea-ai/onboarding";
 import { parseSSEEvent } from "@/lib/bea-ai/chat/sseParser";
 import { uid } from "@/lib/bea-ai/chat/helpers";
 import type { ChatAction, Message } from "@/lib/bea-ai/chat/chatTypes";
+import { sanitizeBeaOutput } from "@/lib/bea-ai/sanitize";
+import { getAnalyticsId } from "@/lib/analytics/session";
+import { hasConsent, loadConsent } from "@/lib/analytics/consent";
 
 // CONSTANTS
 const CHAT_API_ENDPOINT = "/api/bea-ai/chat";
@@ -93,6 +96,12 @@ export function useChatStream(args: UseChatStreamArgs) {
       let beaText = "";
       let beaModel = "";
 
+      // Pseudonyme Analytics-ID + Produkt-Analytics-Consent ("analytics"-
+      // Purpose) auslesen. Die Route leitet beides an /bea/web-turn weiter:
+      // bei Consent wird die User-Nachricht (gescrubbt) gespeichert.
+      const analyticsId = getAnalyticsId();
+      const consent = hasConsent(loadConsent(), "analytics");
+
       try {
         const res = await fetch(CHAT_API_ENDPOINT, {
           method: "POST",
@@ -102,6 +111,8 @@ export function useChatStream(args: UseChatStreamArgs) {
               .filter((m) => !m.isProactive && !m.card) // proactive + cards never go to LLM
               .map((m) => ({ role: m.role, content: m.content })),
             ...(profile ? { profile } : {}),
+            analyticsId,
+            consent,
           }),
           signal: controller.signal,
         });
@@ -162,6 +173,20 @@ export function useChatStream(args: UseChatStreamArgs) {
           }
         }
 
+        // Sanitize beim Stream-Ende. Wenn Claude Markdown oder
+        // Gedankenstriche zwischen Satzteilen ausgespuckt hat,
+        // ersetzen wir das gestreamte Display durch die saubere
+        // Version. Pro-Delta-Sanitizing würde Token-Splits zerstören.
+        const sanitized = sanitizeBeaOutput(beaText);
+        if (sanitized !== beaText) {
+          dispatch({
+            type: "streamText",
+            assistantId,
+            text: sanitized,
+            model: beaModel,
+          });
+          beaText = sanitized;
+        }
         dispatch({ type: "streamEnd" });
         if (beaText) {
           argsRef.current.onResponse?.({

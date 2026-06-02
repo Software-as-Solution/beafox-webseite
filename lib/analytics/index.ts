@@ -31,6 +31,7 @@ export * from "./events/onboarding";
 export * from "./events/chat";
 export * from "./events/insights";
 export * from "./events/system";
+export * from "./events/ratgeber";
 
 // Session utilities
 export {

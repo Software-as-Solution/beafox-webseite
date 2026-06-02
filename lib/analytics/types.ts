@@ -11,6 +11,7 @@ import type {
   OnboardingInsights,
   StepId,
 } from "@/lib/bea-ai/onboarding";
+import type { BlogCategorySlug } from "@/lib/blog";
 
 // CONSTANTS
 export const EVENT_SCHEMA_VERSION = 1;
@@ -198,6 +199,17 @@ export type ProfileEvent =
       meta: BaseEventMeta;
     };
 
+// ─── Ratgeber Events ─────────────────────────────────────────
+// Klick auf eine Ratgeber-Kategorie (Karte oder "Frag Bea dazu"-Button).
+// Aggregiert pro Slug — fließt durch dieselbe Pipe wie die übrigen
+// Analytics-Events, sodass Klicks neben den Bea-Themen auswertbar sind.
+export type RatgeberEvent = {
+  type: "ratgeber_category_click";
+  slug: BlogCategorySlug;
+  source: "card" | "bea_button";
+  meta: BaseEventMeta;
+};
+
 // ─── System Events ───────────────────────────────────────────
 export type SystemEvent =
   | {
@@ -228,6 +240,7 @@ export type AnalyticsEvent =
   | InsightsEvent
   | ChatEvent
   | ProfileEvent
+  | RatgeberEvent
   | SystemEvent;
 
 // ─── Helper: welche Consent-Purpose braucht welches Event? ───
@@ -236,6 +249,8 @@ export function requiredConsentFor(event: AnalyticsEvent): ConsentPurpose {
   const t = event.type;
   if (t.startsWith("chat.")) return "prompt_iteration";
   if (t.startsWith("profile.")) return "profile_tracking";
+  // Ratgeber-Klicks zählen als Produkt-Analytics (Funnel/Topic-Aggregation)
+  if (t === "ratgeber_category_click") return "analytics";
   // Alles andere fällt unter basic Analytics
   return "analytics";
 }

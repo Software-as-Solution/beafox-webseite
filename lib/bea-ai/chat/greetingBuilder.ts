@@ -36,7 +36,7 @@ const PRIORITY_PROMPTS: Record<
   prio_overview: {
     label: "Überblick bekommen",
     prompt:
-      "Lass uns mit einem Überblick starten — wie fang ich an, meine Finanzen zu ordnen?",
+      "Lass uns mit einem Überblick starten. Wie fang ich an, meine Finanzen zu ordnen?",
     emoji: "📊",
   },
   prio_saving: {
@@ -100,9 +100,52 @@ export function buildGreeting(
     delayMs: 400,
   };
 
+  // Kein Onboarding (leeres Profil) → EHRLICHE, generische Begrüßung: KEIN
+  // Fuchs-Typ und kein "ich hab dich analysiert" (das wäre erfunden, weil ohne
+  // Onboarding keine Daten existieren). Greift, wenn Onboarding aus ist
+  // (NEXT_PUBLIC_BEA_ONBOARDING != "on"). Deep-Link-Einstiege zeigen ohnehin
+  // gar keine Begrüßung (ChatPhase überspringt die Greeting-Sequenz).
+  const hasOnboarding =
+    (profile.lebenssituation?.trim().length ?? 0) > 0 ||
+    (profile.prioritaeten?.length ?? 0) > 0 ||
+    (zielbild?.length ?? 0) > 0;
+
+  if (!hasOnboarding) {
+    return {
+      messages: [
+        line1,
+        {
+          content:
+            "Ich bin Bea, deine Finanz-Begleiterin 🦊 Frag mich einfach alles rund um dein Geld – Sparen, Schulden, Investieren – oder wir quatschen erstmal. Womit wollen wir starten?",
+          delayMs: 1600,
+        },
+      ],
+      quickReplies: [
+        {
+          id: "start_overview",
+          label: "Überblick bekommen",
+          prompt: "Wie fange ich an, meine Finanzen zu ordnen?",
+          emoji: "📊",
+        },
+        {
+          id: "start_saving",
+          label: "Sparen lernen",
+          prompt: "Ich will sparen lernen. Wie fange ich konkret an?",
+          emoji: "💰",
+        },
+        {
+          id: "casual",
+          label: "Einfach quatschen",
+          prompt: "Lass uns einfach mal quatschen. Erzähl mir was über dich.",
+          emoji: "💬",
+        },
+      ],
+    };
+  }
+
   // Message 2 — Fuchs-Typ-Anerkennung
   const line2: GreetingMessage = {
-    content: `Ich hab mir alles in Ruhe angeschaut — und ich muss sagen: du bist ${foxLabel.toLowerCase().replace("der ", "ein ")}. ${foxTagline}.`,
+    content: `Ich hab mir alles in Ruhe angeschaut. Und ich muss sagen: du bist ${foxLabel.toLowerCase().replace("der ", "ein ")}. ${foxTagline}.`,
     delayMs: 1600,
   };
 
@@ -110,19 +153,19 @@ export function buildGreeting(
   let line3: GreetingMessage;
   if (zielbild && zielbild.length > 10) {
     line3 = {
-      content: `Und dein Ziel — „${zielbild}" — das ist was, wo ich dir wirklich helfen möchte. Womit wollen wir anfangen?`,
+      content: `Und dein Ziel "${zielbild}". Das ist was, wo ich dir wirklich helfen möchte. Womit wollen wir anfangen?`,
       delayMs: 1800,
     };
   } else if (topPriority) {
     line3 = {
       content:
-        "Du hast mir schon gesagt, was dir wichtig ist. Wir müssen also nicht bei Null anfangen — wo willst du einsteigen?",
+        "Du hast mir schon gesagt, was dir wichtig ist. Wir müssen also nicht bei Null anfangen. Wo willst du einsteigen?",
       delayMs: 1800,
     };
   } else {
     line3 = {
       content:
-        "Keine Sorge, wir müssen jetzt nicht direkt deep gehen. Du kannst mich alles fragen — oder wir quatschen einfach. Was sagst du?",
+        "Keine Sorge, wir müssen jetzt nicht direkt deep gehen. Du kannst mich alles fragen, oder wir quatschen einfach. Was sagst du?",
       delayMs: 1800,
     };
   }
@@ -150,7 +193,7 @@ export function buildGreeting(
   quickReplies.push({
     id: "casual",
     label: "Einfach quatschen",
-    prompt: "Lass uns einfach mal quatschen — erzähl mir was über dich.",
+    prompt: "Lass uns einfach mal quatschen. Erzähl mir was über dich.",
     emoji: "💬",
   });
 
@@ -158,7 +201,7 @@ export function buildGreeting(
     quickReplies.push({
       id: "goal_deep_dive",
       label: "Zu meinem Ziel",
-      prompt: `Lass uns über mein Ziel sprechen: „${zielbild}". Wie realistisch ist das und was brauche ich dafür?`,
+      prompt: `Lass uns über mein Ziel sprechen: "${zielbild}". Wie realistisch ist das und was brauche ich dafür?`,
       emoji: "✨",
     });
   }
@@ -182,7 +225,7 @@ const IDLE_NUDGES: readonly string[] = [
 const RETURN_GREETINGS: readonly string[] = [
   "Ah, da bist du wieder! 🧡",
   "Hey, schön dass du wieder da bist.",
-  "Oh, du bist zurück — perfekt.",
+  "Oh, du bist zurück. Perfekt.",
 ] as const;
 
 export function pickIdleNudge(seed: number = Date.now()): string {

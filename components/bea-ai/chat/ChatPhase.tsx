@@ -31,6 +31,7 @@ import {
 } from "@/lib/bea-ai/chat/greetingBuilder";
 import { evaluateCardTriggers } from "@/lib/bea-ai/chat/cardTriggers";
 import { uid } from "@/lib/bea-ai/chat/helpers";
+import { sanitizeBeaOutput } from "@/lib/bea-ai/sanitize";
 import {
   inferBeaEmotionFromContext,
   type BeaEmotion,
@@ -69,9 +70,16 @@ interface Props {
   profile: UserProfile;
   /** Reset back to welcome / start-over. */
   onReset: () => void;
+  /**
+   * Optionale Seed-Frage aus dem Ratgeber-Deep-Link (`/bea-ai?topic=`).
+   * Wird beim Mount GENAU EINMAL gesendet (ref-guarded gegen
+   * Strict-Mode-/Doppel-Render — jeder Extra-Send kostet Geld).
+   * Läuft durch die normale, gecappte /api/bea-ai/chat-Route.
+   */
+  autoSend?: string;
 }
 
-export default function ChatPhase({ profile, onReset }: Props) {
+export default function ChatPhase({ profile, onReset, autoSend }: Props) {
   const [chatState, dispatch] = useReducer(chatReducer, initialChatState);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -80,6 +88,7 @@ export default function ChatPhase({ profile, onReset }: Props) {
   const conversationMessageCountRef = useRef<number>(0);
   const greetingDoneRef = useRef(false);
   const wasReturningRef = useRef(false);
+  const autoSendDoneRef = useRef(false);
   const [showAwayToast, setShowAwayToast] = useState(false);
 
   // Stable getter for the latest messages (avoids stale closures)
@@ -163,6 +172,25 @@ export default function ChatPhase({ profile, onReset }: Props) {
     conversationIdRef.current = newConvId;
     conversationStartRef.current = Date.now();
     conversationMessageCountRef.current = 0;
+
+    // Deep-Link-Einstieg (autoSend aus /bea-ai?topic= oder ?context=): KEINE
+    // Begrüßungssequenz + Welcome-Card. Direkt in die fokussierte Konversation —
+    // die Auto-Send-Frage IST die erste Nachricht. Status bleibt "idle"
+    // (initialChatState), Input sofort nutzbar. Session-Tracking bleibt erhalten.
+    if (autoSend?.trim()) {
+      try {
+        trackChatSessionStarted({
+          conversation_id: newConvId,
+          system_prompt: buildProfileContext(profile),
+          profile,
+        });
+      } catch (err) {
+        console.warn("[ChatPhase] deep-link session init failed", err);
+      }
+      setTimeout(() => inputRef.current?.focus(), 100);
+      return;
+    }
+
     try {
       const insights = generateInsights(profile);
       trackInsightsGenerated(insights);
@@ -183,34 +211,45 @@ export default function ChatPhase({ profile, onReset }: Props) {
             message: {
               id: uid(),
               role: "assistant",
-              content: gm.content,
+              content: sanitizeBeaOutput(gm.content),
               timestamp: new Date(),
             },
           });
         }, cumulative);
       });
-      // After greeting messages — append WelcomeCard (no duplicate quick-replies,
-      // the card already surfaces the same quick-start actions).
+      // Nach den Greeting-Messages:
+      //  • MIT Onboarding → WelcomeCard (Fuchs-Typ-Quickstarts), Quick-Replies leer.
+      //  • OHNE Onboarding → KEINE WelcomeCard (sie würde den erfundenen Fuchs-Typ
+      //    erneut zeigen UND ist redundant zur Begrüßung) → stattdessen die
+      //    generischen Greeting-Quick-Replies (Überblick / Sparen / Quatschen).
       window.setTimeout(() => {
-        dispatch({
-          type: "addCard",
-          message: {
-            id: uid(),
-            role: "assistant",
-            content: "",
-            timestamp: new Date(),
-            card: {
-              type: "welcome",
-              userProfile: profile,
-              insights,
-            } satisfies BeaCard,
-          },
-          cardId: "welcome",
-        });
-        dispatch({
-          type: "greetingDone",
-          quickReplies: [],
-        });
+        const hasOnboarding =
+          (profile.lebenssituation?.trim().length ?? 0) > 0 ||
+          (profile.prioritaeten?.length ?? 0) > 0 ||
+          (profile.zielbild?.trim().length ?? 0) > 0;
+        if (hasOnboarding) {
+          dispatch({
+            type: "addCard",
+            message: {
+              id: uid(),
+              role: "assistant",
+              content: "",
+              timestamp: new Date(),
+              card: {
+                type: "welcome",
+                userProfile: profile,
+                insights,
+              } satisfies BeaCard,
+            },
+            cardId: "welcome",
+          });
+          dispatch({ type: "greetingDone", quickReplies: [] });
+        } else {
+          dispatch({
+            type: "greetingDone",
+            quickReplies: greeting.quickReplies,
+          });
+        }
       }, cumulative + 600);
     } catch (err) {
       console.warn("[ChatPhase] greeting init failed", err);
@@ -218,6 +257,20 @@ export default function ChatPhase({ profile, onReset }: Props) {
     setTimeout(() => inputRef.current?.focus(), 100);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // ─── Deep-Link Auto-Send (Ratgeber → Bea) ────────────────
+  // Schickt die Seed-Frage GENAU EINMAL. Der Ref-Guard verhindert,
+  // dass React Strict-Mode / Doppel-Render einen zweiten LLM-Call
+  // auslöst (Kosten!). Der Send läuft durch die normale, gecappte
+  // /api/bea-ai/chat-Route — kein zweiter LLM-Einstiegspunkt.
+  useEffect(() => {
+    if (autoSendDoneRef.current) return;
+    const seed = autoSend?.trim();
+    if (!seed) return;
+    autoSendDoneRef.current = true;
+    sendMessage(seed);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoSend]);
 
   // ─── Idle Nudge Detection ────────────────────────────────
   const lastUserActivity = chatState.messages
@@ -243,7 +296,7 @@ export default function ChatPhase({ profile, onReset }: Props) {
         message: {
           id: uid(),
           role: "assistant",
-          content: pickIdleNudge(),
+          content: sanitizeBeaOutput(pickIdleNudge()),
           timestamp: new Date(),
           isProactive: true,
         },
@@ -286,7 +339,7 @@ export default function ChatPhase({ profile, onReset }: Props) {
           message: {
             id: uid(),
             role: "assistant",
-            content: pickReturnGreeting(),
+            content: sanitizeBeaOutput(pickReturnGreeting()),
             timestamp: new Date(),
             isProactive: true,
           },
