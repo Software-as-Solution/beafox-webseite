@@ -5,9 +5,13 @@
 // und prüft, ob der Nutzer eine individualisierte Anlageempfehlung
 // oder eine Beurteilung eines konkreten Finanzprodukts will.
 //
-// Fail-closed: bei Parse- oder API-Fehler → "JA" (blockieren).
-// Lieber einmal zu vorsichtig als einmal zu viel rechtliche
-// Exposition gegenüber §34d/§34f GewO und BaFin.
+// Fail-OPEN: bei API-/Parse-Fehler → "NEIN" (durchlassen). Der Klassifikator
+// ist nur die ERSTE Schranke — das Haupt-Modell verweigert regulierte Beratung
+// ohnehin per System-Prompt (§34d/§34f GewO, belegt: es lehnt Tesla/Krypto von
+// sich aus ab). Fail-closed führte bei transientem Anthropic-Overload zu einer
+// "Beratungs-Wall" für harmlose Nachrichten ("ja", "warum die App?"). Daher:
+// nur ein EXPLIZITES "JA"-Verdikt blockt; alles andere (inkl. Fehler) lässt das
+// Modell antworten. Retries gegen Overload: SDK maxRetries (siehe client.ts).
 // ─────────────────────────────────────────────────────────────
 
 import { BEA_MODEL_CLASSIFIER, getAnthropicClient } from "@/lib/bea-ai/client";
@@ -42,12 +46,15 @@ export async function classifyAdviceRequest(
       messages: [{ role: "user", content: userMessage.slice(0, MAX_INPUT_CHARS) }],
     });
     const block = res.content[0];
-    if (!block || block.type !== "text") return "JA";
+    // Kein Text-Block → unklar → fail-open (Modell-Guard greift).
+    if (!block || block.type !== "text") return "NEIN";
     const verdict = block.text.trim().toUpperCase().slice(0, 4);
-    if (verdict.startsWith("NEIN")) return "NEIN";
-    if (verdict.startsWith("JA")) return "JA";
-    return "JA";
+    if (verdict.startsWith("JA")) return "JA"; // nur explizites JA blockt
+    // "NEIN" oder alles Unklare → durchlassen.
+    return "NEIN";
   } catch {
-    return "JA";
+    // API-Fehler (z. B. Anthropic "Overloaded") → fail-open, NICHT blockieren.
+    // Sonst entstünde eine Beratungs-Wall für harmlose Nachrichten.
+    return "NEIN";
   }
 }
