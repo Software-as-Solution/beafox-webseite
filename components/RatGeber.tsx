@@ -8,13 +8,16 @@ import Button from "@/components/Button";
 // IMPORTS
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { BLOG_CATEGORIES } from "@/lib/blog";
+import { BLOG_CATEGORIES, type BlogCategorySlug } from "@/lib/blog";
 import { useTranslations } from "next-intl";
+import { getTopicSeed } from "@/lib/bea-ai/topicSeeds";
+import { trackRatgeberCategoryClick } from "@/lib/analytics";
 // ICONS
 import {
   Home,
   Wrench,
   School,
+  Sparkles,
   Briefcase,
   ArrowRight,
   GraduationCap,
@@ -50,6 +53,12 @@ interface RatgeberSectionProps {
   showViewAllButton?: boolean;
   /** Ersetzt die Standard-Breite (`max-w-6xl`) bei `variant="guides"` (z. B. `w-full` auf Artikel-Seiten). */
   guidesOuterClassName?: string;
+  /**
+   * Zeigt bei `variant="guides"` einen zweiten "Frag Bea dazu"-Button pro
+   * Karte → `/bea-ai?topic=<slug>` (nur für Slugs mit hinterlegter Seed-Frage).
+   * Default `false`, damit der Button nur dort erscheint, wo gewünscht.
+   */
+  showBeaButton?: boolean;
 }
 // CONSTANTS
 const RATGEBER_CATEGORIES: RatgeberCategory[] = [
@@ -124,6 +133,7 @@ export default function RatgeberSection({
   showAllGuideCategories = false,
   showViewAllButton = true,
   guidesOuterClassName,
+  showBeaButton = false,
 }: RatgeberSectionProps) {
   // HOOKS
   const tFaq = useTranslations("faq.quickLinks");
@@ -334,6 +344,11 @@ export default function RatgeberSection({
                 ? tGuides(`categories.${cat.slug}.desc`)
                 : (BLOG_CATEGORIES.find((entry) => entry.slug === cat.slug)
                     ?.description ?? "");
+              // Slug ist hier immer ein BLOG_CATEGORIES-Slug (default-Set
+              // wie auch das showAllGuideCategories-Set). Bea-Button nur,
+              // wenn eine Seed-Frage hinterlegt ist.
+              const slug = cat.slug as BlogCategorySlug;
+              const hasBeaSeed = getTopicSeed(slug) !== null;
               return (
                 <motion.div
                   key={cat.slug}
@@ -386,6 +401,12 @@ export default function RatgeberSection({
                       <Link
                         href={cat.href}
                         aria-label={tGuides("viewCategoryAria", { label })}
+                        onClick={() =>
+                          trackRatgeberCategoryClick({
+                            slug,
+                            source: "card",
+                          })
+                        }
                         className="inline-flex items-center justify-center sm:justify-start gap-2 text-base font-semibold text-primaryOrange hover:gap-3 transition-all mt-5 w-full"
                       >
                         {categoryCtaLabel ?? tGuides("viewCategory")}
@@ -394,6 +415,22 @@ export default function RatgeberSection({
                           className="w-4 h-4 shrink-0"
                         />
                       </Link>
+                      {showBeaButton && hasBeaSeed && (
+                        <Link
+                          href={`/bea-ai?topic=${slug}`}
+                          aria-label={tGuides("askBeaAria", { label })}
+                          onClick={() =>
+                            trackRatgeberCategoryClick({
+                              slug,
+                              source: "bea_button",
+                            })
+                          }
+                          className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-primaryOrange/30 bg-primaryOrange/5 px-4 py-2 text-sm font-semibold text-primaryOrange transition-all hover:bg-primaryOrange/10"
+                        >
+                          <Sparkles aria-hidden="true" className="w-4 h-4 shrink-0" />
+                          {tGuides("askBea")}
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </motion.div>

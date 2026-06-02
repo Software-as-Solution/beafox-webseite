@@ -517,6 +517,8 @@
       },
       "viewCategory": "View guides",
       "viewCategoryAria": "View guides for {label}",
+      "askBea": "Ask Bea about this",
+      "askBeaAria": "Ask Bea about {label}",
       "viewAll": "Discover all guides",
       "listLabel": "Guide categories",
       "subtitleLine1": "Whether student, apprentice, or career starter:",

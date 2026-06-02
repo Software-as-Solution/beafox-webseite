@@ -1540,7 +1540,7 @@ export const FINANCIAL_TYPES: Record<FinancialTypeId, FinancialType> = {
     label: "Der Bauch-Fuchs",
     icon: "💛",
     tagline:
-      "Du spürst, bevor du rechnest — und liegst öfter richtig als du denkst",
+      "Du spürst, bevor du rechnest. Und liegst öfter richtig als du denkst",
     description:
       "Geld löst bei dir mehr Gefühl als Rechnung aus — und das ist okay. Dein Bauch hat dich bisher durchgebracht, und er ist ein ernstzunehmender Ratgeber. Was dir noch fehlt: ein paar handfeste Werkzeuge, damit dein Bauchgefühl sich auf Zahlen stützen kann, die du verstehst. Keine Formeln, kein Fachchinesisch — nur Dinge, die du selbst nachvollziehen kannst.",
   },
@@ -1549,7 +1549,7 @@ export const FINANCIAL_TYPES: Record<FinancialTypeId, FinancialType> = {
     label: "Der Schutz-Fuchs",
     icon: "🛡️",
     tagline:
-      "Sicherheit ist dein Anker — pass auf, dass er dich nicht auch festhält",
+      "Sicherheit ist dein Anker. Pass auf, dass er dich nicht auch festhält",
     description:
       "Du gehst Geld-Themen mit Vorsicht an, und das hat dich vor vielen Fehlern bewahrt. Gleichzeitig merkst du vielleicht selbst: manchmal hält dich das Sicherheits-Denken auch davon ab, Dinge zu tun, die dir langfristig gut täten. Zusammen schauen wir, wo dein Schutz dir hilft — und wo er dir eher im Weg steht.",
   },
@@ -1557,7 +1557,7 @@ export const FINANCIAL_TYPES: Record<FinancialTypeId, FinancialType> = {
     id: "klar_fuchs",
     label: "Der Klar-Fuchs",
     icon: "🎯",
-    tagline: "Klarer Kopf, klare Zahlen — du denkst, bevor du handelst",
+    tagline: "Klarer Kopf, klare Zahlen. Du denkst, bevor du handelst",
     description:
       "Du gehst strukturiert an Geld ran — erst verstehen, dann entscheiden. Das ist eine starke Basis, auf der sich viel aufbauen lässt. Wir können uns also direkt den spannenderen Themen widmen: wie Kapital wirklich arbeitet, wo sich Mythen halten, und welche Muster im Kopf dir selbst die beste analytische Brille beschlagen lassen können.",
   },
@@ -1565,7 +1565,7 @@ export const FINANCIAL_TYPES: Record<FinancialTypeId, FinancialType> = {
     id: "meister_fuchs",
     label: "Der Meister-Fuchs",
     icon: "👑",
-    tagline: "Die Basics sitzen längst — jetzt geht's um die Feinheiten",
+    tagline: "Die Basics sitzen längst. Jetzt geht's um die Feinheiten",
     description:
       "Du hast dein Fundament schon lange gelegt: Notgroschen, laufende Finanzen, erste Investitionen. Bei dir geht's nicht mehr um „wie fange ich an\", sondern um Feintuning — Steueroptimierung, langfristige Strategie, Fallstricke, die man erst sieht, wenn man drinsteckt. Hier bin ich für dich eher Sparringspartner als Lehrer.",
   },
@@ -1581,7 +1581,7 @@ export const FINANCIAL_TYPES: Record<FinancialTypeId, FinancialType> = {
     id: "kletter_fuchs",
     label: "Der Kletter-Fuchs",
     icon: "🧗",
-    tagline: "Schritt für Schritt — du baust dir dein Fundament",
+    tagline: "Schritt für Schritt. Du baust dir dein Fundament",
     description:
       "Du bist mitten drin im Aufbau deines finanziellen Lebens — nicht ganz am Anfang, aber auch noch nicht fertig. Das ist eine spannende Phase: du hast schon erste Erfahrungen, aber es gibt noch viel, wo dir Klarheit fehlt. Wir nehmen uns das Schritt für Schritt vor, ohne Druck. Jede Etappe, die du gemacht hast, wird dein Fundament stabiler.",
   },

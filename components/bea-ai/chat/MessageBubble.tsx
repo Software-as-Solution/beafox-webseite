@@ -30,6 +30,10 @@ const SONNET_BADGE_STYLE = {
   color: "#7C3AED",
 } as const;
 
+// Modell-Badge (Sonnet/Haiku) ist standardmäßig AUS — Endnutzer sollen das
+// verwendete Modell nicht sehen. Zum Debuggen NEXT_PUBLIC_BEA_SHOW_MODEL="on".
+const SHOW_MODEL_BADGE = process.env.NEXT_PUBLIC_BEA_SHOW_MODEL === "on";
+
 interface Props {
   msg: Message;
   isClusterStart: boolean;
@@ -107,7 +111,7 @@ const MessageBubble = memo(function MessageBubble({
                 />
               </svg>
             )}
-            {msg.model && !isUser && (
+            {SHOW_MODEL_BADGE && msg.model && !isUser && (
               <span
                 className="inline-flex items-center gap-0.5 rounded-full px-1.5 py-0.5 font-medium"
                 style={

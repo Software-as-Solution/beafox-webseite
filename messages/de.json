@@ -778,6 +778,8 @@
       },
       "viewCategory": "Ratgeber ansehen",
       "viewCategoryAria": "Ratgeber für {label} ansehen",
+      "askBea": "Frag Bea dazu",
+      "askBeaAria": "Frag Bea zum Thema {label}",
       "viewAll": "Alle Ratgeber entdecken",
       "listLabel": "Ratgeber-Kategorien",
       "subtitleLine1": "Ob Schüler, Azubi oder Berufseinsteiger:",
