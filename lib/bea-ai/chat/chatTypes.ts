@@ -25,7 +25,6 @@ export type BeaCard =
       userProfile: UserProfile;
       insights: OnboardingInsights;
     }
-  | { type: "beta_access" }
   | {
       type: "ratgeber";
       slug: string;
@@ -37,8 +36,7 @@ export type BeaCard =
       type: "quick_poll";
       question: string;
       options: PollOption[];
-    }
-  | { type: "milestone"; milestone: string; description: string };
+    };
 
 export type BeaCardType = BeaCard["type"];
 

@@ -3767,12 +3767,6 @@
         "welcomeCard": {
           "title": "Womit wollen wir starten?",
           "subtitle": "Wähl einfach, was dich gerade am meisten interessiert."
-        },
-        "betaAccessCard": {
-          "intro": "Ich muss dir was Ehrliches sagen…",
-          "body": "Ich bin gerade in der Beta-Phase — noch nicht für alle verfügbar. Wenn du dabei sein willst, kann ich dich auf die Early-Access-Liste setzen.",
-          "accept": "Ja, ich will Early-Access",
-          "dismiss": "Später"
         }
       },
       "legalDisclaimer": {

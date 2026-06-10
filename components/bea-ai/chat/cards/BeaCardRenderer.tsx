@@ -5,11 +5,9 @@
 // All cards share the same indented column position (after avatar gap).
 
 import WelcomeCard from "./WelcomeCard";
-import BetaAccessCardInline from "./BetaAccessCardInline";
 import RatgeberCard from "./RatgeberCard";
 import RechnerCard from "./RechnerCard";
 import QuickPollCard from "./QuickPollCard";
-import MilestoneCard from "./MilestoneCard";
 import type { BeaCard } from "@/lib/bea-ai/chat/chatTypes";
 
 interface Props {
@@ -17,7 +15,6 @@ interface Props {
   /**
    * Generic event channel for cards. Action ID is card-specific:
    *   "welcome.quickStart" → payload: prompt string
-   *   "beta_access.accept" / "beta_access.dismiss"
    *   "rechner.result" → payload: number
    *   "quick_poll.answer" → payload: option value
    */
@@ -42,13 +39,6 @@ export default function BeaCardRenderer({ card, onAction }: Props) {
           onQuickStart={(prompt) => onAction?.("welcome.quickStart", prompt)}
         />,
       );
-    case "beta_access":
-      return wrap(
-        <BetaAccessCardInline
-          onAccept={() => onAction?.("beta_access.accept")}
-          onDismiss={() => onAction?.("beta_access.dismiss")}
-        />,
-      );
     case "ratgeber":
       return wrap(
         <RatgeberCard
@@ -70,13 +60,6 @@ export default function BeaCardRenderer({ card, onAction }: Props) {
           question={card.question}
           options={card.options}
           onAnswer={(value) => onAction?.("quick_poll.answer", value)}
-        />,
-      );
-    case "milestone":
-      return wrap(
-        <MilestoneCard
-          milestone={card.milestone}
-          description={card.description}
         />,
       );
   }

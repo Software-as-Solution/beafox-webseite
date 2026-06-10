@@ -47,8 +47,11 @@ export const MAX_MESSAGES_PER_SESSION = parseInt(
   10
 );
 
+// 350 statt 600: Bea soll knapp antworten (1-3 Sätze laut System-Prompt).
+// Reicht locker auch für die "Nutzer fragt explizit nach Details"-Fälle
+// und halbiert nebenbei die Worst-Case-Output-Kosten pro Turn.
 export const MAX_OUTPUT_TOKENS = parseInt(
-  process.env.BEA_AI_MAX_OUTPUT_TOKENS ?? "600",
+  process.env.BEA_AI_MAX_OUTPUT_TOKENS ?? "350",
   10
 );
 
