@@ -29,7 +29,6 @@ import {
   pickIdleNudge,
   pickReturnGreeting,
 } from "@/lib/bea-ai/chat/greetingBuilder";
-import { evaluateCardTriggers } from "@/lib/bea-ai/chat/cardTriggers";
 import { uid } from "@/lib/bea-ai/chat/helpers";
 import { sanitizeBeaOutput } from "@/lib/bea-ai/sanitize";
 import {
@@ -304,27 +303,6 @@ export default function ChatPhase({ profile, onReset, autoSend }: Props) {
     },
   });
 
-  // ─── Card Trigger Evaluation (on message change) ────────
-  useEffect(() => {
-    if (chatState.status !== "idle") return;
-    const result = evaluateCardTriggers({
-      messages: chatState.messages,
-      shownCardIds: chatState.shownCardIds,
-    });
-    if (!result) return;
-    dispatch({
-      type: "addCard",
-      message: {
-        id: uid(),
-        role: "assistant",
-        content: "",
-        timestamp: new Date(),
-        card: result.card,
-      },
-      cardId: result.cardId,
-    });
-  }, [chatState.status, chatState.messages, chatState.shownCardIds]);
-
   // ─── Send-Wrapper that injects return-greeting if user was away ─
   const sendWithReturn = useCallback(
     (text: string) => {
@@ -372,8 +350,6 @@ export default function ChatPhase({ profile, onReset, autoSend }: Props) {
         sendWithReturn(payload);
       } else if (action === "quick_poll.answer" && typeof payload === "string") {
         sendWithReturn(payload);
-      } else if (action === "beta_access.dismiss") {
-        // Dismiss is a no-op here — card stays in history but quick-replies vanish
       }
     },
     [sendWithReturn],

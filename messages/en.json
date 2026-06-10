@@ -3767,12 +3767,6 @@
         "welcomeCard": {
           "title": "Where do we start?",
           "subtitle": "Pick whatever feels most interesting right now."
-        },
-        "betaAccessCard": {
-          "intro": "I want to be honest with you…",
-          "body": "I'm currently in beta — not available for everyone yet. If you want in, I can put you on the Early-Access list.",
-          "accept": "Yes, I want Early-Access",
-          "dismiss": "Later"
         }
       },
       "legalDisclaimer": {
